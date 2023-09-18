@@ -17,18 +17,42 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
+
+<?php if(session()->getFlashdata('error')) : ?>
+    <div class="alert alert-danger alert-dismissible show fade">
+        <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+            <b>Error !!</b>
+            <?= session()->getFlashdata('error'); ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if(session()->getFlashdata('success')) : ?>
+    <div class="alert alert-primary alert-dismissible show fade">
+        <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+            <b>Berhasil !!</b>
+            <?= session()->getFlashdata('success'); ?>
+        </div>
+    </div>
+<?php endif; ?>
 <div class="login-box">
   <div class="login-logo">
-    <a href="index2.html"><b>Login</b>User</a>
+    <a href="<?= site_url('Auth'); ?>"><b>Login</b>User</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="index3.html" method="post">
+      <form action="<?= site_url('loginProses'); ?>" method="post">
+      <?= csrf_field(); ?>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -36,7 +60,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -75,7 +99,7 @@
         <a href="forgot-password.html">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="<?= site_url('auth'); ?>" class="text-center">Register a new membership</a>
+        <a href="<?= site_url('register'); ?>" class="text-center">Register a new membership</a>
       </p>
     </div>
     <!-- /.login-card-body -->

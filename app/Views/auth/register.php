@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Registration Page</title>
+  <title>Perjadin | Halaman Registrasi</title>
 
   <base href="<?= base_url('templates'); ?>/">
   <!-- Google Font: Source Sans Pro -->
@@ -19,64 +19,63 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="index2.html"><b>Admin</b>LTE</a>
+    <a href="index2.html"><b>Perjadin</b>Keu</a>
   </div>
 
   <div class="card">
     <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Registrasi Pengguna Baru</p>
 
-      <form action="index.html" method="post">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
+      <?php $errors = session()->getFlashdata('validation') ?>
+
+      <form action="<?= site_url('register/create') ?>" method="post">
+      <?= csrf_field(); ?>
+        <div class="form-group">
+          <input type="text" class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?>" placeholder="Nama Lengkap" name="user_nama" value="<?= old('user_nama'); ?>">
+          <div class="invalid-feedback">
+              <?= isset($errors['user_nama']) ? $errors['user_nama'] : null ; ?>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
+        <div class="form-group">
+          <input type="text" class="form-control <?= isset($errors['user_email']) ? 'is-invalid' : null ; ?>" placeholder="Email" name="user_email" value="<?= old('user_email'); ?>">
+          <div class="invalid-feedback">
+              <?= isset($errors['user_email']) ? $errors['user_email'] : null ; ?>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
+        <div class="form-group">
+          <input type="password" class="form-control <?= isset($errors['user_password']) ? 'is-invalid' : null ; ?>" placeholder="Password" name="user_password" value="<?= old('user_password'); ?>">
+          <div class="invalid-feedback">
+              <?= isset($errors['user_password']) ? $errors['user_password'] : null ; ?>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
+        <div class="form-group">
+          <input type="password" class="form-control <?= isset($errors['pass_confirm']) ? 'is-invalid' : null ; ?>" placeholder="Ketik kembali password" name="pass_confirm" value="<?= old('pass_confirm'); ?>">
+          <div class="invalid-feedback">
+              <?= isset($errors['pass_confirm']) ? $errors['pass_confirm'] : null ; ?>
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
+          <!-- <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="agreeTerms" name="terms" value="agree">
               <label for="agreeTerms">
                I agree to the <a href="#">terms</a>
               </label>
             </div>
-          </div>
+          </div> -->
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col">
             <button type="submit" class="btn btn-primary btn-block">Register</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
+      <p class="mb-0">
+            <a href="<?= site_url('login'); ?>" class="btn btn-block">I already have a membership</a>
+      </p>
+
+      <!-- <div class="social-auth-links text-center">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i>
@@ -86,9 +85,7 @@
           <i class="fab fa-google-plus mr-2"></i>
           Sign up using Google+
         </a>
-      </div>
-
-      <a href="login.html" class="text-center">I already have a membership</a>
+      </div> -->
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
