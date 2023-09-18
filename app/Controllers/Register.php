@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourcePresenter;
 
-class Auth extends ResourcePresenter
+class Register extends ResourcePresenter
 {
     /**
      * Present a view of resource objects

@@ -9,4 +9,4 @@ $routes->get('/', 'Home::index');
 
 $routes->get('/login','Home::login');
 
-$routes->presenter('auth');
+$routes->presenter('register');
