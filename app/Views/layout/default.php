@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title><?= $title; ?></title>
 
   <base href="<?= base_url('templates'); ?>/">
   <!-- Google Font: Source Sans Pro -->
