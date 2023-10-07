@@ -8,28 +8,30 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-header">EXAMPLES</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
-                Mailbox
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-            </ul>
+          <?php 
+            $db = \Config\Database::connect();
+            $menu = $db->query('SELECT * FROM menus WHERE menu_active=1 ORDER BY menu_id ASC');
+            $r1 = $menu->getResultArray();
+            foreach ($r1 as $key => $m1): 
+              $id_menu = $m1['menu_id'];
+              $sub = $db->query("SELECT * FROM submenus WHERE submenu_active = 1 AND menu_id = $id_menu ORDER BY submenu_id ASC");
+              if($sub->getNumRows() > 0) {
+                $r2 = $sub->getResultArray(); ?>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon far fa-envelope"></i><p><?= $m1['menu_nama']; ?><i class="fas fa-angle-left right"></i></p></a>
+                <?php foreach ($r2 as $key => $m2) : ?>
+                  <!-- <li class="nav-header">MENUS</li> -->
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item"><a href="pages/mailbox/mailbox.html" class="nav-link"><i class="far fa-circle nav-icon"></i><p><?= $m2['submenu_nama']; ?></p></a></li>
+                    </ul>
+                  
+                <?php endforeach;
+              } else { ?>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon far fa-envelope"></i><p><?= $m1['menu_nama']; ?></p></a></li>
+            <?php }
+            endforeach;
+          ?>
           </li>
         </ul>
       </nav>
