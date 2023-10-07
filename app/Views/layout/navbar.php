@@ -1,7 +1,4 @@
-  <?= $this->extend('layout/default'); ?>
-  
-  <?= $this->section('navbar') ?>
-  
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
@@ -22,7 +19,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <div class="user-block ">
+          <div class="user-panel ">
             <div class="image "><img src="dist/img/user2-160x160.jpg" class="img-circle img-bordered-sm" alt="User Image"></div>
           </div>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -43,5 +40,3 @@
 
 
   </nav>
-  <!-- /.navbar -->
-<?= $this->endSection() ?>
