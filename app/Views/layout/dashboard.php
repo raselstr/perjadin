@@ -19,9 +19,11 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+                  <?= $this->include('layout/infobox'); ?>
         <div class="row">
           <!-- /.col-md-6 -->
           <div class="col">

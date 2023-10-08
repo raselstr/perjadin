@@ -53,11 +53,13 @@ class Submenus extends Migration
             ],
         ]);
         $this->forge->addKey('submenu_id', true);
+        $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','','','menuidFK');
         $this->forge->createTable('submenus');
     }
 
     public function down()
     {
+        $this->forge->dropForeignKey('submenus','menuidFK');
         $this->forge->dropTable('submenus');
     }
 }

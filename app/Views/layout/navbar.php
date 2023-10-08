@@ -13,7 +13,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <div class="user-block ">
-                <span class="username"><a href="<?= site_url('/'); ?>">Jonathan Burke Jr.</a></span>
+                <span class="username"><a href="<?= site_url('/'); ?>"><?= session('user_nama') ?></a></span>
                 <span class="description">Shared publicly - 7:30 PM today</span>
         </div>
       </li>
@@ -29,7 +29,7 @@
               <i class="fas fa-envelope mr-2"></i> Profil
               <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
             </a>
-            <a href="#" class="dropdown-item">
+            <a href="<?= site_url('logout'); ?>" class="dropdown-item">
               <i class="fas fa-envelope mr-2"></i> Logout
               <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
             </a>

@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UsersModel extends Model
+class RolemenusModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'user_id';
+    protected $table            = 'rolemenus';
+    protected $primaryKey       = 'rolemenu_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_nama','user_email','user_password','user_info','user_active','user_status','user_role'];
+    protected $allowedFields    = ['role_id','menu_id','submenu_id','lihat','tambah','ubah','hapus'];
 
     // Dates
     protected $useTimestamps = true;

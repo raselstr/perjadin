@@ -33,8 +33,18 @@ class Users extends Migration
                 'null' => true,
             ],
             'user_active' => [
-                'type' => 'INT',
-                'default' => 0,
+                'type' => 'ENUM',
+                'constraint'    => ['true','false'],
+                'default'       =>  'true',
+            ],
+            'user_status' => [
+                'type' => 'ENUM',
+                'constraint'    => ['Admin','Operator'],
+                'default'       =>  'Operator',
+            ],
+            'role_id' => [
+                'type' => 'BIGINT',
+                'null'  => true,
             ],
             'created_at'        => [
                 'type'          => 'TIMESTAMP',
@@ -50,11 +60,13 @@ class Users extends Migration
             ],
         ]);
         $this->forge->addKey('user_id', true);
+        $this->forge->addForeignKey('role_id', 'roles', 'role_id','','','roleidFK');
         $this->forge->createTable('users');
     }
 
     public function down()
     {
+        $this->forge->dropForeignKey('users','roleidFK');
         $this->forge->dropTable('users');
     }
 }
