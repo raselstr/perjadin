@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Pegawai extends Model
+class PegawaisModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'pegawais';
@@ -13,7 +13,7 @@ class Pegawai extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['pegawai_nip','pegawai_nama','pegawai_jabatan','eselon_id','pangkat_id'];
 
     // Dates
     protected $useTimestamps = true;

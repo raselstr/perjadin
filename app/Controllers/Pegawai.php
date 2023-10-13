@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PegawaisModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class Pegawai extends ResourcePresenter
@@ -11,12 +12,22 @@ class Pegawai extends ResourcePresenter
      *
      * @return mixed
      */
+    function __construct()
+    {
+       
+        
+    }
     public function index()
     {
+
+         $pegawais = new PegawaisModel();
+         $datapegawais = $pegawais->findAll();
          $data = [
-            'title' => 'Pegawai',
+            'title' => 'Daftar Pegawai',
             'subtitle' => 'Pegawai',
+            'pegawais' => $datapegawais,
         ];
+        // dd($data);
         return view('pegawai/index', $data);
     }
 

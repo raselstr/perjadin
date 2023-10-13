@@ -29,15 +29,52 @@
           <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">Ini Page Pegawai</h5>
+                <h5 class="m-0">Daftar Pegawai</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>NIP</th>
+                    <th>Nama Pegawai</th>
+                    <th>Jabatan</th>
+                    <th>Eselon</th>
+                    <th>Pangkat</th>
+                    <th>Aksi</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+                      $no = 1;
+                      foreach ($pegawais as $key => $value) { ?>
+                        <tr>
+                          <td><?= $no++ ?></td>
+                          <td><?= $value->pegawai_nip ?></td>
+                          <td><?= $value->pegawai_nama ?></td>
+                          <td><?= $value->pegawai_jabatan ?></td>
+                          <td><?= $value->eselon_id ?></td>
+                          <td><?= $value->pangkat_id ?></td>
+                          <td>aksi</td>
+                        </tr>
+                      <?php } ?>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>NIP</th>
+                    <th>Nama Pegawai</th>
+                    <th>Jabatan</th>
+                    <th>Eselon</th>
+                    <th>Pangkat</th>
+                    <th>Aksi</th>
+                  </tr>
+                  </tfoot>
+                </table>
               </div>
             </div>
+          </div>
           </div>
           <!-- /.col-md-6 -->
         </div>
