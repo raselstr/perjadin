@@ -24,7 +24,7 @@ class Pegawai extends ResourcePresenter
          $datapegawais = $pegawais->findAll();
          $data = [
             'title' => 'Daftar Pegawai',
-            'subtitle' => 'Pegawai',
+            'subtitle' => 'Home',
             'pegawais' => $datapegawais,
         ];
         // dd($data);

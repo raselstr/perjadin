@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#"><?= $title; ?></a></li>
-              <li class="breadcrumb-item active"><?= $subtitle; ?></li>
+              <li class="breadcrumb-item active"><?= $title; ?></li>
+              <li class="breadcrumb-item"><a href=<?= site_url('/'); ?>><?= $subtitle; ?></a></li>
             </ol>
           </div>
         </div>
@@ -23,7 +23,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-                  <?= $this->include('layout/infobox'); ?>
+          <?= $this->include('layout/infobox'); ?>
         <div class="row">
           <!-- /.col-md-6 -->
           <div class="col">
