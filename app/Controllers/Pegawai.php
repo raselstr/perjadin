@@ -50,7 +50,15 @@ class Pegawai extends ResourcePresenter
      */
     public function new()
     {
-        //
+        $pegawais = new PegawaisModel();
+        $datapegawais = $pegawais->findAll();
+        $data = [
+            'title' => 'Tambah Pegawai',
+            'subtitle' => 'Home',
+            'pegawais' => $datapegawais,
+        ];
+        // dd($data);
+        return view('pegawai/tambahpegawai', $data);
     }
 
     /**
@@ -61,7 +69,7 @@ class Pegawai extends ResourcePresenter
      */
     public function create()
     {
-        //
+        
     }
 
     /**
