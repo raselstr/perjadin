@@ -21,6 +21,9 @@
                 <div class="col-sm-4">
                   <a href="<?= site_url('pegawai/new'); ?>" type="button" class="btn btn-block btn-primary btn-sm">Tambah Data Pegawai</a>
                 </div>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-overlay">
+                  Launch Modal with Overlay
+                </button>
                 </div>
               </div>
               <div class="card-body">
