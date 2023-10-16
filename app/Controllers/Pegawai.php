@@ -7,6 +7,7 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class Pegawai extends ResourcePresenter
 {
+    protected $helpers = ['form'];
     /**
      * Present a view of resource objects
      *
@@ -69,7 +70,22 @@ class Pegawai extends ResourcePresenter
      */
     public function create()
     {
-        
+        $pegawais = new PegawaisModel();
+        // $datapegawais = $pegawais->findAll();
+        // $data = [
+        //     'title' => 'Tambah Pegawai',
+        //     'subtitle' => 'Home',
+            
+        // ];
+        // // dd($data);
+        // return view('pegawai/tambahpegawai', $data);
+        // if (! $this->request->is('post')) {
+        // //     return view('form2');
+        // }
+       $peg = $this->request->getPost();  
+       dd($peg);   
+       $pegawais->save($peg);
+       return redirect()->back();
     }
 
     /**

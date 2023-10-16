@@ -14,7 +14,7 @@
           <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-body">
-                <form>
+              <form>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>

@@ -19,11 +19,10 @@
                   <h5 class="m-0">Daftar Pegawai</h5>
                 </div>
                 <div class="col-sm-4">
-                  <a href="<?= site_url('pegawai/new'); ?>" type="button" class="btn btn-block btn-primary btn-sm">Tambah Data Pegawai</a>
+                  <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
+                    Tambah Data Pegawai
+                  </button>
                 </div>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-overlay">
-                  Launch Modal with Overlay
-                </button>
                 </div>
               </div>
               <div class="card-body">
@@ -77,4 +76,51 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Tambah Pegawai</h4>
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+            </div>
+            <div class="modal-body">
+              <div class="card-body">
+                <form action="<?= site_url('pegawai/create') ?>" method="post">
+                  <?= csrf_field() ?>
+                    <div class="form-group">
+                      <label for="pegawai_nip">Nip</label>
+                      <input class="form-control" type="text" placeholder="Nip" id="pegawai_nip" value="<?= set_value('pegawai_nip') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="pegawai_nama">Nama</label>
+                      <input class="form-control" type="text" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= set_value('pegawai_nama') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="pegawai_jabatan">Jabatan</label>
+                      <input class="form-control" type="text" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= set_value('pegawai_jabatan') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="eselon_id">Eselon</label>
+                      <input class="form-control" type="text" placeholder="Eselon" id="eselon_id" value="<?= set_value('eselon-_id') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="pangkat_id">Pangkat</label>
+                      <input class="form-control" type="text" placeholder="Pengkat" id="pangkat_id" value="<?= set_value('pangkat_id') ?>">
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                      <button type="reset" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 <?= $this->endSection() ?>
