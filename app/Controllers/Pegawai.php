@@ -71,14 +71,16 @@ class Pegawai extends ResourcePresenter
     public function create()
     {
        $pegawais = new PegawaisModel();
-       $peg = $this->request->getPost();  
+       $peg = $this->request->getPost();
        $save = $pegawais->save($peg);
 
        if ($save){
         session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
         return redirect()->back();
        } else {
-        dd($pegawais->errors());
+        // dd($pegawais->errors());
+        // session()->setFlashdata('validation',$pegawais->errors());
+        return redirect()->back()->withInput()->with('validation', $pegawais->errors());
        }
     //    dd($save);
     //    dd($peg);   
@@ -107,7 +109,20 @@ class Pegawai extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $pegawais = new PegawaisModel();
+        $peg = $pegawais->find($id);
+        if(is_object($peg)){
+            $data = [
+                'title' => 'Edit Tambah Pegawai',
+                'subtitle' => 'Home',
+                'peg'   => $peg,
+                // 'pegawai'   => $pegawais->findAll(),
+            ];
+           
+            return view('pegawai/editpegawai', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -120,7 +135,10 @@ class Pegawai extends ResourcePresenter
      */
     public function update($id = null)
     {
-        //
+        $pegawais = new PegawaisModel();
+        $data = $this->request->getPost();
+        $pegawais->update($id,$data);
+        return redirect()->to(site_url('pegawai'))->with('success','Data Berhasil di Update');
     }
 
     /**
@@ -132,7 +150,9 @@ class Pegawai extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        $pegawais = new PegawaisModel();
+        $pegawais->delete($id);
+        return redirect()->back();
     }
 
     /**
@@ -144,6 +164,6 @@ class Pegawai extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        //
+        
     }
 }

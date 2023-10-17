@@ -24,9 +24,9 @@ class PegawaisModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'pegawai_nip'       => 'required|is_unique|max_length[18]|min_length[9]|alpha_numeric_space',
-        'pegawai_nama'      => 'required|min_length[3]',
-        'pegawai_jabatan'   => 'required|max_length[50]|min_length[5]',
+        'pegawai_nip'       => 'required|is_unique[pegawais.pegawai_nip]|max_length[18]|min_length[9]|numeric',
+        'pegawai_nama'      => 'required|max_length[100]|min_length[3]',
+        'pegawai_jabatan'   => 'required|max_length[100]|min_length[4]',
         'eselon_id'         => 'required',
         'pangkat_id'        => 'required',
     ];
@@ -36,22 +36,22 @@ class PegawaisModel extends Model
             'is_unique'             => 'NIP sudah digunakan',
             'max_length'            => 'NIP Maximal 18 Karekter',
             'min_length'            => 'NIP Minimal 9 karekter',
-            'numeric_space'    => 'NIP Harus berisikan angka',
+            'numeric'               => 'NIP Harus berisikan angka tanpa spesial karakter dan spasi',
         ],
         'pegawai_nama' => [
-            'required'              => '{field} Wajib diisi',
-            'min_length'            => '{field} Minimal 3 Karakter',
+            'required'              => 'Nama Wajib diisi',
+            'min_length'            => 'Nama Minimal 3 Karakter',
         ],
         'pegawai_jabatan' => [
-            'required'              => '{field} Wajib diisi',
-            'max_length'            => '{field} Maksimal 50 Karakter',
-            'min_length'            => '{field} Minimal 5 Karakter',
+            'required'              => 'Jabatan Wajib diisi',
+            'max_length'            => 'Jabatan Maksimal 50 Karakter',
+            'min_length'            => 'Jabatan Minimal 5 Karakter',
         ],
         'eselon_id' => [
-            'required'              => '{field} Wajib dipilih sesuai daftar',
+            'required'              => 'Eselon Wajib dipilih sesuai daftar',
         ],
         'pangkat_id' => [
-            'required'              => '{field} Wajib dipilih sesuai daftar',
+            'required'              => 'Pangkat Wajib dipilih sesuai daftar',
         ],
     ];
     protected $skipValidation       = false;
