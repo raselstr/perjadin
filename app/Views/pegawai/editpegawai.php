@@ -23,12 +23,12 @@
                     <?= csrf_field() ?>
                     <div class="card-body">
                       <div class="form-group row">
-                          <input type="text" class="form-control"  name="pegawai_id" value="<?= $peg->pegawai_id; ?>">
+                          <input type="hidden" class="form-control"  name="pegawai_id" value="<?= $peg->pegawai_id; ?>">
                       </div>
                       <div class="form-group row">
                         <label for="pegawai_nip" class="col-sm-2 col-form-label">NIP</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control <?= isset($errors['pegawai_nip']) ? 'is-invalid' : null ; ?>"  name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= $peg->pegawai_nip; ?>">
+                          <input type="text" maxlength="18" class="form-control <?= isset($errors['pegawai_nip']) ? 'is-invalid' : null ; ?>"  name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= $peg->pegawai_nip; ?>">
                             <div class="invalid-feedback">
                                 <?= isset($errors['pegawai_nip']) ? $errors['pegawai_nip'] : null ; ?>
                             </div>
