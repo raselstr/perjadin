@@ -88,27 +88,28 @@
             </div>
             <div class="modal-body">
               <div class="card-body">
+                <?php $errors = session()->getFlashdata('validation') ?>
                 <form action="<?= site_url('pegawai/create') ?>" method="post">
                   <?= csrf_field() ?>
                     <div class="form-group">
                       <label for="pegawai_nip">Nip</label>
-                      <input class="form-control" type="text" placeholder="Nip" id="pegawai_nip" value="<?= set_value('pegawai_nip') ?>">
+                      <input class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= set_value('pegawai_nip') ?>">
                     </div>
                     <div class="form-group">
                       <label for="pegawai_nama">Nama</label>
-                      <input class="form-control" type="text" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= set_value('pegawai_nama') ?>">
+                      <input class="form-control" type="text" name="pegawai_nama" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= set_value('pegawai_nama') ?>">
                     </div>
                     <div class="form-group">
                       <label for="pegawai_jabatan">Jabatan</label>
-                      <input class="form-control" type="text" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= set_value('pegawai_jabatan') ?>">
+                      <input class="form-control" type="text" name="pegawai_jabatan" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= set_value('pegawai_jabatan') ?>">
                     </div>
                     <div class="form-group">
                       <label for="eselon_id">Eselon</label>
-                      <input class="form-control" type="text" placeholder="Eselon" id="eselon_id" value="<?= set_value('eselon-_id') ?>">
+                      <input class="form-control" type="text" name="eselon_id" placeholder="Eselon" id="eselon_id" value="<?= set_value('eselon-_id') ?>">
                     </div>
                     <div class="form-group">
                       <label for="pangkat_id">Pangkat</label>
-                      <input class="form-control" type="text" placeholder="Pengkat" id="pangkat_id" value="<?= set_value('pangkat_id') ?>">
+                      <input class="form-control" type="text" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= set_value('pangkat_id') ?>">
                     </div>
                     <div class="modal-footer justify-content-between">
                       <button type="reset" class="btn btn-default" data-dismiss="modal">Tutup</button>

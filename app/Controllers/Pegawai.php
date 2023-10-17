@@ -70,22 +70,32 @@ class Pegawai extends ResourcePresenter
      */
     public function create()
     {
-        $pegawais = new PegawaisModel();
-        // $datapegawais = $pegawais->findAll();
-        // $data = [
-        //     'title' => 'Tambah Pegawai',
-        //     'subtitle' => 'Home',
-            
-        // ];
-        // // dd($data);
-        // return view('pegawai/tambahpegawai', $data);
-        // if (! $this->request->is('post')) {
-        // //     return view('form2');
-        // }
+       $pegawais = new PegawaisModel();
        $peg = $this->request->getPost();  
-       dd($peg);   
-       $pegawais->save($peg);
-       return redirect()->back();
+       $save = $pegawais->save($peg);
+
+       if ($save){
+        session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
+        return redirect()->back();
+       } else {
+        dd($pegawais->errors());
+       }
+    //    dd($save);
+    //    dd($peg);   
+       
+    //    $validrule = $pegawais->getValidationRules();
+    //    $validpesan = $pegawais->getValidationMessages();
+    //    $valid = $this->validateData($validrule,$validpesan);
+    //    if (save)
+        
+    //    $error = $pegawais->set
+    //    if (!$this->validateData($validrule,$validpesan)){
+        
+    //         return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+    //    } else {
+    //        return redirect()->back();
+    //    }
+        
     }
 
     /**

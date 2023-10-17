@@ -14,39 +14,33 @@
           <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-body">
-              <form>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
+                <form action="<?= site_url('pegawai/create') ?>" method="post">
+                  <?= csrf_field() ?>
+                    <div class="form-group">
+                      <label for="pegawai_nip">Nip</label>
+                      <input type="text" class="form-control"  name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= set_value('pegawai_nip') ?>">
                     </div>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
+                    <div class="form-group">
+                      <label for="pegawai_nama">Nama</label>
+                      <input class="form-control" type="text" name="pegawai_nama" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= set_value('pegawai_nama') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="pegawai_jabatan">Jabatan</label>
+                      <input class="form-control" type="text" name="pegawai_jabatan" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= set_value('pegawai_jabatan') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="eselon_id">Eselon</label>
+                      <input class="form-control" type="text" name="eselon_id" placeholder="Eselon" id="eselon_id" value="<?= set_value('eselon-_id') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="pangkat_id">Pangkat</label>
+                      <input class="form-control" type="text" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= set_value('pangkat_id') ?>">
+                    </div>
+                    <div class="row">
+                      <button type="reset" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
               </div>
             </div>
           </div>
