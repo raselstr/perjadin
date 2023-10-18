@@ -7,17 +7,12 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class Pegawai extends ResourcePresenter
 {
-    protected $helpers = ['form'];
     /**
      * Present a view of resource objects
      *
      * @return mixed
      */
-    function __construct()
-    {
-       
-        
-    }
+    
     public function index()
     {
 
@@ -78,25 +73,8 @@ class Pegawai extends ResourcePresenter
         session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
         return redirect()->back();
        } else {
-        // dd($pegawais->errors());
-        // session()->setFlashdata('validation',$pegawais->errors());
-        return redirect()->back()->withInput()->with('validation', $pegawais->errors());
+            return redirect()->back()->withInput()->with('validation', $pegawais->errors());
        }
-    //    dd($save);
-    //    dd($peg);   
-       
-    //    $validrule = $pegawais->getValidationRules();
-    //    $validpesan = $pegawais->getValidationMessages();
-    //    $valid = $this->validateData($validrule,$validpesan);
-    //    if (save)
-        
-    //    $error = $pegawais->set
-    //    if (!$this->validateData($validrule,$validpesan)){
-        
-    //         return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
-    //    } else {
-    //        return redirect()->back();
-    //    }
         
     }
 
@@ -138,6 +116,7 @@ class Pegawai extends ResourcePresenter
         $pegawais = new PegawaisModel();
         $data = $this->request->getPost();
         $pegawais->update($id,$data);
+    
         return redirect()->to(site_url('pegawai'))->with('success','Data Berhasil di Update');
     }
 
@@ -152,7 +131,7 @@ class Pegawai extends ResourcePresenter
     {
         $pegawais = new PegawaisModel();
         $pegawais->delete($id);
-        return redirect()->back();
+        return redirect()->to(site_url('pegawai'));
     }
 
     /**
