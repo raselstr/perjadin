@@ -19,7 +19,7 @@
               $sub = $db->query("SELECT * FROM submenus WHERE submenu_active = 1 AND menu_id = $id_menu ORDER BY submenu_id ASC");
               if($sub->getNumRows() > 0) {
                 $r2 = $sub->getResultArray(); ?>
-                <li class="nav-item"><a href="<?= site_url($m1['menu_link']) ?>" class="nav-link"><i class="<?= $m1['menu_icon']; ?>"></i><p><?= $m1['menu_nama']; ?><i class="fas fa-angle-left right"></i></p></a>
+                <li class="nav-item"><a href="<?= site_url($m1['menu_link']) ?>" class="nav-link"><i class="<?= $m1['menu_icon']; ?>"></i><p> <?= $m1['menu_nama']; ?><i class="fas fa-angle-left right"></i></p></a>
                 <?php foreach ($r2 as $key => $m2) : ?>
                   <!-- <li class="nav-header">MENUS</li> -->
                     <ul class="nav nav-treeview">
