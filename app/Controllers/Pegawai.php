@@ -115,9 +115,14 @@ class Pegawai extends ResourcePresenter
     {
         $pegawais = new PegawaisModel();
         $data = $this->request->getPost();
-        $pegawais->update($id,$data);
+        // dd($data);
+        $update = $pegawais->update(['pegawai_id' => $id],$data);
+        if($update){
+            return redirect()->to(site_url('pegawai'))->with('success','Data Berhasil di Update');
+        } else {
+            return redirect()->back()->withInput()->with('validation', $pegawais->errors());
+        }
     
-        return redirect()->to(site_url('pegawai'))->with('success','Data Berhasil di Update');
     }
 
     /**

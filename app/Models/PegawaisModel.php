@@ -24,7 +24,8 @@ class PegawaisModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'pegawai_nip'       => 'required|is_unique[pegawais.pegawai_nip]|max_length[18]|min_length[9]|numeric',
+        // 'pegawai_id'        => 'required',
+        'pegawai_nip'       => 'required|max_length[18]|min_length[9]|numeric|is_unique[pegawais.pegawai_nip,pegawai_id,{pegawai_id}]',
         'pegawai_nama'      => 'required|max_length[100]|min_length[3]',
         'pegawai_jabatan'   => 'required|max_length[100]|min_length[4]',
         'eselon_id'         => 'required',
