@@ -22,9 +22,9 @@
                   <form action="<?= site_url('pegawai/update/'.$peg->pegawai_id) ?>" method="post" class="form-horizontal">
                     <?= csrf_field() ?>
                     <div class="card-body">
-                      <!-- <div class="form-group row">
+                      <div class="form-group row">
                           <input type="hidden" class="form-control"  name="pegawai_id" value="<?= $peg->pegawai_id; ?>">
-                      </div> -->
+                      </div>
                       <div class="form-group row">
                         <label for="pegawai_nip" class="col-sm-2 col-form-label">NIP</label>
                         <div class="col-sm-4">
