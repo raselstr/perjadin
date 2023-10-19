@@ -17,6 +17,7 @@
                 <div class="row">
                   <div class="col-sm-8">
                     <h5 class="m-0">Daftar Pegawai</h5>
+                    <div class="flash-data" data-flashdata="<?= session()->getflashdata('info'); ?>"></div>
                   </div>
                   <div class="col-sm-4">
                     <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">

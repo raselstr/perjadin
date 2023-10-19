@@ -18,6 +18,7 @@
                   <div class="card-header">
                     <h3 class="card-title">Tambah Data Pegawai</h3>
                   </div>
+                  
                   <?php $errors = session()->getFlashdata('validation') ?>
                   <form action="<?= site_url('pegawai/create') ?>" method="post" class="form-horizontal">
                     <?= csrf_field() ?>
@@ -70,7 +71,7 @@
                     </div>
                       <div class="card-footer">
                         <a href="<?= site_url('pegawai'); ?>" class="btn btn-default">Kembali</a>
-                        <button type="submit" class="btn btn-primary float-right swalDefaultSuccess">Simpan</button>
+                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
                       </div>
                   </form>
                 </div>

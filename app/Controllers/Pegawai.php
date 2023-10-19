@@ -70,8 +70,8 @@ class Pegawai extends ResourcePresenter
        $save = $pegawais->save($peg);
 
        if ($save){
-        session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
-        return redirect()->back();
+        // session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
+        return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
        } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
        }
@@ -118,7 +118,7 @@ class Pegawai extends ResourcePresenter
         // dd($data);
         $update = $pegawais->update(['pegawai_id' => $id],$data);
         if($update){
-            return redirect()->to(site_url('pegawai'))->with('success','Data Berhasil di Update');
+            return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Update');
         } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
         }
@@ -136,7 +136,7 @@ class Pegawai extends ResourcePresenter
     {
         $pegawais = new PegawaisModel();
         $pegawais->delete($id);
-        return redirect()->to(site_url('pegawai'));
+        return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Hapus');
     }
 
     /**
