@@ -108,13 +108,13 @@
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 50000
+      timer: 500000
     });
 
     $('.swalDefaultSuccess').click(function() {
       Toast.fire({
         icon: 'success',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        title: 'Data Berhasil disimpan'
       })
     });
     $('.swalDefaultInfo').click(function() {
