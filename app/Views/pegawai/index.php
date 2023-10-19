@@ -58,7 +58,7 @@
                           <td><?= $value->pangkat_id ?></td>
                           <td>
                             <a href="<?= site_url('pegawai/edit/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
                             <a href="<?= site_url('pegawai/'.$value->pegawai_id.'/edit'); ?>" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-info-circle"></i></a>
                           </td>
                         </tr>
