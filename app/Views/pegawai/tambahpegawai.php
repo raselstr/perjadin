@@ -51,28 +51,39 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="eselon_id" class="col-sm-2 col-form-label">Eselon</label>
+                        <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Eselon</label>
                         <div class="col-sm-4">
-                          <input class="form-control <?= isset($errors['eselon_id']) ? 'is-invalid' : null ; ?>" type="text" name="eselon_id" placeholder="Eselon" id="eselon_id" value="<?= old('eselon_id') ?>">
-                            <div class="invalid-feedback">
+                          <select class="form-control <?= isset($errors['eselon_id']) ? 'is-invalid' : null ; ?>" name="eselon_id" placeholder="Eselon" id="eselon_id" value="<?= old('eselon_id') ?>">
+                            <option value="0">Non Eselon</option>
+                            <option value="1">Eselon 4</option>
+                            <option value="2">Eselon 3</option>
+                            <option value="3">Eselon 2</option>
+                            <option value="4">Pejabat Negara</option>
+                          </select>
+                          <div class="invalid-feedback">
                                 <?= isset($errors['eselon_id']) ? $errors['eselon_id'] : null ; ?>
                             </div>
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="pangkat_id" class="col-sm-2 col-form-label">Pangkat</label>
+                        <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Pangkat dan Golongan</label>
                         <div class="col-sm-4">
-                          <input class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" type="text" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
-                            <div class="invalid-feedback">
+                          <select class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
+                            <option value="1">Juru</option>
+                            <option value="2">Pengatur</option>
+                            <option value="3">Penata</option>
+                            <option value="4">Pembina</option>
+                            <option value="5">Pejabat Negara</option>
+                          </select>
+                          <div class="invalid-feedback">
                                 <?= isset($errors['pangkat_id']) ? $errors['pangkat_id'] : null ; ?>
-                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
                       <div class="card-footer">
-                        <a href="<?= site_url('pegawai'); ?>" class="btn btn-default">Kembali</a>
-                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
-                      </div>
+                          <a href="<?= site_url('pegawai'); ?>" class="btn btn-default">Kembali</a>
+                          <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                        </div>
                   </form>
                 </div>
               </div>
