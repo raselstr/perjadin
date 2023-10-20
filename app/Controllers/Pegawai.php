@@ -101,20 +101,15 @@ class Pegawai extends ResourcePresenter
         $eselon = new EselonsModel();
         $pangkat = new PangkatsModel();
 
-        // $dataeselon = $eselon->find($id);
-        // $datapangkat = $pangkat->find($id);
-
         $peg = $pegawais->find($id);
         if(is_object($peg)){
             $data = [
-                'title' => 'Edit Tambah Pegawai',
-                'subtitle' => 'Home',
-                'peg'   => $peg,
-                // 'ese'   => $dataeselon,
-                // 'pang'  => $datapangkat,
+                'title'     => 'Edit Tambah Pegawai',
+                'subtitle'  => 'Home',
+                'peg'       => $peg,
                 'pegawai'   => $pegawais->findAll(),
-                'eselon' => $eselon->findAll(),
-                'pangkat' => $pangkat->findAll(),
+                'eselon'    => $eselon->findAll(),
+                'pangkat'   => $pangkat->findAll(),
             ];
            
             return view('pegawai/editpegawai', $data);
