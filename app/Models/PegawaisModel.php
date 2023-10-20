@@ -68,4 +68,16 @@ class PegawaisModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    function getpegawaiAll()
+    {
+        $builder = $this->db->table('pegawais');
+        $builder->select('*');
+        $builder->join('eselons','eselons.eselon_id = pegawais.eselon_id');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $query = $builder->get();
+        return $query->getResult();
+
+    }
 }

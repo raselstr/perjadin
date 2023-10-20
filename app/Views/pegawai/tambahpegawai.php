@@ -54,11 +54,10 @@
                         <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Eselon</label>
                         <div class="col-sm-4">
                           <select class="form-control <?= isset($errors['eselon_id']) ? 'is-invalid' : null ; ?>" name="eselon_id" placeholder="Eselon" id="eselon_id" value="<?= old('eselon_id') ?>">
-                            <option value="0">Non Eselon</option>
-                            <option value="1">Eselon 4</option>
-                            <option value="2">Eselon 3</option>
-                            <option value="3">Eselon 2</option>
-                            <option value="4">Pejabat Negara</option>
+                            <option value="" hidden></option>
+                            <?php foreach($eselon as $key => $value) : ?>
+                              <option value="<?= $value->eselon_id; ?>"><?= $value->eselon_nama; ?></option>
+                            <?php endforeach; ?>
                           </select>
                           <div class="invalid-feedback">
                                 <?= isset($errors['eselon_id']) ? $errors['eselon_id'] : null ; ?>
@@ -69,11 +68,10 @@
                         <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Pangkat dan Golongan</label>
                         <div class="col-sm-4">
                           <select class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
-                            <option value="1">Juru</option>
-                            <option value="2">Pengatur</option>
-                            <option value="3">Penata</option>
-                            <option value="4">Pembina</option>
-                            <option value="5">Pejabat Negara</option>
+                            <option value="" hidden></option>
+                            <?php foreach($pangkat as $key => $value) : ?>
+                              <option value="<?= $value->pangkat_id; ?>"><?= $value->pangkat_nama; ?> - (<?= $value->pangkat_gol; ?>)</option>
+                            <?php endforeach; ?>
                           </select>
                           <div class="invalid-feedback">
                                 <?= isset($errors['pangkat_id']) ? $errors['pangkat_id'] : null ; ?>

@@ -54,8 +54,8 @@
                           <td><?= $value->pegawai_nip ?></td>
                           <td><?= $value->pegawai_nama ?></td>
                           <td><?= $value->pegawai_jabatan ?></td>
-                          <td><?= $value->eselon_id ?></td>
-                          <td><?= $value->pangkat_id ?></td>
+                          <td><?= $value->eselon_nama ?></td>
+                          <td><?= $value->pangkat_nama ?></td>
                           <td>
                             <a href="<?= site_url('pegawai/edit/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\EselonsModel;
+use App\Models\PangkatsModel;
 use App\Models\PegawaisModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -17,7 +19,7 @@ class Pegawai extends ResourcePresenter
     {
 
          $pegawais = new PegawaisModel();
-         $datapegawais = $pegawais->findAll();
+         $datapegawais = $pegawais->getpegawaiAll();
          $data = [
             'title' => 'Daftar Pegawai',
             'subtitle' => 'Home',
@@ -47,11 +49,19 @@ class Pegawai extends ResourcePresenter
     public function new()
     {
         $pegawais = new PegawaisModel();
+        $eselon = new EselonsModel();
+        $pangkat = new PangkatsModel();
+
         $datapegawais = $pegawais->findAll();
+        $dataeselon = $eselon->findAll();
+        $datapangkat = $pangkat->findAll();
+
         $data = [
             'title' => 'Tambah Pegawai',
-            'subtitle' => 'Home',
-            'pegawais' => $datapegawais,
+            'subtitle'  => 'Home',
+            'pegawais'  => $datapegawais,
+            'eselon'    => $dataeselon,
+            'pangkat'   => $datapangkat,
         ];
         // dd($data);
         return view('pegawai/tambahpegawai', $data);
@@ -88,13 +98,23 @@ class Pegawai extends ResourcePresenter
     public function edit($id = null)
     {
         $pegawais = new PegawaisModel();
+        $eselon = new EselonsModel();
+        $pangkat = new PangkatsModel();
+
+        // $dataeselon = $eselon->find($id);
+        // $datapangkat = $pangkat->find($id);
+
         $peg = $pegawais->find($id);
         if(is_object($peg)){
             $data = [
                 'title' => 'Edit Tambah Pegawai',
                 'subtitle' => 'Home',
                 'peg'   => $peg,
-                // 'pegawai'   => $pegawais->findAll(),
+                // 'ese'   => $dataeselon,
+                // 'pang'  => $datapangkat,
+                'pegawai'   => $pegawais->findAll(),
+                'eselon' => $eselon->findAll(),
+                'pangkat' => $pangkat->findAll(),
             ];
            
             return view('pegawai/editpegawai', $data);
