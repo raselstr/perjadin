@@ -76,14 +76,28 @@ class Pegawai extends ResourcePresenter
     public function create()
     {
        $pegawais = new PegawaisModel();
-       $peg = $this->request->getPost();
-       $save = $pegawais->save($peg);
+       $data = $this->request->getPost();
+
+       $foto       = $this->request->getFile('pegawai_foto'); //Ambil file foto
+       $namafoto   = $foto->getRandomName(); //Ganti nama File menjadi random (default)
+       $foto->move(WRITEPATH.'images/pegawai/', $namafoto); //memindahkan foto ke folder dan mengganti namanya
+       $data['pegawai_foto'] = $namafoto;
+
+    //    if (! $foto->hasMoved()) {
+    //         // dd($foto);
+    //     }
+
+     
+       $save = $pegawais->save($data);
 
        if ($save){
         // session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
+        
+       
         return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
        } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
+            dd($pegawais->errors());
        }
         
     }

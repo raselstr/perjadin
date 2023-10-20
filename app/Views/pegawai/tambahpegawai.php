@@ -20,11 +20,11 @@
                   </div>
                   
                   <?php $errors = session()->getFlashdata('validation') ?>
-                  <form action="<?= site_url('pegawai/create') ?>" method="post" class="form-horizontal">
+                  <form action="<?= site_url('pegawai/create') ?>" method="post" enctype="multipart/form-data"  class="form-horizontal">
                     <?= csrf_field() ?>
                     <div class="card-body">
                       <div class="form-group row">
-                        <label for="pegawai_nip" class="col-sm-2 col-form-label">NIP</label>
+                        <label for="pegawai_nip" class="col-sm-3 col-form-label">NIP</label>
                         <div class="col-sm-4">
                           <input type="text" maxlength="18" class="form-control <?= isset($errors['pegawai_nip']) ? 'is-invalid' : null ; ?>"  name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= old('pegawai_nip') ?>">
                             <div class="invalid-feedback">
@@ -33,7 +33,7 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="pegawai_nama" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="pegawai_nama" class="col-sm-3 col-form-label">Nama</label>
                         <div class="col-sm-4">
                           <input class="form-control <?= isset($errors['pegawai_nama']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_nama" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= old('pegawai_nama') ?>">
                           <div class="invalid-feedback">
@@ -42,7 +42,7 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="pegawai_jabatan" class="col-sm-2 col-form-label">Jabatan</label>
+                        <label for="pegawai_jabatan" class="col-sm-3 col-form-label">Jabatan</label>
                         <div class="col-sm-4">
                           <input class="form-control <?= isset($errors['pegawai_jabatan']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_jabatan" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= old('pegawai_jabatan') ?>">
                             <div class="invalid-feedback">
@@ -51,7 +51,7 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Eselon</label>
+                        <label for="exampleSelectBorder" class="col-sm-3 col-form-label">Eselon</label>
                         <div class="col-sm-4">
                           <select class="form-control <?= isset($errors['eselon_id']) ? 'is-invalid' : null ; ?>" name="eselon_id" placeholder="Eselon" id="eselon_id" value="<?= old('eselon_id') ?>">
                             <option value="" hidden></option>
@@ -65,7 +65,7 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Pangkat dan Golongan</label>
+                        <label for="exampleSelectBorder" class="col-sm-3 col-form-label">Pangkat dan Golongan</label>
                         <div class="col-sm-4">
                           <select class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
                             <option value="" hidden></option>
@@ -75,6 +75,20 @@
                           </select>
                           <div class="invalid-feedback">
                                 <?= isset($errors['pangkat_id']) ? $errors['pangkat_id'] : null ; ?>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="pegawai_foto" class="col-sm-3 col-form-label">File Foto</label>
+                        <div class="col-sm-4">
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input <?= isset($errors['pegawai_foto']) ? 'is-invalid' : null ; ?>" name="pegawai_foto" id="pegawai_foto">
+                              <label class="custom-file-label" for="pegawai_foto">Pilih Foto</label>
+                              <div class="invalid-feedback">
+                                    <?= isset($errors['pegawai_foto']) ? $errors['pegawai_foto'] : null ; ?>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

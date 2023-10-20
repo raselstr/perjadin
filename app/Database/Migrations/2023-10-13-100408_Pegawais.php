@@ -36,6 +36,10 @@ class Pegawais extends Migration
                 'type'          => 'INT',
                 'constraint'    => 2,
             ],
+            'pegawai_foto' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '100',
+            ],
              'created_at'        => [
                 'type'          => 'TIMESTAMP',
                 'default'       => new RawSql('CURRENT_TIMESTAMP'),
