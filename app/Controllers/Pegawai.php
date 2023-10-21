@@ -78,35 +78,18 @@ class Pegawai extends ResourcePresenter
        $pegawais = new PegawaisModel();
        $data = $this->request->getPost();
 
-       $foto       = $this->request->getFile('pegawai_foto'); //Ambil file foto
+       $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
+       $namafoto    = $foto->getRandomName();
+       $data['pegawai_foto'] = $namafoto;
        
-       if(!$foto->hasMoved()){
-           $namafoto = $foto->getName();
-           $foto->move(FCPATH.'image/pegawai/',$namafoto);
-           $data['pegawai_foto'] = $namafoto;
-           
-       }
-
-    //    if (! $foto->hasMoved()) {
-    //        $namafoto   = $foto->getRandomName(); //Ganti nama File menjadi random (default)
-    //        $foto->move(FCPATH.'images/pegawai/', $namafoto); //memindahkan foto ke folder dan mengganti namanya
-    //        $data['pegawai_foto'] = $namafoto;
-    // //         // dd($foto);
-    //     } 
-
-        // dd($data);
        $save = $pegawais->save($data);
-
        if ($save){
-        // session()->setFlashdata(['info' => 'success','message'=>'Sukses disimpan']);
-        
-       
-        return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
+            $foto->move(FCPATH. 'image/pegawai/',$namafoto);
+            return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
        } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
-            // dd($pegawais->errors());
        }
-        
+   
     }
 
     /**

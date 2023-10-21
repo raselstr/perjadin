@@ -42,6 +42,7 @@
                     <th>Jabatan</th>
                     <th>Eselon</th>
                     <th>Pangkat</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -56,6 +57,7 @@
                           <td><?= $value->pegawai_jabatan ?></td>
                           <td><?= $value->eselon_nama ?></td>
                           <td><?= $value->pangkat_nama ?></td>
+                          <td><?= $value->pegawai_foto ?></td>
                           <td>
                             <a href="<?= site_url('pegawai/edit/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
@@ -72,6 +74,7 @@
                     <th>Jabatan</th>
                     <th>Eselon</th>
                     <th>Pangkat</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                   </tr>
                   </tfoot>

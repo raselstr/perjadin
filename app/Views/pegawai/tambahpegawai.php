@@ -79,17 +79,18 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="pegawai_foto" class="col-sm-3 col-form-label">File Foto</label>
+                        <label for="exampleInputFile" class="col-sm-3 col-form-label">File Foto</label>
                         <div class="col-sm-4">
                           <div class="input-group">
                             <!-- <div class="custom-file"> -->
                               <!-- <input class="form-control" type="file" name="pegawai_foto" id="pegawai_foto"> -->
-                              <input class="form-control <?= isset($errors['pegawai_foto']) ? 'is-invalid' : null ; ?>" type="file" name="pegawai_foto" id="pegawai_foto" value="<?= old('pegawai_foto') ?>">
+                              <input class="custom-file-input <?= isset($errors['pegawai_foto']) ? 'is-invalid' : null ; ?>" type="file" name="pegawai_foto" id="exampleInputFile" value="<?= old('pegawai_foto') ?>">
+                              <label class="custom-file-label" for="custom-file-label">Pilih Foto</label>
                               <div class="invalid-feedback">
                                 <?= isset($errors['pegawai_foto']) ? $errors['pegawai_foto'] : null ; ?>
                               </div>
-                              <!-- <label class="custom-file-label" for="pegawai_foto">Pilih Foto</label> -->
-                            <!-- </div> -->
+                            </div>
+                          </div>
                           </div>
                         </div>
                       </div>
