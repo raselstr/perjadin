@@ -30,7 +30,7 @@ class PegawaisModel extends Model
         'pegawai_jabatan'   => 'required|max_length[100]|min_length[4]',
         'eselon_id'         => 'required',
         'pangkat_id'        => 'required',
-        'pegawai_foto'      => 'uploaded[pegawai_foto]|max_size[pegawai_foto,2048]mime_in[pegawai_foto,image/png,image/jpeg,image/jpg]|ext_in[pegawai_foto,png,jpeg,jpg]'
+        'pegawai_foto'      => 'uploaded[pegawai_foto]|max_size[pegawai_foto,2048]|is_image[pegawai_foto]|mime_in[pegawai_foto,image/png,image/jpeg,image/jpg]',
     ];
     protected $validationMessages   = [
         'pegawai_nip' => [
@@ -57,9 +57,9 @@ class PegawaisModel extends Model
         ],
         'pegawai_foto' => [
             'uploaded'              => 'Pilih Foto yang akan diupload',
-            'max_size'              => 'Ukuran File Foto maksimal 2048 byte',
+            'max_size'              => 'Ukuran File Foto maksimal 2048 Kbyte',
+            'is_image'              => 'File bukan merupakan Foto/ Gambar',
             'mime_in'               => 'Harus File gambar',
-            'ext_in'                => 'Ekstensi File harus png, jpeg atau jpg',
 
         ],
     ];
