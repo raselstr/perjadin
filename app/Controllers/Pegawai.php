@@ -79,24 +79,23 @@ class Pegawai extends ResourcePresenter
        $pegawais = new PegawaisModel();
        $data = $this->request->getPost();
 
-       
        $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
     //    dd($foto->getPath());
        if($foto->getError() == 4){
             $namafoto = '_default.png';
-            
             $data['pegawai_foto'] = $namafoto;
 
        } else {
             $namafoto    = $foto->getRandomName();
-            $foto->store('image/pegawai/',$namafoto);
             $data['pegawai_foto'] = $namafoto;
-            // $filepath = FCPATH . 'image/pegawai/'. $namafoto;
-            // $data['pegawai_foto'] = new File($filepath);
         }
         // dd($data);
         $save = $pegawais->save($data);
         if ($save){
+            if($data['pegawai_foto'] != '_default.png' ) {
+                $foto->move(FCPATH.'image/pegawai',$namafoto);
+            } 
+            // $foto->store('image/pegawai/',$namafoto);
             return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
         } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
@@ -147,20 +146,30 @@ class Pegawai extends ResourcePresenter
     {
         $pegawais = new PegawaisModel();
         $data = $this->request->getPost();
-
-        $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
-        $namafoto    = $foto->getRandomName();
-        $data['pegawai_foto'] = $namafoto;
-
-        // $datapegawai = $pegawais->find($id);
+        
         $fotolama = $this->request->getVar('pegawai_fotolama');
-        $fotobaru = $this->request->getPost('pegawai_foto');
-        // dd($fotolama);
+        $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
+        // dd($foto);
+        if($foto->getError() == 4){
+            $data['pegawai_foto'] = $fotolama;
+        } else {
+            $namafoto    = $foto->getRandomName();
+            $data['pegawai_foto'] = $namafoto;
+        }
 
+        $myfile = file_exists (FCPATH. 'image/pegawai/'.$fotolama);
+        
         $update = $pegawais->update(['pegawai_id' => $id],$data);
         if($update){
-            
-            $foto->move(FCPATH. 'image/pegawai/',$namafoto);
+            if($data['pegawai_foto'] != $fotolama) {
+                if($myfile){
+                    $foto->move(FCPATH.'image/pegawai',$namafoto);
+                    unlink('image/pegawai/'.$fotolama);
+                } else {
+                    $foto->move(FCPATH.'image/pegawai',$namafoto);
+                }
+            } 
+           
             return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Update');
         } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
@@ -179,12 +188,21 @@ class Pegawai extends ResourcePresenter
     {
         
         $pegawais = new PegawaisModel();
-
+        
         $datapegawai = $pegawais->find($id);
-        unlink('image/pegawai/'.$datapegawai->pegawai_foto);
+        $myfile = file_exists (FCPATH. 'image/pegawai/'.$datapegawai->pegawai_foto);
+        // dd($myfile);
 
-        $pegawais->delete($id);
-        return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Hapus');
+        if($datapegawai->pegawai_foto !== '_default.png' && $myfile == true) {
+            unlink('image/pegawai/'.$datapegawai->pegawai_foto);
+            }
+       
+            $pegawais->delete($id);
+            return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Hapus');
+      
+            
+
+             
     }
 
     /**
