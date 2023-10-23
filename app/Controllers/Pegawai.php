@@ -162,7 +162,7 @@ class Pegawai extends ResourcePresenter
         $update = $pegawais->update(['pegawai_id' => $id],$data);
         if($update){
             if($data['pegawai_foto'] != $fotolama) {
-                if($myfile){
+                if($myfile && $fotolama !== '_default.png'){
                     $foto->move(FCPATH.'image/pegawai',$namafoto);
                     unlink('image/pegawai/'.$fotolama);
                 } else {
