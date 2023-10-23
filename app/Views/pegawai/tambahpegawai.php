@@ -71,7 +71,7 @@
                             <select class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
                               <option value="" hidden></option>
                               <?php foreach($pangkat as $key => $value) : ?>
-                                <option value="<?= $value->pangkat_id; ?>"><?= $value->pangkat_nama; ?> - (<?= $value->pangkat_gol; ?>)</option>
+                                <option value="<?= $value->pangkat_id ?> <?= old('pangkat_id') ; ?>"><?= $value->pangkat_nama; ?> - (<?= $value->pangkat_gol; ?>)</option>
                               <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback">

@@ -78,17 +78,27 @@ class Pegawai extends ResourcePresenter
        $pegawais = new PegawaisModel();
        $data = $this->request->getPost();
 
-       $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
-       $namafoto    = $foto->getRandomName();
-       $data['pegawai_foto'] = $namafoto;
        
-       $save = $pegawais->save($data);
-       if ($save){
-            $foto->move(FCPATH. 'image/pegawai/',$namafoto);
-            return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
+       $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
+    //    dd($foto->getPath());
+       if($foto->getError() == 4){
+            $namafoto = '_default.png';
+            
+            $data['pegawai_foto'] = $namafoto;
+
        } else {
+            $namafoto    = $foto->getRandomName();
+            $data['pegawai_foto'] = $namafoto;
+            $foto->store('image/pegawai/',$namafoto);
+        }
+        // dd($data);
+        $save = $pegawais->save($data);
+        if ($save){
+            return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Simpan');
+        } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
-       }
+        }
+        
    
     }
 
@@ -134,9 +144,20 @@ class Pegawai extends ResourcePresenter
     {
         $pegawais = new PegawaisModel();
         $data = $this->request->getPost();
-        // dd($data);
+
+        $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
+        $namafoto    = $foto->getRandomName();
+        $data['pegawai_foto'] = $namafoto;
+
+        // $datapegawai = $pegawais->find($id);
+        $fotolama = $this->request->getVar('pegawai_fotolama');
+        $fotobaru = $this->request->getPost('pegawai_foto');
+        // dd($fotolama);
+
         $update = $pegawais->update(['pegawai_id' => $id],$data);
         if($update){
+            
+            $foto->move(FCPATH. 'image/pegawai/',$namafoto);
             return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Update');
         } else {
             return redirect()->back()->withInput()->with('validation', $pegawais->errors());
