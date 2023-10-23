@@ -103,7 +103,7 @@
 
                     <div class="col-4 text-center d-flex align-items-center justify-content-center">
                       <div class="">
-                        <img src="/image/pegawai/.'<?= $peg->pegawai_foto ?>'" class="img-thumbnail img-preview">
+                        <img src="<?= base_url('image/pegawai/'.$peg->pegawai_foto); ?>" class="img-thumbnail" id="img-preview">
                       </div>
                     </div>
                     </div>

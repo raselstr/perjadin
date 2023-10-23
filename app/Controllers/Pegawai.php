@@ -157,7 +157,7 @@ class Pegawai extends ResourcePresenter
         $pegawais = new PegawaisModel();
 
         $datapegawai = $pegawais->find($id);
-        unlink('image/pegawai/'.$datapegawai['pegawai_foto']);
+        unlink('image/pegawai/'.$datapegawai->pegawai_foto);
 
         $pegawais->delete($id);
         return redirect()->to(site_url('pegawai'))->with('info','Data Berhasil di Hapus');
