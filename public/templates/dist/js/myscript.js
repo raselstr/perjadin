@@ -36,4 +36,15 @@ $('.tombol-hapus').on('click', function(e){
 });
 
 
+function PreviewImage() {
+var oFReader = new FileReader();
+oFReader.readAsDataURL(document.getElementById("foto").files[0]);
 
+const labelsampul = document.getElementById('nama-foto');
+labelsampul.textContent = document.getElementById("foto").files[0].name;
+
+oFReader.onload = function (oFREvent)
+ {
+    document.getElementById("img-preview").src = oFREvent.target.result;
+  };
+};

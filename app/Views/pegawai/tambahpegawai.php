@@ -85,8 +85,8 @@
                             <div class="input-group">
                               <!-- <div class="custom-file"> -->
                                 <!-- <input class="form-control" type="file" name="pegawai_foto" id="pegawai_foto"> -->
-                                <input class="custom-file-input <?= isset($errors['pegawai_foto']) ? 'is-invalid' : null ; ?>" type="file" name="pegawai_foto" id="foto" value="<?= old('pegawai_foto') ?>" onchange="previewImg()">
-                                <label class="custom-file-label" for="custom-file-label">Pilih Foto</label>
+                                <input class="custom-file-input <?= isset($errors['pegawai_foto']) ? 'is-invalid' : null ; ?>" type="file" name="pegawai_foto" id="foto" value="<?= old('pegawai_foto') ?>" onchange="PreviewImage()">
+                                <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
                                 <div class="invalid-feedback">
                                   <?= isset($errors['pegawai_foto']) ? $errors['pegawai_foto'] : null ; ?>
                                 </div>
@@ -98,7 +98,7 @@
 
                       <div class="col-4 text-center d-flex align-items-center justify-content-center">
                         <div class="">
-                          <img src="/image/pegawai/_default.png" class="img-thumbnail img-preview">
+                          <img src="/image/pegawai/_default.png" class="img-thumbnail" id="img-preview">
                         </div>
                       </div>
                     </div>              

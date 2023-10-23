@@ -21,66 +21,94 @@
                   <?php $errors = session()->getFlashdata('validation') ?>
                   <form action="<?= site_url('pegawai/update/'.$peg->pegawai_id) ?>" method="post" class="form-horizontal">
                     <?= csrf_field() ?>
-                    <div class="card-body">
-                      <div class="form-group row">
-                          <input type="hidden" class="form-control"  name="pegawai_id" value="<?= $peg->pegawai_id; ?>">
-                      </div>
-                      <div class="form-group row">
-                        <label for="pegawai_nip" class="col-sm-2 col-form-label">NIP</label>
-                        <div class="col-sm-4">
-                          <input type="text" maxlength="18" class="form-control <?= isset($errors['pegawai_nip']) ? 'is-invalid' : null ; ?>"  name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= $peg->pegawai_nip; ?>">
+                    <div class="card-body row">
+                      <div class="col-8">
+                        <div class="form-group row">
+                            <input type="hidden" class="form-control"  name="pegawai_id" value="<?= $peg->pegawai_id; ?>">
+                        </div>
+                        <div class="form-group row">
+                          <label for="pegawai_nip" class="col-sm-3 col-form-label">NIP</label>
+                          <div class="col">
+                            <input type="text" maxlength="18" class="form-control <?= isset($errors['pegawai_nip']) ? 'is-invalid' : null ; ?>"  name="pegawai_nip" placeholder="Nip" id="pegawai_nip" value="<?= $peg->pegawai_nip; ?>">
+                              <div class="invalid-feedback">
+                                  <?= isset($errors['pegawai_nip']) ? $errors['pegawai_nip'] : null ; ?>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="pegawai_nama" class="col-sm-3 col-form-label">Nama</label>
+                          <div class="col">
+                            <input class="form-control <?= isset($errors['pegawai_nama']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_nama" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= $peg->pegawai_nama ?>">
                             <div class="invalid-feedback">
-                                <?= isset($errors['pegawai_nip']) ? $errors['pegawai_nip'] : null ; ?>
+                                <?= isset($errors['pegawai_nama']) ? $errors['pegawai_nama'] : null ; ?>
                             </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="pegawai_nama" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="col-sm-4">
-                          <input class="form-control <?= isset($errors['pegawai_nama']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_nama" placeholder="Nama Pegawai" id="pegawai_nama" value="<?= $peg->pegawai_nama ?>">
-                          <div class="invalid-feedback">
-                              <?= isset($errors['pegawai_nama']) ? $errors['pegawai_nama'] : null ; ?>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="pegawai_jabatan" class="col-sm-2 col-form-label">Jabatan</label>
-                        <div class="col-sm-4">
-                          <input class="form-control <?= isset($errors['pegawai_jabatan']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_jabatan" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= $peg->pegawai_jabatan ?>">
+                        <div class="form-group row">
+                          <label for="pegawai_jabatan" class="col-sm-3 col-form-label">Jabatan</label>
+                          <div class="col">
+                            <input class="form-control <?= isset($errors['pegawai_jabatan']) ? 'is-invalid' : null ; ?>" type="text" name="pegawai_jabatan" placeholder="Jabatan Pegawai" id="pegawai_jabatan" value="<?= $peg->pegawai_jabatan ?>">
+                              <div class="invalid-feedback">
+                                  <?= isset($errors['pegawai_jabatan']) ? $errors['pegawai_jabatan'] : null ; ?>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="exampleSelectBorder" class="col-sm-3 col-form-label">Eselon</label>
+                          <div class="col">
+                            <select class="form-control <?= isset($errors['eselon_id']) ? 'is-invalid' : null ; ?>" name="eselon_id" id="eselon_id" value="<?= old('eselon_id') ?>">
+                              <option value="" hidden></option>
+                              <?php foreach($eselon as $key => $value) : ?>
+                                <option value="<?= $value->eselon_id; ?>" <?= $peg->eselon_id == $value->eselon_id ? 'selected' : null ?>><?= $value->eselon_nama; ?></option>
+                              <?php endforeach; ?>
+                            </select>
                             <div class="invalid-feedback">
-                                <?= isset($errors['pegawai_jabatan']) ? $errors['pegawai_jabatan'] : null ; ?>
+                                  <?= isset($errors['eselon_id']) ? $errors['eselon_id'] : null ; ?>
                             </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Eselon</label>
-                        <div class="col-sm-4">
-                          <select class="form-control <?= isset($errors['eselon_id']) ? 'is-invalid' : null ; ?>" name="eselon_id" id="eselon_id" value="<?= old('eselon_id') ?>">
-                            <option value="" hidden></option>
-                            <?php foreach($eselon as $key => $value) : ?>
-                              <option value="<?= $value->eselon_id; ?>" <?= $peg->eselon_id == $value->eselon_id ? 'selected' : null ?>><?= $value->eselon_nama; ?></option>
-                            <?php endforeach; ?>
-                          </select>
-                          <div class="invalid-feedback">
-                                <?= isset($errors['eselon_id']) ? $errors['eselon_id'] : null ; ?>
+                        <div class="form-group row">
+                          <label for="exampleSelectBorder" class="col-sm-3 col-form-label">Pangkat dan Golongan</label>
+                          <div class="col">
+                            <select class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
+                              <option value="" hidden></option>
+                              <?php foreach($pangkat as $key => $value) : ?>
+                                <option value="<?= $value->pangkat_id; ?>" <?= $peg->pangkat_id == $value->pangkat_id ? 'selected' : null   ?>><?= $value->pangkat_nama; ?> - (<?= $value->pangkat_gol; ?>)</option>
+                              <?php endforeach; ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                  <?= isset($errors['pangkat_id']) ? $errors['pangkat_id'] : null ; ?>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                          <label for="exampleInputFile" class="col-sm-3 col-form-label">File Foto</label>
+                          <div class="col">
+                            <div class="input-group">
+                              <!-- <div class="custom-file"> -->
+                                <!-- <input class="form-control" type="file" name="pegawai_foto" id="pegawai_foto"> -->
+                                <input class="custom-file-input <?= isset($errors['pegawai_foto']) ? 'is-invalid' : null ; ?>" type="file" name="pegawai_foto" id="foto" value="<?= old('pegawai_foto') ?>" onchange="previewImg()">
+                                <label class="custom-file-label" for="custom-file-label">Pilih Foto</label>
+                                <div class="invalid-feedback">
+                                  <?= isset($errors['pegawai_foto']) ? $errors['pegawai_foto'] : null ; ?>
+                                </div>
+                              <!-- </div> -->
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <label for="exampleSelectBorder" class="col-sm-2 col-form-label">Pangkat dan Golongan</label>
-                        <div class="col-sm-4">
-                          <select class="form-control <?= isset($errors['pangkat_id']) ? 'is-invalid' : null ; ?>" name="pangkat_id" placeholder="Pengkat" id="pangkat_id" value="<?= old('pangkat_id') ?>">
-                            <option value="" hidden></option>
-                            <?php foreach($pangkat as $key => $value) : ?>
-                              <option value="<?= $value->pangkat_id; ?>" <?= $peg->pangkat_id == $value->pangkat_id ? 'selected' : null   ?>><?= $value->pangkat_nama; ?> - (<?= $value->pangkat_gol; ?>)</option>
-                            <?php endforeach; ?>
-                          </select>
-                          <div class="invalid-feedback">
-                                <?= isset($errors['pangkat_id']) ? $errors['pangkat_id'] : null ; ?>
-                          </div>
-                        </div>
+                              
+
+                    <div class="col-4 text-center d-flex align-items-center justify-content-center">
+                      <div class="">
+                        <img src="/image/pegawai/.'<?= $peg->pegawai_foto ?>'" class="img-thumbnail img-preview">
                       </div>
                     </div>
+                    </div>
+
+
                     <div class="card-footer">
                       <a href="<?= site_url('pegawai'); ?>" class="btn btn-default">Kembali</a>
                       <button type="submit" class="btn btn-primary float-right">Simpan</button>
