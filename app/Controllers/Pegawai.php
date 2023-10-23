@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\EselonsModel;
 use App\Models\PangkatsModel;
 use App\Models\PegawaisModel;
+use CodeIgniter\Files\File;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class Pegawai extends ResourcePresenter
@@ -88,8 +89,10 @@ class Pegawai extends ResourcePresenter
 
        } else {
             $namafoto    = $foto->getRandomName();
-            $data['pegawai_foto'] = $namafoto;
             $foto->store('image/pegawai/',$namafoto);
+            $data['pegawai_foto'] = $namafoto;
+            // $filepath = FCPATH . 'image/pegawai/'. $namafoto;
+            // $data['pegawai_foto'] = new File($filepath);
         }
         // dd($data);
         $save = $pegawais->save($data);
