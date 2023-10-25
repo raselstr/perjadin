@@ -103,7 +103,7 @@
             <div class="modal-body">
               <div class="card-body row">
                 <div class="col-4">
-                  <img src="<?= base_url('image/pegawai/'.$value->pegawai_foto); ?>" class="img-thumbnail" id="img-preview">
+                  <img src="<?= base_url('image/pegawai/'.! isset($value->pegawai_foto) ? "_default.png": $value->pegawai_foto); ?>" class="img-thumbnail" id="img-preview">
                 </div>
                 <div class="col-8 text-center d-flex align-items-center justify-content-center">
                 <div class="">
