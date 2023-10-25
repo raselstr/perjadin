@@ -50,7 +50,7 @@ class Pegawai extends ResourcePresenter
             'peg' => $datapegawais,
         ];
         // dd($data);
-        return view('pegawai/detailpegawai', $data);
+        return view('pegawai/index', $data);
     }
 
     /**
