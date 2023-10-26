@@ -89,6 +89,7 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+  </div>
     <!-- /.content -->
 
    

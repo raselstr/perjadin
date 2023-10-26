@@ -31,4 +31,5 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+  </div>
 <?= $this->endSection() ?>
