@@ -13,3 +13,4 @@ $routes->get('logout','Auth::logout');
 
 $routes->presenter('register');
 $routes->presenter('pegawai');
+$routes->presenter('spt');
