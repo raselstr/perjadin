@@ -94,3 +94,63 @@
 
    
 <?= $this->endSection() ?>
+
+
+<?= $this->section('script') ?>
+  <script>
+
+    $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+    const flashData = $('.flash-data').data('flashdata');
+    // console.log(flashData);
+
+    if(flashData){
+        var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+        });
+        Toast.fire({
+          icon: "success",
+          title: flashData,
+        });
+        // swalDefaultSuccess(flashData, "You clicked the button!", "success");
+    }
+
+    $('.tombol-hapus').on('click', function(e){
+      e.preventDefault();
+
+      const href = $(this).attr('href');
+
+      Swal.fire({
+        title: "Apakah Anda yakin",
+        text: "data akan dihapus permanen",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus Data",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.location.href = href;
+        }
+      });
+    });
+
+  </script>
+<?= $this->endSection() ?>

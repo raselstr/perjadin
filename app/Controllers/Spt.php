@@ -43,7 +43,14 @@ class Spt extends ResourcePresenter
      */
     public function new()
     {
-        //
+        $spt = new SptModel();
+        $dataspt = $spt->findAll();
+        $data = [
+            'title'     => 'Surat Perintah Tugas',
+            'subtitle'  => 'Home',
+            'spt'       => $dataspt,
+        ];
+        return view('spt/tambahspt', $data);
     }
 
     /**
