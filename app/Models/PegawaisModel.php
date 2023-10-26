@@ -88,4 +88,15 @@ class PegawaisModel extends Model
         return $query->getResult();
 
     }
+
+    function getpegawai($id=null)
+    {
+        $builder = $this->db->table('pegawais');
+        $builder->select('*');
+        $builder->join('eselons','eselons.eselon_id = pegawais.eselon_id');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $builder->where('pegawais.pegawai_id',$id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }

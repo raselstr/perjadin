@@ -107,22 +107,7 @@
     });
   });
 </script>
-<script>
-  $(function previewImg() {
-    const foto = document.querySelector("#foto");
-    const fotolabel = document.querySelector(".custom-file-label");
-    const imgPreview = document.querySelector(".img-preview");
 
-    fotolabel.textContent = foto.files[0].name;
-
-    const filefoto = new FileReader();
-    filefoto.readAsDataURL(foto.files[0]);
-
-    filefoto.onload = $(function (e) {
-      imgPreview.src = e.target.result;
-    });
-  });
-</script>
 
 </body>
 </html>

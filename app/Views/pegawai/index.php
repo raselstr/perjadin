@@ -61,8 +61,8 @@
                           <td>
                             <a href="<?= site_url('pegawai/edit/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
-                            <a href="<?= site_url('pegawai/show/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-warning" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-info-circle"></i></a>
-                            <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg"></button> -->
+                            <a href="<?= site_url('pegawai/show/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-info-circle"></i></a>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg" onclick="detail(<?= $value->pegawai_id; ?>)">Detail</button>
                           </td>
                         </tr>
                       <?php } ?>
@@ -95,51 +95,17 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Detail Data Pegawai</h4>
+              <h4 class="modal-title">Large Modal</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <div class="card-body row">
-                <div class="col-4">
-                  <img src="<?= base_url('image/pegawai/'.$peg['pegawai_foto']); ?>" class="img-thumbnail" id="img-preview">
-                </div>
-                <div class="col-8 text-center d-flex align-items-center justify-content-center">
-                <div class="">
-                  <table id="example1" class="table">
-                  <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>NIP</th>
-                    <th>Nama Pegawai</th>
-                    <th>Jabatan</th>
-                    <th>Eselon</th>
-                    <th>Pangkat</th>
-
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                      $no = 1;
-                      foreach ($pegawais as $key => $value) { ?>
-                        <tr>
-                          <td><?= $no++ ?></td>
-                          <td><?= $value->pegawai_nip ?></td>
-                          <td><?= $value->pegawai_nama ?></td>
-                          <td><?= $value->pegawai_jabatan ?></td>
-                          <td><?= $value->eselon_nama ?></td>
-                          <td><?= $value->pangkat_nama ?></td>
-                        </tr>
-                      <?php } ?>
-                  </tbody>
-                </table>
-                </div>
-              </div>
+            <div class="modal-body" id="data_detail">
+              <p>One fine body&hellip;</p>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -148,4 +114,18 @@
       </div>
       <!-- /.modal -->
 
+
+    <script>
+      function detail(pegawai_id){
+        // alert(pegawai_id);
+        $.ajax({
+          url   :"<?= site_url('pegawai/show/'.$value->pegawai_id); ?>",
+          type  :'POST',
+          data  : {pegawai_id:pegawai_id},
+          success : function(getreturn){
+            $('#data_detail').html(getreturn);
+          }
+        })
+      }
+    </script>
 <?= $this->endSection() ?>

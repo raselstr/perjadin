@@ -40,17 +40,15 @@ class Pegawai extends ResourcePresenter
     public function show($id = null)
     {
          $pegawais = new PegawaisModel();
-         $eselon = new EselonsModel();
-         $pangkat = new PangkatsModel();
-
-         $datapegawais = $pegawais->getpegawaiAll($id);
+         $datapegawais = $pegawais->getpegawai($id);
+         
          $data = [
             'title' => 'Detail Data Pegawai',
             'subtitle' => 'Home',
             'peg' => $datapegawais,
         ];
-        // dd($data);
-        return view('pegawai/index', $data);
+        // dd($data['peg']);
+        return view('pegawai/detailpegawai', $data);
     }
 
     /**
