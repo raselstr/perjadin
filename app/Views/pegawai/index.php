@@ -62,12 +62,12 @@
                             <a href="<?= site_url('pegawai/edit/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
                             <a href="<?= site_url('pegawai/show/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-info-circle"></i></a>
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg" onclick="detail(<?= $value->pegawai_id; ?>)">Detail</button>
+                            <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg" onclick="detail(<?= $value->pegawai_id; ?>)">Detail</button> -->
                           </td>
                         </tr>
                       <?php } ?>
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                   <tr>
                     <th>No</th>
                     <th>NIP</th>
@@ -78,7 +78,7 @@
                     <th>Foto</th>
                     <th>Aksi</th>
                   </tr>
-                  </tfoot>
+                  </tfoot> -->
                 </table>
               </div>
             </div>
@@ -91,41 +91,5 @@
     </div>
     <!-- /.content -->
 
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Large Modal</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" id="data_detail">
-              <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-
-
-    <script>
-      function detail(pegawai_id){
-        // alert(pegawai_id);
-        $.ajax({
-          url   :"<?= site_url('pegawai/show/'.$value->pegawai_id); ?>",
-          type  :'POST',
-          data  : {pegawai_id:pegawai_id},
-          success : function(getreturn){
-            $('#data_detail').html(getreturn);
-          }
-        })
-      }
-    </script>
+   
 <?= $this->endSection() ?>
