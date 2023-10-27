@@ -44,10 +44,15 @@
   <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box mb-3">
       <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+      <?php 
+        $db = \Config\Database::connect();
+        $group = $db->query('SELECT * FROM spts');
+        $sum = $group->getNumRows();
+      ?>
 
       <div class="info-box-content">
         <span class="info-box-text">Perjadin</span>
-        <span class="info-box-number">760</span>
+        <span class="info-box-number"><?= $sum; ?></span>
       </div>
       <!-- /.info-box-content -->
     </div>
