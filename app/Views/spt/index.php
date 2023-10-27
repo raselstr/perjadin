@@ -72,6 +72,7 @@
                   <tr>
                     <th>No</th>
                     <th>Nomor SPT</th>
+                    <th>Tanggal SPT</th>
                     <th>Pejabat Pemberi Tugas</th>
                     <th>Dasar Perjalanan Dinas</th>
                     <th>Uraian Perjalanan</th>
@@ -92,6 +93,7 @@
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle"><?= $value->spt_nomor ?></td>
+                          <td class="align-middle"><?= $value->spt_tgl ?></td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                           <td class="align-middle"><?= $value->spt_dasar ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>

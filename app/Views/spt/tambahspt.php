@@ -40,6 +40,15 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label for="spt_tgl" class="col-sm-4 col-form-label">Tanggal SPT</label>
+                          <div class="col">
+                            <input class="form-control <?= isset($errors['spt_tgl']) ? 'is-invalid' : null ; ?>" type="date" name="spt_tgl" placeholder="Tanggal SPT" id="spt_tgl" value="<?= old('spt_tgl') ?>">
+                            <div class="invalid-feedback">
+                              <?= isset($errors['spt_tgl']) ? $errors['spt_tgl'] : null ; ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label for="spt_pjb_tugas" class="col-sm-4 col-form-label">Pejabat Pemberi Tugas</label>
                           <div class="col">
                             <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>">

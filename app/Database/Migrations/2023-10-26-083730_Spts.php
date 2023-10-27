@@ -22,6 +22,9 @@ class Spts extends Migration
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
             ],
+            'spt_tgl' => [
+                'type'          => 'DATE',
+            ],
             'spt_pjb_tugas' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
