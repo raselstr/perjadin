@@ -17,7 +17,6 @@ class Spts extends Migration
             ],
             'spt_tahun' => [
                 'type'          => 'INT',
-                'default'       => '2023',
             ],
             'spt_nomor' => [
                 'type'          => 'VARCHAR',
@@ -40,10 +39,11 @@ class Spts extends Migration
                 'constraint'    => 20,
             ],
             'spt_mulai' => [
-                'type'          => 'DATETIME',
+                'type'          => 'DATE',
             ],
             'spt_berakhir' => [
-                'type'          => 'DATETIME',
+                'type'          => 'DATE',
+                
             ],
             'spt_tujuan' => [
                 'type'          => 'VARCHAR',

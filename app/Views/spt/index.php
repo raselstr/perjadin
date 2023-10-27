@@ -57,7 +57,7 @@
                     <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
                       Tambah Data Pegawai
                     </button> -->
-                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-primary btn-block btn-sm">
+                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-primary float-right">
                       <i class="fa fa-plus">  Tambah Surat Perintah Tugas</i>
                     </a>
                   </div>
@@ -80,6 +80,8 @@
                     <th>Tanggal Selesai</th>
                     <th>Tempat Tujuan</th>
                     <th>Transportasi yang digunakan</th>
+                    <th>Tanggal dibuat</th>
+                    <th>Pelaksana</th>
                     <th>aksi</th>
                   </tr>
                   </thead>
@@ -88,17 +90,20 @@
                       $no = 1;
                       foreach ($spt as $key => $value) { ?>
                         <tr>
-                          <td><?= $no++ ?></td>
-                          <td><?= $value->spt_no ?></td>
-                          <td><?= $value->spt_pjb_tugas ?></td>
-                          <td><?= $value->spt_dasar ?></td>
-                          <td><?= $value->spt_uraian ?></td>
-                          <td><?= $value->spt_lama ?></td>
-                          <td><?= $value->spt_mulai ?></td>
-                          <td><?= $value->spt_berakhir ?></td>
-                          <td><?= $value->spt_tujuan ?></td>
-                          <td><?= $value->spt_transport ?></td>
-                          <td>
+                          <td class="align-middle text-center"><?= $no++ ?></td>
+                          <td class="align-middle"><?= $value->spt_nomor ?></td>
+                          <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
+                          <td class="align-middle"><?= $value->spt_dasar ?></td>
+                          <td class="align-middle"><?= $value->spt_uraian ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_lama ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_mulai ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_berakhir ?></td>
+                          <td class="align-middle"><?= $value->spt_tujuan ?></td>
+                          <td class="align-middle"><?= $value->spt_transport ?></td>
+                          <td class="align-middle text-center"><?= $value->updated_at ?></td>
+                          <td class="align-middle text-center">
+                              <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a></td>
+                          <td class="align-middle text-center">
                             <a href="<?= site_url('spt/edit/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('spt/remove/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
                             <a href="<?= site_url('spt/show/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-info-circle"></i></a>

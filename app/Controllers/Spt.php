@@ -61,7 +61,15 @@ class Spt extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $spt = new SptModel();
+        $data = $this->request->getPost();
+
+        $save = $spt->save($data);
+        if ($save){
+            return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Simpan');
+        } else {
+            return redirect()->back()->withInput()->with('validation', $spt->errors());
+        }
     }
 
     /**

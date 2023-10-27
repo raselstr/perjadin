@@ -53,11 +53,11 @@
                     <h5 class="m-0">Daftar Pegawai</h5>
                     <div class="flash-data" data-flashdata="<?= session()->getflashdata('info'); ?>"></div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4 ">
                     <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
                       Tambah Data Pegawai
                     </button> -->
-                    <a href="<?= site_url('pegawai/new'); ?>" type="button" class="btn btn-primary btn-block btn-sm">
+                    <a href="<?= site_url('pegawai/new'); ?>" type="button" class="btn btn-primary btn btn-primary float-right">
                       <i class="fa fa-plus">  Tambah Data Pegawai</i>
                     </a>
                   </div>
