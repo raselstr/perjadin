@@ -1,4 +1,14 @@
 <?= $this->extend('layout/default'); ?>
+<?= $this->section('stylesheet'); ?>
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<?= $this->endSection(); ?>
+
+<?= $this->section('scriptplugin'); ?>
+  <!-- Select2 -->
+  <script src="plugins/select2/js/select2.full.min.js"></script>
+<?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
 <!-- Content Wrapper. Contains page content -->
@@ -106,6 +116,9 @@
                     <div class="card-footer">
                       <a href="<?= site_url('spt'); ?>" class="btn btn-default">Kembali</a>
                       <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                        Tambah Pegawai pelaksana Perjalanan Dinas
+                      </button>
                     </div>
                     
                   </form>
@@ -124,19 +137,50 @@
 
 <?= $this->section('script'); ?>
   <script>
-    function myFunction() {
-    var jh = document.getElementById("spt_lama").value;
-    var tglmulai = document.getElementById("spt_mulai").value;
-    var hari = jh*24*60*60*1000;
+ 
+      //Initialize Select2 Elements
+      $('.select2').select2()
 
-    var hariakhir = new Date(new Date(tglmulai).getTime()+(hari)-1);
-    document.getElementById("spt_berakhir").value = hariakhir.toISOString().slice(0,10);
-  }
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
 
-  const tahun = new Date();
-    var thnini = tahun.getFullYear();
-  document.getElementById("spt_tahun").value = thnini;
   </script>
 <?= $this->endSection(); ?>
     
+<?= $this->section('modalcustome'); ?>
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><?= $title; ?></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" value="<?= $spt->spt_id ?>" hidden>
+        <div class="form-group">
+          <label>Pilih Nama Pegawai</label>
+          <select class="form-control select2" style="width: 100%;">
+            <!-- <option value="" hidden></option> -->
+            <?php foreach($peg as $key => $value) : ?>
+              <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary">Tambah Pegawai</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
+
+<?= $this->endSection(); ?>
