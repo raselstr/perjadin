@@ -86,7 +86,6 @@ class PegawaisModel extends Model
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $query = $builder->get();
         return $query->getResult();
-
     }
 
     function getpegawai($id=null)

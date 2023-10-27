@@ -18,7 +18,6 @@ class Pegawai extends ResourcePresenter
     
     public function index()
     {
-
          $pegawais = new PegawaisModel();
          $datapegawais = $pegawais->getpegawaiAll();
          $data = [
