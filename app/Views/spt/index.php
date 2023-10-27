@@ -67,26 +67,24 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table class="table table-responsive table-bordered">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">Nomor SPT</th>
-                    <th rowspan="2">Tanggal SPT</th>
-                    <th rowspan="2">Pejabat Pemberi Tugas</th>
-                    <th colspan="3">Data Perjalanan Dinas</th>
-                  </tr>
-                  <tr>
-                    <th>Uraian Perjalanan</th>
-                    <th>Lama Perjalanan</th>
-                    <th>Tempat Tujuan</th>
-                  </tr>
-                  <tr>
-                    <th rowspan="2">Transportasi yang digunakan</th>
-                    <th rowspan="2">Tanggal dibuat</th>
-                    <th rowspan="2">Pelaksana</th>
-                    <th rowspan="2">aksi</th>
-                  </tr>
+                    <tr>
+                      <th rowspan="2" class="align-middle text-center">No</th>
+                      <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
+                      <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
+                      <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
+                      <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal dibuat</th>
+                      <th rowspan="2" class="align-middle text-center">Pelaksana</th>
+                      <th rowspan="2" class="align-middle text-center">aksi</th>
+                    </tr>
+                    <tr>
+                      <th class="align-middle text-center">Uraian Perjalanan</th>
+                      <th class="align-middle text-center">Lama Perjalanan</th>
+                      <th class="align-middle text-center">Tempat Tujuan</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <?php 
