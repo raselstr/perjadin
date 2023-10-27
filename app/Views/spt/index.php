@@ -67,21 +67,18 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-responsive table-bordered">
                   <thead>
                   <tr>
                     <th rowspan="2">No</th>
                     <th rowspan="2">Nomor SPT</th>
                     <th rowspan="2">Tanggal SPT</th>
                     <th rowspan="2">Pejabat Pemberi Tugas</th>
-                    <th colspan="6">Data Perjalanan Dinas</th>
+                    <th colspan="3">Data Perjalanan Dinas</th>
                   </tr>
                   <tr>
-                    <th>Dasar Perjalanan Dinas</th>
                     <th>Uraian Perjalanan</th>
                     <th>Lama Perjalanan</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Selesai</th>
                     <th>Tempat Tujuan</th>
                   </tr>
                   <tr>
@@ -100,11 +97,8 @@
                           <td class="align-middle"><?= $value->spt_nomor ?></td>
                           <td class="align-middle"><?= $value->spt_tgl ?></td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
-                          <td class="align-middle"><?= $value->spt_dasar ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_mulai ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_berakhir ?></td>
                           <td class="align-middle"><?= $value->spt_tujuan ?></td>
                           <td class="align-middle"><?= $value->spt_transport ?></td>
                           <td class="align-middle text-center"><?= $value->updated_at ?></td>
