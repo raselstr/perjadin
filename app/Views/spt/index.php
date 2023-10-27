@@ -70,20 +70,25 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Nomor SPT</th>
-                    <th>Tanggal SPT</th>
-                    <th>Pejabat Pemberi Tugas</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Nomor SPT</th>
+                    <th rowspan="2">Tanggal SPT</th>
+                    <th rowspan="2">Pejabat Pemberi Tugas</th>
+                    <th colspan="6">Data Perjalanan Dinas</th>
+                  </tr>
+                  <tr>
                     <th>Dasar Perjalanan Dinas</th>
                     <th>Uraian Perjalanan</th>
                     <th>Lama Perjalanan</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Selesai</th>
                     <th>Tempat Tujuan</th>
-                    <th>Transportasi yang digunakan</th>
-                    <th>Tanggal dibuat</th>
-                    <th>Pelaksana</th>
-                    <th>aksi</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Transportasi yang digunakan</th>
+                    <th rowspan="2">Tanggal dibuat</th>
+                    <th rowspan="2">Pelaksana</th>
+                    <th rowspan="2">aksi</th>
                   </tr>
                   </thead>
                   <tbody>
