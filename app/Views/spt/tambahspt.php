@@ -31,24 +31,6 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="spt_nomor" class="col-sm-4 col-form-label">Nomor SPT</label>
-                          <div class="col">
-                            <input type="text" class="form-control <?= isset($errors['spt_nomor']) ? 'is-invalid' : null ; ?>"  name="spt_nomor" placeholder="Nomor SPT" id="spt_nomor" value="<?= old('spt_nomor') ?>">
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_nomor']) ? $errors['spt_nomor'] : null ; ?>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_tgl" class="col-sm-4 col-form-label">Tanggal SPT</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_tgl']) ? 'is-invalid' : null ; ?>" type="date" name="spt_tgl" placeholder="Tanggal SPT" id="spt_tgl" value="<?= old('spt_tgl') ?>">
-                            <div class="invalid-feedback">
-                              <?= isset($errors['spt_tgl']) ? $errors['spt_tgl'] : null ; ?>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group row">
                           <label for="spt_pjb_tugas" class="col-sm-4 col-form-label">Pejabat Pemberi Tugas</label>
                           <div class="col">
                             <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>">
@@ -87,7 +69,7 @@
                         <div class="form-group row">
                           <label for="spt_lama" class="col-sm-4 col-form-label">Lama Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="text" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= old('spt_lama') ?>" onkeyup="myFunction()">
+                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= old('spt_lama') ?>" onkeyup="myFunction()">
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_lama']) ? $errors['spt_lama'] : null ; ?>
                               </div>

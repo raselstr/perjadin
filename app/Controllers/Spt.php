@@ -65,6 +65,7 @@ class Spt extends ResourcePresenter
         $data = $this->request->getPost();
 
         $save = $spt->save($data);
+        // dd($spt->errors());
         if ($save){
             return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Simpan');
         } else {

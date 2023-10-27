@@ -23,8 +23,35 @@ class SptModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'spt_id'        => 'permit_empty|is_natural_no_zero',
+        'spt_pjb_tugas' => 'required',
+        'spt_uraian'    => 'required',
+        'spt_lama'      => 'required',
+        'spt_mulai'     => 'required',
+        'spt_tujuan'    => 'required',
+        'spt_transport' => 'required',
+    ];
+    protected $validationMessages   = [
+        'spt_pjb_tugas' => [
+            'required'  => "Pejabat yang menugaskan wajib diisi !",
+        ],
+        'spt_uraian' => [
+            'required'  => "Maksud Perjalanan Dinas wajib diisi",
+        ],
+        'spt_lama' => [
+            'required'  => "Lama Perjalanan Dinas wajib diisi !",
+        ],
+        'spt_mulai' => [
+            'required'  => "Tanggal Mulai Perjalanan Dinas wajib diisi !",
+        ],
+        'spt_tujuan' => [
+            'required'  => "Kota/ Provinsi Tujuan Perjalanan Dinas wajib diisi !",
+        ],
+        'spt_transport' => [
+            'required'  => "Transportasi yang digunakan Perjalanan Dinas wajib diisi !",
+        ],
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

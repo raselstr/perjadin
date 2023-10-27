@@ -71,8 +71,6 @@
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
-                      <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
@@ -92,8 +90,6 @@
                       foreach ($spt as $key => $value) { ?>
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
-                          <td class="align-middle"><?= $value->spt_nomor ?></td>
-                          <td class="align-middle"><?= $value->spt_tgl ?></td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>

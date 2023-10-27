@@ -21,9 +21,11 @@ class Spts extends Migration
             'spt_nomor' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
+                'null'          => true,
             ],
             'spt_tgl' => [
                 'type'          => 'DATE',
+                'null'          => true,
             ],
             'spt_pjb_tugas' => [
                 'type'          => 'VARCHAR',
@@ -32,6 +34,7 @@ class Spts extends Migration
             'spt_dasar' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 255,
+                'null'          => true,
             ],
             'spt_uraian' => [
                 'type'          => 'VARCHAR',
