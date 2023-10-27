@@ -65,4 +65,13 @@ class SptModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // function ambilspt($id=null)
+    // {
+    //     $builder = $this->db->table('spts');
+    //     $builder->select('*');
+    //     $builder->where('spts.spt_id',$id);
+    //     $query = $builder->get();
+    //     return $query->getResult();
+    // }
 }

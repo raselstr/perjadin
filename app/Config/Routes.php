@@ -13,4 +13,6 @@ $routes->get('logout','Auth::logout');
 
 $routes->presenter('register');
 $routes->presenter('pegawai');
+
+$routes->get('spt/pelaksana/(:num)','Spt::pelaksana/$1');
 $routes->presenter('spt');

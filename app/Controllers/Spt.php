@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PegawaisModel;
 use App\Models\SptModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -82,7 +83,20 @@ class Spt extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $spt = new SptModel();
+        $dataspt = $spt->find($id);
+        if(is_object($dataspt)){
+            $data = [
+                'title'     => 'Edit Tambah Pegawai',
+                'subtitle'  => 'Home',
+                'spt'       => $dataspt,
+            ];
+           
+            return view('spt/editspt', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+       
     }
 
     /**
@@ -107,7 +121,11 @@ class Spt extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        $spt = new SptModel();
+        
+        // $dataspt = $spt->find($id);
+        $spt->delete($id);
+        return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Hapus');
     }
 
     /**
@@ -120,5 +138,23 @@ class Spt extends ResourcePresenter
     public function delete($id = null)
     {
         //
+    }
+
+    public function pelaksana($id = null)
+    {
+        $spt = new SptModel();
+        $pelaksana = new PegawaisModel();
+        $dataspt = $spt->find($id);
+        $data = [
+            'title'     => 'Tambah Pelaksana Perjalanan Dinas',
+            'subtitle'  => 'Home',
+            'spt'       => $dataspt,
+            'peg'       => $pelaksana->findAll(),
+            ];
+
+        // dd($data);    
+        return view('spt/pelaksanaspt', $data);
+        
+
     }
 }

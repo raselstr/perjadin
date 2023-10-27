@@ -97,7 +97,7 @@
                           <td class="align-middle"><?= $value->spt_transport ?></td>
                           <td class="align-middle text-center"><?= $value->updated_at ?></td>
                           <td class="align-middle text-center">
-                              <a href="" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a></td>
+                              <a href="<?= site_url('spt/pelaksana/'.$value->spt_id); ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a></td>
                           <td class="align-middle text-center">
                             <a href="<?= site_url('spt/edit/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('spt/remove/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
