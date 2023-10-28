@@ -16,3 +16,5 @@ $routes->presenter('pegawai');
 
 $routes->get('spt/pelaksana/(:num)','Spt::pelaksana/$1');
 $routes->presenter('spt');
+$routes->presenter('pelaksana');
+

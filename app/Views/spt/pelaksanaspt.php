@@ -32,102 +32,84 @@
                   <?php $errors = session()->getFlashdata('validation') ?>
                   <form action="<?= site_url('spt/create') ?>" method="post" enctype="multipart/form-data"  class="form-horizontal">
                     <?= csrf_field() ?>
-                    <div class="card-body row">
-                      <div class="col">
+                    <div class="card-body row justify-content-center">
+                      <div class="col-8">
                         <div class="form-group row">
                           <div class="col">
-                            <input type="text" name="spt_id" placeholder="Tahun" id="spt_id" value="<?= $spt->spt_id ?>">
+                            <input type="text" name="spt_id" placeholder="Tahun" id="spt_id" value="<?= $spt->spt_id ?>" hidden>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="spt_pjb_tugas" class="col-sm-4 col-form-label">Pejabat Pemberi Tugas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>">
-                            <div class="invalid-feedback">
-                                <?= isset($errors['spt_pjb_tugas']) ? $errors['spt_pjb_tugas'] : null ; ?>
-                            </div>
+                          <label for="spt_pjb_tugas" class="col-sm-5 col-form-label">Pejabat Pemberi Tugas</label>
+                          <div class="col-6">
+                            <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= $spt->spt_pjb_tugas ?>" readonly>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                          <label for="spt_uraian" class="col-sm-5 col-form-label">Maksud Perjalanan Dinas</label>
+                          <div class="col-6">
+                            <textarea class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= $spt->spt_uraian ?>" readonly></textarea>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="spt_dasar" class="col-sm-4 col-form-label">Dasar Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" type="text" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar" value="<?= old('spt_dasar') ?>">
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_dasar']) ? $errors['spt_dasar'] : null ; ?>
-                              </div>
+                          <label for="spt_lama" class="col-sm-5 col-form-label">Lama Perjalanan Dinas</label>
+                          <div class="col-6">
+                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= $spt->spt_lama ?>" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="spt_uraian" class="col-sm-4 col-form-label">Maksud Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= old('spt_uraian') ?>">
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_uraian']) ? $errors['spt_uraian'] : null ; ?>
-                              </div>
+                          <label for="spt_mulai" class="col-sm-5 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
+                          <div class="col-6">
+                            <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= $spt->spt_mulai ?>" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="spt_mulai" class="col-sm-4 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= old('spt_mulai') ?>" onkeyup="myFunction()">
-                            <div class="invalid-feedback">
-                              <?= isset($errors['spt_mulai']) ? $errors['spt_mulai'] : null ; ?>
-                            </div>
+                          <label for="spt_berakhir" class="col-sm-5 col-form-label">Tanggal Berakhir Perjalanan Dinas</label>
+                          <div class="col-6">
+                            <input class="form-control <?= isset($errors['spt_berakhir']) ? 'is-invalid' : null ; ?>" type="date" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= $spt->spt_berakhir ?>" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="spt_lama" class="col-sm-4 col-form-label">Lama Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= old('spt_lama') ?>" onkeyup="myFunction()">
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_lama']) ? $errors['spt_lama'] : null ; ?>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_berakhir" class="col-sm-4 col-form-label">Tanggal Berakhir Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_berakhir']) ? 'is-invalid' : null ; ?>" type="date" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= old('spt_berakhir') ?>" readonly>
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_berakhir']) ? $errors['spt_berakhir'] : null ; ?>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_tujuan" class="col-sm-4 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_tujuan']) ? 'is-invalid' : null ; ?>" type="Text" name="spt_tujuan" placeholder="Tempat Tujuan Perjalanan Dinas" id="spt_tujuan" value="<?= old('spt_tujuan') ?>">
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_tujuan']) ? $errors['spt_tujuan'] : null ; ?>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_transport" class="col-sm-4 col-form-label">Transportasi Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_transport']) ? 'is-invalid' : null ; ?>" type="Text" name="spt_transport" placeholder="Transportasi Perjalanan Dinas" id="spt_transport" value="<?= old('spt_transport') ?>">
-                              <div class="invalid-feedback">
-                                  <?= isset($errors['spt_transport']) ? $errors['spt_transport'] : null ; ?>
-                              </div>
+                          <label for="spt_tujuan" class="col-sm-5 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
+                          <div class="col-6">
+                            <input class="form-control <?= isset($errors['spt_tujuan']) ? 'is-invalid' : null ; ?>" type="Text" name="spt_tujuan" placeholder="Tempat Tujuan Perjalanan Dinas" id="spt_tujuan" value="<?= $spt->spt_tujuan ?>" readonly>
                           </div>
                         </div>
                       </div>
                     </div>              
                     <div class="card-footer">
-                      <a href="<?= site_url('spt'); ?>" class="btn btn-default">Kembali</a>
-                      <button type="submit" class="btn btn-primary float-right">Simpan</button>
-                      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                      <!-- <button type="submit" class="btn btn-primary float-right">Simpan</button> -->
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                         Tambah Pegawai pelaksana Perjalanan Dinas
                       </button>
+                      <a href="<?= site_url('spt'); ?>" class="btn btn-default float-right">Kembali</a>
                     </div>
                     
                   </form>
                 </div>
+                <div class="card card-info">
+                  <div class="card-header">
+                    <h5 class="m-0">Pegawai yang melaksanakan Perjalanan Dinas</h5>
+                  </div>
+                  <div class="card-body">
+                    <!-- <h6 class="card-title"></h6> -->
+                      <table class="table table-borderer">
+                        <thead>
+                          <tr>
+                            <td>Aksi</td>
+                            <td>Nama</td>
+                            <td>NIP</td>
+                          </tr>
+                        </thead>
+                      </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- /.col-md-6 -->
         </div>
+        
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -160,21 +142,26 @@
         </button>
       </div>
       <div class="modal-body">
-        <input type="text" value="<?= $spt->spt_id ?>" hidden>
-        <div class="form-group">
-          <label>Pilih Nama Pegawai</label>
-          <select class="form-control select2" style="width: 100%;">
-            <!-- <option value="" hidden></option> -->
-            <?php foreach($peg as $key => $value) : ?>
-              <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
-            <?php endforeach; ?>
-          </select>
-        </div>
+        <form action="<?= site_url('pelaksana/create'); ?>" method="post">
+          <?= csrf_field() ?>
+            <div class="form-group">
+              <input class="form-control"  name = "spt_id" type="text" value="<?= $spt->spt_id ?>" hidden>
+            </div>
+            <div class="form-group">
+              <label>Pilih Nama Pegawai</label>
+              <select class="form-control select2" style="width: 100%;" name="pegawai_id">
+                <option value="" hidden></option>
+                <?php foreach($peg as $key => $value) : ?>
+                  <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
+                <?php endforeach; ?>
+              </select>
+            </div>
       </div>
       <div class="modal-footer justify-content-between">
         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-        <button type="button" class="btn btn-primary">Tambah Pegawai</button>
+        <button type="submit" class="btn btn-primary">Tambah Pegawai</button>
       </div>
+        </form>
     </div>
     <!-- /.modal-content -->
   </div>
