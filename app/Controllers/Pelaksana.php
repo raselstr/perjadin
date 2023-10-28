@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PelaksanaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 
 class Pelaksana extends ResourcePresenter
 {
@@ -49,10 +50,18 @@ class Pelaksana extends ResourcePresenter
     {
         $pelaksana = new PelaksanaModel();
 
-        $data = $this->request->getPost();
-        // dd($data);
-        $pelaksana->save($data);
-        return redirect()->back();
+        
+        try {
+            $data = $this->request->getPost();
+            $pelaksana->save($data);
+            return redirect()->back()->with('berhasil','Data Berhasil disimpan');
+            // Data inserted successfully
+        } catch (DatabaseException $e) {
+            // $error = $e->getMessage();
+            
+            return redirect()->back()->with('error','Data sudah ada, harap memilih pegawai lain !');
+            // Handle the duplicate entry error, perhaps by returning an error message.
+        }
     }
 
     /**
@@ -89,7 +98,11 @@ class Pelaksana extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        $pelaksana = new PelaksanaModel();
+        
+        // $dataspt = $spt->find($id);
+        $pelaksana->delete($id);
+        return redirect()->back()->with('info','Data Berhasil di Hapus');
     }
 
     /**

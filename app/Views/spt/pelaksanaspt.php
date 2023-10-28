@@ -1,11 +1,17 @@
 <?= $this->extend('layout/default'); ?>
 <?= $this->section('stylesheet'); ?>
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
   <!-- Select2 -->
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
+  <!-- SweetAlert2 -->
+  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+
   <!-- Select2 -->
   <script src="plugins/select2/js/select2.full.min.js"></script>
 <?= $this->endSection(); ?>
@@ -29,9 +35,9 @@
                     <h3 class="card-title"><?= $title; ?></h3>
                   </div>
                   
-                  <?php $errors = session()->getFlashdata('validation') ?>
-                  <form action="<?= site_url('spt/create') ?>" method="post" enctype="multipart/form-data"  class="form-horizontal">
-                    <?= csrf_field() ?>
+                  
+
+                    
                     <div class="card-body row justify-content-center">
                       <div class="col-8">
                         <div class="form-group row">
@@ -42,38 +48,38 @@
                         <div class="form-group row">
                           <label for="spt_pjb_tugas" class="col-sm-5 col-form-label">Pejabat Pemberi Tugas</label>
                           <div class="col-6">
-                            <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= $spt->spt_pjb_tugas ?>" readonly>
+                            <input class="form-control" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= $spt->spt_pjb_tugas ?>" readonly>
                           </div>
                         </div>
                         
                         <div class="form-group row">
                           <label for="spt_uraian" class="col-sm-5 col-form-label">Maksud Perjalanan Dinas</label>
                           <div class="col-6">
-                            <textarea class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= $spt->spt_uraian ?>" readonly></textarea>
+                            <textarea class="form-control" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= $spt->spt_uraian ?>" readonly></textarea>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="spt_lama" class="col-sm-5 col-form-label">Lama Perjalanan Dinas</label>
                           <div class="col-6">
-                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= $spt->spt_lama ?>" readonly>
+                            <input class="form-control" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= $spt->spt_lama ?>" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="spt_mulai" class="col-sm-5 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
                           <div class="col-6">
-                            <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= $spt->spt_mulai ?>" readonly>
+                            <input class="form-control" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= $spt->spt_mulai ?>" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="spt_berakhir" class="col-sm-5 col-form-label">Tanggal Berakhir Perjalanan Dinas</label>
                           <div class="col-6">
-                            <input class="form-control <?= isset($errors['spt_berakhir']) ? 'is-invalid' : null ; ?>" type="date" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= $spt->spt_berakhir ?>" readonly>
+                            <input class="form-control" type="date" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= $spt->spt_berakhir ?>" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="spt_tujuan" class="col-sm-5 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
                           <div class="col-6">
-                            <input class="form-control <?= isset($errors['spt_tujuan']) ? 'is-invalid' : null ; ?>" type="Text" name="spt_tujuan" placeholder="Tempat Tujuan Perjalanan Dinas" id="spt_tujuan" value="<?= $spt->spt_tujuan ?>" readonly>
+                            <input class="form-control" type="Text" name="spt_tujuan" placeholder="Tempat Tujuan Perjalanan Dinas" id="spt_tujuan" value="<?= $spt->spt_tujuan ?>" readonly>
                           </div>
                         </div>
                       </div>
@@ -86,7 +92,7 @@
                       <a href="<?= site_url('spt'); ?>" class="btn btn-default float-right">Kembali</a>
                     </div>
                     
-                  </form>
+                
                 </div>
                 <div class="card card-info">
                   <div class="card-header">
@@ -105,9 +111,9 @@
                         <tbody>
                           <?php foreach ($pelks as $key => $value) { ?>
                           <tr>
-                            <td></td>
-                              <td><?= $value->pegawai_nama; ?></td>
-                              <td><?= $value->pegawai_nip; ?></td>
+                            <td><a href="<?= site_url('pelaksana/remove/'.$value->pelaksana_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a></td>
+                            <td><?= $value->pegawai_nama; ?></td>
+                            <td><?= $value->pegawai_nip; ?></td>
                             </tr>
                             <?php } ?>
                           </tbody>
@@ -151,6 +157,9 @@
         </button>
       </div>
       <div class="modal-body">
+        <?php if(session()->getFlashdata('error')) : ?>
+            <div class="flash-data" data-flashdata="<?= session()->getflashdata('error'); ?>"></div>
+        <?php endif; ?>
         <form action="<?= site_url('pelaksana/create'); ?>" method="post">
           <?= csrf_field() ?>
             <div class="form-group">
@@ -168,7 +177,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-        <button type="submit" class="btn btn-primary">Tambah Pegawai</button>
+        <button type="submit" class="btn btn-primary tbltambah" >Tambah Pegawai</button>
       </div>
         </form>
     </div>
@@ -179,4 +188,22 @@
 <!-- /.modal -->
 
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('script'); ?>
+  <script>
+    const flashData = $('.flash-data').data('flashdata');
+    // console.log(flashData);
+    if(flashData){
+      $('.tbltambah').on('click', function(e){
+        e.preventDefault();
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text : flashData
+          // text: "Data Pegawai ini sudah ada, harap memilih pegawai lain !"
+        })
+      });
+    } 
+  </script>
 <?= $this->endSection(); ?>

@@ -23,7 +23,11 @@ class PelaksanaModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        // 'pelaksana_id'  => 'permit_empty',
+        // 'spt_id'      => 'permit_empty',
+        // 'pegawai_id'  => 'is_unique[pelaksanas.pegawai_id,spt_id,{spt_id}]',
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

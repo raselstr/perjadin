@@ -25,14 +25,16 @@ class Pelaksana extends Migration
             ]
         ]);
         $this->forge->addKey('pelaksana_id', true);
-        $this->forge->addForeignKey('spt_id','spts','spt_id','CASCADE', 'CASCADE', 'my_fk_pelaksanaspt');
-        $this->forge->addForeignKey('pegawai_id','pegawais','pegawai_id','CASCADE','CASCADE','my_fk_pelaksanapegawai');
+        $this->forge->addForeignKey('spt_id','spts','spt_id','RESCRICT', '', 'my_fk_pelaksanaspt');
+        $this->forge->addForeignKey('pegawai_id','pegawais','pegawai_id','','','my_fk_pelaksanapegawai');
+        $this->forge->addUniqueKey(['spt_id','pegawai_id'],'uniqkey');
 
         $this->forge->createTable('pelaksanas');
     }
 
     public function down()
     {
+        
         $this->forge->dropForeignKey('pelaksanas','my_fk_pelaksanaspt');
         $this->forge->dropForeignKey('pelaksanas','my_fk_pelaksanapegawai');
 

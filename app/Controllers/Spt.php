@@ -155,7 +155,7 @@ class Spt extends ResourcePresenter
             'pelks'     => $pegpelaksana->datapelaksana($id),
             ];
 
-        // dd($data);    
+        // dd($pegpelaksana->errors);    
         return view('spt/pelaksanaspt', $data);
         
 
