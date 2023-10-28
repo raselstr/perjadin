@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\PegawaisModel;
+use App\Models\PelaksanaModel;
 use App\Models\SptModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -144,12 +145,14 @@ class Spt extends ResourcePresenter
     {
         $spt = new SptModel();
         $pelaksana = new PegawaisModel();
+        $pegpelaksana = new PelaksanaModel();
         $dataspt = $spt->find($id);
         $data = [
             'title'     => 'Tambah Pelaksana Perjalanan Dinas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'peg'       => $pelaksana->findAll(),
+            'pelks'     => $pegpelaksana->datapelaksana($id),
             ];
 
         // dd($data);    

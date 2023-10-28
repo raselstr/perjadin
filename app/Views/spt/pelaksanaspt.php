@@ -102,6 +102,15 @@
                             <td>NIP</td>
                           </tr>
                         </thead>
+                        <tbody>
+                          <?php foreach ($pelks as $key => $value) { ?>
+                          <tr>
+                            <td></td>
+                              <td><?= $value->pegawai_nama; ?></td>
+                              <td><?= $value->pegawai_nip; ?></td>
+                            </tr>
+                            <?php } ?>
+                          </tbody>
                       </table>
                   </div>
                 </div>
