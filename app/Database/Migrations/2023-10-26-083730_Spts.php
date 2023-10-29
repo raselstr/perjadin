@@ -31,6 +31,10 @@ class Spts extends Migration
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
             ],
+            'spt_jenis' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 100,
+            ],
             'spt_dasar' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 255,

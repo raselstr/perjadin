@@ -33,9 +33,28 @@
                         <div class="form-group row">
                           <label for="spt_pjb_tugas" class="col-sm-4 col-form-label">Pejabat Pemberi Tugas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>">
+                            <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" value="<?= old('spt_pjb_tugas') ?>">
+                              <option value="">Pilih Pejabat yang berwenang ...!</option>
+                              <option value="Kepala Dinas">Kepala Dinas</option>
+                              <option value="Sekretaris">Sekretaris</option>
+                            </select>
+                            <!-- <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>"> -->
                             <div class="invalid-feedback">
                                 <?= isset($errors['spt_pjb_tugas']) ? $errors['spt_pjb_tugas'] : null ; ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="spt_jenis" class="col-sm-4 col-form-label">Jenis Perjalanan Dinas</label>
+                          <div class="col">
+                            <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" value="<?= old('spt_jenis') ?>">
+                              <option value="">Pilih Jenis Perjalanan Dinas</option>
+                              <option value="Luar Kota dalam Provinsi">Luar Kota dalam Provinsi</option>
+                              <option value="Luar Kota Luar Provinsi">Luar Kota Luar Provinsi</option>
+                            </select>
+                            <!-- <input class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" type="text" name="spt_jenis" placeholder="Pejabat Pemberi Tugas" id="spt_jenis" value="<?= old('spt_jenis') ?>"> -->
+                            <div class="invalid-feedback">
+                                <?= isset($errors['spt_jenis']) ? $errors['spt_jenis'] : null ; ?>
                             </div>
                           </div>
                         </div>

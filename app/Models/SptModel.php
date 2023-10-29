@@ -13,7 +13,7 @@ class SptModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['spt_tahun','spt_nomor','spt_tgl','spt_pjb_tugas','spt_dasar','spt_uraian','spt_lama','spt_mulai','spt_berakhir','spt_tujuan','spt_transport'];
+    protected $allowedFields    = ['spt_tahun','spt_nomor','spt_tgl','spt_jenis','spt_pjb_tugas','spt_dasar','spt_uraian','spt_lama','spt_mulai','spt_berakhir','spt_tujuan','spt_transport'];
 
     // Dates
     protected $useTimestamps = true;
@@ -26,6 +26,7 @@ class SptModel extends Model
     protected $validationRules      = [
         'spt_id'        => 'permit_empty|is_natural_no_zero',
         'spt_pjb_tugas' => 'required',
+        'spt_jenis'     => 'required',
         'spt_uraian'    => 'required',
         'spt_lama'      => 'required',
         'spt_mulai'     => 'required',
@@ -35,6 +36,9 @@ class SptModel extends Model
     protected $validationMessages   = [
         'spt_pjb_tugas' => [
             'required'  => "Pejabat yang menugaskan wajib diisi !",
+        ],
+        'spt_jenis' => [
+            'required'  => "Jenis Perjalanan Dinas wajib diisi !",
         ],
         'spt_uraian' => [
             'required'  => "Maksud Perjalanan Dinas wajib diisi",
@@ -66,12 +70,12 @@ class SptModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    // function ambilspt($id=null)
-    // {
-    //     $builder = $this->db->table('spts');
-    //     $builder->select('*');
-    //     $builder->where('spts.spt_id',$id);
-    //     $query = $builder->get();
-    //     return $query->getResult();
-    // }
+    function ambilspt($id=null)
+    {
+        $builder = $this->db->table('spts');
+        $builder->select('*');
+        $builder->where('spts.spt_id',$id);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

@@ -33,6 +33,7 @@
                 <div class="card card-info">
                   <div class="card-header">
                     <h3 class="card-title"><?= $title; ?></h3>
+                    <a href="<?= site_url('spt'); ?>" class="btn btn-danger float-right">Kembali</a>
                   </div>
                   
                   
@@ -89,35 +90,41 @@
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                         Tambah Pegawai pelaksana Perjalanan Dinas
                       </button>
-                      <a href="<?= site_url('spt'); ?>" class="btn btn-default float-right">Kembali</a>
+                      
                     </div>
                     
                 
                 </div>
-                <div class="card card-info">
+                <div class="card card-info ">
                   <div class="card-header">
                     <h5 class="m-0">Pegawai yang melaksanakan Perjalanan Dinas</h5>
+                    
                   </div>
-                  <div class="card-body">
-                    <!-- <h6 class="card-title"></h6> -->
-                      <table class="table table-borderer">
+                  <div class="card-body row justify-content-center">
+                    <div class="col-8">
+                      <table id="example1" class="table table-bordered table-striped">
                         <thead>
                           <tr>
-                            <td>Aksi</td>
-                            <td>Nama</td>
-                            <td>NIP</td>
+                            <td class="align-middle text-center">Aksi</td>
+                            <td class="align-middle text-center">Nama</td>
+                            <td class="align-middle text-center">NIP</td>
                           </tr>
                         </thead>
                         <tbody>
                           <?php foreach ($pelks as $key => $value) { ?>
                           <tr>
-                            <td><a href="<?= site_url('pelaksana/remove/'.$value->pelaksana_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a></td>
+                            <td class="align-middle text-center"><a href="<?= site_url('pelaksana/remove/'.$value->pelaksana_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a></td>
                             <td><?= $value->pegawai_nama; ?></td>
-                            <td><?= $value->pegawai_nip; ?></td>
+                            <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
                             </tr>
                             <?php } ?>
                           </tbody>
                       </table>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <!-- <button type="submit" class="btn btn-primary float-right">Simpan</button> -->
+                    <a href="<?= site_url('spt'); ?>" class="btn btn-danger float-right">Kembali</a>
                   </div>
                 </div>
               </div>
@@ -168,7 +175,7 @@
             <div class="form-group">
               <label>Pilih Nama Pegawai</label>
               <select class="form-control select2" style="width: 100%;" name="pegawai_id">
-                <option value="" hidden></option>
+                <option value="">Pilih Pegawai ...</option>
                 <?php foreach($peg as $key => $value) : ?>
                   <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
                 <?php endforeach; ?>
@@ -177,7 +184,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-        <button type="submit" class="btn btn-primary tbltambah" >Tambah Pegawai</button>
+        <button type="submit" class="btn btn-primary tbltambah">Tambah Pegawai</button>
       </div>
         </form>
     </div>
@@ -197,11 +204,16 @@
     if(flashData){
       $('.tbltambah').on('click', function(e){
         e.preventDefault();
+        
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text : flashData
           // text: "Data Pegawai ini sudah ada, harap memilih pegawai lain !"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            parent.window.location.reload();
+          }
         })
       });
     } 

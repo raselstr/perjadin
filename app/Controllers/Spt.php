@@ -2,8 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\KabupatenModel;
 use App\Models\PegawaisModel;
 use App\Models\PelaksanaModel;
+use App\Models\ProvinsiModel;
 use App\Models\SptModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -46,11 +48,15 @@ class Spt extends ResourcePresenter
     public function new()
     {
         $spt = new SptModel();
+        $prov = new ProvinsiModel();
+        $kab = new KabupatenModel();
         $dataspt = $spt->findAll();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
+            'kab'       => $kab,
+            'prov'      => $prov,
         ];
         return view('spt/tambahspt', $data);
     }
