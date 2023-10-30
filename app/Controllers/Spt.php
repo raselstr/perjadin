@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\KabupatenModel;
+use App\Models\JenisperjadinModel;
+use App\Models\LokasiperjadinModel;
 use App\Models\PegawaisModel;
 use App\Models\PelaksanaModel;
-use App\Models\ProvinsiModel;
 use App\Models\SptModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -48,15 +48,15 @@ class Spt extends ResourcePresenter
     public function new()
     {
         $spt = new SptModel();
-        $prov = new ProvinsiModel();
-        $kab = new KabupatenModel();
+        $lokasiperjadin = new LokasiperjadinModel();
+        $jenisperjadin = new JenisperjadinModel();
         $dataspt = $spt->findAll();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
-            'kab'       => $kab,
-            'prov'      => $prov,
+            'lokasi'    => $lokasiperjadin->findAll(),
+            'jenis'     => $jenisperjadin->findAll(),
         ];
         return view('spt/tambahspt', $data);
     }
@@ -165,5 +165,19 @@ class Spt extends ResourcePresenter
         return view('spt/pelaksanaspt', $data);
         
 
+    }
+
+    public function getdatalokasi()
+    {
+        $lokasiperjadin  = new LokasiperjadinModel();
+        // $jenisperjadin = new JenisperjadinModel();
+        $jenisperjadin_id       = $this->request->getPost('jenisperjadin_id');
+        dd($jenisperjadin_id);
+        $getlokasiperjadin = $lokasiperjadin->lokasijenis($jenisperjadin_id);
+        // dd($getlokasiperjadin);
+        echo '<option value="">-----Pilih Lokasi Perjalanan Dinas -----------</option>';
+        foreach ($getlokasiperjadin as $key => $value) {
+            echo "<option value=".$value['lokasiperjadin_id'].">".$value['lokasiperjadin_nama']."</option>";
+        }
     }
 }

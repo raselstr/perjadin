@@ -70,12 +70,19 @@ class SptModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function ambilspt($id=null)
-    {
-        $builder = $this->db->table('spts');
-        $builder->select('*');
-        $builder->where('spts.spt_id',$id);
-        $query = $builder->get();
-        return $query->getResult();
-    }
+    // function ambilspt($id=null,$jenis=null)
+    // {
+    //     if($jenis)=="Luar Kota dalam Provinsi" {
+    //         $builder = $this->db->table('spts');
+    //     $builder->select('*');
+    //     $builder->where('spts.spt_id',$id);
+    //     $query = $builder->get();
+    //     return $query->getResult();
+    //     }
+    //     $builder = $this->db->table('spts');
+    //     $builder->select('*');
+    //     $builder->where('spts.spt_id',$id);
+    //     $query = $builder->get();
+    //     return $query->getResult();
+    // }
 }

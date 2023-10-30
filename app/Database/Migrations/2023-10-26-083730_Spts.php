@@ -32,7 +32,7 @@ class Spts extends Migration
                 'constraint'    => 100,
             ],
             'spt_jenis' => [
-                'type'          => 'VARCHAR',
+                'type'          => 'INT',
                 'constraint'    => 100,
             ],
             'spt_dasar' => [
@@ -56,8 +56,8 @@ class Spts extends Migration
                 
             ],
             'spt_tujuan' => [
-                'type'          => 'VARCHAR',
-                'constraint'     => 50,
+                'type'          => 'INT',
+                
             ],
             'spt_transport' => [
                 'type'          => 'VARCHAR',

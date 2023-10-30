@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class KabupatenModel extends Model
+class LokasiperjadinModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'kabupatens';
-    protected $primaryKey       = 'kabupaten_id';
+    protected $table            = 'lokasiperjadins';
+    protected $primaryKey       = 'lokasiperjadin_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['kabupaten_nama'];
+    protected $allowedFields    = ['jenisperjadin_id','lokasiperjadin_nama'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,14 @@ class KabupatenModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function lokasijenis($jenisperjadin_id)
+    {
+        $builder = $this->db->table('lokasiperjadins');
+        $builder->select('*');
+        $builder->where('jenisperjadin_id', $jenisperjadin_id);
+        $builder->orderBy('lokasiperjadin_id','ASC');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }

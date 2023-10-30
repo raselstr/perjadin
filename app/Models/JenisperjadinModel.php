@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProvinsiModel extends Model
+class JenisperjadinModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'provinsis';
-    protected $primaryKey       = 'provinsi_id';
+    protected $table            = 'jenisperjadins';
+    protected $primaryKey       = 'jenisperjadin_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['provinsi_nama'];
+    protected $allowedFields    = ['jenisperjadin_nama'];
 
     // Dates
     protected $useTimestamps = false;

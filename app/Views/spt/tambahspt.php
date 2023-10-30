@@ -1,5 +1,20 @@
 <?= $this->extend('layout/default'); ?>
 
+
+<?= $this->section('stylesheet'); ?>
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<?= $this->endSection(); ?>
+
+
+
+<?= $this->section('scriptplugin'); ?>
+  <!-- Select2 -->
+  <script src="plugins/select2/js/select2.full.min.js"></script>
+<?= $this->endSection(); ?>
+
+
 <?= $this->section('content') ?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -33,10 +48,10 @@
                         <div class="form-group row">
                           <label for="spt_pjb_tugas" class="col-sm-4 col-form-label">Pejabat Pemberi Tugas</label>
                           <div class="col">
-                            <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" value="<?= old('spt_pjb_tugas') ?>">
+                            <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Pejabat yang berwenang ...!</option>
-                              <option value="Kepala Dinas">Kepala Dinas</option>
-                              <option value="Sekretaris">Sekretaris</option>
+                              <option value="Kepala Dinas" <?= old('spt_pjb_tugas') == "Kepala Dinas" ? 'selected':null?>>Kepala Dinas</option>
+                              <option value="Sekretaris" <?= old('spt_pjb_tugas') == "Sekretaris" ? 'selected':null?>>Sekretaris</option>
                             </select>
                             <!-- <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>"> -->
                             <div class="invalid-feedback">
@@ -47,10 +62,11 @@
                         <div class="form-group row">
                           <label for="spt_jenis" class="col-sm-4 col-form-label">Jenis Perjalanan Dinas</label>
                           <div class="col">
-                            <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" value="<?= old('spt_jenis') ?>">
+                            <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" >
                               <option value="">Pilih Jenis Perjalanan Dinas</option>
-                              <option value="Luar Kota dalam Provinsi">Luar Kota dalam Provinsi</option>
-                              <option value="Luar Kota Luar Provinsi">Luar Kota Luar Provinsi</option>
+                              <?php foreach ($jenis as $key => $value) { ?>
+                                <option value="<?= $value->jenisperjadin_id; ?>"<?= old('spt_jenis') ==  $value->jenisperjadin_id ? 'selected':null?>><?= $value->jenisperjadin_nama; ?></option>
+                              <?php } ?>
                             </select>
                             <!-- <input class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" type="text" name="spt_jenis" placeholder="Pejabat Pemberi Tugas" id="spt_jenis" value="<?= old('spt_jenis') ?>"> -->
                             <div class="invalid-feedback">
@@ -103,19 +119,30 @@
                               </div>
                           </div>
                         </div>
+
+                        <!--  input teks tempat tujuan -->
                         <div class="form-group row">
-                          <label for="spt_tujuan" class="col-sm-4 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
+                          <label for="spt_tujuan" id = "spt_tujuanlabel" class="col-sm-4 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_tujuan']) ? 'is-invalid' : null ; ?>" type="Text" name="spt_tujuan" placeholder="Tempat Tujuan Perjalanan Dinas" id="spt_tujuan" value="<?= old('spt_tujuan') ?>">
+                            <select name="spt_tujuan" id="spt_tujuan" class="form-control <?= isset($errors['spt_tujuan']) ? 'is-invalid' : null ; ?>">
+
+                            </select>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_tujuan']) ? $errors['spt_tujuan'] : null ; ?>
                               </div>
                           </div>
                         </div>
+                        
+
                         <div class="form-group row">
                           <label for="spt_transport" class="col-sm-4 col-form-label">Transportasi Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_transport']) ? 'is-invalid' : null ; ?>" type="Text" name="spt_transport" placeholder="Transportasi Perjalanan Dinas" id="spt_transport" value="<?= old('spt_transport') ?>">
+                            <select name="spt_transport" id="spt_transport" class="form-control <?= isset($errors['spt_transport']) ? 'is-invalid' : null ; ?>">
+                              <option value="">Pilih Jenis Transportasi</option>
+                              <option value="Mobil Dinas"<?= old('spt_transport') == "Mobil Dinas" ? 'selected':null?>>Mobil Dinas</option>
+                              <option value="Angkutan Umum Darat"<?= old('spt_transport') == "Angkutan Umum Darat" ? 'selected':null?>>Angkutan Umum Darat</option>
+                              <option value="Pesawat Udara"<?= old('spt_transport') == "Pesawat Udara" ? 'selected':null?>>Pesawat Udara</option>
+                            </select>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_transport']) ? $errors['spt_transport'] : null ; ?>
                               </div>
@@ -157,6 +184,42 @@
     var thnini = tahun.getFullYear();
   document.getElementById("spt_tahun").value = thnini;
   </script>
-<?= $this->endSection(); ?>
     
 
+  <script>
+ 
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      // $("#spt_tujuan").hide();
+      // $("#spt_tujuanlabel").hide();
+      
+      $("#spt_jenis").change(function(){
+        var jenisperjadin_id = $("#spt_jenis").val();
+        // alert(jenisperjadin_id);
+        $.ajax({
+          type : "POST",
+          // dataType : "JSON",
+          url : "<?= site_url('spt/getdatalokasi'); ?>",
+          data : {jenisperjadin_id : jenisperjadin_id},
+          success : function(data){
+            console.log(data);
+            $("#spt_tujuan").html(data);
+          }
+        });
+      });
+    });
+
+    
+    
+  </script>
+<?= $this->endSection(); ?>

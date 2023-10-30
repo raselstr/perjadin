@@ -15,6 +15,9 @@ $routes->presenter('register');
 $routes->presenter('pegawai');
 
 $routes->get('spt/pelaksana/(:num)','Spt::pelaksana/$1');
+
+$routes->post('spt/getdatalokasi','Spt::getdatalokasi');
 $routes->presenter('spt');
+
 $routes->presenter('pelaksana');
 
