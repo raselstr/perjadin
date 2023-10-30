@@ -12,7 +12,6 @@ class Provinsi extends Migration
             'provinsi_id' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 4,
-                'unsigned'       => true,
 
             ],
             'provinsi_nama' => [

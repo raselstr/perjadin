@@ -1,22 +1,34 @@
 <?= $this->extend('layout/default'); ?>
+
+
 <?= $this->section('stylesheet'); ?>
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
 
   <!-- Select2 -->
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <?= $this->endSection(); ?>
 
+
+
 <?= $this->section('scriptplugin'); ?>
   <!-- SweetAlert2 -->
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+
+  <!-- Toastr -->
+  <script src="plugins/toastr/toastr.min.js"></script>
 
   <!-- Select2 -->
   <script src="plugins/select2/js/select2.full.min.js"></script>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
+
+
+
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -86,11 +98,28 @@
                       </div>
                     </div>              
                     <div class="card-footer">
-                      <!-- <button type="submit" class="btn btn-primary float-right">Simpan</button> -->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                        Tambah Pegawai pelaksana Perjalanan Dinas
-                      </button>
-                      
+                      <div class="row">
+                        <div class="col-6">
+                          <!-- <button type="submit" class="btn btn-primary float-right">Simpan</button> -->
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                            Tambah Pegawai pelaksana Perjalanan Dinas
+                          </button>
+                        </div>
+                        <div class="col-6 float-right">
+                          <?php if(session('error')) : ?>
+                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <!-- A simple success alert—check it out! -->
+                                <?= session('error'); ?>
+                              </div> 
+                          <?php endif ?>
+                          <?php if(session('berhasil')) : ?>
+                              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <!-- A simple success alert—check it out! -->
+                                <?= session('berhasil'); ?>
+                              </div> 
+                          <?php endif ?>
+                        </div>
+                      </div>
                     </div>
                     
                 
@@ -164,9 +193,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php if(session()->getFlashdata('error')) : ?>
-            <div class="flash-data" data-flashdata="<?= session()->getflashdata('error'); ?>"></div>
-        <?php endif; ?>
         <form action="<?= site_url('pelaksana/create'); ?>" method="post">
           <?= csrf_field() ?>
             <div class="form-group">
@@ -174,7 +200,7 @@
             </div>
             <div class="form-group">
               <label>Pilih Nama Pegawai</label>
-              <select class="form-control select2" style="width: 100%;" name="pegawai_id">
+              <select class="form-control select2" style="width: 100%;" name="pegawai_id" id="pegawai_id">
                 <option value="">Pilih Pegawai ...</option>
                 <?php foreach($peg as $key => $value) : ?>
                   <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
@@ -195,27 +221,4 @@
 <!-- /.modal -->
 
 
-<?= $this->endSection(); ?>
-
-<?= $this->section('script'); ?>
-  <script>
-    const flashData = $('.flash-data').data('flashdata');
-    // console.log(flashData);
-    if(flashData){
-      $('.tbltambah').on('click', function(e){
-        e.preventDefault();
-        
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text : flashData
-          // text: "Data Pegawai ini sudah ada, harap memilih pegawai lain !"
-        }).then((result) => {
-          if (result.isConfirmed) {
-            parent.window.location.reload();
-          }
-        })
-      });
-    } 
-  </script>
 <?= $this->endSection(); ?>

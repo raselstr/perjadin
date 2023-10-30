@@ -12,7 +12,7 @@ class Kabupaten extends Migration
             'kabupaten_id' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 20,
-                'unsigned'       => true,
+                
             ],
             'kabupaten_nama' => [
                 'type'          => 'VARCHAR',
