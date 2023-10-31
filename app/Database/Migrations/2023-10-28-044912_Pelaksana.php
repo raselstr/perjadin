@@ -22,7 +22,12 @@ class Pelaksana extends Migration
             'pegawai_id' => [
                 'type'          => 'INT',
                 'constraint'    => 20
-            ]
+            ],
+            'pelaksana_utama' => [
+                'type'          => 'INT',
+                'constraint'    => 1,
+                'default'       => 0,
+            ],
         ]);
         $this->forge->addKey('pelaksana_id', true);
         $this->forge->addForeignKey('spt_id','spts','spt_id','RESCRICT', '', 'my_fk_pelaksanaspt');

@@ -13,7 +13,7 @@ class PelaksanaModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['spt_id','pegawai_id'];
+    protected $allowedFields    = ['spt_id','pegawai_id','pelaksana_utama'];
 
     // Dates
     protected $useTimestamps = false;

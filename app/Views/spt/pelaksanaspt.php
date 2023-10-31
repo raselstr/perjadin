@@ -137,16 +137,20 @@
                             <td class="align-middle text-center">Aksi</td>
                             <td class="align-middle text-center">Nama</td>
                             <td class="align-middle text-center">NIP</td>
+                            <td class="align-middle text-center">Utama/Pengikut</td>
                           </tr>
                         </thead>
                         <tbody>
                           <?php foreach ($pelks as $key => $value) { ?>
-                          <tr>
-                            <td class="align-middle text-center"><a href="<?= site_url('pelaksana/remove/'.$value->pelaksana_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a></td>
-                            <td><?= $value->pegawai_nama; ?></td>
-                            <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
+                            <tr>
+                              <td class="align-middle text-center"><a href="<?= site_url('pelaksana/remove/'.$value->pelaksana_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a></td>
+                              <td><?= $value->pegawai_nama; ?></td>
+                              <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
+                              <td>
+                                <input type="checkbox" name="" id="" <?= $value->pelaksana_utama =="1" ? "checked" : null ?> >
+                              </td>
                             </tr>
-                            <?php } ?>
+                          <?php } ?>
                           </tbody>
                       </table>
                     </div>
@@ -180,6 +184,7 @@
       })
 
   </script>
+  
 <?= $this->endSection(); ?>
     
 <?= $this->section('modalcustome'); ?>
