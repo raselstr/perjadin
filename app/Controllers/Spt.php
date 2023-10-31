@@ -8,6 +8,11 @@ use App\Models\PegawaisModel;
 use App\Models\PelaksanaModel;
 use App\Models\SptModel;
 use CodeIgniter\RESTful\ResourcePresenter;
+use CodeIgniter\HTTP\IncomingRequest;
+
+/**
+ * @property IncomingRequest $request
+ */
 
 class Spt extends ResourcePresenter
 {
@@ -167,17 +172,46 @@ class Spt extends ResourcePresenter
 
     }
 
+    // public function getdatajenis()
+    // {
+    //     $jenisperjadin = new JenisperjadinModel();
+
+    //     if($this->request->isAJAX()){
+    //         $caridata = $this->request->getGet('search');
+
+    //         $datajenisperjadin = $jenisperjadin->like('jenisperjadin_nama',$caridata)->get();
+    //         if($datajenisperjadin->getNum() > 0){
+    //             $list = [];
+    //             $key = 0;
+    //             foreach ($datajenisperjadin->getResultArray() as $row) :
+    //                 $list[$key]['id']= $row['jenisperjadin_id'];
+    //                 $list[$key]['text'] = $row['jenisperjadin_nama'];
+    //                 $key++;
+    //             endforeach;
+
+    //             echo json_encode($list);
+
+    //         }
+
+    //     };
+    // }
+
+    // Membuat Select Option Dinamis / Select option bertingkat
     public function getdatalokasi()
     {
-        $lokasiperjadin  = new LokasiperjadinModel();
-        // $jenisperjadin = new JenisperjadinModel();
-        $jenisperjadin_id       = $this->request->getPost('jenisperjadin_id');
-        dd($jenisperjadin_id);
-        $getlokasiperjadin = $lokasiperjadin->lokasijenis($jenisperjadin_id);
-        // dd($getlokasiperjadin);
-        echo '<option value="">-----Pilih Lokasi Perjalanan Dinas -----------</option>';
-        foreach ($getlokasiperjadin as $key => $value) {
-            echo "<option value=".$value['lokasiperjadin_id'].">".$value['lokasiperjadin_nama']."</option>";
+        $idlokasi = new LokasiperjadinModel();
+
+        if($this->request->isAJAX()){
+            $idjenis = $this->request->getVar('spt_jenis');
+            $idtempat = $idlokasi->lokasijenis($idjenis);
+            $isidata ="";
+            foreach ($idtempat as $key => $value) :
+               $isidata .='<option value="'.$value['lokasiperjadin_id'].'">'.$value['lokasiperjadin_nama'].'</option>';
+            endforeach;
+            $msg = [
+                'data' => $isidata,
+            ];
+            echo json_encode($msg);
         }
     }
 }

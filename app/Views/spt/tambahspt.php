@@ -53,7 +53,6 @@
                               <option value="Kepala Dinas" <?= old('spt_pjb_tugas') == "Kepala Dinas" ? 'selected':null?>>Kepala Dinas</option>
                               <option value="Sekretaris" <?= old('spt_pjb_tugas') == "Sekretaris" ? 'selected':null?>>Sekretaris</option>
                             </select>
-                            <!-- <input class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= old('spt_pjb_tugas') ?>"> -->
                             <div class="invalid-feedback">
                                 <?= isset($errors['spt_pjb_tugas']) ? $errors['spt_pjb_tugas'] : null ; ?>
                             </div>
@@ -62,6 +61,9 @@
                         <div class="form-group row">
                           <label for="spt_jenis" class="col-sm-4 col-form-label">Jenis Perjalanan Dinas</label>
                           <div class="col">
+                            <!-- <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" >
+                              
+                            </select> -->
                             <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" >
                               <option value="">Pilih Jenis Perjalanan Dinas</option>
                               <?php foreach ($jenis as $key => $value) { ?>
@@ -199,27 +201,27 @@
   </script>
 
   <script>
-    $(document).ready(function(){
-      // $("#spt_tujuan").hide();
-      // $("#spt_tujuanlabel").hide();
-      
-      $("#spt_jenis").change(function(){
-        var jenisperjadin_id = $("#spt_jenis").val();
-        // alert(jenisperjadin_id);
+    function dataJenisperjadin() {
+      $('#spt_jenis').change(function(e){
         $.ajax({
-          type : "POST",
-          // dataType : "JSON",
-          url : "<?= site_url('spt/getdatalokasi'); ?>",
-          data : {jenisperjadin_id : jenisperjadin_id},
-          success : function(data){
-            console.log(data);
-            $("#spt_tujuan").html(data);
-          }
+          type: "post",
+          url: "<?= site_url('spt/getdatalokasi'); ?>",
+          data: {
+            'spt_jenis' : $(this).val()
+          },
+          dataType: "json",
+          success: function (response) {
+            if(response.data){
+              $('#spt_tujuan').html(response.data);
+              $('#spt_tujuan').select2();
+            }
+          },
         });
       });
-    });
+    }
 
-    
-    
+    $(document).ready(function(){
+      dataJenisperjadin();
+    });
   </script>
 <?= $this->endSection(); ?>
