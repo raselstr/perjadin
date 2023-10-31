@@ -10,6 +10,9 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  
+  <!-- Bootstrap Switch Button -->
+  <link rel="stylesheet" href="plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch-button.min.css">
 <?= $this->endSection(); ?>
 
 
@@ -23,6 +26,9 @@
 
   <!-- Select2 -->
   <script src="plugins/select2/js/select2.full.min.js"></script>
+
+  <!-- Bootstrap Switch Button -->
+  <script src="plugins/bootstrap-switch/js/bootstrap-switch-button.min.js"></script>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -146,8 +152,8 @@
                               <td class="align-middle text-center"><a href="<?= site_url('pelaksana/remove/'.$value->pelaksana_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a></td>
                               <td><?= $value->pegawai_nama; ?></td>
                               <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
-                              <td>
-                                <input type="checkbox" name="" id="" <?= $value->pelaksana_utama =="1" ? "checked" : null ?> >
+                              <td class="align-middle text-center">
+                                <input type="checkbox" data-toggle="switchbutton" <?= $value->pelaksana_utama =="1" ? "checked" : null ?> data-onlabel="Utama" data-offlabel="Pengikut" data-onstyle="success" data-offstyle="danger" data-size="sm">
                               </td>
                             </tr>
                           <?php } ?>
