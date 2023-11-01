@@ -19,5 +19,7 @@ $routes->get('spt/getdatajenis','Spt::getdatajenis');
 $routes->post('spt/getdatalokasi','Spt::getdatalokasi');
 $routes->presenter('spt');
 
+// $routes->post('pelaksana/updatetoggle/(:num)','Pelaksana::updatetoggle/$1');
+$routes->post('pelaksana/updatetoggle','Pelaksana::updatetoggle');
 $routes->presenter('pelaksana');
 

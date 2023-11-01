@@ -53,4 +53,14 @@ class PelaksanaModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+    function pelaksanastatus($id=null)
+    {
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('pelaksanas.pelaksana_utama');
+        $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->where('pelaksanas.pelaksana_id',$id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }

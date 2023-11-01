@@ -116,4 +116,38 @@ class Pelaksana extends ResourcePresenter
     {
         //
     }
+
+    public function updatetoggle()
+    {
+        $itemModel = new PelaksanaModel();
+        $itemIds = $this->request->getPost('item_ids');
+     
+
+        if (!empty($itemIds)) {
+            $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 0])->update();
+
+            // Set status menjadi 0 (nonaktif) untuk item yang dicentang
+        } else {
+            $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 1])->update();
+        }
+
+
+        // $pelaksana = new PelaksanaModel();
+        
+        // // $catId = $this->request->getPost('catId');
+        // $datapelaksana = $pelaksana->pelaksanastatus($catId);
+        // $data = [
+        //     'datastatus' => $datapelaksana
+        // ];
+        // // $status = $data['datastatus'][0]['pelaksana_utama'];
+        // // $status = $datapelaksana['pelaksana_utama'];
+        // if($data['datastatus'][0]['pelaksana_utama']=='1') {
+        //     $data['datastatus'][0]['pelaksana_utama'] = '0';
+        // } else {
+        //     $status = '1';
+        // }
+
+        // $pelaksana->update(['pelaksana_id' => $catId],$status);
+
+    }
 }
