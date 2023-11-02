@@ -154,7 +154,7 @@
                               <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
                               <td class="align-middle text-center">
                                 <form id="statusForm">
-                                      <input type="checkbox" name="pelaksana_id[]" value="<?= $value->pelaksana_id; ?>" class="status-checkbox">
+                                      <input type="checkbox" name="pelaksana_id" value="<?= $value->pelaksana_id; ?>" class="status-checkbox" <?= $value->pelaksana_utama == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut" data-onstyle="success" data-offstyle="danger" data-size="sm">
                                 </form>
                                 <!-- <form action="<?= site_url('pelaksana/updatetoggle/'.$value->pelaksana_id); ?>" method="post">
                                   <input name="pelaksana_id" value="<?= $value->pelaksana_id ?>">
@@ -243,7 +243,7 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
-  <script>
+  <!-- <script>
     $(document).ready(function () {
         $('.status-checkbox').on('change', function () {
             var selectedItems = $('.status-checkbox:checked').map(function () {
@@ -268,7 +268,66 @@
                 });
             }
         });
+        
     });
-  </script>
+  </script> -->
   
+<script>
+    $(document).ready(function () {
+        $('input[name="pelaksana_id"]').on('change', function () {
+            var checkboxValue = $(this).val();
+            var isChecked = $(this).is(':checked');
+            
+            if (isChecked) {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('pelaksana/updatetoggle'); ?>",
+                  data: {item_ids:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil...',
+                      text: 'Pegawai ini sebagai Utama yang ditugaskan dalam Perjalanan Dinas',
+                    });
+                    // location.reload();
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            } else {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('pelaksana/updatetoggle'); ?>",
+                  data: {item_ids:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil...',
+                      text: 'Pegawai ini sebagai Pengikut yang ditugaskan dalam Perjalanan Dinas',
+                    });
+                    // location.reload();
+                    // alert('Status item berhasil diubah');
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            }
+        });
+    });
+
+    $(selector).change(function (e) { 
+      e.preventDefault();
+      
+    });
+</script>
+
 <?= $this->endSection(); ?>

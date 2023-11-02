@@ -121,15 +121,26 @@ class Pelaksana extends ResourcePresenter
     {
         $itemModel = new PelaksanaModel();
         $itemIds = $this->request->getPost('item_ids');
-     
+        $datapelaksana = $itemModel->pelaksanastatus($itemIds);
+        
+        $status = $datapelaksana[0]['pelaksana_utama'];
+        // dd($status);
 
-        if (!empty($itemIds)) {
-            $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 0])->update();
+        // if (!empty($itemIds)) {
+            if($status == '0'){
+                $itemModel->where('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 1])->update();
+            } else {
+                $itemModel->where('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 0])->update();
+            }
 
-            // Set status menjadi 0 (nonaktif) untuk item yang dicentang
-        } else {
-            $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 1])->update();
-        }
+        // if (!empty($itemIds)) {
+            
+        //     $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 0])->update();
+
+        //     // Set status menjadi 0 (nonaktif) untuk item yang dicentang
+        // } else {
+        //     $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 1])->update();
+        // }
 
 
         // $pelaksana = new PelaksanaModel();
