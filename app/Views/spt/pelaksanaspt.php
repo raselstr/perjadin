@@ -136,7 +136,7 @@
                     
                   </div>
                   <div class="card-body row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-10">
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                           <tr>

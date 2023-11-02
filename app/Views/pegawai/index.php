@@ -15,6 +15,7 @@
 
 <?= $this->section('scriptplugin'); ?>
   <!-- DataTables  & Plugins -->
+  <!-- <script src="plugins/datatables/jquery-3.7.0.js"></script> -->
   <script src="plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -136,18 +137,33 @@
     $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+      
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      // "paging": false,
+      // "lengthChange": false,
+      // "searching": false,
+      // "ordering": true,
+      // "info": true,
+      // "autoWidth": true,
+      // "responsive": true,
+      // "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+      // "destroy": true,
+      
     });
   });
+  </script>
+
+  <script>
+    $('#example1').DataTable( {
+      lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+      // destroy: true,
+      
+    } );
+  </script>
+
+  <script>
 
     const flashData = $('.flash-data').data('flashdata');
     // console.log(flashData);
@@ -165,7 +181,8 @@
         });
         // swalDefaultSuccess(flashData, "You clicked the button!", "success");
     }
-
+</script>
+<script>
     $('.tombol-hapus').on('click', function(e){
       e.preventDefault();
 
