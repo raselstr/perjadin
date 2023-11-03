@@ -26,29 +26,13 @@ class Pelaksana extends ResourcePresenter
             'spt'       => $dataspt,
         ];
         $html = view('spt/spt_pdf', $data);
-        // $dompdf = new Dompdf();
-        // $dompdf->loadHtml('hello world');
-
-        // // (Optional) Setup the paper size and orientation
-        // $dompdf->setPaper('A4', 'landscape');
-
-        // // Render the HTML as PDF
-        // $dompdf->render();
-
-        // // Output the generated PDF to Browser
-        // $dompdf->stream();
-
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-        // $pdf = new tcpdf("P","mm","A4");
-        // $pdf->SetCreator(PDF_CREATOR);
-        // $pdf->SetAuthor('Nicola Asuni');
-        // $pdf->SetTitle('TCPDF Example 001');
-        // $pdf->SetSubject('TCPDF Tutorial');
-        // $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT,true, 'UTF-8', false);
+        
         $pdf->AddPage();
-        $pdf->writeHTML($html);
+        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
         $this->response->setContentType('application/pdf');
-        $pdf->Output('example_001.pdf', 'I');
+        $pdf->Output('example_001.pdf', 'S');
 
     }
 

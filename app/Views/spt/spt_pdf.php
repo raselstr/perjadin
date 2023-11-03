@@ -1,71 +1,17 @@
-<?= $this->extend('layout/default'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title; ?></title>
+    <base href="<?= base_url('templates'); ?>/">
 
-<?= $this->section('stylesheet'); ?>
-   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  <!-- Toastr -->
-  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-  <!-- Theme style -->
-<?= $this->endSection(); ?>
-
-<?= $this->section('scriptplugin'); ?>
-  <!-- DataTables  & Plugins -->
-  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="plugins/jszip/jszip.min.js"></script>
-  <script src="plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-  <!-- SweetAlert2 -->
-  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
-  <!-- Toastr -->
-  <script src="plugins/toastr/toastr.min.js"></script>
-<?= $this->endSection(); ?>
-
-<?= $this->section('content') ?>
-<!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-      
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-                 
-        <div class="row">
-          <!-- /.col-md-6 -->
-          <div class="col">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h5 class="m-0"><?= $title; ?></h5>
-                    
-                  </div>
-                  <div class="col-sm-4">
-                    <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
-                      Tambah Data Pegawai
-                    </button> -->
-                    
-                  </div>
-                </div>
-              </div>
-              
-
-              <div class="card-body">
-                <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+    
+</head>
+<body>
+    
+    
+                <table id="tes" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
@@ -105,30 +51,11 @@
                         </tr>
                       <?php } ?>
                   </tbody>
-                  <!-- <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>NIP</th>
-                    <th>Nama Pegawai</th>
-                    <th>Jabatan</th>
-                    <th>Eselon</th>
-                    <th>Pangkat</th>
-                    <th>Foto</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot> -->
                 </table>
-              </div>
-            </div>
-          </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-  </div>
-    <!-- /.content -->
 
-   
-<?= $this->endSection() ?>
+
+
+
+</body>
+</html>
+
