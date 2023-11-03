@@ -163,7 +163,8 @@
                   </div>
                   <div class="card-footer">
                     <a href="<?= site_url('spt'); ?>" class="btn btn-danger float-right">Kembali</a>
-                    <button type="submit" class="btn btn-primary">Cetak SPT</button>
+                    <a href="<?= site_url('pelaksana'); ?>" target="_blank"class="btn btn-danger">Cetak SPT</a>
+                    
                     <button type="submit" class="btn btn-primary">Cetak SPD</button>
                   </div>
                 </div>
