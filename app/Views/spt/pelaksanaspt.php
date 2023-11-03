@@ -153,15 +153,7 @@
                               <td><?= $value->pegawai_nama; ?></td>
                               <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
                               <td class="align-middle text-center">
-                                <form id="statusForm">
-                                      <input type="checkbox" name="pelaksana_id" value="<?= $value->pelaksana_id; ?>" class="status-checkbox" <?= $value->pelaksana_utama == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut" data-onstyle="success" data-offstyle="danger" data-size="sm">
-                                </form>
-                                <!-- <form action="<?= site_url('pelaksana/updatetoggle/'.$value->pelaksana_id); ?>" method="post">
-                                  <input name="pelaksana_id" value="<?= $value->pelaksana_id ?>">
-                                  <input name="spt_id" value="<?= $value->spt_id ?>">
-                                  <input name="pegawai_id" value="<?= $value->pegawai_id ?>"> 
-                                  <input type="checkbox" name = 'pelaksana_utama' data-toggle="switchbutton" <?= $value->pelaksana_utama == '1' ? 'checked' : null; ?> data-onlabel="Utama" data-offlabel="Pengikut" data-onstyle="success" data-offstyle="danger" data-size="sm" onChange='submit();'>
-                                </form> -->
+                                <input type="checkbox" name="pelaksana_id" value="<?= $value->pelaksana_id; ?>" class="status-checkbox" <?= $value->pelaksana_utama == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut" data-onstyle="success" data-offstyle="danger" data-size="sm">
                               </td>
                             </tr>
                           <?php } ?>
@@ -170,8 +162,9 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    <!-- <button type="submit" class="btn btn-primary float-right">Simpan</button> -->
                     <a href="<?= site_url('spt'); ?>" class="btn btn-danger float-right">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Cetak SPT</button>
+                    <button type="submit" class="btn btn-primary">Cetak SPD</button>
                   </div>
                 </div>
               </div>
