@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PelaksanaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 use CodeIgniter\Database\Exceptions\DatabaseException;
+use tecnickcom\TCPDF;
 
 class Pelaksana extends ResourcePresenter
 {
@@ -132,33 +133,10 @@ class Pelaksana extends ResourcePresenter
             } else {
                 $itemModel->where('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 0])->update();
             }
+    }
 
-        // if (!empty($itemIds)) {
-            
-        //     $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 0])->update();
-
-        //     // Set status menjadi 0 (nonaktif) untuk item yang dicentang
-        // } else {
-        //     $itemModel->whereIn('pelaksana_id', $itemIds)->set(['pelaksana_utama' => 1])->update();
-        // }
-
-
-        // $pelaksana = new PelaksanaModel();
-        
-        // // $catId = $this->request->getPost('catId');
-        // $datapelaksana = $pelaksana->pelaksanastatus($catId);
-        // $data = [
-        //     'datastatus' => $datapelaksana
-        // ];
-        // // $status = $data['datastatus'][0]['pelaksana_utama'];
-        // // $status = $datapelaksana['pelaksana_utama'];
-        // if($data['datastatus'][0]['pelaksana_utama']=='1') {
-        //     $data['datastatus'][0]['pelaksana_utama'] = '0';
-        // } else {
-        //     $status = '1';
-        // }
-
-        // $pelaksana->update(['pelaksana_id' => $catId],$status);
-
+    public function exportPDF()
+    {
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     }
 }
