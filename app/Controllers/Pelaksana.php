@@ -9,6 +9,8 @@ use App\Models\PelaksanaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 use CodeIgniter\Database\Exceptions\DatabaseException;
 
+
+
 class Pelaksana extends ResourcePresenter
 {
     /**
@@ -25,14 +27,14 @@ class Pelaksana extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
         ];
-        $html = view('spt/spt_pdf', $data);
+        return view('spt/spt_pdf', $data);
         
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT,true, 'UTF-8', false);
         
         $pdf->AddPage();
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
         $this->response->setContentType('application/pdf');
-        $pdf->Output('example_001.pdf', 'S');
+        $pdf->Output('example_001.pdf', 'I');
 
     }
 

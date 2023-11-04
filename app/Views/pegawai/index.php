@@ -68,7 +68,7 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="myTable" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -156,7 +156,7 @@
   </script>
 
   <script>
-    $('#example1').DataTable( {
+    $('#myTable').DataTable( {
       lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       // destroy: true,
       
