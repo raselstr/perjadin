@@ -28,6 +28,7 @@ class Pelaksana extends ResourcePresenter
             'spt'       => $dataspt,
         ];
         return view('spt/spt_pdf', $data);
+        // $html = view('spt/spt_pdf', $data);
         
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT,true, 'UTF-8', false);
         
