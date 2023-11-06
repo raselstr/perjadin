@@ -11,10 +11,8 @@
     <div id="content">
       <div class="page" style="font-size: 7pt">
         <table style="width: 100%;" class="header">
-        <tr>
-          <img src="<?= base_url(); ?>images/kop.png/">
-        </tr>
           <tr>
+            <td><img src="public/images/kop.png"/></td>
             <td><h1 style="text-align: left">SCHEDULE A</h1></td>
             <td><h1 style="text-align: right">Job: 132-003</h1></td>
           </tr>
