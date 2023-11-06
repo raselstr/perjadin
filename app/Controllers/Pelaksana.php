@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use TCPDF;
-// use Dompdf\Dompdf;
+use Dompdf\Dompdf;
 use App\Models\SptModel;
 use App\Models\PelaksanaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
@@ -27,15 +27,20 @@ class Pelaksana extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
         ];
-        return view('spt/spt_pdf', $data);
-        // $html = view('spt/spt_pdf', $data);
+        // return view('spt/spt_pdf', $data);
+        $pdf = view('spt/spt_pdf', $data);
         
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT,true, 'UTF-8', false);
+        // $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT,true, 'UTF-8', false);
         
-        $pdf->AddPage();
-        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-        $this->response->setContentType('application/pdf');
-        $pdf->Output('example_001.pdf', 'I');
+        // $pdf->AddPage();
+        // $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+        // $this->response->setContentType('application/pdf');
+        // $pdf->Output('example_001.pdf', 'I');
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($pdf);
+        $dompdf->setPaper('A4', 'portraid');
+        $dompdf->render();
+        $dompdf->stream('Dokumenku',array("Attachment"=>false));
 
     }
 

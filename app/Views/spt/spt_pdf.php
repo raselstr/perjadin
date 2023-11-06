@@ -1,140 +1,227 @@
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
-<style>
-* { padding: 0; margin: 0; }
 
-body {
-  /*color: #7d7a7a;*/
-  /*font-family: 'trebuchet ms', verdana, sans-serif;*/
-  font-family: sans-serif;
-}
-
-div.page {
-  margin:10mm;
-  padding:10mm;
-  border:0.5pt solid gray;
-}
-div.bgcolor {
-  background-color:#e0e0e0;
-  line-height:170%;
-}
-</style>
+<link rel="stylesheet" href="<?= base_url(); ?>/templates/pdf/css/print_static.css" type="text/css" />
 </head>
 
 <body>
-<div class="page">
-<h2><a name="bgimages">Background color, text decoration, page border</a></h2>
-<p>see more testcases with background images in <a href="image_variants.html">image_variants.html</a></p>
 
-<div class="bgcolor">
+<div id="body">
+
+<div id="section_header">
 </div>
 
-<p>&nbsp;<p>
+<div id="content">
+  
+<div class="page" style="font-size: 7pt">
+<table style="width: 100%;" class="header">
+<tr>
+<td><h1 style="text-align: left">SCHEDULE A</h1></td>
+<td><h1 style="text-align: right">Job: 132-003</h1></td>
+</tr>
+</table>
 
-<p style="background:yellow; line-height:170%;">Text</p>
-<p><a href="bgimages" style="background:yellow; line-height:170%;">Link</a></p>
+<table style="width: 100%; font-size: 8pt;">
+<tr>
+<td>Job: <strong>132-003</strong></td>
+<td>Purchasers(s): <strong>Palmer</strong></td>
+</tr>
 
-<p>&nbsp;<p>
+<tr>
+<td>Created: <strong>2004-08-13</strong></td>
+<td>Last Change: <strong>2004-08-16  9:28 AM</strong></td>
+</tr>
 
-<div style="background-color:#e0e0e0;">
-block
-<span style="background-color:yellow;">inline</span>
-block
-_<u  style="background-color:yellow;">underline</u><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:underline;">underline style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:line-through;">line-through style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:overline;">overline style</span><span style="background-color:yellow;">x</span>
-block
+<tr>
+<td>Address: <strong>667 Pine Lodge Dr.</strong></td>
+<td>Legal: <strong>N/A</strong></td>
+</tr>
+</table>
+
+<table style="width: 100%; border-top: 1px solid black; border-bottom: 1px solid black; font-size: 8pt;">
+
+<tr>
+<td>Model: <strong>Franklin</strong></td>
+<td>Elevation: <strong>B</strong></td>
+<td>Size: <strong>1160 Cu. Ft.</strong></td>
+<td>Style: <strong>Reciprocating</strong></td>
+</tr>
+
+</table>
+
+<table class="change_order_items">
+
+<tr><td colspan="6"><h2>Standard Items:</h2></td></tr>
+
+<tbody>
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Quantity</th>
+<th colspan="2">Unit Cost</th>
+<th>Total</th>
+</tr>
+
+<tr class="even_row">
+<td style="text-align: center">1</td>
+<td>Sprockets (13 tooth)</td>
+<td style="text-align: center">50</td>
+<td style="text-align: right; border-right-style: none;">$10.00</td>
+<td class="change_order_unit_col" style="border-left-style: none;">Ea.</td>
+<td class="change_order_total_col">$5,000.00</td>
+</tr>
+
+
+<tr class="odd_row">
+<td style="text-align: center">2</td>
+<td>Cogs (Cylindrical)</td>
+<td style="text-align: center">45</td>
+<td style="text-align: right; border-right-style: none;">$25.00</td>
+<td class="change_order_unit_col" style="border-left-style: none;">Ea.</td>
+<td class="change_order_total_col">$1125.00</td>
+</tr>
+
+<tr class="even_row">
+<td style="text-align: center">3</td>
+<td>Gears (15 tooth)</td>
+<td style="text-align: center">32</td>
+<td style="text-align: right; border-right-style: none;">$19.00</td>
+<td class="change_order_unit_col" style="border-left-style: none;">Ea.</td>
+<td class="change_order_total_col">$608.00</td>
+</tr>
+
+<tr class="odd_row">
+<td style="text-align: center">4</td>
+<td>Leaf springs (13 N/m)</td>
+<td style="text-align: center">6</td>
+<td style="text-align: right; border-right-style: none;">$125.00</td>
+<td class="change_order_unit_col" style="border-left-style: none;">Ea.</td>
+<td class="change_order_total_col">$750.00</td>
+</tr>
+
+<tr class="even_row">
+<td style="text-align: center">5</td>
+<td>Coil springs (6 N/deg)</td>
+<td style="text-align: center">7</td>
+<td style="text-align: right; border-right-style: none;">$11.00</td>
+<td class="change_order_unit_col" style="border-left-style: none;">Ea.</td>
+<td class="change_order_total_col">$77.00</td>
+</tr>
+
+</tbody>
+
+
+
+
+<tr>
+<td colspan="3" style="text-align: right;">(Tax is not included; it will be collected on closing.)</td>
+<td colspan="2" style="text-align: right;"><strong>GRAND TOTAL:</strong></td>
+<td class="change_order_total_col"><strong>$7560.00</strong></td></tr>
+</table>
+
+<table class="sa_signature_box" style="border-top: 1px solid black; padding-top: 2em; margin-top: 2em;">
+
+  <tr>    
+    <td>WITNESS:</td><td class="written_field" style="padding-left: 2.5in">&nbsp;</td>
+    <td style="padding-left: 1em">PURCHASER:</td><td class="written_field" style="padding-left: 2.5in; text-align: right;">X</td>
+  </tr>
+  <tr>
+    <td colspan="3" style="padding-top: 0em">&nbsp;</td>
+    <td style="text-align: center; padding-top: 0em;">Mr. Leland Palmer</td>
+  </tr>
+
+<tr><td colspan="4" style="white-space: normal">
+This change order shall have no force or effect until approved and signed
+by an authorizing signing officer of the supplier.  Any change or special
+request not noted on this document is not contractual.
+</td>
+</tr>
+
+<tr>
+<td colspan="2">ACCEPTED THIS
+<span class="written_field" style="padding-left: 4em">&nbsp;</span>
+DAY OF <span class="written_field" style="padding-left: 8em;">&nbsp;</span>, 
+20<span class="written_field" style="padding-left: 4em">&nbsp;</span>.
+</td>
+
+<td colspan="2" style="padding-left: 1em;">TWIN PEAKS SUPPLY LTD.<br/><br/>
+PER: 
+<span class="written_field" style="padding-left: 2.5in">&nbsp;</span>
+</td>
+</tr>
+</table>
+
 </div>
 
-<p>&nbsp;<p>
-
-<div style="font-size:200%; background-color:#e0e0e0;">
-block
-<span style="background-color:yellow;">inline</span>
-block
-_<u  style="background-color:yellow;">underline</u><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:underline;">underline style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:line-through;">line-through style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:overline;">overline style</span><span style="background-color:yellow;">x</span>
-block
+</div>
 </div>
 
-<p>&nbsp;<p>
+<script type="text/php">
 
-<div style="font-family:times; background-color:#e0e0e0;">
-block
-<span style="background-color:yellow;">inline</span>
-block
-_<u  style="background-color:yellow;">underline</u><span style="background-color:yellow;">x</span> 
-block
-_<span style="background-color:yellow;text-decoration:underline;">underline style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:line-through;">line-through style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:overline;">overline style</span><span style="background-color:yellow;">x</span>
-block
-</div>
+  if ( isset($pdf) ) {
 
-<p>&nbsp;<p>
+    $size = 6;
+    $color = array(0,0,0);
+    if (class_exists('Font_Metrics')) {
+      $font = Font_Metrics::get_font("helvetica");
+      $font_bold = Font_Metrics::get_font("helvetica", "bold");
+      $text_height = Font_Metrics::get_font_height($font, $size);
+    } elseif (class_exists('Dompdf\\FontMetrics')) {
+      $font = $fontMetrics->getFont("helvetica");
+      $font_bold = $fontMetrics->getFont("helvetica", "bold");
+      $text_height = $fontMetrics->getFontHeight($font, $size);
+    }
+    
+    $foot = $pdf->open_object();
+    
+    $w = $pdf->get_width();
+    $h = $pdf->get_height();
 
-<div style="font-family:times; font-size:200%; background-color:#e0e0e0;">
-block
-<span style="background-color:yellow;">inline</span>
-block
-_<u  style="background-color:yellow;">underline</u><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:underline;">underline style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:line-through;">line-through style</span><span style="background-color:yellow;">x</span>
-block
-_<span style="background-color:yellow;text-decoration:overline;">overline style</span><span style="background-color:yellow;">x</span>
-block
-</div>
-<p>&nbsp;<p>
+    // Draw a line along the bottom
+    $y = $h - 2 * $text_height - 24;
+    $pdf->line(16, $y, $w - 16, $y, $color, 1);
 
-<div style="background-color:#e0e0e0;">
-block
-<span style="background-color:yellow;">inline</span>
-<span style="background-color:yellow;text-decoration:underline;">
-underline sdfjsfh sdfs sfd sf sf sdfsdfasf asdfasdfa asdfasdf asdf asdfas dfasdf afsafasf asdfasdasdf adfasfasdf
-</span>
-block
-</div>
+    $y += $text_height;
 
-<p>&nbsp;<p>
+    $text = "Job: 132-003";
+    $pdf->text(16, $y, $text, $font, $size, $color);
 
-<div style="background-color:#e0e0e0;font-family:serif;">
-block
-<span style="background-color:yellow;">inline</span>
-block
-<u  style="background-color:yellow;">underline</u>
-block
-<span style="background-color:yellow;text-decoration:underline;">underline style</span>
-block
-</div>
+    $pdf->close_object();
+    $pdf->add_object($foot, "all");
 
-<p>&nbsp;<p>
+    global $initials;
+    $initials = $pdf->open_object();
+    
+    // Add an initals box
+    $text = "Initials:";
+    if (class_exists('Font_Metrics')) {
+      $width = Font_Metrics::get_text_width($text, $font, $size);
+    } elseif (class_exists('Dompdf\\FontMetrics')) {
+      $width = $fontMetrics->getTextWidth($text, $font, $size);
+    }
+    $pdf->text($w - 16 - $width - 38, $y, $text, $font, $size, $color);
+    $pdf->rectangle($w - 16 - 36, $y - 2, 36, $text_height + 4, array(0.5,0.5,0.5), 0.5);
+      
 
-<p>
-<span>The PHP 5 HTML to PDF converter</span>
-</p>
+    $pdf->close_object();
+    $pdf->add_object($initials);
+  
+    // Mark the document as a duplicate
+    $pdf->text(110, $h - 240, "DUPLICATE", $font_bold,
+              110, array(0.85, 0.85, 0.85), 0, 0, -52);
 
-<p>Fill fill fill fill fill fill fill fill</p>
-<p>Fill fill fill fill fill fill fill fill</p>
-<p>Fill fill fill fill fill fill fill fill</p>
-<p>Fill fill fill fill fill fill fill fill</p>
-<p>Fill fill fill fill fill fill fill fill</p>
-<p>Fill fill fill fill fill fill fill fill</p>
-<p>Fill fill fill fill fill fill fill fill</p>
-<div>
-</body> </html>
+    $text = "Page {PAGE_NUM} of {PAGE_COUNT}";  
+    if (class_exists('Font_Metrics')) {
+      $width = Font_Metrics::get_text_width($text, $font, $size);
+    } elseif (class_exists('Dompdf\\FontMetrics')) {
+      $width = $fontMetrics->getTextWidth($text, $font, $size);
+    }
+    // Center the text
+    $pdf->page_text($w / 2 - $width / 2, $y, $text, $font, $size, $color);
+    
+  }
+</script>
+
+</body>
+</html>
