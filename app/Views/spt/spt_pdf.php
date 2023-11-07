@@ -154,6 +154,7 @@
           <td >:</td>
           <td colspan="5" id="isisuratpej">Jabatan pemberi tugas</td>
         </tr>
+        <tr><td></td></tr>
         <tr>
           <td colspan="11" id="isisurat"><strong><center>MEMERINTAHKAN</center></strong></td>
         </tr>

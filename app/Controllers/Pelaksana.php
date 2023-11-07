@@ -34,9 +34,9 @@ class Pelaksana extends ResourcePresenter
         
        
         $options = new Options();
-        $options->set('defaultFont', 'Courier'); //membuat huruf default
-        $options->set('pdfBeckend','CPDF');
-        $options->set('Chroot',realpath(''));
+        // $options->set('defaultFont', 'Courier'); //membuat huruf default
+        // $options->set('pdfBeckend','CPDF');
+        // $options->set('Chroot',realpath(''));
         $options->set('isRemoteEnabled', true);
 
         $dompdf = new Dompdf($options);
