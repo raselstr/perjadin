@@ -21,6 +21,7 @@ class Pelaksana extends ResourcePresenter
      */
     public function index()
     {
+        set_time_limit(300);
         $spt = new SptModel();
         $dataspt = $spt->findAll();
         $data = [
@@ -28,8 +29,8 @@ class Pelaksana extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
         ];
-        return view('spt/spt_pdf', $data);
-        // $html = view('spt/spt_pdf', $data);
+        // return view('spt/spt_pdf', $data);
+        $html = view('spt/spt_pdf', $data);
         
        
         $options = new Options();
