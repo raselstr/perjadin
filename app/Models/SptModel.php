@@ -70,19 +70,13 @@ class SptModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    // function ambilspt($id=null,$jenis=null)
-    // {
-    //     if($jenis)=="Luar Kota dalam Provinsi" {
-    //         $builder = $this->db->table('spts');
-    //     $builder->select('*');
-    //     $builder->where('spts.spt_id',$id);
-    //     $query = $builder->get();
-    //     return $query->getResult();
-    //     }
-    //     $builder = $this->db->table('spts');
-    //     $builder->select('*');
-    //     $builder->where('spts.spt_id',$id);
-    //     $query = $builder->get();
-    //     return $query->getResult();
-    // }
+    function pelaksanaspt()
+    {
+        $builder = $this->db->table('spts');
+        $builder->select('*');
+        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
+        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

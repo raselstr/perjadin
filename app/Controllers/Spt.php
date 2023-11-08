@@ -24,7 +24,7 @@ class Spt extends ResourcePresenter
     public function index()
     {
         $spt = new SptModel();
-        $dataspt = $spt->findAll();
+        $dataspt = $spt->pelaksanaspt();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
