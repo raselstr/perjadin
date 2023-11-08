@@ -77,12 +77,14 @@ class Spts extends Migration
             ],
         ]);
         $this->forge->addKey('spt_id', true);
+        $this->forge->addForeignKey('spt_pjb_tugas','pejabats','pejabat_id','','','FKpejabatpemberitugas');
 
         $this->forge->createTable('spts');
     }
 
     public function down()
     {
+        $this->forge->dropForeignKey('spts','FKpejabatpemberitugas');
         $this->forge->dropTable('spts');
     }
 }

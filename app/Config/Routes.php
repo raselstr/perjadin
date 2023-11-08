@@ -21,6 +21,6 @@ $routes->presenter('spt');
 
 // $routes->get('pelaksana/updatetoggle/(:num)','Pelaksana::updatetoggle/$1');
 $routes->post('pelaksana/updatetoggle','Pelaksana::updatetoggle');
-
+$routes->get('pelaksana/sptpdf/(:num)','Pelaksana::sptpdf/$1');
 $routes->presenter('pelaksana');
 

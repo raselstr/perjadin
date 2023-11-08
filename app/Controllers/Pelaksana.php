@@ -21,7 +21,6 @@ class Pelaksana extends ResourcePresenter
      */
     public function index()
     {
-        set_time_limit(300);
         $spt = new SptModel();
         $dataspt = $spt->findAll();
         $data = [
@@ -29,23 +28,9 @@ class Pelaksana extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
         ];
-        // return view('spt/spt_pdf', $data);
-        $html = view('spt/spt_pdf', $data);
-        
-       
-        $options = new Options();
-        // $options->set('defaultFont', 'Courier'); //membuat huruf default
-        // $options->set('pdfBeckend','CPDF');
-        // $options->set('Chroot',realpath(''));
-        $options->set('isRemoteEnabled', true);
-
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portraid');
-        $dompdf->render();
-        $dompdf->stream('Dokumenku',array("Attachment"=>false));
-
+        return view('pelaksana/index', $data);
     }
+    
 
     /**
      * Present a view to present a specific resource object
@@ -163,9 +148,43 @@ class Pelaksana extends ResourcePresenter
             }
     }
 
-    public function exportPDF()
+    public function sptpdf($id = null)
     {
-        
+        set_time_limit(300);
+        // $spt = new SptModel();
+        $pelaksana = new PelaksanaModel();
 
+        $dataspt = $pelaksana->datapelaksana($id);
+        $data = [
+            'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
+            'title'     => 'Surat Perintah Tugas',
+            'subtitle'  => 'Home',
+            'spt'       => $dataspt,
+        ];
+        // dd($data);
+        // return view('pelaksana/spt_pdf', $data);
+        $html = view('pelaksana/spt_pdf', $data);
+        
+       
+        $options = new Options();
+        // $options->set('defaultFont', 'Courier'); //membuat huruf default
+        // $options->set('pdfBeckend','CPDF');
+        // $options->set('Chroot',realpath(''));
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portraid');
+        $dompdf->render();
+        $dompdf->stream('Dokumenku',array("Attachment"=>false));
+
+    }
+    // Kunci menampilkan image di DOMPdf
+    private function imageToBase64($path) {
+        $path = $path;
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        return $base64;
     }
 }
