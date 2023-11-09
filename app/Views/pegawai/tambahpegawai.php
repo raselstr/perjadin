@@ -16,7 +16,7 @@
               <div class="card-body">
                 <div class="card card-info">
                   <div class="card-header">
-                    <h3 class="card-title">Tambah Data Pegawai</h3>
+                    <h3 class="card-title"><?= $title; ?></h3>
                   </div>
                   
                   <?php $errors = session()->getFlashdata('validation') ?>

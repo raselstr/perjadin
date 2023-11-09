@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\JenisperjadinModel;
 use App\Models\LokasiperjadinModel;
 use App\Models\PegawaisModel;
+use App\Models\PejabatModel;
 use App\Models\PelaksanaModel;
 use App\Models\SptModel;
 use CodeIgniter\RESTful\ResourcePresenter;
@@ -24,12 +25,15 @@ class Spt extends ResourcePresenter
     public function index()
     {
         $spt = new SptModel();
+        $penugas = new PejabatModel();
         $dataspt = $spt->pelaksanaspt();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
+            'pejabat'   => $penugas->findAll(),
         ];
+        // dd($data);
         return view('spt/index', $data);
     }
 
@@ -52,17 +56,17 @@ class Spt extends ResourcePresenter
      */
     public function new()
     {
-        $spt = new SptModel();
         $lokasiperjadin = new LokasiperjadinModel();
-        $jenisperjadin = new JenisperjadinModel();
-        $dataspt = $spt->findAll();
+        $jenisperjadin  = new JenisperjadinModel();
+        $pejabat        = new PejabatModel();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
-            'spt'       => $dataspt,
             'lokasi'    => $lokasiperjadin->findAll(),
             'jenis'     => $jenisperjadin->findAll(),
+            'pejabat'   => $pejabat->findAll(),
         ];
+        // dd($data);
         return view('spt/tambahspt', $data);
     }
 
@@ -76,6 +80,7 @@ class Spt extends ResourcePresenter
     {
         $spt = new SptModel();
         $data = $this->request->getPost();
+        // dd($data);
 
         $save = $spt->save($data);
         // dd($spt->errors());
@@ -96,12 +101,18 @@ class Spt extends ResourcePresenter
     public function edit($id = null)
     {
         $spt = new SptModel();
+        $lokasiperjadin = new LokasiperjadinModel();
+        $jenisperjadin  = new JenisperjadinModel();
+        $pejabat        = new PejabatModel();
         $dataspt = $spt->find($id);
         if(is_object($dataspt)){
             $data = [
                 'title'     => 'Edit Tambah Pegawai',
                 'subtitle'  => 'Home',
                 'spt'       => $dataspt,
+                'lokasi'    => $lokasiperjadin->findAll(),
+                'jenis'     => $jenisperjadin->findAll(),
+                'pejabat'   => $pejabat->findAll(),
             ];
            
             return view('spt/editspt', $data);

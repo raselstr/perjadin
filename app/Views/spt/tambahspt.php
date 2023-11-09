@@ -50,8 +50,9 @@
                           <div class="col">
                             <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Pejabat yang berwenang ...!</option>
-                              <option value="Kepala Dinas" <?= old('spt_pjb_tugas') == "Kepala Dinas" ? 'selected':null?>>Kepala Dinas</option>
-                              <option value="Sekretaris" <?= old('spt_pjb_tugas') == "Sekretaris" ? 'selected':null?>>Sekretaris</option>
+                              cc
+                                <option value="<?= $value->pejabat_id ?>" <?= old('spt_pjb_tugas') == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_id; ?></option>
+                              <?php } ?>
                             </select>
                             <div class="invalid-feedback">
                                 <?= isset($errors['spt_pjb_tugas']) ? $errors['spt_pjb_tugas'] : null ; ?>
@@ -61,16 +62,12 @@
                         <div class="form-group row">
                           <label for="spt_jenis" class="col-sm-4 col-form-label">Jenis Perjalanan Dinas</label>
                           <div class="col">
-                            <!-- <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" >
-                              
-                            </select> -->
                             <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" >
                               <option value="">Pilih Jenis Perjalanan Dinas</option>
                               <?php foreach ($jenis as $key => $value) { ?>
                                 <option value="<?= $value->jenisperjadin_id; ?>"<?= old('spt_jenis') ==  $value->jenisperjadin_id ? 'selected':null?>><?= $value->jenisperjadin_nama; ?></option>
                               <?php } ?>
                             </select>
-                            <!-- <input class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" type="text" name="spt_jenis" placeholder="Pejabat Pemberi Tugas" id="spt_jenis" value="<?= old('spt_jenis') ?>"> -->
                             <div class="invalid-feedback">
                                 <?= isset($errors['spt_jenis']) ? $errors['spt_jenis'] : null ; ?>
                             </div>
