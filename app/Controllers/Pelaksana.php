@@ -42,7 +42,7 @@ class Pelaksana extends ResourcePresenter
      */
     public function show($id = null)
     {
-        //
+        
     }
 
     /**
@@ -154,7 +154,11 @@ class Pelaksana extends ResourcePresenter
         set_time_limit(300);
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
-
+        $cek = $pelaksana->caripengikut($id);
+        if($cek <= 0){
+            session()->setFlashdata('info','Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+            return redirect()->back();
+        }
         $dataspt = $pelaksana->datapelaksana($id);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
@@ -168,9 +172,6 @@ class Pelaksana extends ResourcePresenter
         
        
         $options = new Options();
-        // $options->set('defaultFont', 'Courier'); //membuat huruf default
-        // $options->set('pdfBeckend','CPDF');
-        // $options->set('Chroot',realpath(''));
         $options->set('isRemoteEnabled', true);
 
         $dompdf = new Dompdf($options);
@@ -180,7 +181,8 @@ class Pelaksana extends ResourcePresenter
         $dompdf->stream('Dokumenku',array("Attachment"=>false));
 
     }
-    // Kunci menampilkan image di DOMPdf
+    // Kunci menampilkan image di DOMPdf 
+    // dari : https://www.binaryboxtuts.com/php-tutorials/generating-pdf-from-html-in-codeigniter-4/
     private function imageToBase64($path) {
         $path = $path;
         $type = pathinfo($path, PATHINFO_EXTENSION);
@@ -188,4 +190,14 @@ class Pelaksana extends ResourcePresenter
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         return $base64;
     }
+
+    /**
+     * Process the deletion of a specific resource object
+     *
+     * @param mixed $id
+     *
+     * @return mixed
+     */
+    
+    
 }

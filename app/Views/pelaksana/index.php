@@ -57,7 +57,7 @@
                   </div>
                 </div>
               </div>
-              
+              <div class="flash-data" data-flashdata="<?= session()->getflashdata('info'); ?>"></div>
 
               <div class="card-body">
                 <div class="card-body">
@@ -87,7 +87,7 @@
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle text-center">
-                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary" onclick><i class="fas fa-print"></i></a>
                           </td>
                           <td class="align-middle text-center">
                             <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
@@ -141,43 +141,24 @@
       "responsive": true,
     });
   });
+  </script>
+  <script>
 
     const flashData = $('.flash-data').data('flashdata');
     // console.log(flashData);
-
-    if(flashData){
-        var Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 5000,
+    // $("#myLink").click(function(){
+      if(flashData){
+          Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: flashData,
         });
-        Toast.fire({
-          icon: "success",
-          title: flashData,
-        });
-        // swalDefaultSuccess(flashData, "You clicked the button!", "success");
+      } else {
+            $("#myLink").attr("target", "_blank");
+          
     }
 
-    $('.tombol-hapus').on('click', function(e){
-      e.preventDefault();
-
-      const href = $(this).attr('href');
-
-      Swal.fire({
-        title: "Apakah Anda yakin",
-        text: "data akan dihapus permanen",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Hapus Data",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.location.href = href;
-        }
-      });
-    });
+    
 
   </script>
 <?= $this->endSection() ?>
