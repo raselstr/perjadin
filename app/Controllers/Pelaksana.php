@@ -191,13 +191,38 @@ class Pelaksana extends ResourcePresenter
         return $base64;
     }
 
-    /**
-     * Process the deletion of a specific resource object
-     *
-     * @param mixed $id
-     *
-     * @return mixed
-     */
+    public function sppdpdf($id = null)
+    {
+        set_time_limit(300);
+        // $spt = new SptModel();
+        $pelaksana = new PelaksanaModel();
+        $cek = $pelaksana->caripengikut($id);
+        if($cek <= 0){
+            session()->setFlashdata('info','Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+            return redirect()->back();
+        }
+        $dataspt = $pelaksana->datapelaksana($id);
+        $data = [
+            'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
+            'title'     => 'Surat Perintah Tugas',
+            'subtitle'  => 'Home',
+            'spt'       => $dataspt,
+        ];
+        // dd($data);
+        // return view('pelaksana/sppd_pdf', $data);
+        $html = view('pelaksana/sppd_pdf', $data);
+        
+       
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portraid');
+        $dompdf->render();
+        $dompdf->stream('SPPD',array("Attachment"=>false));
+
+    }
     
     
 }

@@ -87,10 +87,10 @@
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle text-center">
-                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary" onclick><i class="fas fa-print"></i></a>
+                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
                           </td>
                           <td class="align-middle text-center">
-                            <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
+                            <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
                           </td>
                         </tr>
                       <?php } ?>

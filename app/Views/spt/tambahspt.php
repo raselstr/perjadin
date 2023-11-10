@@ -50,7 +50,7 @@
                           <div class="col">
                             <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Pejabat yang berwenang ...!</option>
-                              cc
+                              <?php foreach ($pejabat as $key => $value) { ?>
                                 <option value="<?= $value->pejabat_id ?>" <?= old('spt_pjb_tugas') == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_id; ?></option>
                               <?php } ?>
                             </select>

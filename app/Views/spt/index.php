@@ -46,7 +46,7 @@
         <div class="row">
           <!-- /.col-md-6 -->
           <div class="col">
-            <div class="card card-primary card-outline">
+            <div class="card card-secondary">
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-8">
@@ -57,7 +57,7 @@
                     <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
                       Tambah Data Pegawai
                     </button> -->
-                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-primary float-right">
+                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-block bg-gradient-primary btn-sm float-right">
                       <i class="fa fa-plus">  Tambah Surat Perintah Tugas</i>
                     </a>
                   </div>
