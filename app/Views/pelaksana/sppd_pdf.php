@@ -6,6 +6,40 @@
 <title>Printed document</title>
 
 <style type="text/css">
+@page {
+	margin: 0.5cm;
+}
+
+  #header, #footer {
+  position: fixed;
+  left: 0;
+	right: 0;
+	color: #aaa;
+	font-size: 0.9em;
+}
+
+#header {
+  top: 0;
+	border-bottom: 0.1pt solid #aaa;
+}
+
+#footer {
+  bottom: 0;
+  border-top: 0.1pt solid #aaa;
+}
+
+.page-number {
+  text-align: center;
+}
+
+.page-number:before {
+  content: "hal : " counter(page);
+}
+
+hr {
+  page-break-after: always;
+  border: 0;
+}
 
 body {
   font-family: sans-serif;
@@ -22,7 +56,7 @@ div.absolute {
 }
 div.card{
   /* border: 1px solid black; */
-  width: 98%;
+  width: 94%;
 }
 table.tabel1{
   /* position: relative; */
@@ -82,21 +116,48 @@ table.ttd td{
 .pengikut {
   font-size:x-small;
 }
+.ttdan {
+      text-align: right;
+      vertical-align: top;
+      padding-right: 5px;
+    }
+table.tabel3{
+  /* position: relative; */
+  width: 100%;
+  border-collapse: collapse;
+  /* border: 1pt solid black;  */
+  
+}
+table.tabel3.author {
+  text-align: right;
+}
 
 </style>
   
 </head>
 
 <body>
+  <div id="header">
+  <table class="tabel3">
+    <tr>
+      <td>SPPD BKAD Kab. Asahan</td>
+      <td class = "author" width=20%>IT BKAD Kab. Asahan</td>
+    </tr>
+  </table>
+</div>
+
+<div id="footer">
+  <div class="page-number"></div>
+</div>
 	<!--
 <div class="absolute" style="left: 20px; right: 20px;">
   left/right
 </div>-->
 
-<div class="absolute" style="top: 0px; left: 0px;">
+<div class="absolute" style="top: 30px; left: 10px;">
   <img src="<?= $imageSrc ?>" width="95%">
 </div>
-<div class="card absolute" style="top:130px;left:0px">
+<div class="card absolute" style="top:160px;left:20px; right:40px;">
   <table class="tabel2">
     <tr>
       <td></td>
@@ -200,7 +261,7 @@ table.ttd td{
       </tr>
       <?php $no = "a"; foreach ($pengikut as $key => $value) : ?>
         <tr>
-          <td class="bawah pengikut"><?= $no++; ?></td>
+          <td class="bawah pengikut"><?= $no++; ?>.</td>
           <td class="bawah pengikut"><?= $value->pegawai_nama; ?> - <?= $value->pegawai_nip; ?></td>
           <td colspan="3" class="isi pengikut"><?= $value->pangkat_nama; ?></td>
           <td colspan="3" class="isi pengikut"><?= $value->pegawai_jabatan; ?></td>
@@ -231,7 +292,7 @@ table.ttd td{
       <td colspan="9">*) Coret yang tidak perlu</td>
     </tr>
   </table>
-
+<hr/>
   <table class="ttd" >
     <tr>
       <td id="ttd" width="50%">
@@ -250,7 +311,7 @@ table.ttd td{
     <tr><td><br></td></tr>
     <?php if($spt[0]->pejabat_id <> "Kepala Dinas") { ?>
       <tr>
-        <td id="ttdan">An.</td>
+        <td class="ttd ttdan">An. </td>
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
       </tr>
       <tr>
