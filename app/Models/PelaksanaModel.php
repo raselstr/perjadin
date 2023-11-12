@@ -95,22 +95,25 @@ class PelaksanaModel extends Model
 
     function pelaksanautama ($id)
     {
+        $array = ['pelaksanas.spt_id' => $id, 'pelaksanas.pelaksana_utama' => 1];
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
-        
         $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
-        $builder->where('pelaksanas.pelaksana_utama','1');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $builder->where($array);
         $query = $builder->get();
-        return $query->getResultArray();
+        return $query->getResult();
     }
-    function pelaksanapengikut ()
+    function pelaksanapengikut ($id)
     {
+        $array = ['pelaksanas.spt_id' => $id, 'pelaksanas.pelaksana_utama' => 0];
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
         $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
-        $builder->where('pelaksanas.pelaksana_utama','0');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $builder->where($array);
         $query = $builder->get();
-        return $query->getResultArray();
+        return $query->getResult();
     }
 
     

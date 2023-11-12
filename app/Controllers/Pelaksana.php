@@ -205,21 +205,27 @@ class Pelaksana extends ResourcePresenter
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
         $cek = $pelaksana->caripengikut($id);
-        dd($cek);
-        if($cek <= 0){
-            session()->setFlashdata('info','Data Pelaksana Perjalanan Dinas Tidak ada atau Pelaksana Utama Perjalanan Dinas Belum Dipilih, Harap diisi terlebih dahulu !!!');
+        $cekutama = $pelaksana->cariutama($id);
+        $namautama = $pelaksana->pelaksanautama($id);
+        $namapengikut = $pelaksana->pelaksanapengikut($id);
+        if($cek <= 0) {
+            session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
             return redirect()->back();
-        }
+        } elseif ($cekutama > 1 OR $cekutama == 0) {
+                session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
+                return redirect()->back();
+            }
         $dataspt = $pelaksana->datapelaksana($id);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
-            'utama'     => $pelaksana->pelaksanautama(),
-            'pengikut'  => $pelaksana->pelaksanapengikut(),
+            'utama'     => $namautama,
+            'pengikut'  => $namapengikut,
+            'jlhpengikut'   => $cek - $cekutama,
         ];
-        dd($data);
+        // dd($data, $cek, $cekutama);
         // return view('pelaksana/sppd_pdf', $data);
         $html = view('pelaksana/sppd_pdf', $data);
         

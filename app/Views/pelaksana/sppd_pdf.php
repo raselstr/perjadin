@@ -120,11 +120,11 @@ table.ttd td{
       <td rowspan="2" colspan="2" class="isi">Nama/ NIP Pegawai yang melaksanakan Perjalanan Dinas</td>
       <td colspan="2" width="30%">Nama</td>
       <td width=2%>:</td>
-      <td colspan="3" >RASEL RASEL  RASEL  RASEL  RASEL  RASEL  RASEL  </td>
+      <td colspan="3" ><?= $utama[0]->pegawai_nama; ?></td>
       <tr>
         <td colspan="2" class="bawah">NIP</td>
         <td class="bawah">:</td>
-        <td colspan="3" class="bawah">12345</td>
+        <td colspan="3" class="bawah"><?= $utama[0]->pegawai_nip; ?></td>
       </tr>
     </tr>
     <tr>
@@ -132,13 +132,13 @@ table.ttd td{
       <td width="3%">a.</td>
       <td width=40%>Pangkat dan Golongan</td>
       <td width="3%" class="kiri">a.</td>
-      <td colspan="5">Penata Muda</td>
+      <td colspan="5"><?= $utama[0]->pangkat_nama; ?> (<?= $utama[0]->pangkat_gol; ?>)</td>
     </tr>
     <tr>
       <td>b.</td>
       <td>Jabatan/ Instansi</td>
       <td class="kiri">b.</td>
-      <td colspan="5">Staf Staf Staf Staf Staf Staf Staf Staf StafStaf Staf Staf Staf Staf Staf Staf Staf Staf Staf  </td>
+      <td colspan="5"><?= $utama[0]->pegawai_jabatan; ?></td>
     </tr>
     <tr>
       <td>c.</td>
@@ -149,15 +149,12 @@ table.ttd td{
     <tr>
       <td class="isi no">4.</td>
       <td colspan="2" class="isi">Maksud Perjalanan Dinas</td>
-      <td colspan="6" class="isi">Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas 
-        Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas 
-        Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas Konsultas 
-      </td>
+      <td colspan="6" class="isi"><?= $spt[0]->spt_uraian; ?></td>
     </tr>
     <tr>
       <td  class="isi no">5.</td>
       <td  class="isi" colspan="2">Alat Angkut yang dipergunakan</td>
-      <td  class="isi" colspan="6">Angkutan Umum</td>
+      <td  class="isi" colspan="6"><?= $spt[0]->spt_transport; ?></td>
     </tr>
     <tr>
       <td rowspan="2" class="isi no">6.</td>
@@ -170,29 +167,30 @@ table.ttd td{
         <td class="bawah">b.</td>
         <td class="bawah">Tempat Tujuan</td>
         <td class="bawah kiri">b.</td>
-        <td colspan="5" class="bawah">Medan</td>
+        <td colspan="5" class="bawah"><?= $spt[0]->lokasiperjadin_nama ?></td>
       </tr>
     <tr>
       <td  rowspan="3"  class="isi no">7.</td>
         <td>a.</td>
         <td>Lamanya Perjalanan Dinas</td>
         <td class="kiri">a.</td>
-        <td  colspan="5" >2 (Dua) Hari</td>
+        <td  colspan="5" ><?= $spt[0]->spt_lama ?></td>
       </tr>
       <tr>
         <td>b.</td>
         <td>Tanggal Berangkat</td>
         <td class="kiri">b.</td>
-        <td colspan="5">23 Oktober 2023</td>
+        <td colspan="5"><?= $spt[0]->spt_mulai ?></td>
       </tr>
       <tr>
         <td>c.</td>
         <td>Tanggal harus kembali/tiba diTempat baru*)</td>
         <td class="kiri">c.</td>
-        <td colspan="5">26 Oktober 2023</td>
+        <td colspan="5"><?= $spt[0]->spt_berakhir ?></td>
       </tr>
     <tr>
-      <td  rowspan="3" class="isi no">8.</td>
+      <?php if($jlhpengikut == 0){$row = 2;}else{$row = 2 + $jlhpengikut;} ?>
+      <td  rowspan="<?= $row; ?>" class="isi no">8.</td>
         <td  colspan="8" class="isi">Pengikut :</td>
       </tr>
       <tr>
@@ -200,12 +198,14 @@ table.ttd td{
         <th colspan="3" class="isi">Pangkat</td>
         <th colspan="3" class="isi">Jabatan</td>
       </tr>
-      <tr>
-        <td class="bawah pengikut">a.</td>
-        <td class="bawah pengikut">Nama dan Nip Pengikut</td>
-        <td colspan="3" class="isi pengikut">Pembina Utama Muda TK. I</td>
-        <td colspan="3" class="isi pengikut">Jabatan PengikutPengikutPeng ikutPengikut</td>
-      </tr>
+      <?php $no = "a"; foreach ($pengikut as $key => $value) : ?>
+        <tr>
+          <td class="bawah pengikut"><?= $no++; ?></td>
+          <td class="bawah pengikut"><?= $value->pegawai_nama; ?> - <?= $value->pegawai_nip; ?></td>
+          <td colspan="3" class="isi pengikut"><?= $value->pangkat_nama; ?></td>
+          <td colspan="3" class="isi pengikut"><?= $value->pegawai_jabatan; ?></td>
+        </tr>
+      <?php endforeach; ?>
     <tr>
       <td rowspan="3" class="isi no">9.</td>
         <td colspan="8" class="isi">Pembebanan Anggaran</td>
