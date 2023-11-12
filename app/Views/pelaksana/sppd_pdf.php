@@ -7,7 +7,11 @@
 
 <style type="text/css">
 @page {
-	margin: 0.5cm;
+  /* size: 22; */
+	margin-top: 1.5cm;
+  margin-left: 2cm;
+  margin-right: 2cm;
+  margin-bottom: 1.5cm;
 }
 
   #header, #footer {
@@ -25,20 +29,23 @@
 
 #footer {
   bottom: 0;
-  border-top: 0.1pt solid #aaa;
+  /* border-top: 0.1pt solid #aaa; */
+ 
 }
 
 .page-number {
-  text-align: center;
+  text-align: right;
 }
 
 .page-number:before {
   content: "hal : " counter(page);
 }
 
-hr {
-  page-break-after: always;
-  border: 0;
+.page-break {
+  page-break-before: auto;
+  page-break-after: auto;
+  page-break-inside: avoid;
+  /* border: 0; */
 }
 
 body {
@@ -55,11 +62,12 @@ div.absolute {
 	/* vertical-align: middle; */
 }
 div.card{
-  /* border: 1px solid black; */
+  border: 1px solid black;
   width: 94%;
 }
 table.tabel1{
   /* position: relative; */
+  margin-top:10px;
   width: 100%;
   border-collapse: collapse;
   border: 1pt solid black; 
@@ -74,9 +82,11 @@ table.ttd{
 }
 table.tabel2 {
   /* position: relative; */
+  margin-top: 120px;
   width: 100%;
   border-collapse: collapse;
   padding-bottom: 10px;
+ 
   /* border: 1pt solid black;  */
 }
 table.tabel2 th {
@@ -109,6 +119,7 @@ table.tabel1,.isi {
 }
 th,td {
   padding: 2pt 5px;
+  
 }
 table.ttd td{
   padding: 0px;
@@ -137,38 +148,35 @@ table.tabel3.author {
 </head>
 
 <body>
-  <div id="header">
+  <!-- <div id="header">
   <table class="tabel3">
     <tr>
       <td>SPPD BKAD Kab. Asahan</td>
-      <td class = "author" width=20%>IT BKAD Kab. Asahan</td>
+      <td class = "author" width=25%>IT BKAD Kab. Asahan</td>
     </tr>
   </table>
-</div>
+</div> -->
 
 <div id="footer">
   <div class="page-number"></div>
 </div>
-	<!--
-<div class="absolute" style="left: 20px; right: 20px;">
-  left/right
-</div>-->
-
-<div class="absolute" style="top: 30px; left: 10px;">
-  <img src="<?= $imageSrc ?>" width="95%">
+<div class="absolute" style="top:-20px;left:0px;">
+  <img src="<?= $imageSrc ?>" width="100%">
 </div>
-<div class="card absolute" style="top:160px;left:20px; right:40px;">
+<!-- <div class="card " style="top:165px;left:20px;position:relative;"> -->
   <table class="tabel2">
     <tr>
       <td></td>
       <td width="25%">Lembar ke : ...................</td>
     </tr>
-    <tr>
-      <th colspan="2"><u>SURAT PERJALANAN DINAS (SPD)</u></th>
-    </tr>
-    <tr>
-      <td colspan="2">Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2023</td>
-    </tr>
+    
+      <tr>
+        <th colspan="2"><u>SURAT PERJALANAN DINAS (SPD)</u></th>
+      </tr>
+      <tr>
+        <td colspan="2">Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2023</td>
+      </tr>
+    
   </table>
   <table class="tabel1">
     <tr>
@@ -267,8 +275,11 @@ table.tabel3.author {
           <td colspan="3" class="isi pengikut"><?= $value->pegawai_jabatan; ?></td>
         </tr>
       <?php endforeach; ?>
-    <tr>
-      <td rowspan="3" class="isi no">9.</td>
+  <!-- </table>
+  <table class="tabel1">   -->
+        
+    <tr class="page-break">
+      <td rowspan="3" class="isi no ">9.</td>
         <td colspan="8" class="isi">Pembebanan Anggaran</td>
       </tr>
       <tr>
@@ -277,24 +288,28 @@ table.tabel3.author {
         <td colspan="6" class="kiri">BKAD KAB. ASAHAN</td>
       </tr>
       <tr>
-        <td  class="custome">b.</td>
-        <td  class="custome">Akun</td>
-        <td  colspan="6" class="kiri"></td>
+        <td>b.</td>
+        <td>Akun</td>
+        <td colspan="6" class="kiri bawah"></td>
       </tr>
     <tr>
       <td  class="isi" class="isi">10.</td>
       <td  class="isi" colspan="8">
         Keterangan Lain-lain
-        <p>
+        
       </td>
     </tr>
+    
     <tr>
       <td colspan="9">*) Coret yang tidak perlu</td>
     </tr>
   </table>
-<hr/>
-  <table class="ttd" >
-    <tr>
+  <!-- <br> -->
+<!-- </div>-->
+<!-- <div class="page-break"></div> -->
+<!-- <div class="card page-break" > -->
+  <table class="ttd page-break" >
+    <tr class="page-break">
       <td id="ttd" width="50%">
         &nbsp;
       </td>
@@ -302,7 +317,7 @@ table.tabel3.author {
       <td id="ttd" width="2%">:</td>
       <td id="ttd" width = "30%">Kisaran</td>
     </tr>
-    <tr>
+    <tr class="card page-break">
       <td id="ttd"></td>
       <td id="ttd">Pada Tanggal</td>
       <td id="ttd">:</td>
@@ -345,6 +360,7 @@ table.tabel3.author {
     </tr>
   </table>
 </div>
+
 </body>
 
 </html>

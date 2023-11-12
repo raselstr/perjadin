@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    @page {
+      /* size: 22; */
+      margin-top: 1.5cm;
+      /* margin-left: 2cm;
+      margin-right: 2cm; */
+      margin-bottom: 1.5cm;
+    }
+
+      #header, #footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+    #footer {
+        bottom: 0;
+    }
+    .page-number {
+      text-align: right;
+    }
+
+    .page-number:before {
+      content: "hal : " counter(page);
+    }
+
+    .page-break {
+      page-break-before: auto;
+      page-break-after: auto;
+      page-break-inside: avoid;
+      /* border: 0; */
+    }
     .card {
       /* border: 1px solid black; */
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -52,6 +84,9 @@
       text-align: center;
       font-size: small;
       padding: 0px 10px;
+    }
+    td {
+      /* border: 1px solid black; */
     }
     #judulsurat {
       text-align: center;
@@ -107,7 +142,9 @@
 </head>
 <body>
   <!-- <div class="card"> -->
-    
+    <div id="footer">
+      <div class="page-number"></div>
+    </div>
         
     <div class="container">
       <img src="<?= $imageSrc ?>">
@@ -126,9 +163,9 @@
         $dasar = $spt[0]->spt_dasar;
         if ($dasar) : ?>
         <tr>
-          <td colspan="2" id="isisurat" width="20%">Dasar</td>
-          <td id="isisurat">:</td>
-          <td colspan="8" id="isisurat" width="80%"><?= $spt[0]->spt_dasar ?></td>
+          <td colspan="2" id="isisurat">Dasar</td>
+          <td id="isisurat" width="4%">:</td>
+          <td colspan="8" id="isisurat"><?= $spt[0]->spt_dasar ?></td>
         </tr>
         <?php endif ?>
         <tr>
@@ -138,10 +175,10 @@
         </tr>
         <tr>
           <td id="isisuratno"></td>
-          <td id="isisuratpej"></td> 
+          <td id="isisuratpej" width="4%"></td> 
           <td id="isisuratpej"></td> 
           <td colspan="2" id="isisuratpej">Nama</td>
-          <td >:</td>
+          <td width="3%">:</td>
           <td colspan="5" id="isisuratpej"><?= $spt[0]->pejabat_nama; ?></td>
         </tr>
         <tr>
@@ -181,15 +218,15 @@
             } else $no="";
         foreach ($spt as $key => $value) : 
         ?>
-        <tr>
+        <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratno"></td>
           <td id="isisuratpej"><?= $no++; ?>.</td>
-          <td colspan="2" id="isisuratpej">Nama</td>
+          <td colspan="2" id="isisuratpej" >Nama</td>
           <td >:</td>
           <td colspan="5" id="isisuratpej" ><?= $value->pegawai_nama; ?></td>
         </tr>
-        <tr>
+        <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
@@ -197,7 +234,7 @@
           <td >:</td>
           <td colspan="5" id="isisuratpej"><?= $value->pegawai_nip; ?></td>
         </tr>
-        <tr>
+        <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
@@ -205,7 +242,7 @@
           <td >:</td>
           <td colspan="5" id="isisuratpej"><?= $value->pangkat_nama; ?>(<?= $value->pangkat_gol; ?>)</td>
         </tr>
-        <tr>
+        <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
@@ -214,11 +251,11 @@
           <td colspan="5" id="isisuratpej"><?= $value->pegawai_jabatan; ?></td>
         </tr>
         <?php endforeach; ?>
-        <tr>
+        <tr class = "page-break">
           <td colspan="11" id="isisurat">Untuk :</td>
         </tr>
         <tr>
-          <td id="isiberita">1.</td>
+          <td id="isiberita" width="5%">1.</td>
           <td colspan="10" id="isiberita"><?= $spt[0]->spt_uraian; ?></td>
         </tr>
         <tr>
@@ -230,7 +267,7 @@
         </tr>
       </table>
       <!-- <div class="cardttd"> -->
-      <table id="surat" >
+      <table id="surat" class="page-break">
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd" width="50%">
