@@ -37,7 +37,7 @@
     }
     
     .table1 {
-      position: absolute;
+      /* position: absolute; */
       font-family:Arial, Helvetica, sans-serif;
       color: #232323;
       font-size:smaller;
