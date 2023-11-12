@@ -155,16 +155,24 @@ class Pelaksana extends ResourcePresenter
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
         $cek = $pelaksana->caripengikut($id);
-        if($cek <= 0){
-            session()->setFlashdata('info','Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+        $cekutama = $pelaksana->cariutama($id);
+        // dd($cek, $cekutama);
+        if($cek <= 0) {
+            session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
             return redirect()->back();
-        }
+        } elseif ($cekutama > 1 OR $cekutama == 0) {
+                session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
+                return redirect()->back();
+            }
+            
+        
         $dataspt = $pelaksana->datapelaksana($id);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
+            'pelaksana'     => $cek,
         ];
         // dd($data);
         // return view('pelaksana/spt_pdf', $data);
@@ -197,8 +205,9 @@ class Pelaksana extends ResourcePresenter
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
         $cek = $pelaksana->caripengikut($id);
+        dd($cek);
         if($cek <= 0){
-            session()->setFlashdata('info','Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+            session()->setFlashdata('info','Data Pelaksana Perjalanan Dinas Tidak ada atau Pelaksana Utama Perjalanan Dinas Belum Dipilih, Harap diisi terlebih dahulu !!!');
             return redirect()->back();
         }
         $dataspt = $pelaksana->datapelaksana($id);
@@ -207,8 +216,10 @@ class Pelaksana extends ResourcePresenter
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
+            'utama'     => $pelaksana->pelaksanautama(),
+            'pengikut'  => $pelaksana->pelaksanapengikut(),
         ];
-        // dd($data);
+        dd($data);
         // return view('pelaksana/sppd_pdf', $data);
         $html = view('pelaksana/sppd_pdf', $data);
         

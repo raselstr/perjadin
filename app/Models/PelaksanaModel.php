@@ -71,12 +71,48 @@ class PelaksanaModel extends Model
 
     function caripengikut($id)
     {
+        $array = ['pelaksanas.spt_id' => $id];
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
         $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
         $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
-        $builder->where('pelaksanas.spt_id',$id);
+        $builder->where($array);
         $query = $builder->get();
         return $query->getNumRows();
     }
+    function cariutama($id)
+    {
+        $array = ['pelaksanas.spt_id' => $id, 'pelaksanas.pelaksana_utama' => 1];
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('*');
+        // $builder->selectCount('pelaksanas.pelaksana_utama');
+        $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->where($array);
+        $query = $builder->get();
+        return $query->getNumRows();
+    }
+
+    function pelaksanautama ($id)
+    {
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('*');
+        
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->where('pelaksanas.pelaksana_utama','1');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+    function pelaksanapengikut ()
+    {
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('*');
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->where('pelaksanas.pelaksana_utama','0');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
+    
 }
+

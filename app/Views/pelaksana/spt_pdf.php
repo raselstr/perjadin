@@ -176,7 +176,9 @@
           <td colspan="11" id="isisurat">Kepada :</td>
         </tr>
         <?php 
-        $no=1;
+        if ($pelaksana > 1) {
+                $no = 1;
+            } else $no="";
         foreach ($spt as $key => $value) : 
         ?>
         <tr>
