@@ -183,30 +183,6 @@ class Spt extends ResourcePresenter
 
     }
 
-    // public function getdatajenis()
-    // {
-    //     $jenisperjadin = new JenisperjadinModel();
-
-    //     if($this->request->isAJAX()){
-    //         $caridata = $this->request->getGet('search');
-
-    //         $datajenisperjadin = $jenisperjadin->like('jenisperjadin_nama',$caridata)->get();
-    //         if($datajenisperjadin->getNum() > 0){
-    //             $list = [];
-    //             $key = 0;
-    //             foreach ($datajenisperjadin->getResultArray() as $row) :
-    //                 $list[$key]['id']= $row['jenisperjadin_id'];
-    //                 $list[$key]['text'] = $row['jenisperjadin_nama'];
-    //                 $key++;
-    //             endforeach;
-
-    //             echo json_encode($list);
-
-    //         }
-
-    //     };
-    // }
-
     // Membuat Select Option Dinamis / Select option bertingkat
     public function getdatalokasi()
     {
@@ -225,4 +201,6 @@ class Spt extends ResourcePresenter
             echo json_encode($msg);
         }
     }
+
+    
 }

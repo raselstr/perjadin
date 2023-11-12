@@ -13,7 +13,7 @@ class SptModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['spt_tahun','spt_nomor','spt_tgl','spt_jenis','spt_pjb_tugas','spt_dasar','spt_uraian','spt_lama','spt_mulai','spt_berakhir','spt_tujuan','spt_transport'];
+    protected $allowedFields    = ['spt_tahun','spt_nomor','spt_tgl','spt_jenis','spt_pjb_tugas','spt_dasar','spt_uraian','spt_lama','spt_mulai','spt_berakhir','spt_tujuan','spt_transport','spt_tempat'];
 
     // Dates
     protected $useTimestamps = true;
@@ -32,6 +32,7 @@ class SptModel extends Model
         'spt_mulai'     => 'required',
         'spt_tujuan'    => 'required',
         'spt_transport' => 'required',
+        'spt_tempat'    => 'required',
     ];
     protected $validationMessages   = [
         'spt_pjb_tugas' => [
@@ -53,6 +54,9 @@ class SptModel extends Model
             'required'  => "Kota/ Provinsi Tujuan Perjalanan Dinas wajib diisi !",
         ],
         'spt_transport' => [
+            'required'  => "Transportasi yang digunakan Perjalanan Dinas wajib diisi !",
+        ],
+        'spt_tempat' => [
             'required'  => "Transportasi yang digunakan Perjalanan Dinas wajib diisi !",
         ],
     ];

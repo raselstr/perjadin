@@ -119,9 +119,19 @@
                           </div>
                         </div>
 
+                        <div class="form-group row">
+                          <label for="spt_lokasi" class="col-sm-4 col-form-label">Tempat Tujuan Perjadin</label>
+                          <div class="col">
+                            <input class="form-control <?= isset($errors['spt_lokasi']) ? 'is-invalid' : null ; ?>" type="text" name="spt_lokasi" placeholder="Tempat Tujuan Misal : Badan/Dinas/Kementerian beserta Alamatnya" id="spt_lokasi" value="<?= old('spt_lokasi') ?>">
+                              <div class="invalid-feedback">
+                                  <?= isset($errors['spt_lokasi']) ? $errors['spt_lokasi'] : null ; ?>
+                              </div>
+                          </div>
+                        </div>
+
                         <!--  input teks tempat tujuan -->
                         <div class="form-group row">
-                          <label for="spt_tujuan" id = "spt_tujuanlabel" class="col-sm-4 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
+                          <label for="spt_tujuan" id = "spt_tujuanlabel" class="col-sm-4 col-form-label">Lokasi Tujuan Perjalanan Dinas</label>
                           <div class="col">
                             <select name="spt_tujuan" id="spt_tujuan" class="form-control <?= isset($errors['spt_tujuan']) ? 'is-invalid' : null ; ?>">
 

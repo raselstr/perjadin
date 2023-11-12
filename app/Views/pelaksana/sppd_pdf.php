@@ -243,19 +243,19 @@ table.tabel3.author {
         <td>a.</td>
         <td>Lamanya Perjalanan Dinas</td>
         <td class="kiri">a.</td>
-        <td  colspan="5" ><?= $spt[0]->spt_lama ?></td>
+        <td  colspan="5" ><?= $spt[0]->spt_lama ?> (<?= $terbilang ?>) Hari</td>
       </tr>
       <tr>
         <td>b.</td>
         <td>Tanggal Berangkat</td>
         <td class="kiri">b.</td>
-        <td colspan="5"><?= $spt[0]->spt_mulai ?></td>
+        <td colspan="5"><?= date('d F Y',strtotime($spt[0]->spt_mulai)) ?></td>
       </tr>
       <tr>
         <td>c.</td>
         <td>Tanggal harus kembali/tiba diTempat baru*)</td>
         <td class="kiri">c.</td>
-        <td colspan="5"><?= $spt[0]->spt_berakhir ?></td>
+        <td colspan="5"><?= date('d F Y',strtotime($spt[0]->spt_berakhir)) ?></td>
       </tr>
     <tr>
       <?php if($jlhpengikut == 0){$row = 2;}else{$row = 2 + $jlhpengikut;} ?>
@@ -321,7 +321,7 @@ table.tabel3.author {
       <td id="ttd"></td>
       <td id="ttd">Pada Tanggal</td>
       <td id="ttd">:</td>
-      <td id="ttd"><?= $spt[0]->spt_tgl; ?></td>
+      <td id="ttd"><?= date('d F Y',strtotime($spt[0]->spt_tgl)); ?></td>
     </tr>
     <tr><td><br></td></tr>
     <?php if($spt[0]->pejabat_id <> "Kepala Dinas") { ?>

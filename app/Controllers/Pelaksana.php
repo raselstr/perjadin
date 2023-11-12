@@ -14,6 +14,7 @@ use CodeIgniter\Database\Exceptions\DatabaseException;
 
 class Pelaksana extends ResourcePresenter
 {
+    
     /**
      * Present a view of resource objects
      *
@@ -151,6 +152,7 @@ class Pelaksana extends ResourcePresenter
 
     public function sptpdf($id = null)
     {
+        helper('date');
         set_time_limit(300);
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
@@ -201,6 +203,8 @@ class Pelaksana extends ResourcePresenter
 
     public function sppdpdf($id = null)
     {
+        
+
         set_time_limit(300);
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
@@ -224,8 +228,9 @@ class Pelaksana extends ResourcePresenter
             'utama'     => $namautama,
             'pengikut'  => $namapengikut,
             'jlhpengikut'   => $cek - $cekutama,
+            'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt[0]->spt_lama))
         ];
-        // dd($data, $cek, $cekutama);
+        // dd($data);
         // return view('pelaksana/sppd_pdf', $data);
         $html = view('pelaksana/sppd_pdf', $data);
         
@@ -240,6 +245,8 @@ class Pelaksana extends ResourcePresenter
         $dompdf->stream('SPPD',array("Attachment"=>false));
 
     }
+
+    
     
     
 }
