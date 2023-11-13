@@ -173,8 +173,8 @@ class Spt extends ResourcePresenter
             'title'     => 'Tambah Pelaksana Perjalanan Dinas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
-            'peg'       => $pelaksana->findAll(),
-            'pelks'     => $pegpelaksana->datapelaksana($id),
+            'peg'       => $pelaksana->orderBy('pegawais.pegawai_id')->findAll(),
+            'pelks'     => $pegpelaksana->orderBy('pelaksanas.pelaksana_utama', SORT_DESC)->datapelaksana($id),
             ];
 
         // dd($data);    

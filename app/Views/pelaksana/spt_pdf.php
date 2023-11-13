@@ -221,7 +221,7 @@
         <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratno"></td>
-          <td id="isisuratpej"><?= $no++; ?>.</td>
+          <td id="isisuratpej" width="5%"><?= $no++; ?>.</td>
           <td colspan="2" id="isisuratpej" >Nama</td>
           <td >:</td>
           <td colspan="5" id="isisuratpej" ><?= $value->pegawai_nama; ?></td>
