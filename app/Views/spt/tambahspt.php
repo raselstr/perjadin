@@ -120,11 +120,11 @@
                         </div>
 
                         <div class="form-group row">
-                          <label for="spt_lokasi" class="col-sm-4 col-form-label">Tempat Tujuan Perjadin</label>
+                          <label for="spt_tempat" class="col-sm-4 col-form-label">Tempat Tujuan Perjadin</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_lokasi']) ? 'is-invalid' : null ; ?>" type="text" name="spt_lokasi" placeholder="Tempat Tujuan Misal : Badan/Dinas/Kementerian beserta Alamatnya" id="spt_lokasi" value="<?= old('spt_lokasi') ?>">
+                            <input class="form-control <?= isset($errors['spt_tempat']) ? 'is-invalid' : null ; ?>" type="text" name="spt_tempat" placeholder="Tempat Tujuan Misal : Badan/Dinas/Kementerian beserta Alamatnya" id="spt_tempat" value="<?= old('spt_tempat') ?>">
                               <div class="invalid-feedback">
-                                  <?= isset($errors['spt_lokasi']) ? $errors['spt_lokasi'] : null ; ?>
+                                  <?= isset($errors['spt_tempat']) ? $errors['spt_tempat'] : null ; ?>
                               </div>
                           </div>
                         </div>

@@ -218,7 +218,7 @@ table.tabel3.author {
     <tr>
       <td class="isi no">4.</td>
       <td colspan="2" class="isi">Maksud Perjalanan Dinas</td>
-      <td colspan="6" class="isi"><?= $spt[0]->spt_uraian; ?></td>
+      <td colspan="6" class="isi"><?= $spt[0]->spt_uraian; ?> ke <?= $spt[0]->spt_tempat; ?></td>
     </tr>
     <tr>
       <td  class="isi no">5.</td>
