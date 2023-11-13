@@ -17,6 +17,7 @@ $routes->presenter('pegawai');
 $routes->get('spt/pelaksana/(:num)','Spt::pelaksana/$1');
 $routes->get('spt/getdatajenis','Spt::getdatajenis');
 $routes->post('spt/getdatalokasi','Spt::getdatalokasi');
+$routes->get('spt/verif','Spt::verif');
 $routes->presenter('spt');
 
 // $routes->get('pelaksana/updatetoggle/(:num)','Pelaksana::updatetoggle/$1');

@@ -67,6 +67,10 @@ class Spts extends Migration
                 'type'          => 'VARCHAR',
                 'constraint'     => 150,
             ],
+            'spt_verif' => [
+                'type'          => 'INT',
+                'default'       => 0,  
+            ],
              'created_at'        => [
                 'type'          => 'DATETIME',
                 'null'          => true,

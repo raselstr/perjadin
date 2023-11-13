@@ -202,5 +202,21 @@ class Spt extends ResourcePresenter
         }
     }
 
+    public function verif()
+    {
+        $spt = new SptModel();
+        $penugas = new PejabatModel();
+        $dataspt = $spt->pelaksanaspt();
+        $data = [
+            'title'     => 'Surat Perintah Tugas',
+            'subtitle'  => 'Home',
+            'spt'       => $dataspt,
+            'pejabat'   => $penugas->findAll(),
+        ];
+        // dd($data);
+        return view('spt/verif', $data);
+    }
+
+
     
 }

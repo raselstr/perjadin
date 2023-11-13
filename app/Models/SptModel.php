@@ -13,7 +13,22 @@ class SptModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['spt_tahun','spt_nomor','spt_tgl','spt_jenis','spt_pjb_tugas','spt_dasar','spt_uraian','spt_lama','spt_mulai','spt_berakhir','spt_tujuan','spt_transport','spt_tempat'];
+    protected $allowedFields    = [
+        'spt_tahun',
+        'spt_nomor',
+        'spt_tgl',
+        'spt_jenis',
+        'spt_pjb_tugas',
+        'spt_dasar',
+        'spt_uraian',
+        'spt_lama',
+        'spt_mulai',
+        'spt_berakhir',
+        'spt_tujuan',
+        'spt_transport',
+        'spt_tempat',
+        'spt_verif',
+    ];
 
     // Dates
     protected $useTimestamps = true;
