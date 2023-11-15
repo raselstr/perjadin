@@ -45,6 +45,8 @@ class PelaksanaModel extends Model
 
     function datapelaksana($id=null)
     {
+        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id','Kepala Dinas');
+        // dd($subquery);
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
         $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
@@ -53,8 +55,8 @@ class PelaksanaModel extends Model
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
 
-
         $builder->where('pelaksanas.spt_id',$id);
+        $builder->where('pegawais.pegawai_nip !=',$subquery);
         $query = $builder->get();
         return $query->getResult();
     }
