@@ -11,6 +11,11 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
   <!-- Theme style -->
+
+  <!-- Bootstrap Switch Button -->
+  <!-- <link rel="stylesheet" href="plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch-button.min.css"> -->
+  <link rel="stylesheet" href="plugins/bootstrap-switch/css/bootstrap3/bootstrap-toggle.min.css">
+  <!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> -->
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -32,6 +37,11 @@
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
   <!-- Toastr -->
   <script src="plugins/toastr/toastr.min.js"></script>
+
+  <!-- Bootstrap Switch Button https://www.bootstraptoggle.com/-->
+  <!-- <script src="plugins/bootstrap-switch/js/bootstrap-switch-button.min.js"></script> -->
+  <script src="plugins/bootstrap-switch/js/bootstrap-toggle.min.js"></script>
+  <!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -67,13 +77,15 @@
                       <th rowspan="2" class="align-middle text-center">No</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
-                      <th rowspan="2" class="align-middle text-center">SPT</th>
+                      <th colspan="2" class="align-middle text-center">SPT</th>
                       <th rowspan="2" class="align-middle text-center">SPPD</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Uraian Perjalanan</th>
                       <th class="align-middle text-center">Lama Perjalanan</th>
                       <th class="align-middle text-center">Tempat Tujuan</th>
+                      <th class="align-middle text-center">Kaban</th>
+                      <th class="align-middle text-center">Staf</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -86,6 +98,12 @@
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
+                          <td class="align-middle text-center"> 
+                            <input type="checkbox" checked value = "<?= $value->spt_id; ?>" name="sptkaban"  data-toggle="toggle" data-on="Bupati" data-off="Sekda  ." data-onstyle="success" data-offstyle="danger">
+                            <a href="<?= site_url('pelaksana/sptbupati/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                            <!-- <input type="checkbox" name="sptkaban" value="<?= $value->spt_id;  ?>" class="status-checkbox" checked data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut  ." data-onstyle="success" data-offstyle="danger" data-size="sm"> -->
+                          </td>
+                          
                           <td class="align-middle text-center">
                             <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
                           </td>
@@ -157,8 +175,60 @@
             $("#myLink").attr("target", "_blank");
           
     }
-
-    
-
   </script>
+
+  <script>
+    $(document).ready(function () {
+        $('input[name="sptkaban"]').on('change', function () {
+            var checkboxValue = $(this).val();
+            var isChecked = $(this).is(':checked');
+            
+            if (isChecked) {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('pelaksana/sptbupati'); ?>",
+                  data: {item_ids:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    console.log('PDF berhasil dihasilkan');
+                    
+                    // Swal.fire({
+                    //   icon: 'success',
+                    //   title: 'Berhasil...',
+                    //   text: 'Pegawai ini sebagai Utama yang ditugaskan dalam Perjalanan Dinas',
+                    // });
+                    // location.reload();
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            // } else {
+            //     console.log(checkboxValue);
+            //     $.ajax({
+            //       type: "POST",
+            //       url: "<?= site_url('pelaksana/updatetoggle'); ?>",
+            //       data: {item_ids:checkboxValue},
+            //       // dataType: "dataType",
+            //       success: function (response) {
+            //         Swal.fire({
+            //           icon: 'success',
+            //           title: 'Berhasil...',
+            //           text: 'Pegawai ini sebagai Pengikut yang ditugaskan dalam Perjalanan Dinas',
+            //         });
+                    // location.reload();
+                    // alert('Status item berhasil diubah');
+                //   },
+                //   error: function (error) {
+                //       // Handle error, if any
+                //       console . error(error);
+                //   }
+                // });
+            }
+        });
+    });
+
+</script>
 <?= $this->endSection() ?>

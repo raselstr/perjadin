@@ -160,12 +160,12 @@
           </td>
         </tr>
         <?php 
-        $dasar = $spt[0]->spt_dasar;
+        $dasar = $kaban[0]->spt_dasar;
         if ($dasar) : ?>
         <tr>
           <td colspan="2" id="isisurat">Dasar</td>
           <td id="isisurat" width="4%">:</td>
-          <td colspan="8" id="isisurat"><?= $spt[0]->spt_dasar ?></td>
+          <td colspan="8" id="isisurat"><?= $kaban[0]->spt_dasar ?></td>
         </tr>
         <?php endif ?>
         <tr>
@@ -179,7 +179,7 @@
           <td id="isisuratpej"></td> 
           <td colspan="2" id="isisuratpej">Nama</td>
           <td width="3%">:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt[0]->pejabat_nama; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_nama; ?></td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -187,7 +187,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">NIP</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt[0]->pejabat_nip; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_nip; ?></td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -195,7 +195,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt[0]->pejabat_pangkat; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_pangkat; ?></td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -203,7 +203,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Jabatan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt[0]->pejabat_namajabatan; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_namajabatan; ?></td>
         </tr>
         <tr><td></td></tr>
         <tr>
@@ -213,18 +213,15 @@
           <td colspan="11" id="isisurat">Kepada :</td>
         </tr>
         <?php 
-        if ($pelaksana > 1) {
-                $no = 1;
-            } else $no="";
-        foreach ($spt as $key => $value) : 
+        
         ?>
         <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratno"></td>
-          <td id="isisuratpej" width="5%"><?= $no++; ?>.</td>
+          <td id="isisuratpej" width="5%"></td>
           <td colspan="2" id="isisuratpej" >Nama</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej" ><?= $value->pegawai_nama; ?></td>
+          <td colspan="5" id="isisuratpej" ><?= $kaban[0]->pegawai_nama; ?></td>
         </tr>
         <tr class="page-break">
           <td id="isisuratno"></td>
@@ -232,7 +229,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">NIP</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $value->pegawai_nip; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pegawai_nip; ?></td>
         </tr>
         <tr class="page-break">
           <td id="isisuratno"></td>
@@ -240,7 +237,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $value->pangkat_nama; ?>(<?= $value->pangkat_gol; ?>)</td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pangkat_nama; ?>(<?= $kaban[0]->pangkat_gol; ?>)</td>
         </tr>
         <tr class="page-break">
           <td id="isisuratno"></td>
@@ -248,15 +245,15 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Jabatan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $value->pegawai_jabatan; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pegawai_jabatan; ?></td>
         </tr>
-        <?php endforeach; ?>
+       
         <tr class = "page-break">
           <td colspan="11" id="isisurat">Untuk :</td>
         </tr>
         <tr>
           <td id="isiberita" width="5%">1.</td>
-          <td colspan="10" id="isiberita"><?= $spt[0]->spt_uraian; ?> ke <?= $spt[0]->spt_tempat; ?>, <?= $spt[0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($spt[0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($spt[0]->spt_berakhir)); ?>.</td>
+          <td colspan="10" id="isiberita"><?= $kaban[0]->spt_uraian; ?> ke <?= $kaban[0]->spt_tempat; ?>, <?= $kaban[0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($kaban[0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($kaban[0]->spt_berakhir)); ?>.</td>
         </tr>
         <tr>
           <td id="isiberita">2.</td>
@@ -284,17 +281,17 @@
           <td id="ttd" ></td>
           <td id="ttd"  >Pada Tanggal</td>
           <td id="ttd" >:</td>
-          <td id="ttd"  ><?= date('d F Y',strtotime($spt[0]->spt_tgl)); ?></td>
+          <td id="ttd"  ><?= date('d F Y',strtotime($kaban[0]->spt_tgl)); ?></td>
         </tr>
         <tr><td><br></td></tr>
-        <?php if($spt[0]->pejabat_id <> "Kepala Dinas") { ?>
+        <?php if($kaban[0]->pejabat_id <> "Kepala Dinas") { ?>
           <tr>
             <td id="ttdan">An.</td>
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
-            <td colspan="3" id="ttd" ><?= $spt[0]->pejabat_namajabatan; ?></td>
+            <td colspan="3" id="ttd" ><?= $kaban[0]->pejabat_namajabatan; ?></td>
           </tr>
         <?php } else { ?>
           <tr>
@@ -310,15 +307,15 @@
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd"><?= $spt[0]->pejabat_nama; ?></td>
+          <td colspan="3" id="ttd"><?= $kaban[0]->pejabat_nama; ?></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" ><?= $spt[0]->pejabat_pangkat; ?></td>
+          <td colspan="3" id="ttd" ><?= $kaban[0]->pejabat_pangkat; ?></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" >NIP.<?= $spt[0]->pejabat_nip; ?></td>
+          <td colspan="3" id="ttd" >NIP.<?= $kaban[0]->pejabat_nip; ?></td>
         </tr>
       </table>
     </div>

@@ -153,7 +153,7 @@
                               <td><?= $value->pegawai_nama; ?></td>
                               <td class="align-middle text-center"><?= $value->pegawai_nip; ?></td>
                               <td class="align-middle text-center">
-                                <input type="checkbox" name="pelaksana_id" value="<?= $value->pelaksana_id; ?>" class="status-checkbox" <?= $value->pelaksana_utama == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut" data-onstyle="success" data-offstyle="danger" data-size="sm">
+                                <input type="checkbox" name="pelaksana_id" value="<?= $value->pelaksana_id; ?>" class="status-checkbox" <?= $value->pelaksana_utama == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
                               </td>
                             </tr>
                           <?php } ?>
@@ -235,35 +235,6 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
-  <!-- <script>
-    $(document).ready(function () {
-        $('.status-checkbox').on('change', function () {
-            var selectedItems = $('.status-checkbox:checked').map(function () {
-                return $(this).val();
-            }).get();
-            alert(selectedItems);
-            if (selectedItems.length > 0) {
-                $.ajax({
-                    type: 'POST',
-                    url: '<?= base_url('pelaksana/updatetoggle'); ?>',
-                    data: {
-                        item_ids: selectedItems
-                    },
-                    success: function (response) {
-                        // Handle success, for example, show a success message
-                        alert('Status item berhasil diubah');
-                    },
-                    error: function (error) {
-                        // Handle error, if any
-                        console.error(error);
-                    }
-                });
-            }
-        });
-        
-    });
-  </script> -->
-  
 <script>
     $(document).ready(function () {
         $('input[name="pelaksana_id"]').on('change', function () {
@@ -316,10 +287,10 @@
         });
     });
 
-    $(selector).change(function (e) { 
-      e.preventDefault();
+    // $(selector).change(function (e) { 
+    //   e.preventDefault();
       
-    });
+    // });
 </script>
 
 <?= $this->endSection(); ?>

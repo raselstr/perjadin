@@ -203,8 +203,6 @@ class Pelaksana extends ResourcePresenter
 
     public function sppdpdf($id = null)
     {
-        
-
         set_time_limit(300);
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
@@ -246,7 +244,36 @@ class Pelaksana extends ResourcePresenter
 
     }
 
-    
+    public function sptbupati()
+    {
+        $itemModel = new PelaksanaModel();
+        $itemIds = $this->request->getPost('item_ids');
+        $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
+        // $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
+        $data = [
+            'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
+            // 'title'     => 'Surat Perintah Tugas',
+            // 'subtitle'  => 'Home',
+            'kaban'       => $kabanpelaksana,
+            
+            // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))
+        ];
+        // dd($data);
+        // return view('pelaksana/sptbupati_pdf', $data);
+        $html = view('pelaksana/sptbupati_pdf', $data);
+        
+       
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portraid');
+        $dompdf->render();
+        $dompdf->stream('SPPD',array("Attachment"=>false));
+
+       
+    }
     
     
 }
