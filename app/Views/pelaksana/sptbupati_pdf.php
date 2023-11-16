@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title></title>
   <style>
     @page {
       /* size: 22; */
       margin-top: 1.5cm;
-      /* margin-left: 2cm;
-      margin-right: 2cm; */
+      margin-left: 2cm;
+      margin-right: 2cm;
       margin-bottom: 1.5cm;
     }
 
@@ -37,26 +37,15 @@
       page-break-inside: avoid;
       /* border: 0; */
     }
-    .card {
-      /* border: 1px solid black; */
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      transition: 0.3s;
-      /* width: 816px;
-      height: 1096px; */
-      border-radius: 5px;
-      padding: 37px;
-    }
-    
-
     .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
 
     img {
-      border-radius: 5px 5px 0 0;
+      /* border-radius: 5px 5px 0 0; */
       width: 100%;
-      height: 100px;
-      padding-bottom: 10px
+      /* height: 100px; */
+      padding-bottom: 20px
 
     }
 
@@ -72,7 +61,7 @@
     }
 
     .container {
-      padding: 2px 20px;
+      /* padding: 2px 2px; */
 
     }
     
@@ -154,8 +143,8 @@
         </tr>
         <tr>
           <td colspan="11" id='isinomor'>
-            Nomor : 800.1.11.1/
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/BKAD/
+            Nomor : 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;/2023
           </td>
         </tr>
@@ -179,23 +168,7 @@
           <td id="isisuratpej"></td> 
           <td colspan="2" id="isisuratpej">Nama</td>
           <td width="3%">:</td>
-          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_nama; ?></td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">NIP</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_nip; ?></td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_pangkat; ?></td>
+          <td colspan="5" id="isisuratpej">H. SURYA, B.Sc</td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -203,7 +176,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Jabatan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $kaban[0]->pejabat_namajabatan; ?></td>
+          <td colspan="5" id="isisuratpej">BUPATI ASAHAN</td>
         </tr>
         <tr><td></td></tr>
         <tr>
@@ -272,6 +245,10 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </td>
           <td id="ttd" width="25%">Dikeluarkan di</td>
           <td id="ttd" width="5%">:</td>
@@ -281,7 +258,7 @@
           <td id="ttd" ></td>
           <td id="ttd"  >Pada Tanggal</td>
           <td id="ttd" >:</td>
-          <td id="ttd"  ><?= date('d F Y',strtotime($kaban[0]->spt_tgl)); ?></td>
+          <td id="ttd"  ><?= (empty($kaban[0]->spt_tgl)) ? "" : date('d F Y',strtotime($kaban[0]->spt_tgl)); ?></td>
         </tr>
         <tr><td><br></td></tr>
         <?php if($kaban[0]->pejabat_id <> "Kepala Dinas") { ?>
@@ -296,7 +273,7 @@
         <?php } else { ?>
           <tr>
             <td id="ttdan"></td>
-            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+            <td colspan="3" id="ttd">BUPATI ASAHAN</td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
@@ -307,16 +284,9 @@
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd"><?= $kaban[0]->pejabat_nama; ?></td>
+          <td colspan="3" id="ttd">H. SURYA, B.Sc</td>
         </tr>
-        <tr>
-          <td id="ttd"></td>
-          <td colspan="3" id="ttd" ><?= $kaban[0]->pejabat_pangkat; ?></td>
-        </tr>
-        <tr>
-          <td id="ttd"></td>
-          <td colspan="3" id="ttd" >NIP.<?= $kaban[0]->pejabat_nip; ?></td>
-        </tr>
+        
       </table>
     </div>
   <!-- </div> -->

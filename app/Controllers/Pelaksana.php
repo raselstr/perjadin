@@ -244,14 +244,14 @@ class Pelaksana extends ResourcePresenter
 
     }
 
-    public function sptbupati()
+    public function sptbupati($itemIds)
     {
         $itemModel = new PelaksanaModel();
-        $itemIds = $this->request->getPost('item_ids');
+        // $itemIds = $this->request->getPost('item_ids');
         $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
         // $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
         $data = [
-            'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
+            'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kopbupati.png'),
             // 'title'     => 'Surat Perintah Tugas',
             // 'subtitle'  => 'Home',
             'kaban'       => $kabanpelaksana,
@@ -261,6 +261,37 @@ class Pelaksana extends ResourcePresenter
         // dd($data);
         // return view('pelaksana/sptbupati_pdf', $data);
         $html = view('pelaksana/sptbupati_pdf', $data);
+        
+       
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portraid');
+        $dompdf->render();
+        $dompdf->stream('SPPD',array("Attachment"=>false));
+
+       
+    }
+
+    public function sptsekda($itemIds)
+    {
+        $itemModel = new PelaksanaModel();
+        // $itemIds = $this->request->getPost('item_ids');
+        $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
+        // $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
+        $data = [
+            'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kopsekda.png'),
+            // 'title'     => 'Surat Perintah Tugas',
+            // 'subtitle'  => 'Home',
+            'kaban'       => $kabanpelaksana,
+            
+            // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))
+        ];
+        // dd($data);
+        // return view('pelaksana/sptbupati_pdf', $data);
+        $html = view('pelaksana/sptsekda_pdf', $data);
         
        
         $options = new Options();

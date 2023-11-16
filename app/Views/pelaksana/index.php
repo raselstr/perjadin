@@ -1,3 +1,4 @@
+
 <?= $this->extend('layout/default'); ?>
 
 <?= $this->section('stylesheet'); ?>
@@ -99,13 +100,18 @@
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle text-center"> 
-                            <input type="checkbox" checked value = "<?= $value->spt_id; ?>" name="sptkaban"  data-toggle="toggle" data-on="Bupati" data-off="Sekda  ." data-onstyle="success" data-offstyle="danger">
-                            <a href="<?= site_url('pelaksana/sptbupati/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
-                            <!-- <input type="checkbox" name="sptkaban" value="<?= $value->spt_id;  ?>" class="status-checkbox" checked data-toggle="switchbutton" data-onlabel="Utama" data-offlabel="Pengikut  ." data-onstyle="success" data-offstyle="danger" data-size="sm"> -->
+                            <?php 
+                              $db = \Config\Database::connect();
+                              $itemModel = new App\Models\PelaksanaModel;
+                              $true = $itemModel->kabanpelaksana($value->spt_id);
+                              if (!empty($true)) : ?>
+                            <a href="<?= site_url('pelaksana/sptbupati/'.$value->spt_id); ?>" target="_blank" class="btn btn-warning bg-gradient-sm btn-primary">BUPATI</a>
+                            ||
+                            <a href="<?= site_url('pelaksana/sptsekda/'.$value->spt_id); ?>" target="_blank" class="btn btn-info bg-gradient-sm btn-primary">SEKDA</a>
+                            <?php endif ?>
                           </td>
-                          
                           <td class="align-middle text-center">
-                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
                           </td>
                           <td class="align-middle text-center">
                             <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
@@ -176,59 +182,4 @@
           
     }
   </script>
-
-  <script>
-    $(document).ready(function () {
-        $('input[name="sptkaban"]').on('change', function () {
-            var checkboxValue = $(this).val();
-            var isChecked = $(this).is(':checked');
-            
-            if (isChecked) {
-                console.log(checkboxValue);
-                $.ajax({
-                  type: "POST",
-                  url: "<?= site_url('pelaksana/sptbupati'); ?>",
-                  data: {item_ids:checkboxValue},
-                  // dataType: "dataType",
-                  success: function (response) {
-                    console.log('PDF berhasil dihasilkan');
-                    
-                    // Swal.fire({
-                    //   icon: 'success',
-                    //   title: 'Berhasil...',
-                    //   text: 'Pegawai ini sebagai Utama yang ditugaskan dalam Perjalanan Dinas',
-                    // });
-                    // location.reload();
-                  },
-                  error: function (error) {
-                      // Handle error, if any
-                      console . error(error);
-                  }
-                });
-            // } else {
-            //     console.log(checkboxValue);
-            //     $.ajax({
-            //       type: "POST",
-            //       url: "<?= site_url('pelaksana/updatetoggle'); ?>",
-            //       data: {item_ids:checkboxValue},
-            //       // dataType: "dataType",
-            //       success: function (response) {
-            //         Swal.fire({
-            //           icon: 'success',
-            //           title: 'Berhasil...',
-            //           text: 'Pegawai ini sebagai Pengikut yang ditugaskan dalam Perjalanan Dinas',
-            //         });
-                    // location.reload();
-                    // alert('Status item berhasil diubah');
-                //   },
-                //   error: function (error) {
-                //       // Handle error, if any
-                //       console . error(error);
-                //   }
-                // });
-            }
-        });
-    });
-
-</script>
 <?= $this->endSection() ?>
