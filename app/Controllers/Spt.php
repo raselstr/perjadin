@@ -208,7 +208,7 @@ class Spt extends ResourcePresenter
         $penugas = new PejabatModel();
         $dataspt = $spt->pelaksanaspt();
         $data = [
-            'title'     => 'Surat Perintah Tugas',
+            'title'     => 'Verifikasi Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'pejabat'   => $penugas->findAll(),
