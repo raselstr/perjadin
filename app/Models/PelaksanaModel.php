@@ -45,7 +45,7 @@ class PelaksanaModel extends Model
 
     function datapelaksana($id=null)
     {
-        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id','Kepala Dinas');
+        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id','Kaban');
         // dd($subquery);
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
