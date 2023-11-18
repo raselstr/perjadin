@@ -132,7 +132,10 @@ class Spt extends ResourcePresenter
      */
     public function update($id = null)
     {
-        //
+        $spt = new SptModel(); 
+        $data = $this->request->getPost();
+        $spt->save($data);
+        return redirect()->back();
     }
 
     /**

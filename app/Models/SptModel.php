@@ -16,6 +16,7 @@ class SptModel extends Model
     protected $allowedFields    = [
         'spt_tahun',
         'spt_nomor',
+        'sppd_nomor',
         'spt_tgl',
         'spt_jenis',
         'spt_pjb_tugas',

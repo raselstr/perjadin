@@ -169,12 +169,18 @@ table.tabel3.author {
       <td></td>
       <td width="25%">Lembar ke : ...................</td>
     </tr>
-    
       <tr>
         <th colspan="2"><u>SURAT PERJALANAN DINAS (SPD)</u></th>
       </tr>
       <tr>
-        <td colspan="2">Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2023</td>
+        <td colspan="2">
+          <?php if(empty($spt[0]->sppd_nomor)) : ?>
+            Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2023
+          <?php else : ?>
+            Nomor : <?= $spt[0]->sppd_nomor; ?>
+          <?php endif ?>
+          </td>
+
       </tr>
     
   </table>

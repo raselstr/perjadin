@@ -154,9 +154,13 @@
         </tr>
         <tr>
           <td colspan="11" id='isinomor'>
-            Nomor : 800.1.11.1/
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/BKAD/
-            &nbsp;&nbsp;&nbsp;&nbsp;/2023
+            <?php if (empty($spt[0]->spt_nomor)) : ?>
+              Nomor : 800.1.11.1/
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/BKAD/
+              &nbsp;&nbsp;&nbsp;&nbsp;/2023
+            <?php else : ?>
+              Nomor : <?= $spt[0]->spt_nomor ?>
+            <?php endif ?>
           </td>
         </tr>
         <?php 

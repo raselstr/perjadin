@@ -23,6 +23,11 @@ class Spts extends Migration
                 'constraint'    => 100,
                 'null'          => true,
             ],
+            'sppd_nomor' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 100,
+                'null'          => true,
+            ],
             'spt_tgl' => [
                 'type'          => 'DATE',
                 'null'          => true,

@@ -103,34 +103,34 @@
                             <?php 
                               $db = \Config\Database::connect();
                               $itemModel = new App\Models\PelaksanaModel;
+                              $verif = new App\Models\SptModel;
                               $true = $itemModel->kabanpelaksana($value->spt_id);
-                              if (!empty($true)) : ?>
+                              if (!empty($true) ) : ?>
                             <a href="<?= site_url('pelaksana/sptbupati/'.$value->spt_id); ?>" target="_blank" class="btn btn-warning bg-gradient-sm btn-primary">BUPATI</a>
                             ||
                             <a href="<?= site_url('pelaksana/sptsekda/'.$value->spt_id); ?>" target="_blank" class="btn btn-info bg-gradient-sm btn-primary">SEKDA</a>
+                            <?php else : ?>
+                              <i>Tidak ada</i>
                             <?php endif ?>
                           </td>
-                          <td class="align-middle text-center">
-                            <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
-                          </td>
-                          <td class="align-middle text-center">
-                            <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
-                          </td>
+                          <?php if ($value->spt_verif == '0') : ?>
+                            <td class="align-middle text-center">
+                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                            </td>
+                            <td class="align-middle text-center">
+                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
+                            </td>
+                            <?php else : ?>
+                              <td class="align-middle text-center">
+                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</a>
+                            </td>
+                            <td class="align-middle text-center">
+                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</i></a>
+                            </td>
+                            <?php endif ?>
                         </tr>
                       <?php } ?>
                   </tbody>
-                  <!-- <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>NIP</th>
-                    <th>Nama Pegawai</th>
-                    <th>Jabatan</th>
-                    <th>Eselon</th>
-                    <th>Pangkat</th>
-                    <th>Foto</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot> -->
                 </table>
               </div>
             </div>

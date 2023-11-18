@@ -57,9 +57,6 @@
                     <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
                       Tambah Data Pegawai
                     </button> -->
-                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-block bg-gradient-primary btn-sm float-right">
-                      <i class="fa fa-plus">  Tambah Surat Perintah Tugas</i>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -74,8 +71,8 @@
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
-                      <th rowspan="2" class="align-middle text-center">No. SPT</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
+                      <th rowspan="2" class="align-middle text-center">No. SPT <br> SPD</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal</th>
                       <th rowspan="2" class="align-middle text-center">Status</th>
                     </tr>
                     <tr>
@@ -95,10 +92,14 @@
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle"><?= $value->spt_transport ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_nomor ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?></td>
                           <td class="align-middle text-center"><?= $value->spt_tgl ?></td>
                           <td class="align-middle text-center">
-                            <button type="button" class="btn btn-block" data-toggle="modal" data-target="#exampleModalCenter" <?= $value->spt_verif==1?'disabled':null; ?>><?= $value->spt_verif==1?'Disetujui':'Belum disetujui'; ?></button>
+                            <?php if ($value->spt_verif == '1') : ?>
+                              <button type="button" class="btn btn-block btn-outline-success" disabled>Disetujui</button>
+                            <?php else : ?>
+                              <button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">Belum Disetujui</button>
+                            <?php endif ?>
                           </td>
                         </tr>
                       <?php } ?>
@@ -126,7 +127,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="<?= site_url('spt/create') ?>" method="post">
+        <form action="<?= site_url('spt/update/'.$value->spt_id) ?>" method="post">
         <?php csrf_field() ?>
         <div class="modal-body">
           <div class="form-group">
@@ -139,13 +140,17 @@
             <input type="text" class="form-control form-control-border" name="spt_nomor" placeholder="Input Nomor SPT">
           </div>
           <div class="form-group">
+            <label for="exampleInputBorder">Nomor Surat Perjalanan Dinas</code></label>
+            <input type="text" class="form-control form-control-border" name="sppd_nomor" placeholder="Input Nomor SPT">
+          </div>
+          <div class="form-group">
             <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
             <input type="date" class="form-control form-control-border" name="spt_tgl" placeholder="Masukkan Tanggal SPT">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
         </form>
         
