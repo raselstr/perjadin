@@ -132,6 +132,7 @@
           <div class="form-group">
             <!-- <label for="exampleInputBorder">id</code></label> -->
             <input type="text" name="spt_id" value="<?= $value->spt_id ?>" hidden>
+            <input type="text" name="spt_verif" value="1" hidden>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perintah Tugas</code></label>
