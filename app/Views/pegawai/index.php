@@ -68,7 +68,7 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped">
+                <table id="myTable1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -135,12 +135,13 @@
   <script>
 
     $(function () {
-    $("#example1").DataTable({
+    $("#myTable1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
+      lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
       
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
+    $('#myTable2').DataTable({
       // "paging": false,
       // "lengthChange": false,
       // "searching": false,
@@ -155,13 +156,13 @@
   });
   </script>
 
-  <script>
-    $('#myTable').DataTable( {
+  <!-- <script>
+    $('#myTable1').DataTable( {
       lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       // destroy: true,
       
     } );
-  </script>
+  </script> -->
 
   <script>
 

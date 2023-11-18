@@ -74,9 +74,9 @@
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal dibuat</th>
-                      <th rowspan="2" class="align-middle text-center">Pelaksana</th>
-                      <th rowspan="2" class="align-middle text-center">aksi</th>
+                      <th rowspan="2" class="align-middle text-center">No. SPT</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
+                      <th rowspan="2" class="align-middle text-center">Status</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Uraian Perjalanan</th>
@@ -95,28 +95,14 @@
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle"><?= $value->spt_transport ?></td>
-                          <td class="align-middle text-center"><?= $value->updated_at ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_nomor ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_tgl ?></td>
                           <td class="align-middle text-center">
-                              <!-- <a href="<?= site_url('spt/pelaksana/'.$value->spt_id); ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a></td> -->
-                          <td class="align-middle text-center">
-                            <!-- <a href="<?= site_url('spt/edit/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="<?= site_url('spt/remove/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a> -->
+                            <button type="button" class="btn btn-block" data-toggle="modal" data-target="#exampleModalCenter" <?= $value->spt_verif==1?'disabled':null; ?>><?= $value->spt_verif==1?'Disetujui':'Belum disetujui'; ?></button>
                           </td>
                         </tr>
                       <?php } ?>
                   </tbody>
-                  <!-- <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>NIP</th>
-                    <th>Nama Pegawai</th>
-                    <th>Jabatan</th>
-                    <th>Eselon</th>
-                    <th>Pangkat</th>
-                    <th>Foto</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot> -->
                 </table>
               </div>
             </div>
@@ -130,7 +116,44 @@
   </div>
     <!-- /.content -->
 
-   
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Nomor dan Tanggal Surat Perintah Tugas</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="<?= site_url('spt/create') ?>" method="post">
+        <?php csrf_field() ?>
+        <div class="modal-body">
+          <div class="form-group">
+            <!-- <label for="exampleInputBorder">id</code></label> -->
+            <input type="text" name="spt_id" value="<?= $value->spt_id ?>" hidden>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputBorder">Nomor Surat Perintah Tugas</code></label>
+            <input type="text" class="form-control form-control-border" name="spt_nomor" placeholder="Input Nomor SPT">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
+            <input type="date" class="form-control form-control-border" name="spt_tgl" placeholder="Masukkan Tanggal SPT">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+<!-- endModal -->
+
+
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
