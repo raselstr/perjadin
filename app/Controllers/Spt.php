@@ -132,11 +132,41 @@ class Spt extends ResourcePresenter
      */
     public function update($id = null)
     {
-        $spt = new SptModel(); 
+        $spt = new SptModel();
+        // $tgl_mulai = $spt->valid_tanggalspt($id);
+        if(!$this->validate([
+            'spt_nomor' => [
+                'rules' => 'required|is_unique[spts.spt_nomor]',
+                'errors' => [
+                    'required'  => 'Nomor SPT Wajib diisi ! ',
+                    'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
+                ]
+            ],
+            'sppd_nomor' => [
+                'rules' => 'required|is_unique[spts.sppd_nomor]',
+                'errors' => [
+                    'required'  => 'Nomor SPT Wajib diisi ! ',
+                    'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
+                ]
+            ],
+            'spt_tgl' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required'  => 'Tanggal SPT Wajib diisi ! ',
+                ]
+            ],
+
+        ])) {
+            
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
         $data = $this->request->getPost();
+
         $spt->save($data);
-        return redirect()->back();
+        // return redirect()->back();
     }
+
+     
 
     /**
      * Present a view to confirm the deletion of a specific resource object

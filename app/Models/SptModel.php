@@ -99,4 +99,14 @@ class SptModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    function valid_tanggalspt($id)
+    {
+        $builder = $this->db->table('spts');
+        $builder->select('spts.spt_mulai');
+        $builder->where('spts.spt_id',$id);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
 }

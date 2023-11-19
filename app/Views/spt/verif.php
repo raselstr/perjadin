@@ -127,7 +127,18 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="<?= site_url('spt/update/'.$value->spt_id) ?>" method="post">
+         <div id="errorContainer">
+                        <?php 
+                        $errors = session()->getFlashdata('validation');
+                        if (!empty($errors)) : ?>
+                            <!-- Display validation errors -->
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?= esc($error) ?></p>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                        
+        <form id= "myForm" action="<?= site_url('spt/update/'.$value->spt_id) ?>" method="post">
         <?php csrf_field() ?>
         <div class="modal-body">
           <div class="form-group">
@@ -138,6 +149,9 @@
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perintah Tugas</code></label>
             <input type="text" class="form-control form-control-border" name="spt_nomor" placeholder="Input Nomor SPT">
+            <div class="invalid-feedback">
+              <?= isset($errors['spt_nomor']) ? $errors['spt_nomor'] : null ; ?>
+            </div>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perjalanan Dinas</code></label>
@@ -180,43 +194,44 @@
       "responsive": true,
     });
   });
-
-    const flashData = $('.flash-data').data('flashdata');
-    // console.log(flashData);
-
-    if(flashData){
-        var Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 5000,
-        });
-        Toast.fire({
-          icon: "success",
-          title: flashData,
-        });
-        // swalDefaultSuccess(flashData, "You clicked the button!", "success");
-    }
-
-    $('.tombol-hapus').on('click', function(e){
-      e.preventDefault();
-
-      const href = $(this).attr('href');
-
-      Swal.fire({
-        title: "Apakah Anda yakin",
-        text: "data akan dihapus permanen",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Hapus Data",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.location.href = href;
-        }
-      });
-    });
-
   </script>
+<script>
+    $(document).ready(function() {
+        $('#myForm').submit(function(e) {
+            e.preventDefault();
+
+            var nomorSurat = $('#spt_nomor');
+            // var tanggalMulai = $('#tanggal_mulai');
+            // var tanggalSelesai = $('#tanggal_selesai');
+            var errorContainer = $('#errorContainer');
+            errorContainer.empty(); // Clear previous error messages
+
+            // ... your validation logic ...
+
+            // If there are validation errors
+            if (errorContainer.length > 0) {
+                var errorMessage = "<ul>";
+                for (var i = 0; i < errors.length; i++) {
+                    errorMessage += "<li>" + errors[i] + "</li>";
+                }
+                errorMessage += "</ul>";
+                errorContainer.html(errorMessage);
+
+                // Open modal if there are errors
+                $('#exampleModalCenter').addClass('show'); // Add 'show' class to prevent modal from closing
+                $('#exampleModalCenter').modal('show'); // Show modal
+            } else {
+                // Submit the form if validation passes
+                this.submit();
+            }
+        });
+
+        $('#exampleModalCenter').on('hide.bs.modal', function (e) {
+            if (!$(this).hasClass('show')) {
+                return e.preventDefault();
+            }
+        });
+    });
+</script>
+
 <?= $this->endSection() ?>
