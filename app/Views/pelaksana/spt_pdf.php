@@ -288,10 +288,14 @@
           <td id="ttd" ></td>
           <td id="ttd"  >Pada Tanggal</td>
           <td id="ttd" >:</td>
-          <td id="ttd"  ><?= date('d F Y',strtotime($spt[0]->spt_tgl)); ?></td>
+          <td id="ttd" >
+            <?php if(!empty($spt[0]->spt_tgl)) : ?>
+              <?= date('d F Y',strtotime($spt[0]->spt_tgl)); ?>
+            <?php endif;?>
+          </td>
         </tr>
         <tr><td><br></td></tr>
-        <?php if($spt[0]->pejabat_id <> "Kepala Dinas") { ?>
+        <?php if($spt[0]->pejabat_id <> "Kaban") { ?>
           <tr>
             <td id="ttdan">An.</td>
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
