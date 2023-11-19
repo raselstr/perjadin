@@ -16,7 +16,7 @@ class EselonsModel extends Model
     protected $allowedFields    = ['eselon_nama'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

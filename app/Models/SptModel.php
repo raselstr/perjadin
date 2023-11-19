@@ -93,7 +93,7 @@ class SptModel extends Model
     function pelaksanaspt()
     {
         $builder = $this->db->table('spts');
-        $builder->select('*');
+        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $query = $builder->get();

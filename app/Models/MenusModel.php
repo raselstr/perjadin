@@ -16,7 +16,7 @@ class MenusModel extends Model
     protected $allowedFields    = ['menu_nama','menu_aktif','menu_icon','menu_link','role_id'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

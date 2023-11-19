@@ -16,7 +16,7 @@ class PegawaisModel extends Model
     protected $allowedFields    = ['pegawai_nip','pegawai_nama','pegawai_jabatan','eselon_id','pangkat_id','pegawai_foto'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

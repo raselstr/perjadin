@@ -16,7 +16,7 @@ class RolemenusModel extends Model
     protected $allowedFields    = ['role_id','menu_id','submenu_id','lihat','tambah','ubah','hapus'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

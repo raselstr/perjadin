@@ -16,7 +16,7 @@ class PangkatsModel extends Model
     protected $allowedFields    = ['pangkat_nama','pangkat_gol','pangkat_pajak'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

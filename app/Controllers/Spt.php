@@ -26,12 +26,12 @@ class Spt extends ResourcePresenter
     {
         $spt = new SptModel();
         $penugas = new PejabatModel();
-        $dataspt = $spt->pelaksanaspt();
+        
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
-            'spt'       => $dataspt,
-            'pejabat'   => $penugas->findAll(),
+            'spt'       => $spt->orderBy('spts.spt_id')->pelaksanaspt(),
+            // 'pejabat'   => $penugas->findAll(),
         ];
         // dd($data);
         return view('spt/index', $data);
@@ -209,7 +209,7 @@ class Spt extends ResourcePresenter
     {
         $spt = new SptModel();
         $penugas = new PejabatModel();
-        $dataspt = $spt->pelaksanaspt();
+        $dataspt = $spt->orderBy('created_at','DESC')->pelaksanaspt();
         $data = [
             'title'     => 'Verifikasi Surat Perintah Tugas',
             'subtitle'  => 'Home',

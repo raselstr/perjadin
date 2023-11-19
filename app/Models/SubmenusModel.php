@@ -16,7 +16,7 @@ class SubmenusModel extends Model
     protected $allowedFields    = ['menu_id','submenu_nama','submenu_icon','submenu_link', 'submenu_aktif','role_id'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
