@@ -263,16 +263,6 @@
           <td id="ttd"  ><?= (empty($kaban[0]->spt_tgl)) ? "" : date('d F Y',strtotime($kaban[0]->spt_tgl)); ?></td>
         </tr>
         <tr><td><br></td></tr>
-        <?php if($kaban[0]->pejabat_id <> "Kepala Dinas") { ?>
-          <tr>
-            <td id="ttdan">An.</td>
-            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
-          </tr>
-          <tr>
-          <td id="ttdan" ></td>
-            <td colspan="3" id="ttd" ><?= $kaban[0]->pejabat_namajabatan; ?></td>
-          </tr>
-        <?php } else { ?>
           <tr>
             <td id="ttdan"></td>
             <td colspan="3" id="ttd">BUPATI ASAHAN</td>
@@ -281,7 +271,6 @@
           <td id="ttdan" ></td>
             <td colspan="3" id="ttd" ></td>
           </tr>
-        <?php } ?>
         <tr><td><br></td></tr>
         <tr><td><br></td></tr>
         <tr>
