@@ -127,7 +127,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id= "myForm" action="<?= site_url('spt/update/'.$value->spt_id) ?>" method="post">
+        <div id="responseContainer">
+            <!-- Data akan ditampilkan di sini -->
+        </div>
+        <form id= "myForm" action="<?= site_url('spt/simpanverif') ?>" method="post">
         <?php csrf_field() ?>
         <div class="modal-body">
           <div class="form-group">
@@ -137,26 +140,25 @@
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perintah Tugas</code></label>
-            <input type="text" class="form-control form-control-border" name="spt_nomor" placeholder="Input Nomor SPT" required>
-            <div class="invalid-feedback">
-              <?= isset($error['spt_nomor']) ? $error['spt_nomor'] : null ; ?>
+            <input type="text" class="form-control form-control-border" name="spt_nomor" placeholder="Input Nomor SPT">
+            <div class="invalid-feedback errorsptnomor">
+              
             </div>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perjalanan Dinas</code></label>
-            <input type="text" class="form-control form-control-border" name="sppd_nomor" placeholder="Input Nomor SPT" required>
+            <input type="text" class="form-control form-control-border" name="sppd_nomor" placeholder="Input Nomor SPT">
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
-            <input type="date" class="form-control form-control-border" name="spt_tgl" placeholder="Masukkan Tanggal SPT" required>
+            <input type="date" class="form-control form-control-border" name="spt_tgl" placeholder="Masukkan Tanggal SPT">
           </div>
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="submit" class="btn btn-primary btnsimpan">Simpan</button>
         </div>
         </form>
-        
       </div>
     </div>
   </div>
@@ -183,5 +185,37 @@
       "responsive": true,
     });
   });
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $('#myForm').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          dataType: "json",
+          beforeSend:function(){
+            $('.btnsimpan').attr('disable', 'disabled');
+            $('.btnsimpan').html('<i class="fa fa-spin fa-spineer"></i>');
+          },
+          complete: function(){
+            $('.btnsimpan').removeAttr('disable');
+            $('.btnsimpan').html('Simpan');
+          },
+          success: function (response) {
+            if(response.errors){
+              if(response.errors.spt_nomor){
+                $('.errorsptnomor').html(response.errors.spt_nomor);
+              }
+            }
+            
+          } 
+        });
+
+      });
+    });
   </script>
 <?= $this->endSection() ?>

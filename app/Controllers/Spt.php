@@ -132,38 +132,7 @@ class Spt extends ResourcePresenter
      */
     public function update($id = null)
     {
-        $spt = new SptModel();
-        // $tgl_mulai = $spt->valid_tanggalspt($id);
-        if(!$this->validate([
-            'spt_nomor' => [
-                'rules' => 'required|is_unique[spts.spt_nomor]',
-                'errors' => [
-                    'required'  => 'Nomor SPT Wajib diisi ! ',
-                    'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
-                ]
-            ],
-            'sppd_nomor' => [
-                'rules' => 'required|is_unique[spts.sppd_nomor]',
-                'errors' => [
-                    'required'  => 'Nomor SPT Wajib diisi ! ',
-                    'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
-                ]
-            ],
-            'spt_tgl' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required'  => 'Tanggal SPT Wajib diisi ! ',
-                ]
-            ],
-
-        ])) {
-            
-            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
-        }
-        $data = $this->request->getPost();
-
-        $spt->save($data);
-        // return redirect()->back();
+        
     }
 
      
@@ -250,6 +219,49 @@ class Spt extends ResourcePresenter
         return view('spt/verif', $data);
     }
 
+    public function simpanverif ()
+    {
+        $spt = new SptModel();
+        // $tgl_mulai = $spt->valid_tanggalspt($id);
+        if(!$this->validate([
+            'spt_nomor' => [
+                'rules' => 'required|is_unique[spts.spt_nomor]',
+                'errors' => [
+                    'required'  => 'Nomor SPT Wajib diisi ! ',
+                    'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
+                ]
+            ],
+            'sppd_nomor' => [
+                'rules' => 'required|is_unique[spts.sppd_nomor]',
+                'errors' => [
+                    'required'  => 'Nomor SPT Wajib diisi ! ',
+                    'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
+                ]
+            ],
+            'spt_tgl' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required'  => 'Tanggal SPT Wajib diisi ! ',
+                ]
+            ],
 
+        ])) {
+            $errors = $this->validator->getErrors();
+            
+            echo json_encode($errors);
+            // return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        } 
+       
+            $data = $this->request->getPost();
+            $spt->save($data);
+            $responsesuccess = [
+                'success'   => true,
+                'message'   => 'Data Berhasil disimpan'
+            ];
+            echo json_encode($responsesuccess);
+            // return redirect()->back();
+
+        
+    }
     
 }
