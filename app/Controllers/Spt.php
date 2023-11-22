@@ -224,15 +224,18 @@ class Spt extends ResourcePresenter
         $validation = \Config\Services::validation();
         // $tgl_mulai = $spt->valid_tanggalspt($id);
         $valid = $this->validate([
+            'spt_id'        => [
+                'rules'     => 'permit_empty|is_natural_no_zero'
+            ],
             'spt_nomor' => [
-                'rules' => 'required|is_unique[spts.spt_nomor]',
+                'rules' => 'required|is_unique[spts.spt_nomor,spt_id,{spt_id}]',
                 'errors' => [
                     'required'  => 'Nomor SPT Wajib diisi ! ',
                     'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
                 ]
             ],
             'sppd_nomor' => [
-                'rules' => 'required|is_unique[spts.sppd_nomor]',
+                'rules' => 'required|is_unique[spts.sppd_nomor,spt_id,{spt_id}]',
                 'errors' => [
                     'required'  => 'Nomor SPD Wajib diisi ! ',
                     'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',

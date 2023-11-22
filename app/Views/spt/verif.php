@@ -233,32 +233,34 @@
               console.log(tanggalmulai);
               console.log(tanggalspt);
               console.log(response);
-                if(response.error){
-                    if(response.messages.spt_nomor){
-                        $('#spt_nomor').addClass('is-invalid');
-                        $('.errorsptnomor').html(response.messages.spt_nomor);
-                    }
-                    if(response.messages.sppd_nomor){
-                        $('#sppd_nomor').addClass('is-invalid');
-                        $('.errorsppdnomor').html(response.messages.sppd_nomor);
-                    }
-                    if(response.messages.spt_tgl){
-                        $('#spt_tgl').addClass('is-invalid');
-                        $('.errorspttgl').html(response.messages.spt_tgl);
-                    }
-
-                } else if (tanggalspt > tanggalmulai) {
+              if (tanggalspt > tanggalmulai) {
                       $('#spt_tgl').addClass('is-invalid');
                       $('.errorspttgl').html('Tanggal SPT tidak boleh lebih kecil dari tanggal mulai!');
-                    
-                } else {
-                  console.log(response);
-                  setTimeout(function() {
-                  $('#exampleModalCenter').modal('hide');
-                    }, 2000);
-                    // Menyegarkan halaman jika diperlukan
-                    location.reload();
-                      }
+              } else {
+                  $('#spt_tgl').removeClass('is-invalid');
+                  $('.errorspttgl').html();
+              }
+              if(response.error){
+                  if(response.messages.spt_nomor){
+                      $('#spt_nomor').addClass('is-invalid');
+                      $('.errorsptnomor').html(response.messages.spt_nomor);
+                  }
+                  if(response.messages.sppd_nomor){
+                      $('#sppd_nomor').addClass('is-invalid');
+                      $('.errorsppdnomor').html(response.messages.sppd_nomor);
+                  }
+                  if(response.messages.spt_tgl){
+                      $('#spt_tgl').addClass('is-invalid');
+                      $('.errorspttgl').html(response.messages.spt_tgl);
+                  }
+              } else {
+                console.log(response);
+                setTimeout(function() {
+                $('#exampleModalCenter').modal('hide');
+                  }, 2000);
+                  // Menyegarkan halaman jika diperlukan
+                  location.reload();
+              }
             },
             error: function(xhr, status, error) {
                 console.error(error);
