@@ -230,9 +230,9 @@
                 $('.btnsimpan').html('Simpan');
             },
             success: function (response) {
-              console.log(tanggalmulai);
-              console.log(tanggalspt);
-              console.log(response);
+              // console.log(tanggalmulai);
+              // console.log(tanggalspt);
+              // console.log(response);
               if (tanggalspt > tanggalmulai) {
                       $('#spt_tgl').addClass('is-invalid');
                       $('.errorspttgl').html('Tanggal SPT tidak boleh lebih kecil dari tanggal mulai!');
