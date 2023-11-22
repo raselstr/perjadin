@@ -18,6 +18,7 @@ $routes->get('spt/pelaksana/(:num)','Spt::pelaksana/$1');
 $routes->get('spt/getdatajenis','Spt::getdatajenis');
 $routes->post('spt/getdatalokasi','Spt::getdatalokasi');
 $routes->get('spt/verif','Spt::verif');
+$routes->get('spt/verifinput','Spt::verifinput');
 $routes->post('spt/simpanverif','Spt::simpanverif');
 $routes->presenter('spt');
 

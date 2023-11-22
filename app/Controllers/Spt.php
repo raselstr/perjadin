@@ -221,9 +221,9 @@ class Spt extends ResourcePresenter
 
     public function simpanverif ()
     {
-        $spt = new SptModel();
+        $validation = \Config\Services::validation();
         // $tgl_mulai = $spt->valid_tanggalspt($id);
-        if(!$this->validate([
+        $valid = $this->validate([
             'spt_nomor' => [
                 'rules' => 'required|is_unique[spts.spt_nomor]',
                 'errors' => [
@@ -234,7 +234,7 @@ class Spt extends ResourcePresenter
             'sppd_nomor' => [
                 'rules' => 'required|is_unique[spts.sppd_nomor]',
                 'errors' => [
-                    'required'  => 'Nomor SPT Wajib diisi ! ',
+                    'required'  => 'Nomor SPD Wajib diisi ! ',
                     'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
                 ]
             ],
@@ -245,23 +245,48 @@ class Spt extends ResourcePresenter
                 ]
             ],
 
-        ])) {
-            $errors = $this->validator->getErrors();
-            
-            echo json_encode($errors);
-            // return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
-        } 
-       
+        ]);
+        if(!$valid) {
+            $errors = [
+                'error' => true,
+                'messages' => $validation->getErrors(),
+            ];
+            return $this->response->setJSON($errors);
+        } else {
+            $spt = new SptModel();
+           
             $data = $this->request->getPost();
             $spt->save($data);
             $responsesuccess = [
                 'success'   => true,
                 'message'   => 'Data Berhasil disimpan'
             ];
-            echo json_encode($responsesuccess);
+            return $this->response->setJSON($responsesuccess);
             // return redirect()->back();
+        }
+            // $errors = $this->validator->getErrors();
+            
+            
+            // return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        
+           
 
         
+    }
+
+    public function verifinput ()
+    {
+        $spt = new SptModel();
+        // $penugas = new PejabatModel();
+        $dataspt = $spt->orderBy('created_at','DESC')->pelaksanaspt();
+        $data = [
+            'title'     => 'Verifikasi Surat Perintah Tugas',
+            'subtitle'  => 'Home',
+            'spt'       => $dataspt,
+            // 'pejabat'   => $penugas->findAll(),
+        ];
+        // dd($data);
+        return view('spt/verifinput', $data);
     }
     
 }

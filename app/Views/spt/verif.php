@@ -69,15 +69,16 @@
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
-                      <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
+                      <th colspan="4" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
                       <th rowspan="2" class="align-middle text-center">No. SPT <br> SPD</th>
                       <th rowspan="2" class="align-middle text-center">Tanggal</th>
                       <th rowspan="2" class="align-middle text-center">Status</th>
                     </tr>
                     <tr>
-                      <th class="align-middle text-center">Uraian Perjalanan</th>
-                      <th class="align-middle text-center">Lama Perjalanan</th>
+                      <th class="align-middle text-center">Uraian</th>
+                      <th class="align-middle text-center">Tanggal Mulai</th>
+                      <th class="align-middle text-center">Lama (Hari) </th>
                       <th class="align-middle text-center">Tempat Tujuan</th>
                     </tr>
                   </thead>
@@ -89,6 +90,7 @@
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_mulai ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle"><?= $value->spt_transport ?></td>
@@ -98,7 +100,7 @@
                             <?php if ($value->spt_verif == '1') : ?>
                               <button type="button" class="btn btn-block btn-outline-success" disabled>Disetujui</button>
                             <?php else : ?>
-                              <button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">Belum Disetujui</button>
+                              <button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Belum Disetujui</button>
                             <?php endif ?>
                           </td>
                         </tr>
@@ -135,28 +137,29 @@
         <div class="modal-body">
           <div class="form-group">
             <!-- <label for="exampleInputBorder">id</code></label> -->
-            <input type="text" name="spt_id" value="<?= $value->spt_id ?>" hidden>
+            <input type="text" id="spt_id" name="spt_id">
+            <input type="text" id="spt_mulai">
             <input type="text" name="spt_verif" value="1" hidden>
           </div>
           <div class="form-group">
+            <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
+            <input type="date" class="form-control form-control-border" id="spt_tgl" name="spt_tgl" placeholder="Masukkan Tanggal SPT">
+            <div class="invalid-feedback errorspttgl"></div>
+          </div>
+          <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perintah Tugas</code></label>
-            <input type="text" class="form-control form-control-border" name="spt_nomor" placeholder="Input Nomor SPT">
-            <div class="invalid-feedback errorsptnomor">
-              
-            </div>
+            <input type="text" class="form-control form-control-border" id="spt_nomor" name="spt_nomor" placeholder="Input Nomor SPT">
+            <div class="invalid-feedback errorsptnomor"></div>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perjalanan Dinas</code></label>
-            <input type="text" class="form-control form-control-border" name="sppd_nomor" placeholder="Input Nomor SPT">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
-            <input type="date" class="form-control form-control-border" name="spt_tgl" placeholder="Masukkan Tanggal SPT">
+            <input type="text" class="form-control form-control-border" id="sppd_nomor" name="sppd_nomor" placeholder="Input Nomor SPT">
+            <div class="invalid-feedback errorsppdnomor"></div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary btnsimpan">Simpan</button>
+          <button type="submit" class="btn btn-primary btnsimpan" >Simpan</button>
         </div>
         </form>
       </div>
@@ -189,32 +192,79 @@
 
   <script>
     $(document).ready(function(){
+      // Tangkap klik pada tombol untuk membuka modal
+      $('[data-target="#exampleModalCenter"]').click(function() {
+          // Ambil nilai ID dari data-id atribut tombol yang diklik
+          var id = $(this).data('id');
+          var tglmulai = $(this).data('tglmulai');
+          var currentDate = new Date().toISOString().slice(0, 10);
+          // Set nilai ID ke dalam input dengan id "spt_id" di dalam modal
+          $('#spt_id').val(id);
+          $('#spt_mulai').val(tglmulai);
+          $('#spt_tgl').val(currentDate);
+
+      });
+
       $('#myForm').submit(function(e) {
         e.preventDefault();
 
-        $.ajax({
-          type: "post",
-          url: $(this).attr('action'),
-          data: $(this).serialize(),
-          dataType: "json",
-          beforeSend:function(){
-            $('.btnsimpan').attr('disable', 'disabled');
-            $('.btnsimpan').html('<i class="fa fa-spin fa-spineer"></i>');
-          },
-          complete: function(){
-            $('.btnsimpan').removeAttr('disable');
-            $('.btnsimpan').html('Simpan');
-          },
-          success: function (response) {
-            if(response.errors){
-              if(response.errors.spt_nomor){
-                $('.errorsptnomor').html(response.errors.spt_nomor);
-              }
-            }
-            
-          } 
-        });
+        // var sptId = $('#spt_id').val();
+        var tanggalspt = $('#spt_tgl').val();
+        var tanggalmulai = $('#spt_mulai').val();
+        
+        
+        
+        
 
+        $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: "json",
+            beforeSend:function(){
+                $('.btnsimpan').attr('disabled', 'disabled');
+                $('.btnsimpan').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.btnsimpan').removeAttr('disabled');
+                $('.btnsimpan').html('Simpan');
+            },
+            success: function (response) {
+              console.log(tanggalmulai);
+              console.log(tanggalspt);
+              console.log(response);
+                if(response.error){
+                    if(response.messages.spt_nomor){
+                        $('#spt_nomor').addClass('is-invalid');
+                        $('.errorsptnomor').html(response.messages.spt_nomor);
+                    }
+                    if(response.messages.sppd_nomor){
+                        $('#sppd_nomor').addClass('is-invalid');
+                        $('.errorsppdnomor').html(response.messages.sppd_nomor);
+                    }
+                    if(response.messages.spt_tgl){
+                        $('#spt_tgl').addClass('is-invalid');
+                        $('.errorspttgl').html(response.messages.spt_tgl);
+                    }
+
+                } else if (tanggalspt > tanggalmulai) {
+                      $('#spt_tgl').addClass('is-invalid');
+                      $('.errorspttgl').html('Tanggal SPT tidak boleh lebih kecil dari tanggal mulai!');
+                    
+                } else {
+                  console.log(response);
+                  setTimeout(function() {
+                  $('#exampleModalCenter').modal('hide');
+                    }, 2000);
+                    // Menyegarkan halaman jika diperlukan
+                    location.reload();
+                      }
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                // Menampilkan pesan error jika terjadi kesalahan dalam AJAX request
+            }
+        });
       });
     });
   </script>
