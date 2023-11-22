@@ -211,11 +211,6 @@
         // var sptId = $('#spt_id').val();
         var tanggalspt = $('#spt_tgl').val();
         var tanggalmulai = $('#spt_mulai').val();
-        
-        
-        
-        
-
         $.ajax({
             type: "post",
             url: $(this).attr('action'),
@@ -235,7 +230,7 @@
               // console.log(response);
               if (tanggalspt > tanggalmulai) {
                       $('#spt_tgl').addClass('is-invalid');
-                      $('.errorspttgl').html('Tanggal SPT tidak boleh lebih kecil dari tanggal mulai!');
+                      $('.errorspttgl').html('Tanggal SPT tidak boleh lebih Besar dari tanggal mulai!');
               } else {
                   $('#spt_tgl').removeClass('is-invalid');
                   $('.errorspttgl').html();
