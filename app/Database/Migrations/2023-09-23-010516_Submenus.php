@@ -39,18 +39,7 @@ class Submenus extends Migration
                 'type' => 'INT',
                 'default' => 0,
             ],
-            'created_at'        => [
-                'type'          => 'TIMESTAMP',
-                'default'       => new RawSql('CURRENT_TIMESTAMP'),
-            ],
-            'updated_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
-            'deleted_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
+            
         ]);
         $this->forge->addKey('submenu_id', true);
         $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','','','menuidFK');

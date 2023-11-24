@@ -36,18 +36,7 @@ class Menus extends Migration
                 'type' => 'INT',
                 'default' => 0,
             ],
-            'created_at'        => [
-                'type'          => 'TIMESTAMP',
-                'default'       => new RawSql('CURRENT_TIMESTAMP'),
-            ],
-            'updated_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
-            'deleted_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
+            
         ]);
         $this->forge->addKey('menu_id', true);
         $this->forge->createTable('menus');

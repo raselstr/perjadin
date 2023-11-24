@@ -27,18 +27,7 @@ class Pangkat extends Migration
             'pangkat_pajak' => [
                 'type'          => 'FLOAT',
             ],
-             'created_at'        => [
-                'type'          => 'TIMESTAMP',
-                'default'       => new RawSql('CURRENT_TIMESTAMP'),
-            ],
-            'updated_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
-            'deleted_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
+           
         ]);
         $this->forge->addKey('pangkat_id', true);
 

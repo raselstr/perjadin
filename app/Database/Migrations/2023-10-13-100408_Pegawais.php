@@ -40,18 +40,7 @@ class Pegawais extends Migration
                 'type'          => 'VARCHAR',
                 'constraint'    => '100',
             ],
-             'created_at'        => [
-                'type'          => 'TIMESTAMP',
-                'default'       => new RawSql('CURRENT_TIMESTAMP'),
-            ],
-            'updated_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
-            'deleted_at'        => [
-                'type'          => 'DATETIME',
-                'null'          => true,
-            ],
+            
         ]);
         $this->forge->addKey('pegawai_id', true);
         $this->forge->addForeignKey('eselon_id', 'eselons', 'eselon_id','','','pegawaieselonidFK');
