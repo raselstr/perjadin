@@ -209,8 +209,8 @@
         e.preventDefault();
 
         // var sptId = $('#spt_id').val();
-        var tanggalspt = $('#spt_tgl').val();
-        var tanggalmulai = $('#spt_mulai').val();
+        // var tanggalspt = $('#spt_tgl').val();
+        // var tanggalmulai = $('#spt_mulai').val();
         var formData = $("#myForm").serialize();
         
         $.ajax({
