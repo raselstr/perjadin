@@ -138,7 +138,7 @@
           <div class="form-group">
             <!-- <label for="exampleInputBorder">id</code></label> -->
             <input type="text" id="spt_id" name="spt_id">
-            <input type="text" id="spt_mulai">
+            <input type="text" id="spt_mulai" name="spt_mulai">
             <input type="text" name="spt_verif" value="1" hidden>
           </div>
           <div class="form-group">
@@ -211,10 +211,12 @@
         // var sptId = $('#spt_id').val();
         var tanggalspt = $('#spt_tgl').val();
         var tanggalmulai = $('#spt_mulai').val();
+        var formData = $("#myForm").serialize();
+        
         $.ajax({
             type: "post",
             url: $(this).attr('action'),
-            data: $(this).serialize(),
+            data: formData,
             dataType: "json",
             beforeSend:function(){
                 $('.btnsimpan').attr('disabled', 'disabled');
@@ -225,16 +227,7 @@
                 $('.btnsimpan').html('Simpan');
             },
             success: function (response) {
-              // console.log(tanggalmulai);
-              // console.log(tanggalspt);
-              // console.log(response);
-              if (tanggalspt > tanggalmulai) {
-                      $('#spt_tgl').addClass('is-invalid');
-                      $('.errorspttgl').html('Tanggal SPT tidak boleh lebih Besar dari tanggal mulai!');
-              } else {
-                  $('#spt_tgl').removeClass('is-invalid');
-                  $('.errorspttgl').html();
-              }
+              console.log(response);
               if(response.error){
                   if(response.messages.spt_nomor){
                       $('#spt_nomor').addClass('is-invalid');
@@ -247,6 +240,10 @@
                   if(response.messages.spt_tgl){
                       $('#spt_tgl').addClass('is-invalid');
                       $('.errorspttgl').html(response.messages.spt_tgl);
+                  }
+                  if(response.messages){
+                      $('#spt_tgl').addClass('is-invalid');
+                      $('.errorspttgl').html(response.messages);
                   }
               } else {
                 console.log(response);

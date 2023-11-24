@@ -241,6 +241,7 @@ class Spt extends ResourcePresenter
                     'is_unique' => 'Nomor sudah digunakan, Harap masukkan nomor lain !',
                 ]
             ],
+           
             'spt_tgl' => [
                 'rules' => 'required',
                 'errors' => [
@@ -249,24 +250,40 @@ class Spt extends ResourcePresenter
             ],
 
         ]);
-        if(!$valid) {
-            $errors = [
-                'error' => true,
-                'messages' => $validation->getErrors(),
-            ];
-            return $this->response->setJSON($errors);
+        $tglmulai = strtotime($this->request->getVar('spt_mulai'));
+        $tglspt = strtotime($this->request->getVar('spt_tgl'));
+        
+
+        if($tglspt > $tglmulai) {
+            if(!$valid) {
+                $errors = [
+                    'error' => true,
+                    'messages' => $validation->getErrors(),
+                ];
+                return $this->response->setJSON($errors);
+            } else {
+                $errors = [
+                    'error' => true,
+                    'spt_tgl' => $tglspt,
+                    'spt_mulai' => $tglmulai,
+                    'messages' => 'Tanggal SPT tidak boleh lebih tinggi dari Tanggal Mulai!',
+                ];
+                return $this->response->setJSON($errors);
+            }
         } else {
-            $spt = new SptModel();
+                $spt = new SptModel();
            
-            $data = $this->request->getPost();
-            $spt->save($data);
-            $responsesuccess = [
-                'success'   => true,
-                'message'   => 'Data Berhasil disimpan'
-            ];
-            return $this->response->setJSON($responsesuccess);
+                $data = $this->request->getPost();
+                $spt->save($data);
+                $responsesuccess = [
+                    'success'   => true,
+                    'messages'   => 'Data Berhasil disimpan'
+                ];
+                return $this->response->setJSON($responsesuccess);
+            }
+        
             // return redirect()->back();
-        }
+        
             // $errors = $this->validator->getErrors();
             
             
