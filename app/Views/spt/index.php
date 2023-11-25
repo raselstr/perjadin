@@ -94,8 +94,8 @@
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br><?= $value->spt_tgl ?></td>
-                          <td class="align-middle text-center"><?= $value->updated_at ?></td>
+                          <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
+                          <td class="align-middle text-center"><?= date('d F Y',strtotime($value->updated_at)) ?></td>
                           <?php if($value->spt_verif == 0) : ?>
                             <td class="align-middle text-center">
                                 <a href="<?= site_url('spt/pelaksana/'.$value->spt_id); ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a></td>

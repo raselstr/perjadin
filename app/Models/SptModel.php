@@ -96,6 +96,7 @@ class SptModel extends Model
         $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }

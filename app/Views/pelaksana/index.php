@@ -105,6 +105,7 @@
                               $itemModel = new App\Models\PelaksanaModel;
                               $verif = new App\Models\SptModel;
                               $true = $itemModel->kabanpelaksana($value->spt_id);
+                              // dd($true);
                               if (!empty($true) ) : ?>
                             <a href="<?= site_url('pelaksana/sptbupati/'.$value->spt_id); ?>" target="_blank" class="btn btn-warning bg-gradient-sm btn-primary">BUPATI</a>
                             ||
@@ -115,10 +116,10 @@
                           </td>
                           <?php if ($value->spt_verif == '0') : ?>
                             <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target = "_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
                             </td>
                             <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
+                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
                             </td>
                             <?php else : ?>
                               <td class="align-middle text-center">
@@ -167,9 +168,9 @@
   });
   </script>
   <script>
-    $(document).ready(function(){
+    
       const flashData = $('.flash-data').data('flashdata');
-      $('#myLink').click(function(e){
+      
         if(flashData){
             Swal.fire({
             icon: "error",
@@ -179,8 +180,8 @@
         } else {
           $("#myLink").attr("target", "_blank");
       }
-      });
-    });
+
+   
     // console.log(flashData);
     // $("#myLink").click(function(){
       // $("#myLink").removeAttr("target");

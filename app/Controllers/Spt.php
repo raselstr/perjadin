@@ -22,15 +22,17 @@ class Spt extends ResourcePresenter
      *
      * @return mixed
      */
+    
     public function index()
     {
+        helper('date');
         $spt = new SptModel();
         $penugas = new PejabatModel();
         
         $data = [
             'title'     => 'Perintah Tugas',
             'subtitle'  => 'Home',
-            'spt'       => $spt->orderBy('spts.spt_id')->pelaksanaspt(),
+            'spt'       => $spt->pelaksanaspt(),
             // 'pejabat'   => $penugas->findAll(),
         ];
         // dd($data);
@@ -100,6 +102,7 @@ class Spt extends ResourcePresenter
      */
     public function edit($id = null)
     {
+        helper('date');
         $spt = new SptModel();
         $lokasiperjadin = new LokasiperjadinModel();
         $jenisperjadin  = new JenisperjadinModel();
@@ -176,7 +179,7 @@ class Spt extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'peg'       => $pelaksana->orderBy('pegawais.pegawai_id')->findAll(),
-            'pelks'     => $pegpelaksana->orderBy('pelaksanas.pelaksana_utama', SORT_DESC)->datapelaksana($id),
+            'pelks'     => $pegpelaksana->datapelaksana($id),
             ];
 
         // dd($data);    
@@ -206,6 +209,7 @@ class Spt extends ResourcePresenter
 
     public function verif()
     {
+        helper('date');
         $spt = new SptModel();
         $penugas = new PejabatModel();
         $dataspt = $spt->orderBy('created_at','DESC')->pelaksanaspt();
@@ -293,20 +297,4 @@ class Spt extends ResourcePresenter
 
         
     }
-
-    public function verifinput ()
-    {
-        $spt = new SptModel();
-        // $penugas = new PejabatModel();
-        $dataspt = $spt->orderBy('created_at','DESC')->pelaksanaspt();
-        $data = [
-            'title'     => 'Verifikasi Surat Perintah Tugas',
-            'subtitle'  => 'Home',
-            'spt'       => $dataspt,
-            // 'pejabat'   => $penugas->findAll(),
-        ];
-        // dd($data);
-        return view('spt/verifinput', $data);
-    }
-    
 }

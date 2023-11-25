@@ -57,6 +57,8 @@ class PelaksanaModel extends Model
 
         $builder->where('pelaksanas.spt_id',$id);
         $builder->where('pegawais.pegawai_nip !=',$subquery);
+
+        $builder->orderBy('pangkats.pangkat_id', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }

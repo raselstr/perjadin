@@ -90,12 +90,12 @@
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_mulai ?></td>
+                          <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_mulai)) ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle"><?= $value->spt_transport ?></td>
                           <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_tgl ?></td>
+                          <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
                           <td class="align-middle text-center">
                             <?php if ($value->spt_verif == '1') : ?>
                               <button type="button" class="btn btn-block btn-outline-success" disabled>Disetujui</button>
@@ -142,7 +142,8 @@
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
-            <input type="text" class="form-control form-control-border" id="spt_mulai" name="spt_mulai" disabled>
+            <input type="text" class="form-control form-control-border" id="spt_mulai" name="spt_mulai" hidden>
+            <input type="text" class="form-control form-control-border" id="spt_mulai1" disabled>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
@@ -204,6 +205,7 @@
           // Set nilai ID ke dalam input dengan id "spt_id" di dalam modal
           $('#spt_id').val(id);
           $('#spt_mulai').val(tglmulai);
+          $('#spt_mulai1').val(tglmulai);
           $('#spt_tgl').val(currentDate);
 
       });
@@ -235,34 +237,39 @@
                   if(response.messages.spt_nomor){
                       $('#spt_nomor').addClass('is-invalid');
                       $('.errorsptnomor').html(response.messages.spt_nomor);
+                  } else {
+                      $('#spt_nomor').removeClass('is-invalid');
+                      $('.errorsptnomor').html('');
                   }
                   if(response.messages.sppd_nomor){
                       $('#sppd_nomor').addClass('is-invalid');
                       $('.errorsppdnomor').html(response.messages.sppd_nomor);
+                  } else {
+                      $('#sppd_nomor').removeClass('is-invalid');
+                      $('.errorsppdnomor').html('');
                   }
                   if(response.messages.spt_tgl){
                       $('#spt_tgl').addClass('is-invalid');
                       $('.errorspttgl').html(response.messages.spt_tgl);
+                  } else {
+                    $('#spt_tgl').removeClass('is-invalid');
+                    $('.errorspttgl').html('');
                   }
                   if(response.messages){
                       $('#spt_tgl').addClass('is-invalid');
                       $('.errorspttgl').html(response.messages);
+                  } else {
+                    $('#spt_tgl').removeClass('is-invalid');
+                    $('.errorspttgl').html('');
                   }
               } else {
                 console.log(response);
-                if(response.success){
-                $('#spt_tgl').removeClass('is-invalid');
-                $('.errorspttgl').html('');
-                $('#spt_nomor').removeClass('is-invalid');
-                $('.errorsptnomor').html('');
-                $('#sppd_nomor').removeClass('is-invalid');
-                $('.errorsppdnomor').html('');
                 setTimeout(function() {
                 $('#exampleModalCenter').modal('hide');
                   }, 2000);
                   // Menyegarkan halaman jika diperlukan
                   location.reload();
-              }}
+              }
             },
             error: function(xhr, status, error) {
                 console.error(error);

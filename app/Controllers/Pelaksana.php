@@ -153,7 +153,7 @@ class Pelaksana extends ResourcePresenter
     public function sptpdf($id = null)
     {
         helper('date');
-        set_time_limit(300);
+        // set_time_limit(300);
         // $spt = new SptModel();
         $pelaksana = new PelaksanaModel();
         $cek = $pelaksana->caripengikut($id);
@@ -169,6 +169,7 @@ class Pelaksana extends ResourcePresenter
             
         
         $dataspt = $pelaksana->datapelaksana($id);
+        // dd($dataspt);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
             'title'     => 'Surat Perintah Tugas',
