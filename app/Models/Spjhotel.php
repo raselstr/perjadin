@@ -16,7 +16,12 @@ class Spjhotel extends Model
     protected $allowedFields    = [
         'hotel_idspt',
         'hotel_idpegawai',
-        'hotel_file'
+        'hotel_nama',
+        'hotel_nokamar',
+        'hotel_typekamar',
+        'hotel_foto',
+        'hotel_bill',
+        
     ];
 
     // Dates

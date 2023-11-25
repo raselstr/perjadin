@@ -23,7 +23,23 @@ class Spjhotel extends Migration
                 'type'          => 'INT',
                 'unsigned'       => true,
             ],
-            'hotel_file' => [
+            'hotel_nama' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 100,
+            ],
+            'hotel_nokamar' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 10,
+            ],
+            'hotel_typekamar' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 20,
+            ],
+            'hotel_foto' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 100,
+            ],
+            'hotel_bill' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
             ],
@@ -42,8 +58,8 @@ class Spjhotel extends Migration
             
         ]);
         $this->forge->addKey('hotel_id', true);
-        $this->forge->addForeignKey('hotel_idspt','spts','spts.spt_id','CASCADE','CASCADE','FKspthotel');
-        $this->forge->addForeignKey('hotel_idpegawai','pegawais','pegawais.pegawai_id','CASCADE','CASCADE','FKpegawaihotel');
+        $this->forge->addForeignKey('hotel_idspt','spts','spt_id','CASCADE','CASCADE','FKspthotel');
+        $this->forge->addForeignKey('hotel_idpegawai','pegawais','pegawai_id','CASCADE','CASCADE','FKpegawaihotel');
         
         $this->forge->createTable('spjhotels');
     }
