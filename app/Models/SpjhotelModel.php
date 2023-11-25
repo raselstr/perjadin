@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Spjhotel extends Model
+class SpjhotelModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'spjhotels';
