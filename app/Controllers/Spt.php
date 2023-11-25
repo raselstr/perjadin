@@ -266,7 +266,7 @@ class Spt extends ResourcePresenter
                     'error' => true,
                     'spt_tgl' => $tglspt,
                     'spt_mulai' => $tglmulai,
-                    'messages' => 'Tanggal SPT tidak boleh lebih tinggi dari Tanggal Mulai!',
+                    'messages' => 'Tanggal SPT melebihi dari Tanggal Mulai Perjalanan, Harap diganti!',
                 ];
                 return $this->response->setJSON($errors);
             }

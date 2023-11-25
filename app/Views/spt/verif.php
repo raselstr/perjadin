@@ -137,9 +137,12 @@
         <div class="modal-body">
           <div class="form-group">
             <!-- <label for="exampleInputBorder">id</code></label> -->
-            <input type="text" id="spt_id" name="spt_id">
-            <input type="text" id="spt_mulai" name="spt_mulai">
+            <input type="text" id="spt_id" name="spt_id" hidden>
             <input type="text" name="spt_verif" value="1" hidden>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
+            <input type="text" class="form-control form-control-border" id="spt_mulai" name="spt_mulai" disabled>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
@@ -247,12 +250,19 @@
                   }
               } else {
                 console.log(response);
+                if(response.success){
+                $('#spt_tgl').removeClass('is-invalid');
+                $('.errorspttgl').html('');
+                $('#spt_nomor').removeClass('is-invalid');
+                $('.errorsptnomor').html('');
+                $('#sppd_nomor').removeClass('is-invalid');
+                $('.errorsppdnomor').html('');
                 setTimeout(function() {
                 $('#exampleModalCenter').modal('hide');
                   }, 2000);
                   // Menyegarkan halaman jika diperlukan
                   location.reload();
-              }
+              }}
             },
             error: function(xhr, status, error) {
                 console.error(error);

@@ -115,10 +115,10 @@
                           </td>
                           <?php if ($value->spt_verif == '0') : ?>
                             <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
                             </td>
                             <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
+                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
                             </td>
                             <?php else : ?>
                               <td class="align-middle text-center">
@@ -167,19 +167,22 @@
   });
   </script>
   <script>
-
-    const flashData = $('.flash-data').data('flashdata');
+    $(document).ready(function(){
+      const flashData = $('.flash-data').data('flashdata');
+      $('#myLink').click(function(e){
+        if(flashData){
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: flashData,
+          });
+        } else {
+          $("#myLink").attr("target", "_blank");
+      }
+      });
+    });
     // console.log(flashData);
     // $("#myLink").click(function(){
-      if(flashData){
-          Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: flashData,
-        });
-      } else {
-            $("#myLink").attr("target", "_blank");
-          
-    }
+      // $("#myLink").removeAttr("target");
   </script>
 <?= $this->endSection() ?>
