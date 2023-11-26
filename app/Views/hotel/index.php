@@ -74,23 +74,23 @@
                   <tbody>
                     <?php 
                       $no = 1;
-                      foreach ($spj as $key => $value) { ?>
+                      foreach ($spjhotel as $key => $value) { ?>
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle text-center">
                             <div class="d-grid gap-2">
-                              <button type="button" name="spj" id="spj" data-idspt="<?= $value->spt_id; ?>" data-idpegawai="<?= $value->pegawai_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
+                              <button type="button" name="spj" id="spj" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
                             </div>
                           </td>
                           <td class="align-middle"><?= $value->spt_nomor ?></td>
                           <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"></td>
-                          <td class="align-middle"></td>
-                          <td class="align-middle text-center"></td>
-                          <td class="align-middle text-center"></td>
-                          <td class="align-middle text-center"></td>
-                          <td class="align-middle text-center"></td>
+                          <td class="align-middle text-center"><?= $value->hotel_nama ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_nokamar ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_typekamar ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_foto ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_bill ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_updated_at ?></td>
                     <?php } ?>
                   </tbody>
                 </table>
@@ -122,8 +122,7 @@
             <div class="form-group row">
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hotel_id" name="hotel_id">
-                <input type="text" class="form-control" id="hotel_idspt" name="hotel_idspt">
-                <input type="text" class="form-control" id="hotel_idpegawai" name="hotel_idpegawai">
+                <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid">
               </div>
             </div>
             <div class="form-group row">
@@ -202,13 +201,11 @@
   <script>
     $(document).ready(function(){
       $('[data-target="#hotelspj"]').click(function() {
-        var idspt = $(this).data('idspt');
-        var idpegawai = $(this).data('idpegawai');
+        var idpelaksana = $(this).data('idpelaksana');
         var namapegawai = $(this).data('namapegawai');
         var nospt = $(this).data('nospt');
 
-        $('#hotel_idspt').val(idspt);
-        $('#hotel_idpegawai').val(idpegawai);
+        $('#hotel_pelaksanaid').val(idpelaksana);
         $('#hotel_namapegawai').val(namapegawai);
         $('#hotel_nospt').val(nospt);
 
@@ -240,7 +237,11 @@
             },
           success: function (response) {
             console.log(response);
-            
+            setTimeout(function() {
+            $('#formhotel').modal('hide');
+              }, 2000);
+              // Menyegarkan halaman jika diperlukan
+              location.reload();
           },
           error: function(xhr, status, error) {
               // Tangani kesalahan jika terjadi

@@ -14,8 +14,7 @@ class SpjhotelModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'hotel_idspt',
-        'hotel_idpegawai',
+        'hotel_pelaksanaid',
         'hotel_nama',
         'hotel_nokamar',
         'hotel_typekamar',
@@ -51,11 +50,12 @@ class SpjhotelModel extends Model
 
     function spjhotel() 
     {
-        $builder = $this->db->table('pelaksanas As a');
-        $builder -> select('a.spt_id, b.spt_nomor, c.pegawai_nama, c.pegawai_nip,c.pegawai_id, b.spt_uraian');
-        $builder -> join('spts As b','b.spt_id = a.spt_id');
-        $builder -> join('pegawais As c','c.pegawai_id = a.pegawai_id');
-        $builder -> where('b.spt_verif = 1');
+        $builder = $this->db->table('spjhotels As a');
+        $builder -> select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
+        $builder -> join('pelaksanas As b','b.pelaksana_id = a.hotel_pelaksanaid','RIGHT');
+        $builder -> join('spts As c','c.spt_id = b.spt_id');
+        $builder -> join('pegawais As d','d.pegawai_id = b.pegawai_id');
+        $builder -> where('c.spt_verif = 1');
         $query = $builder -> get();
         return $query->getResult();
     }
