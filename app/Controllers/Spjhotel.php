@@ -14,14 +14,14 @@ class Spjhotel extends ResourcePresenter
      */
     public function index()
     {
-        $spt = new SpjhotelModel();
+        $model = new SpjhotelModel();
         
         $data = [
             'title'     => 'Pertanggung Jawaban Hotel',
             'subtitle'  => 'Home',
-            'spt'       => $spt->findAll(),
+            'spt'       => $model->findAll(),
         ];
-        // dd($data);
+        dd($data);
         return view('hotel/index', $data);
     }
 
