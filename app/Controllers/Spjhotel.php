@@ -15,13 +15,13 @@ class Spjhotel extends ResourcePresenter
     public function index()
     {
         $model = new SpjhotelModel();
-        
+        $query = $model->spjhotel();
         $data = [
             'title'     => 'Pertanggung Jawaban Hotel',
             'subtitle'  => 'Home',
-            'spt'       => $model->findAll(),
+            'spj'       => $query,
         ];
-        dd($data);
+        // dd($data);
         return view('hotel/index', $data);
     }
 
@@ -34,7 +34,8 @@ class Spjhotel extends ResourcePresenter
      */
     public function show($id = null)
     {
-        //
+        
+       
     }
 
     /**
@@ -44,7 +45,12 @@ class Spjhotel extends ResourcePresenter
      */
     public function new()
     {
-        //
+        //  $data = [
+        //     'title'     => 'Tambah Pertanggung Jawaban Hotel',
+        //     'subtitle'  => 'Home',
+        // ];
+        // dd($data);
+        // return view('hotel/modalform');
     }
 
     /**
@@ -55,7 +61,27 @@ class Spjhotel extends ResourcePresenter
      */
     public function create()
     {
-        //
+        
+        if($this->request->isAJAX()){
+            // $idspt = $this->request->getVar('idspt');
+            // $idpegawai = $this->request->getVar('idpegawai');
+            $serializedData = $this->request->getPost('formdata');
+            $formHotel = [];
+            parse_str($serializedData,$formHotel);
+            $spjhotel = new SpjhotelModel();
+            $spjhotel->save($formHotel);
+
+            $data = [
+                'error'     => false,
+                'message'   => 'Berhasil',
+                // 'dataform'  => $serializedData,
+                // 'idspt'     => $idspt,
+                // 'idpegawai' => $idpegawai,
+            ];
+            return $this->response->setJSON($data);
+        } else {
+            echo "Perintah ini tidak dapat dilakukan";
+        }
     }
 
     /**

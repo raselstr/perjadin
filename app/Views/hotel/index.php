@@ -48,7 +48,7 @@
                   </div>
                 </div>
               </div>
-              <div class="flash-data" data-flashdata="<?= session()->getflashdata('info'); ?>"></div>
+              <!-- <div class="flash-data" data-flashdata="<?= session()->getflashdata('info'); ?>"></div> -->
 
               <div class="card-body">
                 <div class="card-body">
@@ -56,61 +56,42 @@
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
-                      <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
-                      <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
-                      <th colspan="2" class="align-middle text-center">SPT</th>
-                      <th rowspan="2" class="align-middle text-center">SPPD</th>
+                      <th rowspan="2" class="align-middle text-center">Input SPJ</th>
+                      <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
+                      <th rowspan="2" class="align-middle text-center">Nama Pegawai <br> NIP</th>
+                      <th rowspan="2" class="align-middle text-center">Uraian</th>
+                      <th colspan="5" class="align-middle text-center">Hotel</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal Upload</th>
                     </tr>
                     <tr>
-                      <th class="align-middle text-center">Uraian Perjalanan</th>
-                      <th class="align-middle text-center">Lama Perjalanan</th>
-                      <th class="align-middle text-center">Tempat Tujuan</th>
-                      <th class="align-middle text-center">Kaban</th>
-                      <th class="align-middle text-center">Staf</th>
+                      <th class="align-middle text-center">Nama</th>
+                      <th class="align-middle text-center">No. Kamar</th>
+                      <th class="align-middle text-center">Type Kamar</th>
+                      <th class="align-middle text-center">Foto</th>
+                      <th class="align-middle text-center">Bill</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php 
                       $no = 1;
-                      foreach ($spt as $key => $value) { ?>
+                      foreach ($spj as $key => $value) { ?>
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
-                          <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
-                          <td class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_lama ?></td>
-                          <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
-                          <td class="align-middle text-center"> 
-                            <?php 
-                              $db = \Config\Database::connect();
-                              $itemModel = new App\Models\PelaksanaModel;
-                              $verif = new App\Models\SptModel;
-                              $true = $itemModel->kabanpelaksana($value->spt_id);
-                              // dd($true);
-                              if (!empty($true) ) : ?>
-                            <a href="<?= site_url('pelaksana/sptbupati/'.$value->spt_id); ?>" target="_blank" class="btn btn-warning bg-gradient-sm btn-primary">BUPATI</a>
-                            ||
-                            <a href="<?= site_url('pelaksana/sptsekda/'.$value->spt_id); ?>" target="_blank" class="btn btn-info bg-gradient-sm btn-primary">SEKDA</a>
-                            <?php else : ?>
-                              <i>Tidak ada</i>
-                            <?php endif ?>
+                          <td class="align-middle text-center">
+                            <div class="d-grid gap-2">
+                              <button type="button" name="spj" id="spj" data-idspt="<?= $value->spt_id; ?>" data-idpegawai="<?= $value->pegawai_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
+                            </div>
                           </td>
-                          <?php if ($value->spt_verif == '0') : ?>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target = "_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
-                            </td>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
-                            </td>
-                            <?php else : ?>
-                              <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</a>
-                            </td>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</i></a>
-                            </td>
-                            <?php endif ?>
-                        </tr>
-                      <?php } ?>
+                          <td class="align-middle"><?= $value->spt_nomor ?></td>
+                          <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
+                          <td class="align-middle"><?= $value->spt_uraian ?></td>
+                          <td class="align-middle text-center"></td>
+                          <td class="align-middle"></td>
+                          <td class="align-middle text-center"></td>
+                          <td class="align-middle text-center"></td>
+                          <td class="align-middle text-center"></td>
+                          <td class="align-middle text-center"></td>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -125,7 +106,79 @@
   </div>
     <!-- /.content -->
 
-   
+<!-- Modal -->
+<div class="modal fade" id="hotelspj" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">SPJ HOTEL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="<?= site_url("spjhotel/create"); ?>" method="post" enctype="multipart/form-data" id="formhotel">
+        <div class="modal-body">
+          <div class="card-body">
+            <div class="form-group row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_id" name="hotel_id">
+                <input type="text" class="form-control" id="hotel_idspt" name="hotel_idspt">
+                <input type="text" class="form-control" id="hotel_idpegawai" name="hotel_idpegawai">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_nospt" class="col-sm-4 col-form-label">Nomor SPT</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_nospt" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_namapegawai" class="col-sm-4 col-form-label">Nama Pegawai</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_namapegawai" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_nama" class="col-sm-4 col-form-label">Nama Hotel</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_nama" name="hotel_nama">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_nokamar" class="col-sm-4 col-form-label">Nomor Kamar Hotel</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_nokamar" name="hotel_nokamar">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_typekamar" class="col-sm-4 col-form-label">Type Kamar</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_typekamar" name="hotel_typekamar">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_foto" class="col-sm-4 col-form-label">Foto Hotel Depan</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_foto" name="hotel_foto">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_bill" class="col-sm-4 col-form-label">Scan Bill Hotel</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="hotel_bill" name="hotel_bill">
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary simpanhotel">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
@@ -144,6 +197,57 @@
     });
   </script>
   <script>
-    
+
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('[data-target="#hotelspj"]').click(function() {
+        var idspt = $(this).data('idspt');
+        var idpegawai = $(this).data('idpegawai');
+        var namapegawai = $(this).data('namapegawai');
+        var nospt = $(this).data('nospt');
+
+        $('#hotel_idspt').val(idspt);
+        $('#hotel_idpegawai').val(idpegawai);
+        $('#hotel_namapegawai').val(namapegawai);
+        $('#hotel_nospt').val(nospt);
+
+      });
+
+      $('#formhotel').submit(function(e){
+        e.preventDefault();
+        var idspt = $('#hotel_idspt').val();
+        var idpegawai = $('#hotel_idpegawai').val();
+        var data = {
+          'idspt'     : idspt,
+          'idpegawai' : idpegawai,
+          'formdata'  : $("#formhotel").serialize(),//mengambil seluruh data dari form termasuk name dan value
+        };
+        console.log($("#formhotel").serialize());
+  
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: data,
+          dataType: 'json',
+          beforeSend:function(){
+                $('.simpanhotel').attr('disabled', 'disabled');
+                $('.simpanhotel').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.simpanhotel').removeAttr('disabled');
+                $('.simpanhotel').html('Simpan');
+            },
+          success: function (response) {
+            console.log(response);
+            
+          },
+          error: function(xhr, status, error) {
+              // Tangani kesalahan jika terjadi
+              console.error(error);
+          }
+        });
+      });
+    });
   </script>
 <?= $this->endSection() ?>

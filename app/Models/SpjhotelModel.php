@@ -47,4 +47,18 @@ class SpjhotelModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    function spjhotel() 
+    {
+        $builder = $this->db->table('pelaksanas As a');
+        $builder -> select('a.spt_id, b.spt_nomor, c.pegawai_nama, c.pegawai_nip,c.pegawai_id, b.spt_uraian');
+        $builder -> join('spts As b','b.spt_id = a.spt_id');
+        $builder -> join('pegawais As c','c.pegawai_id = a.pegawai_id');
+        $builder -> where('b.spt_verif = 1');
+        $query = $builder -> get();
+        return $query->getResult();
+    }
+
 }
+
