@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -23,6 +25,9 @@
   <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+  <!-- SweetAlert2 -->
+  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -79,7 +84,7 @@
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle text-center">
                             <div class="d-grid gap-2">
-                              <button type="button" name="spj" id="spj" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
+                              <button type="button" name="spj" id="spj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
                             </div>
                           </td>
                           <td class="align-middle"><?= $value->spt_nomor ?></td>
@@ -156,18 +161,29 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="hotel_foto" class="col-sm-4 col-form-label">Foto Hotel Depan</label>
+              <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Hotel</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="hotel_foto" name="hotel_foto">
+                <div class="input-group">
+                    <input class="custom-file-input <?= isset($errors['hotel_foto']) ? 'is-invalid' : null ; ?>" type="file" name="hotel_foto" id="foto" value="<?= old('hotel_foto') ?>">
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
+                    <div class="invalid-feedback">
+                      <?= isset($errors['hotel_foto']) ? $errors['hotel_foto'] : null ; ?>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="hotel_bill" class="col-sm-4 col-form-label">Scan Bill Hotel</label>
+              <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Hotel</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="hotel_bill" name="hotel_bill">
+                <div class="input-group">
+                    <input class="custom-file-input <?= isset($errors['hotel_bill']) ? 'is-invalid' : null ; ?>" type="file" name="hotel_bill" id="scan" value="<?= old('hotel_bill') ?>">
+                    <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill PDF</label>
+                    <div class="invalid-feedback">
+                      <?= isset($errors['hotel_bill']) ? $errors['hotel_bill'] : null ; ?>
+                    </div>
+                </div>
               </div>
             </div>
-            
           </div>
         </div>
         <div class="modal-footer">
@@ -201,32 +217,55 @@
   <script>
     $(document).ready(function(){
       $('[data-target="#hotelspj"]').click(function() {
+        var hotelid = $(this).data('id');
         var idpelaksana = $(this).data('idpelaksana');
         var namapegawai = $(this).data('namapegawai');
         var nospt = $(this).data('nospt');
 
+        $('#hotel_id').val(hotelid);
         $('#hotel_pelaksanaid').val(idpelaksana);
         $('#hotel_namapegawai').val(namapegawai);
         $('#hotel_nospt').val(nospt);
+       
 
       });
 
+      $('#foto').on('change', function() {
+          // Mengambil nama file yang dipilih
+          var fileName = $(this).val().split('\\').pop();
+          
+          // Menampilkan nama file di console (opsional)
+          console.log('Nama file:', fileName);
+
+          // Melakukan apa pun yang Anda inginkan dengan nama file tersebut
+          // Contohnya, menampilkan nama file di elemen dengan ID 'nama-foto'
+          $('#nama-foto').text(fileName);
+      });
+
+      $('#scan').on('change', function() {
+          // Mengambil nama file yang dipilih
+          var fileName = $(this).val().split('\\').pop();
+          
+          // Menampilkan nama file di console (opsional)
+          console.log('Nama file:', fileName);
+
+          // Melakukan apa pun yang Anda inginkan dengan nama file tersebut
+          // Contohnya, menampilkan nama file di elemen dengan ID 'nama-foto'
+          $('#nama-scan').text(fileName);
+      });
+      
+
       $('#formhotel').submit(function(e){
         e.preventDefault();
-        var idspt = $('#hotel_idspt').val();
-        var idpegawai = $('#hotel_idpegawai').val();
-        var data = {
-          'idspt'     : idspt,
-          'idpegawai' : idpegawai,
-          'formdata'  : $("#formhotel").serialize(),//mengambil seluruh data dari form termasuk name dan value
-        };
-        console.log($("#formhotel").serialize());
+        var data = new FormData(this);
+        console.log(data);
   
         $.ajax({
           type: "post",
           url: $(this).attr('action'),
           data: data,
-          dataType: 'json',
+          processData: false,
+          contentType: false,
           beforeSend:function(){
                 $('.simpanhotel').attr('disabled', 'disabled');
                 $('.simpanhotel').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -237,11 +276,19 @@
             },
           success: function (response) {
             console.log(response);
-            setTimeout(function() {
-            $('#formhotel').modal('hide');
-              }, 2000);
-              // Menyegarkan halaman jika diperlukan
+            
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Data Berhasil Disimpan",
+              showConfirmButton: false,
+              timer: 2000
+            }).then(function(){
+              $('#hotelspj').hide('2000');
               location.reload();
+
+            });
+
           },
           error: function(xhr, status, error) {
               // Tangani kesalahan jika terjadi
