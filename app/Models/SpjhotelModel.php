@@ -31,8 +31,36 @@ class SpjhotelModel extends Model
     protected $deletedField  = 'hotel_deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'hotel_nama'        => 'required',
+        'hotel_nokamar'     => 'required',
+        'hotel_typekamar'   => 'required',
+        'hotel_foto'        => 'max_size[hotel_foto,2048]|is_image[hotel_foto]|mime_in[hotel_foto,image/png,image/jpeg,image/jpg]',
+        'hotel_bill'        => 'uploaded[hotel_bill]|max_size[hotel_bill,5024]|ext_in[hotel_bill,pdf]',
+    ];
+    protected $validationMessages   = [
+        'hotel_nama'        => [
+            'required'      => 'Nama Hotel Wajib diisi !',
+        ],
+        'hotel_nokamar'     => [
+            'required'      => 'Nomor Kamar Hotel Wajib diisi !',
+        ],
+        'hotel_typekamar'   => [
+            'required'      => 'Type Kamar Hotel Wajib diisi !',
+        ],
+        'hotel_foto'        => [
+            'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+            'is_image'      => 'Data yang diupload Bukan Foto',
+            'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
+        ],
+        'hotel_bill'        => [
+            'uploaded'      => 'File PDF diperlukan.',
+            'max_size'      => 'Ukuran file PDF melebihi batas maksimum 2MB.',
+            'ext_in'        => 'File yang diunggah bukan merupakan file PDF.',
+        ],
+        
+
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
