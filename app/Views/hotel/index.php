@@ -9,6 +9,7 @@
 
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -28,6 +29,7 @@
 
   <!-- SweetAlert2 -->
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -109,7 +111,7 @@
       </div><!-- /.container-fluid -->
     </div>
   </div>
-    <!-- /.content -->
+<!-- /.content -->
 
 <!-- Modal -->
 <div class="modal fade" id="hotelspj" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -146,29 +148,57 @@
               <label for="hotel_nama" class="col-sm-4 col-form-label">Nama Hotel</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hotel_nama" name="hotel_nama">
+                <div class="invalid-feedback errorhotel_nama"></div>
               </div>
             </div>
             <div class="form-group row">
               <label for="hotel_nokamar" class="col-sm-4 col-form-label">Nomor Kamar Hotel</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="hotel_nokamar" name="hotel_nokamar">
+                <input type="number" class="form-control" id="hotel_nokamar" name="hotel_nokamar">
+                <div class="invalid-feedback errorhotel_nokamar"></div>
               </div>
             </div>
             <div class="form-group row">
               <label for="hotel_typekamar" class="col-sm-4 col-form-label">Type Kamar</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hotel_typekamar" name="hotel_typekamar">
+                <div class="invalid-feedback errorhotel_typekamar"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_checkin" class="col-sm-4 col-form-label">Tanggal Checkin</label>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" name="hotel_checkin" id="hotel_checkin">
+                <div class="invalid-feedback errorhotel_checkin"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_checkout" class="col-sm-4 col-form-label">Tanggal Checkout</label>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" name="hotel_checkout" id="hotel_checkout">
+                <div class="invalid-feedback errorhotel_checkout"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_hargapermlm" class="col-sm-4 col-form-label">Harga per Malam</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" id="hotel_hargapermlm" name="hotel_hargapermlm">
+                <div class="invalid-feedback errorhotel_hargapermlm"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_totalharga" class="col-sm-4 col-form-label">Total Harga</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" id="hotel_totalharga" name="hotel_totalharga">
               </div>
             </div>
             <div class="form-group row">
               <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Hotel</label>
               <div class="col-sm-8">
                 <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['hotel_foto']) ? 'is-invalid' : null ; ?>" type="file" name="hotel_foto" id="foto" value="<?= old('hotel_foto') ?>">
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
-                    <div class="invalid-feedback">
-                      <?= isset($errors['hotel_foto']) ? $errors['hotel_foto'] : null ; ?>
-                    </div>
+                  <input class="custom-file-input" type="file" name="hotel_foto" id="foto" value="<?= old('hotel_foto') ?>">
+                  <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
+                  <div class="invalid-feedback errorhotel_foto"></div>
                 </div>
               </div>
             </div>
@@ -176,11 +206,9 @@
               <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Hotel</label>
               <div class="col-sm-8">
                 <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['hotel_bill']) ? 'is-invalid' : null ; ?>" type="file" name="hotel_bill" id="scan" value="<?= old('hotel_bill') ?>">
+                    <input class="custom-file-input" type="file" name="hotel_bill" id="scan" value="<?= old('hotel_bill') ?>">
                     <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill PDF</label>
-                    <div class="invalid-feedback">
-                      <?= isset($errors['hotel_bill']) ? $errors['hotel_bill'] : null ; ?>
-                    </div>
+                    <div class="invalid-feedback errorhotel_bill"></div>
                 </div>
               </div>
             </div>
@@ -211,9 +239,7 @@
       })
     });
   </script>
-  <script>
-
-  </script>
+  
   <script>
     $(document).ready(function(){
       $('[data-target="#hotelspj"]').click(function() {
@@ -276,19 +302,77 @@
             },
           success: function (response) {
             console.log(response);
+            if(response.error) {
+              if(response.message.hotel_nama){
+                      $('#hotel_nama').addClass('is-invalid');
+                      $('.errorhotel_nama').html(response.message.hotel_nama);
+                  } else {
+                      $('#hotel_nama').removeClass('is-invalid');
+                      $('.errorhotel_nama').html('');
+                  }
+              if(response.message.hotel_nokamar){
+                      $('#hotel_nokamar').addClass('is-invalid');
+                      $('.errorhotel_nokamar').html(response.message.hotel_nokamar);
+                  } else {
+                      $('#hotel_nokamar').removeClass('is-invalid');
+                      $('.errorhotel_nokamar').html('');
+                  }
+              if(response.message.hotel_typekamar){
+                      $('#hotel_typekamar').addClass('is-invalid');
+                      $('.errorhotel_typekamar').html(response.message.hotel_typekamar);
+                  } else {
+                      $('#hotel_typekamar').removeClass('is-invalid');
+                      $('.errorhotel_typekamar').html('');
+                  }
+              if(response.message.hotel_checkin){
+                      $('#hotel_checkin').addClass('is-invalid');
+                      $('.errorhotel_checkin').html(response.message.hotel_checkin);
+                  } else {
+                      $('#hotel_checkin').removeClass('is-invalid');
+                      $('.errorhotel_checkin').html('');
+                  }
+              if(response.message.hotel_checkout){
+                      $('#hotel_checkout').addClass('is-invalid');
+                      $('.errorhotel_checkout').html(response.message.hotel_checkout);
+                  } else {
+                      $('#hotel_checkout').removeClass('is-invalid');
+                      $('.errorhotel_checkout').html('');
+                  }
+              if(response.message.hotel_hargapermlm){
+                      $('#hotel_hargapermlm').addClass('is-invalid');
+                      $('.errorhotel_hargapermlm').html(response.message.hotel_hargapermlm);
+                  } else {
+                      $('#hotel_hargapermlm').removeClass('is-invalid');
+                      $('.errorhotel_hargapermlm').html('');
+                  }
+              if(response.message.hotel_foto){
+                      $('#foto').addClass('is-invalid');
+                      $('.errorhotel_foto').html(response.message.hotel_foto);
+                  } else {
+                      $('#foto').removeClass('is-invalid');
+                      $('.errorhotel_foto').html('');
+                  }
+              if(response.message.hotel_bill){
+                      $('#scan').addClass('is-invalid');
+                      $('.errorhotel_bill').html(response.message.hotel_bill);
+                  } else {
+                      $('#hotel_bill').removeClass('is-invalid');
+                      $('.errorhotel_bill').html('');
+                  }
+            } else {
             
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Data Berhasil Disimpan",
-              showConfirmButton: false,
-              timer: 2000
-            }).then(function(){
-              $('#hotelspj').hide('2000');
-              location.reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Data Berhasil Disimpan",
+                showConfirmButton: false,
+                timer: 2000
+              }).then(function(){
+                $('#hotelspj').hide('2000');
+                location.reload();
 
-            });
-
+              });
+            } 
           },
           error: function(xhr, status, error) {
               // Tangani kesalahan jika terjadi

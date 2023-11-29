@@ -63,24 +63,33 @@ class Spjhotel extends ResourcePresenter
     {
         
         if($this->request->isAJAX()){
+           
             $data = $this->request->getPost();
+            
             $foto = $this->request->getFile('hotel_foto');
             $scan = $this->request->getFile('hotel_bill');
             
             $namafoto = $foto->getRandomName();
             $namascan = $scan->getRandomName();
 
-            $foto->move(FCPATH.'image/hotel',$namafoto);
-            $scan->move(FCPATH.'image/hotelbill',$namascan);
-            
+            $spjhotel = new SpjhotelModel();
             $data['hotel_foto'] = $namafoto;
             $data['hotel_bill'] = $namascan;
-            $spjhotel = new SpjhotelModel();
-            $spjhotel->save($data);
+
+            $save = $spjhotel->save($data);
             
-            return $this->response->setJSON($data);
-        } else {
-            echo "Perintah ini tidak dapat dilakukan";
+            if ($save) {
+                $foto->move(FCPATH . 'image/hotel', $namafoto);
+                $scan->move(FCPATH . 'image/hotelbill', $namascan);
+
+                return $this->response->setJSON($data);
+            } else {
+                $validationerror = [
+                    'error'     => true,
+                    'message'   => $spjhotel->errors(),
+                ];
+                return $this->response->setJSON($validationerror);
+            }
         }
     }
 

@@ -89,7 +89,7 @@ class Pegawai extends ResourcePresenter
 
        $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
     //    dd($foto->getPath());
-       if($foto->getError() == 4){
+       if($foto->getError() == 4){ //4 => tidak ada mengupload foto
             $namafoto = '_default.png';
             $data['pegawai_foto'] = $namafoto;
 

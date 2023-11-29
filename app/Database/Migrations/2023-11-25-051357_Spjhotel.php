@@ -19,13 +19,31 @@ class Spjhotel extends Migration
                 'type'          => 'INT',
                 'unsigned'       => true,
             ],
-            'hotel_nokamar' => [
+            'hotel_nama'        => [
                 'type'          => 'VARCHAR',
+                'constraint'    => 25,
+            ],
+            'hotel_nokamar'     => [
+                'type'          => 'INT',
                 'constraint'    => 10,
             ],
-            'hotel_typekamar' => [
+            'hotel_typekamar'   => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 20,
+            ],
+            'hotel_checkin'     => [
+                'type'          => 'DATETIME',
+            ],
+            'hotel_checkout'    => [
+                'type'          => 'DATETIME',
+            ],
+            'hotel_hargapermlm' => [
+                'type'          => 'INT',
+                'unsigned'       => true,
+            ],
+            'hotel_totalharga' => [
+                'type'          => 'BIGINT',
+                'unsigned'       => true,
             ],
             'hotel_foto' => [
                 'type'          => 'VARCHAR',

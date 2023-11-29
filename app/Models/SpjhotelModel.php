@@ -18,6 +18,10 @@ class SpjhotelModel extends Model
         'hotel_nama',
         'hotel_nokamar',
         'hotel_typekamar',
+        'hotel_checkin',
+        'hotel_checkout',
+        'hotel_hargapermalam',
+        'hotel_totalharga',
         'hotel_foto',
         'hotel_bill',
         
@@ -33,9 +37,12 @@ class SpjhotelModel extends Model
     // Validation
     protected $validationRules      = [
         'hotel_nama'        => 'required',
-        'hotel_nokamar'     => 'required',
+        'hotel_nokamar'     => 'required|numeric',
         'hotel_typekamar'   => 'required',
-        'hotel_foto'        => 'max_size[hotel_foto,2048]|is_image[hotel_foto]|mime_in[hotel_foto,image/png,image/jpeg,image/jpg]',
+        'hotel_checkin'     => 'required|valid_date[]',
+        'hotel_checkout'    => 'required|valid_date[]',
+        'hotel_hargapermlm' => 'required|numeric',
+        'hotel_foto'        => 'uploaded[hotel_foto]|max_size[hotel_foto,2048]|is_image[hotel_foto]|mime_in[hotel_foto,image/png,image/jpeg,image/jpg]',
         'hotel_bill'        => 'uploaded[hotel_bill]|max_size[hotel_bill,5024]|ext_in[hotel_bill,pdf]',
     ];
     protected $validationMessages   = [
@@ -44,17 +51,31 @@ class SpjhotelModel extends Model
         ],
         'hotel_nokamar'     => [
             'required'      => 'Nomor Kamar Hotel Wajib diisi !',
+            'numeric'       => 'Masukkan angka tanpa tanda pemisah ribuan',
         ],
         'hotel_typekamar'   => [
             'required'      => 'Type Kamar Hotel Wajib diisi !',
         ],
+        'hotel_checkin'     => [
+            'required'      => 'Tanggal Checkin Wajib diisi !',
+            'valid_date'    => 'Format Tanggal harus d/m/Y'
+        ],
+        'hotel_checkout'    => [
+            'required'      => 'Tanggal Checkout Wajib diisi !',
+            'valid_date'    => 'Format Tanggal harus d/m/Y'
+        ],
+        'hotel_hargapermlm' => [
+            'required'      => 'Harga Per Malam Wajib diisi !',
+            'numeric'       => 'Masukkan angka tanpa tanda pemisah ribuan',
+        ],
         'hotel_foto'        => [
+            'uploaded'      => 'Foto Belum di Upload',
             'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
             'is_image'      => 'Data yang diupload Bukan Foto',
             'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
         ],
         'hotel_bill'        => [
-            'uploaded'      => 'File PDF diperlukan.',
+            'uploaded'      => 'File PDF Belum diupload.',
             'max_size'      => 'Ukuran file PDF melebihi batas maksimum 2MB.',
             'ext_in'        => 'File yang diunggah bukan merupakan file PDF.',
         ],
