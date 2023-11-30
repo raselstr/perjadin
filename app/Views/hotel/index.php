@@ -199,13 +199,6 @@
             <div class="form-group row">
               <label for="hotel_permlm" class="col-sm-4 col-form-label">Harga per Malam</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="hotel_permlm" name="hotel_permlm">
-                <div class="invalid-feedback errorhotel_permlm"></div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="hotel_permlm" class="col-sm-4 col-form-label">Harga per Malam</label>
-              <div class="col-sm-8">
                 <input type="number" class="form-control" id="hotel_permlm" name="hotel_permlm">
                 <div class="invalid-feedback errorhotel_permlm"></div>
               </div>
@@ -385,17 +378,17 @@
                   }
             } else {
               console.log(response);
-              // Swal.fire({
-              //   position: "center",
-              //   icon: "success",
-              //   title: "Data Berhasil Disimpan",
-              //   showConfirmButton: false,
-              //   timer: 2000
-              // }).then(function(){
-              //   $('#hotelspj').hide('2000');
-              //   location.reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Data Berhasil Disimpan",
+                showConfirmButton: false,
+                timer: 2000
+              }).then(function(){
+                $('#hotelspj').hide('2000');
+                location.reload();
 
-              // });
+              });
             } 
           },
           error: function(xhr, status, error) {

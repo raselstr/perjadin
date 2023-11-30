@@ -20,7 +20,7 @@ class SpjhotelModel extends Model
         'hotel_typekamar',
         'hotel_checkin',
         'hotel_checkout',
-        'hotel_hargapermalam',
+        'hotel_permlm',
         'hotel_totalharga',
         'hotel_foto',
         'hotel_bill',
