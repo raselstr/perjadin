@@ -179,7 +179,7 @@ class Spt extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'peg'       => $pelaksana->orderBy('pegawais.pegawai_id')->findAll(),
-            'pelks'     => $pegpelaksana->datapelaksana($id),
+            'pelks'     => $pegpelaksana->datapelaksanaall($id),
             ];
 
         // dd($data);    
@@ -256,7 +256,6 @@ class Spt extends ResourcePresenter
         ]);
         $tglmulai = strtotime($this->request->getVar('spt_mulai'));
         $tglspt = strtotime($this->request->getVar('spt_tgl'));
-        
 
         if($tglspt > $tglmulai) {
             if(!$valid) {

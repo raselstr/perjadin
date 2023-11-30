@@ -37,23 +37,27 @@ class Spjhotel extends Migration
             'hotel_checkout'    => [
                 'type'          => 'DATETIME',
             ],
-            'hotel_hargapermlm' => [
-                'type'          => 'INT',
-                'unsigned'       => true,
+            'hotel_permlm'      => [
+                'type'          => 'BIGINT',
+                'unsigned'      => true,
             ],
-            'hotel_totalharga' => [
+            'hotel_totalharga'  => [
                 'type'          => 'BIGINT',
                 'unsigned'       => true,
             ],
-            'hotel_foto' => [
+            'hotel_foto'        => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
             ],
-            'hotel_bill' => [
+            'hotel_bill'        => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 100,
             ],
-             'hotel_created_at'        => [
+            'hotel_verif'       => [
+                'type'          => 'INT',
+                'default'       => 0,
+            ],
+             'hotel_created_at' => [
                 'type'          => 'DATETIME',
                 'null'          => true,
             ],

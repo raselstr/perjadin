@@ -24,6 +24,7 @@ class SpjhotelModel extends Model
         'hotel_totalharga',
         'hotel_foto',
         'hotel_bill',
+        'hotel_verif',
         
     ];
 
@@ -41,7 +42,7 @@ class SpjhotelModel extends Model
         'hotel_typekamar'   => 'required',
         'hotel_checkin'     => 'required|valid_date[]',
         'hotel_checkout'    => 'required|valid_date[]',
-        'hotel_hargapermlm' => 'required|numeric',
+        'hotel_permlm'      => 'required',
         'hotel_foto'        => 'uploaded[hotel_foto]|max_size[hotel_foto,2048]|is_image[hotel_foto]|mime_in[hotel_foto,image/png,image/jpeg,image/jpg]',
         'hotel_bill'        => 'uploaded[hotel_bill]|max_size[hotel_bill,5024]|ext_in[hotel_bill,pdf]',
     ];
@@ -64,7 +65,7 @@ class SpjhotelModel extends Model
             'required'      => 'Tanggal Checkout Wajib diisi !',
             'valid_date'    => 'Format Tanggal harus d/m/Y'
         ],
-        'hotel_hargapermlm' => [
+        'hotel_permlm' => [
             'required'      => 'Harga Per Malam Wajib diisi !',
             'numeric'       => 'Masukkan angka tanpa tanda pemisah ribuan',
         ],

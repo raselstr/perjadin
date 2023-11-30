@@ -43,9 +43,27 @@ class PelaksanaModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function datapelaksana($id=null)
+    function datapelaksanaall($id=null)
     {
-        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id','Kaban');
+        // dd($subquery);
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('*');
+        $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+
+        $builder->where('pelaksanas.spt_id',$id);
+
+        $builder->orderBy('pangkats.pangkat_id', 'DESC');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+    function datapelaksana($id=null)
+    {   
+        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip');
+                    $subquery->where('pejabats.pejabat_id','Kaban');
         // dd($subquery);
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
@@ -75,9 +93,10 @@ class PelaksanaModel extends Model
 
     function caripengikut($id)
     {
-        $array = ['pelaksanas.spt_id' => $id];
+        $array = ['pelaksanas.spt_id' => $id, 'pelaksanas.pelaksana_utama' => 0];
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
+        // $builder->selectCount('pelaksanas.pelaksana_utama');
         $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
         $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
         $builder->where($array);

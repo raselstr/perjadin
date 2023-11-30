@@ -64,7 +64,7 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="tabelspt" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
@@ -178,20 +178,17 @@
   <script>
 
     $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      $("#tabelspt").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+      })
     });
-  });
   </script>
 
   <script>

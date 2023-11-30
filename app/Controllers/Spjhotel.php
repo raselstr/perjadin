@@ -75,6 +75,7 @@ class Spjhotel extends ResourcePresenter
             $spjhotel = new SpjhotelModel();
             $data['hotel_foto'] = $namafoto;
             $data['hotel_bill'] = $namascan;
+            // dd($data);
 
             $save = $spjhotel->save($data);
             

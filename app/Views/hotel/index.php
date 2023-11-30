@@ -67,15 +67,19 @@
                       <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
                       <th rowspan="2" class="align-middle text-center">Nama Pegawai <br> NIP</th>
                       <th rowspan="2" class="align-middle text-center">Uraian</th>
-                      <th colspan="5" class="align-middle text-center">Hotel</th>
+                      <th colspan="9" class="align-middle text-center">Hotel</th>
                       <th rowspan="2" class="align-middle text-center">Tanggal Upload</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Nama</th>
                       <th class="align-middle text-center">No. Kamar</th>
                       <th class="align-middle text-center">Type Kamar</th>
+                      <th class="align-middle text-center">Checkin</th>
+                      <th class="align-middle text-center">Checkout</th>
+                      <th class="align-middle text-center">Harga Per Malam</th>
                       <th class="align-middle text-center">Foto</th>
                       <th class="align-middle text-center">Bill</th>
+                      <th class="align-middle text-center">Ket</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -95,8 +99,20 @@
                           <td class="align-middle text-center"><?= $value->hotel_nama ?></td>
                           <td class="align-middle text-center"><?= $value->hotel_nokamar ?></td>
                           <td class="align-middle text-center"><?= $value->hotel_typekamar ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_checkin ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_checkout ?></td>
+                          <td class="align-middle text-center"><?= $value->hotel_permlm ?></td>
                           <td class="align-middle text-center"><?= $value->hotel_foto ?></td>
                           <td class="align-middle text-center"><?= $value->hotel_bill ?></td>
+                          <td class="align-middle text-center">
+                            <?php if ($value->hotel_verif == 0) : ?>
+                              <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
+                              <?php elseif ($value->hotel_verif == 1) : ?>
+                                <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
+                                <?php else :?>
+                                  <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
+                              <?php endif ?>
+                          </td>
                           <td class="align-middle text-center"><?= $value->hotel_updated_at ?></td>
                     <?php } ?>
                   </tbody>
@@ -130,6 +146,7 @@
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hotel_id" name="hotel_id">
                 <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid">
+                <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1">
               </div>
             </div>
             <div class="form-group row">
@@ -180,10 +197,17 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="hotel_hargapermlm" class="col-sm-4 col-form-label">Harga per Malam</label>
+              <label for="hotel_permlm" class="col-sm-4 col-form-label">Harga per Malam</label>
               <div class="col-sm-8">
-                <input type="number" class="form-control" id="hotel_hargapermlm" name="hotel_hargapermlm">
-                <div class="invalid-feedback errorhotel_hargapermlm"></div>
+                <input type="text" class="form-control" id="hotel_permlm" name="hotel_permlm">
+                <div class="invalid-feedback errorhotel_permlm"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="hotel_permlm" class="col-sm-4 col-form-label">Harga per Malam</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" id="hotel_permlm" name="hotel_permlm">
+                <div class="invalid-feedback errorhotel_permlm"></div>
               </div>
             </div>
             <div class="form-group row">
@@ -338,9 +362,9 @@
                       $('#hotel_checkout').removeClass('is-invalid');
                       $('.errorhotel_checkout').html('');
                   }
-              if(response.message.hotel_hargapermlm){
-                      $('#hotel_hargapermlm').addClass('is-invalid');
-                      $('.errorhotel_hargapermlm').html(response.message.hotel_hargapermlm);
+              if(response.message.hotel_permlm){
+                      $('#hotel_permlm').addClass('is-invalid');
+                      $('.errorhotel_permlm').html(response.message.hotel_permlm);
                   } else {
                       $('#hotel_hargapermlm').removeClass('is-invalid');
                       $('.errorhotel_hargapermlm').html('');
@@ -360,18 +384,18 @@
                       $('.errorhotel_bill').html('');
                   }
             } else {
-            
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Data Berhasil Disimpan",
-                showConfirmButton: false,
-                timer: 2000
-              }).then(function(){
-                $('#hotelspj').hide('2000');
-                location.reload();
+              console.log(response);
+              // Swal.fire({
+              //   position: "center",
+              //   icon: "success",
+              //   title: "Data Berhasil Disimpan",
+              //   showConfirmButton: false,
+              //   timer: 2000
+              // }).then(function(){
+              //   $('#hotelspj').hide('2000');
+              //   location.reload();
 
-              });
+              // });
             } 
           },
           error: function(xhr, status, error) {
