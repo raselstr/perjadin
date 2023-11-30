@@ -32,10 +32,10 @@ class Spjhotel extends Migration
                 'constraint'    => 20,
             ],
             'hotel_checkin'     => [
-                'type'          => 'DATETIME',
+                'type'          => 'DATE',
             ],
             'hotel_checkout'    => [
-                'type'          => 'DATETIME',
+                'type'          => 'DATE',
             ],
             'hotel_permlm'      => [
                 'type'          => 'BIGINT',

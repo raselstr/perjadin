@@ -83,7 +83,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php 
+                    <?php
+
+                                                            use App\Controllers\Spjhotel;
+
                       $no = 1;
                       foreach ($spjhotel as $key => $value) { ?>
                         <tr>
@@ -216,7 +219,7 @@
               <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Hotel</label>
               <div class="col-sm-8">
                 <div class="input-group">
-                  <input class="custom-file-input" type="file" name="hotel_foto" id="foto" value="<?= old('hotel_foto') ?>">
+                  <input class="custom-file-input" type="file" name="hotel_foto" id="foto">
                   <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
                   <div class="invalid-feedback errorhotel_foto"></div>
                 </div>
@@ -226,7 +229,7 @@
               <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Hotel</label>
               <div class="col-sm-8">
                 <div class="input-group">
-                    <input class="custom-file-input" type="file" name="hotel_bill" id="scan" value="<?= old('hotel_bill') ?>">
+                    <input class="custom-file-input" type="file" name="hotel_bill" id="scan">
                     <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill PDF</label>
                     <div class="invalid-feedback errorhotel_bill"></div>
                 </div>
@@ -262,8 +265,29 @@
   
   <script>
     $(document).ready(function(){
+      
       $('#editspj').on('click', function () {
+        var id = $(this).data('id');
         
+        $.ajax({
+          type: "get",
+          url: "<?= site_url('spjhotel/edit/'); ?>" + id,
+          // data: "data",
+          dataType: "json",
+          success: function (response) {
+            console.log(response);
+            $('#hotel_nama').val(response.hotel_nama);
+            $('#hotel_nokamar').val(response.hotel_nokamar);
+            $('#hotel_typekamar').val(response.hotel_typekamar);
+            $('#hotel_checkin').val(response.hotel_checkin);
+            $('#hotel_checkout').val(response.hotel_checkout);
+            $('#hotel_permlm').val(response.hotel_permlm);
+            $('#hotel_totalharga').val(response.hotel_totalharga);
+            $('#nama-foto').text(response.hotel_foto);
+            $('#nama-scan').text(response.hotel_bill);
+            $('#hotelspj').show();
+          }
+        });
       });
 
       $('[data-target="#hotelspj"]').click(function() {

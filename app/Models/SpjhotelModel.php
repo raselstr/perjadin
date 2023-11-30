@@ -43,8 +43,8 @@ class SpjhotelModel extends Model
         'hotel_checkin'     => 'required|valid_date[]',
         'hotel_checkout'    => 'required|valid_date[]',
         'hotel_permlm'      => 'required',
-        'hotel_foto'        => 'uploaded[hotel_foto]|max_size[hotel_foto,2048]|is_image[hotel_foto]|mime_in[hotel_foto,image/png,image/jpeg,image/jpg]',
-        'hotel_bill'        => 'uploaded[hotel_bill]|max_size[hotel_bill,5024]|ext_in[hotel_bill,pdf]',
+        'hotel_foto'        => 'max_size[hotel_foto,2048]|is_image[hotel_foto]|mime_in[hotel_foto,image/png,image/jpeg,image/jpg]',
+        'hotel_bill'        => 'max_size[hotel_bill,5024]|ext_in[hotel_bill,pdf]',
     ];
     protected $validationMessages   = [
         'hotel_nama'        => [
@@ -70,13 +70,11 @@ class SpjhotelModel extends Model
             'numeric'       => 'Masukkan angka tanpa tanda pemisah ribuan',
         ],
         'hotel_foto'        => [
-            'uploaded'      => 'Foto Belum di Upload',
             'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
             'is_image'      => 'Data yang diupload Bukan Foto',
             'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
         ],
         'hotel_bill'        => [
-            'uploaded'      => 'File PDF Belum diupload.',
             'max_size'      => 'Ukuran file PDF melebihi batas maksimum 2MB.',
             'ext_in'        => 'File yang diunggah bukan merupakan file PDF.',
         ],

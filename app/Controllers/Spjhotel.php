@@ -103,7 +103,9 @@ class Spjhotel extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $spjhotel = new SpjhotelModel();
+        $data = $spjhotel->find($id);
+        return $this->response->setJSON($data);
     }
 
     /**
