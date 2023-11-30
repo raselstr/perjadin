@@ -90,6 +90,7 @@
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle text-center">
                             <div class="d-grid gap-2">
+                              <button type="button" name="editspj" id="editspj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-info"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-edit"></i></button>
                               <button type="button" name="spj" id="spj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
                             </div>
                           </td>
@@ -139,12 +140,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      
       <form action="<?= site_url("spjhotel/create"); ?>" method="post" enctype="multipart/form-data" id="formhotel">
+      <?= csrf_field(); ?>
         <div class="modal-body">
           <div class="card-body">
             <div class="form-group row">
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="hotel_id" name="hotel_id">
+                <input type="text" class="form-control" id="hotel_id" name="hotel_id" value="">
                 <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid">
                 <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1">
               </div>
@@ -259,6 +262,10 @@
   
   <script>
     $(document).ready(function(){
+      $('#editspj').on('click', function () {
+        
+      });
+
       $('[data-target="#hotelspj"]').click(function() {
         var hotelid = $(this).data('id');
         var idpelaksana = $(this).data('idpelaksana');
