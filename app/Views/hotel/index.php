@@ -93,7 +93,6 @@
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle text-center">
                             <div class="d-grid gap-2">
-                              <button type="button" name="editspj" id="editspj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-info"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-edit"></i></button>
                               <button type="button" name="spj" id="spj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
                             </div>
                           </td>
@@ -153,6 +152,8 @@
                 <input type="text" class="form-control" id="hotel_id" name="hotel_id" value="">
                 <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid">
                 <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1">
+                <input type="text" class="form-control" id="hotel_fotolama" name="hotel_fotolama">
+                <input type="text" class="form-control" id="hotel_billlama" name="hotel_billlama">
               </div>
             </div>
             <div class="form-group row">
@@ -238,7 +239,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="reset" class="btn btn-secondary batalhotel" data-dismiss="modal">Batal</button>
           <button type="submit" class="btn btn-primary simpanhotel">Simpan</button>
         </div>
       </form>
@@ -266,30 +267,6 @@
   <script>
     $(document).ready(function(){
       
-      $('#editspj').on('click', function () {
-        var id = $(this).data('id');
-        
-        $.ajax({
-          type: "get",
-          url: "<?= site_url('spjhotel/edit/'); ?>" + id,
-          // data: "data",
-          dataType: "json",
-          success: function (response) {
-            console.log(response);
-            $('#hotel_nama').val(response.hotel_nama);
-            $('#hotel_nokamar').val(response.hotel_nokamar);
-            $('#hotel_typekamar').val(response.hotel_typekamar);
-            $('#hotel_checkin').val(response.hotel_checkin);
-            $('#hotel_checkout').val(response.hotel_checkout);
-            $('#hotel_permlm').val(response.hotel_permlm);
-            $('#hotel_totalharga').val(response.hotel_totalharga);
-            $('#nama-foto').text(response.hotel_foto);
-            $('#nama-scan').text(response.hotel_bill);
-            $('#hotelspj').show();
-          }
-        });
-      });
-
       $('[data-target="#hotelspj"]').click(function() {
         var hotelid = $(this).data('id');
         var idpelaksana = $(this).data('idpelaksana');
@@ -300,8 +277,50 @@
         $('#hotel_pelaksanaid').val(idpelaksana);
         $('#hotel_namapegawai').val(namapegawai);
         $('#hotel_nospt').val(nospt);
-       
 
+        if (hotelid !== null) {
+          $.ajax({
+            type: "get",
+            url: "<?= site_url('spjhotel/edit/'); ?>" + hotelid,
+            // data: "data",
+            dataType: "json",
+            success: function (response) {
+              console.log(response);
+              $('#hotel_fotolama').val(response.hotel_foto);
+              $('#hotel_nama').val(response.hotel_nama);
+              $('#hotel_nokamar').val(response.hotel_nokamar);
+              $('#hotel_typekamar').val(response.hotel_typekamar);
+              $('#hotel_checkin').val(response.hotel_checkin);
+              $('#hotel_checkout').val(response.hotel_checkout);
+              $('#hotel_permlm').val(response.hotel_permlm);
+              $('#hotel_totalharga').val(response.hotel_totalharga);
+              $('#nama-foto').text(response.hotel_foto);
+              $('#nama-scan').text(response.hotel_bill);
+              $('#hotel_billlama').val(response.hotel_bill);
+              
+              // Menampilkan nama file foto dan scan dengan ekstensinya
+              // var namaFoto = response.hotel_foto.split('.').slice(0, -1).join('.');
+              // var ekstensiFoto = response.hotel_foto.split('.').pop();
+              // var namaScan = response.hotel_bill.split('.').slice(0, -1).join('.');
+              // var ekstensiScan = response.hotel_bill.split('.').pop();
+
+              // $('#nama-foto').text(namaFoto + '.' + ekstensiFoto);
+              // $('#nama-scan').text(namaScan + '.' + ekstensiScan);
+              $('#hotelspj').show();
+            } 
+          });
+        } else {
+          $('#hotel_nama').val('');
+          $('#hotel_nokamar').val('');
+          $('#hotel_typekamar').val('');
+          $('#hotel_checkin').val('');
+          $('#hotel_checkout').val('');
+          $('#hotel_permlm').val('');
+          $('#hotel_totalharga').val('');
+          $('#nama-foto').text('');
+          $('#nama-scan').text('');
+          $('#hotelspj').show();
+        }
       });
 
       $('#foto').on('change', function() {
@@ -332,7 +351,7 @@
       $('#formhotel').submit(function(e){
         e.preventDefault();
         var data = new FormData(this);
-        console.log(data);
+        // console.log(data);
   
         $.ajax({
           type: "post",
@@ -427,6 +446,10 @@
               console.error(error);
           }
         });
+      });
+
+      $('.batalhotel').on('click', function () {
+        location.reload(); 
       });
     });
   </script>

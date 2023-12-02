@@ -63,26 +63,45 @@ class Spjhotel extends ResourcePresenter
     {
         
         if($this->request->isAJAX()){
-           
+            
+            $spjhotel = new SpjhotelModel();
             $data = $this->request->getPost();
             
             $foto = $this->request->getFile('hotel_foto');
             $scan = $this->request->getFile('hotel_bill');
-            
-            $namafoto = $foto->getRandomName();
-            $namascan = $scan->getRandomName();
 
-            $spjhotel = new SpjhotelModel();
-            $data['hotel_foto'] = $namafoto;
-            $data['hotel_bill'] = $namascan;
+            $hotel_fotolama = $this->request->getVar('hotel_fotolama');
+            $hotel_billlama = $this->request->getVar('hotel_billlama');
+
+            if($foto->getError() == 4){ //4 => tidak ada mengupload foto
+                $data['hotel_foto'] = $hotel_fotolama;
+            } else {
+                $namafoto = $foto->getRandomName();
+                $data['hotel_foto'] = $namafoto;
+                
+            }
+            if($scan->getError() == 4){ //4 => tidak ada mengupload foto
+                $data['hotel_bill'] = $hotel_billlama;
+            } else {
+                $namascan = $scan->getRandomName();
+                $data['hotel_bill'] = $namascan;
+            }
+            
+            $myfilefoto = file_exists (FCPATH. 'image/hotel'.$hotel_fotolama);
+            $myfilebill = file_exists (FCPATH. 'image/hotelbil'.$hotel_billlama);
+
             // dd($data);
 
             $save = $spjhotel->save($data);
             
             if ($save) {
-                $foto->move(FCPATH . 'image/hotel', $namafoto);
-                $scan->move(FCPATH . 'image/hotelbill', $namascan);
-
+                if($data['hotel_foto'] !== $hotel_fotolama) {
+                        $foto->move(FCPATH . 'image/hotel', $namafoto);
+                    }
+                    
+                if($data['hotel_bill'] !== $hotel_billlama) {
+                        $scan->move(FCPATH . 'image/hotelbill', $namascan);
+                    }
                 return $this->response->setJSON($data);
             } else {
                 $validationerror = [
