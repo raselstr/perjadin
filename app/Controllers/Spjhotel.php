@@ -97,10 +97,12 @@ class Spjhotel extends ResourcePresenter
             if ($save) {
                 if($data['hotel_foto'] !== $hotel_fotolama) {
                         $foto->move(FCPATH . 'image/hotel', $namafoto);
+                        unlink('image/hotel'.$hotel_fotolama);
                     }
                     
                 if($data['hotel_bill'] !== $hotel_billlama) {
                         $scan->move(FCPATH . 'image/hotelbill', $namascan);
+                        unlink('image/hotelbil'.$hotel_billlama);
                     }
                 return $this->response->setJSON($data);
             } else {
