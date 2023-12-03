@@ -286,6 +286,7 @@
             dataType: "json",
             success: function (response) {
               console.log(response);
+              $('#hotel_id').val(response.hotel_id);
               $('#hotel_fotolama').val(response.hotel_foto);
               $('#hotel_nama').val(response.hotel_nama);
               $('#hotel_nokamar').val(response.hotel_nokamar);
@@ -431,7 +432,7 @@
               Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Data Berhasil Disimpan",
+                title: response.message,
                 showConfirmButton: false,
                 timer: 2000
               }).then(function(){
@@ -443,7 +444,7 @@
           },
           error: function(xhr, status, error) {
               // Tangani kesalahan jika terjadi
-              console.error(error);
+              console.error();
           }
         });
       });
