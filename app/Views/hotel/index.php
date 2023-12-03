@@ -149,11 +149,11 @@
           <div class="card-body">
             <div class="form-group row">
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="hotel_id" name="hotel_id" value="">
-                <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid">
-                <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1">
-                <input type="text" class="form-control" id="hotel_fotolama" name="hotel_fotolama">
-                <input type="text" class="form-control" id="hotel_billlama" name="hotel_billlama">
+                <input type="text" class="form-control" id="hotel_id" name="hotel_id" value="" hidden>
+                <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid" hidden>
+                <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1" hidden>
+                <input type="text" class="form-control" id="hotel_fotolama" name="hotel_fotolama" hidden>
+                <input type="text" class="form-control" id="hotel_billlama" name="hotel_billlama" hidden>
               </div>
             </div>
             <div class="form-group row">
