@@ -226,7 +226,7 @@ class Pelaksana extends ResourcePresenter
             'spt'       => $dataspt,
             'utama'     => $namautama,
             'pengikut'  => $namapengikut,
-            'jlhpengikut'   => $cek - $cekutama,
+            'jlhpengikut'   => $cek,
             'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt[0]->spt_lama))
         ];
         // dd($data);
