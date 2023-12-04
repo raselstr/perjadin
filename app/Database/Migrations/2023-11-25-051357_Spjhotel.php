@@ -38,11 +38,11 @@ class Spjhotel extends Migration
                 'type'          => 'DATE',
             ],
             'hotel_permlm'      => [
-                'type'          => 'BIGINT',
+                'type'          => 'DOUBLE',
                 'unsigned'      => true,
             ],
             'hotel_totalharga'  => [
-                'type'          => 'BIGINT',
+                'type'          => 'DOUBLE',
                 'unsigned'       => true,
             ],
             'hotel_foto'        => [
