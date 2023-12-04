@@ -33,4 +33,5 @@ $routes->get('pelaksana/sppdpdf/(:num)','Pelaksana::sppdpdf/$1');
 $routes->presenter('pelaksana');
 
 $routes->presenter('spjhotel');
+$routes->presenter('spjpesawat');
 

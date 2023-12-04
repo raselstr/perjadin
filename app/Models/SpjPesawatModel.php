@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SpjPesawat extends Model
+class SpjPesawatModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'spjpesawats';
@@ -21,6 +21,8 @@ class SpjPesawat extends Model
         'spjpesawat_kdboking',
         'spjpesawat_tgl',
         'spjpesawat_harga',
+        'spjpesawat_fototiket',
+        'spjpesawat_bill',
         'spjpesawat_verif',
     ];
 
@@ -47,4 +49,18 @@ class SpjPesawat extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+
+    function spjpesawat() 
+    {
+        $builder = $this->db->table('spjpesawats As a');
+        $builder -> select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
+        $builder -> join('pelaksanas As b','b.pelaksana_id = a.spjpesawat_pelaksanaid','RIGHT');
+        $builder -> join('spts As c','c.spt_id = b.spt_id');
+        $builder -> join('pegawais As d','d.pegawai_id = b.pegawai_id');
+        $builder -> where('c.spt_verif = 1');
+        $query = $builder -> get();
+        return $query->getResult();
+    }
 }

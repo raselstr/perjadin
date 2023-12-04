@@ -59,7 +59,7 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped">
+                <table id="myTable1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
@@ -67,63 +67,82 @@
                       <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
                       <th rowspan="2" class="align-middle text-center">Nama Pegawai <br> NIP</th>
                       <th rowspan="2" class="align-middle text-center">Uraian</th>
-                      <th colspan="9" class="align-middle text-center">Hotel</th>
+                      <th colspan="9" class="align-middle text-center">Pesawat</th>
                       <th rowspan="2" class="align-middle text-center">Tanggal Upload</th>
                     </tr>
                     <tr>
-                      <th class="align-middle text-center">Nama</th>
-                      <th class="align-middle text-center">No. Kamar</th>
-                      <th class="align-middle text-center">Type Kamar</th>
-                      <th class="align-middle text-center">Checkin</th>
-                      <th class="align-middle text-center">Checkout</th>
-                      <th class="align-middle text-center">Harga Per Malam</th>
-                      <th class="align-middle text-center">Foto</th>
-                      <th class="align-middle text-center">Bill</th>
+                      <th class="align-middle text-center">Jenis</th>
+                      <th class="align-middle text-center">Nama Maskapai</th>
+                      <th class="align-middle text-center">No. Tiket</th>
+                      <th class="align-middle text-center">Kode Boking</th>
+                      <th class="align-middle text-center">Tanggal</th>
+                      <th class="align-middle text-center">Harga Tiket</th>
+                      <th class="align-middle text-center">Foto Tiket</th>
+                      <th class="align-middle text-center">Bukti Bill</th>
                       <th class="align-middle text-center">Ket</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-
-                                                            use App\Controllers\Spjhotel;
-
                       $no = 1;
-                      foreach ($spjhotel as $key => $value) { ?>
+                      foreach ($spjpesawat as $key => $value) : ?>
                         <tr>
-                          <td class="align-middle text-center"><?= $no++ ?></td>
-                          <td class="align-middle text-center">
+                          <td rowspan="2" class="align-middle text-center"><?= $no++ ?></td>
+                          <td rowspan="2" class="align-middle text-center">
                             <div class="d-grid gap-2">
-                              <button type="button" name="spj" id="spj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
+                              <button type="button" name="spj" id="spj" data-id="<?= $value->spjpesawat_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
                             </div>
                           </td>
-                          <td class="align-middle"><?= $value->spt_nomor ?></td>
-                          <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
-                          <td class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_nama ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_nokamar ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_typekamar ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_checkin ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_checkout ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_permlm ?></td>
-                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filehotel="<?= $value->hotel_foto ?>"><?= $value->hotel_foto ?></button></td>
-                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->hotel_bill ?>"><?= $value->hotel_bill ?></button></td>
+                          <td rowspan="2" class="align-middle"><?= $value->spt_nomor ?></td>
+                          <td rowspan="2" class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
+                          <td rowspan="2" class="align-middle"><?= $value->spt_uraian ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_jenis ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_maskapai ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_notiket ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_kdboking ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_tgl ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_harga ?></td>
+                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filepesawat="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket ?></button></td>
+                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->spjpesawat_bill ?>"><?= $value->spjpesawat_bill ?></button></td>
                           <td class="align-middle text-center">
-                            <?php if ($value->hotel_verif == 0) : ?>
+                            <?php if ($value->spjpesawat_verif == 0) : ?>
                               <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
-                              <?php elseif ($value->hotel_verif == 1) : ?>
+                              <?php elseif ($value->spjpesawat_verif == 1) : ?>
                                 <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
                                 <?php else :?>
                                   <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
                               <?php endif ?>
                           </td>
-                          <td class="align-middle text-center"><?= $value->hotel_updated_at ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_updated_at ?></td>
                         </tr>
-                    <?php } ?>
+                        <tr>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_jenis ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_maskapai ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_notiket ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_kdboking ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_tgl ?></td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_harga ?></td>
+                          <td class="align-middle text-center">
+                            <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filepesawat="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket ?></button>
+                          </td>
+                          <td class="align-middle text-center">
+                            <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->spjpesawat_bill ?>"><?= $value->spjpesawat_bill ?></button>
+                          </td>
+                          <td class="align-middle text-center">
+                            <?php if ($value->spjpesawat_verif == 0) : ?>
+                              <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
+                              <?php elseif ($value->spjpesawat_verif == 1) : ?>
+                                <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
+                                <?php else :?>
+                                  <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
+                              <?php endif ?>
+                          </td>
+                          <td class="align-middle text-center"><?= $value->spjpesawat_updated_at ?></td>
+                        </tr>
+                    <?php endforeach ?>
                   </tbody>
                 </table>
               </div>
-              <div id="gambarContainer"></div>
-              
             </div>
           </div>
         </div>
@@ -300,13 +319,13 @@
 <?= $this->section('script') ?>
   <script>
     $(function () {
-      $("#myTable").DataTable({
+      $("#myTable1").DataTable({
         "paging": true,
         "lengthChange": true,
         "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
+        "ordering": false,
+        "info": false,
+        "autoWidth": true,
         "responsive": true,
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       })
