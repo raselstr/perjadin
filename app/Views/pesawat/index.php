@@ -85,7 +85,7 @@
                   <tbody>
                     <?php
                       $no = 1;
-                      foreach ($spjpesawat as $key => $value) : ?>
+                      foreach ($spjpesawat['result'] as $key => $value) : ?>
                         <tr>
                           <td rowspan="2" class="align-middle text-center"><?= $no++ ?></td>
                           <td rowspan="2" class="align-middle text-center">
@@ -142,6 +142,7 @@
                     <?php endforeach ?>
                   </tbody>
                 </table>
+                
               </div>
             </div>
           </div>
@@ -152,7 +153,7 @@
       </div><!-- /.container-fluid -->
     </div>
   </div>
-    <!-- Modal -->
+    <!-- Modal
     <div class="modal fade" id="hotelspj" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -265,7 +266,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Modal Foto -->
     <div class="modal fade" id="modalfoto" data-backdrop="static" data-keyboard="false">
@@ -317,7 +318,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-  <script>
+  <!-- <script>
     $(function () {
       $("#myTable1").DataTable({
         "paging": true,
@@ -330,7 +331,7 @@
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       })
     });
-  </script>
+  </script> -->
   <script>
     $(document).ready(function(){
       

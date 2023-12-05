@@ -52,15 +52,20 @@ class SpjPesawatModel extends Model
 
 
 
-    function spjpesawat() 
+    function spjpesawat()
     {
         $builder = $this->db->table('spjpesawats As a');
         $builder -> select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
-        $builder -> join('pelaksanas As b','b.pelaksana_id = a.spjpesawat_pelaksanaid','RIGHT');
-        $builder -> join('spts As c','c.spt_id = b.spt_id');
-        $builder -> join('pegawais As d','d.pegawai_id = b.pegawai_id');
-        $builder -> where('c.spt_verif = 1');
+        $builder -> join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+        $builder -> join('spts As c', 'c.spt_id = b.spt_id');
+        $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
+        $builder -> where('c.spt_verif', 1);
         $query = $builder -> get();
-        return $query->getResult();
+        $result = [
+            'result' => $query->getResult(),
+            'jumlah' => $query->getNumRows(),
+        ];
+
+        return $result;
     }
 }

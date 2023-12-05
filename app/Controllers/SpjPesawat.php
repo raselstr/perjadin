@@ -15,13 +15,17 @@ class SpjPesawat extends ResourcePresenter
     public function index()
     {
         $model = new SpjPesawatModel();
+        $page = 5;
         $spjpesawat = $model->spjpesawat();
+        $jumlah = $spjpesawat['jumlah'];
         $data = [
             'title'     => 'Pertanggung Jawaban Pesawat',
             'subtitle'  => 'Home',
             'spjpesawat'  => $spjpesawat,
+            'page'      => $jumlah,
+                       
         ];
-        // dd($spjhotel);
+        // dd($data);
         return view('pesawat/index', $data);
     }
 
