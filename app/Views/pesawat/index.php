@@ -87,41 +87,33 @@
                       $no = 1;
                       foreach ($spjpesawat['result'] as $key => $value) : ?>
                         <tr>
-                          <td rowspan="2" class="align-middle text-center"><?= $no++ ?></td>
-                          <td rowspan="2" class="align-middle text-center">
+                          <td class="align-middle text-center"><?= $no++ ?></td>
+                          <td class="align-middle text-center">
                             <div class="d-grid gap-2">
                               <button type="button" name="spj" id="spj" data-id="<?= $value->spjpesawat_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
                             </div>
                           </td>
-                          <td rowspan="2" class="align-middle"><?= $value->spt_nomor ?></td>
-                          <td rowspan="2" class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
-                          <td rowspan="2" class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_jenis ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_maskapai ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_notiket ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_kdboking ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_tgl ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_harga ?></td>
-                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filepesawat="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket ?></button></td>
-                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->spjpesawat_bill ?>"><?= $value->spjpesawat_bill ?></button></td>
+                          <td class="align-middle"><?= $value->spt_nomor ?></td>
+                          <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
+                          <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center">
-                            <?php if ($value->spjpesawat_verif == 0) : ?>
-                              <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
-                              <?php elseif ($value->spjpesawat_verif == 1) : ?>
-                                <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
-                                <?php else :?>
-                                  <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
-                              <?php endif ?>
+                            <?= $value->spjpesawat_jenis ?>
                           </td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_updated_at ?></td>
-                        </tr>
-                        <tr>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_jenis ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_maskapai ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_notiket ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_kdboking ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_tgl ?></td>
-                          <td class="align-middle text-center"><?= $value->spjpesawat_harga ?></td>
+                          <td class="align-middle text-center">
+                            <?= $value->spjpesawat_maskapai ?>
+                          </td>
+                          <td class="align-middle text-center">
+                            <?= $value->spjpesawat_notiket ?>
+                          </td>
+                          <td class="align-middle text-center">
+                            <?= $value->spjpesawat_kdboking ?>
+                          </td>
+                          <td class="align-middle text-center">
+                            <?= $value->spjpesawat_tgl ?>
+                          </td>
+                          <td class="align-middle text-center">
+                            <?= $value->spjpesawat_harga ?>
+                          </td>
                           <td class="align-middle text-center">
                             <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filepesawat="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket ?></button>
                           </td>
@@ -133,12 +125,13 @@
                               <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
                               <?php elseif ($value->spjpesawat_verif == 1) : ?>
                                 <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
-                                <?php else :?>
-                                  <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
-                              <?php endif ?>
+                              <?php else :?>
+                                <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
+                            <?php endif ?>
                           </td>
                           <td class="align-middle text-center"><?= $value->spjpesawat_updated_at ?></td>
                         </tr>
+                        
                     <?php endforeach ?>
                   </tbody>
                 </table>
