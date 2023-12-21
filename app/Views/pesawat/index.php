@@ -166,10 +166,10 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="hotel_nama" class="col-sm-4 col-form-label">Nama Hotel</label>
+                  <label for="spjpesawat_jenis" class="col-sm-4 col-form-label">Jenis Pesawat</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="hotel_nama" name="hotel_nama">
-                    <div class="invalid-feedback errorhotel_nama"></div>
+                    <input type="text" class="form-control" id="spjpesawat_jenis" name="spjpesawat_jenis">
+                    <div class="invalid-feedback errorspjpesawat_jenis"></div>
                   </div>
                 </div>
                 <div class="form-group row">
