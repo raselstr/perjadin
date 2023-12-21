@@ -59,72 +59,71 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th rowspan="2" class="align-middle text-center">No</th>
-                      <th rowspan="2" class="align-middle text-center">Input SPJ</th>
-                      <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
-                      <th rowspan="2" class="align-middle text-center">Nama Pegawai <br> NIP</th>
-                      <th rowspan="2" class="align-middle text-center">Uraian</th>
-                      <th colspan="9" class="align-middle text-center">Hotel</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal Upload</th>
-                    </tr>
-                    <tr>
-                      <th class="align-middle text-center">Nama</th>
-                      <th class="align-middle text-center">No. Kamar</th>
-                      <th class="align-middle text-center">Type Kamar</th>
-                      <th class="align-middle text-center">Checkin</th>
-                      <th class="align-middle text-center">Checkout</th>
-                      <th class="align-middle text-center">Harga Per Malam</th>
-                      <th class="align-middle text-center">Foto</th>
-                      <th class="align-middle text-center">Bill</th>
-                      <th class="align-middle text-center">Ket</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
+                  <table id="myTable" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" class="align-middle text-center">No</th>
+                        <th rowspan="2" class="align-middle text-center">Input SPJ</th>
+                        <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
+                        <th rowspan="2" class="align-middle text-center">Nama Pegawai <br> NIP</th>
+                        <th rowspan="2" class="align-middle text-center">Uraian</th>
+                        <th colspan="9" class="align-middle text-center">Hotel</th>
+                        <th rowspan="2" class="align-middle text-center">Tanggal Upload</th>
+                      </tr>
+                      <tr>
+                        <th class="align-middle text-center">Nama</th>
+                        <th class="align-middle text-center">No. Kamar</th>
+                        <th class="align-middle text-center">Type Kamar</th>
+                        <th class="align-middle text-center">Checkin</th>
+                        <th class="align-middle text-center">Checkout</th>
+                        <th class="align-middle text-center">Harga Per Malam</th>
+                        <th class="align-middle text-center">Foto</th>
+                        <th class="align-middle text-center">Bill</th>
+                        <th class="align-middle text-center">Ket</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
 
-                                                            use App\Controllers\Spjhotel;
+                                                              use App\Controllers\Spjhotel;
 
-                      $no = 1;
-                      foreach ($spjhotel as $key => $value) { ?>
-                        <tr>
-                          <td class="align-middle text-center"><?= $no++ ?></td>
-                          <td class="align-middle text-center">
-                            <div class="d-grid gap-2">
-                              <button type="button" name="spj" id="spj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
-                            </div>
-                          </td>
-                          <td class="align-middle"><?= $value->spt_nomor ?></td>
-                          <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
-                          <td class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_nama ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_nokamar ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_typekamar ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_checkin ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_checkout ?></td>
-                          <td class="align-middle text-center"><?= $value->hotel_permlm ?></td>
-                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filehotel="<?= $value->hotel_foto ?>"><?= $value->hotel_foto ?></button></td>
-                          <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->hotel_bill ?>"><?= $value->hotel_bill ?></button></td>
-                          <td class="align-middle text-center">
-                            <?php if ($value->hotel_verif == 0) : ?>
-                              <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
-                              <?php elseif ($value->hotel_verif == 1) : ?>
-                                <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
-                                <?php else :?>
-                                  <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
-                              <?php endif ?>
-                          </td>
-                          <td class="align-middle text-center"><?= $value->hotel_updated_at ?></td>
-                        </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
+                        $no = 1;
+                        foreach ($spjhotel as $key => $value) { ?>
+                          <tr>
+                            <td class="align-middle text-center"><?= $no++ ?></td>
+                            <td class="align-middle text-center">
+                              <div class="d-grid gap-2">
+                                <button type="button" name="spj" id="spj" data-id="<?= $value->hotel_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
+                              </div>
+                            </td>
+                            <td class="align-middle"><?= $value->spt_nomor ?></td>
+                            <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
+                            <td class="align-middle"><?= $value->spt_uraian ?></td>
+                            <td class="align-middle text-center"><?= $value->hotel_nama ?></td>
+                            <td class="align-middle text-center"><?= $value->hotel_nokamar ?></td>
+                            <td class="align-middle text-center"><?= $value->hotel_typekamar ?></td>
+                            <td class="align-middle text-center"><?= $value->hotel_checkin ?></td>
+                            <td class="align-middle text-center"><?= $value->hotel_checkout ?></td>
+                            <td class="align-middle text-center"><?= $value->hotel_permlm ?></td>
+                            <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filehotel="<?= $value->hotel_foto ?>"><?= $value->hotel_foto ?></button></td>
+                            <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->hotel_bill ?>"><?= $value->hotel_bill ?></button></td>
+                            <td class="align-middle text-center">
+                              <?php if ($value->hotel_verif == 0) : ?>
+                                <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
+                                <?php elseif ($value->hotel_verif == 1) : ?>
+                                  <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
+                                  <?php else :?>
+                                    <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
+                                <?php endif ?>
+                            </td>
+                            <td class="align-middle text-center"><?= $value->hotel_updated_at ?></td>
+                          </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+                <div id="gambarContainer"></div>
               </div>
-              <div id="gambarContainer"></div>
-              
-            </div>
           </div>
         </div>
           <!-- /.col-md-6 -->
