@@ -82,7 +82,7 @@
                         <td class="align-middle text-center"><?= $no++ ?></td>
                         <td class="align-middle text-center">
                           <div class="d-grid gap-2">
-                            <button type="button" name="spj" id="spj" data-id="<?= $value->spjpesawat_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"></i></button>
+                            <button type="button" name="spj" id="spj" data-id="<?= $value->spjpesawat_id; ?>" data-idpelaksana="<?= $value->pelaksana_id; ?>" data-namapegawai="<?= $value->pegawai_nama; ?>" data-nospt="<?= $value->spt_nomor; ?>"class="btn btn-primary"  data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-hand-point-right"></i></button>
                           </div>
                         </td>
                         <td class="align-middle"><?= $value->spt_nomor ?></td>
@@ -132,6 +132,117 @@
       </div>
     </div>
   </div>
+  <!-- Modal -->
+    <div class="modal fade" id="pesawatspj" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">SPJ PESAWAT</h5>
+          </div>
+          
+          <form action="<?= site_url("spjhotel/create"); ?>" method="post" enctype="multipart/form-data" id="formhotel">
+          <?= csrf_field(); ?>
+            <div class="modal-body">
+              <div class="card-body">
+                <div class="form-group row">
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_id" name="hotel_id" value="" >
+                    <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid" >
+                    <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1" >
+                    <input type="text" class="form-control" id="hotel_fotolama" name="hotel_fotolama" >
+                    <input type="text" class="form-control" id="hotel_billlama" name="hotel_billlama" >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_nospt" class="col-sm-4 col-form-label">Nomor SPT</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_nospt" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_namapegawai" class="col-sm-4 col-form-label">Nama Pegawai</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_namapegawai" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_nama" class="col-sm-4 col-form-label">Nama Hotel</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_nama" name="hotel_nama">
+                    <div class="invalid-feedback errorhotel_nama"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_nokamar" class="col-sm-4 col-form-label">Nomor Kamar Hotel</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="hotel_nokamar" name="hotel_nokamar">
+                    <div class="invalid-feedback errorhotel_nokamar"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_typekamar" class="col-sm-4 col-form-label">Type Kamar</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_typekamar" name="hotel_typekamar">
+                    <div class="invalid-feedback errorhotel_typekamar"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_checkin" class="col-sm-4 col-form-label">Tanggal Checkin</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" name="hotel_checkin" id="hotel_checkin">
+                    <div class="invalid-feedback errorhotel_checkin"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_checkout" class="col-sm-4 col-form-label">Tanggal Checkout</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" name="hotel_checkout" id="hotel_checkout">
+                    <div class="invalid-feedback errorhotel_checkout"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_permlm" class="col-sm-4 col-form-label">Harga per Malam</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="hotel_permlm" name="hotel_permlm">
+                    <div class="invalid-feedback errorhotel_permlm"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_totalharga" class="col-sm-4 col-form-label">Total Harga</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="hotel_totalharga" name="hotel_totalharga">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Hotel</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input class="custom-file-input" type="file" name="hotel_foto" id="foto">
+                      <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
+                      <div class="invalid-feedback errorhotel_foto"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Hotel</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                        <input class="custom-file-input" type="file" name="hotel_bill" id="scan">
+                        <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill PDF</label>
+                        <div class="invalid-feedback errorhotel_bill"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="reset" class="btn btn-secondary batalhotel" data-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary simpanhotel">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
