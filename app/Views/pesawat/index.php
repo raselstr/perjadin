@@ -140,7 +140,7 @@
             <h5 class="modal-title" id="exampleModalCenterTitle">SPJ PESAWAT</h5>
           </div>
           
-          <form action="<?= site_url("spjhotel/create"); ?>" method="post" enctype="multipart/form-data" id="formhotel">
+          <form action="<?= site_url("spjpesawat/create"); ?>" method="post" enctype="multipart/form-data" id="formpesawat">
           <?= csrf_field(); ?>
             <div class="modal-body">
               <div class="card-body">
@@ -260,7 +260,7 @@
       })
     });
   </script>
-  <script>
+  <!-- <script>
     $(document).ready(function(){
       
        $('[data-target="#modalfoto"]').on('click', function(e) {
@@ -283,8 +283,8 @@
         location.reload();
        });
     });
-  </script>
-  <script>
+  </script> -->
+  <!-- <script>
     $(document).ready(function(){
       
        $('[data-target="#modalbill"]').on('click', function(e) {
@@ -308,10 +308,10 @@
         location.reload();
        });
     });
-  </script>
+  </script> -->
   <script>
     $(document).ready(function(){
-      $('[data-target="#hotelspj"]').click(function() {
+      $('[data-target="#pesawatspj"]').click(function() {
         var hotelid = $(this).data('id');
         var idpelaksana = $(this).data('idpelaksana');
         var namapegawai = $(this).data('namapegawai');
@@ -393,7 +393,7 @@
       });
       
 
-      $('#formhotel').submit(function(e){
+      $('#formpesawat').submit(function(e){
         e.preventDefault();
         var data = new FormData(this);
         // console.log(data);
