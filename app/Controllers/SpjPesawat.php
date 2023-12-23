@@ -15,14 +15,11 @@ class SpjPesawat extends ResourcePresenter
     public function index()
     {
         $model = new SpjPesawatModel();
-        $page = 5;
         $spjpesawat = $model->spjpesawat();
-        $jumlah = $spjpesawat['jumlah'];
         $data = [
             'title'     => 'Pertanggung Jawaban Pesawat',
             'subtitle'  => 'Home',
             'spjpesawat'  => $spjpesawat,
-            'page'      => $jumlah,
                        
         ];
         // dd($data);
@@ -48,7 +45,16 @@ class SpjPesawat extends ResourcePresenter
      */
     public function new()
     {
-        //
+        $model = new SpjPesawatModel();
+        $spjpesawat = $model->spjpesawat();
+        $data = [
+            'title'     => 'Tiket Pesawat',
+            'subtitle'  => 'Home',
+            'spjpesawat'  => $spjpesawat,
+                       
+        ];
+        // dd($data);
+        return view('pesawat/spjpesawat', $data);
     }
 
     /**

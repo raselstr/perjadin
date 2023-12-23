@@ -1,6 +1,6 @@
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -17,6 +17,7 @@
                 <span class="description">Shared publicly - 7:30 PM today</span>
         </div>
       </li>
+      
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <div class="user-panel ">
@@ -36,6 +37,11 @@
           </div>
         </a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li> -->
     </ul>
 
 

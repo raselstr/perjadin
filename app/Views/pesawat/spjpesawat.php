@@ -51,41 +51,124 @@
           </div>
           <div class="card-body">
             <div class="card-body">
-              <table id="myTable1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th class="align-middle text-center">No</th>
-                    <th class="align-middle text-center">Input SPJ</th>
-                    <th class="align-middle text-center">Nomor SPT</th>
-                    <th class="align-middle text-center">Nama Pegawai <br> NIP</th>
-                    <th class="align-middle text-center">Uraian</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    $no = 1;
-                    foreach ($spjpesawat['result'] as $key => $value) : ?>
-                      <tr>
-                        <td class="align-middle text-center"><?= $no++ ?></td>
-                        <td class="align-middle text-center">
-                          <div class="d-grid gap-2">
-                            <a href="<?= site_url('spjpesawat/new'); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
-                          </div>
-                        </td>
-                        <td class="align-middle"><?= $value->spt_nomor ?></td>
-                        <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
-                        <td class="align-middle"><?= $value->spt_uraian ?></td>
-                      </tr>
-                  <?php endforeach ?>
-                </tbody>
-              </table>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  <!-- Modal -->
+    <div class="modal fade" id="pesawatspj" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">SPJ PESAWAT</h5>
+          </div>
+          
+          <form action="<?= site_url("spjpesawat/create"); ?>" method="post" enctype="multipart/form-data" id="formpesawat">
+          <?= csrf_field(); ?>
+            <div class="modal-body">
+              <div class="card-body">
+                <div class="form-group row">
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_id" name="hotel_id" value="" >
+                    <input type="text" class="form-control" id="hotel_pelaksanaid" name="hotel_pelaksanaid" >
+                    <input type="text" class="form-control" id="hotel_verif" name="hotel_verif" value="1" >
+                    <input type="text" class="form-control" id="hotel_fotolama" name="hotel_fotolama" >
+                    <input type="text" class="form-control" id="hotel_billlama" name="hotel_billlama" >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_nospt" class="col-sm-4 col-form-label">Nomor SPT</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_nospt" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_namapegawai" class="col-sm-4 col-form-label">Nama Pegawai</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_namapegawai" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="spjpesawat_jenis" class="col-sm-4 col-form-label">Jenis Pesawat</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="spjpesawat_jenis" name="spjpesawat_jenis">
+                    <div class="invalid-feedback errorspjpesawat_jenis"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_nokamar" class="col-sm-4 col-form-label">Nomor Kamar Hotel</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="hotel_nokamar" name="hotel_nokamar">
+                    <div class="invalid-feedback errorhotel_nokamar"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_typekamar" class="col-sm-4 col-form-label">Type Kamar</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="hotel_typekamar" name="hotel_typekamar">
+                    <div class="invalid-feedback errorhotel_typekamar"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_checkin" class="col-sm-4 col-form-label">Tanggal Checkin</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" name="hotel_checkin" id="hotel_checkin">
+                    <div class="invalid-feedback errorhotel_checkin"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_checkout" class="col-sm-4 col-form-label">Tanggal Checkout</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" name="hotel_checkout" id="hotel_checkout">
+                    <div class="invalid-feedback errorhotel_checkout"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_permlm" class="col-sm-4 col-form-label">Harga per Malam</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="hotel_permlm" name="hotel_permlm">
+                    <div class="invalid-feedback errorhotel_permlm"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hotel_totalharga" class="col-sm-4 col-form-label">Total Harga</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="hotel_totalharga" name="hotel_totalharga">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Hotel</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input class="custom-file-input" type="file" name="hotel_foto" id="foto">
+                      <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
+                      <div class="invalid-feedback errorhotel_foto"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Hotel</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                        <input class="custom-file-input" type="file" name="hotel_bill" id="scan">
+                        <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill PDF</label>
+                        <div class="invalid-feedback errorhotel_bill"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="reset" class="btn btn-secondary batalhotel" data-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary simpanhotel">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
@@ -99,11 +182,59 @@
         "info": false,
         "autoWidth": false,
         "responsive": true,
-        "lengthMenu": [ [5, 25, 50, -1], [5, 25, 50, "All"] ],
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       })
     });
   </script>
+  <!-- <script>
+    $(document).ready(function(){
+      
+       $('[data-target="#modalfoto"]').on('click', function(e) {
+        e.preventDefault();
+          var namafoto = $(this).data('filehotel');
+          var imageUrl = "<?= base_url('image/hotel/') ?>" + namafoto
+          $('#idmodalfoto').text(namafoto);
+          // console.log(namafoto);
+          var linkhotel = $('<img>').attr({
+            'src': imageUrl,
+            'alt': 'Deskripsi Gambar',
+            'width': '100%',
+            'height': '400'
+          });
 
+        $('#tampilfoto').html(linkhotel);
+       });
+
+       $('.tutupmodal').on('click', function(){
+        location.reload();
+       });
+    });
+  </script> -->
+  <!-- <script>
+    $(document).ready(function(){
+      
+       $('[data-target="#modalbill"]').on('click', function(e) {
+        e.preventDefault();
+          var namabill = $(this).data('filebill');
+          var imageUrl = "<?= base_url('image/hotelbill/') ?>" + namabill
+          $('#idmodalbill').text(namabill);
+          // console.log(namafoto);
+          var linkbill = $('<iframe>').attr({
+            'src': imageUrl,
+            'title': 'Deskripsi bill',
+            'width': '100%',
+            'height': '600',
+            'style' : 'border:none;'
+          });
+
+        $('#tampilbill').html(linkbill);
+       });
+
+       $('.tutupmodal').on('click', function(){
+        location.reload();
+       });
+    });
+  </script> -->
   <script>
     $(document).ready(function(){
       $('[data-target="#pesawatspj"]').click(function() {
