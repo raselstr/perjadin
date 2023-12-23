@@ -257,14 +257,8 @@ class Spt extends ResourcePresenter
         $tglmulai = strtotime($this->request->getVar('spt_mulai'));
         $tglspt = strtotime($this->request->getVar('spt_tgl'));
 
-        if($tglspt > $tglmulai) {
-            if(!$valid) {
-                $errors = [
-                    'error' => true,
-                    'messages' => $validation->getErrors(),
-                ];
-                return $this->response->setJSON($errors);
-            } else {
+        if(!$valid) {
+            if($tglspt > $tglmulai) {
                 $errors = [
                     'error' => true,
                     'spt_tgl' => $tglspt,
@@ -272,7 +266,13 @@ class Spt extends ResourcePresenter
                     'messages' => 'Tanggal SPT melebihi dari Tanggal Mulai Perjalanan, Harap diganti!',
                 ];
                 return $this->response->setJSON($errors);
-            }
+            } 
+                $errors = [
+                    'error' => true,
+                    'messages' => $validation->getErrors(),
+                ];
+                return $this->response->setJSON($errors);
+            
         } else {
                 $spt = new SptModel();
            

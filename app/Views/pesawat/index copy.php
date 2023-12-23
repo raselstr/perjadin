@@ -54,11 +54,24 @@
               <table id="myTable1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th class="align-middle text-center">No</th>
-                    <th class="align-middle text-center">Input SPJ</th>
-                    <th class="align-middle text-center">Nomor SPT</th>
-                    <th class="align-middle text-center">Nama Pegawai <br> NIP</th>
-                    <th class="align-middle text-center">Uraian</th>
+                    <th rowspan="2" class="align-middle text-center">No</th>
+                    <th rowspan="2" class="align-middle text-center">Input SPJ</th>
+                    <th rowspan="2" class="align-middle text-center">Nomor SPT</th>
+                    <th rowspan="2" class="align-middle text-center">Nama Pegawai <br> NIP</th>
+                    <th rowspan="2" class="align-middle text-center">Uraian</th>
+                    <th colspan="9" class="align-middle text-center">Pesawat</th>
+                    <th rowspan="2" class="align-middle text-center">Tanggal Upload</th>
+                  </tr>
+                  <tr>
+                    <th class="align-middle text-center">Jenis</th>
+                    <th class="align-middle text-center">Nama Maskapai</th>
+                    <th class="align-middle text-center">No. Tiket</th>
+                    <th class="align-middle text-center">Kode Boking</th>
+                    <th class="align-middle text-center">Tanggal</th>
+                    <th class="align-middle text-center">Harga Tiket</th>
+                    <th class="align-middle text-center">Foto Tiket</th>
+                    <th class="align-middle text-center">Bukti Bill</th>
+                    <th class="align-middle text-center">Ket</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -75,6 +88,40 @@
                         <td class="align-middle"><?= $value->spt_nomor ?></td>
                         <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
                         <td class="align-middle"><?= $value->spt_uraian ?></td>
+                        <td class="align-middle text-center">
+                          <?= $value->spjpesawat_jenis ?>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?= $value->spjpesawat_maskapai ?>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?= $value->spjpesawat_notiket ?>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?= $value->spjpesawat_kdboking ?>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?= $value->spjpesawat_tgl ?>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?= $value->spjpesawat_harga ?>
+                        </td>
+                        <td class="align-middle text-center">
+                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-filepesawat="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket ?></button>
+                        </td>
+                        <td class="align-middle text-center">
+                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalbill" data-filebill="<?= $value->spjpesawat_bill ?>"><?= $value->spjpesawat_bill ?></button>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?php if ($value->spjpesawat_verif == 0) : ?>
+                            <button type="button" class="btn bg-gradient-danger btn-xs">Belum diinput</button>
+                            <?php elseif ($value->spjpesawat_verif == 1) : ?>
+                              <button type="button" class="btn bg-gradient-warning btn-xs">Diinput</button>
+                            <?php else :?>
+                              <button type="button" class="btn bg-gradient-success btn-xs">Disetujui</button>
+                          <?php endif ?>
+                        </td>
+                        <td class="align-middle text-center"><?= $value->spjpesawat_updated_at ?></td>
                       </tr>
                   <?php endforeach ?>
                 </tbody>
