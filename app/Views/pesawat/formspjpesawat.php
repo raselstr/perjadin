@@ -52,7 +52,7 @@
           <div class="card-body">
             <div class="row">
               <div class="card-body">
-                <button type="button" name="spj" id="spj" data-id="" data-idpelaksana="" data-namapegawai="" data-nospt=""class="btn btn-primary"  data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-hand-point-right"></i></button>
+                <a href="" type="button" class="btn bg-gradient-primary">Tambah SPJ Pesawat</a>
               </div>
             </div>
             <div class="row">

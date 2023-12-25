@@ -38,6 +38,14 @@ class Spjpesawat extends Migration
             'spjpesawat_tgl'        => [
                 'type'              => 'date',
             ],
+            'spjpesawat_dari'   => [
+                'type'              => 'VARCHAR',
+                'constraint'         => 25,
+            ],
+            'spjpesawat_ke'   => [
+                'type'              => 'VARCHAR',
+                'constraint'         => 25,
+            ],
             'spjpesawat_harga'      => [
                 'type'              => 'DOUBLE',
             ],

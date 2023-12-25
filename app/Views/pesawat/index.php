@@ -69,10 +69,11 @@
                         <td class="align-middle text-center"><?= $no++ ?></td>
                         <td class="align-middle text-center">
                           <div class="d-grid gap-2">
-                            <a href="<?= site_url('spjpesawat/new'); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
+                            <button type="button" name="spj" id="spj" class="btn btn-primary" data-idpelaksana="<?= $value->pelaksana_id ?>"><i class="fas fa-hand-point-right"></i></button>
+                            <a href="<?= site_url('spjpesawat/formspj1'); ?>" type="button" name="spj" id="spj" class="btn btn-primary" data-idpelaksana="<?= $value->pelaksana_id ?>"><i class="fas fa-hand-point-right"></i></a>
                           </div>
                         </td>
-                        <td class="align-middle"><?= $value->spt_nomor ?></td>
+                        <td class="align-middle"><?= $value->pelaksana_id ?><br><?= $value->spt_nomor ?></td>
                         <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
                         <td class="align-middle"><?= $value->spt_uraian ?></td>
                       </tr>
@@ -99,199 +100,28 @@
         "info": false,
         "autoWidth": false,
         "responsive": true,
-        "lengthMenu": [ [5, 25, 50, -1], [5, 25, 50, "All"] ],
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       })
     });
   </script>
 
   <script>
     $(document).ready(function(){
-      $('[data-target="#pesawatspj"]').click(function() {
-        var hotelid = $(this).data('id');
-        var idpelaksana = $(this).data('idpelaksana');
-        var namapegawai = $(this).data('namapegawai');
-        var nospt = $(this).data('nospt');
+        $('#spj').click(function() {
+            var idpelaksana = $(this).data('idpelaksana');
 
-        $('#hotel_id').val(hotelid);
-        $('#hotel_pelaksanaid').val(idpelaksana);
-        $('#hotel_namapegawai').val(namapegawai);
-        $('#hotel_nospt').val(nospt);
-
-        if (hotelid !== null) {
-          $.ajax({
-            type: "get",
-            url: "<?= site_url('spjhotel/edit/'); ?>" + hotelid,
-            // data: "data",
-            dataType: "json",
-            success: function (response) {
-              console.log(response);
-              $('#hotel_id').val(response.hotel_id);
-              $('#hotel_fotolama').val(response.hotel_foto);
-              $('#hotel_nama').val(response.hotel_nama);
-              $('#hotel_nokamar').val(response.hotel_nokamar);
-              $('#hotel_typekamar').val(response.hotel_typekamar);
-              $('#hotel_checkin').val(response.hotel_checkin);
-              $('#hotel_checkout').val(response.hotel_checkout);
-              $('#hotel_permlm').val(response.hotel_permlm);
-              $('#hotel_totalharga').val(response.hotel_totalharga);
-              $('#nama-foto').text(response.hotel_foto);
-              $('#nama-scan').text(response.hotel_bill);
-              $('#hotel_billlama').val(response.hotel_bill);
-              
-              // Menampilkan nama file foto dan scan dengan ekstensinya
-              // var namaFoto = response.hotel_foto.split('.').slice(0, -1).join('.');
-              // var ekstensiFoto = response.hotel_foto.split('.').pop();
-              // var namaScan = response.hotel_bill.split('.').slice(0, -1).join('.');
-              // var ekstensiScan = response.hotel_bill.split('.').pop();
-
-              // $('#nama-foto').text(namaFoto + '.' + ekstensiFoto);
-              // $('#nama-scan').text(namaScan + '.' + ekstensiScan);
-              $('#hotelspj').show();
-            } 
-          });
-        } else {
-          $('#hotel_nama').val('');
-          $('#hotel_nokamar').val('');
-          $('#hotel_typekamar').val('');
-          $('#hotel_checkin').val('');
-          $('#hotel_checkout').val('');
-          $('#hotel_permlm').val('');
-          $('#hotel_totalharga').val('');
-          $('#nama-foto').text('');
-          $('#nama-scan').text('');
-          $('#hotelspj').show();
-        }
-      });
-
-      $('#foto').on('change', function() {
-          // Mengambil nama file yang dipilih
-          var fileName = $(this).val().split('\\').pop();
-          
-          // Menampilkan nama file di console (opsional)
-          console.log('Nama file:', fileName);
-
-          // Melakukan apa pun yang Anda inginkan dengan nama file tersebut
-          // Contohnya, menampilkan nama file di elemen dengan ID 'nama-foto'
-          $('#nama-foto').text(fileName);
-      });
-
-      $('#scan').on('change', function() {
-          // Mengambil nama file yang dipilih
-          var fileName = $(this).val().split('\\').pop();
-          
-          // Menampilkan nama file di console (opsional)
-          console.log('Nama file:', fileName);
-
-          // Melakukan apa pun yang Anda inginkan dengan nama file tersebut
-          // Contohnya, menampilkan nama file di elemen dengan ID 'nama-foto'
-          $('#nama-scan').text(fileName);
-      });
-      
-
-      $('#formpesawat').submit(function(e){
-        e.preventDefault();
-        var data = new FormData(this);
-        // console.log(data);
-  
-        $.ajax({
-          type: "post",
-          url: $(this).attr('action'),
-          data: data,
-          processData: false,
-          contentType: false,
-          beforeSend:function(){
-                $('.simpanhotel').attr('disabled', 'disabled');
-                $('.simpanhotel').html('<i class="fa fa-spin fa-spinner"></i>');
-            },
-            complete: function(){
-                $('.simpanhotel').removeAttr('disabled');
-                $('.simpanhotel').html('Simpan');
-            },
-          success: function (response) {
-            console.log(response);
-            if(response.error) {
-              if(response.message.hotel_nama){
-                      $('#hotel_nama').addClass('is-invalid');
-                      $('.errorhotel_nama').html(response.message.hotel_nama);
-                  } else {
-                      $('#hotel_nama').removeClass('is-invalid');
-                      $('.errorhotel_nama').html('');
-                  }
-              if(response.message.hotel_nokamar){
-                      $('#hotel_nokamar').addClass('is-invalid');
-                      $('.errorhotel_nokamar').html(response.message.hotel_nokamar);
-                  } else {
-                      $('#hotel_nokamar').removeClass('is-invalid');
-                      $('.errorhotel_nokamar').html('');
-                  }
-              if(response.message.hotel_typekamar){
-                      $('#hotel_typekamar').addClass('is-invalid');
-                      $('.errorhotel_typekamar').html(response.message.hotel_typekamar);
-                  } else {
-                      $('#hotel_typekamar').removeClass('is-invalid');
-                      $('.errorhotel_typekamar').html('');
-                  }
-              if(response.message.hotel_checkin){
-                      $('#hotel_checkin').addClass('is-invalid');
-                      $('.errorhotel_checkin').html(response.message.hotel_checkin);
-                  } else {
-                      $('#hotel_checkin').removeClass('is-invalid');
-                      $('.errorhotel_checkin').html('');
-                  }
-              if(response.message.hotel_checkout){
-                      $('#hotel_checkout').addClass('is-invalid');
-                      $('.errorhotel_checkout').html(response.message.hotel_checkout);
-                  } else {
-                      $('#hotel_checkout').removeClass('is-invalid');
-                      $('.errorhotel_checkout').html('');
-                  }
-              if(response.message.hotel_permlm){
-                      $('#hotel_permlm').addClass('is-invalid');
-                      $('.errorhotel_permlm').html(response.message.hotel_permlm);
-                  } else {
-                      $('#hotel_hargapermlm').removeClass('is-invalid');
-                      $('.errorhotel_hargapermlm').html('');
-                  }
-              if(response.message.hotel_foto){
-                      $('#foto').addClass('is-invalid');
-                      $('.errorhotel_foto').html(response.message.hotel_foto);
-                  } else {
-                      $('#foto').removeClass('is-invalid');
-                      $('.errorhotel_foto').html('');
-                  }
-              if(response.message.hotel_bill){
-                      $('#scan').addClass('is-invalid');
-                      $('.errorhotel_bill').html(response.message.hotel_bill);
-                  } else {
-                      $('#hotel_bill').removeClass('is-invalid');
-                      $('.errorhotel_bill').html('');
-                  }
-            } else {
-              console.log(response);
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: response.message,
-                showConfirmButton: false,
-                timer: 2000
-              }).then(function(){
-                $('#hotelspj').hide('2000');
-                location.reload();
-
-              });
-            } 
-          },
-          error: function(xhr, status, error) {
-              // Tangani kesalahan jika terjadi
-              console.error();
-          }
+            $.ajax({
+                type: "GET",
+                url: "<?= site_url('spjpesawat/formspj'); ?>",
+                data: { id_pelaksana: idpelaksana },
+                // dataType: "json",
+                success: function (response) {
+                    // Lakukan sesuatu dengan respons dari permintaan AJAX
+                    console.log(idpelaksana);
+                },
+                
+            });
         });
-      });
-
-      $('.batalhotel').on('click', function () {
-        location.reload(); 
-      });
     });
-
   </script>
 <?= $this->endSection() ?>

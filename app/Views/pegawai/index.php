@@ -93,7 +93,7 @@
                           <td><?= $value->eselon_nama ?></td>
                           <td><?= $value->pangkat_nama ?></td>
                           <td><?= $value->pegawai_foto ?></td>
-                          <td>
+                          <td class="align-middle text-center">
                             <a href="<?= site_url('pegawai/edit/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?= site_url('pegawai/remove/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
                             <a href="<?= site_url('pegawai/show/'.$value->pegawai_id); ?>" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-info-circle"></i></a>
@@ -133,27 +133,18 @@
 
 <?= $this->section('script') ?>
   <script>
-
     $(function () {
-    $("#myTable1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-      
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#myTable2').DataTable({
-      // "paging": false,
-      // "lengthChange": false,
-      // "searching": false,
-      // "ordering": true,
-      // "info": true,
-      // "autoWidth": true,
-      // "responsive": true,
-      // "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-      // "destroy": true,
-      
+      $("#myTable1").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": false,
+        "autoWidth": false,
+        "responsive": true,
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+      })
     });
-  });
   </script>
 
   <!-- <script>

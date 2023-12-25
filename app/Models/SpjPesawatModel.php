@@ -20,6 +20,8 @@ class SpjPesawatModel extends Model
         'spjpesawat_notiket',
         'spjpesawat_kdboking',
         'spjpesawat_tgl',
+        'spjpesawat_dari',
+        'spjpesawat_ke',
         'spjpesawat_harga',
         'spjpesawat_fototiket',
         'spjpesawat_bill',

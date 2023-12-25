@@ -45,16 +45,52 @@ class SpjPesawat extends ResourcePresenter
      */
     public function new()
     {
-        $model = new SpjPesawatModel();
-        $spjpesawat = $model->spjpesawat();
-        $data = [
-            'title'     => 'Tiket Pesawat',
-            'subtitle'  => 'Home',
-            'spjpesawat'  => $spjpesawat,
-                       
-        ];
-        // dd($data);
-        return view('pesawat/spjpesawat', $data);
+       
+        //
+    }
+
+    // public function new1()
+    // {
+    //     if($this->request->isAJAX()){
+    //         $idPelaksana = $this->request->getPost('id_pelaksana');
+    //         $data = [
+    //             'title'     => 'Tiket Pesawat',
+    //             'subtitle'  => 'Home',
+    //             'spjpesawat'  => $idPelaksana,
+                        
+    //         ];
+    //         // dd($data);
+    //         return view('pesawat/spjpesawat', $data);
+    //     }
+    // }
+
+    public function formspj()
+    {
+        if($this->request->isAJAX()){
+            $idpelaksana = $this->request->getPostGet('id_pelaksana');
+            $data = [
+                'title'     => 'Form Tiket Pesawat',
+                'subtitle'  => 'Home',
+                'idpelaksana' => $idpelaksana,
+                        
+            ];
+            // dd($data);
+            return view('pesawat/spjpesawat', $data);
+        }
+    }
+    public function formspj1()
+    {
+        
+            $idpelaksana = $this->request->getPost('id_pelaksana');
+            $data = [
+                'title'     => 'Form Tiket Pesawat',
+                'subtitle'  => 'Home',
+                'idpelaksana' => $idpelaksana,
+                        
+            ];
+            // dd($data);
+            return view('pesawat/spjpesawat', $data);
+        
     }
 
     /**
