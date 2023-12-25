@@ -70,7 +70,7 @@
                         <td class="align-middle text-center">
                           <div class="d-grid gap-2">
                             <button type="button" name="spj" id="spj" class="btn btn-primary" data-idpelaksana="<?= $value->pelaksana_id ?>"><i class="fas fa-hand-point-right"></i></button>
-                            <a href="<?= site_url('spjpesawat/formspj1'); ?>" type="button" name="spj" id="spj" class="btn btn-primary" data-idpelaksana="<?= $value->pelaksana_id ?>"><i class="fas fa-hand-point-right"></i></a>
+                            <a href="<?= site_url('spjpesawat/formspj/'.$value->pelaksana_id); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
                           </div>
                         </td>
                         <td class="align-middle"><?= $value->pelaksana_id ?><br><?= $value->spt_nomor ?></td>
@@ -102,26 +102,6 @@
         "responsive": true,
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       })
-    });
-  </script>
-
-  <script>
-    $(document).ready(function(){
-        $('#spj').click(function() {
-            var idpelaksana = $(this).data('idpelaksana');
-
-            $.ajax({
-                type: "GET",
-                url: "<?= site_url('spjpesawat/formspj'); ?>",
-                data: { id_pelaksana: idpelaksana },
-                // dataType: "json",
-                success: function (response) {
-                    // Lakukan sesuatu dengan respons dari permintaan AJAX
-                    console.log(idpelaksana);
-                },
-                
-            });
-        });
     });
   </script>
 <?= $this->endSection() ?>

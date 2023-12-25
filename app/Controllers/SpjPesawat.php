@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\SpjhotelModel;
 use App\Models\SpjPesawatModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -64,32 +65,19 @@ class SpjPesawat extends ResourcePresenter
     //     }
     // }
 
-    public function formspj()
+    
+    public function formspj($id)
     {
-        if($this->request->isAJAX()){
-            $idpelaksana = $this->request->getPostGet('id_pelaksana');
-            $data = [
-                'title'     => 'Form Tiket Pesawat',
-                'subtitle'  => 'Home',
-                'idpelaksana' => $idpelaksana,
-                        
-            ];
-            // dd($data);
-            return view('pesawat/spjpesawat', $data);
-        }
-    }
-    public function formspj1()
-    {
-        
-            $idpelaksana = $this->request->getPost('id_pelaksana');
-            $data = [
-                'title'     => 'Form Tiket Pesawat',
-                'subtitle'  => 'Home',
-                'idpelaksana' => $idpelaksana,
-                        
-            ];
-            // dd($data);
-            return view('pesawat/spjpesawat', $data);
+        $model = new SpjPesawatModel();
+        $pesawatidpelaksana = $model->pesawatidpelaksana($id);
+        $data = [
+            'title'     => 'Form Tiket Pesawat',
+            'subtitle'  => 'Home',
+            'data'      => $pesawatidpelaksana,
+                    
+        ];
+        // dd($data);
+        return view('pesawat/spjpesawat', $data);
         
     }
 

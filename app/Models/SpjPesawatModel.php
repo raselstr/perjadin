@@ -70,4 +70,19 @@ class SpjPesawatModel extends Model
 
         return $result;
     }
+    function pesawatidpelaksana($id)
+    {
+        $builder = $this->db->table('spjpesawats As a');
+        $builder -> select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, c.spt_tgl, c.spt_mulai, c.spt_berakhir, d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
+        $builder -> join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+        $builder -> join('spts As c', 'c.spt_id = b.spt_id');
+        $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
+        $builder -> where('c.spt_verif', 1);
+        $builder -> where('b.pelaksana_id', $id);
+        $query = $builder -> get();
+        $result = $query->getResult();
+            
+
+        return $result;
+    }
 }

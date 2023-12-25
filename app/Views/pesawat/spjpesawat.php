@@ -52,7 +52,39 @@
           <div class="card-body">
             <div class="row">
               <div class="card-body">
-                <button type="button" name="spj" id="spj" data-id="" data-idpelaksana="" data-namapegawai="" data-nospt=""class="btn btn-primary"  data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-hand-point-right"></i></button>
+                <?php
+                  $no = 1;
+                  foreach ($data as $key => $value) : ?>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Id Pelaksana</label>
+                      <div class="col">
+                        <input type="text" class="form-control" name="pelaksana_id" value="<?= $value->pelaksana_id; ?>" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Nama Pelaksana</label>
+                      <div class="col">
+                        <input type="text" class="form-control" name="pegawai_nama" value="<?= $value->pegawai_nama; ?>" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Tanggal SPT</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="spt_tgl" value="<?= date('d F Y',strtotime($value->spt_tgl)); ?>" disabled>
+                      </div>
+                      <label class="col-sm-2 col-form-label text-right">Tanggal Mulai</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="spt_mulai" value="<?= date('d F Y',strtotime($value->spt_mulai)); ?>" disabled>
+                      </div>
+                      <label class="col-sm-2 col-form-label text-right">Tanggal Selesai</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="spt_berakhir" value="<?= date('d F Y',strtotime($value->spt_berakhir)); ?>" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                    </div>
+                  <?php endforeach ?>
+                <button type="button" class="btn bg-gradient-primary"  name="spj" id="spj" data-id="" data-idpelaksana="" data-namapegawai="" data-nospt=""class="btn btn-primary"  data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-hand-point-right"> Tambah SPJ Pesawat</i></button>
               </div>
             </div>
             <div class="row">
@@ -85,6 +117,102 @@
       </div>
     </div>
   </div>
+  <!-- Modal SPJ Pesawat -->
+  <div class="modal fade" id="pesawatspj">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">SPJ Pesawat</h4>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
+            <form action="" method="post">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Id spjpesawat</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_id">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Id Pelaksana</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_pelaksanaid">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Jenis SPJ Pesawat</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_jenis">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Maskapai</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_maskapai">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Nomor Tiket</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_notiket">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Kode Boking</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_kdboking">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Tanggal Pesawat</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_tgl">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Dari</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_dari">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Ke</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_ke">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Harga/Tiket</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_harga">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Foto Tiket</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_fototiket">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Dokumen Bill</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="spjpesawat_bill">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+      <!-- /.modal -->
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>

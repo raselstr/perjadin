@@ -34,7 +34,7 @@ $routes->presenter('pelaksana');
 
 $routes->presenter('spjhotel');
 
-$routes->get('spjpesawat/formspj', 'SpjPesawat::formspj');
-$routes->get('spjpesawat/formspj1', 'SpjPesawat::formspj1');
+$routes->get('spjpesawat/formspj/(:num)', 'SpjPesawat::formspj/$1');
+// $routes->get('spjpesawat/formspj1', 'SpjPesawat::formspj1');
 $routes->presenter('spjpesawat');
 
