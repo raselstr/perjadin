@@ -176,25 +176,7 @@
     </div>
   </div>
     <!-- /.content -->
-<?= $this->endSection() ?>
-
-<?= $this->section('script'); ?>
-  <script>
- 
-      //Initialize Select2 Elements
-      $('.select2').select2()
-
-      //Initialize Select2 Elements
-      $('.select2bs4').select2({
-        theme: 'bootstrap4'
-      })
-
-  </script>
-  
-<?= $this->endSection(); ?>
-    
-<?= $this->section('modalcustome'); ?>
-<div class="modal fade" id="modal-default">
+    <div class="modal fade" id="modal-default">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -230,9 +212,23 @@
   <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<?= $this->endSection() ?>
 
+<?= $this->section('script'); ?>
+  <script>
+ 
+      //Initialize Select2 Elements
+      $('.select2').select2()
 
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+  </script>
+  
 <?= $this->endSection(); ?>
+    
 
 <?= $this->section('script'); ?>
 <script>

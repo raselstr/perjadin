@@ -59,7 +59,7 @@
                       Tambah Data Pegawai
                     </button> -->
                     <a href="<?= site_url('pegawai/new'); ?>" type="button" class="btn btn-primary btn btn-primary float-right">
-                      <i class="fa fa-plus">  Tambah Data Pegawai</i>
+                      <i class="fa fa-plus">  </i> Tambah Data Pegawai
                     </a>
                   </div>
                 </div>

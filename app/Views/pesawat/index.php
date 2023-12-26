@@ -69,7 +69,6 @@
                         <td class="align-middle text-center"><?= $no++ ?></td>
                         <td class="align-middle text-center">
                           <div class="d-grid gap-2">
-                            <button type="button" name="spj" id="spj" class="btn btn-primary" data-idpelaksana="<?= $value->pelaksana_id ?>"><i class="fas fa-hand-point-right"></i></button>
                             <a href="<?= site_url('spjpesawat/formspj/'.$value->pelaksana_id); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
                           </div>
                         </td>

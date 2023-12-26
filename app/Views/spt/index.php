@@ -57,8 +57,8 @@
                     <!-- <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
                       Tambah Data Pegawai
                     </button> -->
-                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-block bg-gradient-primary btn-sm float-right">
-                      <i class="fa fa-plus">  Tambah Surat Perintah Tugas</i>
+                    <a href="<?= site_url('spt/new'); ?>" type="button" class="btn btn-block bg-gradient-primary float-right">
+                      <i class="fa fa-plus"></i>  Tambah Surat Perintah Tugas
                     </a>
                   </div>
                 </div>
@@ -139,24 +139,21 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-  <script>
-
+<script>
     $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      $("#example1").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+      })
     });
-  });
-
+  </script>
+  <script>
     const flashData = $('.flash-data').data('flashdata');
     // console.log(flashData);
 

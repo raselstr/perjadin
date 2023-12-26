@@ -90,80 +90,15 @@ class SpjPesawat extends ResourcePresenter
     public function create()
     {
         
-        if($this->request->isAJAX()){
+        
+        $spjpesawat = new SpjPesawatModel();
+        $data = $this->request->getPost();
+        
+        $spjpesawat->save($data);
+        return redirect()->back()->withInput();
+        
             
-            $spjhotel = new SpjPesawatModel();
-            $data = $this->request->getPost();
-            
-            $foto = $this->request->getFile('hotel_foto');
-            $scan = $this->request->getFile('hotel_bill');
-
-            $hotel_fotolama = $this->request->getVar('hotel_fotolama');
-            $hotel_billlama = $this->request->getVar('hotel_billlama');
-            $hotel_id = $this->request->getVar('hotel_id');
-
-            if($foto->getError() == 4){ //4 => tidak ada mengupload foto
-                $data['hotel_foto'] = $hotel_fotolama;
-            } else {
-                $namafoto = $foto->getRandomName();
-                $data['hotel_foto'] = $namafoto;
-                
-            }
-            if($scan->getError() == 4){ //4 => tidak ada mengupload foto
-                $data['hotel_bill'] = $hotel_billlama;
-            } else {
-                $namascan = $scan->getRandomName();
-                $data['hotel_bill'] = $namascan;
-            }
-
-            
-            $myfilefoto = file_exists(FCPATH. 'image/hotel/'. $hotel_fotolama);
-            $myfilebill = file_exists (FCPATH. 'image/hotelbill/'.$hotel_billlama);
-            
-            // dd($data);
-            
-            
-            $save = $spjhotel->save($data);
-            
-            if ($save) {
-                if($hotel_id == null) {
-                    if($data['hotel_foto'] !== $hotel_fotolama) {
-                        $foto->move(FCPATH . 'image/hotel', $namafoto);
-                    }
-                    if($data['hotel_bill'] !== $hotel_billlama) {
-                        $scan->move(FCPATH . 'image/hotelbill', $namascan);
-                    }
-                } else {
-                    if($data['hotel_foto'] !== $hotel_fotolama) {
-                        if($myfilefoto == true) {
-                            $foto->move(FCPATH . 'image/hotel', $namafoto);
-                            unlink(FCPATH . 'image/hotel/' . $hotel_fotolama);
-                        } else {
-                            $foto->move(FCPATH . 'image/hotel', $namafoto);
-                        }
-                    }
-                    if($data['hotel_bill'] !== $hotel_billlama) {
-                        if($myfilebill == true) {
-                            $scan->move(FCPATH . 'image/hotelbill', $namascan);
-                            unlink(FCPATH . 'image/hotelbill/' . $hotel_billlama);
-                        } else {
-                            $scan->move(FCPATH . 'image/hotelbill', $namascan);
-                        }
-                    }
-                }
-                $ket = [
-                    'error' => false,
-                    'message' => 'Data Berhasil',
-                ];
-            return $this->response->setJSON($ket);
-            } else {
-                $validationerror = [
-                    'error'     => true,
-                    'message'   => $spjhotel->errors(),
-                ];
-                return $this->response->setJSON($validationerror);
-            };
-        }
+        
     }
 
     /**

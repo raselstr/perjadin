@@ -13,7 +13,7 @@ class Spjpesawat extends Migration
                 'type'              => 'BIGINT',
                 'constraint'         => 20,
                 'unsigned'          => true,
-                'auto_incremen'     => true, 
+                'auto_increment'     => true, 
             ],   
             'spjpesawat_pelaksanaid' => [
                 'type'              => 'INT',
