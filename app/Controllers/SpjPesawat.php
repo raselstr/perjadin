@@ -94,11 +94,20 @@ class SpjPesawat extends ResourcePresenter
         $spjpesawat = new SpjPesawatModel();
         $data = $this->request->getPost();
         
-        $spjpesawat->save($data);
-        return redirect()->back()->withInput();
-        
-            
-        
+        $save = $spjpesawat->save($data);
+        if($save){
+            $ket = [
+                    'error' => false,
+                    'message' => 'Data Berhasil',
+                ];
+            return $this->response->setJSON($ket);
+        } else {
+            $validationerror = [
+                'error'     => true,
+                'message'   => $spjpesawat->errors(),
+            ];
+            return $this->response->setJSON($validationerror);
+        };
     }
 
     /**
@@ -110,7 +119,9 @@ class SpjPesawat extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $spjpesawat = new SpjPesawatModel();
+        $data = $spjpesawat->find($id);
+        return $this->response->setJSON($data);
     }
 
     /**
@@ -135,7 +146,9 @@ class SpjPesawat extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        $spjpesawat = new SpjPesawatModel();
+        $data = $spjpesawat->delete($id);
+        return $this->response->setJSON($data);
     }
 
     /**

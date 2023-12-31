@@ -36,7 +36,17 @@ class SpjPesawatModel extends Model
     protected $deletedField  = 'spjpesawat_deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'spjpesawat_pelaksanaid' => 'required',
+        'spjpesawat_jenis' => 'required',
+        'spjpesawat_maskapai' => 'required',
+        'spjpesawat_notiket' => 'required',
+        'spjpesawat_kdboking' => 'required',
+        'spjpesawat_tgl' => 'required|valid_date[]',
+        'spjpesawat_dari' => 'required',
+        'spjpesawat_ke' => 'required',
+        'spjpesawat_harga' => 'required',
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -62,6 +72,7 @@ class SpjPesawatModel extends Model
         $builder -> join('spts As c', 'c.spt_id = b.spt_id');
         $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
         $builder -> where('c.spt_verif', 1);
+        $builder -> where('c.spt_jenis', 2);
         $query = $builder -> get();
         $result = [
             'result' => $query->getResult(),
@@ -79,6 +90,7 @@ class SpjPesawatModel extends Model
         $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
         $builder -> where('c.spt_verif', 1);
         $builder -> where('b.pelaksana_id', $id);
+        
         $query = $builder -> get();
         $result = $query->getResult();
             

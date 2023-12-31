@@ -10,6 +10,9 @@
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -29,6 +32,10 @@
 
   <!-- SweetAlert2 -->
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+
+ <!-- InputMask -->
+  <script src="plugins/moment/moment.min.js"></script>
+  <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
 
 <?= $this->endSection(); ?>
 
@@ -101,7 +108,7 @@
                   <th class="align-middle text-center">Maskapai</th>
                   <th class="align-middle text-center">Nomor Tiket</th>
                   <th class="align-middle text-center">Kode Boking</th>
-                  <th class="align-middle text-center">Tanggal Berangkat</th>
+                  <th class="align-middle text-center">Tanggal</th>
                   <th class="align-middle text-center">Dari Bandara </th>
                   <th class="align-middle text-center">Ke Bandara </th>
                   <th class="align-middle text-center">Harga</th>
@@ -121,14 +128,18 @@
                     <td class="align-middle text-center"><?= $value->spjpesawat_maskapai; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_notiket; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_kdboking; ?></td>
-                    <td class="align-middle text-center"><?= $value->spjpesawat_tgl; ?></td>
+                    <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spjpesawat_tgl)); ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_dari; ?> </td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_ke; ?> </td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_harga; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_fototiket; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_bill; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_verif; ?></td>
-                    <td class="align-middle text-center"></td>
+                    <td class="align-middle text-center">
+                      <button type="button" class="btn bg-gradient-info"  name="spj" id="spj" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
+                      <button type="button" class="btn bg-gradient-warning"  name="spj" id="spj" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                      <button type="button" class="btn bg-gradient-danger"  name="spj" id="spj" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-trash"> </i> <br>Hapus</button>
+                    </td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -146,7 +157,7 @@
         <div class="modal-header">
           <h4 class="modal-title">SPJ Pesawat</h4>
         </div>
-        <form action="<?= site_url('spjpesawat/create'); ?>" method="post">
+        <form action="<?= site_url('spjpesawat/create'); ?>" method="post" id="formpesawat">
           <?= csrf_field(); ?>
           <div class="modal-body">
             <div class="card-body">
@@ -166,53 +177,62 @@
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Jenis SPJ Pesawat</label>
                   <div class="col">
-                    <select class="form-control" style="width: 100%;" name="spjpesawat_jenis">
+                    <select class="form-control" style="width: 100%;" id="spjpesawat_jenis" name="spjpesawat_jenis">
                       <option value="">Pilih Jenis Tiket ...</option>
                       <option value="Berangkat">Berangkat</option>
                       <option value="Kembali">Kembali</option>
                     </select>
+                    <div class="invalid-feedback errorspjpesawat_jenis"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Maskapai</label>
                   <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_maskapai">
+                    <input type="text" class="form-control" id="spjpesawat_maskapai" name="spjpesawat_maskapai">
+                    <div class="invalid-feedback errorspjpesawat_maskapai"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Nomor Tiket</label>
                   <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_notiket">
+                    <input type="text" class="form-control" id="spjpesawat_notiket" name="spjpesawat_notiket">
+                    <div class="invalid-feedback errorspjpesawat_notiket"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Kode Boking</label>
                   <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_kdboking">
+                    <input type="text" class="form-control" id="spjpesawat_kdboking" name="spjpesawat_kdboking">
+                    <div class="invalid-feedback errorspjpesawat_kdboking"></div>
                   </div>
                 </div>
+                 
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Tanggal Pesawat</label>
                   <div class="col">
-                    <input type="date" class="form-control" name="spjpesawat_tgl">
+                    <input type="date" class="form-control" id="spjpesawat_tgl" name="spjpesawat_tgl">
+                    <div class="invalid-feedback errorspjpesawat_tgl"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Dari</label>
                   <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_dari">
+                    <input type="text" class="form-control" id="spjpesawat_dari" name="spjpesawat_dari">
+                    <div class="invalid-feedback errorspjpesawat_dari"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Ke</label>
                   <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_ke">
+                    <input type="text" class="form-control" id="spjpesawat_ke" name="spjpesawat_ke">
+                    <div class="invalid-feedback errorspjpesawat_ke"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Harga/Tiket/Orang</label>
                   <div class="col">
-                    <input type="number" class="form-control" name="spjpesawat_harga">
+                    <input type="text" class="form-control" id="spjpesawat_harga" name="spjpesawat_harga" data-inputmask-inputformat="999.999.999" data-mask>
+                    <div class="invalid-feedback errorspjpesawat_harga"></div>
                   </div>
                 </div>
                 <!-- <div class="form-group row">
@@ -230,8 +250,8 @@
               </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="reset" class="btn btn-default batalpesawat" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary simpanpesawat">Save changes</button>
             </div>
           </div>
         </form>
@@ -308,13 +328,116 @@
   </script> -->
   <script>
     $(document).ready(function(){
-      $('[data-target="#pesawatspj"]').click(function() {
-        var pesawatspjid = $(this).data('id');
+      $('[data-target="#pesawatspj"]').click (function() {
         var idpelaksana = $(this).data('idpelaksana');
-
-        $('#spjpesawat_id').val(pesawatspjid);
         $('#spjpesawat_pelaksanaid').val(idpelaksana);
       });
+
+      $('#formpesawat').submit(function(e){
+        e.preventDefault();
+        var data = new FormData(this);
+        // console.log(data);
+  
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: data,
+          processData: false,
+          contentType: false,
+          beforeSend:function(){
+                $('.simpanpesawat').attr('disabled', 'disabled');
+                $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.simpanpesawat').removeAttr('disabled');
+                $('.simpanpesawat').html('Simpan');
+            },
+          success: function (response) {
+            console.log(response);
+            if(response.error) {
+              if(response.message.spjpesawat_jenis){
+                      $('#spjpesawat_jenis').addClass('is-invalid');
+                      $('.errorspjpesawat_jenis').html(response.message.spjpesawat_jenis);
+                  } else {
+                      $('#spjpesawat_jenis').removeClass('is-invalid');
+                      $('.errorspjpesawat_jenis').html('');
+              }
+              if(response.message.spjpesawat_maskapai){
+                      $('#spjpesawat_maskapai').addClass('is-invalid');
+                      $('.errorspjpesawat_maskapai').html(response.message.spjpesawat_maskapai);
+                  } else {
+                      $('#spjpesawat_maskapai').removeClass('is-invalid');
+                      $('.errorspjpesawat_maskapai').html('');
+              }
+              if(response.message.spjpesawat_notiket){
+                      $('#spjpesawat_notiket').addClass('is-invalid');
+                      $('.errorspjpesawat_notiket').html(response.message.spjpesawat_notiket);
+                  } else {
+                      $('#spjpesawat_notiket').removeClass('is-invalid');
+                      $('.errorspjpesawat_notiket').html('');
+              }
+              if(response.message.spjpesawat_kdboking){
+                      $('#spjpesawat_kdboking').addClass('is-invalid');
+                      $('.errorspjpesawat_kdboking').html(response.message.spjpesawat_kdboking);
+                  } else {
+                      $('#spjpesawat_kdboking').removeClass('is-invalid');
+                      $('.errorspjpesawat_kdboking').html('');
+              }
+              if(response.message.spjpesawat_tgl){
+                      $('#spjpesawat_tgl').addClass('is-invalid');
+                      $('.errorspjpesawat_tgl').html(response.message.spjpesawat_tgl);
+                  } else {
+                      $('#spjpesawat_tgl').removeClass('is-invalid');
+                      $('.errorspjpesawat_tgl').html('');
+              }
+              if(response.message.spjpesawat_dari){
+                      $('#spjpesawat_dari').addClass('is-invalid');
+                      $('.errorspjpesawat_dari').html(response.message.spjpesawat_dari);
+                  } else {
+                      $('#spjpesawat_dari').removeClass('is-invalid');
+                      $('.errorspjpesawat_dari').html('');
+              }
+              if(response.message.spjpesawat_ke){
+                      $('#spjpesawat_ke').addClass('is-invalid');
+                      $('.errorspjpesawat_ke').html(response.message.spjpesawat_ke);
+                  } else {
+                      $('#spjpesawat_ke').removeClass('is-invalid');
+                      $('.errorspjpesawat_ke').html('');
+              }
+              if(response.message.spjpesawat_harga){
+                      $('#spjpesawat_harga').addClass('is-invalid');
+                      $('.errorspjpesawat_harga').html(response.message.spjpesawat_harga);
+                  } else {
+                      $('#spjpesawat_harga').removeClass('is-invalid');
+                      $('.errorspjpesawat_harga').html('');
+              }
+            } else {
+              console.log(response);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: response.message,
+                showConfirmButton: false,
+                timer: 2000
+              }).then(function(){
+                $('#pesawatspj').hide('2000');
+                location.reload();
+
+              });
+            } 
+          },
+          error: function(xhr, status, error) {
+              // Tangani kesalahan jika terjadi
+              console.error();
+          }
+        });
+      });
+      $('.batalpesawat').on('click', function () {
+        location.reload(); 
+      });
     });
+
+
   </script>
+  
 <?= $this->endSection() ?>
