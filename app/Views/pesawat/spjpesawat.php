@@ -125,9 +125,9 @@
                   <tr>
                     <td class="align-middle text-center"><?= $no++; ?></td>
                     <td class="align-middle text-center">
-                      <button type="button" class="btn bg-gradient-info" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-fototiketlama = "<?= $value->spjpesawat_fototiket; ?>" data-scanbilllama="<?= $value->spjpesawat_bill; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
-                      <button type="button" class="btn bg-gradient-warning" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-idpelaksana ="<?= $data[0]->pelaksana_id; ?>" id="tomboledit" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
-                      <a href="<?= site_url('spjpesawat/remove/'.$value->spjpesawat_id) ?>" type="button" class="btn bg-gradient-danger tombol-hapus" data-idpesawat=""><i class="fas fa-trash"> </i> <br>Hapus</a>
+                      <button type="button" class="btn bg-gradient-info btn-xs" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-fototiketlama = "<?= $value->spjpesawat_fototiket; ?>" data-scanbilllama="<?= $value->spjpesawat_bill; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
+                      <button type="button" class="btn bg-gradient-warning btn-xs" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-idpelaksana ="<?= $data[0]->pelaksana_id; ?>" id="tomboledit" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                      <a href="<?= site_url('spjpesawat/remove/'.$value->spjpesawat_id) ?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idpesawat=""><i class="fas fa-trash"> </i> <br>Hapus</a>
                     </td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_jenis; ?><br><?= $value->spjpesawat_id; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_maskapai; ?></td>
@@ -137,9 +137,9 @@
                     <td class="align-middle text-center"><?= $value->spjpesawat_dari; ?> </td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_ke; ?> </td> 
                     <td class="align-middle text-center"><?= $value->spjpesawat_harga; ?></td>
-                    <td class="align-middle text-center"><?= $value->spjpesawat_fototiket; ?></td>
-                    <td class="align-middle text-center"><?= $value->spjpesawat_bill; ?></td>
-                    <td class="align-middle text-center"><?= $value->spjpesawat_verif; ?></td>
+                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket; ?></button></td>
+                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?= $value->spjpesawat_bill ?>"><?= $value->spjpesawat_bill; ?></button></td>
+                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-scanbill="<?= $value->spjpesawat_verif ?>"><?= $value->spjpesawat_verif; ?></td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -163,15 +163,15 @@
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Id spjpesawat</label>
+                  <label class="col-sm-4 col-form-label" hidden>Id spjpesawat</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjpesawat_id" name="spjpesawat_id">
+                    <input type="text" class="form-control" id="spjpesawat_id" name="spjpesawat_id" hidden>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Id Pelaksana</label>
+                  <label class="col-sm-4 col-form-label" hidden>Id Pelaksana</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjpesawat_pelaksanaid" name="spjpesawat_pelaksanaid">
+                    <input type="text" class="form-control" id="spjpesawat_pelaksanaid" name="spjpesawat_pelaksanaid" hidden>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -249,7 +249,7 @@
   </div>
   <!-- /.modal -->
   
-  <!-- Modal SPJ Pesawat -->
+  <!-- Modal SPJ Bill -->
   <div class="modal fade" id="pesawatbill">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -262,11 +262,11 @@
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
               <div class="form-group row">
-                <label class="col-sm-4 col-form-label" >Id spjpesawat</label>
+                <label class="col-sm-4 col-form-label" hidden>Id spjpesawat</label>
                 <div class="col">
-                  <input type="text" class="form-control" id="id" name="spjpesawat_id" >
-                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" >
-                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" >
+                  <input type="text" class="form-control" id="id" name="spjpesawat_id" hidden>
+                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" hidden>
+                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" hidden>
                 </div>
               </div>
               <div class="form-group row">
@@ -274,7 +274,6 @@
                 <div class="col-sm-8">
                   <div class="input-group">
                     <input class="custom-file-input" type="file" name="spjpesawat_fototiket" id="fototiket">
-                    <button type="button">tes</button>
                     <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
                     <div class="invalid-feedback errorspjpesawat_fototiket"></div>
                   </div>
@@ -285,7 +284,6 @@
                 <div class="col-sm-8">
                   <div class="input-group">
                     <input class="custom-file-input" type="file" name="spjpesawat_bill" id="scanbill">
-                    <button type="button">tes</button>
                       <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill Pesawat</label>
                       <div class="invalid-feedback errorspjpesawat_bill"></div>
                   </div>
@@ -303,55 +301,107 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
-      <!-- /.modal -->
+  <!-- /.modal -->
+
+  <!-- Modal Foto -->
+    <div class="modal fade" id="modalfoto" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Foto Hotel</h4>
+          </div>
+          <div class="modal-body">
+            <div class="col text-center">
+              <p>Nama File : <span id="idmodalfoto"></span></p>
+              <div id = "tampilfoto"></div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-right">
+            <button type="button" class="btn btn-danger tutupmodal" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  <!-- /.modal -->
+
+  <!-- Modal Scan Bill -->
+    <div class="modal fade" id="modalscan" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Scan Bill</h4>
+          </div>
+          <div class="modal-body">
+            <div class="col text-center">
+              <p>Nama File : <span id="idmodalbill"></span></p>
+              <div id = "tampilbill"></div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-right">
+            <button type="button" class="btn btn-danger tutupmodal" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  <!-- /.modal -->
+
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-  <script>
-    $(function () {
-      $("#myTable1").DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-      })
-    });
-  </script>
-
-  <script>
-    $('.tombol-hapus').on('click', function(e){
-      e.preventDefault();
-
-      const href = $(this).attr('href');
-
-      Swal.fire({
-        title: "Apakah Anda yakin",
-        text: "data akan dihapus permanen",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Hapus Data",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.location.href = href;
-        }
+  <!-- Script Tampilan Tabel -->
+    <script>
+      $(function () {
+        $("#myTable1").DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+          "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        })
       });
-    });
+    </script>
+  <!-- End Script Tampilan Tabel -->
 
-  </script>
+  <!-- Script Hapus -->
+    <script>
+      $('.tombol-hapus').on('click', function(e){
+        e.preventDefault();
 
-  <!-- <script>
+        const href = $(this).attr('href');
+
+        Swal.fire({
+          title: "Apakah Anda yakin",
+          text: "data akan dihapus permanen",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Hapus Data",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            document.location.href = href;
+          }
+        });
+      });
+
+    </script>
+  <!-- End Script Hapus -->
+
+  <!-- Script Modal Tampilakan Foto Tiket -->
+  <script>
     $(document).ready(function(){
       
-       $('[data-target="#modalpesawat"]').on('click', function(e) {
+       $('[data-target="#modalfoto"]').on('click', function(e) {
         e.preventDefault();
-          var namafoto = $(this).data('filehotel');
-          var imageUrl = "<?= base_url('image/pesawat/') ?>" + namafoto
+          var namafoto = $(this).data('fototiket');
+          var imageUrl = "<?= base_url('image/pesawat/tiket/') ?>" + namafoto
           $('#idmodalfoto').text(namafoto);
           // console.log(namafoto);
           var linkhotel = $('<img>').attr({
@@ -368,276 +418,286 @@
         location.reload();
        });
     });
-  </script> -->
-  <!-- <script>
-    $(document).ready(function(){
-      
-       $('[data-target="#modalbill"]').on('click', function(e) {
-        e.preventDefault();
-          var namabill = $(this).data('filebill');
-          var imageUrl = "<?= base_url('image/hotelbill/') ?>" + namabill
-          $('#idmodalbill').text(namabill);
-          // console.log(namafoto);
-          var linkbill = $('<iframe>').attr({
-            'src': imageUrl,
-            'title': 'Deskripsi bill',
-            'width': '100%',
-            'height': '600',
-            'style' : 'border:none;'
-          });
+  </script>
+  <!-- End Script Modal Tampilakan Foto Tiket -->
 
-        $('#tampilbill').html(linkbill);
-       });
-
-       $('.tutupmodal').on('click', function(){
-        location.reload();
-       });
-    });
-  </script> -->
-  <script>
-    $(document).ready(function(){
-      $('[data-target="#pesawatspj"]').click (function() {
-        var idpelaksana = $(this).data('idpelaksana');
-        $('#spjpesawat_pelaksanaid').val(idpelaksana);
+  <!-- Script Modal Tampilkan Hasil Scan PDF -->
+    <script>
+      $(document).ready(function(){
         
-        var idpesawat = $(this).data('idpesawat');
-        $('#spjpesawat_id').val(idpesawat);
-        
-        if(idpesawat == null){
-          $('#spjpesawat_jenis').val('');
-          $('#spjpesawat_maskapai').val('');
-          $('#spjpesawat_notiket').val('');
-          $('#spjpesawat_kdboking').val('');
-          $('#spjpesawat_tgl').val('');
-          $('#spjpesawat_dari').val('');
-          $('#spjpesawat_ke').val('');
-          $('#spjpesawat_harga').val('');
-          $('#pesawatspj').show();
-          
-        } else {
-          $.ajax({
-            type: "get",
-            url: "<?= site_url('spjpesawat/edit/'); ?>" + idpesawat,
-            // data: "data",
-            dataType: "json",
-            success: function (response) {
-              console.log(response);
-              $('#spjpesawat_jenis').val(response.spjpesawat_jenis);
-              $('#spjpesawat_maskapai').val(response.spjpesawat_maskapai);
-              $('#spjpesawat_notiket').val(response.spjpesawat_notiket);
-              $('#spjpesawat_kdboking').val(response.spjpesawat_kdboking);
-              $('#spjpesawat_tgl').val(response.spjpesawat_tgl);
-              $('#spjpesawat_dari').val(response.spjpesawat_dari);
-              $('#spjpesawat_ke').val(response.spjpesawat_ke);
-              $('#spjpesawat_harga').val(response.spjpesawat_harga);
-              $('#pesawatspj').show();
-            }
-          });
-        }
-      });
+        $('[data-target="#modalscan"]').on('click', function(e) {
+          e.preventDefault();
+            var namabill = $(this).data('scanbill');
+            var imageUrl = "<?= base_url('image/pesawat/bill/') ?>" + namabill
+            $('#idmodalbill').text(namabill);
+            // console.log(namafoto);
+            var linkbill = $('<iframe>').attr({
+              'src': imageUrl,
+              'title': 'Deskripsi bill',
+              'width': '100%',
+              'height': '600',
+              'style' : 'border:none;'
+            });
 
-      $('#formpesawat').submit(function(e){
-        e.preventDefault();
-        var data = new FormData(this);
-        // console.log(data);
-  
-        $.ajax({
-          type: "post",
-          url: $(this).attr('action'),
-          data: data,
-          processData: false,
-          contentType: false,
-          beforeSend:function(){
-                $('.simpanpesawat').attr('disabled', 'disabled');
-                $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
-            },
-            complete: function(){
-                $('.simpanpesawat').removeAttr('disabled');
-                $('.simpanpesawat').html('Simpan');
-            },
-          success: function (response) {
-            console.log(response);
-            if(response.error) {
-              if(response.message.spjpesawat_jenis){
-                      $('#spjpesawat_jenis').addClass('is-invalid');
-                      $('.errorspjpesawat_jenis').html(response.message.spjpesawat_jenis);
-                  } else {
-                      $('#spjpesawat_jenis').removeClass('is-invalid');
-                      $('.errorspjpesawat_jenis').html('');
-              }
-              if(response.message.spjpesawat_maskapai){
-                      $('#spjpesawat_maskapai').addClass('is-invalid');
-                      $('.errorspjpesawat_maskapai').html(response.message.spjpesawat_maskapai);
-                  } else {
-                      $('#spjpesawat_maskapai').removeClass('is-invalid');
-                      $('.errorspjpesawat_maskapai').html('');
-              }
-              if(response.message.spjpesawat_notiket){
-                      $('#spjpesawat_notiket').addClass('is-invalid');
-                      $('.errorspjpesawat_notiket').html(response.message.spjpesawat_notiket);
-                  } else {
-                      $('#spjpesawat_notiket').removeClass('is-invalid');
-                      $('.errorspjpesawat_notiket').html('');
-              }
-              if(response.message.spjpesawat_kdboking){
-                      $('#spjpesawat_kdboking').addClass('is-invalid');
-                      $('.errorspjpesawat_kdboking').html(response.message.spjpesawat_kdboking);
-                  } else {
-                      $('#spjpesawat_kdboking').removeClass('is-invalid');
-                      $('.errorspjpesawat_kdboking').html('');
-              }
-              if(response.message.spjpesawat_tgl){
-                      $('#spjpesawat_tgl').addClass('is-invalid');
-                      $('.errorspjpesawat_tgl').html(response.message.spjpesawat_tgl);
-                  } else {
-                      $('#spjpesawat_tgl').removeClass('is-invalid');
-                      $('.errorspjpesawat_tgl').html('');
-              }
-              if(response.message.spjpesawat_dari){
-                      $('#spjpesawat_dari').addClass('is-invalid');
-                      $('.errorspjpesawat_dari').html(response.message.spjpesawat_dari);
-                  } else {
-                      $('#spjpesawat_dari').removeClass('is-invalid');
-                      $('.errorspjpesawat_dari').html('');
-              }
-              if(response.message.spjpesawat_ke){
-                      $('#spjpesawat_ke').addClass('is-invalid');
-                      $('.errorspjpesawat_ke').html(response.message.spjpesawat_ke);
-                  } else {
-                      $('#spjpesawat_ke').removeClass('is-invalid');
-                      $('.errorspjpesawat_ke').html('');
-              }
-              if(response.message.spjpesawat_harga){
-                      $('#spjpesawat_harga').addClass('is-invalid');
-                      $('.errorspjpesawat_harga').html(response.message.spjpesawat_harga);
-                  } else {
-                      $('#spjpesawat_harga').removeClass('is-invalid');
-                      $('.errorspjpesawat_harga').html('');
-              }
-            } else {
-              console.log(response);
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: response.message,
-                showConfirmButton: false,
-                timer: 2000
-              }).then(function(){
-                $('#pesawatspj').hide('2000');
-                location.reload();
+          $('#tampilbill').html(linkbill);
+        });
 
-              });
-            } 
-          },
-          error: function(xhr, status, error) {
-              // Tangani kesalahan jika terjadi
-              console.error();
-          }
+        $('.tutupmodal').on('click', function(){
+          location.reload();
         });
       });
-      $('.batalpesawat').on('click', function () {
-        location.reload(); 
-      });
-    });
+    </script>
+  <!-- End Script Modal Tampilkan Hasil Scan PDF -->
 
+  <!-- Script Edit dan SImpan SPJ Tiket Pesawat -->
+    <script>
+      $(document).ready(function(){
+        $('[data-target="#pesawatspj"]').click (function() {
+          var idpelaksana = $(this).data('idpelaksana');
+          $('#spjpesawat_pelaksanaid').val(idpelaksana);
+          
+          var idpesawat = $(this).data('idpesawat');
+          $('#spjpesawat_id').val(idpesawat);
+          
+          if(idpesawat == null){
+            $('#spjpesawat_jenis').val('');
+            $('#spjpesawat_maskapai').val('');
+            $('#spjpesawat_notiket').val('');
+            $('#spjpesawat_kdboking').val('');
+            $('#spjpesawat_tgl').val('');
+            $('#spjpesawat_dari').val('');
+            $('#spjpesawat_ke').val('');
+            $('#spjpesawat_harga').val('');
+            $('#pesawatspj').show();
+            
+          } else {
+            $.ajax({
+              type: "get",
+              url: "<?= site_url('spjpesawat/edit/'); ?>" + idpesawat,
+              // data: "data",
+              dataType: "json",
+              success: function (response) {
+                console.log(response);
+                $('#spjpesawat_jenis').val(response.spjpesawat_jenis);
+                $('#spjpesawat_maskapai').val(response.spjpesawat_maskapai);
+                $('#spjpesawat_notiket').val(response.spjpesawat_notiket);
+                $('#spjpesawat_kdboking').val(response.spjpesawat_kdboking);
+                $('#spjpesawat_tgl').val(response.spjpesawat_tgl);
+                $('#spjpesawat_dari').val(response.spjpesawat_dari);
+                $('#spjpesawat_ke').val(response.spjpesawat_ke);
+                $('#spjpesawat_harga').val(response.spjpesawat_harga);
+                $('#pesawatspj').show();
+              }
+            });
+          }
+        });
 
-  </script>
-  
-  <script>
-    $(document).ready(function(){
-      $('[data-target="#pesawatbill"]').click (function() {
-        var idpesawat = $(this).data('idpesawat')
-        var fototiketlama = $(this).data('fototiketlama')
-        var scanbilllama = $(this).data('scanbilllama')
-        $('#id').val(idpesawat)
-        $('#fototiketlama').val(fototiketlama)
-        $('#scanbilllama').val(scanbilllama)
-
-      });
-      $('#fototiket').on('change', function() {
-          var fileName = $(this).val().split('\\').pop();
-          console.log('Nama file:', fileName);
-          $('#nama-foto').text(fileName);
-      });
-      $('#scanbill').on('change', function() {
-          var fileName = $(this).val().split('\\').pop();
-          console.log('Nama file:', fileName);
-          $('#nama-scan').text(fileName);
-      });
-      $('#formupload').submit(function(e){
-        e.preventDefault();
-        var dataupload = new FormData(this);
-  
-        $.ajax({
-          type: "post",
-          url: $(this).attr('action'),
-          data: dataupload,
-          processData: false,
-          contentType: false,
-          beforeSend:function(){
-                $('.simpanpesawat').attr('disabled', 'disabled');
-                $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
-            },
-            complete: function(){
-                $('.simpanpesawat').removeAttr('disabled');
-                $('.simpanpesawat').html('Simpan');
-            },
-          success: function (response) {
-            console.log(response);
-              if(response.errors) {
-                if(response.messages.idkosong){
-                  Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: response.messages.idkosong,
-                    showConfirmButton: true,
-                    // timer: 2000
-                  }).then(function(){
-                    $('#pesawatbill').hide('2000');
-                    location.reload();
-
-                  });
-                } else {
-                  if(response.messages.spjpesawat_fototiket){
-                          $('#fototiket').addClass('is-invalid');
-                          $('.errorspjpesawat_fototiket').html(response.messages.spjpesawat_fototiket);
-                      } else {
-                          $('#fototiket').removeClass('is-invalid');
-                          $('.errorspjpesawat_fototiket').html('');
-                  }
-                  if(response.messages.spjpesawat_bill){
-                          $('#scanbill').addClass('is-invalid');
-                          $('.errorspjpesawat_bill').html(response.messages.spjpesawat_bill);
-                      } else {
-                          $('#scanbill').removeClass('is-invalid');
-                          $('.errorspjpesawat_bill').html('');
-                  }
-                
+        $('#formpesawat').submit(function(e){
+          e.preventDefault();
+          var data = new FormData(this);
+          // console.log(data);
+    
+          $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: data,
+            processData: false,
+            contentType: false,
+            beforeSend:function(){
+                  $('.simpanpesawat').attr('disabled', 'disabled');
+                  $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
+              },
+              complete: function(){
+                  $('.simpanpesawat').removeAttr('disabled');
+                  $('.simpanpesawat').html('Simpan');
+              },
+            success: function (response) {
+              console.log(response);
+              if(response.error) {
+                if(response.message.spjpesawat_jenis){
+                        $('#spjpesawat_jenis').addClass('is-invalid');
+                        $('.errorspjpesawat_jenis').html(response.message.spjpesawat_jenis);
+                    } else {
+                        $('#spjpesawat_jenis').removeClass('is-invalid');
+                        $('.errorspjpesawat_jenis').html('');
+                }
+                if(response.message.spjpesawat_maskapai){
+                        $('#spjpesawat_maskapai').addClass('is-invalid');
+                        $('.errorspjpesawat_maskapai').html(response.message.spjpesawat_maskapai);
+                    } else {
+                        $('#spjpesawat_maskapai').removeClass('is-invalid');
+                        $('.errorspjpesawat_maskapai').html('');
+                }
+                if(response.message.spjpesawat_notiket){
+                        $('#spjpesawat_notiket').addClass('is-invalid');
+                        $('.errorspjpesawat_notiket').html(response.message.spjpesawat_notiket);
+                    } else {
+                        $('#spjpesawat_notiket').removeClass('is-invalid');
+                        $('.errorspjpesawat_notiket').html('');
+                }
+                if(response.message.spjpesawat_kdboking){
+                        $('#spjpesawat_kdboking').addClass('is-invalid');
+                        $('.errorspjpesawat_kdboking').html(response.message.spjpesawat_kdboking);
+                    } else {
+                        $('#spjpesawat_kdboking').removeClass('is-invalid');
+                        $('.errorspjpesawat_kdboking').html('');
+                }
+                if(response.message.spjpesawat_tgl){
+                        $('#spjpesawat_tgl').addClass('is-invalid');
+                        $('.errorspjpesawat_tgl').html(response.message.spjpesawat_tgl);
+                    } else {
+                        $('#spjpesawat_tgl').removeClass('is-invalid');
+                        $('.errorspjpesawat_tgl').html('');
+                }
+                if(response.message.spjpesawat_dari){
+                        $('#spjpesawat_dari').addClass('is-invalid');
+                        $('.errorspjpesawat_dari').html(response.message.spjpesawat_dari);
+                    } else {
+                        $('#spjpesawat_dari').removeClass('is-invalid');
+                        $('.errorspjpesawat_dari').html('');
+                }
+                if(response.message.spjpesawat_ke){
+                        $('#spjpesawat_ke').addClass('is-invalid');
+                        $('.errorspjpesawat_ke').html(response.message.spjpesawat_ke);
+                    } else {
+                        $('#spjpesawat_ke').removeClass('is-invalid');
+                        $('.errorspjpesawat_ke').html('');
+                }
+                if(response.message.spjpesawat_harga){
+                        $('#spjpesawat_harga').addClass('is-invalid');
+                        $('.errorspjpesawat_harga').html(response.message.spjpesawat_harga);
+                    } else {
+                        $('#spjpesawat_harga').removeClass('is-invalid');
+                        $('.errorspjpesawat_harga').html('');
                 }
               } else {
                 console.log(response);
                 Swal.fire({
                   position: "center",
                   icon: "success",
-                  title: response.messages,
+                  title: response.message,
                   showConfirmButton: false,
                   timer: 2000
                 }).then(function(){
-                  $('#pesawatbill').hide('2000');
+                  $('#pesawatspj').hide('2000');
                   location.reload();
 
                 });
-              }; 
-          },
-          error: function(xhr, status, error) {
-              // Tangani kesalahan jika terjadi
-              console.error();
-          }
+              } 
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika terjadi
+                console.error();
+            }
+          });
+        });
+        $('.batalpesawat').on('click', function () {
+          location.reload(); 
         });
       });
-      $('.batalupload').on('click', function () {
-        location.reload(); 
+
+
+    </script>
+  <!-- End Script Edit dan SImpan SPJ Tiket Pesawat -->
+
+  <!-- Script Upload Tiket dan Bill -->
+    <script>
+      $(document).ready(function(){
+        $('[data-target="#pesawatbill"]').click (function() {
+          var idpesawat = $(this).data('idpesawat')
+          var fototiketlama = $(this).data('fototiketlama')
+          var scanbilllama = $(this).data('scanbilllama')
+          $('#id').val(idpesawat)
+          $('#fototiketlama').val(fototiketlama)
+          $('#scanbilllama').val(scanbilllama)
+
+        });
+        $('#fototiket').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            console.log('Nama file:', fileName);
+            $('#nama-foto').text(fileName);
+        });
+        $('#scanbill').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            console.log('Nama file:', fileName);
+            $('#nama-scan').text(fileName);
+        });
+        $('#formupload').submit(function(e){
+          e.preventDefault();
+          var dataupload = new FormData(this);
+    
+          $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: dataupload,
+            processData: false,
+            contentType: false,
+            beforeSend:function(){
+                  $('.simpanpesawat').attr('disabled', 'disabled');
+                  $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
+              },
+              complete: function(){
+                  $('.simpanpesawat').removeAttr('disabled');
+                  $('.simpanpesawat').html('Simpan');
+              },
+            success: function (response) {
+              console.log(response);
+                if(response.errors) {
+                  if(response.messages.idkosong){
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: response.messages.idkosong,
+                      showConfirmButton: true,
+                      // timer: 2000
+                    }).then(function(){
+                      $('#pesawatbill').hide('2000');
+                      location.reload();
+
+                    });
+                  } else {
+                    if(response.messages.spjpesawat_fototiket){
+                            $('#fototiket').addClass('is-invalid');
+                            $('.errorspjpesawat_fototiket').html(response.messages.spjpesawat_fototiket);
+                        } else {
+                            $('#fototiket').removeClass('is-invalid');
+                            $('.errorspjpesawat_fototiket').html('');
+                    }
+                    if(response.messages.spjpesawat_bill){
+                            $('#scanbill').addClass('is-invalid');
+                            $('.errorspjpesawat_bill').html(response.messages.spjpesawat_bill);
+                        } else {
+                            $('#scanbill').removeClass('is-invalid');
+                            $('.errorspjpesawat_bill').html('');
+                    }
+                  
+                  }
+                } else {
+                  console.log(response);
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: response.messages,
+                    showConfirmButton: false,
+                    timer: 2000
+                  }).then(function(){
+                    $('#pesawatbill').hide('2000');
+                    location.reload();
+
+                  });
+                }; 
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika terjadi
+                console.error();
+            }
+          });
+        });
+        $('.batalupload').on('click', function () {
+          location.reload(); 
+        });
       });
-    });
-  </script>
+    </script>
+  <!-- End Script Upload Tiket dan Bill -->
+
 <?= $this->endSection() ?>
