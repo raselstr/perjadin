@@ -343,11 +343,11 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-6 form-check">
-                    <input class="form-check-input" type="radio" name="radio1">
+                    <input class="form-check-input" type="radio" name="spjpesawat_verif" value="1">
                     <label class="form-check-label">Disetujui</label>
                   </div>
                   <div class="col-6 form-check">
-                    <input class="form-check-input" type="radio" name="radio1">
+                    <input class="form-check-input" type="radio" name="spjpesawat_verif" value="0">
                     <label class="form-check-label">Ditolak</label>
                   </div>
                 </div>
