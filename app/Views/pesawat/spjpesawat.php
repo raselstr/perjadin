@@ -139,7 +139,12 @@
                     <td class="align-middle text-center"><?= $value->spjpesawat_harga; ?></td>
                     <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?= $value->spjpesawat_fototiket ?>"><?= $value->spjpesawat_fototiket; ?></button></td>
                     <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?= $value->spjpesawat_bill ?>"><?= $value->spjpesawat_bill; ?></button></td>
-                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-scanbill="<?= $value->spjpesawat_verif ?>"><?= $value->spjpesawat_verif; ?></td>
+                    <?php if($value->spjpesawat_verif == 0) : ?>
+                      <td class="align-middle text-center"><button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpesawat="<?= $value->spjpesawat_id; ?>">Diinput</td>
+                    <?php else : ?>
+                      <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpesawat="<?= $value->spjpesawat_id; ?>">Disetujui</td>
+                    <?php endif ?>
+
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -318,6 +323,39 @@
           </div>
           <div class="modal-footer justify-content-right">
             <button type="button" class="btn btn-danger tutupmodal" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  <!-- /.modal -->
+
+  <!-- Modal verif -->
+    <div class="modal fade" id="modalverif" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Verifikasi</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6 form-check">
+                    <input class="form-check-input" type="radio" name="radio1">
+                    <label class="form-check-label">Disetujui</label>
+                  </div>
+                  <div class="col-6 form-check">
+                    <input class="form-check-input" type="radio" name="radio1">
+                    <label class="form-check-label">Ditolak</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-right">
+            <button type="button" class="btn btn-danger tutupmodal" data-dismiss="modal">Kirim</button>
           </div>
         </div>
         <!-- /.modal-content -->
