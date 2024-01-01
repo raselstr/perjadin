@@ -189,7 +189,7 @@ class PelaksanaModel extends Model
         $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
-
+        
         $builder->where('pelaksanas.spt_id',$id);
         $builder->where('pegawais.pegawai_nip =',$subquery);
         $query = $builder->get();

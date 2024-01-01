@@ -262,11 +262,11 @@
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
               <div class="form-group row">
-                <label class="col-sm-4 col-form-label" hidden>Id spjpesawat</label>
+                <label class="col-sm-4 col-form-label" >Id spjpesawat</label>
                 <div class="col">
-                  <input type="text" class="form-control" id="id" name="spjpesawat_id" hidden>
-                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" hidden>
-                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" hidden>
+                  <input type="text" class="form-control" id="id" name="spjpesawat_id" >
+                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" >
+                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" >
                 </div>
               </div>
               <div class="form-group row">
@@ -615,6 +615,7 @@
                 
                 }
               } else {
+                console.log(response);
                 Swal.fire({
                   position: "center",
                   icon: "success",

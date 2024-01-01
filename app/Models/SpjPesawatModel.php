@@ -115,6 +115,7 @@ class SpjPesawatModel extends Model
         $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
         $builder -> where('c.spt_verif', 1);
         $builder -> where('b.pelaksana_id', $id);
+        $builder -> orderBy('a.spjpesawat_created_at', 'DESC');
         
         $query = $builder -> get();
         $result = $query->getResult();

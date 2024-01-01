@@ -109,7 +109,6 @@ class SpjPesawat extends ResourcePresenter
 
             $fototiketlama  = $this->request->getVar('fototiketlama');
             $scanbilllama   = $this->request->getVar('scanbilllama');
-
             $valid = $this->validate([
                 'spjpesawat_fototiket' => [
                     'rules'     => 'uploaded[spjpesawat_fototiket]|max_size[spjpesawat_fototiket,2048]|is_image[spjpesawat_fototiket]|mime_in[spjpesawat_fototiket,image/png,image/jpeg,image/jpg,image/gif]',
@@ -132,7 +131,6 @@ class SpjPesawat extends ResourcePresenter
 
             $lamafoto = file_exists(FCPATH. 'image/pesawat/tiket/'. $fototiketlama);
             $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama);
-
             if($idpesawat == null) {
                 $errors = [
                     'errors' => true,
@@ -164,25 +162,40 @@ class SpjPesawat extends ResourcePresenter
             
             $save = $spjpesawat->save($data);
             if($save) {
-                if($lamafoto){
-                    $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
-                    unlink(FCPATH . 'image/pesawat/tiket/' . $fototiketlama);
+                if($fototiketlama == null){
+                    if($lamafoto) {
+                        $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
+                    } 
                 } else {
-                    $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
-                };
+                    if($lamafoto) {
+                        $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
+                        unlink(FCPATH . 'image/pesawat/tiket/' . $fototiketlama);
+                    } 
+                }
+                
+                if($scanbilllama == null) {
+                    if($lamabill ){
+                        $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
+                    } 
+                } else {
+                    if($lamabill ){
+                        $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
+                        unlink(FCPATH . 'image/pesawat/bill/' . $scanbilllama);
+                    } 
+                }
+                $pesan = [
+                        'errors' => false,
+                        'messages' => 'Data Berhasil di Upload',
+                        'fototiketlama' => $fototiketlama,
+                        'scanbilllama' => $scanbilllama,
+                        'fototiketbaru' => $namafoto,
+                        'scanbaru'  => $namascan,
+                        'statusfoto'    => $lamafoto,
+                        'statusscan'    => $lamabill,
 
-                if($lamabill){
-                    $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
-                    unlink(FCPATH . 'image/pesawat/bill/' . $scanbilllama);
-                } else {
-                    $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
-                };
+                    ];
+                return $this->response->setJSON($pesan);
             }
-            $pesan = [
-                    'errors' => false,
-                    'messages' => 'Data Berhasil di Upload',
-                ];
-            return $this->response->setJSON($pesan);
         };
     }
 
