@@ -47,7 +47,33 @@ class SpjPesawatModel extends Model
         'spjpesawat_ke' => 'required',
         'spjpesawat_harga' => 'required',
     ];
-    protected $validationMessages   = [];
+    protected $validationMessages   = [
+        'spjpesawat_jenis'      => [
+            'required' => 'Jenis SPJ Pesawat Wajib di Pilih !!!'
+        ],
+        'spjpesawat_maskapai'      => [
+            'required' => 'Maskapai Pesawat Wajib di Isi !!!'
+        ],
+        'spjpesawat_notiket'      => [
+            'required' => 'Nomor Tiket Pesawat Wajib di Isi !!!'
+        ],
+        'spjpesawat_kdboking'      => [
+            'required' => 'Kode Boking Pesawat Wajib di Isi !!!'
+        ],
+        'spjpesawat_tgl'      => [
+            'required' => 'Tanggal Wajib di Pilih !!!',
+            'valid_date' => 'Tanggal harus Valid !!'
+        ],
+        'spjpesawat_dari'      => [
+            'required' => 'Keberangkatan Pesawat dari Bandahara mana Wajib di Isi !!!'
+        ],
+        'spjpesawat_ke'      => [
+            'required' => 'Tujuan Pesawat ke Bandara mana Wajib di Isi !!!'
+        ],
+        'spjpesawat_harga'      => [
+            'required' => 'Harga Tiket Pesawat Per Orang Per Tiket Wajib di Isi !!!'
+        ],
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

@@ -126,8 +126,8 @@
                     <td class="align-middle text-center"><?= $no++; ?></td>
                     <td class="align-middle text-center">
                       <button type="button" class="btn bg-gradient-info" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-fototiketlama = "<?= $value->spjpesawat_fototiket; ?>" data-scanbilllama="<?= $value->spjpesawat_bill; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
-                      <button type="button" class="btn bg-gradient-warning" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
-                      <button type="button" class="btn bg-gradient-danger" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatbill1"><i class="fas fa-trash"> </i> <br>Hapus</button>
+                      <button type="button" class="btn bg-gradient-warning" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-idpelaksana ="<?= $data[0]->pelaksana_id; ?>" id="tomboledit" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                      <a href="<?= site_url('spjpesawat/remove/'.$value->spjpesawat_id) ?>" type="button" class="btn bg-gradient-danger tombol-hapus" data-idpesawat=""><i class="fas fa-trash"> </i> <br>Hapus</a>
                     </td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_jenis; ?><br><?= $value->spjpesawat_id; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_maskapai; ?></td>
@@ -231,22 +231,10 @@
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Harga/Tiket/Orang</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjpesawat_harga" name="spjpesawat_harga" data-inputmask-inputformat="999.999.999" data-mask>
+                    <input type="number" class="form-control" id="spjpesawat_harga" name="spjpesawat_harga">
                     <div class="invalid-feedback errorspjpesawat_harga"></div>
                   </div>
                 </div>
-                <!-- <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Foto Tiket</label>
-                  <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_fototiket">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Dokumen Bill</label>
-                  <div class="col">
-                    <input type="text" class="form-control" name="spjpesawat_bill">
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -274,11 +262,11 @@
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
               <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Id spjpesawat</label>
+                <label class="col-sm-4 col-form-label" hidden>Id spjpesawat</label>
                 <div class="col">
-                  <input type="text" class="form-control" id="id" name="spjpesawat_id">
-                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama">
-                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama">
+                  <input type="text" class="form-control" id="id" name="spjpesawat_id" hidden>
+                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" hidden>
+                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" hidden>
                 </div>
               </div>
               <div class="form-group row">
@@ -286,6 +274,7 @@
                 <div class="col-sm-8">
                   <div class="input-group">
                     <input class="custom-file-input" type="file" name="spjpesawat_fototiket" id="fototiket">
+                    <button type="button">tes</button>
                     <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
                     <div class="invalid-feedback errorspjpesawat_fototiket"></div>
                   </div>
@@ -295,7 +284,8 @@
                 <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Pesawat</label>
                 <div class="col-sm-8">
                   <div class="input-group">
-                      <input class="custom-file-input" type="file" name="spjpesawat_bill" id="scanbill">
+                    <input class="custom-file-input" type="file" name="spjpesawat_bill" id="scanbill">
+                    <button type="button">tes</button>
                       <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill Pesawat</label>
                       <div class="invalid-feedback errorspjpesawat_bill"></div>
                   </div>
@@ -331,6 +321,30 @@
       })
     });
   </script>
+
+  <script>
+    $('.tombol-hapus').on('click', function(e){
+      e.preventDefault();
+
+      const href = $(this).attr('href');
+
+      Swal.fire({
+        title: "Apakah Anda yakin",
+        text: "data akan dihapus permanen",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus Data",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.location.href = href;
+        }
+      });
+    });
+
+  </script>
+
   <!-- <script>
     $(document).ready(function(){
       
@@ -385,6 +399,41 @@
       $('[data-target="#pesawatspj"]').click (function() {
         var idpelaksana = $(this).data('idpelaksana');
         $('#spjpesawat_pelaksanaid').val(idpelaksana);
+        
+        var idpesawat = $(this).data('idpesawat');
+        $('#spjpesawat_id').val(idpesawat);
+        
+        if(idpesawat == null){
+          $('#spjpesawat_jenis').val('');
+          $('#spjpesawat_maskapai').val('');
+          $('#spjpesawat_notiket').val('');
+          $('#spjpesawat_kdboking').val('');
+          $('#spjpesawat_tgl').val('');
+          $('#spjpesawat_dari').val('');
+          $('#spjpesawat_ke').val('');
+          $('#spjpesawat_harga').val('');
+          $('#pesawatspj').show();
+          
+        } else {
+          $.ajax({
+            type: "get",
+            url: "<?= site_url('spjpesawat/edit/'); ?>" + idpesawat,
+            // data: "data",
+            dataType: "json",
+            success: function (response) {
+              console.log(response);
+              $('#spjpesawat_jenis').val(response.spjpesawat_jenis);
+              $('#spjpesawat_maskapai').val(response.spjpesawat_maskapai);
+              $('#spjpesawat_notiket').val(response.spjpesawat_notiket);
+              $('#spjpesawat_kdboking').val(response.spjpesawat_kdboking);
+              $('#spjpesawat_tgl').val(response.spjpesawat_tgl);
+              $('#spjpesawat_dari').val(response.spjpesawat_dari);
+              $('#spjpesawat_ke').val(response.spjpesawat_ke);
+              $('#spjpesawat_harga').val(response.spjpesawat_harga);
+              $('#pesawatspj').show();
+            }
+          });
+        }
       });
 
       $('#formpesawat').submit(function(e){
@@ -504,7 +553,6 @@
         $('#fototiketlama').val(fototiketlama)
         $('#scanbilllama').val(scanbilllama)
 
-        // console.log(idpesawat);
       });
       $('#fototiket').on('change', function() {
           var fileName = $(this).val().split('\\').pop();
@@ -537,21 +585,35 @@
           success: function (response) {
             console.log(response);
               if(response.errors) {
-                if(response.messages.spjpesawat_fototiket){
-                        $('#fototiket').addClass('is-invalid');
-                        $('.errorspjpesawat_fototiket').html(response.messages.spjpesawat_fototiket);
-                    } else {
-                        $('#fototiket').removeClass('is-invalid');
-                        $('.errorspjpesawat_fototiket').html('');
+                if(response.messages.idkosong){
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: response.messages.idkosong,
+                    showConfirmButton: true,
+                    // timer: 2000
+                  }).then(function(){
+                    $('#pesawatbill').hide('2000');
+                    location.reload();
+
+                  });
+                } else {
+                  if(response.messages.spjpesawat_fototiket){
+                          $('#fototiket').addClass('is-invalid');
+                          $('.errorspjpesawat_fototiket').html(response.messages.spjpesawat_fototiket);
+                      } else {
+                          $('#fototiket').removeClass('is-invalid');
+                          $('.errorspjpesawat_fototiket').html('');
+                  }
+                  if(response.messages.spjpesawat_bill){
+                          $('#scanbill').addClass('is-invalid');
+                          $('.errorspjpesawat_bill').html(response.messages.spjpesawat_bill);
+                      } else {
+                          $('#scanbill').removeClass('is-invalid');
+                          $('.errorspjpesawat_bill').html('');
+                  }
+                
                 }
-                if(response.messages.spjpesawat_bill){
-                        $('#scanbill').addClass('is-invalid');
-                        $('.errorspjpesawat_bill').html(response.messages.spjpesawat_bill);
-                    } else {
-                        $('#scanbill').removeClass('is-invalid');
-                        $('.errorspjpesawat_bill').html('');
-                }
-              
               } else {
                 Swal.fire({
                   position: "center",

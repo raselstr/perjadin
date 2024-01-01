@@ -6,6 +6,7 @@ use App\Models\PelaksanaModel;
 use App\Models\SpjhotelModel;
 use App\Models\SpjPesawatModel;
 use CodeIgniter\RESTful\ResourcePresenter;
+use PHPUnit\Util\Json;
 
 class SpjPesawat extends ResourcePresenter
 {
@@ -47,26 +48,10 @@ class SpjPesawat extends ResourcePresenter
      */
     public function new()
     {
-       
         //
     }
 
-    // public function new1()
-    // {
-    //     if($this->request->isAJAX()){
-    //         $idPelaksana = $this->request->getPost('id_pelaksana');
-    //         $data = [
-    //             'title'     => 'Tiket Pesawat',
-    //             'subtitle'  => 'Home',
-    //             'spjpesawat'  => $idPelaksana,
-                        
-    //         ];
-    //         // dd($data);
-    //         return view('pesawat/spjpesawat', $data);
-    //     }
-    // }
-
-    
+        
     public function formspj($id)
     {
         $model = new SpjPesawatModel();
@@ -120,10 +105,10 @@ class SpjPesawat extends ResourcePresenter
 
             $foto = $this->request->getFile('spjpesawat_fototiket');
             $scan = $this->request->getFile('spjpesawat_bill');
+            $idpesawat = $this->request->getVar('spjpesawat_id');
 
             $fototiketlama  = $this->request->getVar('fototiketlama');
             $scanbilllama   = $this->request->getVar('scanbilllama');
-            // return $this->response->setJSON($fototiketlama);
 
             $valid = $this->validate([
                 'spjpesawat_fototiket' => [
@@ -148,13 +133,26 @@ class SpjPesawat extends ResourcePresenter
             $lamafoto = file_exists(FCPATH. 'image/pesawat/tiket/'. $fototiketlama);
             $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama);
 
+            if($idpesawat == null) {
+                $errors = [
+                    'errors' => true,
+                    'messages' => [
+                        'idkosong' =>'Data SPJ Pesawat Belum di Isi, isi terlebih dahulu Klik Tambah SPJ Pesawat !!!!',
+                    ],
+                ];
+                return $this->response->setJSON($errors);
+            } else {
             if(!$valid) {
+
                 $errors = [
                         'errors' => true,
                         'messages' => $validation->getErrors(),
                     ];
                 return $this->response->setJSON($errors);
+                }
             }
+
+            
             
             $namafoto = $foto->getRandomName();
             $data['spjpesawat_fototiket'] = $namafoto;
@@ -171,13 +169,14 @@ class SpjPesawat extends ResourcePresenter
                     unlink(FCPATH . 'image/pesawat/tiket/' . $fototiketlama);
                 } else {
                     $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
-                }
+                };
+
                 if($lamabill){
                     $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
                     unlink(FCPATH . 'image/pesawat/bill/' . $scanbilllama);
                 } else {
                     $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
-                }
+                };
             }
             $pesan = [
                     'errors' => false,
@@ -224,8 +223,10 @@ class SpjPesawat extends ResourcePresenter
     public function remove($id = null)
     {
         $spjpesawat = new SpjPesawatModel();
-        $data = $spjpesawat->delete($id);
-        return $this->response->setJSON($data);
+        $spjpesawat->delete($id);
+        
+        // return $this->response->setJSON($pesan);
+        return redirect()->back();
     }
 
     /**
