@@ -95,7 +95,7 @@
             </div>
             <div class="form-group row">
             </div>
-              <button type="button" class="btn bg-gradient-primary"  name="spj" id="spj" data-idpelaksana="<?= $data[0]->pelaksana_id; ?>" class="btn btn-primary"  data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-hand-point-right"> </i> Tambah SPJ Pesawat</button>
+              <button type="button" class="btn bg-gradient-primary"  data-idpelaksana="<?= $data[0]->pelaksana_id; ?>" class="btn btn-primary"  data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-hand-point-right"> </i> Tambah SPJ Pesawat</button>
             </div>
           </div>
         
@@ -104,6 +104,7 @@
               <thead>
                 <tr>
                   <th class="align-middle text-center">No</th>
+                  <th class="align-middle text-center">Aksi</th>
                   <th class="align-middle text-center">Jenis</th>
                   <th class="align-middle text-center">Maskapai</th>
                   <th class="align-middle text-center">Nomor Tiket</th>
@@ -115,7 +116,6 @@
                   <th class="align-middle text-center">Foto Boarding</th>
                   <th class="align-middle text-center">Bukti Pembelian</th>
                   <th class="align-middle text-center">Status</th>
-                  <th class="align-middle text-center">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -124,22 +124,22 @@
                   foreach ($data as $key => $value) : ?>
                   <tr>
                     <td class="align-middle text-center"><?= $no++; ?></td>
-                    <td class="align-middle text-center"><?= $value->spjpesawat_jenis; ?></td>
+                    <td class="align-middle text-center">
+                      <button type="button" class="btn bg-gradient-info" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-fototiketlama = "<?= $value->spjpesawat_fototiket; ?>" data-scanbilllama="<?= $value->spjpesawat_bill; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
+                      <button type="button" class="btn bg-gradient-warning" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                      <button type="button" class="btn bg-gradient-danger" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatbill1"><i class="fas fa-trash"> </i> <br>Hapus</button>
+                    </td>
+                    <td class="align-middle text-center"><?= $value->spjpesawat_jenis; ?><br><?= $value->spjpesawat_id; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_maskapai; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_notiket; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_kdboking; ?></td>
-                    <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spjpesawat_tgl)); ?></td>
+                    <td class="align-middle text-center"><?= $value->spjpesawat_tgl == null ? "" : date('d F Y',strtotime($value->spjpesawat_tgl)); ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_dari; ?> </td>
-                    <td class="align-middle text-center"><?= $value->spjpesawat_ke; ?> </td>
+                    <td class="align-middle text-center"><?= $value->spjpesawat_ke; ?> </td> 
                     <td class="align-middle text-center"><?= $value->spjpesawat_harga; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_fototiket; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_bill; ?></td>
                     <td class="align-middle text-center"><?= $value->spjpesawat_verif; ?></td>
-                    <td class="align-middle text-center">
-                      <button type="button" class="btn bg-gradient-info"  name="spj" id="spj" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
-                      <button type="button" class="btn bg-gradient-warning"  name="spj" id="spj" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
-                      <button type="button" class="btn bg-gradient-danger"  name="spj" id="spj" data-idpesawat="<?= $value->spjpesawat_id; ?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-trash"> </i> <br>Hapus</button>
-                    </td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -259,6 +259,60 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
+  <!-- /.modal -->
+  
+  <!-- Modal SPJ Pesawat -->
+  <div class="modal fade" id="pesawatbill">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Upload Tiket Pesawat</h4>
+        </div>
+        <form action="<?= site_url('spjpesawat/upload'); ?>" method="post" enctype="multipart/form-data" id="formupload">
+          <?= csrf_field(); ?>
+          <div class="modal-body">
+            <div class="card-body">
+              <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Id spjpesawat</label>
+                <div class="col">
+                  <input type="text" class="form-control" id="id" name="spjpesawat_id">
+                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama">
+                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Tiket</label>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input class="custom-file-input" type="file" name="spjpesawat_fototiket" id="fototiket">
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
+                    <div class="invalid-feedback errorspjpesawat_fototiket"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Pesawat</label>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                      <input class="custom-file-input" type="file" name="spjpesawat_bill" id="scanbill">
+                      <label class="custom-file-label" for="custom-file-label" id="nama-scan">Pilih Scan Bill Pesawat</label>
+                      <div class="invalid-feedback errorspjpesawat_bill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="reset" class="btn btn-default batalupload" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary simpanupload">Simpan</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
       <!-- /.modal -->
 <?= $this->endSection() ?>
 
@@ -280,10 +334,10 @@
   <!-- <script>
     $(document).ready(function(){
       
-       $('[data-target="#modalfoto"]').on('click', function(e) {
+       $('[data-target="#modalpesawat"]').on('click', function(e) {
         e.preventDefault();
           var namafoto = $(this).data('filehotel');
-          var imageUrl = "<?= base_url('image/hotel/') ?>" + namafoto
+          var imageUrl = "<?= base_url('image/pesawat/') ?>" + namafoto
           $('#idmodalfoto').text(namafoto);
           // console.log(namafoto);
           var linkhotel = $('<img>').attr({
@@ -440,4 +494,87 @@
 
   </script>
   
+  <script>
+    $(document).ready(function(){
+      $('[data-target="#pesawatbill"]').click (function() {
+        var idpesawat = $(this).data('idpesawat')
+        var fototiketlama = $(this).data('fototiketlama')
+        var scanbilllama = $(this).data('scanbilllama')
+        $('#id').val(idpesawat)
+        $('#fototiketlama').val(fototiketlama)
+        $('#scanbilllama').val(scanbilllama)
+
+        // console.log(idpesawat);
+      });
+      $('#fototiket').on('change', function() {
+          var fileName = $(this).val().split('\\').pop();
+          console.log('Nama file:', fileName);
+          $('#nama-foto').text(fileName);
+      });
+      $('#scanbill').on('change', function() {
+          var fileName = $(this).val().split('\\').pop();
+          console.log('Nama file:', fileName);
+          $('#nama-scan').text(fileName);
+      });
+      $('#formupload').submit(function(e){
+        e.preventDefault();
+        var dataupload = new FormData(this);
+  
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: dataupload,
+          processData: false,
+          contentType: false,
+          beforeSend:function(){
+                $('.simpanpesawat').attr('disabled', 'disabled');
+                $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.simpanpesawat').removeAttr('disabled');
+                $('.simpanpesawat').html('Simpan');
+            },
+          success: function (response) {
+            console.log(response);
+              if(response.errors) {
+                if(response.messages.spjpesawat_fototiket){
+                        $('#fototiket').addClass('is-invalid');
+                        $('.errorspjpesawat_fototiket').html(response.messages.spjpesawat_fototiket);
+                    } else {
+                        $('#fototiket').removeClass('is-invalid');
+                        $('.errorspjpesawat_fototiket').html('');
+                }
+                if(response.messages.spjpesawat_bill){
+                        $('#scanbill').addClass('is-invalid');
+                        $('.errorspjpesawat_bill').html(response.messages.spjpesawat_bill);
+                    } else {
+                        $('#scanbill').removeClass('is-invalid');
+                        $('.errorspjpesawat_bill').html('');
+                }
+              
+              } else {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: response.messages,
+                  showConfirmButton: false,
+                  timer: 2000
+                }).then(function(){
+                  $('#pesawatbill').hide('2000');
+                  location.reload();
+
+                });
+              }; 
+          },
+          error: function(xhr, status, error) {
+              // Tangani kesalahan jika terjadi
+              console.error();
+          }
+        });
+      });
+      $('.batalupload').on('click', function () {
+        location.reload(); 
+      });
+    });
+  </script>
 <?= $this->endSection() ?>

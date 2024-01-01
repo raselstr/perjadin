@@ -54,11 +54,11 @@ class Spjpesawat extends Migration
             ],
             'spjpesawat_fototiket'   => [
                 'type'              => 'VARCHAR',
-                'constraint'         => 30,
+                'constraint'         => 50,
             ],
             'spjpesawat_bill'    => [
                 'type'              => 'VARCHAR',
-                'constraint'         => 30,
+                'constraint'         => 50,
             ],
             'spjpesawat_created_at' => [
                 'type'              => 'DATETIME',

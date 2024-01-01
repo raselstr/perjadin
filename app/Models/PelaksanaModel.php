@@ -195,5 +195,7 @@ class PelaksanaModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    
 }
 

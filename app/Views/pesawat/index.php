@@ -65,7 +65,7 @@
                 <tbody>
                   <?php
                     $no = 1;
-                    foreach ($spjpesawat['result'] as $key => $value) : ?>
+                    foreach ($spjpesawat as $key => $value) : ?>
                       <tr>
                         <td class="align-middle text-center"><?= $no++ ?></td>
                         <td class="align-middle text-center">

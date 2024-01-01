@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PelaksanaModel;
 use App\Models\SpjhotelModel;
 use App\Models\SpjPesawatModel;
 use CodeIgniter\RESTful\ResourcePresenter;
@@ -16,7 +17,7 @@ class SpjPesawat extends ResourcePresenter
     public function index()
     {
         $model = new SpjPesawatModel();
-        $spjpesawat = $model->spjpesawat();
+        $spjpesawat = $model->pelaksanaall();
         $data = [
             'title'     => 'Pertanggung Jawaban Pesawat',
             'subtitle'  => 'Home',
@@ -107,6 +108,82 @@ class SpjPesawat extends ResourcePresenter
                 'message'   => $spjpesawat->errors(),
             ];
             return $this->response->setJSON($validationerror);
+        };
+    }
+
+    public function upload()
+    {
+        $validation = \Config\Services::validation();
+        $spjpesawat = new SpjPesawatModel();
+        if($this->request->isAJAX()){
+            $data = $this->request->getPost();
+
+            $foto = $this->request->getFile('spjpesawat_fototiket');
+            $scan = $this->request->getFile('spjpesawat_bill');
+
+            $fototiketlama  = $this->request->getVar('fototiketlama');
+            $scanbilllama   = $this->request->getVar('scanbilllama');
+            // return $this->response->setJSON($fototiketlama);
+
+            $valid = $this->validate([
+                'spjpesawat_fototiket' => [
+                    'rules'     => 'uploaded[spjpesawat_fototiket]|max_size[spjpesawat_fototiket,2048]|is_image[spjpesawat_fototiket]|mime_in[spjpesawat_fototiket,image/png,image/jpeg,image/jpg,image/gif]',
+                    'errors'    => [
+                        'uploaded'      => 'File harus di upload',
+                        'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                        'is_image'      => 'Data yang diupload Bukan Foto',
+                        'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
+                    ]
+                ],
+                'spjpesawat_bill' => [
+                    'rules' => 'uploaded[spjpesawat_bill]|ext_in[spjpesawat_bill,pdf]',
+                    'errors' => [
+                        'uploaded'      => 'File harus di upload',
+                        // 'max_size'      => 'Ukuran file PDF melebihi batas maksimum 5MB.',
+                        'ext_in'        => 'File yang diunggah bukan merupakan file PDF.',
+                    ]
+                ],
+            ]);
+
+            $lamafoto = file_exists(FCPATH. 'image/pesawat/tiket/'. $fototiketlama);
+            $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama);
+
+            if(!$valid) {
+                $errors = [
+                        'errors' => true,
+                        'messages' => $validation->getErrors(),
+                    ];
+                return $this->response->setJSON($errors);
+            }
+            
+            $namafoto = $foto->getRandomName();
+            $data['spjpesawat_fototiket'] = $namafoto;
+            
+            
+            $namascan = $scan->getRandomName();
+            $data['spjpesawat_bill'] = $namascan;
+            
+            
+            $save = $spjpesawat->save($data);
+            if($save) {
+                if($lamafoto){
+                    $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
+                    unlink(FCPATH . 'image/pesawat/tiket/' . $fototiketlama);
+                } else {
+                    $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
+                }
+                if($lamabill){
+                    $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
+                    unlink(FCPATH . 'image/pesawat/bill/' . $scanbilllama);
+                } else {
+                    $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
+                }
+            }
+            $pesan = [
+                    'errors' => false,
+                    'messages' => 'Data Berhasil di Upload',
+                ];
+            return $this->response->setJSON($pesan);
         };
     }
 

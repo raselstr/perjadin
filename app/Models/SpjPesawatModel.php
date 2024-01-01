@@ -64,23 +64,22 @@ class SpjPesawatModel extends Model
 
 
 
-    function spjpesawat()
+    function pelaksanaall()
     {
-        $builder = $this->db->table('spjpesawats As a');
-        $builder -> select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, c.spt_tgl, d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
-        $builder -> join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
-        $builder -> join('spts As c', 'c.spt_id = b.spt_id');
-        $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
-        $builder -> where('c.spt_verif', 1);
-        $builder -> where('c.spt_jenis', 2);
-        $query = $builder -> get();
-        $result = [
-            'result' => $query->getResult(),
-            'jumlah' => $query->getNumRows(),
-        ];
-
-        return $result;
+        // dd($subquery);
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('*');
+        $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder -> where('spts.spt_verif', 1);
+        $builder -> where('spts.spt_jenis', 2);
+        $query = $builder->get();
+        return $query->getResult();
     }
+    
     function pesawatidpelaksana($id)
     {
         $builder = $this->db->table('spjpesawats As a');
