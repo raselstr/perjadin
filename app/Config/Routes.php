@@ -39,3 +39,8 @@ $routes->post('spjpesawat/upload', 'SpjPesawat::upload');
 $routes->post('spjpesawat/verif', 'SpjPesawat::verif');
 $routes->presenter('spjpesawat');
 
+$routes->get('spjtaksi/formspj/(:num)', 'SpjTaksi::formspj/$1');
+$routes->post('spjtaksi/upload', 'SpjTaksi::upload');
+$routes->post('spjtaksi/verif', 'SpjTaksi::verif');
+$routes->presenter('spjtaksi');
+

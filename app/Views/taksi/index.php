@@ -65,12 +65,12 @@
                 <tbody>
                   <?php
                     $no = 1;
-                    foreach ($spjpesawat as $key => $value) : ?>
+                    foreach ($spjtaksi as $key => $value) : ?>
                       <tr>
                         <td class="align-middle text-center"><?= $no++ ?></td>
                         <td class="align-middle text-center">
                           <div class="d-grid gap-2">
-                            <a href="<?= site_url('spjpesawat/formspj/'.$value->pelaksana_id); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
+                            <a href="<?= site_url('spjtaksi/formspj/'.$value->pelaksana_id); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
                           </div>
                         </td>
                         <td class="align-middle"><?= $value->pelaksana_id ?><br><?= $value->spt_nomor ?></td>
