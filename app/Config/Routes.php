@@ -36,5 +36,6 @@ $routes->presenter('spjhotel');
 
 $routes->get('spjpesawat/formspj/(:num)', 'SpjPesawat::formspj/$1');
 $routes->post('spjpesawat/upload', 'SpjPesawat::upload');
+$routes->post('spjpesawat/verif', 'SpjPesawat::verif');
 $routes->presenter('spjpesawat');
 

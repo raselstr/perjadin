@@ -213,6 +213,29 @@ class SpjPesawat extends ResourcePresenter
         return $this->response->setJSON($data);
     }
 
+    public function verif()
+    {
+        $spjpesawat = new SpjPesawatModel();
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getPost();
+
+            $saved = $spjpesawat->save($data);
+
+            if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
+
+            return $this->response->setJSON($pesan);
+        } 
+    }
     /**
      * Process the updating, full or partial, of a specific resource object.
      * This should be a POST.
