@@ -2,11 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\PelaksanaModel;
-use App\Models\SpjhotelModel;
 use App\Models\SpjPesawatModel;
 use CodeIgniter\RESTful\ResourcePresenter;
-use PHPUnit\Util\Json;
 
 class SpjPesawat extends ResourcePresenter
 {
