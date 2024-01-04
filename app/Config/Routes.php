@@ -32,6 +32,10 @@ $routes->get('pelaksana/sppdpdf/(:num)','Pelaksana::sppdpdf/$1');
 // $routes->get('pelaksana/cekpelaksana/(:num)','Pelaksana::cekpelaksana/$1');
 $routes->presenter('pelaksana');
 
+$routes->get('spjhotel/formspj/(:num)', 'spjhotel::formspj/$1');
+$routes->post('spjhotel/upload', 'spjhotel::upload');
+$routes->post('spjhotel/verif', 'spjhotel::verif');
+
 $routes->presenter('spjhotel');
 
 $routes->get('spjpesawat/formspj/(:num)', 'SpjPesawat::formspj/$1');

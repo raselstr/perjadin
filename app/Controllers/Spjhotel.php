@@ -2,12 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\SpjhotelModel;
+use App\Models\SpjHotelModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
-use function PHPUnit\Framework\isNull;
-
-class Spjhotel extends ResourcePresenter
+class SpjHotel extends ResourcePresenter
 {
     /**
      * Present a view of resource objects
@@ -16,14 +14,15 @@ class Spjhotel extends ResourcePresenter
      */
     public function index()
     {
-        $model = new SpjhotelModel();
-        $spjhotel = $model->spjhotel();
+        $model = new SpjHotelModel();
+        $spjhotel = $model->pelaksanaall();
         $data = [
             'title'     => 'Pertanggung Jawaban Hotel',
             'subtitle'  => 'Home',
             'spjhotel'  => $spjhotel,
+                       
         ];
-        // dd($spjhotel);
+        // dd($data);
         return view('hotel/index', $data);
     }
 
@@ -36,8 +35,7 @@ class Spjhotel extends ResourcePresenter
      */
     public function show($id = null)
     {
-        
-       
+        //
     }
 
     /**
@@ -47,12 +45,23 @@ class Spjhotel extends ResourcePresenter
      */
     public function new()
     {
-        //  $data = [
-        //     'title'     => 'Tambah Pertanggung Jawaban Hotel',
-        //     'subtitle'  => 'Home',
-        // ];
+        //
+    }
+
+        
+    public function formspj($id)
+    {
+        $model = new SpjHotelModel();
+        $hotelidpelaksana = $model->hotelidpelaksana($id);
+        $data = [
+            'title'     => 'Form Tiket Hotel',
+            'subtitle'  => 'Home',
+            'data'      => $hotelidpelaksana,
+                    
+        ];
         // dd($data);
-        // return view('hotel/modalform');
+        return view('hotel/spjhotel', $data);
+        
     }
 
     /**
@@ -64,80 +73,95 @@ class Spjhotel extends ResourcePresenter
     public function create()
     {
         
-        if($this->request->isAJAX()){
-            
-            $spjhotel = new SpjhotelModel();
-            $data = $this->request->getPost();
-            
-            $foto = $this->request->getFile('hotel_foto');
-            $scan = $this->request->getFile('hotel_bill');
-
-            $hotel_fotolama = $this->request->getVar('hotel_fotolama');
-            $hotel_billlama = $this->request->getVar('hotel_billlama');
-            $hotel_id = $this->request->getVar('hotel_id');
-
-            if($foto->getError() == 4){ //4 => tidak ada mengupload foto
-                $data['hotel_foto'] = $hotel_fotolama;
-            } else {
-                $namafoto = $foto->getRandomName();
-                $data['hotel_foto'] = $namafoto;
-                
-            }
-            if($scan->getError() == 4){ //4 => tidak ada mengupload foto
-                $data['hotel_bill'] = $hotel_billlama;
-            } else {
-                $namascan = $scan->getRandomName();
-                $data['hotel_bill'] = $namascan;
-            }
-
-            
-            $myfilefoto = file_exists(FCPATH. 'image/hotel/'. $hotel_fotolama);
-            $myfilebill = file_exists (FCPATH. 'image/hotelbill/'.$hotel_billlama);
-            
-            // dd($data);
-            
-            
-            $save = $spjhotel->save($data);
-            
-            if ($save) {
-                if($hotel_id == null) {
-                    if($data['hotel_foto'] !== $hotel_fotolama) {
-                        $foto->move(FCPATH . 'image/hotel', $namafoto);
-                    }
-                    if($data['hotel_bill'] !== $hotel_billlama) {
-                        $scan->move(FCPATH . 'image/hotelbill', $namascan);
-                    }
-                } else {
-                    if($data['hotel_foto'] !== $hotel_fotolama) {
-                        if($myfilefoto == true) {
-                            $foto->move(FCPATH . 'image/hotel', $namafoto);
-                            unlink(FCPATH . 'image/hotel/' . $hotel_fotolama);
-                        } else {
-                            $foto->move(FCPATH . 'image/hotel', $namafoto);
-                        }
-                    }
-                    if($data['hotel_bill'] !== $hotel_billlama) {
-                        if($myfilebill == true) {
-                            $scan->move(FCPATH . 'image/hotelbill', $namascan);
-                            unlink(FCPATH . 'image/hotelbill/' . $hotel_billlama);
-                        } else {
-                            $scan->move(FCPATH . 'image/hotelbill', $namascan);
-                        }
-                    }
-                }
-                $ket = [
+        
+        $spjhotel = new SpjHotelModel();
+        $data = $this->request->getPost();
+        
+        $save = $spjhotel->save($data);
+        if($save){
+            $ket = [
                     'error' => false,
                     'message' => 'Data Berhasil',
                 ];
             return $this->response->setJSON($ket);
-            } else {
-                $validationerror = [
-                    'error'     => true,
-                    'message'   => $spjhotel->errors(),
+        } else {
+            $validationerror = [
+                'error'     => true,
+                'message'   => $spjhotel->errors(),
+            ];
+            return $this->response->setJSON($validationerror);
+        };
+    }
+
+    public function upload()
+    {
+        $validation = \Config\Services::validation();
+        $spjhotel = new SpjHotelModel();
+        if($this->request->isAJAX()){
+            $data = $this->request->getPost();
+
+            $scan = $this->request->getFile('spjhotel_bill');
+            $idhotel = $this->request->getVar('spjhotel_id');
+
+            $scanbilllama   = $this->request->getVar('scanbilllama');
+            $valid = $this->validate([
+                'spjhotel_bill' => [
+                    'rules' => 'uploaded[spjhotel_bill]|ext_in[spjhotel_bill,pdf]',
+                    'errors' => [
+                        'uploaded'      => 'File harus di upload',
+                        // 'max_size'      => 'Ukuran file PDF melebihi batas maksimum 5MB.',
+                        'ext_in'        => 'File yang diunggah bukan merupakan file PDF.',
+                    ]
+                ],
+            ]);
+
+            $lamabill = file_exists (FCPATH. 'image/hotel/bill/'.$scanbilllama);
+            if($idhotel == null) {
+                $errors = [
+                    'errors' => true,
+                    'messages' => [
+                        'idkosong' =>'Data SPJ Hotel Belum di Isi, isi terlebih dahulu Klik Tambah SPJ Hotel !!!!',
+                    ],
                 ];
-                return $this->response->setJSON($validationerror);
-            };
-        }
+                return $this->response->setJSON($errors);
+            } else {
+            if(!$valid) {
+
+                $errors = [
+                        'errors' => true,
+                        'messages' => $validation->getErrors(),
+                    ];
+                return $this->response->setJSON($errors);
+                }
+            }
+            
+            $namascan = $scan->getRandomName();
+            $data['spjhotel_bill'] = $namascan;
+            
+            
+            $save = $spjhotel->save($data);
+            if($save) {
+                if($scanbilllama == null) {
+                    if($lamabill ){
+                        $scan->move(FCPATH . 'image/hotel/bill', $namascan);
+                    } 
+                } else {
+                    if($lamabill ){
+                        $scan->move(FCPATH . 'image/hotel/bill', $namascan);
+                        unlink(FCPATH . 'image/hotel/bill/' . $scanbilllama);
+                    } 
+                }
+                $pesan = [
+                        'errors' => false,
+                        'messages' => 'Data Berhasil di Upload',
+                        'scanbilllama' => $scanbilllama,
+                        'scanbaru'  => $namascan,
+                        'statusscan'    => $lamabill,
+
+                    ];
+                return $this->response->setJSON($pesan);
+            }
+        };
     }
 
     /**
@@ -149,11 +173,34 @@ class Spjhotel extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $spjhotel = new SpjhotelModel();
+        $spjhotel = new SpjHotelModel();
         $data = $spjhotel->find($id);
         return $this->response->setJSON($data);
     }
 
+    public function verif()
+    {
+        $spjhotel = new SpjHotelModel();
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getPost();
+
+            $saved = $spjhotel->save($data);
+
+            if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
+
+            return $this->response->setJSON($pesan);
+        } 
+    }
     /**
      * Process the updating, full or partial, of a specific resource object.
      * This should be a POST.
@@ -176,7 +223,11 @@ class Spjhotel extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        $spjhotel = new SpjHotelModel();
+        $spjhotel->delete($id);
+        
+        // return $this->response->setJSON($pesan);
+        return redirect()->back();
     }
 
     /**
