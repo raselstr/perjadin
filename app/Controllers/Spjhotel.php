@@ -81,7 +81,7 @@ class SpjHotel extends ResourcePresenter
         if($save){
             $ket = [
                     'error' => false,
-                    'message' => 'Data Berhasil',
+                    'message' => 'Data Berhasil disimpan dan Upload Bill Hotel !!',
                 ];
             return $this->response->setJSON($ket);
         } else {
@@ -149,7 +149,9 @@ class SpjHotel extends ResourcePresenter
                     if($lamabill ){
                         $scan->move(FCPATH . 'image/hotel/bill', $namascan);
                         unlink(FCPATH . 'image/hotel/bill/' . $scanbilllama);
-                    } 
+                    } else {
+                        $scan->move(FCPATH . 'image/hotel/bill', $namascan);
+                    }
                 }
                 $pesan = [
                         'errors' => false,

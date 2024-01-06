@@ -94,7 +94,7 @@
                         <div class="form-group row">
                           <label for="spt_mulai" class="col-sm-4 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= old('spt_mulai') ?>" onkeyup="myFunction()">
+                            <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= old('spt_mulai') ?>">
                             <div class="invalid-feedback">
                               <?= isset($errors['spt_mulai']) ? $errors['spt_mulai'] : null ; ?>
                             </div>
@@ -103,7 +103,7 @@
                         <div class="form-group row">
                           <label for="spt_lama" class="col-sm-4 col-form-label">Lama Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= old('spt_lama') ?>" onkeyup="myFunction()">
+                            <input class="form-control <?= isset($errors['spt_lama']) ? 'is-invalid' : null ; ?>" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= old('spt_lama') ?>">
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_lama']) ? $errors['spt_lama'] : null ; ?>
                               </div>
@@ -180,18 +180,25 @@
 
 <?= $this->section('script'); ?>
   <script>
+  $(document).ready(function() {
     function myFunction() {
-    var jh = document.getElementById("spt_lama").value;
-    var tglmulai = document.getElementById("spt_mulai").value;
-    var hari = jh*24*60*60*1000;
+      var jh = $("#spt_lama").val();
+      var tglmulai = $("#spt_mulai").val();
+      var hari = jh * 24 * 60 * 60 * 1000;
 
-    var hariakhir = new Date(new Date(tglmulai).getTime()+(hari)-1);
-    document.getElementById("spt_berakhir").value = hariakhir.toISOString().slice(0,10);
-  }
+      var hariakhir = new Date(new Date(tglmulai).getTime() + (hari) - 1);
+      $("#spt_berakhir").val(hariakhir.toISOString().slice(0, 10));
+    }
 
-  const tahun = new Date();
+    const tahun = new Date();
     var thnini = tahun.getFullYear();
-  document.getElementById("spt_tahun").value = thnini;
+    $("#spt_tahun").val(thnini);
+
+    // Panggil myFunction() saat nilai #spt_lama atau #spt_mulai berubah
+    $("#spt_lama, #spt_mulai").change(function() {
+      myFunction();
+    });
+  });
   </script>
     
 

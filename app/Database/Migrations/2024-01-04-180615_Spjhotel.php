@@ -23,8 +23,13 @@ class Spjhotel extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'         => 20,
             ],
+            'spjhotel_lokasi'   => [
+                'type'              => 'VARCHAR',
+                'constraint'         => 20,
+            ],
             'spjhotel_nokamar'        => [
-                'type'              => 'date',
+                'type'              => 'VARCHAR',
+                'constraint'         => 25,
             ],
             'spjhotel_typekamar'   => [
                 'type'              => 'VARCHAR',
@@ -35,6 +40,12 @@ class Spjhotel extends Migration
             ],
             'spjhotel_checkout'   => [
                 'type'              => 'date',
+            ],
+            'spjhotel_mlm'      => [
+                'type'              => 'INT',
+            ],
+            'spjhotel_hargapermalam'      => [
+                'type'              => 'DOUBLE',
             ],
             'spjhotel_hargatotal'      => [
                 'type'              => 'DOUBLE',

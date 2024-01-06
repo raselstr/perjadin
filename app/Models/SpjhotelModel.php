@@ -16,10 +16,13 @@ class SpjHotelModel extends Model
     protected $allowedFields    = [
         'spjhotel_pelaksanaid',
         'spjhotel_nama',
+        'spjhotel_lokasi',
         'spjhotel_nokamar',
         'spjhotel_typekamar',
         'spjhotel_checkin',
         'spjhotel_checkout',
+        'spjhotel_mlm',
+        'spjhotel_hargapermalam',
         'spjhotel_hargatotal',
         'spjhotel_bill',
         'spjhotel_verif',
@@ -36,34 +39,35 @@ class SpjHotelModel extends Model
     protected $validationRules      = [
         'spjhotel_pelaksanaid' => 'required',
         'spjhotel_nama' => 'required',
+        'spjhotel_lokasi' => 'required',
         'spjhotel_nokamar' => 'required',
         'spjhotel_typekamar' => 'required',
         'spjhotel_checkin' => 'required|valid_date[]',
-        'spjhotel_checkout' => 'required|valid_date[]',
-        'spjhotel_hargatotal' => 'required',
-        'spjhotel_bill' => 'required',
-        'spjhotel_verif' => 'required',
+        'spjhotel_mlm' => 'required',
+        'spjhotel_hargapermalam' => 'required',
     ];
     protected $validationMessages   = [
         'spjhotel_nama'      => [
-            'required' => 'Jenis SPJ Hotel Wajib di Pilih !!!'
+            'required' => 'Nama Hotel Wajib di Pilih !!!'
+        ],
+        'spjhotel_lokasi'      => [
+            'required' => 'Nama Hotel Wajib di Pilih !!!'
         ],
         'spjhotel_nokamar'      => [
-            'required' => 'Maskapai Hotel Wajib di Isi !!!'
+            'required' => 'No Kamar Hotel Wajib di Isi !!!'
         ],
         'spjhotel_typekamar'      => [
-            'required' => 'Nomor Tiket Hotel Wajib di Isi !!!'
+            'required' => 'Type Kamar Hotel Wajib di Isi !!!'
         ],
         'spjhotel_checkin'      => [
-            'required' => 'Kode Boking Hotel Wajib di Isi !!!',
+            'required' => 'Tanggal Checkin Hotel Wajib di Isi !!!',
             'valid_date' => 'Tanggal harus Valid !!'
         ],
-        'spjhotel_checkout'      => [
-            'required' => 'Tanggal Wajib di Pilih !!!',
-            'valid_date' => 'Tanggal harus Valid !!'
+        'spjhotel_mlm'      => [
+            'required' => 'Menginap Berapa malam Wajin di isi !!!',
         ],
-        'spjhotel_hargatotal'      => [
-            'required' => 'Keberangkatan Hotel dari Bandahara mana Wajib di Isi !!!'
+        'spjhotel_hargapermalam'      => [
+            'required' => 'Biaya penginapan per malam Wajib di Isi !!!'
         ],
         
     ];
@@ -110,9 +114,10 @@ class SpjHotelModel extends Model
         $builder -> orderBy('a.spjhotel_created_at', 'DESC');
         
         $query = $builder -> get();
-        $result = $query->getResult();
-            
-
+        $result = [
+            'data' => $query->getResult(),
+            'nilai' => $query->getNumRows(),
+            ];
         return $result;
     }
 }

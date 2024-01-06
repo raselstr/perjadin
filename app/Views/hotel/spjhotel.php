@@ -58,44 +58,44 @@
             <div class="form-group row">
               <label class="col-sm-2 col-form-label" hidden>Id Pelaksana</label>
               <div class="col">
-                <input type="text" class="form-control" name="pelaksana_id" value="<?=$data[0]->pelaksana_id;?>" hidden>
+                <input type="text" class="form-control" name="pelaksana_id" value="<?=$data['data'][0]->pelaksana_id;?>" hidden>
               </div>
               <label class="col-sm-2 col-form-label" hidden>Id SPJ hotel</label>
               <div class="col">
-                <input type="text" class="form-control" name="spjhotel_id" value="<?=$data[0]->spjhotel_id;?>" hidden>
+                <input type="text" class="form-control" name="spjhotel_id" value="<?=$data['data'][0]->spjhotel_id;?>" hidden>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Nama Pelaksana</label>
               <div class="col-sm-3">
-                <input type="text" class="form-control" name="pegawai_nama" value="<?=$data[0]->pegawai_nama;?>" disabled>
+                <input type="text" class="form-control" name="pegawai_nama" value="<?=$data['data'][0]->pegawai_nama;?>" disabled>
               </div>
               <label class="col-sm-1 col-form-label text-right">No SPT</label>
               <div class="col-sm-3">
-                <input type="text" class="form-control " name="pegawai_nama" value="<?=$data[0]->spt_nomor;?>" disabled>
+                <input type="text" class="form-control " name="pegawai_nama" value="<?=$data['data'][0]->spt_nomor;?>" disabled>
               </div>
               <label class="col-sm-1 col-form-label text-right">Tanggal SPT</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_tgl" value="<?=date('d F Y', strtotime($data[0]->spt_tgl));?>" disabled>
+                <input type="text" class="form-control" name="spt_tgl" value="<?=date('d F Y', strtotime($data['data'][0]->spt_tgl));?>" disabled>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label ">Tujuan</label>
               <div class="col-sm-3">
-                <textarea type="text" class="form-control" name="spt_mulai" disabled><?=$data[0]->spt_tempat;?></textarea>
+                <textarea type="text" class="form-control" name="spt_mulai" disabled><?=$data['data'][0]->spt_tempat;?></textarea>
               </div>
               <label class="col-sm-1 col-form-label text-right">Tanggal Mulai</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_mulai" value="<?=date('d F Y', strtotime($data[0]->spt_mulai));?>" disabled>
+                <input type="text" class="form-control" name="spt_mulai" value="<?=date('d F Y', strtotime($data['data'][0]->spt_mulai));?>" disabled>
               </div>
               <label class="col-sm-2 col-form-label text-right">Tanggal Selesai</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_berakhir" value="<?=date('d F Y', strtotime($data[0]->spt_berakhir));?>" disabled>
+                <input type="text" class="form-control" name="spt_berakhir" value="<?=date('d F Y', strtotime($data['data'][0]->spt_berakhir));?>" disabled>
               </div>
             </div>
             <!-- <div class="form-group row"> -->
               <a href="<?= site_url('spjhotel'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i> Kembali</a>
-              <button type="button" class="btn bg-gradient-primary float-sm-right"  data-idpelaksana="<?=$data[0]->pelaksana_id;?>" class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"> </i> Tambah SPJ Hotel</button>
+              <button type="button" class="btn bg-gradient-primary float-sm-right"  data-idpelaksana="<?=$data['data'][0]->pelaksana_id;?>" class="btn btn-primary"  data-toggle="modal" data-target="#hotelspj"><i class="fas fa-hand-point-right"> </i> Tambah SPJ Hotel</button>
             <!-- </div> -->
             </div>
           </div>
@@ -106,36 +106,47 @@
                 <tr>
                   <th class="align-middle text-center">No</th>
                   <th class="align-middle text-center">Aksi</th>
-                  <th class="align-middle text-center">Boarding<br>Bill</th>
-                  <th class="align-middle text-center">Jenis</th>
-                  <th class="align-middle text-center">Maskapai</th>
-                  <th class="align-middle text-center">Nomor Tiket</th>
-                  <th class="align-middle text-center">Kode Boking</th>
-                  <th class="align-middle text-center">Tanggal</th>
-                  <th class="align-middle text-center">Dari Bandara </th>
+                  <th class="align-middle text-center">Bill</th>
+                  <th class="align-middle text-center">Nama Hotel</th>
+                  <th class="align-middle text-center">Nomor Kamar</th>
+                  <th class="align-middle text-center">Type Kamar</th>
+                  <th class="align-middle text-center">Check In</th>
+                  <th class="align-middle text-center">Check Out</th>
+                  <th class="align-middle text-center">Total Biaya </th>
                 </tr>
               </thead>
               <tbody>
                 <?php
                     $no = 1;
-                    foreach ($data as $key => $value): ?>
+                    foreach ($data['data'] as $key => $value): ?>
                   <tr>
                     <td class="align-middle text-center"><?=$no++;?></td>
                     <td class="align-middle text-center">
-                      <?php if ($value->spjhotel_verif == 0): ?>
-                        <button type="button" class="btn bg-gradient-info btn-xs" data-idhotel="<?=$value->spjhotel_id;?>" data-scanbilllama="<?=$value->spjhotel_bill;?>" data-toggle="modal" data-target="#hotelbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
-                        <button type="button" class="btn bg-gradient-warning btn-xs" data-idhotel="<?=$value->spjhotel_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#hotelspj"><i class="fas fa-pen"> </i> <br>Edit</button>
-                        <a href="<?=site_url('spjhotel/remove/' . $value->spjhotel_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idhotel=""><i class="fas fa-trash"> </i> <br>Hapus</a>
-                          <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
-                      <?php else: ?>
-                        <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
+                        <?php if ($value->spjhotel_verif == 0): ?>
+                          <?php if($value->spjhotel_id <> null) : ?>
+                            <button type="button" class="btn bg-gradient-info btn-xs" data-idhotel="<?=$value->spjhotel_id;?>" data-scanbilllama="<?=$value->spjhotel_bill;?>" data-toggle="modal" data-target="#hotelbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
+                            <button type="button" class="btn bg-gradient-warning btn-xs" data-idhotel="<?=$value->spjhotel_id;?>" data-idpelaksana ="<?=$data['data'][0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#hotelspj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                            <a href="<?=site_url('spjhotel/remove/' . $value->spjhotel_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idhotel=""><i class="fas fa-trash"> </i> <br>Hapus</a>
+                            <?php if($value->spjhotel_bill <> null) : ?>
+                              <button type="button" class="btn bg-gradient-primary btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-pen-square"> </i> <br>Verif</button>
+                            <?php endif ?>
+                          <?php endif ?>
+                        <?php else: ?>
+                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
+                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?=$value->spjhotel_bill?>"><i class="fas fa-file-pdf"></i><br>Bill</button>
+                        <?php endif?>
+                    </td>
+                    <td class="align-middle text-center">
+                      <?php if ($value->spjhotel_bill != null): ?>
+                              <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?=$value->spjhotel_bill?>"><i class="fas fa-file-pdf"></i><br>Lihat Bill</button>
+                      <?php else : ?>
+                        <i>Bill hotel belum di upload</i>
                       <?php endif?>
                     </td>
-                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?=$value->spjhotel_bill?>"><i class="fas fa-file-pdf"></i><br>Bill</button></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_nama;?><br><?=$value->spjhotel_id;?></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_nokamar;?></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_typekamar;?></td>
-                    <td class="align-middle text-center"><?=$value->spjhotel_checkin;?></td>
+                    <td class="align-middle text-center"><?=$value->spjhotel_checkin == null ? "" : date('d F Y', strtotime($value->spjhotel_checkin));?></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_checkout == null ? "" : date('d F Y', strtotime($value->spjhotel_checkout));?></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_hargatotal;?> </td>
 
@@ -148,7 +159,7 @@
       </div>
     </div>
   </div>
-
+<!-- Content Wrapper. Contains page content -->
   <!-- Modal SPJ Hotel -->
   <div class="modal fade" id="hotelspj">
     <div class="modal-dialog">
@@ -174,64 +185,65 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Jenis SPJ Hotel</label>
+                  <label class="col-sm-4 col-form-label">Nama Hotel</label>
                   <div class="col">
-                    <select class="form-control" style="width: 100%;" id="spjhotel_jenis" name="spjhotel_jenis">
-                      <option value="">Pilih Jenis Tiket ...</option>
-                      <option value="Berangkat">Berangkat</option>
-                      <option value="Kembali">Kembali</option>
-                    </select>
-                    <div class="invalid-feedback errorspjhotel_jenis"></div>
+                    <input type="text" class="form-control" id="spjhotel_nama" name="spjhotel_nama">
+                    <div class="invalid-feedback errorspjhotel_nama"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Maskapai</label>
+                  <label class="col-sm-4 col-form-label">Lokasi Hotel</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjhotel_maskapai" name="spjhotel_maskapai">
-                    <div class="invalid-feedback errorspjhotel_maskapai"></div>
+                    <input type="text" class="form-control" id="spjhotel_lokasi" name="spjhotel_lokasi">
+                    <div class="invalid-feedback errorspjhotel_lokasi"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Nomor Tiket</label>
+                  <label class="col-sm-4 col-form-label">Nomor Kamar</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjhotel_notiket" name="spjhotel_notiket">
-                    <div class="invalid-feedback errorspjhotel_notiket"></div>
+                    <input type="text" class="form-control" id="spjhotel_nokamar" name="spjhotel_nokamar">
+                    <div class="invalid-feedback errorspjhotel_nokamar"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Kode Boking</label>
+                  <label class="col-sm-4 col-form-label">Tipe Kamar</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjhotel_kdboking" name="spjhotel_kdboking">
-                    <div class="invalid-feedback errorspjhotel_kdboking"></div>
+                    <input type="text" class="form-control" id="spjhotel_typekamar" name="spjhotel_typekamar">
+                    <div class="invalid-feedback errorspjhotel_typekamar"></div>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Tanggal Hotel</label>
+                  <label class="col-sm-4 col-form-label">Tanggal Checkin</label>
                   <div class="col">
-                    <input type="date" class="form-control" id="spjhotel_tgl" name="spjhotel_tgl">
-                    <div class="invalid-feedback errorspjhotel_tgl"></div>
+                    <input type="date" class="form-control" id="spjhotel_checkin" name="spjhotel_checkin">
+                    <div class="invalid-feedback errorspjhotel_checkin"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Dari</label>
+                  <label class="col-sm-4 col-form-label">Lama menginap (mlm)</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjhotel_dari" name="spjhotel_dari">
-                    <div class="invalid-feedback errorspjhotel_dari"></div>
+                    <input type="number" class="form-control" id="spjhotel_mlm" name="spjhotel_mlm">
+                    <div class="invalid-feedback errorspjhotel_mlm"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Ke</label>
+                  <label class="col-sm-4 col-form-label">Tanggal Checkout</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="spjhotel_ke" name="spjhotel_ke">
-                    <div class="invalid-feedback errorspjhotel_ke"></div>
+                    <input type="date" class="form-control" id="spjhotel_checkout" name="spjhotel_checkout" readonly>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Harga/Tiket/Orang</label>
+                  <label class="col-sm-4 col-form-label">Biaya Per Malam</label>
                   <div class="col">
-                    <input type="number" class="form-control" id="spjhotel_harga" name="spjhotel_harga">
-                    <div class="invalid-feedback errorspjhotel_harga"></div>
+                    <input type="number" class="form-control" id="spjhotel_hargapermalam" name="spjhotel_hargapermalam">
+                    <div class="invalid-feedback errorspjhotel_hargapermalam"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Total Biaya Penginapan</label>
+                  <div class="col">
+                    <input type="number" class="form-control" id="spjhotel_hargatotal" name="spjhotel_hargatotal" readonly>
                   </div>
                 </div>
               </div>
@@ -264,20 +276,10 @@
                 <label class="col-sm-4 col-form-label" hidden>Id spjhotel</label>
                 <div class="col">
                   <input type="text" class="form-control" id="id" name="spjhotel_id" hidden>
-                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" hidden>
                   <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" hidden>
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="exampleInputFile" class="col-sm-4 col-form-label">Foto Tiket</label>
-                <div class="col-sm-8">
-                  <div class="input-group">
-                    <input class="custom-file-input" type="file" name="spjhotel_fototiket" id="fototiket">
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto">Pilih Foto</label>
-                    <div class="invalid-feedback errorspjhotel_fototiket"></div>
-                  </div>
-                </div>
-              </div>
+              
               <div class="form-group row">
                 <label for="exampleInputFile" class="col-sm-4 col-form-label">Scan PDF Bill Hotel</label>
                 <div class="col-sm-8">
@@ -430,32 +432,32 @@
     </script>
   <!-- End Script Hapus -->
 
-<!-- Script Modal Tampilakan Foto Tiket -->
-  <script>
-    $(document).ready(function(){
+  <!-- Script Modal Tampilakan Foto Tiket -->
+    <script>
+      $(document).ready(function(){
 
-       $('[data-target="#modalfoto"]').on('click', function(e) {
-        e.preventDefault();
-          var namafoto = $(this).data('fototiket');
-          var imageUrl = "<?=base_url('image/hotel/tiket/')?>" + namafoto
-          $('#idmodalfoto').text(namafoto);
-          // console.log(namafoto);
-          var linkhotel = $('<img>').attr({
-            'src': imageUrl,
-            'alt': 'Deskripsi Gambar',
-            'width': '100%',
-            'height': '200'
-          });
+        $('[data-target="#modalfoto"]').on('click', function(e) {
+          e.preventDefault();
+            var namafoto = $(this).data('fototiket');
+            var imageUrl = "<?=base_url('image/hotel/tiket/')?>" + namafoto
+            $('#idmodalfoto').text(namafoto);
+            // console.log(namafoto);
+            var linkhotel = $('<img>').attr({
+              'src': imageUrl,
+              'alt': 'Deskripsi Gambar',
+              'width': '100%',
+              'height': '200'
+            });
 
-        $('#tampilfoto').html(linkhotel);
-       });
+          $('#tampilfoto').html(linkhotel);
+        });
 
-       $('.tutupmodal').on('click', function(){
-        location.reload();
-       });
-    });
-  </script>
-<!-- End Script Modal Tampilakan Foto Tiket -->
+        $('.tutupmodal').on('click', function(){
+          location.reload();
+        });
+      });
+    </script>
+  <!-- End Script Modal Tampilakan Foto Tiket -->
 
   <!-- Script Modal Tampilkan Hasil Scan PDF -->
     <script>
@@ -496,12 +498,13 @@
           $('#spjhotel_id').val(idhotel);
 
           if(idhotel == null){
-            $('#spjhotel_jenis').val('');
-            $('#spjhotel_maskapai').val('');
-            $('#spjhotel_notiket').val('');
-            $('#spjhotel_kdboking').val('');
-            $('#spjhotel_tgl').val('');
-            $('#spjhotel_dari').val('');
+            $('#spjhotel_nama').val('');
+            $('#spjhotel_lokasi').val('');
+            $('#spjhotel_nokamar').val('');
+            $('#spjhotel_typekamar').val('');
+            $('#spjhotel_checkin').val('');
+            $('#spjhotel_mlm').val('');
+            $('#spjhotel_hargapermalam').val('');
             $('#spjhotel_ke').val('');
             $('#spjhotel_harga').val('');
             $('#hotelspj').show();
@@ -514,12 +517,13 @@
               dataType: "json",
               success: function (response) {
                 console.log(response);
-                $('#spjhotel_jenis').val(response.spjhotel_jenis);
-                $('#spjhotel_maskapai').val(response.spjhotel_maskapai);
-                $('#spjhotel_notiket').val(response.spjhotel_notiket);
-                $('#spjhotel_kdboking').val(response.spjhotel_kdboking);
-                $('#spjhotel_tgl').val(response.spjhotel_tgl);
-                $('#spjhotel_dari').val(response.spjhotel_dari);
+                $('#spjhotel_nama').val(response.spjhotel_nama);
+                $('#spjhotel_lokasi').val(response.spjhotel_lokasi);
+                $('#spjhotel_nokamar').val(response.spjhotel_nokamar);
+                $('#spjhotel_typekamar').val(response.spjhotel_typekamar);
+                $('#spjhotel_checkin').val(response.spjhotel_checkin);
+                $('#spjhotel_mlm').val(response.spjhotel_mlm);
+                $('#spjhotel_hargapermalam').val(response.spjhotel_hargapermalam);
                 $('#spjhotel_ke').val(response.spjhotel_ke);
                 $('#spjhotel_harga').val(response.spjhotel_harga);
                 $('#hotelspj').show();
@@ -550,61 +554,54 @@
             success: function (response) {
               console.log(response);
               if(response.error) {
-                if(response.message.spjhotel_jenis){
-                        $('#spjhotel_jenis').addClass('is-invalid');
-                        $('.errorspjhotel_jenis').html(response.message.spjhotel_jenis);
+                if(response.message.spjhotel_nama){
+                        $('#spjhotel_nama').addClass('is-invalid');
+                        $('.errorspjhotel_nama').html(response.message.spjhotel_nama);
                     } else {
-                        $('#spjhotel_jenis').removeClass('is-invalid');
-                        $('.errorspjhotel_jenis').html('');
+                        $('#spjhotel_nama').removeClass('is-invalid');
+                        $('.errorspjhotel_nama').html('');
                 }
-                if(response.message.spjhotel_maskapai){
-                        $('#spjhotel_maskapai').addClass('is-invalid');
-                        $('.errorspjhotel_maskapai').html(response.message.spjhotel_maskapai);
+                if(response.message.spjhotel_lokasi){
+                        $('#spjhotel_lokasi').addClass('is-invalid');
+                        $('.errorspjhotel_lokasi').html(response.message.spjhotel_lokasi);
                     } else {
-                        $('#spjhotel_maskapai').removeClass('is-invalid');
-                        $('.errorspjhotel_maskapai').html('');
+                        $('#spjhotel_lokasi').removeClass('is-invalid');
+                        $('.errorspjhotel_lokasi').html('');
                 }
-                if(response.message.spjhotel_notiket){
-                        $('#spjhotel_notiket').addClass('is-invalid');
-                        $('.errorspjhotel_notiket').html(response.message.spjhotel_notiket);
+                if(response.message.spjhotel_nokamar){
+                        $('#spjhotel_nokamar').addClass('is-invalid');
+                        $('.errorspjhotel_nokamar').html(response.message.spjhotel_nokamar);
                     } else {
-                        $('#spjhotel_notiket').removeClass('is-invalid');
-                        $('.errorspjhotel_notiket').html('');
+                        $('#spjhotel_nokamar').removeClass('is-invalid');
+                        $('.errorspjhotel_nokamar').html('');
                 }
-                if(response.message.spjhotel_kdboking){
-                        $('#spjhotel_kdboking').addClass('is-invalid');
-                        $('.errorspjhotel_kdboking').html(response.message.spjhotel_kdboking);
+                if(response.message.spjhotel_typekamar){
+                        $('#spjhotel_typekamar').addClass('is-invalid');
+                        $('.errorspjhotel_typekamar').html(response.message.spjhotel_typekamar);
                     } else {
-                        $('#spjhotel_kdboking').removeClass('is-invalid');
-                        $('.errorspjhotel_kdboking').html('');
+                        $('#spjhotel_typekamar').removeClass('is-invalid');
+                        $('.errorspjhotel_typekamar').html('');
                 }
-                if(response.message.spjhotel_tgl){
-                        $('#spjhotel_tgl').addClass('is-invalid');
-                        $('.errorspjhotel_tgl').html(response.message.spjhotel_tgl);
+                if(response.message.spjhotel_checkin){
+                        $('#spjhotel_checkin').addClass('is-invalid');
+                        $('.errorspjhotel_checkin').html(response.message.spjhotel_checkin);
                     } else {
-                        $('#spjhotel_tgl').removeClass('is-invalid');
-                        $('.errorspjhotel_tgl').html('');
+                        $('#spjhotel_checkin').removeClass('is-invalid');
+                        $('.errorspjhotel_checkin').html('');
                 }
-                if(response.message.spjhotel_dari){
-                        $('#spjhotel_dari').addClass('is-invalid');
-                        $('.errorspjhotel_dari').html(response.message.spjhotel_dari);
+                if(response.message.spjhotel_mlm){
+                        $('#spjhotel_mlm').addClass('is-invalid');
+                        $('.errorspjhotel_mlm').html(response.message.spjhotel_mlm);
                     } else {
-                        $('#spjhotel_dari').removeClass('is-invalid');
-                        $('.errorspjhotel_dari').html('');
+                        $('#spjhotel_mlm').removeClass('is-invalid');
+                        $('.errorspjhotel_mlm').html('');
                 }
-                if(response.message.spjhotel_ke){
-                        $('#spjhotel_ke').addClass('is-invalid');
-                        $('.errorspjhotel_ke').html(response.message.spjhotel_ke);
+                if(response.message.spjhotel_hargapermalam){
+                        $('#spjhotel_hargapermalam').addClass('is-invalid');
+                        $('.errorspjhotel_hargapermalam').html(response.message.spjhotel_hargapermalam);
                     } else {
-                        $('#spjhotel_ke').removeClass('is-invalid');
-                        $('.errorspjhotel_ke').html('');
-                }
-                if(response.message.spjhotel_harga){
-                        $('#spjhotel_harga').addClass('is-invalid');
-                        $('.errorspjhotel_harga').html(response.message.spjhotel_harga);
-                    } else {
-                        $('#spjhotel_harga').removeClass('is-invalid');
-                        $('.errorspjhotel_harga').html('');
+                        $('#spjhotel_hargapermalam').removeClass('is-invalid');
+                        $('.errorspjhotel_hargapermalam').html('');
                 }
               } else {
                 console.log(response);
@@ -692,13 +689,7 @@
 
                     });
                   } else {
-                    if(response.messages.spjhotel_fototiket){
-                            $('#fototiket').addClass('is-invalid');
-                            $('.errorspjhotel_fototiket').html(response.messages.spjhotel_fototiket);
-                        } else {
-                            $('#fototiket').removeClass('is-invalid');
-                            $('.errorspjhotel_fototiket').html('');
-                    }
+                    
                     if(response.messages.spjhotel_bill){
                             $('#scanbill').addClass('is-invalid');
                             $('.errorspjhotel_bill').html(response.messages.spjhotel_bill);
@@ -736,7 +727,7 @@
     </script>
   <!-- End Script Upload Tiket dan Bill -->
 
-   <!-- Script Validasi Tiket Hotel -->
+  <!-- Script Validasi Tiket Hotel -->
     <script>
       $(document).ready(function(){
         $('[data-target="#modalverif"]').click (function() {
@@ -788,4 +779,28 @@
     </script>
   <!-- End Script Validasi Tiket Hotel -->
 
+  <!-- Tanggal Check Out Otomatis -->
+    <script>
+      $(document).ready(function() {
+        function myFunction() {
+          var jh = $("#spjhotel_mlm").val();
+          var tglmulai = $("#spjhotel_checkin").val();
+          var hari = jh * 24 * 60 * 60 * 1000;
+          
+          var hariakhir = new Date(new Date(tglmulai).getTime() + (hari) - 1);
+          $("#spjhotel_checkout").val(hariakhir.toISOString().slice(0, 10));
+
+          var harga = $('#spjhotel_hargapermalam').val();
+          var totalharga = harga * jh;
+          $('#spjhotel_hargatotal').val(totalharga);
+        }
+        // Panggil myFunction() saat nilai #spt_lama atau #spt_mulai berubah
+        $("#spjhotel_checkin, #spjhotel_mlm, #spjhotel_hargapermalam").change(function() {
+          myFunction();
+        });
+      });
+    </script>
+  <!-- End Tanggal Check Out Otomatis -->
+
+  
 <?=$this->endSection()?>
