@@ -64,7 +64,6 @@
             <div class="form-group row">
               <label class="col-sm-2 col-form-label" >Id Pelaksana</label>
               <div class="col">
-                <input type="text" class="form-control" name="pelaksana_id" value="<?= $data[0]->spt_pjb_tugas; ?>" >
                 <input type="text" class="form-control" name="pelaksana_id" value="<?= $data[0]->spt_nomor; ?>" >
                 <textarea type="text" class="form-control" name="pelaksana_id" ><?= $data[0]->spt_uraian; ?>" </textarea>
               </div>
