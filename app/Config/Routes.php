@@ -48,3 +48,7 @@ $routes->post('spjtaksi/upload', 'SpjTaksi::upload');
 $routes->post('spjtaksi/verif', 'SpjTaksi::verif');
 $routes->presenter('spjtaksi');
 
+
+$routes->get('laporjadin/form/(:num)','LaporJadin::form/$1');
+$routes->presenter('laporjadin');
+

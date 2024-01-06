@@ -15,6 +15,7 @@ class LaporjadinModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'laporjadin_sptid',
+        'laporjadin_nodpa',
         'laporjadin_pembuka',
         'laporjadin_hasil',
         'laporjadin_penutup',
@@ -29,11 +30,14 @@ class LaporjadinModel extends Model
 
     // Validation
     protected $validationRules      = [
+        'laporjadin_nodpa'      => 'required',
         'laporjadin_pembuka'    => 'required',
         'laporjadin_hasil'      => 'required',
         'laporjadin_penutup'    => 'required',
     ];
     protected $validationMessages   = [
+        'laporjadin_nodpa'    => [
+            'required'  => 'No DPA Kegiatan harus diisi !!!'],
         'laporjadin_pembuka'    => [
             'required'  => 'Pembuka konsultasi harus diisi !!!'],
         'laporjadin_hasil'      => [
@@ -54,4 +58,30 @@ class LaporjadinModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function dataspt()
+    {
+        $builder = $this->db->table('spts');
+        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
+        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder->where('spts.spt_verif',1);
+        $builder->orderBy('spts.created_at', 'DESC');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    function datasptid($id)
+    {
+        $builder = $this->db->table('spts');
+        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
+        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder->where('spts.spt_verif',1);
+        $builder->where('spts.spt_id',$id);
+        $builder->orderBy('spts.created_at', 'DESC');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
 }

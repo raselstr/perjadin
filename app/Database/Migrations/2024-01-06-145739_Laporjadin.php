@@ -18,6 +18,10 @@ class Laporjadin extends Migration
             'laporjadin_sptid' => [
                 'type'          => 'BIGINT',
             ],
+            'laporjadin_nodpa' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 255
+            ],
             'laporjadin_pembuka' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 255
