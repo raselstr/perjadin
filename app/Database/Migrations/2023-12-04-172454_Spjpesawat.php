@@ -74,7 +74,7 @@ class Spjpesawat extends Migration
             ],
         ]);
         $this->forge->addKey('spjpesawat_id', true);
-        $this->forge->addForeignKey('spjpesawat_id','pelaksanas','pelaksana_id','CASCADE','CASCADE','FKspjpesawatpelaksanaid');
+        $this->forge->addForeignKey('spjpesawat_pelaksanaid','pelaksanas','pelaksana_id','CASCADE','CASCADE','FKspjpesawatpelaksanaid');
 
         $this->forge->createTable('spjpesawats');
     }

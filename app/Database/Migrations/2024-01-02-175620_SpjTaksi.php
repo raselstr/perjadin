@@ -58,7 +58,7 @@ class SpjTaksi extends Migration
             ],
         ]);
         $this->forge->addKey('spjtaksi_id', true);
-        $this->forge->addForeignKey('spjtaksi_id','pelaksanas','pelaksana_id','CASCADE','CASCADE','FKspjtaksipelaksanaid');
+        $this->forge->addForeignKey('spjtaksi_pelaksanaid','pelaksanas','pelaksana_id','CASCADE','CASCADE','FKspjtaksipelaksanaid');
 
         $this->forge->createTable('spjtaksis');
     }

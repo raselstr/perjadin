@@ -72,7 +72,7 @@ class Spjhotel extends Migration
             ],
         ]);
         $this->forge->addKey('spjhotel_id', true);
-        $this->forge->addForeignKey('spjhotel_id','pelaksanas','pelaksana_id','CASCADE','CASCADE','FKspjhotelpelaksanaid');
+        $this->forge->addForeignKey('spjhotel_pelaksanaid','pelaksanas','pelaksana_id','CASCADE','CASCADE','FKspjhotelpelaksanaid');
 
         $this->forge->createTable('spjhotels');
     }
