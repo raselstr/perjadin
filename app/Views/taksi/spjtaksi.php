@@ -122,15 +122,25 @@
                     <td class="align-middle text-center"><?=$no++;?></td>
                     <td class="align-middle text-center">
                       <?php if ($value->spjtaksi_verif == 0): ?>
-                        <button type="button" class="btn bg-gradient-info btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-fototiketlama = "<?=$value->spjtaksi_fototiket;?>"  data-toggle="modal" data-target="#taksibill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
-                        <button type="button" class="btn bg-gradient-warning btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#taksispj"><i class="fas fa-pen"> </i> <br>Edit</button>
-                        <a href="<?=site_url('spjtaksi/remove/' . $value->spjtaksi_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idtaksi=""><i class="fas fa-trash"> </i> <br>Hapus</a>
-                          <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjtaksi_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
+                        <?php if($value->spjtaksi_id <> null) : ?>
+                          <button type="button" class="btn bg-gradient-info btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-fototiketlama = "<?=$value->spjtaksi_fototiket;?>"  data-toggle="modal" data-target="#taksibill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
+                          <button type="button" class="btn bg-gradient-warning btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#taksispj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                          <a href="<?=site_url('spjtaksi/remove/' . $value->spjtaksi_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idtaksi=""><i class="fas fa-trash"> </i> <br>Hapus</a>
+                          <?php if($value->spjtaksi_fototiket <> null) : ?>  
+                            <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjtaksi_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
+                          <?php endif ?>
+                        <?php endif ?>
                       <?php else: ?>
                         <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjtaksi_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
                       <?php endif?>
                     </td>
-                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?=$value->spjtaksi_fototiket?>"><i class="fas fa-image"></i><br>Tiket </button>
+                    <td class="align-middle text-center">
+                      <?php if ($value->spjtaksi_fototiket != null): ?>
+                        <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?=$value->spjtaksi_fototiket?>"><i class="fas fa-image"></i><br>Tiket </button>
+                      <?php else : ?>
+                        <i>Foto Tiket belum di upload</i>
+                      <?php endif?>
+                    </td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_jenis;?><br><?=$value->spjtaksi_id;?></td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_tgl == null ? "" : date('d F Y', strtotime($value->spjtaksi_tgl));?></td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_dari;?> </td>

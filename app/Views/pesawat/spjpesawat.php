@@ -125,16 +125,27 @@
                     <td class="align-middle text-center"><?=$no++;?></td>
                     <td class="align-middle text-center">
                       <?php if ($value->spjpesawat_verif == 0): ?>
-                        <button type="button" class="btn bg-gradient-info btn-xs" data-idpesawat="<?=$value->spjpesawat_id;?>" data-fototiketlama = "<?=$value->spjpesawat_fototiket;?>" data-scanbilllama="<?=$value->spjpesawat_bill;?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
-                        <button type="button" class="btn bg-gradient-warning btn-xs" data-idpesawat="<?=$value->spjpesawat_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
-                        <a href="<?=site_url('spjpesawat/remove/' . $value->spjpesawat_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idpesawat=""><i class="fas fa-trash"> </i> <br>Hapus</a>
+                        <?php if($value->spjpesawat_id <> null) : ?>
+                          <button type="button" class="btn bg-gradient-info btn-xs" data-idpesawat="<?=$value->spjpesawat_id;?>" data-fototiketlama = "<?=$value->spjpesawat_fototiket;?>" data-scanbilllama="<?=$value->spjpesawat_bill;?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
+                          <button type="button" class="btn bg-gradient-warning btn-xs" data-idpesawat="<?=$value->spjpesawat_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
+                          <a href="<?=site_url('spjpesawat/remove/' . $value->spjpesawat_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idpesawat=""><i class="fas fa-trash"> </i> <br>Hapus</a>
+                          <?php if($value->spjpesawat_bill <> null) : ?>  
+                            <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
+                          <?php endif?>
+                        <?php endif?>
+                        <?php else: ?>
+                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
                           <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
-                      <?php else: ?>
-                        <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
                       <?php endif?>
                     </td>
-                    <td class="align-middle text-center"><button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?=$value->spjpesawat_fototiket?>"><i class="fas fa-image"></i><br>Tiket </button>
-                    <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?=$value->spjpesawat_bill?>"><i class="fas fa-file-pdf"></i><br>Bill</button></td>
+                    <td class="align-middle text-center">
+                      <?php if ($value->spjpesawat_bill != null && $value->spjpesawat_fototiket != null): ?>
+                        <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?=$value->spjpesawat_fototiket?>"><i class="fas fa-image"></i><br>Tiket </button>
+                        <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?=$value->spjpesawat_bill?>"><i class="fas fa-file-pdf"></i><br>Bill</button>
+                      <?php else : ?>
+                        <i>Foto Tiket dan Bill hotel belum di upload</i>
+                      <?php endif?>  
+                     </td>
                     <td class="align-middle text-center"><?=$value->spjpesawat_jenis;?><br><?=$value->spjpesawat_id;?></td>
                     <td class="align-middle text-center"><?=$value->spjpesawat_maskapai;?></td>
                     <td class="align-middle text-center"><?=$value->spjpesawat_notiket;?></td>
