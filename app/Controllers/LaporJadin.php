@@ -161,4 +161,19 @@ class LaporJadin extends ResourcePresenter
             return $this->response->setJSON($pesan);
         } 
     }
+
+    public function upload($id)
+    {
+        $model = new LaporjadinModel();
+        $query = $model->datasptid($id);
+
+        $data = [
+            'title' => 'Foto Kegiatan Perjalanan Dinas',
+            'subtitle' => 'Home',
+            'data' => $query,
+        ];
+        // dd($data);
+        return view('laporperjadin/spjlaporfoto', $data);
+
+    }
 }

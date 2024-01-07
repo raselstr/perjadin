@@ -102,81 +102,70 @@
                 </tr>
               </tbody>
             </table>
-            <?php $errors = session()->getFlashdata('validation')?>
-
-            <div class="error"></div>
-
-            <form action="<?= site_url('laporjadin/create'); ?>" method="post">
-            <?= csrf_field() ?>
-            <!-- <div class="form-group row"> -->
-              <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
-              <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
-              <!-- </div> -->
-            </div>
-            <div class="card-footer">
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label" hidden >Id Laporjadin</label>
-                <div class="col">
-                  <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>" hidden>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label" hidden>Id Pelaksana</label>
-                <div class="col">
-                  <input type="text" class="form-control" name="laporjadin_sptid" value="<?= $data[0]->spt_id; ?>" hidden>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Dasar No. DPA Kegiatan</label>
-                  <div class="col">
-                    <input type="text" class="form-control <?= isset($errors['laporjadin_nodpa']) ? 'is-invalid' : null ; ?>" name="laporjadin_nodpa" value="<?= ($data[0]->laporjadin_id == null) ? old('laporjadin_nodpa') : $data[0]->laporjadin_nodpa ?>" >
-                      <div class="invalid-feedback">
-                          <?= isset($errors['laporjadin_nodpa']) ? $errors['laporjadin_nodpa'] : null ; ?>
-                      </div>
-                  </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Pembukaan</label>
-                  <div class="col">
-                    <textarea id="summernote1" name="laporjadin_pembuka" class="form-control <?= isset($errors['laporjadin_pembuka']) ? 'is-invalid' : null ; ?>"><?= ($data[0]->laporjadin_id == null) ? old('laporjadin_pembuka') : $data[0]->laporjadin_pembuka ?></textarea>
-                      <div class="invalid-feedback">
-                          <?= isset($errors['laporjadin_pembuka']) ? $errors['laporjadin_pembuka'] : null ; ?>
-                      </div>
-                    <p class="text-primary">
-                      Ketik <u>Pejabat yang ditemui  </u> <em>saat Konsultasi beserta jabatannya</em>  <strong>pada teks area di atas Tulisan ini</strong>
-                      <br>
-                      <i>Seret garis 3 ditengah bawah kotak di atas ini untuk memperbesar area ketik</i></p>
-                  </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Hasil Konsultasi</label>
-                  <div class="col">
-                    <textarea id="summernote2" name="laporjadin_hasil" class="form-control <?= isset($errors['laporjadin_hasil']) ? 'is-invalid' : null ; ?>"><?= ($data[0]->laporjadin_id == null) ? old('laporjadin_hasil') : $data[0]->laporjadin_hasil ?></textarea>
-                      <div class="invalid-feedback">
-                            <?= isset($errors['laporjadin_hasil']) ? $errors['laporjadin_hasil'] : null ; ?>
-                      </div>
-                    <p class="text-primary">
-                      Ketik <em>Resume </em> <u> Hasil Konsultasi</u> <strong> pada Teks Area di atas Tulisan ini</strong>
-                      <br>
-                      <i>Seret garis 3 ditengah bawah kotak di atas ini untuk memperbesar area ketik</i></p>
-                  </div>
-              </div>
-              
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Penutup</label>
-                  <div class="col">
-                    <textarea id="summernote3" name="laporjadin_penutup" class="form-control <?= isset($errors['laporjadin_penutup']) ? 'is-invalid' : null ; ?>"><?= ($data[0]->laporjadin_id == null) ? old('laporjadin_penutup') : $data[0]->laporjadin_penutup ?></textarea>
-                      <div class="invalid-feedback">
-                        <?= isset($errors['laporjadin_penutup']) ? $errors['laporjadin_penutup'] : null ; ?>
-                      </div>
-                    <p class="text-primary">
-                      Ketik <em>Kata </em> <u> Penutup dari Hasil Konsultasi</u> <strong> pada Teks Area di atas Tulisan ini</strong>
-                      <br>
-                      <i>Seret garis 3 ditengah bawah kotak di atas ini untuk memperbesar area ketik</i></p>
-                  </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label" >Id Laporjadin</label>
+              <div class="col">
+                <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>">
               </div>
             </div>
-            </form>
+            <div class="form-group row">
+              <label for="exampleInputFile" class="col-sm-2 col-form-label">Foto Kegiatan<code>*</code> </label>
+              <div class="col-sm-3">
+                <div class="input-group">
+                  <input class="custom-file-input" type="file" name="laporjadin_foto1" id="laporjadin_foto1">
+                  <label class="custom-file-label" for="custom-file-label" id="nama-foto1">Pilih Foto</label>
+                  <div class="invalid-feedback errorspjtaksi_fototiket"></div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="input-group">
+                  <input class="custom-file-input" type="file" name="laporjadin_foto2" id="laporjadin_foto2">
+                  <label class="custom-file-label" for="custom-file-label" id="nama-foto2">Pilih Foto</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="input-group">
+                  <input class="custom-file-input" type="file" name="laporjadin_foto2" id="laporjadin_foto3">
+                  <label class="custom-file-label" for="custom-file-label" id="nama-foto3">Pilih Foto</label>
+                </div>
+              </div>
+            </div>
+            <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
+            <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
+          </div>
+          <div class="card-footer">
+            <div class="row mt-4">
+              <div class="col-sm-4">
+                <div class="position-relative" style="height: 180px">
+                  <img src="dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                  <div class="ribbon-wrapper ribbon-lg">
+                    <div class="ribbon bg-success text-lg">
+                      Foto 1
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="position-relative" style="height: 180px">
+                  <img src="dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                  <div class="ribbon-wrapper ribbon-lg">
+                    <div class="ribbon bg-success text-lg">
+                      Foto 1
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="position-relative" style="height: 180px">
+                  <img src="dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                  <div class="ribbon-wrapper ribbon-lg">
+                    <div class="ribbon bg-success text-lg">
+                      Foto 1
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -199,6 +188,14 @@
     });
   </script>
 
-  
-
+<!-- Upload Foto Kegiatan -->
+  <script>
+    $(document).ready(function(){
+      $('#laporjadin_foto1').on('change', function(){
+        var fileName = $(this).val().split('\\').pop();
+        $('#nama-foto1').text(fileName);
+      });
+    });
+  </script>
+<!-- End Upload Foto Kegiatan -->
 <?=$this->endSection()?>
