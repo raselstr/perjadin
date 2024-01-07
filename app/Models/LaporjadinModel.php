@@ -19,6 +19,10 @@ class LaporjadinModel extends Model
         'laporjadin_pembuka',
         'laporjadin_hasil',
         'laporjadin_penutup',
+        'laporjadin_foto1',
+        'laporjadin_foto2',
+        'laporjadin_foto3',
+        'laporjadin_verif',
     ];
 
     // Dates
@@ -34,7 +38,6 @@ class LaporjadinModel extends Model
         'laporjadin_pembuka'    => 'required',
         'laporjadin_hasil'      => 'required',
         'laporjadin_penutup'    => 'required',
-        
     ];
     protected $validationMessages   = [
         'laporjadin_nodpa'    => [
@@ -83,6 +86,7 @@ class LaporjadinModel extends Model
         $builder->where('spts.spt_id',$id);
         $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
+        
         return $query->getResult();
     }
 

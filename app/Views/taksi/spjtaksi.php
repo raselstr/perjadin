@@ -127,7 +127,7 @@
                           <button type="button" class="btn bg-gradient-warning btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#taksispj"><i class="fas fa-pen"> </i> <br>Edit</button>
                           <a href="<?=site_url('spjtaksi/remove/' . $value->spjtaksi_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idtaksi=""><i class="fas fa-trash"> </i> <br>Hapus</a>
                           <?php if($value->spjtaksi_fototiket <> null) : ?>  
-                            <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjtaksi_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
+                            <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjtaksi_id;?>"><i class="fas fa-pen-square"> </i> <br>Verif</button>
                           <?php endif ?>
                         <?php endif ?>
                       <?php else: ?>

@@ -31,6 +31,22 @@ class Laporjadin extends Migration
             'laporjadin_penutup' => [
                 'type'          => 'LONGTEXT',
             ],
+            'laporjadin_foto1' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 40,
+            ],
+            'laporjadin_foto2' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 40,
+            ],
+            'laporjadin_foto3' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 40,
+            ],
+            'laporjadin_verif' => [
+                'type'          => 'INT',
+                'default'       => 0,
+            ],
             'laporjadin_created_at' => [
                 'type'              => 'DATETIME',
                 'null'              => true,

@@ -85,9 +85,8 @@
                             <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
                           <?php else : ?>
                             <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-primary" title="Edit Laporan Hasil"><i class="fas fa-edit"></i> </a>
-                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-danger" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
+                            <a href="<?= site_url('laporjadin/remove/'.$value->spt_id); ?>" type="button" class="btn bg-danger tombol-hapus" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
                             <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
-                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-success" title="Verif Laporan Hasil"><i class="fas fa-check"></i> </a>
                           <?php endif ?>
                         </td>
                         <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
@@ -106,6 +105,8 @@
       </div>
     </div>
   </div>
+
+  
 
 <?= $this->endSection() ?>
 
@@ -136,4 +137,29 @@
       });
     }
   </script>
+
+  <!-- Script Hapus -->
+    <script>
+      $('.tombol-hapus').on('click', function(e){
+        e.preventDefault();
+
+        const href = $(this).attr('href');
+
+        Swal.fire({
+          title: "Apakah Anda yakin",
+          text: "data akan dihapus permanen",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Hapus Data",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            document.location.href = href;
+          }
+        });
+      });
+
+    </script>
+  <!-- End Script Hapus -->
 <?= $this->endSection() ?>
