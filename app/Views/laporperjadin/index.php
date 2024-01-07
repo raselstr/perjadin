@@ -43,6 +43,7 @@
       <div class="container-fluid">
         <?= $this->include('layout/infobox'); ?>
       </div>
+      <div class="flash-data" data-flashdata="<?= session()->getflashdata('info'); ?>"></div>
       <div class="col">
         <div class="card card-primary card-outline">
           <div class="card-header">
@@ -51,41 +52,53 @@
             </div>
           </div>
           <div class="card-body">
-                <div class="card-body">
-                <table id="myTable1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th rowspan="2" class="align-middle text-center">No</th>
-                      <th rowspan="2" class="align-middle text-center">Aksi</th>
-                      <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
-                      <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
-                      <th rowspan="2" class="align-middle text-center">Nomor SPT, <br>SPD</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal SPT/ SPPD</th>
-                    </tr>
-                    <tr>
-                      <th class="align-middle text-center">Uraian Perjalanan</th>
-                      <th class="align-middle text-center">Lama Perjalanan</th>
-                      <th class="align-middle text-center">Tempat Tujuan</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                      $no = 1;
-                      foreach ($data as $key => $value) { ?>
-                        <tr>
-                          <td class="align-middle text-center"><?= $no++ ?></td>
-                          <td class="align-middle text-center">
-                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i> Laporan Hasil </a>
-                          </td>
-                          <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
-                          <td class="align-middle"><?= $value->spt_uraian ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_lama ?></td>
-                          <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br></td>
-                          <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
-                        </tr>
-                      <?php } ?>
-                  </tbody>
+            <div class="card-body">
+              <table id="myTable1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th rowspan="2" class="align-middle text-center">No</th>
+                    <th rowspan="2" class="align-middle text-center">Aksi</th>
+                    <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
+                    <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
+                    <th rowspan="2" class="align-middle text-center">Nomor SPT, <br>SPD</th>
+                    <th rowspan="2" class="align-middle text-center">Tanggal SPT/ SPPD</th>
+                  </tr>
+                  <tr>
+                    <th class="align-middle text-center">Uraian Perjalanan</th>
+                    <th class="align-middle text-center">Lama Perjalanan</th>
+                    <th class="align-middle text-center">Tempat Tujuan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $no = 1;
+                    foreach ($data as $key => $value) { ?>
+                      <tr>
+                        <td class="align-middle text-center"><?= $no++ ?></td>
+                        <td class="align-middle text-center">
+                          <?php
+                            $db = \Config\Database::connect();
+                            $user = $db->query('SELECT * FROM laporjadins WHERE laporjadins.laporjadin_sptid ='. $value->spt_id);
+                            $sum = $user->getNumRows();
+                          ?>
+                          <?php if($sum == 0) : ?>
+                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
+                          <?php else : ?>
+                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-primary" title="Edit Laporan Hasil"><i class="fas fa-edit"></i> </a>
+                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-danger" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
+                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
+                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-success" title="Verif Laporan Hasil"><i class="fas fa-check"></i> </a>
+                          <?php endif ?>
+                        </td>
+                        <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
+                        <td class="align-middle"><?= $value->spt_uraian ?></td>
+                        <td class="align-middle text-center"><?= $value->spt_lama ?></td>
+                        <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
+                        <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br></td>
+                        <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
+                      </tr>
+                    <?php } ?>
+                </tbody>
               </table>
             </div>
           </div>
@@ -110,5 +123,17 @@
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
       })
     });
+  </script>
+  <script>
+    const flashData = $('.flash-data').data('flashdata');
+    if(flashData){
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: flashData,
+        showConfirmButton: false,
+        timer: 2000
+      });
+    }
   </script>
 <?= $this->endSection() ?>

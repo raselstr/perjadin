@@ -61,69 +61,122 @@
               <h5 class="card-title"><?=$title;?></h5>
           </div>
           <div class="card-body">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label" >Id Pelaksana</label>
-              <div class="col">
-                <input type="text" class="form-control" name="pelaksana_id" value="<?= $data[0]->spt_nomor; ?>" >
-                <textarea type="text" class="form-control" name="pelaksana_id" ><?= $data[0]->spt_uraian; ?>" </textarea>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" name="pelaksana_id" value="<?=date('d F Y', strtotime($data[0]->spt_tgl));?>" >
-                <input type="text" class="form-control" name="pelaksana_id" value="<?= $data[0]->lokasiperjadin_nama; ?>" >
-                <input type="text" class="form-control" name="pelaksana_id" value="<?=date('d F Y', strtotime($data[0]->spt_mulai));?>  s.d  <?=date('d F Y', strtotime($data[0]->spt_berakhir));?>" >
-              </div>
-            </div>
-            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 20px">#</th>
+                  <th>Uraian</th>
+                  <th style="width: 70%">Keterangan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td>Nomor SPT dan SPD</td>
+                  <td><?= $data[0]->spt_nomor; ?> <br> <?= $data[0]->sppd_nomor; ?></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Tanggal SPT dan SPD</td>
+                  <td><?=date('d F Y', strtotime($data[0]->spt_tgl));?></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>Tanggal Berangkat dan Kembali</td>
+                  <td><?=date('d F Y', strtotime($data[0]->spt_mulai));?> &nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp; <?=date('d F Y', strtotime($data[0]->spt_berakhir));?></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Lokasi Perjalanan Dinas</td>
+                  <td>
+                    <?= $data[0]->lokasiperjadin_nama; ?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5.</td>
+                  <td>Tujuan Perjaanan Dinas</td>
+                  <td><?= $data[0]->spt_uraian; ?> ke <?= $data[0]->spt_tempat; ?></td>
+                </tr>
+                <tr>
+                  <td></td><td></td><td></td>
+                </tr>
+              </tbody>
+            </table>
+            <?php $errors = session()->getFlashdata('validation')?>
+
+            <div class="error"></div>
+
+            <form action="<?= site_url('laporjadin/create'); ?>" method="post">
+            <?= csrf_field() ?>
             <!-- <div class="form-group row"> -->
               <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
-              <button type="button" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary"  data-toggle="modal" data-target="#taksispj"><i class="fas fa-save"> </i>   Simpan Laporan</button>
+              <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
               <!-- </div> -->
             </div>
             <div class="card-footer">
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Id Pelaksana</label>
+                <label class="col-sm-2 col-form-label" hidden >Id Laporjadin</label>
                 <div class="col">
-                  <input type="text" class="form-control" name="pelaksana_id" value="<?= $data[0]->spt_id; ?>" >
+                  <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>" hidden>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" hidden>Id Pelaksana</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="laporjadin_sptid" value="<?= $data[0]->spt_id; ?>" hidden>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" >Dasar No. DPA Kegiatan</label>
                   <div class="col">
-                    <input type="text" class="form-control" name="pelaksana_id" value="<?= $data[0]->lokasiperjadin_nama; ?>" >
+                    <input type="text" class="form-control <?= isset($errors['laporjadin_nodpa']) ? 'is-invalid' : null ; ?>" name="laporjadin_nodpa" value="<?= old('laporjadin_nodpa') ?>" >
+                      <div class="invalid-feedback">
+                          <?= isset($errors['laporjadin_nodpa']) ? $errors['laporjadin_nodpa'] : null ; ?>
+                      </div>
                   </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" >Pembukaan</label>
                   <div class="col">
-                    <textarea id="summernote1">
-                      Ketik <em>Pejabat yang ditemui saat </em> <u> Konsultasi beserta jabatannya</u> <strong>Disini</strong>
+                    <textarea id="summernote1" name="laporjadin_pembuka" class="form-control <?= isset($errors['laporjadin_pembuka']) ? 'is-invalid' : null ; ?>"><?= old('laporjadin_pembuka') ?></textarea>
+                      <div class="invalid-feedback">
+                          <?= isset($errors['laporjadin_pembuka']) ? $errors['laporjadin_pembuka'] : null ; ?>
+                      </div>
+                    <p class="text-primary">
+                      Ketik <u>Pejabat yang ditemui  </u> <em>saat Konsultasi beserta jabatannya</em>  <strong>pada teks area di atas Tulisan ini</strong>
                       <br>
-                      <i>Seret garis 3 ditengah bawah kotak ini untuk memperbesar area ketik dan teks ini bisa dihapus</i>
-                    </textarea>
+                      <i>Seret garis 3 ditengah bawah kotak di atas ini untuk memperbesar area ketik</i></p>
                   </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" >Hasil Konsultasi</label>
                   <div class="col">
-                    <textarea id="summernote2">
-                      Ketik <em>hasil</em> <u>Konsultasi</u> <strong>Disini</strong>
+                    <textarea id="summernote2" name="laporjadin_hasil" class="form-control <?= isset($errors['laporjadin_hasil']) ? 'is-invalid' : null ; ?>"><?= old('laporjadin_hasil') ?></textarea>
+                      <div class="invalid-feedback">
+                            <?= isset($errors['laporjadin_hasil']) ? $errors['laporjadin_hasil'] : null ; ?>
+                      </div>
+                    <p class="text-primary">
+                      Ketik <em>Resume </em> <u> Hasil Konsultasi</u> <strong> pada Teks Area di atas Tulisan ini</strong>
                       <br>
-                      <i>Seret garis 3 ditengah bawah kotak ini untuk memperbesar area ketik dan teks ini bisa dihapus</i>
-                    </textarea>
+                      <i>Seret garis 3 ditengah bawah kotak di atas ini untuk memperbesar area ketik</i></p>
                   </div>
               </div>
               
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" >Penutup</label>
                   <div class="col">
-                    <textarea id="summernote3">
-                      Ketik <em>hasil</em> <u>Konsultasi</u> <strong>Disini</strong>
+                    <textarea id="summernote3" name="laporjadin_penutup" class="form-control <?= isset($errors['laporjadin_penutup']) ? 'is-invalid' : null ; ?>"><?= old('laporjadin_penutup') ?></textarea>
+                      <div class="invalid-feedback">
+                        <?= isset($errors['laporjadin_penutup']) ? $errors['laporjadin_penutup'] : null ; ?>
+                      </div>
+                    <p class="text-primary">
+                      Ketik <em>Kata </em> <u> Penutup dari Hasil Konsultasi</u> <strong> pada Teks Area di atas Tulisan ini</strong>
                       <br>
-                      <i>Seret garis 3 ditengah bawah kotak ini untuk memperbesar area ketik dan teks ini bisa dihapus</i>
-                    </textarea>
+                      <i>Seret garis 3 ditengah bawah kotak di atas ini untuk memperbesar area ketik</i></p>
                   </div>
               </div>
             </div>
+            </form>
           </div>
         </div>
 

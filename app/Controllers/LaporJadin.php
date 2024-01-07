@@ -72,7 +72,15 @@ class LaporJadin extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $model = new LaporjadinModel();
+        $post = $this->request->getPost();
+        $save = $model->save($post);
+            // dd($model->errors());
+            if ($save) {
+                return redirect()->to(site_url('laporjadin'))->with('info', 'Data Berhasil di Simpan');
+            } else {
+                return redirect()->back()->withInput()->with('validation', $model->errors());
+            }
     }
 
     /**

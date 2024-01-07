@@ -22,8 +22,8 @@ class LaporjadinModel extends Model
     ];
 
     // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'laporjadin_datetime';
+    protected $useTimestamps = true;
+    protected $dateFormat    = 'datetime';
     protected $createdField  = 'laporjadin_created_at';
     protected $updatedField  = 'laporjadin_updated_at';
     protected $deletedField  = 'laporjadin_deleted_at';
@@ -34,6 +34,7 @@ class LaporjadinModel extends Model
         'laporjadin_pembuka'    => 'required',
         'laporjadin_hasil'      => 'required',
         'laporjadin_penutup'    => 'required',
+        
     ];
     protected $validationMessages   = [
         'laporjadin_nodpa'    => [
@@ -73,8 +74,9 @@ class LaporjadinModel extends Model
 
     function datasptid($id)
     {
-        $builder = $this->db->table('spts');
-        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder = $this->db->table('laporjadins');
+        $builder->select('laporjadins.*, spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->join('spts', 'spts.spt_id = laporjadins.laporjadin_sptid', 'RIGHT');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $builder->where('spts.spt_verif',1);

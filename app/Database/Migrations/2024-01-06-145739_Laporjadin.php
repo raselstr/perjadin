@@ -23,16 +23,25 @@ class Laporjadin extends Migration
                 'constraint'    => 255
             ],
             'laporjadin_pembuka' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => 255
+                'type'          => 'LONGTEXT',
             ],
             'laporjadin_hasil' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => 255
+                'type'          => 'LONGTEXT',
             ],
             'laporjadin_penutup' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => 255
+                'type'          => 'LONGTEXT',
+            ],
+            'laporjadin_created_at' => [
+                'type'              => 'DATETIME',
+                'null'              => true,
+            ],
+            'laporjadin_updated_at' =>[
+                'type'              => 'DATETIME',
+                'null'              => true,
+            ],
+            'laporjadin_deleted_at' => [
+                'type'              => 'DATETIME',
+                'null'              => true,
             ],
             
         ]);
