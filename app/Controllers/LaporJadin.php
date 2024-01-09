@@ -162,7 +162,7 @@ class LaporJadin extends ResourcePresenter
         } 
     }
 
-    public function upload($id)
+    public function formupload($id)
     {
         $model = new LaporjadinModel();
         $query = $model->datasptid($id);
@@ -175,5 +175,92 @@ class LaporJadin extends ResourcePresenter
         // dd($data);
         return view('laporperjadin/spjlaporfoto', $data);
 
+    }
+
+    public function upload()
+    {
+        $validation = \Config\Services::validation();
+
+        $model = new LaporjadinModel();
+        $data = $this->request->getPost();
+
+        $foto1 = $this->request->getFile('laporjadin_foto1');
+        $foto2 = $this->request->getFile('laporjadin_foto2');
+        $foto3 = $this->request->getFile('laporjadin_foto3');
+
+        $valid = $this->validate([
+            'laporjadin_foto1' => [
+                'rules'     => 'uploaded[laporjadin_foto1]|max_size[laporjadin_foto1,2048]|is_image[laporjadin_foto1]|mime_in[laporjadin_foto1,image/png,image/jpeg,image/jpg,image/gif]',
+                'errors'    => [
+                    'uploaded'      => 'File harus di upload',
+                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                    'is_image'      => 'Data yang diupload Bukan Foto',
+                    'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
+                ]
+            ],
+            'laporjadin_foto2' => [
+                'rules'     => 'max_size[laporjadin_foto2,2048]|is_image[laporjadin_foto2]|mime_in[laporjadin_foto2,image/png,image/jpeg,image/jpg,image/gif]',
+                'errors'    => [
+                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                    'is_image'      => 'Data yang diupload Bukan Foto',
+                    'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
+                ]
+            ],
+            'laporjadin_foto3' => [
+                'rules'     => 'max_size[laporjadin_foto3,2048]|is_image[laporjadin_foto3]|mime_in[laporjadin_foto3,image/png,image/jpeg,image/jpg,image/gif]',
+                'errors'    => [
+                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                    'is_image'      => 'Data yang diupload Bukan Foto',
+                    'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
+                ]
+            ],
+        ]);
+
+
+        if($foto1->getError() == 4){
+            $nama1 = '_default.png';
+            $data['laporjadin_foto1'] = $nama1;
+        } else {
+            $nama1 = $foto1->getRandomName();
+            $data['laporjadin_foto1'] = $nama1;
+
+        }
+
+        if($foto2->getError() == 4){
+            $nama2 = '_default.png';
+            $data['laporjadin_foto2'] = $nama2;
+        } else {
+            $nama2 = $foto2->getRandomName();
+            $data['laporjadin_foto2'] = $nama2;
+
+        }
+
+        if($foto3->getError() == 4){
+            $nama3 = '_default.png';
+            $data['laporjadin_foto3'] = $nama3;
+        } else {
+            $nama3 = $foto3->getRandomName();
+            $data['laporjadin_foto3'] = $nama3;
+
+        }
+        
+        if(!$valid) {
+            return redirect()->back()->withInput()->with('validation',$validation->getErrors());
+        } 
+        
+        $save = $model->save($data);
+        if ($save) {
+            if ($data['laporjadin_foto1'] != '_default.png') {
+                $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
+            }
+            if ($data['laporjadin_foto2'] != '_default.png') {
+                $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
+            }
+            if ($data['laporjadin_foto3'] != '_default.png') {
+                $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
+            }
+
+            return redirect()->back()->with('info', 'Data Berhasil di Simpan');
+        } 
     }
 }

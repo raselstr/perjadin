@@ -50,6 +50,7 @@ $routes->presenter('spjtaksi');
 
 
 $routes->get('laporjadin/form/(:num)','LaporJadin::form/$1');
-$routes->get('laporjadin/upload/(:num)','LaporJadin::upload/$1');
+$routes->get('laporjadin/formupload/(:num)','LaporJadin::formupload/$1');
+$routes->post('laporjadin/upload','LaporJadin::upload');
 $routes->presenter('laporjadin');
 

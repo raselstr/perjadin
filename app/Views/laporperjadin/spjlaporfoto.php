@@ -102,44 +102,57 @@
                 </tr>
               </tbody>
             </table>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label" >Id Laporjadin</label>
-              <div class="col">
-                <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>">
+            <?php $errors = session()->getFlashdata('validation')?>
+
+            <form action="<?= site_url('laporjadin/upload'); ?>" method="post" enctype="multipart/form-data">
+            <?php csrf_field() ?>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" >Id Laporjadin</label>
+                <div class="col">
+                  <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>">
+                </div>
               </div>
+              <div class="form-group row">
+                <label for="exampleInputFile" class="col-sm-2 col-form-label">Foto Kegiatan<code>*</code> </label>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <input class="custom-file-input <?= isset($errors['laporjadin_foto1']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto1" id="laporjadin_foto1">
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto1">Pilih Foto</label>
+                    <div class="invalid-feedback">
+                        <?= isset($errors['laporjadin_foto1']) ? $errors['laporjadin_foto1'] : null ; ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <input class="custom-file-input <?= isset($errors['laporjadin_foto2']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto2" id="laporjadin_foto2">
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto2">Pilih Foto</label>
+                    <div class="invalid-feedback">
+                        <?= isset($errors['laporjadin_foto2']) ? $errors['laporjadin_foto2'] : null ; ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <input class="custom-file-input <?= isset($errors['laporjadin_foto3']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto3" id="laporjadin_foto3">
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto3">Pilih Foto</label>
+                    <div class="invalid-feedback">
+                        <?= isset($errors['laporjadin_foto3']) ? $errors['laporjadin_foto3'] : null ; ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
+              <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
             </div>
-            <div class="form-group row">
-              <label for="exampleInputFile" class="col-sm-2 col-form-label">Foto Kegiatan<code>*</code> </label>
-              <div class="col-sm-3">
-                <div class="input-group">
-                  <input class="custom-file-input" type="file" name="laporjadin_foto1" id="laporjadin_foto1">
-                  <label class="custom-file-label" for="custom-file-label" id="nama-foto1">Pilih Foto</label>
-                  <div class="invalid-feedback errorspjtaksi_fototiket"></div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="input-group">
-                  <input class="custom-file-input" type="file" name="laporjadin_foto2" id="laporjadin_foto2">
-                  <label class="custom-file-label" for="custom-file-label" id="nama-foto2">Pilih Foto</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="input-group">
-                  <input class="custom-file-input" type="file" name="laporjadin_foto2" id="laporjadin_foto3">
-                  <label class="custom-file-label" for="custom-file-label" id="nama-foto3">Pilih Foto</label>
-                </div>
-              </div>
-            </div>
-            <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
-            <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
-          </div>
+          </form>
           <div class="card-footer">
-            <div class="row mt-4">
+            <!-- <div class="row mt-4">
               <div class="col-sm-4">
                 <div class="position-relative" style="height: 180px">
-                  <img src="dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                  <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto1) ?>" alt="Photo 1" height="280px" width="100%" >
                   <div class="ribbon-wrapper ribbon-lg">
-                    <div class="ribbon bg-success text-lg">
+                    <div class="ribbon bg-danger text-xl">
                       Foto 1
                     </div>
                   </div>
@@ -147,25 +160,81 @@
               </div>
               <div class="col-sm-4">
                 <div class="position-relative" style="height: 180px">
-                  <img src="dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                  <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto2) ?>" alt="Photo 2" height="180px">
                   <div class="ribbon-wrapper ribbon-lg">
-                    <div class="ribbon bg-success text-lg">
-                      Foto 1
+                    <div class="ribbon bg-danger text-xl">
+                      Foto 2
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="position-relative" style="height: 180px">
-                  <img src="dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                  <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto3) ?>" alt="Photo 3" height="180px">
                   <div class="ribbon-wrapper ribbon-lg">
-                    <div class="ribbon bg-success text-lg">
-                      Foto 1
+                    <div class="ribbon bg-danger text-xl">
+                      Foto 3
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
+             <!-- Main content -->
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card card-primary">
+                      <div class="card-header">
+                        <h3 class="card-title">Dokumentasi</h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <div class="row mt-4">
+                          <div class="col-sm-4">
+                            <div class="position-relative">
+                              <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto1) ?>" alt="Photo 1" class="img-fluid">
+                              <div class="ribbon-wrapper ribbon-xl">
+                                <div class="ribbon bg-warning text-lg">
+                                  Dokumentasi 1
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="position-relative">
+                              <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto2) ?>" alt="Photo 2" class="img-fluid">
+                              <div class="ribbon-wrapper ribbon-xl">
+                                <div class="ribbon bg-warning text-lg">
+                                  Dokumentasi 2
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="position-relative" style="min-height: 180px;">
+                              <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto3) ?>" alt="Photo 3" class="img-fluid">
+                              <div class="ribbon-wrapper ribbon-xl">
+                                <div class="ribbon bg-warning text-lg">
+                                  Dokumentasi 3
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+
           </div>
         </div>
       </div>
@@ -194,6 +263,22 @@
       $('#laporjadin_foto1').on('change', function(){
         var fileName = $(this).val().split('\\').pop();
         $('#nama-foto1').text(fileName);
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('#laporjadin_foto2').on('change', function(){
+        var fileName = $(this).val().split('\\').pop();
+        $('#nama-foto2').text(fileName);
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('#laporjadin_foto3').on('change', function(){
+        var fileName = $(this).val().split('\\').pop();
+        $('#nama-foto3').text(fileName);
       });
     });
   </script>

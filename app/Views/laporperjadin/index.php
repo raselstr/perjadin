@@ -86,7 +86,7 @@
                           <?php else : ?>
                             <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-primary" title="Edit Laporan Hasil"><i class="fas fa-edit"></i> </a>
                             <a href="<?= site_url('laporjadin/remove/'.$value->spt_id); ?>" type="button" class="btn bg-danger tombol-hapus" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
-                            <a href="<?= site_url('laporjadin/upload/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
+                            <a href="<?= site_url('laporjadin/formupload/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
                           <?php endif ?>
                         </td>
                         <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
