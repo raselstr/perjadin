@@ -110,6 +110,9 @@
                 <label class="col-sm-2 col-form-label" >Id Laporjadin</label>
                 <div class="col">
                   <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>">
+                  <input type="text" class="form-control" name="oldlaporjadin_foto1" value="<?= $data[0]->laporjadin_foto1; ?>">
+                  <input type="text" class="form-control" name="oldlaporjadin_foto2" value="<?= $data[0]->laporjadin_foto2; ?>">
+                  <input type="text" class="form-control" name="oldlaporjadin_foto3" value="<?= $data[0]->laporjadin_foto3; ?>">
                 </div>
               </div>
               <div class="form-group row">
@@ -125,7 +128,7 @@
                 </div>
                 <div class="col-sm-3">
                   <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['laporjadin_foto2']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto2" id="laporjadin_foto2">
+                    <input class="custom-file-input <?= isset($errors['laporjadin_foto2']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto2" id="laporjadin_foto2" >
                     <label class="custom-file-label" for="custom-file-label" id="nama-foto2">Pilih Foto</label>
                     <div class="invalid-feedback">
                         <?= isset($errors['laporjadin_foto2']) ? $errors['laporjadin_foto2'] : null ; ?>
@@ -134,7 +137,7 @@
                 </div>
                 <div class="col-sm-3">
                   <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['laporjadin_foto3']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto3" id="laporjadin_foto3">
+                    <input class="custom-file-input <?= isset($errors['laporjadin_foto3']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto3" id="laporjadin_foto3" >
                     <label class="custom-file-label" for="custom-file-label" id="nama-foto3">Pilih Foto</label>
                     <div class="invalid-feedback">
                         <?= isset($errors['laporjadin_foto3']) ? $errors['laporjadin_foto3'] : null ; ?>
@@ -147,39 +150,7 @@
             </div>
           </form>
           <div class="card-footer">
-            <!-- <div class="row mt-4">
-              <div class="col-sm-4">
-                <div class="position-relative" style="height: 180px">
-                  <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto1) ?>" alt="Photo 1" height="280px" width="100%" >
-                  <div class="ribbon-wrapper ribbon-lg">
-                    <div class="ribbon bg-danger text-xl">
-                      Foto 1
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="position-relative" style="height: 180px">
-                  <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto2) ?>" alt="Photo 2" height="180px">
-                  <div class="ribbon-wrapper ribbon-lg">
-                    <div class="ribbon bg-danger text-xl">
-                      Foto 2
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="position-relative" style="height: 180px">
-                  <img src="<?= base_url('image/dokuemtasi/'.$data[0]->laporjadin_foto3) ?>" alt="Photo 3" height="180px">
-                  <div class="ribbon-wrapper ribbon-lg">
-                    <div class="ribbon bg-danger text-xl">
-                      Foto 3
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-             <!-- Main content -->
+          <!-- Main content -->
             <section class="content">
               <div class="container-fluid">
                 <div class="row">
