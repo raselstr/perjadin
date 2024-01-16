@@ -107,12 +107,12 @@
             <form action="<?= site_url('laporjadin/upload'); ?>" method="post" enctype="multipart/form-data">
             <?php csrf_field() ?>
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Id Laporjadin</label>
+                <label class="col-sm-2 col-form-label" hidden>Id Laporjadin</label>
                 <div class="col">
-                  <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>">
-                  <input type="text" class="form-control" name="oldlaporjadin_foto1" value="<?= $data[0]->laporjadin_foto1; ?>">
-                  <input type="text" class="form-control" name="oldlaporjadin_foto2" value="<?= $data[0]->laporjadin_foto2; ?>">
-                  <input type="text" class="form-control" name="oldlaporjadin_foto3" value="<?= $data[0]->laporjadin_foto3; ?>">
+                  <input type="text" class="form-control" name="laporjadin_id" value="<?= $data[0]->laporjadin_id; ?>" hidden>
+                  <input type="text" class="form-control" name="oldlaporjadin_foto1" value="<?= $data[0]->laporjadin_foto1; ?>" hidden>
+                  <input type="text" class="form-control" name="oldlaporjadin_foto2" value="<?= $data[0]->laporjadin_foto2; ?>" hidden>
+                  <input type="text" class="form-control" name="oldlaporjadin_foto3" value="<?= $data[0]->laporjadin_foto3; ?>" hidden>
                 </div>
               </div>
               <div class="form-group row">

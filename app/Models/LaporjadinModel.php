@@ -89,5 +89,7 @@ class LaporjadinModel extends Model
         
         return $query->getResult();
     }
-
+    
+    
+    
 }

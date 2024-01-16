@@ -54,3 +54,6 @@ $routes->get('laporjadin/formupload/(:num)','LaporJadin::formupload/$1');
 $routes->post('laporjadin/upload','LaporJadin::upload');
 $routes->presenter('laporjadin');
 
+
+$routes->get('verifikasi/form/(:num)','Verifikasi::form/$1');
+$routes->presenter('verifikasi');
