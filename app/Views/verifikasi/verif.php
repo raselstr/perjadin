@@ -106,7 +106,7 @@
                 <tr>
                   <td style="width: 2%"><?= $no++; ?>.</td>
                   <td><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></td>
-                  <td><a href="<?= site_url('verifikasi/show'); ?>" type="button" class="btn bg-gradient-success float-sm-left" ><i class="fas fa-hand-point-right"> </i> Pertanggungjawaban</a></td>
+                  <td><a href="<?= site_url('verifikasi/show/'.$value->pelaksana_id); ?>" type="button" class="btn bg-gradient-success float-sm-left" ><i class="fas fa-hand-point-right"> </i> Pertanggungjawaban</a></td>
                   </tr>
                 <?php endforeach ?>
                 

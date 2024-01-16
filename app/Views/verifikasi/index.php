@@ -76,18 +76,7 @@
                       <tr>
                         <td class="align-middle text-center"><?= $no++ ?></td>
                         <td class="align-middle text-center">
-                          <?php
-                            $db = \Config\Database::connect();
-                            $user = $db->query('SELECT * FROM laporjadins WHERE laporjadins.laporjadin_sptid ='. $value->spt_id);
-                            $sum = $user->getNumRows();
-                          ?>
-                          <?php if($sum == 0) : ?>
-                            <a href="<?= site_url('verifikasi/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
-                          <?php else : ?>
-                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-primary" title="Edit Laporan Hasil"><i class="fas fa-edit"></i> </a>
-                            <a href="<?= site_url('laporjadin/remove/'.$value->spt_id); ?>" type="button" class="btn bg-danger tombol-hapus" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
-                            <a href="<?= site_url('laporjadin/formupload/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
-                          <?php endif ?>
+                          <a href="<?= site_url('verifikasi/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
                         </td>
                         <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                         <td class="align-middle"><?= $value->spt_uraian ?></td>
