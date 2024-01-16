@@ -120,10 +120,26 @@ class LaporJadin extends ResourcePresenter
         $model = new LaporjadinModel();
         $query = $model->datasptid($id);
 
-        $model->delete($query[0]->laporjadin_id);
-        // dd($query[0]->laporjadin_id);
-        return redirect()->back();
+        $nmfoto1 = file_exists(FCPATH . 'image/dokuemtasi/' . $query[0]->laporjadin_foto1) ? $query[0]->laporjadin_foto1 : null;
+        $nmfoto2 = file_exists(FCPATH . 'image/dokuemtasi/' . $query[0]->laporjadin_foto2) ? $query[0]->laporjadin_foto2 : null;
+        $nmfoto3 = file_exists(FCPATH . 'image/dokuemtasi/' . $query[0]->laporjadin_foto3) ? $query[0]->laporjadin_foto3 : null;
 
+
+        $hapus = $model->delete($query[0]->laporjadin_id);
+        if($hapus) {
+            if($nmfoto1 != "") {
+                unlink(FCPATH . 'image/dokuemtasi/' . $query[0]->laporjadin_foto1);
+            }
+            if($nmfoto2 != "") {
+                unlink(FCPATH . 'image/dokuemtasi/' . $query[0]->laporjadin_foto2);
+            }
+            if($nmfoto3 != "") {
+                unlink(FCPATH . 'image/dokuemtasi/' . $query[0]->laporjadin_foto3);
+            }
+
+            // dd($query[0]->laporjadin_id);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -193,7 +209,7 @@ class LaporJadin extends ResourcePresenter
         $oldfoto3 = $this->request->getVar('oldlaporjadin_foto3');
         $idlaporjadin = $this->request->getVar('laporjadin_id');
 
-        // dd($oldfoto2);
+        
         $valid = $this->validate([
             'laporjadin_foto1' => [
                 'rules'     => 'uploaded[laporjadin_foto1]|max_size[laporjadin_foto1,2048]|is_image[laporjadin_foto1]|mime_in[laporjadin_foto1,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto1,4000,3000]',
@@ -225,10 +241,10 @@ class LaporJadin extends ResourcePresenter
             ],
         ]);
 
-
+        
         
         if($foto1->getError() == 4){
-            $nama1 = "";
+            $nama1 = $oldfoto1;
             $data['laporjadin_foto1'] = $nama1;
         } else {
             $nama1 = $foto1->getRandomName();
@@ -237,7 +253,7 @@ class LaporJadin extends ResourcePresenter
         }
 
         if($foto2->getError() == 4){
-            $nama2 = "";
+            $nama2 = $oldfoto2;
             $data['laporjadin_foto2'] = $nama2;
         } else {
             $nama2 = $foto2->getRandomName();
@@ -246,45 +262,52 @@ class LaporJadin extends ResourcePresenter
         }
 
         if($foto3->getError() == 4){
-            $nama3 = "";
+            $nama3 = $oldfoto3;
             $data['laporjadin_foto3'] = $nama3;
         } else {
             $nama3 = $foto3->getRandomName();
             $data['laporjadin_foto3'] = $nama3;
 
         }
-        
+        // dd($data);
+
         if(!$valid) {
             return redirect()->back()->withInput()->with('validation',$validation->getErrors());
         }
 
-        $nmfoto1 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
-        $nmfoto2 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto2);
-        $nmfoto3 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto3);
-
-        // dd($nmfoto1, $nmfoto2, $nmfoto3);
-
+        $nmfoto1 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto1) ? $oldfoto1 : null;
+        $nmfoto2 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto2) ? $oldfoto2 : null;
+        $nmfoto3 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto3) ? $oldfoto3 : null;
+        
+        // dd($data, $nmfoto1, $nmfoto2, $nmfoto3);
+        
         $save = $model->save($data);
         if ($save) {
-            if ($data['laporjadin_foto1'] != null) {
-                if($nmfoto1) { 
-                    unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
+            if ($data['laporjadin_foto1'] != "" && $data['laporjadin_foto1'] != $oldfoto1) {
+                if($nmfoto1 != "") { 
                     $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
-                 }
-            } 
-            if ($data['laporjadin_foto2'] != null) {
-                if($nmfoto2) { 
+                    unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
+                } else {
+                    $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
+                }
+            }
+            if ($data['laporjadin_foto2'] != "" && $data['laporjadin_foto2'] != $oldfoto2) {
+                if($nmfoto2 != "") { 
+                    $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto2);
+                } else {
                     $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
                 }
             }
-            if ($data['laporjadin_foto3'] != null) {
-                if ($nmfoto3) {
+            if ($data['laporjadin_foto3'] != "" && $data['laporjadin_foto3'] != $oldfoto3) {
+                if($nmfoto3 != "") { 
+                    $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto3);
+                } else {
                     $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
                 }
             }
-
+            
             return redirect()->back()->with('info', 'Data Berhasil di Simpan');
         } 
     }

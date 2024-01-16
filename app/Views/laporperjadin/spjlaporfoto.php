@@ -120,7 +120,7 @@
                 <div class="col-sm-3">
                   <div class="input-group">
                     <input class="custom-file-input <?= isset($errors['laporjadin_foto1']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto1" id="laporjadin_foto1">
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto1">Pilih Foto</label>
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto1" name="nama-foto1">Pilih Foto</label>
                     <div class="invalid-feedback">
                         <?= isset($errors['laporjadin_foto1']) ? $errors['laporjadin_foto1'] : null ; ?>
                     </div>
@@ -129,7 +129,7 @@
                 <div class="col-sm-3">
                   <div class="input-group">
                     <input class="custom-file-input <?= isset($errors['laporjadin_foto2']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto2" id="laporjadin_foto2" >
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto2">Pilih Foto</label>
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto2" name="nama-foto2">Pilih Foto</label>
                     <div class="invalid-feedback">
                         <?= isset($errors['laporjadin_foto2']) ? $errors['laporjadin_foto2'] : null ; ?>
                     </div>
@@ -138,7 +138,7 @@
                 <div class="col-sm-3">
                   <div class="input-group">
                     <input class="custom-file-input <?= isset($errors['laporjadin_foto3']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto3" id="laporjadin_foto3" >
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto3">Pilih Foto</label>
+                    <label class="custom-file-label" for="custom-file-label" id="nama-foto3" name="nama-foto3">Pilih Foto</label>
                     <div class="invalid-feedback">
                         <?= isset($errors['laporjadin_foto3']) ? $errors['laporjadin_foto3'] : null ; ?>
                     </div>
