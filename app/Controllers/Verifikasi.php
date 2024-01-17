@@ -52,9 +52,15 @@ class Verifikasi extends ResourcePresenter
      */
     public function show($id = null)
     {
+        $model = new VerifModel();
+        $query = $model->verifdatapelaksana($id);
+        $qrhotel = $model ->verifhotel($id);
+
         $data = [
             'title' => 'Data Laporan Perjalanan Dinas',
             'subtitle' => 'Home',
+            'data'  => $query,
+            'hotel' => $qrhotel,
         ];
         // dd($data);
         return view('verifikasi/verifspj', $data);
@@ -185,137 +191,6 @@ class Verifikasi extends ResourcePresenter
         } 
     }
 
-    public function formupload($id)
-    {
-        $model = new LaporjadinModel();
-        $query = $model->datasptid($id);
 
-        $data = [
-            'title' => 'Foto Kegiatan Perjalanan Dinas',
-            'subtitle' => 'Home',
-            'data' => $query,
-        ];
-        // dd($data);
-        return view('verifikasi/spjlaporfoto', $data);
-
-    }
-
-    public function upload()
-    {
-        $validation = \Config\Services::validation();
-
-        $model = new LaporjadinModel();
-        $data = $this->request->getPost();
-
-        $foto1 = $this->request->getFile('laporjadin_foto1');
-        $foto2 = $this->request->getFile('laporjadin_foto2');
-        $foto3 = $this->request->getFile('laporjadin_foto3');
-
-        $oldfoto1 = $this->request->getVar('oldlaporjadin_foto1');
-        $oldfoto2 = $this->request->getVar('oldlaporjadin_foto2');
-        $oldfoto3 = $this->request->getVar('oldlaporjadin_foto3');
-        $idlaporjadin = $this->request->getVar('laporjadin_id');
-
-        
-        $valid = $this->validate([
-            'laporjadin_foto1' => [
-                'rules'     => 'uploaded[laporjadin_foto1]|max_size[laporjadin_foto1,2048]|is_image[laporjadin_foto1]|mime_in[laporjadin_foto1,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto1,4000,3000]',
-                'errors'    => [
-                    'uploaded'      => 'File harus di upload',
-                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
-                    'is_image'      => 'Data yang diupload Bukan Foto',
-                    'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
-                    'max_dims'      => 'Lebar dan tinggi Foto terlalu besar',
-                ]
-            ],
-            'laporjadin_foto2' => [
-                'rules'     => 'max_size[laporjadin_foto2,2048]|is_image[laporjadin_foto2]|mime_in[laporjadin_foto2,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto2,4000,3000]',
-                'errors'    => [
-                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
-                    'is_image'      => 'Data yang diupload Bukan Foto',
-                    'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
-                    'max_dims'      => 'Lebar dan tinggi Foto terlalu besar',
-                ]
-            ],
-            'laporjadin_foto3' => [
-                'rules'     => 'max_size[laporjadin_foto3,2048]|is_image[laporjadin_foto3]|mime_in[laporjadin_foto3,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto3,4000,3000]',
-                'errors'    => [
-                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
-                    'is_image'      => 'Data yang diupload Bukan Foto',
-                    'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
-                    'max_dims'      => 'Lebar dan tinggi Foto terlalu besar',
-                ]
-            ],
-        ]);
-
-        
-        
-        if($foto1->getError() == 4){
-            $nama1 = $oldfoto1;
-            $data['laporjadin_foto1'] = $nama1;
-        } else {
-            $nama1 = $foto1->getRandomName();
-            $data['laporjadin_foto1'] = $nama1;
-
-        }
-
-        if($foto2->getError() == 4){
-            $nama2 = $oldfoto2;
-            $data['laporjadin_foto2'] = $nama2;
-        } else {
-            $nama2 = $foto2->getRandomName();
-            $data['laporjadin_foto2'] = $nama2;
-
-        }
-
-        if($foto3->getError() == 4){
-            $nama3 = $oldfoto3;
-            $data['laporjadin_foto3'] = $nama3;
-        } else {
-            $nama3 = $foto3->getRandomName();
-            $data['laporjadin_foto3'] = $nama3;
-
-        }
-        // dd($data);
-
-        if(!$valid) {
-            return redirect()->back()->withInput()->with('validation',$validation->getErrors());
-        }
-
-        $nmfoto1 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto1) ? $oldfoto1 : null;
-        $nmfoto2 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto2) ? $oldfoto2 : null;
-        $nmfoto3 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto3) ? $oldfoto3 : null;
-        
-        // dd($data, $nmfoto1, $nmfoto2, $nmfoto3);
-        
-        $save = $model->save($data);
-        if ($save) {
-            if ($data['laporjadin_foto1'] != "" && $data['laporjadin_foto1'] != $oldfoto1) {
-                if($nmfoto1 != "") { 
-                    $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
-                    unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
-                } else {
-                    $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
-                }
-            }
-            if ($data['laporjadin_foto2'] != "" && $data['laporjadin_foto2'] != $oldfoto2) {
-                if($nmfoto2 != "") { 
-                    $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
-                    unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto2);
-                } else {
-                    $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
-                }
-            }
-            if ($data['laporjadin_foto3'] != "" && $data['laporjadin_foto3'] != $oldfoto3) {
-                if($nmfoto3 != "") { 
-                    $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
-                    unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto3);
-                } else {
-                    $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
-                }
-            }
-            
-            return redirect()->back()->with('info', 'Data Berhasil di Simpan');
-        } 
-    }
+    
 }

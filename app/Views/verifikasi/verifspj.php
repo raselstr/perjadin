@@ -64,25 +64,145 @@
             </h3>
           </div>
           <div class="card-body">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th style="width: 20px"></th>
+                  <th>Uraian</th>
+                  <th style="width: 70%" colspan="3">Keterangan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td>Nomor SPT dan SPD</td>
+                  <td colspan="3"><?= $data["data"][0]->spt_nomor; ?> &nbsp;&nbsp;&nbsp; dan &nbsp;&nbsp;&nbsp; <?= $data["data"][0]->sppd_nomor; ?></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Tanggal SPT dan SPD</td>
+                  <td colspan="3"><?=date('d F Y', strtotime($data["data"][0]->spt_tgl));?></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>Tanggal Berangkat dan Kembali</td>
+                  <td colspan="3"><?=date('d F Y', strtotime($data["data"][0]->spt_mulai));?> &nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp; <?=date('d F Y', strtotime($data["data"][0]->spt_berakhir));?></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Lokasi Perjalanan Dinas</td>
+                  <td colspan="3">
+                    <?= $data["data"][0]->lokasiperjadin_nama; ?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5.</td>
+                  <td>Tujuan Perjaanan Dinas</td>
+                  <td colspan="3"><?= $data["data"][0]->spt_uraian; ?> ke <?= $data["data"][0]->spt_tempat; ?></td>
+                </tr>
+                <tr>
+                  <td rowspan = <?= $data['jumlah'] + 1; ?>>6.</td>
+                  <td rowspan = <?= $data['jumlah'] + 1; ?>>Pegawai yang melaksanakan</td>
+                </tr>
+                <?php $no = 1; 
+                  foreach ($data["data"] as $key => $value) : ?>
+                <tr>
+                  <td>Nama : <?= $value->pegawai_nama; ?>.,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NIP. <?= $value->pegawai_nip; ?>
+                    <br>Jabatan : <?= $value->pegawai_jabatan; ?>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+                <?php endforeach ?>
+              </tbody>
+            </table>
+          
             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Home</a>
+                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Hotel</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Profile</a>
+                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Pesawat</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Messages</a>
+                    <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Taksi</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Settings</a>
+                    <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Laporan Perjadin</a>
                   </li>
                 </ul>
               </div>
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
+                     <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th style="width: 20px">#</th>
+                            <th>Uraian</th>
+                            <th style="width: 80%">Keterangan</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php $no = 1; foreach ($hotel['data'] as $key => $value) : ?>
+                            <input type="text" name="spjhotel_id" value="<?= $value->spjhotel_id; ?>" hidden>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Nama Hotel</td>
+                              <td><?= $value->spjhotel_nama; ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Lokasi</td>
+                              <td><?= $value->spjhotel_lokasi; ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Nomor Kamar</td>
+                              <td><?= $value->spjhotel_nokamar; ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Tipe Kamar</td>
+                              <td><?= $value->spjhotel_typekamar; ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Cin & Cout</td>
+                              <td><?= date('d F Y', strtotime($value->spjhotel_checkin)); ?> &nbsp;&nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp;&nbsp; <?= date('d F Y', strtotime($value->spjhotel_checkout)); ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Harga Per Malam</td>
+                              <td><?= $value->spjhotel_hargapermalam; ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Harga Total</td>
+                              <td><?= $value->spjhotel_hargatotal; ?></td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Validasi</td>
+                              <td>
+                                <?php if($value->spjhotel_verif == 0) : ?>
+                                  <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-times"> </i> Bukti Hotel Belum di Verifikasi </button>
+                                <?php else : ?>
+                                  <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-check"> </i> Bukti Hotel sudah di Verifikasi </button>
+                                <?php endif ?>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><?= $no++; ?>.</td>
+                              <td>Bill</td>
+                              <td>
+                                <iframe src="<?= base_url('image/hotel/bill/' . $value->spjhotel_bill)?>" width="100%" height="600" style="border:1px solid #666;"></iframe>
+                              </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                      </table>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
                      Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
@@ -96,15 +216,101 @@
                 </div>
               </div>
               <div class="card-footer">
-                <a href="<?= site_url('verifikasi/form/7'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
+                <a href="<?= site_url('verifikasi/form/'.$value->spt_id); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
               </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- Modal verif -->
+    <div class="modal fade" id="modalverif" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Verifikasi</h4>
+          </div>
+          <form action="<?= site_url('spjhotel/verif'); ?>" method="post" id="formverif">
+            <?php csrf_field() ?>
+              <div class="modal-body">
+                <div class="text-center">
+                  <div class="form-group">
+                    <div class="row">
+                      <input type="text" class="form-control" id="spjpes_id" name="spjhotel_id" hidden>
+                      <div class="col-6 form-check">
+                        <input class="form-check-input" type="radio" name="spjhotel_verif" value="1" id="cek1">
+                        <label class="form-check-label">Disetujui</label>
+                      </div>
+                      <div class="col-6 form-check">
+                        <input class="form-check-input" type="radio" name="spjhotel_verif" value="0" id="cek0">
+                        <label class="form-check-label">Ditolak</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-right">
+                <button type="submit" class="btn btn-danger saveverif">Kirim</button>
+              </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  <!-- /.modal -->
 <?=$this->endSection()?>
 
 <?=$this->section('script')?>
-  
+  <!-- Script Validasi Tiket Hotel -->
+    <script>
+      $(document).ready(function(){
+        $('[data-target="#modalverif"]').click (function() {
+          var idpes = $(this).data('idpes');
+          $('#spjpes_id').val(idpes);
+        });
+
+        $('#formverif').submit(function(e){
+          e.preventDefault();
+          var dataverif = new FormData(this);
+          
+          $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: dataverif,
+            processData: false,
+            contentType: false,
+            beforeSend:function(){
+                  $('.saveverif').attr('disabled', 'disabled');
+                  $('.saveverif').html('<i class="fa fa-spin fa-spinner"></i>');
+              },
+              complete: function(){
+                  $('.savenverif').removeAttr('disabled');
+                  $('.saveverif').html('Simpan');
+              },
+              
+            success: function (response) {
+              console.log(response);
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: response.messages,
+                    showConfirmButton: false,
+                    timer: 2000
+                  }).then(function(){
+                    $('#modalverif').hide('2000');
+                    location.reload();
+
+                  });
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            }
+          });
+        });
+      });
+        
+
+    </script>
+  <!-- End Script Validasi Tiket Hotel -->
 <?=$this->endSection()?>
