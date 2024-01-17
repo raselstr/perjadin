@@ -752,7 +752,7 @@
     </script>
   <!-- End Script Upload Tiket dan Bill -->
 
-   <!-- Script Validasi Tiket Pesawat -->
+  <!-- Script Validasi Tiket Pesawat -->
     <script>
       $(document).ready(function(){
         $('[data-target="#modalverif"]').click (function() {

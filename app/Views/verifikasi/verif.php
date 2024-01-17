@@ -107,24 +107,24 @@
                   <td style="width: 2%"><?= $no++; ?>.</td>
                   <td><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></td>
                   <td><a href="<?= site_url('verifikasi/show/'.$value->pelaksana_id); ?>" type="button" class="btn bg-gradient-success float-sm-left" ><i class="fas fa-hand-point-right"> </i> Pertanggungjawaban</a></td>
-                  </tr>
+                </tr>
                 <?php endforeach ?>
                 
                 <tr>
-                  <td></td><td></td><td></td><td></td><td></td>
+                  <td>7.</td>
+                  <td>Laporan Pelaksanaan</td>
+                  <td></td>
+                  <td></td>
+                  <td><a href="<?= site_url('verifikasi/showlapor/'.$value->spt_id); ?>" type="button" class="btn bg-gradient-info float-sm-left" ><i class="fas fa-hand-point-right"> </i> Laporan Pelaksanaan</a></td>
                 </tr>
               </tbody>
             </table>
             <?php $errors = session()->getFlashdata('validation')?>
-
             <form action="<?= site_url('laporjadin/create'); ?>" method="post">
             <?= csrf_field() ?>
-            <!-- <div class="form-group row"> -->
+            <div class="form-group row">
               <a href="<?= site_url('verifikasi'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
-              <!-- <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button> -->
-              <!-- </div> -->
             </div>
-            
             </form>
           </div>
         </div>

@@ -55,15 +55,37 @@ class Verifikasi extends ResourcePresenter
         $model = new VerifModel();
         $query = $model->verifdatapelaksana($id);
         $qrhotel = $model ->verifhotel($id);
+        $qrpesawat = $model->verifpesawat($id);
+        $qrtaksi = $model->veriftaksi($id);
 
         $data = [
             'title' => 'Data Laporan Perjalanan Dinas',
             'subtitle' => 'Home',
             'data'  => $query,
             'hotel' => $qrhotel,
+            'pesawat' => $qrpesawat,
+            'taksi' => $qrtaksi,
         ];
         // dd($data);
         return view('verifikasi/verifspj', $data);
+
+    }
+
+    public function showlapor($id = null)
+    {
+        $model = new VerifModel();
+        $query = $model->verifdatasptid($id);
+        $qrjadin = $model->verifjadin($id);
+
+
+        $data = [
+            'title' => 'Data Laporan Perjalanan Dinas',
+            'subtitle' => 'Home',
+            'data'  => $query,
+            'perjadin'  => $qrjadin,
+        ];
+        // dd($data);
+        return view('verifikasi/veriflapor', $data);
 
     }
 

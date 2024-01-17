@@ -52,8 +52,10 @@ $routes->presenter('spjtaksi');
 $routes->get('laporjadin/form/(:num)','LaporJadin::form/$1');
 $routes->get('laporjadin/formupload/(:num)','LaporJadin::formupload/$1');
 $routes->post('laporjadin/upload','LaporJadin::upload');
+$routes->post('laporjadin/verif','LaporJadin::verif');
 $routes->presenter('laporjadin');
 
 
+$routes->get('verifikasi/showlapor/(:num)','Verifikasi::showlapor/$1');
 $routes->get('verifikasi/form/(:num)','Verifikasi::form/$1');
 $routes->presenter('verifikasi');

@@ -311,4 +311,6 @@ class LaporJadin extends ResourcePresenter
             return redirect()->back()->with('info', 'Data Berhasil di Simpan');
         } 
     }
+
+    
 }
