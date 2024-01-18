@@ -84,10 +84,14 @@
                           <?php if($sum == 0) : ?>
                             <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
                           <?php else : ?>
-                            <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-primary" title="Edit Laporan Hasil"><i class="fas fa-edit"></i> </a>
-                            <a href="<?= site_url('laporjadin/remove/'.$value->spt_id); ?>" type="button" class="btn bg-danger tombol-hapus" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
-                            <a href="<?= site_url('laporjadin/formupload/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
-                          <?php endif ?>
+                            <?php if($value->laporjadin_verif == 0) : ?>
+                              <a href="<?= site_url('laporjadin/form/'.$value->spt_id); ?>" type="button" class="btn bg-primary" title="Edit Laporan Hasil"><i class="fas fa-edit"></i> </a>
+                              <a href="<?= site_url('laporjadin/remove/'.$value->spt_id); ?>" type="button" class="btn bg-danger tombol-hapus" title="Hapus Laporan Hasil"><i class="fas fa-trash"></i> </a>
+                              <a href="<?= site_url('laporjadin/formupload/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
+                              <?php else : ?>  
+                                <a href="<?= site_url('laporjadin/formupload/'.$value->spt_id); ?>" type="button" class="btn bg-warning" title=" Upload Foto "><i class="fas fa-camera"></i></a>
+                              <?php endif ?>
+                            <?php endif ?>
                         </td>
                         <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                         <td class="align-middle"><?= $value->spt_uraian ?></td>

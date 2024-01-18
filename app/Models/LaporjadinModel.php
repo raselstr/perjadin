@@ -66,7 +66,8 @@ class LaporjadinModel extends Model
     function dataspt()
     {
         $builder = $this->db->table('spts');
-        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('spts.*, laporjadins.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->join('laporjadins', 'laporjadins.laporjadin_sptid = spts.spt_id', 'LEFT');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $builder->where('spts.spt_verif',1);

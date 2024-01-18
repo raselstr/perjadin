@@ -127,13 +127,9 @@
                             <button type="button" class="btn bg-gradient-info btn-xs" data-idhotel="<?=$value->spjhotel_id;?>" data-scanbilllama="<?=$value->spjhotel_bill;?>" data-toggle="modal" data-target="#hotelbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
                             <button type="button" class="btn bg-gradient-warning btn-xs" data-idhotel="<?=$value->spjhotel_id;?>" data-idpelaksana ="<?=$data['data'][0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#hotelspj"><i class="fas fa-pen"> </i> <br>Edit</button>
                             <a href="<?=site_url('spjhotel/remove/' . $value->spjhotel_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idhotel=""><i class="fas fa-trash"> </i> <br>Hapus</a>
-                            <?php if($value->spjhotel_bill <> null) : ?>
-                              <button type="button" class="btn bg-gradient-primary btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-pen-square"> </i> <br>Verif</button>
-                            <?php endif ?>
                           <?php endif ?>
                         <?php else: ?>
-                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjhotel_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
-                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalscan" data-scanbill="<?=$value->spjhotel_bill?>"><i class="fas fa-file-pdf"></i><br>Bill</button>
+                          <button type="button" class="btn bg-gradient-success btn-xs"></i>Sudah DiVerifikasi</button>
                         <?php endif?>
                     </td>
                     <td class="align-middle text-center">

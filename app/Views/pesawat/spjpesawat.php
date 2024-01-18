@@ -129,13 +129,9 @@
                           <button type="button" class="btn bg-gradient-info btn-xs" data-idpesawat="<?=$value->spjpesawat_id;?>" data-fototiketlama = "<?=$value->spjpesawat_fototiket;?>" data-scanbilllama="<?=$value->spjpesawat_bill;?>" data-toggle="modal" data-target="#pesawatbill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
                           <button type="button" class="btn bg-gradient-warning btn-xs" data-idpesawat="<?=$value->spjpesawat_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#pesawatspj"><i class="fas fa-pen"> </i> <br>Edit</button>
                           <a href="<?=site_url('spjpesawat/remove/' . $value->spjpesawat_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idpesawat=""><i class="fas fa-trash"> </i> <br>Hapus</a>
-                          <?php if($value->spjpesawat_bill <> null) : ?>  
-                            <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
-                          <?php endif?>
                         <?php endif?>
-                        <?php else: ?>
-                          <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> <br>Disetujui</button>
-                          <button type="button" class="btn bg-gradient-warning btn-xs" data-toggle="modal" data-target="#modalverif" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-pen-square"> </i> <br>UnVerif</button>
+                      <?php else: ?>
+                          <button type="button" class="btn bg-gradient-success btn-xs" ><i class="fas fa-check"> </i> <br>Disetujui</button>
                       <?php endif?>
                     </td>
                     <td class="align-middle text-center">
