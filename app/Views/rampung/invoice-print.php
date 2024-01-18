@@ -1,49 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Invoice Print</title>
 
-<?= $this->extend('layout/default'); ?>
-
-<?= $this->section('stylesheet'); ?>
-   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-
-<?= $this->endSection(); ?>
-
-<?= $this->section('scriptplugin'); ?>
-  <!-- DataTables  & Plugins -->
-  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="plugins/jszip/jszip.min.js"></script>
-  <script src="plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-  <!-- SweetAlert2 -->
-  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
-
-  
-<?= $this->endSection(); ?>
-
-<?= $this->section('content') ?>
-<!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-      <?= $this->include('layout/contenheader'); ?>
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <?= $this->include('layout/infobox'); ?>
-      </div>
-      <section class="content">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body>
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
@@ -52,9 +24,6 @@
                   <div class="col-8">
                     <h5><i class="fas fa-info"></i> Perhitungan Rampung:</h5>
                     Perhitungan Rampung seluruh bukti pengeluaran biaya Perjalanan Dinas
-                  </div>
-                  <div class="col-4">
-                    <a href="<?= site_url('rampung'); ?>" type="button" class="btn bg-gradient-warning float-right" ><i class="fas fa-hand-point-left"> </i> Kembali</a>
                   </div>
                 </div>
               </div>
@@ -215,14 +184,12 @@
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </section>
-    </div>
-  </div>
-  
-
-  
-
-<?= $this->endSection() ?>
-
-<?= $this->section('script') ?>
-
-<?= $this->endSection() ?>
+  <!-- /.content -->
+</div>
+<!-- ./wrapper -->
+<!-- Page specific script -->
+<script>
+  window.addEventListener("load", window.print());
+</script>
+</body>
+</html>

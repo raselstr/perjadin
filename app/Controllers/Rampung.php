@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\LaporjadinModel;
+use App\Models\RampungModel;
 use App\Models\VerifModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -16,8 +17,8 @@ class Rampung extends ResourcePresenter
     public function index()
     {
         
-        $model = new VerifModel();
-        $query = $model->verifdataspt();
+        $model = new RampungModel();
+        $query = $model->rampungdataspt();
         $data = [
             'title' => 'Biaya Rampung',
             'subtitle' => 'Home',
@@ -31,9 +32,15 @@ class Rampung extends ResourcePresenter
 
     public function form($id=null)
     {
+        $model = new RampungModel();
+        $qrall = $model->rampungall($id);
+        $qrutama = $model->rampungutama($id);
+
         $data = [
             'title' => 'Pembayaran Rampung Perjalanan Dinas',
             'subtitle' => 'Home',
+            'data' => $qrutama,
+            'all' => $qrall,
         ];
         // dd($data);
         return view('rampung/pembayaran', $data);
