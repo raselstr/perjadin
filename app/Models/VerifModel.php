@@ -38,7 +38,7 @@ class VerifModel extends Model
     }
     
 
-    function verifdatapelaksana($id)
+    function verifdatapelaksana($id = null)
     {
         $builder = $this->db->table('pelaksanas');
         $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
@@ -57,7 +57,7 @@ class VerifModel extends Model
         return $result;
     }
 
-    function verifhotel($id)
+    function verifhotel($id = null)
     {
         $builder = $this->db->table('spjhotels As a');
         $builder->select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, c.spt_tgl, c.spt_mulai, c.spt_berakhir, c.spt_tempat,d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
@@ -65,7 +65,9 @@ class VerifModel extends Model
         $builder->join('spts As c', 'c.spt_id = b.spt_id');
         $builder->join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
         $builder->where('c.spt_verif', 1);
-        $builder->where('b.pelaksana_id', $id);
+        if ($id !== null){
+            $builder->where('b.pelaksana_id', $id);
+        }
         $builder->orderBy('a.spjhotel_created_at', 'DESC');
 
         $query = $builder->get();

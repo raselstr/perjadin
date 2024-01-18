@@ -58,15 +58,14 @@
                   <tr>
                     <th rowspan="2" class="align-middle text-center">No</th>
                     <th rowspan="2" class="align-middle text-center">Aksi</th>
-                    <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
-                    <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
-                    <th rowspan="2" class="align-middle text-center">Nomor SPT, <br>SPD</th>
-                    <th rowspan="2" class="align-middle text-center">Tanggal SPT/ SPPD</th>
+                    <th rowspan="2" class="align-middle text-center">SPT - SPD - Tujuan Perjalanan Dinas</th>
+                    <th colspan="4" class="align-middle text-center">Validasi Pertanggung Jawaban</th>
                   </tr>
                   <tr>
-                    <th class="align-middle text-center">Uraian Perjalanan</th>
-                    <th class="align-middle text-center">Lama Perjalanan</th>
-                    <th class="align-middle text-center">Tempat Tujuan</th>
+                    <th class="align-middle text-center">Hotel</th>
+                    <th class="align-middle text-center">Pesawat PP</th>
+                    <th class="align-middle text-center">Taksi PP</th>
+                    <th class="align-middle text-center">Pelaksanaan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -78,12 +77,98 @@
                         <td class="align-middle text-center">
                           <a href="<?= site_url('verifikasi/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
                         </td>
-                        <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
-                        <td class="align-middle"><?= $value->spt_uraian ?></td>
-                        <td class="align-middle text-center"><?= $value->spt_lama ?></td>
-                        <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
-                        <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br></td>
-                        <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
+                        <td class="align-middle">No. SPT : <?= $value->spt_nomor ?><br>No. SPD : <?= $value->sppd_nomor ?><br>Tanggal : <?= date('d F Y',strtotime($value->spt_tgl)) ?><br>Uraian : <?= $value->spt_uraian ?></td>
+                        <td class="align-middle">
+                          <?php 
+                            $db = \Config\Database::connect();
+                            $group = $db->table('spjhotels as a');
+                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
+                            $group->join('spts As c', 'c.spt_id = b.spt_id');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('c.spt_id', $value->spt_id);
+                            $sum = $group->countAllResults();
+                          ?>
+                          <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?= $sum; ?></button>
+                          <?php 
+                            $db = \Config\Database::connect();
+                            $group = $db->table('spjhotels as a');
+                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
+                            $group->join('spts As c', 'c.spt_id = b.spt_id');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('a.spjhotel_verif', 1);
+                            $group->where('c.spt_id', $value->spt_id);
+                            $sum2 = $group->countAllResults();
+                          ?>
+                          <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?= $sum2; ?></button>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?php
+                            $db = \Config\Database::connect();
+                            $group = $db->table('spjpesawats as a');
+                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+                            $group->join('spts As c', 'c.spt_id = b.spt_id');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('c.spt_id', $value->spt_id);
+                            $sum = $group->countAllResults();
+                            ?>
+                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$sum;?></button>
+                            <?php
+                            $db = \Config\Database::connect();
+                            $group = $db->table('spjpesawats as a');
+                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+                            $group->join('spts As c', 'c.spt_id = b.spt_id');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('a.spjpesawat_verif', 1);
+                            $group->where('c.spt_id', $value->spt_id);
+                            $sum2 = $group->countAllResults();
+                            ?>
+                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$sum2;?></button>
+                        </td>
+                        <td class="align-middle">
+                          <?php
+                            $db = \Config\Database::connect();
+                            $group = $db->table('spjtaksis as a');
+                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjtaksi_pelaksanaid', 'RIGHT');
+                            $group->join('spts As c', 'c.spt_id = b.spt_id');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('c.spt_id', $value->spt_id);
+                            $sum = $group->countAllResults();
+                            ?>
+                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$sum;?></button>
+                            <?php
+                            $db = \Config\Database::connect();
+                            $group = $db->table('spjtaksis as a');
+                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjtaksi_pelaksanaid', 'RIGHT');
+                            $group->join('spts As c', 'c.spt_id = b.spt_id');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('a.spjtaksi_verif', 1);
+                            $group->where('c.spt_id', $value->spt_id);
+                            $sum2 = $group->countAllResults();
+                            ?>
+                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$sum2;?></button>
+                        </td>
+                        <td class="align-middle text-center">
+                          <?php
+                            $db = \Config\Database::connect();
+                            $group = $db->table('laporjadins as a');
+                            $group->join('spts As c', 'c.spt_id = a.laporjadin_sptid');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('a.laporjadin_sptid', $value->spt_id);
+                            $sum = $group->countAllResults();
+                          ?>
+                            <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$sum;?></button>
+                          <?php
+                            $db = \Config\Database::connect();
+                            $group = $db->table('laporjadins as a');
+                            $group->join('spts As c', 'c.spt_id = a.laporjadin_sptid');
+                            $group->where('c.spt_verif', 1);
+                            $group->where('a.laporjadin_verif', 1);
+                            $group->where('a.laporjadin_sptid', $value->spt_id);
+                            $sum2 = $group->countAllResults();
+                          ?>
+                            <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$sum2;?></button>
+
+                        </td>
                       </tr>
                     <?php } ?>
                 </tbody>

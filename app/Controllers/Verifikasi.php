@@ -18,10 +18,12 @@ class Verifikasi extends ResourcePresenter
     {
         $model = new VerifModel();
         $query = $model->verifdataspt();
+        $qrhotel = $model->verifhotel();
         $data = [
             'title' => 'Verifikasi Data Perjalanan Dinas',
             'subtitle' => 'Home',
             'data' => $query,
+            'hotel' => $qrhotel,
         ];
         // dd($data);
         return view('verifikasi/index', $data);
