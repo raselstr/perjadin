@@ -61,12 +61,14 @@ class Spt extends ResourcePresenter
         $lokasiperjadin = new LokasiperjadinModel();
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
+        $acara          = new SptModel();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'lokasi'    => $lokasiperjadin->findAll(),
             'jenis'     => $jenisperjadin->findAll(),
             'pejabat'   => $pejabat->findAll(),
+            'acara'     => $acara->getOptions(),
         ];
         // dd($data);
         return view('spt/tambahspt', $data);
@@ -107,6 +109,7 @@ class Spt extends ResourcePresenter
         $lokasiperjadin = new LokasiperjadinModel();
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
+
         $dataspt = $spt->find($id);
         if(is_object($dataspt)){
             $data = [
@@ -116,8 +119,9 @@ class Spt extends ResourcePresenter
                 'lokasi'    => $lokasiperjadin->findAll(),
                 'jenis'     => $jenisperjadin->findAll(),
                 'pejabat'   => $pejabat->findAll(),
+                'acara'     => $spt->getOptions(),
             ];
-           
+        //    dd($data);
             return view('spt/editspt', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

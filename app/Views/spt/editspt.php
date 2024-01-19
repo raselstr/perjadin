@@ -75,6 +75,20 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label for="spt_acara" class="col-sm-4 col-form-label">Jenis Acara yang dihadiri</label>
+                          <div class="col">
+                            <select name="spt_acara" id="spt_acara" class="form-control <?= isset($errors['spt_acara']) ? 'is-invalid' : null ; ?>" >
+                              <option value="">Pilih Jenis Acara yang dihadiri</option>
+                              <?php foreach ($acara as $value => $label) { ?>
+                                <option value="<?= $value ?>"<?= $spt->spt_acara ==  $value ? 'selected':null?>><?= $label ?></option>
+                              <?php } ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                <?= isset($errors['spt_acara']) ? $errors['spt_acara'] : null ; ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label for="spt_dasar" class="col-sm-4 col-form-label">Dasar Perjalanan Dinas</label>
                           <div class="col">
                             <input class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" type="text" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar" value="<?= old("spt_dasar") ? old("spt_dasar") : $spt->spt_dasar ?>">

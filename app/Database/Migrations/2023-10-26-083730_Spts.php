@@ -38,7 +38,9 @@ class Spts extends Migration
             ],
             'spt_jenis' => [
                 'type'          => 'INT',
-                'constraint'    => 100,
+            ],
+            'spt_acara' => [
+                'type'          => 'INT',
             ],
             'spt_dasar' => [
                 'type'          => 'VARCHAR',

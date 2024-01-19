@@ -19,6 +19,7 @@ class SptModel extends Model
         'sppd_nomor',
         'spt_tgl',
         'spt_jenis',
+        'spt_acara',
         'spt_pjb_tugas',
         'spt_dasar',
         'spt_uraian',
@@ -43,6 +44,7 @@ class SptModel extends Model
         'spt_id'        => 'permit_empty|is_natural_no_zero',
         'spt_pjb_tugas' => 'required',
         'spt_jenis'     => 'required',
+        'spt_acara'     => 'required',
         'spt_uraian'    => 'required',
         'spt_lama'      => 'required',
         'spt_mulai'     => 'required',
@@ -56,6 +58,9 @@ class SptModel extends Model
         ],
         'spt_jenis' => [
             'required'  => "Jenis Perjalanan Dinas wajib diisi !",
+        ],
+        'spt_acara' => [
+            'required'  => "Acara yang dihadiri dalam Perjalanan Dinas wajib diisi !",
         ],
         'spt_uraian' => [
             'required'  => "Maksud Perjalanan Dinas wajib diisi",
@@ -108,6 +113,19 @@ class SptModel extends Model
         $builder->where('spts.spt_id',$id);
         $query = $builder->get();
         return $query->getResult();
+    }
+
+    public function getOptions()
+    {
+        $options = [
+            '0' => 'Konsultasi',
+            '1' => 'Pendidikan dan Pelatihan',
+            '2' => 'Rapat Full Board',
+            '3' => 'Rapat Full Day',
+            '4' => 'Rapat Residence Dalam Kota',
+        ];
+
+        return $options;
     }
 
 }
