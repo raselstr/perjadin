@@ -1,3 +1,6 @@
+<?php use App\Models\RampungModel;
+  $model = new RampungModel();
+?>
 
 <?= $this->extend('layout/default'); ?>
 
@@ -106,46 +109,111 @@
                 <!-- Table row -->
                 <div class="row">
                   <div class="col-12 table-responsive">
-                    <table class="table table-sm">
+                    <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th style="width:3%">No</th>
-                          <th colspan="3" class="align-middle text-center">Rincian</th>
+                          <th colspan="5" class="align-middle text-center">Rincian</th>
                           <th class="align-middle text-center">Jumlah</th>
                           <th class="align-middle text-center">Subtotal</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $no = 1; foreach ($all as $key => $value) : ?>
+                        <?php $no = 1; 
+                          foreach ($all as $key => $value) : ?>
+                            <?php $pelaksana_id = $value->pelaksana_id; ?>
                         <tr>
                           <td rowspan="6"><?= $no++; ?></td>
-                          <td style="width:30%" rowspan="6"><i><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></i></td>
+                          <td style="width:23%" rowspan="6"><i><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></i></td>
                           <td colspan="2">Uang Harian</td>
+                          <td style="width:20%"></td>
+                          <td></td>
                           <td class="align-middle text-right">99.000.000,00</td>
                           <td class="align-top text-right" rowspan="6"><strong>99.000.000,00</strong></td>
                         </tr>
+                        <?php $qrpesawat = $model->rampungpesawat($pelaksana_id);?>
                         <tr>
-                          <td style="width:15%" rowspan="2">Biaya Trasportasi</td>
+                          <td colspan="5">Biaya Trasportasi</td>
+                        </tr>
+                        <tr>
+                          <td style="width:2%"></td>
                           <td>Pesawat</td>
-                          <td class="align-middle text-right">1.500.000,00</td>
+                          <td>
+                            <?php foreach ($qrpesawat as $key => $value): ?>
+                              <i><?=$value->spjpesawat_jenis?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php foreach ($qrpesawat as $key => $value): ?>
+                              <i><?=number_format($value->spjpesawat_harga,0,',','.')?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-top text-right">
+                            <?php $total = 0; 
+                              foreach ($qrpesawat as $key => $value) {
+                              $subtotal = intval($value->spjpesawat_harga);
+                              $total += $subtotal;
+                            } ?>
+                            <?= number_format($total,2,',','.'); ?>
+                          </td>
                         </tr>
+                        <?php $qrtaksi = $model->rampungtaksi($pelaksana_id);?>
                         <tr>
+                          <td></td>
                           <td>Taksi</td>
+                          <td>
+                            <?php foreach ($qrtaksi as $key => $value): ?>
+                              <i><?=$value->spjtaksi_jenis?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php foreach ($qrtaksi as $key => $value): ?>
+                              <i><?=number_format($value->spjtaksi_harga,0,',','.')?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php $total = 0; 
+                              foreach ($qrtaksi as $key => $value) {
+                              $subtotal = intval($value->spjtaksi_harga);
+                              $total += $subtotal;
+                            } ?>
+                            <?= number_format($total,2,',','.'); ?>
+                          </td>
+                        </tr>
+                        <?php $qrhotel = $model->rampunghotel($pelaksana_id);?>
+                        <tr>
+                          <td colspan="4">Biaya Penginapan</td>
+                          <td class="align-middle text-right">
+                            <?php $total = 0; 
+                              foreach ($qrhotel as $key => $value) {
+                              $subtotal = intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam);
+                              $total += $subtotal;
+                            } ?>
+                            <?= number_format($total,2,',','.'); ?>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>
+                          <?php foreach ($qrhotel as $key => $value): ?>  
+                            <i><?=$value->spjhotel_nama?></i><br>
+                          <?php endforeach ?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php foreach ($qrhotel as $key => $value): ?>
+                            <i><?= $value->spjhotel_mlm ?> <i>mlm</i> x Rp.   <?= number_format($value->spjhotel_hargapermalam,0,',','.') ?> </i><br>
+                            <?php endforeach ?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php foreach ($qrhotel as $key => $value): ?>
+                              <i>= &nbsp;&nbsp;&nbsp;<?= number_format(intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam),0,',','.') ?></i><br>
+                              <?php endforeach ?>
+                          </td>
                           <td></td>
                         </tr>
                         <tr>
-                          <td colspan="2">Biaya Penginapan</td>
                           <td></td>
-                        </tr>
-                        <tr>
-                          <td colspan="2">Uang Representasi</td>
                           <td></td>
-                        </tr>
-                        <tr>
-                          <td colspan="2">Sewa Kendaraan</td>
-                          <td></td>
-                        </tr>
-                        <tr>
                           <td></td>
                           <td></td>
                           <td></td>

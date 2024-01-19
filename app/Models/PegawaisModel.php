@@ -13,7 +13,7 @@ class PegawaisModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['pegawai_nip','pegawai_nama','pegawai_jabatan','eselon_id','pangkat_id','pegawai_foto'];
+    protected $allowedFields    = ['pegawai_nip','pegawai_nama','pegawai_jabatan','eselon_id','pangkat_id','pegawai_tingkat','pegawai_foto'];
 
     // Dates
     protected $useTimestamps = false;
@@ -30,6 +30,7 @@ class PegawaisModel extends Model
         'pegawai_jabatan'   => 'required|max_length[100]|min_length[4]',
         'eselon_id'         => 'required',
         'pangkat_id'        => 'required',
+        'pegawai_tingkat'   => 'required',
         'pegawai_foto'      => 'max_size[pegawai_foto,10048]|is_image[pegawai_foto]|mime_in[pegawai_foto,image/png,image/jpeg,image/jpg]',
     ];
     protected $validationMessages   = [
@@ -54,6 +55,9 @@ class PegawaisModel extends Model
         ],
         'pangkat_id' => [
             'required'              => 'Pangkat Wajib dipilih sesuai daftar',
+        ],
+        'pegawai_tingkat' => [
+            'required'              => 'Tingkat SPPD Wajib dipilih sesuai daftar',
         ],
         'pegawai_foto' => [
             'uploaded'              => 'Pilih Foto yang akan diupload',
