@@ -127,7 +127,104 @@ class VerifModel extends Model
     }
 
 
-   
+    function verifdatahotel($id)
+    {
+        $group = $this->db->table('spjhotels as a');
+        $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
+        $group->join('spts As c', 'c.spt_id = b.spt_id');
+        $group->where('c.spt_verif', 1);
+        $group->where('c.spt_id', $id);
+        
+        $sum = $group->get();
+        return $sum->getNumRows();
+        
+    }
+
+    function verifdatahotelval($id)
+    {
+        $group = $this->db->table('spjhotels as a');
+        $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
+        $group->join('spts As c', 'c.spt_id = b.spt_id');
+        $group->where('c.spt_verif', 1);
+        $group->where('a.spjhotel_verif', 1);
+        $group->where('c.spt_id', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+
+    }
+
+    function verifdatapesawat($id)
+    {
+        $group = $this->db->table('spjpesawats as a');
+        $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+        $group->join('spts As c', 'c.spt_id = b.spt_id');
+        $group->where('c.spt_verif', 1);
+        $group->where('c.spt_id', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+
+    }
+
+    function verifdatapesawatval($id)
+    {
+        $group = $this->db->table('spjpesawats as a');
+        $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+        $group->join('spts As c', 'c.spt_id = b.spt_id');
+        $group->where('c.spt_verif', 1);
+        $group->where('a.spjpesawat_verif', 1);
+        $group->where('c.spt_id', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+
+    }
+
+    function verifdatataksi($id)
+    {
+        $group = $this->db->table('spjtaksis as a');
+        $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjtaksi_pelaksanaid', 'RIGHT');
+        $group->join('spts As c', 'c.spt_id = b.spt_id');
+        $group->where('c.spt_verif', 1);
+        $group->where('c.spt_id', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+
+    }
+
+    function verifdatataksival($id)
+    {
+        $group = $this->db->table('spjtaksis as a');
+        $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjtaksi_pelaksanaid', 'RIGHT');
+        $group->join('spts As c', 'c.spt_id = b.spt_id');
+        $group->where('c.spt_verif', 1);
+        $group->where('a.spjtaksi_verif', 1);
+        $group->where('c.spt_id', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+    }
+
+    function verifdatalapor($id)
+    {
+        $group = $this->db->table('laporjadins as a');
+        $group->join('spts As c', 'c.spt_id = a.laporjadin_sptid');
+        $group->where('c.spt_verif', 1);
+        $group->where('a.laporjadin_sptid', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+
+    }
+
+    function verifdatalaporval($id)
+    {
+        $group = $this->db->table('laporjadins as a');
+        $group->join('spts As c', 'c.spt_id = a.laporjadin_sptid');
+        $group->where('c.spt_verif', 1);
+        $group->where('a.laporjadin_verif', 1);
+        $group->where('a.laporjadin_sptid', $id);
+        $sum = $group->get();
+        return $sum->getNumRows();
+
+    }
+
 
 
 

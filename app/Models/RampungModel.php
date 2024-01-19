@@ -50,6 +50,7 @@ class RampungModel extends Model
         return $result;
     }
     
+    
 
     function verifdatapelaksana($id = null)
     {

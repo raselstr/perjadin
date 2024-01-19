@@ -1,3 +1,7 @@
+<?php use App\Models\VerifModel; 
+  $model = new VerifModel();
+?>
+
 
 <?= $this->extend('layout/default'); ?>
 
@@ -80,93 +84,35 @@
                         <td class="align-middle">No. SPT : <?= $value->spt_nomor ?><br>No. SPD : <?= $value->sppd_nomor ?><br>Tanggal : <?= date('d F Y',strtotime($value->spt_tgl)) ?><br>Uraian : <?= $value->spt_uraian ?></td>
                         <td class="align-middle">
                           <?php 
-                            $db = \Config\Database::connect();
-                            $group = $db->table('spjhotels as a');
-                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
-                            $group->join('spts As c', 'c.spt_id = b.spt_id');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('c.spt_id', $value->spt_id);
-                            $sum = $group->countAllResults();
-                          ?>
-                          <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?= $sum; ?></button>
-                          <?php 
-                            $db = \Config\Database::connect();
-                            $group = $db->table('spjhotels as a');
-                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
-                            $group->join('spts As c', 'c.spt_id = b.spt_id');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('a.spjhotel_verif', 1);
-                            $group->where('c.spt_id', $value->spt_id);
-                            $sum2 = $group->countAllResults();
-                          ?>
-                          <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?= $sum2; ?></button>
+                            $qrhotelall = $model->verifdatahotel($value->spt_id);
+                            $qrhotelval = $model->verifdatahotelval($value->spt_id);
+                            ?>
+                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?= $qrhotelall; ?></button>
+                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?= $qrhotelval; ?></button>
                         </td>
                         <td class="align-middle text-center">
                           <?php
-                            $db = \Config\Database::connect();
-                            $group = $db->table('spjpesawats as a');
-                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
-                            $group->join('spts As c', 'c.spt_id = b.spt_id');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('c.spt_id', $value->spt_id);
-                            $sum = $group->countAllResults();
+                            $qrpesawatall = $model->verifdatapesawat($value->spt_id);
+                            $qrpesawatval = $model->verifdatapesawatval($value->spt_id);
                             ?>
-                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$sum;?></button>
-                            <?php
-                            $db = \Config\Database::connect();
-                            $group = $db->table('spjpesawats as a');
-                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
-                            $group->join('spts As c', 'c.spt_id = b.spt_id');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('a.spjpesawat_verif', 1);
-                            $group->where('c.spt_id', $value->spt_id);
-                            $sum2 = $group->countAllResults();
-                            ?>
-                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$sum2;?></button>
+                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$qrpesawatall;?></button>
+                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$qrpesawatval;?></button>
                         </td>
                         <td class="align-middle">
                           <?php
-                            $db = \Config\Database::connect();
-                            $group = $db->table('spjtaksis as a');
-                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjtaksi_pelaksanaid', 'RIGHT');
-                            $group->join('spts As c', 'c.spt_id = b.spt_id');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('c.spt_id', $value->spt_id);
-                            $sum = $group->countAllResults();
+                            $qrtaksiall = $model->verifdatataksi($value->spt_id);
+                            $qrtaksival = $model->verifdatataksival($value->spt_id);
                             ?>
-                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$sum;?></button>
-                            <?php
-                            $db = \Config\Database::connect();
-                            $group = $db->table('spjtaksis as a');
-                            $group->join('pelaksanas As b', 'b.pelaksana_id = a.spjtaksi_pelaksanaid', 'RIGHT');
-                            $group->join('spts As c', 'c.spt_id = b.spt_id');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('a.spjtaksi_verif', 1);
-                            $group->where('c.spt_id', $value->spt_id);
-                            $sum2 = $group->countAllResults();
-                            ?>
-                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$sum2;?></button>
+                              <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$qrtaksiall;?></button>
+                              <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$qrtaksival;?></button>
                         </td>
                         <td class="align-middle text-center">
                           <?php
-                            $db = \Config\Database::connect();
-                            $group = $db->table('laporjadins as a');
-                            $group->join('spts As c', 'c.spt_id = a.laporjadin_sptid');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('a.laporjadin_sptid', $value->spt_id);
-                            $sum = $group->countAllResults();
+                            $qrlaporall = $model->verifdatalapor($value->spt_id);
+                            $qrlaporval = $model->verifdatalaporval($value->spt_id);
                           ?>
-                            <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$sum;?></button>
-                          <?php
-                            $db = \Config\Database::connect();
-                            $group = $db->table('laporjadins as a');
-                            $group->join('spts As c', 'c.spt_id = a.laporjadin_sptid');
-                            $group->where('c.spt_verif', 1);
-                            $group->where('a.laporjadin_verif', 1);
-                            $group->where('a.laporjadin_sptid', $value->spt_id);
-                            $sum2 = $group->countAllResults();
-                          ?>
-                            <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$sum2;?></button>
+                            <button type="button" class="btn btn-block btn-outline-danger btn-xs" >Total : <?=$qrlaporall;?></button>
+                            <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$qrlaporval;?></button>
 
                         </td>
                       </tr>
