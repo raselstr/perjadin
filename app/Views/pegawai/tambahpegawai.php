@@ -80,6 +80,20 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label for="exampleSelectBorder" class="col-sm-3 col-form-label">Tingkat Pembiayaan</label>
+                          <div class="col">
+                            <select class="form-control <?= isset($errors['pegawai_tingkat']) ? 'is-invalid' : null ; ?>" name="pegawai_tingkat" placeholder="Pengkat" id="pegawai_tingkat" value="<?= old('pegawai_tingkat') ?>">
+                              <option value="" hidden></option>
+                              <?php foreach($tingkat as $key => $value) : ?>
+                                <option value="<?= $value->tingkat_id ?> <?= old('pegawai_tingkat') ; ?>"><?= $value->tingkat_nama; ?></option>
+                              <?php endforeach; ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                  <?= isset($errors['pegawai_tingkat']) ? $errors['pegawai_tingkat'] : null ; ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label for="exampleInputFile" class="col-sm-3 col-form-label">File Foto</label>
                           <div class="col">
                             <div class="input-group">

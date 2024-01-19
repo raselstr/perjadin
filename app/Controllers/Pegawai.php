@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\EselonsModel;
 use App\Models\PangkatsModel;
 use App\Models\PegawaisModel;
+use App\Models\TingkatModel;
 use CodeIgniter\Files\File;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -60,10 +61,12 @@ class Pegawai extends ResourcePresenter
         $pegawais = new PegawaisModel();
         $eselon = new EselonsModel();
         $pangkat = new PangkatsModel();
+        $tingkat = new TingkatModel();
 
         $datapegawais = $pegawais->findAll();
         $dataeselon = $eselon->findAll();
         $datapangkat = $pangkat->findAll();
+        $datatingkat = $tingkat->findAll();
 
         $data = [
             'title' => 'Tambah Pegawai',
@@ -71,6 +74,7 @@ class Pegawai extends ResourcePresenter
             'pegawais'  => $datapegawais,
             'eselon'    => $dataeselon,
             'pangkat'   => $datapangkat,
+            'tingkat'   => $datatingkat,
         ];
         // dd($data);
         return view('pegawai/tambahpegawai', $data);
@@ -124,6 +128,8 @@ class Pegawai extends ResourcePresenter
         $pegawais = new PegawaisModel();
         $eselon = new EselonsModel();
         $pangkat = new PangkatsModel();
+        $tingkat = new TingkatModel();
+
 
         $peg = $pegawais->find($id);
         if(is_object($peg)){
@@ -134,8 +140,9 @@ class Pegawai extends ResourcePresenter
                 'pegawai'   => $pegawais->findAll(),
                 'eselon'    => $eselon->findAll(),
                 'pangkat'   => $pangkat->findAll(),
+                'tingkat'   => $tingkat->findAll(),
             ];
-           
+        //    dd($data);
             return view('pegawai/editpegawai', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
