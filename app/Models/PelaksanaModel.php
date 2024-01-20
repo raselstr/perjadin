@@ -53,9 +53,7 @@ class PelaksanaModel extends Model
         $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
-
         $builder->where('pelaksanas.spt_id',$id);
-
         $builder->orderBy('pangkats.pangkat_id', 'DESC');
         $query = $builder->get();
         return $query->getResult();

@@ -72,8 +72,6 @@ class SpjTaksi extends ResourcePresenter
      */
     public function create()
     {
-        
-        
         $spjtaksi = new SpjTaksiModel();
         $data = $this->request->getPost();
         
@@ -81,7 +79,7 @@ class SpjTaksi extends ResourcePresenter
         if($save){
             $ket = [
                     'error' => false,
-                    'message' => 'Data Berhasil',
+                    'message' => 'Data Berhasil Simpan',
                 ];
             return $this->response->setJSON($ket);
         } else {

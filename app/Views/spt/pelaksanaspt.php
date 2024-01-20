@@ -53,10 +53,7 @@
                     <h3 class="card-title"><?= $title; ?></h3>
                     <a href="<?= site_url('spt'); ?>" class="btn btn-danger float-right">Kembali</a>
                   </div>
-                  
-                  
-
-                    
+                   
                     <div class="card-body row justify-content-center">
                       <div class="col-8">
                         <div class="form-group row">
@@ -64,43 +61,34 @@
                             <input type="text" name="spt_id" placeholder="Tahun" id="spt_id" value="<?= $spt->spt_id ?>" hidden>
                           </div>
                         </div>
-                        <div class="form-group row">
-                          <label for="spt_pjb_tugas" class="col-sm-5 col-form-label">Pejabat Pemberi Tugas</label>
-                          <div class="col-6">
-                            <input class="form-control" type="text" name="spt_pjb_tugas" placeholder="Pejabat Pemberi Tugas" id="spt_pjb_tugas" value="<?= $spt->spt_pjb_tugas ?>" readonly>
-                          </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                          <label for="spt_uraian" class="col-sm-5 col-form-label">Maksud Perjalanan Dinas</label>
-                          <div class="col-6">
-                            <textarea class="form-control" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= $spt->spt_uraian ?>" readonly></textarea>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_lama" class="col-sm-5 col-form-label">Lama Perjalanan Dinas</label>
-                          <div class="col-6">
-                            <input class="form-control" type="number" name="spt_lama" placeholder="Lama Perjalanan Dinas" id="spt_lama" value="<?= $spt->spt_lama ?>" readonly>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_mulai" class="col-sm-5 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
-                          <div class="col-6">
-                            <input class="form-control" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= $spt->spt_mulai ?>" readonly>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_berakhir" class="col-sm-5 col-form-label">Tanggal Berakhir Perjalanan Dinas</label>
-                          <div class="col-6">
-                            <input class="form-control" type="date" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= $spt->spt_berakhir ?>" readonly>
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="spt_tujuan" class="col-sm-5 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
-                          <div class="col-6">
-                            <input class="form-control" type="Text" name="spt_tujuan" placeholder="Tempat Tujuan Perjalanan Dinas" id="spt_tujuan" value="<?= $spt->spt_tujuan ?>" readonly>
-                          </div>
-                        </div>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="width: 20px">#</th>
+                              <th>Uraian</th>
+                              <th style="width: 70%" colspan="3">Keterangan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1.</td>
+                              <td>Pejabat Pemberi Tugas</td>
+                              <td><?= $spt->spt_pjb_tugas ?></td>
+                            </tr>
+                            <tr>
+                              <td>2.</td>
+                              <td>Maksud Perjalanan Dinas</td>
+                              <td><?= $spt->spt_uraian ?></td>
+                            </tr>
+                            <tr>
+                              <td>3.</td>
+                              <td>Lama Perjalanan Dinas</td>
+                              <td>
+                                <?= $spt->spt_lama ?> hari &nbsp;&nbsp;(<?= date('d F Y', strtotime($spt->spt_mulai))?> &nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp; <?= date('d F Y',strtotime($spt->spt_berakhir)) ?>)
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>              
                     <div class="card-footer">
@@ -111,24 +99,8 @@
                             <i class="nav-icon fas fa-users"> </i> Tambah Pegawai pelaksana Perjalanan Dinas
                           </button>
                         </div>
-                        <div class="col-6 float-right">
-                          <?php if(session('error')) : ?>
-                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <!-- A simple success alert—check it out! -->
-                                <?= session('error'); ?>
-                              </div> 
-                          <?php endif ?>
-                          <?php if(session('berhasil')) : ?>
-                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <!-- A simple success alert—check it out! -->
-                                <?= session('berhasil'); ?>
-                              </div> 
-                          <?php endif ?>
-                        </div>
                       </div>
                     </div>
-                    
-                
                 </div>
                 <div class="card card-info ">
                   <div class="card-header">
@@ -170,48 +142,48 @@
             </div>
           </div>
         </div>
-        
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
   </div>
-    <!-- /.content -->
-    <div class="modal fade" id="modal-default">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><?= $title; ?></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="<?= site_url('pelaksana/create'); ?>" method="post">
+<!-- /.content -->
+<!-- Modal -->
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><?= $title; ?></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="<?= site_url('pelaksana/create'); ?>" method="post" id="form">
           <?= csrf_field() ?>
-            <div class="form-group">
-              <input class="form-control"  name = "spt_id" type="text" value="<?= $spt->spt_id ?>" hidden>
+            <div class="modal-body">
+              <div class="form-group">
+                <input class="form-control"  name = "spt_id" type="text" value="<?= $spt->spt_id ?>" hidden>
+              </div>
+              <div class="form-group">
+                <label>Pilih Nama Pegawai</label>
+                <select class="form-control select2" style="width: 100%;" name="pegawai_id" id="pegawai_id">
+                  <option value="">Pilih Pegawai ...</option>
+                  <?php foreach($peg as $key => $value) : ?>
+                    <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Pilih Nama Pegawai</label>
-              <select class="form-control select2" style="width: 100%;" name="pegawai_id" id="pegawai_id">
-                <option value="">Pilih Pegawai ...</option>
-                <?php foreach($peg as $key => $value) : ?>
-                  <option value="<?= $value->pegawai_id; ?>"><?= $value->pegawai_nama; ?>   (<?= $value->pegawai_nip; ?>)</option>
-                <?php endforeach; ?>
-              </select>
+            <div class="modal-footer justify-content-between">
+              <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+              <button type="submit" class="btn btn-primary tbltambah">Tambah Pegawai</button>
             </div>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-        <button type="submit" class="btn btn-primary tbltambah">Tambah Pegawai</button>
-      </div>
         </form>
+      </div>
+      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
+    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+  <!-- /.modal -->
 <?= $this->endSection() ?>
 
 <?= $this->section('script'); ?>
@@ -283,5 +255,54 @@
       });
     });
   </script>
+
+  <!-- Script Edit dan SImpan SPJ Tiket Taksi -->
+  <script>
+    $(document).ready(function(){
+      $('#form').submit(function(e){
+        e.preventDefault();
+        var data = new FormData(this);
+        // console.log(data);
+
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: data,
+          processData: false,
+          contentType: false,
+          beforeSend:function(){
+                $('.tbltambah').attr('disabled', 'disabled');
+                $('.tbltambah').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.tbltambah').removeAttr('disabled');
+                $('.tbltambah').html('Simpan');
+            },
+          success: function (response) {
+            console.log(response);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: response.message,
+                showConfirmButton: false,
+                timer: 2000
+              }).then(function(){
+                $('#form').hide('2000');
+                location.reload();
+
+              });
+            },
+          error: function(xhr, status, error) {
+              // Tangani kesalahan jika terjadi
+              console.error();
+          }
+        });
+      });
+    });
+
+
+  </script>
+<!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
+
 
 <?= $this->endSection(); ?>

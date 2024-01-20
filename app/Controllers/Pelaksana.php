@@ -65,17 +65,25 @@ class Pelaksana extends ResourcePresenter
     public function create()
     {
         $pelaksana = new PelaksanaModel();
-
-        
         try {
             $data = $this->request->getPost();
             $pelaksana->save($data);
-            return redirect()->back()->with('berhasil','Data Berhasil disimpan');
+            $ket = [
+                    'error' => false,
+                    'message' => 'Data Berhasil Simpan',
+                ];
+            return $this->response->setJSON($ket);
+            // return redirect()->back()->with('berhasil','Data Berhasil disimpan');
             // Data inserted successfully
         } catch (DatabaseException $e) {
             // $error = $e->getMessage();
+            $validationerror = [
+                'error'     => true,
+                'message'   => 'Data sudah ada, harap memilih pegawai lain !',
+            ];
+            return $this->response->setJSON($validationerror);
             
-            return redirect()->back()->with('error','Data sudah ada, harap memilih pegawai lain !');
+            // return redirect()->back()->with('error','Data sudah ada, harap memilih pegawai lain !');
             // Handle the duplicate entry error, perhaps by returning an error message.
         }
     }

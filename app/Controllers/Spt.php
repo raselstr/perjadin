@@ -184,6 +184,7 @@ class Spt extends ResourcePresenter
             'spt'       => $dataspt,
             'peg'       => $pelaksana->orderBy('pegawais.pegawai_id')->findAll(),
             'pelks'     => $pegpelaksana->datapelaksanaall($id),
+            
             ];
 
         // dd($data);    

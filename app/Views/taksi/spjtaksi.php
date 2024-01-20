@@ -406,129 +406,129 @@
   </script>
 <!-- End Script Modal Tampilakan Foto Tiket -->
 
-  <!-- Script Edit dan SImpan SPJ Tiket Taksi -->
-    <script>
-      $(document).ready(function(){
-        $('[data-target="#taksispj"]').click (function() {
-          var idpelaksana = $(this).data('idpelaksana');
-          $('#spjtaksi_pelaksanaid').val(idpelaksana);
+<!-- Script Edit dan SImpan SPJ Tiket Taksi -->
+  <script>
+    $(document).ready(function(){
+      $('[data-target="#taksispj"]').click (function() {
+        var idpelaksana = $(this).data('idpelaksana');
+        $('#spjtaksi_pelaksanaid').val(idpelaksana);
 
-          var idtaksi = $(this).data('idtaksi');
-          $('#spjtaksi_id').val(idtaksi);
+        var idtaksi = $(this).data('idtaksi');
+        $('#spjtaksi_id').val(idtaksi);
 
-          if(idtaksi == null){
-            $('#spjtaksi_jenis').val('');
-            $('#spjtaksi_tgl').val('');
-            $('#spjtaksi_dari').val('');
-            $('#spjtaksi_ke').val('');
-            $('#spjtaksi_harga').val('');
-            $('#taksispj').show();
+        if(idtaksi == null){
+          $('#spjtaksi_jenis').val('');
+          $('#spjtaksi_tgl').val('');
+          $('#spjtaksi_dari').val('');
+          $('#spjtaksi_ke').val('');
+          $('#spjtaksi_harga').val('');
+          $('#taksispj').show();
 
-          } else {
-            $.ajax({
-              type: "get",
-              url: "<?=site_url('spjtaksi/edit/');?>" + idtaksi,
-              // data: "data",
-              dataType: "json",
-              success: function (response) {
-                console.log(response);
-                $('#spjtaksi_jenis').val(response.spjtaksi_jenis);
-                $('#spjtaksi_tgl').val(response.spjtaksi_tgl);
-                $('#spjtaksi_dari').val(response.spjtaksi_dari);
-                $('#spjtaksi_ke').val(response.spjtaksi_ke);
-                $('#spjtaksi_harga').val(response.spjtaksi_harga);
-                $('#taksispj').show();
-              }
-            });
-          }
-        });
-
-        $('#formtaksi').submit(function(e){
-          e.preventDefault();
-          var data = new FormData(this);
-          // console.log(data);
-
+        } else {
           $.ajax({
-            type: "post",
-            url: $(this).attr('action'),
-            data: data,
-            processData: false,
-            contentType: false,
-            beforeSend:function(){
-                  $('.simpantaksi').attr('disabled', 'disabled');
-                  $('.simpantaksi').html('<i class="fa fa-spin fa-spinner"></i>');
-              },
-              complete: function(){
-                  $('.simpantaksi').removeAttr('disabled');
-                  $('.simpantaksi').html('Simpan');
-              },
+            type: "get",
+            url: "<?=site_url('spjtaksi/edit/');?>" + idtaksi,
+            // data: "data",
+            dataType: "json",
             success: function (response) {
               console.log(response);
-              if(response.error) {
-                if(response.message.spjtaksi_jenis){
-                        $('#spjtaksi_jenis').addClass('is-invalid');
-                        $('.errorspjtaksi_jenis').html(response.message.spjtaksi_jenis);
-                    } else {
-                        $('#spjtaksi_jenis').removeClass('is-invalid');
-                        $('.errorspjtaksi_jenis').html('');
-                }
-                if(response.message.spjtaksi_tgl){
-                        $('#spjtaksi_tgl').addClass('is-invalid');
-                        $('.errorspjtaksi_tgl').html(response.message.spjtaksi_tgl);
-                    } else {
-                        $('#spjtaksi_tgl').removeClass('is-invalid');
-                        $('.errorspjtaksi_tgl').html('');
-                }
-                if(response.message.spjtaksi_dari){
-                        $('#spjtaksi_dari').addClass('is-invalid');
-                        $('.errorspjtaksi_dari').html(response.message.spjtaksi_dari);
-                    } else {
-                        $('#spjtaksi_dari').removeClass('is-invalid');
-                        $('.errorspjtaksi_dari').html('');
-                }
-                if(response.message.spjtaksi_ke){
-                        $('#spjtaksi_ke').addClass('is-invalid');
-                        $('.errorspjtaksi_ke').html(response.message.spjtaksi_ke);
-                    } else {
-                        $('#spjtaksi_ke').removeClass('is-invalid');
-                        $('.errorspjtaksi_ke').html('');
-                }
-                if(response.message.spjtaksi_harga){
-                        $('#spjtaksi_harga').addClass('is-invalid');
-                        $('.errorspjtaksi_harga').html(response.message.spjtaksi_harga);
-                    } else {
-                        $('#spjtaksi_harga').removeClass('is-invalid');
-                        $('.errorspjtaksi_harga').html('');
-                }
-              } else {
-                console.log(response);
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: response.message,
-                  showConfirmButton: false,
-                  timer: 2000
-                }).then(function(){
-                  $('#taksispj').hide('2000');
-                  location.reload();
-
-                });
-              }
-            },
-            error: function(xhr, status, error) {
-                // Tangani kesalahan jika terjadi
-                console.error();
+              $('#spjtaksi_jenis').val(response.spjtaksi_jenis);
+              $('#spjtaksi_tgl').val(response.spjtaksi_tgl);
+              $('#spjtaksi_dari').val(response.spjtaksi_dari);
+              $('#spjtaksi_ke').val(response.spjtaksi_ke);
+              $('#spjtaksi_harga').val(response.spjtaksi_harga);
+              $('#taksispj').show();
             }
           });
-        });
-        $('.bataltaksi').on('click', function () {
-          location.reload();
-        });
+        }
       });
 
+      $('#formtaksi').submit(function(e){
+        e.preventDefault();
+        var data = new FormData(this);
+        // console.log(data);
 
-    </script>
-  <!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: data,
+          processData: false,
+          contentType: false,
+          beforeSend:function(){
+                $('.simpantaksi').attr('disabled', 'disabled');
+                $('.simpantaksi').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.simpantaksi').removeAttr('disabled');
+                $('.simpantaksi').html('Simpan');
+            },
+          success: function (response) {
+            console.log(response);
+            if(response.error) {
+              if(response.message.spjtaksi_jenis){
+                      $('#spjtaksi_jenis').addClass('is-invalid');
+                      $('.errorspjtaksi_jenis').html(response.message.spjtaksi_jenis);
+                  } else {
+                      $('#spjtaksi_jenis').removeClass('is-invalid');
+                      $('.errorspjtaksi_jenis').html('');
+              }
+              if(response.message.spjtaksi_tgl){
+                      $('#spjtaksi_tgl').addClass('is-invalid');
+                      $('.errorspjtaksi_tgl').html(response.message.spjtaksi_tgl);
+                  } else {
+                      $('#spjtaksi_tgl').removeClass('is-invalid');
+                      $('.errorspjtaksi_tgl').html('');
+              }
+              if(response.message.spjtaksi_dari){
+                      $('#spjtaksi_dari').addClass('is-invalid');
+                      $('.errorspjtaksi_dari').html(response.message.spjtaksi_dari);
+                  } else {
+                      $('#spjtaksi_dari').removeClass('is-invalid');
+                      $('.errorspjtaksi_dari').html('');
+              }
+              if(response.message.spjtaksi_ke){
+                      $('#spjtaksi_ke').addClass('is-invalid');
+                      $('.errorspjtaksi_ke').html(response.message.spjtaksi_ke);
+                  } else {
+                      $('#spjtaksi_ke').removeClass('is-invalid');
+                      $('.errorspjtaksi_ke').html('');
+              }
+              if(response.message.spjtaksi_harga){
+                      $('#spjtaksi_harga').addClass('is-invalid');
+                      $('.errorspjtaksi_harga').html(response.message.spjtaksi_harga);
+                  } else {
+                      $('#spjtaksi_harga').removeClass('is-invalid');
+                      $('.errorspjtaksi_harga').html('');
+              }
+            } else {
+              console.log(response);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: response.message,
+                showConfirmButton: false,
+                timer: 2000
+              }).then(function(){
+                $('#taksispj').hide('2000');
+                location.reload();
+
+              });
+            }
+          },
+          error: function(xhr, status, error) {
+              // Tangani kesalahan jika terjadi
+              console.error();
+          }
+        });
+      });
+      $('.bataltaksi').on('click', function () {
+        location.reload();
+      });
+    });
+
+
+  </script>
+<!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
 
   <!-- Script Upload Tiket dan Bill -->
     <script>
