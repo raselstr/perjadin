@@ -51,8 +51,7 @@
                 <h5 class="card-title"><?= $title; ?></h5>
               </div>
               <div class="col-sm-4">
-                <a href="<?= site_url('menu/new'); ?>" type="button" class="btn bg-gradient-primary float-right">
-                  <i class="fa fa-plus"></i>  Tambah Menu
+                <button type="button" class="btn bg-gradient-primary float-sm-right" class="btn btn-primary"  data-toggle="modal" data-target="#form"><i class="fas fa-hand-point-right"> </i> Tambah Menu</button>
                 </a>
               </div>
             </div>
@@ -76,8 +75,8 @@
                   <tr>
                       <td class="align-middle text-center"><?= $no++; ?></td>
                       <td class="align-middle text-center">
-                        <button type="button" class="btn bg-gradient-info btn-sm"><i class="fas fa-pen"> </i></button>
-                        <a href="" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                        <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-menuid=<?= $value->menu_id; ?>><i class="fas fa-pen"> </i></button>
+                        <a href="<?= site_url('menu/remove/'.$value->menu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
                       </td>
                       <td><?= $value->menu_nama; ?></td>
                       <td><?= $value->menu_icon; ?></td>
@@ -94,6 +93,57 @@
       </div>
     </div>
   </div>
+  <!-- Modal SPJ Pesawat -->
+  <div class="modal fade" id="form">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">SPJ Pesawat</h4>
+        </div>
+        <form action="<?=site_url('menu/create');?>" method="post" id="menuform">
+          <?=csrf_field();?>
+          <div class="modal-body">
+            <div class="card-body">
+              <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label" hidden>menu id</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="menu_id" name="menu_id" hidden>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label" >Nama Menu</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="menu_nama" name="menu_nama">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Icon Menu</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="menu_icon" name="menu_icon">
+                    <div class="invalid-feedback errormenu_icon"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tujuan Halaman</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="menu_link" name="menu_link">
+                    <div class="invalid-feedback errormenu_link"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="reset" class="btn btn-default batalpesawat" data-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary simpanmenu">Simpan</button>
+            </div>
+          </div>
+        </form>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
 <?= $this->endSection() ?>
 
@@ -112,4 +162,108 @@
       })
     });
   </script>
+  <!-- Script Edit dan SImpan SPJ Tiket Pesawat -->
+    <script>
+      $(document).ready(function(){
+        $('[data-target="#form"]').click (function() {
+          var menuid = $(this).data('menuid');
+          $('#menu_id').val(menuid);
+
+          if(menuid == null){
+            $('#menu_nama').val('');
+            $('#menu_icon').val('');
+            $('#menu_link').val('');
+            $('#pesawatspj').show();
+
+          } else {
+            $.ajax({
+              type: "get",
+              url: "<?=site_url('menu/edit/');?>" + menuid,
+              // data: "data",
+              dataType: "json",
+              success: function (response) {
+                console.log(response);
+                $('#menu_nama').val(response.menu_nama);
+                $('#menu_icon').val(response.menu_icon);
+                $('#menu_link').val(response.menu_link);
+                $('#pesawatspj').show();
+              }
+            });
+          }
+        });
+
+        $('#menuform').submit(function(e){
+          e.preventDefault();
+          var data = new FormData(this);
+          // console.log(data);
+
+          $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: data,
+            processData: false,
+            contentType: false,
+            beforeSend:function(){
+                  $('.simpanmenu').attr('disabled', 'disabled');
+                  $('.simpanmenu').html('<i class="fa fa-spin fa-spinner"></i>');
+              },
+              complete: function(){
+                  $('.simpanmenu').removeAttr('disabled');
+                  $('.simpanmenu').html('Simpan');
+              },
+            success: function (response) {
+              console.log(response);
+              if(response.error) {
+                if(response.message.spjpesawat_jenis){
+                        $('#spjpesawat_jenis').addClass('is-invalid');
+                        $('.errorspjpesawat_jenis').html(response.message.spjpesawat_jenis);
+                    } else {
+                        $('#spjpesawat_jenis').removeClass('is-invalid');
+                        $('.errorspjpesawat_jenis').html('');
+                }
+                if(response.message.menu_icon){
+                        $('#menu_icon').addClass('is-invalid');
+                        $('.errormenu_icon').html(response.message.menu_icon);
+                    } else {
+                        $('#menu_icon').removeClass('is-invalid');
+                        $('.errormenu_icon').html('');
+                }
+                if(response.message.menu_link){
+                        $('#menu_link').addClass('is-invalid');
+                        $('.errormenu_link').html(response.message.menu_link);
+                    } else {
+                        $('#menu_link').removeClass('is-invalid');
+                        $('.errormenu_link').html('');
+                }
+                
+              } else {
+                console.log(response);
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: response.message,
+                  showConfirmButton: false,
+                  timer: 2000
+                }).then(function(){
+                  $('#pesawatspj').hide('2000');
+                  location.reload();
+
+                });
+              }
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika terjadi
+                console.error();
+            }
+          });
+        });
+        $('.batalpesawat').on('click', function () {
+          location.reload();
+        });
+      });
+
+
+    </script>
+  <!-- End Script Edit dan SImpan SPJ Tiket Pesawat -->
+
 <?= $this->endSection() ?>

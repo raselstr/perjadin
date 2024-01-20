@@ -55,7 +55,27 @@ class Menu extends ResourcePresenter
      */
     public function create()
     {
-        //
+        if($this->request->isAJAX()){
+            $model = new MenusModel();
+            $data = $this->request->getPost();
+            
+            $save = $model->save($data);
+            if($save){
+                $ket = [
+                        'error' => false,
+                        'message' => 'Data Berhasil',
+                    ];
+                return $this->response->setJSON($ket);
+            } else {
+                $validationerror = [
+                    'error'     => true,
+                    'message'   => $model->errors(),
+                ];
+                return $this->response->setJSON($validationerror);
+            };
+        } else {
+            '<p> Anda tidak berhak mengisi ini</p>';
+        }
     }
 
     /**
@@ -67,7 +87,9 @@ class Menu extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $model = new MenusModel();
+        $data = $model->find($id);
+        return $this->response->setJSON($data);
     }
 
     /**
@@ -92,7 +114,10 @@ class Menu extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        $model = new MenusModel();
+        $model->delete($id);
+        
+        return redirect()->back();
     }
 
     /**
