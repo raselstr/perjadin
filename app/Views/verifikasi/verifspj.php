@@ -351,7 +351,7 @@
                     <div class="row">
                       <input type="text" class="form-control" id="spjpes_id" name="spjhotel_id" hidden>
                       <div class="col-6 form-check">
-                        <input class="form-check-input" type="radio" name="spjhotel_verif" value="1" id="cek1">
+                        <input class="form-check-input" type="radio" name="spjhotel_verif" value="1" id="cek1" checked>
                         <label class="form-check-label">Disetujui</label>
                       </div>
                       <div class="col-6 form-check">
@@ -387,7 +387,7 @@
                     <div class="row">
                       <input type="text" class="form-control" id="spjtaksi_id" name="spjtaksi_id" hidden>
                       <div class="col-6 form-check">
-                        <input class="form-check-input" type="radio" name="spjtaksi_verif" value="1" id="cek1">
+                        <input class="form-check-input" type="radio" name="spjtaksi_verif" value="1" id="cek1" checked>
                         <label class="form-check-label">Disetujui</label>
                       </div>
                       <div class="col-6 form-check">
@@ -423,7 +423,7 @@
                     <div class="row">
                       <input type="text" class="form-control" id="spjpesawat_id" name="spjpesawat_id" hidden>
                       <div class="col-6 form-check">
-                        <input class="form-check-input" type="radio" name="spjpesawat_verif" value="1" id="cek1">
+                        <input class="form-check-input" type="radio" name="spjpesawat_verif" value="1" id="cek1" checked>
                         <label class="form-check-label">Disetujui</label>
                       </div>
                       <div class="col-6 form-check">

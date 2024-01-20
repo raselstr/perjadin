@@ -59,7 +59,7 @@
           </div>
           <div class="card-body">
             <div class="card-body">
-              <table id="myTable1" class="table table-bordered table-striped">
+              <table id="myTable1" class="table table-bordered table-striped table-sm">
                 <thead>
                   <tr>
                     <th class="align-middle text-center">No</th>
