@@ -66,3 +66,6 @@ $routes->presenter('rampung');
 
 $routes->post('menu/updatetoggle','Menu::updatetoggle');
 $routes->presenter('menu');
+
+$routes->post('menusub/updatetoggle','Menusub::updatetoggle');
+$routes->presenter('menusub');

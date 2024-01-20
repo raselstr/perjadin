@@ -3,9 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\MenusModel;
+use App\Models\SubmenusModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
-class Menu extends ResourcePresenter
+class Menusub extends ResourcePresenter
 {
     /**
      * Present a view of resource objects
@@ -14,15 +15,17 @@ class Menu extends ResourcePresenter
      */
     public function index()
     {
-        $model = new MenusModel();
+        $model = new SubmenusModel();
+        $menu = new MenusModel();
         $data = [
-            'title' => 'Menu',
+            'title' => 'Sub Menu',
             'subtitle' => 'Home',
-            'menu'  => $model->findAll(),
+            'submenu'  => $model->kelompokmenu(),
+            'menu'     => $menu->findall(),
             // 'tes'  => $model->menuactive('2'),
         ];
         // dd($data);
-        return view('menu/index', $data);
+        return view('menusub/index', $data);
 
     }
 
@@ -57,7 +60,7 @@ class Menu extends ResourcePresenter
     public function create()
     {
         if($this->request->isAJAX()){
-            $model = new MenusModel();
+            $model = new SubmenusModel();
             $data = $this->request->getPost();
             
             $save = $model->save($data);
@@ -88,7 +91,7 @@ class Menu extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $model = new MenusModel();
+        $model = new SubmenusModel();
         $data = $model->find($id);
         return $this->response->setJSON($data);
     }
@@ -135,19 +138,20 @@ class Menu extends ResourcePresenter
 
     public function updatetoggle()
     {
-        $itemModel = new MenusModel();
-        $menu_id = $this->request->getPost('menu_id');
-        $aktif = $itemModel->menuactive($menu_id);
+        $itemModel = new SubmenusModel();
+        $submenu_id = $this->request->getPost('submenu_id');
+        $aktif = $itemModel->menuactive($submenu_id);
+
         
-        $status = $aktif[0]['menu_active'];
+        $status = $aktif[0]['submenu_active'];
         // dd($status);
 
         // if (!empty($itemIds)) {
         if($status == '1'){
-            // $itemModel->where('menu_id',$itemIds)->set('menu_active',0)->update($itemIds);
-            $itemModel->where('menu_id', $menu_id)->set(['menu_active' => 0])->update();
+            // $itemModel->where('submenu_id',$itemIds)->set('menu_active',0)->update($itemIds);
+            $itemModel->where('submenu_id', $submenu_id)->set(['submenu_active' => 0])->update();
         } else {
-            $itemModel->where('menu_id', $menu_id)->set(['menu_active' => 1])->update();
+            $itemModel->where('submenu_id', $submenu_id)->set(['submenu_active' => 1])->update();
         }
     }
 
