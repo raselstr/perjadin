@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Database\Migrations\Submenus;
 use App\Models\MenusModel;
 use App\Models\SubmenusModel;
 use CodeIgniter\RESTful\ResourcePresenter;
@@ -118,7 +119,7 @@ class Menusub extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        $model = new MenusModel();
+        $model = new SubmenusModel();
         $model->delete($id);
         
         return redirect()->back();
