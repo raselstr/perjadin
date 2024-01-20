@@ -13,7 +13,7 @@ class MenusModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['menu_nama','menu_aktif','menu_icon','menu_link','role_id'];
+    protected $allowedFields    = ['menu_nama','menu_icon','menu_link','menu_active','role_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,17 @@ class MenusModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    function menuactive($id = null)
+    {
+        $builder = $this->db->table('menus as a');
+        $builder->select('a.menu_active');
+        $builder->where('a.menu_id', $id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
+
+
 }

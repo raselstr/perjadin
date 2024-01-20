@@ -10,6 +10,9 @@
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
+  <!-- Bootstrap Switch Button -->
+  <link rel="stylesheet" href="plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch-button.min.css">
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -29,6 +32,9 @@
 
   <!-- SweetAlert2 -->
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+
+  <!-- Bootstrap Switch Button -->
+  <script src="plugins/bootstrap-switch/js/bootstrap-switch-button.min.js"></script>
 
   
 <?= $this->endSection(); ?>
@@ -82,7 +88,9 @@
                       <td><?= $value->menu_icon; ?></td>
                       <td class="align-middle text-center"><i class="<?= $value->menu_icon; ?>"></i></td>
                       <td><?= $value->menu_link; ?></td>
-                      <td class="align-middle text-center"><?= $value->menu_active; ?></td>
+                      <td class="align-middle text-center">
+                        <input type="checkbox" name="menu_active" value="<?= $value->menu_id; ?>" class="status-checkbox" <?= $value->menu_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
+                      </td>
                     </tr>
                     <?php endforeach ?>
                   </tbody>
@@ -266,4 +274,62 @@
     </script>
   <!-- End Script Edit dan SImpan SPJ Tiket Pesawat -->
 
+  <!-- Togle Aktiv -->
+    <script>
+      $(document).ready(function () {
+        $('input[name="menu_active"]').on('change', function () {
+            var checkboxValue = $(this).val();
+            var isChecked = $(this).is(':checked');
+            
+            if (isChecked) {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('menu/updatetoggle'); ?>",
+                  data: {menu_id:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil...',
+                      text: 'Menu Aktif',
+                    }).then(function(){
+                      location.reload();
+                    });
+                    // location.reload();
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            } else {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('menu/updatetoggle'); ?>",
+                  data: {menu_id:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil...',
+                      text: 'Menu Tidak Aktif',
+                    }).then(function(){
+                      location.reload();
+                    });
+                    // location.reload();
+                    // alert('Status item berhasil diubah');
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            }
+        });
+      });
+    </script>
+  <!--  -->
 <?= $this->endSection() ?>

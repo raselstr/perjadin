@@ -80,6 +80,7 @@ class PelaksanaModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+    
     function pelaksanastatus($id=null)
     {
         $builder = $this->db->table('pelaksanas');

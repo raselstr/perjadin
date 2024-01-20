@@ -64,4 +64,5 @@ $routes->get('rampung/form/(:num)','Rampung::form/$1');
 $routes->presenter('rampung');
 
 
+$routes->post('menu/updatetoggle','Menu::updatetoggle');
 $routes->presenter('menu');

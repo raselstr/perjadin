@@ -231,62 +231,57 @@
     
 
 <?= $this->section('script'); ?>
-<script>
+  <script>
     $(document).ready(function () {
-        $('input[name="pelaksana_id"]').on('change', function () {
-            var checkboxValue = $(this).val();
-            var isChecked = $(this).is(':checked');
-            
-            if (isChecked) {
-                console.log(checkboxValue);
-                $.ajax({
-                  type: "POST",
-                  url: "<?= site_url('pelaksana/updatetoggle'); ?>",
-                  data: {item_ids:checkboxValue},
-                  // dataType: "dataType",
-                  success: function (response) {
-                    
-                    Swal.fire({
-                      icon: 'success',
-                      title: 'Berhasil...',
-                      text: 'Pegawai ini sebagai Utama yang ditugaskan dalam Perjalanan Dinas',
-                    });
-                    // location.reload();
-                  },
-                  error: function (error) {
-                      // Handle error, if any
-                      console . error(error);
-                  }
-                });
-            } else {
-                console.log(checkboxValue);
-                $.ajax({
-                  type: "POST",
-                  url: "<?= site_url('pelaksana/updatetoggle'); ?>",
-                  data: {item_ids:checkboxValue},
-                  // dataType: "dataType",
-                  success: function (response) {
-                    Swal.fire({
-                      icon: 'success',
-                      title: 'Berhasil...',
-                      text: 'Pegawai ini sebagai Pengikut yang ditugaskan dalam Perjalanan Dinas',
-                    });
-                    // location.reload();
-                    // alert('Status item berhasil diubah');
-                  },
-                  error: function (error) {
-                      // Handle error, if any
-                      console . error(error);
-                  }
-                });
-            }
-        });
+      $('input[name="pelaksana_id"]').on('change', function () {
+          var checkboxValue = $(this).val();
+          var isChecked = $(this).is(':checked');
+          
+          if (isChecked) {
+              console.log(checkboxValue);
+              $.ajax({
+                type: "POST",
+                url: "<?= site_url('pelaksana/updatetoggle'); ?>",
+                data: {item_ids:checkboxValue},
+                // dataType: "dataType",
+                success: function (response) {
+                  
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil...',
+                    text: 'Pegawai ini sebagai Utama yang ditugaskan dalam Perjalanan Dinas',
+                  });
+                  // location.reload();
+                },
+                error: function (error) {
+                    // Handle error, if any
+                    console . error(error);
+                }
+              });
+          } else {
+              console.log(checkboxValue);
+              $.ajax({
+                type: "POST",
+                url: "<?= site_url('pelaksana/updatetoggle'); ?>",
+                data: {item_ids:checkboxValue},
+                // dataType: "dataType",
+                success: function (response) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil...',
+                    text: 'Pegawai ini sebagai Pengikut yang ditugaskan dalam Perjalanan Dinas',
+                  });
+                  // location.reload();
+                  // alert('Status item berhasil diubah');
+                },
+                error: function (error) {
+                    // Handle error, if any
+                    console . error(error);
+                }
+              });
+          }
+      });
     });
-
-    // $(selector).change(function (e) { 
-    //   e.preventDefault();
-      
-    // });
-</script>
+  </script>
 
 <?= $this->endSection(); ?>

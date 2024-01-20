@@ -19,6 +19,7 @@ class Menu extends ResourcePresenter
             'title' => 'Menu',
             'subtitle' => 'Home',
             'menu'  => $model->findAll(),
+            // 'tes'  => $model->menuactive('2'),
         ];
         // dd($data);
         return view('menu/index', $data);
@@ -131,4 +132,26 @@ class Menu extends ResourcePresenter
     {
         //
     }
+
+    public function updatetoggle()
+    {
+        $itemModel = new MenusModel();
+        $menu_id = $this->request->getPost('menu_id');
+        log_message('error', 'Menu ID: ' . $menu_id);
+        $aktif = $itemModel->menuactive($menu_id);
+        log_message('error', 'Kueri SQL: ' . $itemModel->getLastQuery());
+
+        
+        $status = $aktif[0]['menu_active'];
+        // dd($status);
+
+        // if (!empty($itemIds)) {
+        if($status == '1'){
+            // $itemModel->where('menu_id',$itemIds)->set('menu_active',0)->update($itemIds);
+            $itemModel->where('menu_id', $menu_id)->set(['menu_active' => 0])->update();
+        } else {
+            $itemModel->where('menu_id', $menu_id)->set(['menu_active' => 1])->update();
+        }
+    }
+
 }
