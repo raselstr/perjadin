@@ -64,16 +64,16 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="tabelspt" class="table table-bordered table-striped">
+                <table id="tabelspt" class="table table-bordered table-sm">
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
+                      <th rowspan="2" class="align-middle text-center">Status</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="4" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
                       <th rowspan="2" class="align-middle text-center">No. SPT <br> SPD</th>
                       <th rowspan="2" class="align-middle text-center">Tanggal</th>
-                      <th rowspan="2" class="align-middle text-center">Status</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Uraian</th>
@@ -88,6 +88,13 @@
                       foreach ($spt as $key => $value) { ?>
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
+                          <td class="align-middle text-center">
+                            <?php if ($value->spt_verif == '1') : ?>
+                              <button type="button" class="btn btn-block btn-outline-success btn-sm" disabled>Disetujui</button>
+                            <?php else : ?>
+                              <button type="button" class="btn btn-block btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Belum Disetujui</button>
+                            <?php endif ?>
+                          </td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_mulai)) ?></td>
@@ -96,13 +103,6 @@
                           <td class="align-middle"><?= $value->spt_transport ?></td>
                           <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?></td>
                           <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
-                          <td class="align-middle text-center">
-                            <?php if ($value->spt_verif == '1') : ?>
-                              <button type="button" class="btn btn-block btn-outline-success" disabled>Disetujui</button>
-                            <?php else : ?>
-                              <button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Belum Disetujui</button>
-                            <?php endif ?>
-                          </td>
                         </tr>
                       <?php } ?>
                   </tbody>

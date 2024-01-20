@@ -108,7 +108,7 @@
                         <div class="col-6">
                           <!-- <button type="submit" class="btn btn-primary float-right">Simpan</button> -->
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                            Tambah Pegawai pelaksana Perjalanan Dinas
+                            <i class="nav-icon fas fa-users"> </i> Tambah Pegawai pelaksana Perjalanan Dinas
                           </button>
                         </div>
                         <div class="col-6 float-right">

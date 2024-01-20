@@ -62,3 +62,6 @@ $routes->presenter('verifikasi');
 
 $routes->get('rampung/form/(:num)','Rampung::form/$1');
 $routes->presenter('rampung');
+
+
+$routes->presenter('menu');

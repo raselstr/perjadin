@@ -30,7 +30,7 @@ class Menus extends Migration
             ],
             'menu_active' => [
                 'type' => 'INT',
-                'default' => 0,
+                'default' => 1,
             ],
             'role_id' => [
                 'type' => 'INT',

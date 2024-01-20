@@ -67,16 +67,16 @@
 
               <div class="card-body">
                 <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-sm">
                   <thead>
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
+                      <th rowspan="2" class="align-middle text-center">Aksi</th>
+                      <th rowspan="2" class="align-middle text-center">Pelaksana</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Nomor SPT, <br>SPD<br>Tanggal</th>
                       <th rowspan="2" class="align-middle text-center">Tanggal dibuat</th>
-                      <th rowspan="2" class="align-middle text-center">Pelaksana</th>
-                      <th rowspan="2" class="align-middle text-center">aksi</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Uraian Perjalanan</th>
@@ -90,23 +90,24 @@
                       foreach ($spt as $key => $value) { ?>
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
+                          <?php if($value->spt_verif == 0) : ?>
+                            <td class="align-middle text-center">
+                              <a href="<?= site_url('spt/edit/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
+                              <a href="<?= site_url('spt/remove/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                            <td class="align-middle text-center">
+                                <a href="<?= site_url('spt/pelaksana/'.$value->spt_id); ?>" class="btn btn-sm btn-info"><i class="nav-icon fas fa-users"> </i> </a>
+                            </td>
+                            <?php else : ?>
+                            <td class="align-middle text-center">Disetujui</td>
+                            <td class="align-middle text-center">Disetujui</td>
+                          <?php endif ?>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
                           <td class="align-middle text-center"><?= date('d F Y',strtotime($value->updated_at)) ?></td>
-                          <?php if($value->spt_verif == 0) : ?>
-                            <td class="align-middle text-center">
-                                <a href="<?= site_url('spt/pelaksana/'.$value->spt_id); ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a></td>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('spt/edit/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                              <a href="<?= site_url('spt/remove/'.$value->spt_id); ?>" class="btn btn-icon btn-sm btn-danger tombol-hapus"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                            <?php else : ?>
-                            <td class="align-middle text-center">Disetujui</td>
-                            <td class="align-middle text-center">Disetujui</td>
-                          <?php endif ?>
                         </tr>
                       <?php } ?>
                   </tbody>
