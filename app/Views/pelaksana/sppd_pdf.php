@@ -224,12 +224,12 @@ table.tabel3.author {
     <tr>
       <td class="isi no">4.</td>
       <td colspan="2" class="isi">Maksud Perjalanan Dinas</td>
-      <td colspan="6" class="isi"><?= $spt[0]->spt_uraian; ?> ke <?= $spt[0]->spt_tempat; ?></td>
+      <td colspan="6" class="isi"><?= $spt['data'][0]->spt_uraian; ?> ke <?= $spt['data'][0]->spt_tempat; ?></td>
     </tr>
     <tr>
       <td  class="isi no">5.</td>
       <td  class="isi" colspan="2">Alat Angkut yang dipergunakan</td>
-      <td  class="isi" colspan="6"><?= $spt[0]->spt_transport; ?></td>
+      <td  class="isi" colspan="6"><?= $spt['data'][0]->spt_transport; ?></td>
     </tr>
     <tr>
       <td rowspan="2" class="isi no">6.</td>
@@ -242,26 +242,26 @@ table.tabel3.author {
         <td class="bawah">b.</td>
         <td class="bawah">Tempat Tujuan</td>
         <td class="bawah kiri">b.</td>
-        <td colspan="5" class="bawah"><?= $spt[0]->lokasiperjadin_nama ?></td>
+        <td colspan="5" class="bawah"><?= $spt['data'][0]->lokasiperjadin_nama ?></td>
       </tr>
     <tr>
       <td  rowspan="3"  class="isi no">7.</td>
         <td>a.</td>
         <td>Lamanya Perjalanan Dinas</td>
         <td class="kiri">a.</td>
-        <td  colspan="5" ><?= $spt[0]->spt_lama ?> (<?= $terbilang ?>) Hari</td>
+        <td  colspan="5" ><?= $spt['data'][0]->spt_lama ?> (<?= $terbilang ?>) Hari</td>
       </tr>
       <tr>
         <td>b.</td>
         <td>Tanggal Berangkat</td>
         <td class="kiri">b.</td>
-        <td colspan="5"><?= date('d F Y',strtotime($spt[0]->spt_mulai)) ?></td>
+        <td colspan="5"><?= date('d F Y',strtotime($spt['data'][0]->spt_mulai)) ?></td>
       </tr>
       <tr>
         <td>c.</td>
         <td>Tanggal harus kembali/tiba diTempat baru*)</td>
         <td class="kiri">c.</td>
-        <td colspan="5"><?= date('d F Y',strtotime($spt[0]->spt_berakhir)) ?></td>
+        <td colspan="5"><?= date('d F Y',strtotime($spt['data'][0]->spt_berakhir)) ?></td>
       </tr>
     <tr>
       <?php if($jlhpengikut == 0){$row = 2;}else{$row = 2 + $jlhpengikut;} ?>
@@ -328,20 +328,20 @@ table.tabel3.author {
       <td id="ttd">Pada Tanggal</td>
       <td id="ttd">:</td>
       <td id="ttd">
-        <?php if(!empty($spt[0]->spt_tgl)) : ?>
-          <?= date('d F Y',strtotime($spt[0]->spt_tgl)); ?>
+        <?php if(!empty($spt['data'][0]->spt_tgl)) : ?>
+          <?= date('d F Y',strtotime($spt['data'][0]->spt_tgl)); ?>
           <?php endif;?>
       </td>
     </tr>
     <tr><td><br></td></tr>
-    <?php if($spt[0]->pejabat_id <> "Kaban") { ?>
+    <?php if($spt['data'][0]->pejabat_id <> "Kaban") { ?>
       <tr>
         <td class="ttd ttdan">An. </td>
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
       </tr>
       <tr>
       <td id="ttdan" ></td>
-        <td colspan="3" id="ttd" ><?= $spt[0]->pejabat_namajabatan; ?></td>
+        <td colspan="3" id="ttd" ><?= $spt['data'][0]->pejabat_namajabatan; ?></td>
       </tr>
     <?php } else { ?>
       <tr>
@@ -358,15 +358,15 @@ table.tabel3.author {
     <tr><td><br></td></tr>
     <tr>
       <td id="ttd"></td>
-      <td colspan="3" id="ttd"><b><?= $spt[0]->pejabat_nama; ?></b></td>
+      <td colspan="3" id="ttd"><b><?= $spt['data'][0]->pejabat_nama; ?></b></td>
     </tr>
     <tr>
       <td id="ttd"></td>
-      <td colspan="3" id="ttd" ><?= $spt[0]->pejabat_pangkat; ?></td>
+      <td colspan="3" id="ttd" ><?= $spt['data'][0]->pejabat_pangkat; ?></td>
     </tr>
     <tr>
       <td id="ttd"></td>
-      <td colspan="3" id="ttd" >NIP.<?= $spt[0]->pejabat_nip; ?></td>
+      <td colspan="3" id="ttd" >NIP.<?= $spt['data'][0]->pejabat_nip; ?></td>
     </tr>
   </table>
 </div>

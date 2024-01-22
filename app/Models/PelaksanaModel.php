@@ -76,7 +76,11 @@ class PelaksanaModel extends Model
 
         $builder->orderBy('pangkats.pangkat_id', 'DESC');
         $query = $builder->get();
-        return $query->getResult();
+        $result = [
+            'data' => $query->getResult(),
+            'jumlah' => $query->getNumRows(),
+        ];
+        return $result;
     }
     
     function pelaksanastatus($id=null)

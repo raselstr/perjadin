@@ -235,7 +235,7 @@ class Pelaksana extends ResourcePresenter
             'utama'     => $namautama,
             'pengikut'  => $namapengikut,
             'jlhpengikut'   => $cek,
-            'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt[0]->spt_lama))
+            'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt['data'][0]->spt_lama))
         ];
         // dd($data);
         // return view('pelaksana/sppd_pdf', $data);
