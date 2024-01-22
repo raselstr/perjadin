@@ -4,6 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 use CodeIgniter\Database\RawSql;
+use ReturnTypeWillChange;
 
 class RampungModel extends Model
 {
@@ -133,6 +134,62 @@ class RampungModel extends Model
         $query = $builder->get();
 
         return $query->getResult();
+    }
+
+
+    function rampungperpelaksana($idpelaksana)
+    {
+        $sqhotel = $this->db->table('spjhotels as a')->select('a.spjhotel_id, sum(a.spjhotel_hargatotal) As Hotel ');
+                    $sqhotel->where('a.spjhotel_pelaksanaid',$idpelaksana);
+                    $sqhotel->where('a.spjhotel_verif','1');
+        $sqtaksi = $this->db->table('spjtaksis as b')->select('b. spjtaksi_id, sum(b.spjtaksi_harga) as Taksi' );
+                    $sqtaksi->where('b.spjtaksi_pelaksanaid',$idpelaksana);
+                    $sqtaksi->where('b.spjtaksi_verif','1');
+        $sqpesawat = $this->db->table('spjpesawats as c')->select('c. spjpesawat_id, sum(c.spjpesawat_harga) as Pesawat');
+                    $sqpesawat->where('c.spjpesawat_pelaksanaid',$idpelaksana);
+                    $sqpesawat->where('c.spjpesawat_verif','1');
+               
+       
+        $sqhotel->union($sqtaksi, 'Taksi');
+        $sqhotel->union($sqpesawat, 'Pesawat');
+        
+
+        $query = $sqhotel->get();
+
+       $data = $query->getResult();
+
+       $totals = [
+            'hotel' => 0,
+            'taksi' => 0,
+            'pesawat' => 0,
+        ];
+
+        foreach ($data as $row) {
+            $totals['hotel'] += $row->Hotel;
+            // $totals['taksi'] += $row->Taksi;
+            // $totals['pesawat'] += $row->Pesawat;
+        }
+
+        // Mengembalikan hasil bersama dengan total nilai untuk masing-masing jenis
+        return [
+            'result' => $data,
+            'totals' => $totals,
+        ];
+
+
+    //    $array = [
+    //     'hotel' => $data[0],
+    //     'taksi' => $data[1],
+    //     'pesawat' => $data[2],
+    //    ];
+    //    $tothotel = $tottaksi = $totpesawat = 0;
+
+    // //    foreach ($array as $key => $value) {
+    // //     $total = $value->hotel;
+    // //    }
+
+    //    return $array;
+
     }
 
 

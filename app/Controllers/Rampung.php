@@ -35,7 +35,7 @@ class Rampung extends ResourcePresenter
         $model = new RampungModel();
         $qrall = $model->rampungall($id);
         $qrutama = $model->rampungutama($id);
-        // $qrperbup = $model->rampungperbup($id);
+        $total = $model->rampungperpelaksana(5);
 
 
         $data = [
@@ -43,9 +43,9 @@ class Rampung extends ResourcePresenter
             'subtitle' => 'Home',
             'data' => $qrutama,
             'all' => $qrall,
-            // 'perbup' => $qrperbup,
+            'total' => $total,
         ];
-        // dd($data);
+        dd($data);
         return view('rampung/pembayaran', $data);
 
     }
