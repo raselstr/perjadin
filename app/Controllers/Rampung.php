@@ -35,14 +35,15 @@ class Rampung extends ResourcePresenter
         $model = new RampungModel();
         $qrall = $model->rampungall($id);
         $qrutama = $model->rampungutama($id);
-        // $qrhotel = $model->rampunghotel(5);
+        // $qrperbup = $model->rampungperbup($id);
+
 
         $data = [
             'title' => 'Pembayaran Rampung Perjalanan Dinas',
             'subtitle' => 'Home',
             'data' => $qrutama,
             'all' => $qrall,
-            // 'hotel' => $qrhotel,
+            // 'perbup' => $qrperbup,
         ];
         // dd($data);
         return view('rampung/pembayaran', $data);

@@ -121,15 +121,42 @@
                       <tbody>
                         <?php $no = 1; 
                           foreach ($all as $key => $value) : ?>
-                            <?php $pelaksana_id = $value->pelaksana_id; ?>
+                            <?php 
+                              $pelaksana_id = $value->pelaksana_id; 
+                              $sptid = $value->spt_id;
+                            ?>
                         <tr>
-                          <td rowspan="6"><?= $no++; ?></td>
-                          <td style="width:23%" rowspan="6"><i><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></i></td>
-                          <td colspan="2">Uang Harian</td>
-                          <td style="width:20%"></td>
-                          <td></td>
-                          <td class="align-middle text-right">99.000.000,00</td>
-                          <td class="align-top text-right" rowspan="6"><strong>99.000.000,00</strong></td>
+                          <td rowspan="8"><?= $no++; ?></td>
+                          <td style="width:23%" rowspan="8"><i><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></i></td>
+                          <td colspan="2" style="width:20%">Uang Harian</td>
+
+                          <td style="width:20%" class="align-middle text-right" colspan="2">
+                            <?php $qrperbup = $model->rampungperbup($sptid, $pelaksana_id);?>
+
+                            <?php foreach ($qrperbup as $key => $value): ?>
+                            <?php if($value->spt_acara == 1 ) {
+                                  $harian = $value->perbup_uhdiklat ;
+                                } elseif ($value->spt_acara == 2){
+                                  $harian = $value->perbup_uhrapat_fullboad ;
+                                } elseif ($value->spt_acara == 3){
+                                  $harian = $value->perbup_uhrapat_fullday ;
+                                } elseif ($value->spt_acara == 4){
+                                  $harian = $value->perbup_uhrapat_residencedlmkota ;
+                                } else {
+                                  $harian = $value->perbup_uh ;
+                              }?>
+                              <i><?=$value->spt_lama?> hari x Rp. <?= number_format($harian,0,',','.'); ?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php 
+                              $total = 0; 
+                              $subtotal = intval($value->spt_lama) * intval($harian);
+                              $total = $subtotal; ?>
+                            
+                            <?= number_format($total,2,',','.'); ?>
+                          </td>
+                          <td class="align-top text-right" rowspan="8"><strong>99.000.000,00</strong></td>
                         </tr>
                         <?php $qrpesawat = $model->rampungpesawat($pelaksana_id);?>
                         <tr>
@@ -138,17 +165,17 @@
                         <tr>
                           <td style="width:2%"></td>
                           <td>Pesawat</td>
-                          <td>
+                          <td style="width:20%">
                             <?php foreach ($qrpesawat as $key => $value): ?>
                               <i><?=$value->spjpesawat_jenis?></i><br>
                             <?php endforeach?>
                           </td>
-                          <td class="align-middle text-right">
+                          <td class="align-middle text-right" style="width:15%">
                             <?php foreach ($qrpesawat as $key => $value): ?>
                               <i><?=number_format($value->spjpesawat_harga,0,',','.')?></i><br>
                             <?php endforeach?>
                           </td>
-                          <td class="align-top text-right">
+                          <td class="align-top text-right" style="width:15%">
                             <?php $total = 0; 
                               foreach ($qrpesawat as $key => $value) {
                               $subtotal = intval($value->spjpesawat_harga);
@@ -207,9 +234,42 @@
                           <td class="align-middle text-right">
                             <?php foreach ($qrhotel as $key => $value): ?>
                               <i>= &nbsp;&nbsp;&nbsp;<?= number_format(intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam),0,',','.') ?></i><br>
-                              <?php endforeach ?>
+                            <?php endforeach ?>
                           </td>
-                          <td></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">Uang Representasi</td>
+                          <td style="width:20%" class="align-middle text-right" colspan="2">
+                            <?php $qrperbup = $model->rampungperbup($sptid, $pelaksana_id);?>
+                            <?php foreach ($qrperbup as $key => $value): ?>
+                              <i><?=$value->spt_lama?> hari x Rp. <?= number_format($value->perbup_representasi,0,',','.'); ?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php 
+                              $total = 0; 
+                              $subtotal = intval($value->spt_lama) * intval($value->perbup_representasi);
+                              $total = $subtotal; ?>
+                            
+                            <?= number_format($total,2,',','.'); ?>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">Sewa Kendaraan / 8 jam</td>
+                          <td style="width:20%" class="align-middle text-right" colspan="2">
+                            <?php $qrperbup = $model->rampungperbup($sptid, $pelaksana_id);?>
+                            <?php foreach ($qrperbup as $key => $value): ?>
+                              <i><?=$value->spt_lama?> kali x Rp. <?= number_format($value->perbup_sewakendaraan,0,',','.'); ?></i><br>
+                            <?php endforeach?>
+                          </td>
+                          <td class="align-middle text-right">
+                            <?php 
+                              $total = 0; 
+                              $subtotal = intval($value->spt_lama) * intval($value->perbup_sewakendaraan);
+                              $total = $subtotal; ?>
+                            
+                            <?= number_format($total,2,',','.'); ?>
+                          </td>
                         </tr>
                         <tr>
                           <td></td>

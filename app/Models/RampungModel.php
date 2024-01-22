@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\Database\RawSql;
 
 class RampungModel extends Model
 {
@@ -103,23 +104,39 @@ class RampungModel extends Model
         return $result;
     }
 
-    function verifjadin($id)
+    function rampungperbup($id, $key)
     {
-        $builder = $this->db->table('laporjadins');
-        $builder->select('laporjadins.*, spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
-        $builder->join('spts', 'spts.spt_id = laporjadins.laporjadin_sptid', 'RIGHT');
-        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
-        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
-        $builder->where('spts.spt_verif', 1);
-        $builder->where('spts.spt_id', $id);
-        $builder->orderBy('spts.created_at', 'DESC');
+        $sql = 'd.perbup_tingkatid = c.pegawai_tingkat AND d.perbup_lokasiid = a.spt_tujuan ';
+        $builder = $this->db->table('spts as a');
+        $builder->select(
+            'a.spt_id, 
+            a.spt_tahun, 
+            a.spt_nomor, 
+            a.sppd_nomor, 
+            a.spt_lama, 
+            a.spt_tgl, 
+            a.spt_acara, 
+            c.pegawai_nama, 
+            c.pegawai_nip, 
+            c.pegawai_jabatan, 
+            b.pelaksana_id, 
+            d.*'
+        );
+        $builder->join('pelaksanas AS b', 'b.spt_id = a.spt_id');
+        $builder->join('pegawais AS c', 'c.pegawai_id = b.pegawai_id');
+        $builder->join('perbups AS d', new RawSql($sql));
+
+        $builder->where('a.spt_verif', 1);
+        $builder->where('a.spt_id', $id);
+        $builder->where('b.pelaksana_id', $key);
+        $builder->orderBy('a.created_at', 'DESC');
         $query = $builder->get();
 
         return $query->getResult();
     }
 
 
-   
+
 
 
 
