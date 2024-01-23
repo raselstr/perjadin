@@ -453,10 +453,10 @@ use SebastianBergmann\Invoker\Invoker;
                               </div>
                             </div>
                             <?php endforeach ?>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                              <button type="submit" class="btn bg-gradient-primary float-right">Validasi</button>
+                            <div class="row">
+                              <div class="col">
+                                <button type="submit" class="btn bg-gradient-primary float-right">Validasi</button>
+                              </div>
                             </div>
                           </div>
                       </form>
