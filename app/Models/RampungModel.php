@@ -105,6 +105,23 @@ class RampungModel extends Model
         return $result;
     }
 
+    function rampungharian($id)
+    {
+        $builder = $this->db->table('uangharians As a');
+        $builder->select('a.*');
+        $builder->join('pelaksanas As b', 'b.pelaksana_id = a.uangharian_idpelaksana', 'RIGHT');
+        $builder->join('spts As c', 'c.spt_id = b.spt_id');
+        $builder->join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
+        $builder->where('c.spt_verif', 1);
+        $builder->where('a.uangharian_idpelaksana', $id);
+        $builder->where('a.uangharian_verif', 1);
+
+        $query = $builder->get();
+        $result = $query->getResult();
+
+        return $result;
+    }
+
     function rampungperbup($id, $key)
     {
         $sql = 'd.perbup_tingkatid = c.pegawai_tingkat AND d.perbup_lokasiid = a.spt_tujuan ';
@@ -139,65 +156,69 @@ class RampungModel extends Model
 
     function rampungperpelaksana($idspt, $idpelaksana)
     {
-        $sqhotel = $this->db->table('spjhotels as e')->select('e.spjhotel_id, sum(e.spjhotel_hargatotal) As Hotel ');
-                    $sqhotel->where('e.spjhotel_pelaksanaid',$idpelaksana);
-                    $sqhotel->where('e.spjhotel_verif','1');
-        $sqtaksi = $this->db->table('spjtaksis as f')->select('f. spjtaksi_id, sum(f.spjtaksi_harga) as Taksi' );
-                    $sqtaksi->where('f.spjtaksi_pelaksanaid',$idpelaksana);
-                    $sqtaksi->where('f.spjtaksi_verif','1');
-        $sqpesawat = $this->db->table('spjpesawats as g')->select('g. spjpesawat_id, sum(g.spjpesawat_harga) as Pesawat');
-                    $sqpesawat->where('g.spjpesawat_pelaksanaid',$idpelaksana);
-                    $sqpesawat->where('g.spjpesawat_verif','1');
-       $sql = 'd.perbup_tingkatid = c.pegawai_tingkat AND d.perbup_lokasiid = a.spt_tujuan ';
-        $builder = $this->db->table('spts as a');
-        $builder->select('
-            SUM(CASE WHEN a.spt_acara = 1 THEN d.perbup_uhdiklat * a.spt_lama
-                 WHEN a.spt_acara = 2 THEN d.perbup_uhrapat_fullboad * a.spt_lama END) AS UangHarian
-        ');
-        $builder->join('pelaksanas AS b', 'b.spt_id = a.spt_id');
-        $builder->join('pegawais AS c', 'c.pegawai_id = b.pegawai_id');
-        $builder->join('perbups AS d', new RawSql($sql));
-
-        $builder->where('a.spt_verif', 1);
-        $builder->where('a.spt_id', $idspt);
-        $builder->where('b.pelaksana_id', $idpelaksana);
-               
+        $sqhotel = $this->db->table('spjhotels as e')
+                    ->select('a.spt_id, a.pelaksana_id, e.spjhotel_id, e.spjhotel_hargatotal ')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = e.spjhotel_pelaksanaid')
+                    ->where('a.spt_id',$idspt)
+                    ->where('e.spjhotel_verif','1');
+        $sqtaksi = $this->db->table('spjtaksis as f')
+                    ->select('a.spt_id, a.pelaksana_id, f.spjtaksi_id, f.spjtaksi_harga' )
+                    ->join('pelaksanas as a', 'a.pelaksana_id = f.spjtaksi_pelaksanaid')
+                    ->where('a.spt_id',$idspt)
+                    ->where('f.spjtaksi_verif','1');
+        $sqpesawat = $this->db->table('spjpesawats as g')
+                    ->select('a.spt_id, a.pelaksana_id, g.spjpesawat_id, g.spjpesawat_harga')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = g.spjpesawat_pelaksanaid')
+                    ->where('a.spt_id',$idspt)
+                    ->where('g.spjpesawat_verif','1');
+        $sqharian = $this->db->table('uangharians as h')
+                    ->select('a.spt_id, a.pelaksana_id, h.uangharian_id, h.uangharian_jumlah')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
+                    ->where('a.spt_id',$idspt)
+                    ->where('h.uangharian_verif','1');
+        $sqtrans = $this->db->table('uangharians as h')
+                    ->select('a.spt_id, a.pelaksana_id, h.uangharian_id, h.uangharian_jumlahbiayatransport')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
+                    ->where('a.spt_id',$idspt)
+                    ->where('h.uangharian_verif','1');
+        $sqrep = $this->db->table('uangharians as h')
+                    ->select('a.spt_id, a.pelaksana_id, h.uangharian_id, h.uangharian_jumlahrepresentasi')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
+                    ->where('a.spt_id',$idspt)
+                    ->where('h.uangharian_verif','1');
+        $sqsewa = $this->db->table('uangharians as h')
+                    ->select('a.spt_id, a.pelaksana_id, h.uangharian_id, h.uangharian_jumlahsewamobil')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
+                    ->where('a.spt_id',$idspt)
+                    ->where('h.uangharian_verif','1');
        
-        $sqhotel->union($sqtaksi, 'Taksi');
-        $sqhotel->union($sqpesawat, 'Pesawat');
-        $sqhotel->union($builder, 'harian');
+        $sqhotel->unionAll($sqtaksi, 'Taksi');
+        $sqhotel->unionAll($sqpesawat, 'Pesawat');
+        $sqhotel->unionAll($sqharian, 'harian');
+        $sqhotel->unionAll($sqtrans, 'transport');
+        $sqhotel->unionAll($sqrep, 'representasi');
+        $sqhotel->unionAll($sqsewa, 'sewa');
+
+        $builder = $this->db->newQuery()->fromSubquery($sqhotel, 'Rekap')
+                            ->groupStart()
+                                ->where('Rekap.pelaksana_id',$idpelaksana)
+                                ->selectSum('Rekap.spjhotel_hargatotal','subtotal')
+                                    // ->orGroupStart()
+                                    // ->where('Rekap.pelaksana_id',$idpelaksana)
+                                    // ->selectSum('Rekap.spjhotel_hargatotal','subtotal')
+                                    // ->groupEnd()
+                            ->groupEnd()
+                            ->get();
         
+        // $query = $sqhotel->get();
 
-        $query = $sqhotel->get();
+       $data = $builder->getResult();
 
-       $data = $query->getResult();
+       
+        return $data;
 
-       $totals = [
-            'hotel' => 0,
-            'taksi' => 0,
-            'pesawat' => 0,
-        ];
+       }
 
-        foreach ($data as $row) {
-            $totals['hotel'] += $row->Hotel;
-        }
-        return [
-            'result' => $data,
-            'totals' => $totals,
-        ];
-    }
-    //    $array = [
-    //     'hotel' => $data[0],
-    //     'taksi' => $data[1],
-    //     'pesawat' => $data[2],
-    //    ];
-    //    $tothotel = $tottaksi = $totpesawat = 0;
-
-    // //    foreach ($array as $key => $value) {
-    // //     $total = $value->hotel;
-    // //    }
-
-    //    return $array;
 
 
 

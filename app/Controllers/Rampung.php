@@ -16,7 +16,6 @@ class Rampung extends ResourcePresenter
      */
     public function index()
     {
-        
         $model = new RampungModel();
         $query = $model->rampungdataspt();
         $data = [
@@ -26,8 +25,6 @@ class Rampung extends ResourcePresenter
         ];
         // dd($data);
         return view('rampung/index', $data);
-
-
     }
 
     public function form($id=null)
@@ -35,19 +32,17 @@ class Rampung extends ResourcePresenter
         $model = new RampungModel();
         $qrall = $model->rampungall($id);
         $qrutama = $model->rampungutama($id);
-        $total = $model->rampungperbup(7,15);
-
+        // $harian = $model->rampungperpelaksana(1,6);
 
         $data = [
             'title' => 'Pembayaran Rampung Perjalanan Dinas',
             'subtitle' => 'Home',
             'data' => $qrutama,
             'all' => $qrall,
-            'total' => $total,
+            // 'harian' => $harian,
         ];
-        dd($data);
+        // dd($data);
         return view('rampung/pembayaran', $data);
-
     }
 
     /**
@@ -83,8 +78,6 @@ class Rampung extends ResourcePresenter
         $model = new VerifModel();
         $query = $model->verifdatasptid($id);
         $qrjadin = $model->verifjadin($id);
-
-
         $data = [
             'title' => 'Data Laporan Perjalanan Dinas',
             'subtitle' => 'Home',
