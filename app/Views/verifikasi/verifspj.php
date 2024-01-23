@@ -1,3 +1,9 @@
+<?php use App\Models\RampungModel;
+use SebastianBergmann\Invoker\Invoker;
+
+  $model = new RampungModel();
+  
+?>
 
 <?=$this->extend('layout/default');?>
 
@@ -126,6 +132,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Taksi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-one-harian-tab" data-toggle="pill" href="#custom-tabs-one-harian" role="tab" aria-controls="custom-tabs-one-harian" aria-selected="false">Uang Harian</a>
               </li>
             </ul>
             <div class="card-body">
@@ -325,6 +334,133 @@
                           <?php endforeach ?>
                       </tbody>
                   </table>
+                </div>
+                <div class="tab-pane fade" id="custom-tabs-one-harian" role="tabpanel" aria-labelledby="custom-tabs-one-harian-tab">
+                  
+                  <?php foreach ($data['data'] as $key => $value) : ?>
+                    <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->lokasiperjadin_id);?>
+                      <form action="<?=site_url('uangharian/create');?>" method="post" id="formharian">
+                        <?=csrf_field();?>
+                            <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
+                            <!-- <div class="form-group row"> -->
+                              <!-- <label class="col-sm-4 col-form-label" hidden >Id Uang Harian</label>
+                              <div class="col"> -->
+                                <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?= $uh[0]->uangharian_id ?>" hidden>
+                              <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="form-group row"> -->
+                              <!-- <label class="col-sm-4 col-form-label" hidden>Id Pelaksana</label> -->
+                              <!-- <div class="col"> -->
+                                <input type="text" class="form-control" id="uangharian_idpelaksana" name="uangharian_idpelaksana" value = <?= $value->pelaksana_id; ?> hidden>
+                              <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="form-group row"> -->
+                              <!-- <label class="col-sm-4 col-form-label" hidden >Id SPT</label hidden> -->
+                              <!-- <div class="col"> -->
+                                <input type="text" class="form-control" id="uangharian_sptid" name="uangharian_sptid" value = <?= $value->spt_id; ?> hidden>
+                              <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="form-group row"> -->
+                              <!-- <label class="col-sm-4 col-form-label" hidden>Id Tingkat SPPD</label> -->
+                              <!-- <div class="col"> -->
+                                <input type="text" class="form-control" id="uangharian_tingkatid" name="uangharian_tingkatid" value = <?= $value->pegawai_tingkat; ?> hidden>
+                                <input type="text" class="form-control" id="uangharian_verif" name="uangharian_verif" value = "1"  hidden>
+                              <!-- </div> -->
+                            <!-- </div> -->
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label" hidden>Id Lokasi</label>
+                              <div class="col">
+                                <input type="text" class="form-control" id="uangharian_lokasiid" name="uangharian_lokasiid" value = <?= $value->lokasiperjadin_id ?> hidden>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label" >Id Lama Perjalanan</label>
+                              <div class="col">
+                                <input type="text" class="form-control" id="uangharian_lama" name="uangharian_lama" value = <?= $value->spt_lama ?>  readonly>
+                              </div>
+                            </div>
+                            <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id);?>
+                            <?php foreach ($qrperbup as $key => $harian): ?>
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label">Uang Harian Perhari</label>
+                              <div class="col-sm-2">
+                                  <?php if($harian->spt_acara == 1 ) {
+                                        $harian = $harian->perbup_uhdiklat ;
+                                      } elseif ($harian->spt_acara == 2){
+                                        $harian = $harian->perbup_uhrapat_fullboad ;
+                                      } elseif ($harian->spt_acara == 3){
+                                        $harian = $harian->perbup_uhrapat_fullday ;
+                                      } elseif ($harian->spt_acara == 4){
+                                        $harian = $harian->perbup_uhrapat_residencedlmkota ;
+                                      } else {
+                                        $harian = $harian->perbup_uh ;
+                                  }?>
+
+                                <input type="text" class="form-control" id="uangharian_perhari" name="uangharian_perhari" value = <?= $harian ?> readonly>
+                              </div>
+                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" id="uangharian_jumlah" name="uangharian_jumlah" value = <?= intval($value->spt_lama)*intval($harian) ?>  readonly>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label" >Biaya Transport</label>
+                              <div class="col">
+                                <?php if($value->spt_jenis == 1 ) {
+                                  foreach ($qrperbup as $key => $transport) {
+                                    $transfort = $transport->perbup_taksi_transportdarat;
+                                    }
+                                  } else {
+                                    foreach ($qrperbup as $key => $transport) {
+                                    $transfort = 0;
+                                    }
+                                  }?>
+                                <input type="text" class="form-control" id="uangharian_biayatransport" name="uangharian_biayatransport" value = <?= $transfort ?> readonly>
+                              </div>
+                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?= intval($value->spt_lama)*intval($transfort) ?> readonly >
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label" >Uang Representasi</label>
+                              <div class="col">
+                                <?php
+                                  foreach ($qrperbup as $key => $representasi) {
+                                    $representasi = $representasi->perbup_representasi;
+                                    }                                 
+                                ?>
+                                <input type="text" class="form-control" id="uangharian_representasi" name="uangharian_representasi" value = <?= $representasi ?> readonly>
+                              </div>
+                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" id="uangharian_jumlahrepresentasi" name="uangharian_jumlahrepresentasi" value = <?= intval($value->spt_lama)*intval($representasi) ?> readonly  >
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label" >Sewa Mobil Per 8 Jam</label>
+                              <div class="col">
+                                <?php
+                                  foreach ($qrperbup as $key => $sewa) {
+                                    $sewa = $sewa->perbup_sewakendaraan;
+                                    }                                 
+                                ?>
+                                <input type="text" class="form-control" id="uangharian_sewamobil" name="uangharian_sewamobil" value = <?= $sewa ?> readonly>
+                              </div>
+                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?= intval($value->spt_lama)*intval($sewa) ?>  readonly>
+                              </div>
+                            </div>
+                            <?php endforeach ?>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <button type="submit" class="btn bg-gradient-primary float-right">Validasi</button>
+                            </div>
+                          </div>
+                      </form>
+                  <?php endforeach ?>
                 </div>
               </div>
             </div>
@@ -603,4 +739,6 @@
 
     </script>
   <!-- End Script Validasi Tiket taksi -->
+
+  
 <?=$this->endSection()?>

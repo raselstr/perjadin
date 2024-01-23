@@ -41,7 +41,7 @@ class VerifModel extends Model
     function verifdatapelaksana($id = null)
     {
         $builder = $this->db->table('pelaksanas');
-        $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_id, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('spts', 'spts.spt_id = pelaksanas.spt_id');
         $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');

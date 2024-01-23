@@ -1,5 +1,6 @@
 <?php use App\Models\RampungModel;
   $model = new RampungModel();
+  
 ?>
 
 <?= $this->extend('layout/default'); ?>
@@ -150,13 +151,13 @@
                           </td>
                           <td class="align-middle text-right">
                             <?php 
-                              $total = 0; 
+                              $total1 = 0; 
                               $subtotal = intval($value->spt_lama) * intval($harian);
-                              $total = $subtotal; ?>
+                              $total1 = $subtotal; ?>
                             
-                            <?= number_format($total,2,',','.'); ?>
+                            <?= number_format($total1,2,',','.'); ?>
                           </td>
-                          <td class="align-top text-right" rowspan="8"><strong>99.000.000,00</strong></td>
+                          <td class="align-top text-right" rowspan="8"><strong></strong></td>
                         </tr>
                         <?php $qrpesawat = $model->rampungpesawat($pelaksana_id);?>
                         <tr>
@@ -176,12 +177,12 @@
                             <?php endforeach?>
                           </td>
                           <td class="align-top text-right" style="width:15%">
-                            <?php $total = 0; 
+                            <?php $total2 = 0; 
                               foreach ($qrpesawat as $key => $value) {
                               $subtotal = intval($value->spjpesawat_harga);
-                              $total += $subtotal;
+                              $total2 += $subtotal;
                             } ?>
-                            <?= number_format($total,2,',','.'); ?>
+                            <?= number_format($total2,2,',','.'); ?>
                           </td>
                         </tr>
                         <?php $qrtaksi = $model->rampungtaksi($pelaksana_id);?>
@@ -199,24 +200,24 @@
                             <?php endforeach?>
                           </td>
                           <td class="align-middle text-right">
-                            <?php $total = 0; 
+                            <?php $total3 = 0; 
                               foreach ($qrtaksi as $key => $value) {
                               $subtotal = intval($value->spjtaksi_harga);
-                              $total += $subtotal;
+                              $total3 += $subtotal;
                             } ?>
-                            <?= number_format($total,2,',','.'); ?>
+                            <?= number_format($total3,2,',','.'); ?>
                           </td>
                         </tr>
                         <?php $qrhotel = $model->rampunghotel($pelaksana_id);?>
                         <tr>
                           <td colspan="4">Biaya Penginapan</td>
                           <td class="align-middle text-right">
-                            <?php $total = 0; 
+                            <?php $total4 = 0; 
                               foreach ($qrhotel as $key => $value) {
                               $subtotal = intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam);
-                              $total += $subtotal;
+                              $total4 += $subtotal;
                             } ?>
-                            <?= number_format($total,2,',','.'); ?>
+                            <?= number_format($total4,2,',','.'); ?>
                           </td>
                         </tr>
                         <tr>
@@ -247,11 +248,11 @@
                           </td>
                           <td class="align-middle text-right">
                             <?php 
-                              $total = 0; 
+                              $total5 = 0; 
                               $subtotal = intval($value->spt_lama) * intval($value->perbup_representasi);
-                              $total = $subtotal; ?>
+                              $total5 = $subtotal; ?>
                             
-                            <?= number_format($total,2,',','.'); ?>
+                            <?= number_format($total5,2,',','.'); ?>
                           </td>
                         </tr>
                         <tr>
@@ -264,22 +265,22 @@
                           </td>
                           <td class="align-middle text-right">
                             <?php 
-                              $total = 0; 
+                              $total6 = 0; 
                               $subtotal = intval($value->spt_lama) * intval($value->perbup_sewakendaraan);
-                              $total = $subtotal; ?>
+                              $total6 = $subtotal; ?>
                             
-                            <?= number_format($total,2,',','.'); ?>
+                            <?= number_format($total6,2,',','.'); ?>
                           </td>
                         </tr>
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td colspan="7" class="align-middle text-right"><strong> Sub Total</strong></td>
+                          <td class="align-middle text-right">
+                            <strong>
+                              <?=
+                               $subtotal = number_format($total1 + $total2 + $total3 + $total4 + $total5 + $total6,2,',','.'); 
+                              ?>
+                            </strong>
+                          </td>
                         </tr>
                         <?php endforeach ?>
                       </tbody>
@@ -311,8 +312,12 @@
                     <div class="table-responsive">
                       <table class="table">
                         <tr>
-                          <th style="width:50%">Total Keselruhan :</th>
-                          <td class="align-middle text-right"><strong>99.000.000,00</strong></td>
+                          <th style="width:50%">Total Keseluruhan :</th>
+                          <td class="align-middle text-right">
+                            <strong>
+                              
+                            </strong>
+                          </td>
                         </tr>
                         <tr>
                           <th></th>

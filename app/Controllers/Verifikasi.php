@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\LaporjadinModel;
 use App\Models\SptModel;
+use App\Models\UangHarianModel;
 use App\Models\VerifModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -55,10 +56,12 @@ class Verifikasi extends ResourcePresenter
     public function show($id = null)
     {
         $model = new VerifModel();
+        $modeluh = new UangHarianModel();
         $query = $model->verifdatapelaksana($id);
         $qrhotel = $model ->verifhotel($id);
         $qrpesawat = $model->verifpesawat($id);
         $qrtaksi = $model->veriftaksi($id);
+        $uh = $modeluh->cariid($id);
 
         $data = [
             'title' => 'Data Laporan Perjalanan Dinas',
@@ -67,6 +70,7 @@ class Verifikasi extends ResourcePresenter
             'hotel' => $qrhotel,
             'pesawat' => $qrpesawat,
             'taksi' => $qrtaksi,
+            'uh'    => $uh,
         ];
         // dd($data);
         return view('verifikasi/verifspj', $data);

@@ -69,3 +69,5 @@ $routes->presenter('menu');
 
 $routes->post('menusub/updatetoggle','Menusub::updatetoggle');
 $routes->presenter('menusub');
+
+$routes->presenter('uangharian');

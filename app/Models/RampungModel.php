@@ -137,21 +137,35 @@ class RampungModel extends Model
     }
 
 
-    function rampungperpelaksana($idpelaksana)
+    function rampungperpelaksana($idspt, $idpelaksana)
     {
-        $sqhotel = $this->db->table('spjhotels as a')->select('a.spjhotel_id, sum(a.spjhotel_hargatotal) As Hotel ');
-                    $sqhotel->where('a.spjhotel_pelaksanaid',$idpelaksana);
-                    $sqhotel->where('a.spjhotel_verif','1');
-        $sqtaksi = $this->db->table('spjtaksis as b')->select('b. spjtaksi_id, sum(b.spjtaksi_harga) as Taksi' );
-                    $sqtaksi->where('b.spjtaksi_pelaksanaid',$idpelaksana);
-                    $sqtaksi->where('b.spjtaksi_verif','1');
-        $sqpesawat = $this->db->table('spjpesawats as c')->select('c. spjpesawat_id, sum(c.spjpesawat_harga) as Pesawat');
-                    $sqpesawat->where('c.spjpesawat_pelaksanaid',$idpelaksana);
-                    $sqpesawat->where('c.spjpesawat_verif','1');
+        $sqhotel = $this->db->table('spjhotels as e')->select('e.spjhotel_id, sum(e.spjhotel_hargatotal) As Hotel ');
+                    $sqhotel->where('e.spjhotel_pelaksanaid',$idpelaksana);
+                    $sqhotel->where('e.spjhotel_verif','1');
+        $sqtaksi = $this->db->table('spjtaksis as f')->select('f. spjtaksi_id, sum(f.spjtaksi_harga) as Taksi' );
+                    $sqtaksi->where('f.spjtaksi_pelaksanaid',$idpelaksana);
+                    $sqtaksi->where('f.spjtaksi_verif','1');
+        $sqpesawat = $this->db->table('spjpesawats as g')->select('g. spjpesawat_id, sum(g.spjpesawat_harga) as Pesawat');
+                    $sqpesawat->where('g.spjpesawat_pelaksanaid',$idpelaksana);
+                    $sqpesawat->where('g.spjpesawat_verif','1');
+       $sql = 'd.perbup_tingkatid = c.pegawai_tingkat AND d.perbup_lokasiid = a.spt_tujuan ';
+        $builder = $this->db->table('spts as a');
+        $builder->select('
+            SUM(CASE WHEN a.spt_acara = 1 THEN d.perbup_uhdiklat * a.spt_lama
+                 WHEN a.spt_acara = 2 THEN d.perbup_uhrapat_fullboad * a.spt_lama END) AS UangHarian
+        ');
+        $builder->join('pelaksanas AS b', 'b.spt_id = a.spt_id');
+        $builder->join('pegawais AS c', 'c.pegawai_id = b.pegawai_id');
+        $builder->join('perbups AS d', new RawSql($sql));
+
+        $builder->where('a.spt_verif', 1);
+        $builder->where('a.spt_id', $idspt);
+        $builder->where('b.pelaksana_id', $idpelaksana);
                
        
         $sqhotel->union($sqtaksi, 'Taksi');
         $sqhotel->union($sqpesawat, 'Pesawat');
+        $sqhotel->union($builder, 'harian');
         
 
         $query = $sqhotel->get();
@@ -166,17 +180,12 @@ class RampungModel extends Model
 
         foreach ($data as $row) {
             $totals['hotel'] += $row->Hotel;
-            // $totals['taksi'] += $row->Taksi;
-            // $totals['pesawat'] += $row->Pesawat;
         }
-
-        // Mengembalikan hasil bersama dengan total nilai untuk masing-masing jenis
         return [
             'result' => $data,
             'totals' => $totals,
         ];
-
-
+    }
     //    $array = [
     //     'hotel' => $data[0],
     //     'taksi' => $data[1],
@@ -189,8 +198,6 @@ class RampungModel extends Model
     // //    }
 
     //    return $array;
-
-    }
 
 
 
