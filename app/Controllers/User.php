@@ -17,13 +17,16 @@ class User extends ResourcePresenter
     {
         $model = new UsersModel();
         $modelrole = new RolesModel();
+        
 
         $data = [
             'title'     => 'User',
             'subtitle'  => 'Home',
             'pengguna'  => $modelrole->datarole(),
             'role'      => $modelrole->findAll(),
+            'aktif'     =>$model->menuactive(2)
         ];
+        // dd($data);
         return view('auth/index', $data);
     }
 
@@ -173,10 +176,10 @@ class User extends ResourcePresenter
         $aktif = $itemModel->menuactive($user_id);
         
         $status = $aktif[0]['user_active'];
-        // dd($status);
+        
 
         // if (!empty($itemIds)) {
-        if($status == '1'){
+        if($status == 1){
             // $itemModel->where('user_id',$itemIds)->set('menu_active',0)->update($itemIds);
             $itemModel->where('user_id', $user_id)->set(['user_active' => 0])->update();
         } else {

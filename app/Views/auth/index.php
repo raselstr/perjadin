@@ -91,7 +91,7 @@
                             <a href="<?= site_url('user/remove/'.$value->user_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
                           </td>
                           <td class="align-middle text-center">
-                            <input type="checkbox" name="menu_active" value="<?= $value->user_active; ?>" class="status-checkbox" <?= $value->user_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
+                            <input type="checkbox" name="menu_active" value="<?= $value->user_id; ?>" class="status-checkbox" <?= $value->user_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
                           </td>
                           <td><?= $value->user_nama; ?></td>
                           <td><?= $value->user_password; ?></td>
@@ -308,12 +308,8 @@
                     }).then(function(){
                       location.reload();
                     });
-                    // location.reload();
                   },
-                  error: function (error) {
-                      // Handle error, if any
-                      console . error(error);
-                  }
+                  
                 });
             } else {
                 console.log(checkboxValue);
@@ -330,13 +326,8 @@
                     }).then(function(){
                       location.reload();
                     });
-                    // location.reload();
-                    // alert('Status item berhasil diubah');
                   },
-                  error: function (error) {
-                      // Handle error, if any
-                      console . error(error);
-                  }
+                 
                 });
             }
         });
