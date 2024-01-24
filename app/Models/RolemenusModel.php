@@ -38,4 +38,18 @@ class RolemenusModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function datarole($id = null)
+    {
+        $builder = $this->db->table('rolemenus');
+        $builder->select('*');
+        $builder->join('roles', 'roles.role_id = rolemenus.role_id');
+        $builder->join('submenus', 'submenus.submenu_id = rolemenus.submenu_id');
+        if($id <> null){
+            $builder->where('rolemenus.role_id', $id);
+        };
+        $builder->orderBy('submenus.submenu_id','ASC');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

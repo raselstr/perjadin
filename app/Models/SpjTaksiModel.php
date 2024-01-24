@@ -85,6 +85,7 @@ class SpjTaksiModel extends Model
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $builder -> where('spts.spt_verif', 1);
+        $builder -> where('spts.spt_jenis', 2);
         $query = $builder->get();
         return $query->getResult();
     }

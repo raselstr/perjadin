@@ -71,7 +71,7 @@
                   <div class="col-12">
                     <h4>
                       <i class="fas fa-globe"></i> BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN.
-                      <small class="float-right">Date: </small>
+                      <small class="float-right">Date: <?= date("d F Y") ?></small>
                     </h4>
                   </div>
                   <!-- /.col -->
@@ -110,7 +110,7 @@
                 <!-- Table row -->
                 <div class="row">
                   <div class="col-12 table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-sm">
                       <thead>
                         <tr>
                           <th style="width:3%">No</th>
@@ -276,6 +276,9 @@
                             </strong>
                           </td>
                         </tr>
+                        <tr>
+                          <td colspan="8"></td>
+                        </tr>
                         <?php endforeach ?>
                       </tbody>
                     </table>
@@ -301,7 +304,7 @@
                   </div>
                   <!-- /.col -->
                   <div class="col-6">
-                    <p class="lead">Dikeluarkan Tanggal 2/22/2014</p>
+                    <p class="lead">Dikeluarkan Tanggal : <?= date("d F Y") ?></p>
                     <div class="table-responsive">
                       <table class="table">
                         <tr>

@@ -15,6 +15,18 @@ class VerifModel extends Model
         $builder->where('spts.spt_verif',1);
         $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
+        
+        return $query->getResult();
+    }
+    function verifjlh($id)
+    {
+        $builder = $this->db->table('spts as a');
+        $builder->select('a.spt_id, COUNT(b.pelaksana_id)');
+        $builder->join('pelaksanas AS b', 'a.spt_id = b.spt_id');
+        $builder->where('spts.spt_verif',1);
+        $builder->orderBy('spts.created_at', 'DESC');
+        $query = $builder->get();
+        
         return $query->getResult();
     }
 

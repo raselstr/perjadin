@@ -97,7 +97,9 @@ class SpjHotelModel extends Model
         $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
-        $builder -> where('spts.spt_verif', 1);
+        $builder->where('spts.spt_verif', 1);
+        $builder->where('spts.spt_jenis !=', 3);
+
         $query = $builder->get();
         return $query->getResult();
     }

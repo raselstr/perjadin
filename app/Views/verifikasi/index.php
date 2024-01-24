@@ -63,13 +63,14 @@
                     <th rowspan="2" class="align-middle text-center">No</th>
                     <th rowspan="2" class="align-middle text-center">Aksi</th>
                     <th rowspan="2" class="align-middle text-center">SPT - SPD - Tujuan Perjalanan Dinas</th>
-                    <th colspan="4" class="align-middle text-center">Validasi Pertanggung Jawaban</th>
+                    <th colspan="5" class="align-middle text-center">Validasi Pertanggung Jawaban</th>
                   </tr>
                   <tr>
                     <th class="align-middle text-center">Hotel</th>
                     <th class="align-middle text-center">Pesawat PP</th>
                     <th class="align-middle text-center">Taksi PP</th>
                     <th class="align-middle text-center">Pelaksanaan</th>
+                    <th class="align-middle text-center">Uang Harian</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,7 +82,12 @@
                         <td class="align-middle text-center">
                           <a href="<?= site_url('verifikasi/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Input Laporan Hasil"><i class="fas fa-newspaper"></i>  </a>
                         </td>
-                        <td class="align-middle">No. SPT : <?= $value->spt_nomor ?><br>No. SPD : <?= $value->sppd_nomor ?><br>Tanggal : <?= date('d F Y',strtotime($value->spt_tgl)) ?><br>Uraian : <?= $value->spt_uraian ?></td>
+                        <td class="align-middle">
+                          No. SPT : <?= $value->spt_nomor ?><br>
+                          No. SPD : <?= $value->sppd_nomor ?><br>
+                          Tanggal : <?= date('d F Y',strtotime($value->spt_tgl)) ?><br>
+                          Uraian : <?= $value->spt_uraian ?>
+                        </td>
                         <td class="align-middle">
                           <?php 
                             $qrhotelall = $model->verifdatahotel($value->spt_id);
@@ -115,6 +121,7 @@
                             <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$qrlaporval;?></button>
 
                         </td>
+                        <td></td>
                       </tr>
                     <?php } ?>
                 </tbody>
