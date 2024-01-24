@@ -95,6 +95,12 @@ class User extends ResourcePresenter
                         'required'              => 'Role Belum dipilih' ,
                     ]
                 ],
+                'user_nmlengkap' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required'              => 'Nama Lengkap Harus diisi Belum dipilih' ,
+                    ]
+                ],
             ]);
 
             if(!$valid) {

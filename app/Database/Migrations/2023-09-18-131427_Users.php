@@ -20,6 +20,10 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '60',
             ],
+            'user_nmlengkap' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '60',
+            ],
             'user_password' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

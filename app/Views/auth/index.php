@@ -77,7 +77,8 @@
                         <th class="align-middle text-center">No</th>
                         <th class="align-middle text-center">Aksi</th>
                         <th class="align-middle text-center">Active</th>
-                        <th class="align-middle text-center">Nama User</th>
+                        <th class="align-middle text-center">Nama Lengkap</th>
+                        <th class="align-middle text-center">Username</th>
                         <th class="align-middle text-center">Password</th>
                         <th class="align-middle text-center">Role</th>
                         <th class="align-middle text-center">Update</th>
@@ -93,6 +94,7 @@
                           <td class="align-middle text-center">
                             <input type="checkbox" name="menu_active" value="<?= $value->user_id; ?>" class="status-checkbox" <?= $value->user_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
                           </td>
+                          <td><?= $value->user_nmlengkap ?></td>
                           <td><?= $value->user_nama; ?></td>
                           <td><?= $value->user_password; ?></td>
                           <td><?= $value->role_nama; ?></td>
@@ -126,7 +128,7 @@
                   <!-- </div> -->
                 <!-- </div> -->
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" >Nama User</label>
+                  <label class="col-sm-4 col-form-label" >Username</label>
                   <div class="col">
                     <input type="text" class="form-control" id="user_nama" name="user_nama">
                     <div class="invalid-feedback erroruser_nama"></div>
@@ -144,6 +146,13 @@
                   <div class="col">
                     <input type="password" class="form-control" id="pass_confirm" name="pass_confirm">
                     <div class="invalid-feedback errorpass_confirm"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label" >Nama Lengkap</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="user_nmlengkap" name="user_nmlengkap">
+                    <div class="invalid-feedback erroruser_nmlengkap"></div>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -242,6 +251,13 @@
                     } else {
                         $('#user_roleid').removeClass('is-invalid');
                         $('.erroruser_roleid').html('');
+                } 
+                if(response.messages.user_nmlengkap){
+                        $('#user_nmlengkap').addClass('is-invalid');
+                        $('.erroruser_nmlengkap').html(response.messages.user_nmlengkap);
+                    } else {
+                        $('#user_nmlengkap').removeClass('is-invalid');
+                        $('.erroruser_nmlengkap').html('');
                 } 
               } else {
                 console . log(response);

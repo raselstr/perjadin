@@ -18,7 +18,7 @@ class Auth extends BaseController
     {    
         $this->db = \Config\Database::connect();
         $post = $this->request->getPost();
-        $query = $this->db->table('users')->getWhere(['user_email'=>$post['email']]);
+        $query = $this->db->table('users')->getWhere(['user_nama'=>$post['user_nama']]);
         $user = $query->getRow();
         if($user){
             if(password_verify($post['password'], $user->user_password)) {
@@ -26,6 +26,7 @@ class Auth extends BaseController
                     'user_id'=> $user->user_id,
                     'user_nama'=> $user->user_nama,
                     'user_active' => $user->user_active,
+                    'user_tahun' => $post['tahun'],
                 ];
                 session()->set($params);
                 // dd(session()->user_nama);
