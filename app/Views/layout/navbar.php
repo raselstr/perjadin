@@ -13,8 +13,8 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <div class="user-block ">
-                <span class="username"><a href="<?= site_url('/'); ?>"><?= session('user_nama') ?></a></span>
-                <span class="description">Tahun : <?= session('user_tahun') ?></span>
+                <span class="username"><a href="<?= site_url('/'); ?>"><?= session('nama') ?></a></span>
+                <span class="description"><?= session('role') ?></span>
         </div>
       </li>
       
