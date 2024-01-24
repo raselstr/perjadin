@@ -14,7 +14,7 @@
       <li class="nav-item">
         <div class="user-block ">
                 <span class="username"><a href="<?= site_url('/'); ?>"><?= session('user_nama') ?></a></span>
-                <span class="description">Shared publicly - 7:30 PM today</span>
+                <span class="description">Tahun : <?= session('user_tahun') ?></span>
         </div>
       </li>
       
