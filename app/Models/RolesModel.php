@@ -38,4 +38,14 @@ class RolesModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function datarole()
+{
+    $builder = $this->db->table('roles');
+    $builder->select('*');
+    $builder->join('users', 'users.user_roleid = roles.role_id');
+    $query = $builder->get();
+    return $query->getResult();
+}
+
 }

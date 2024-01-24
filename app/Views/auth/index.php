@@ -13,6 +13,11 @@
   <!-- Bootstrap Switch Button -->
   <link rel="stylesheet" href="plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch-button.min.css">
 
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -36,7 +41,9 @@
   <!-- Bootstrap Switch Button -->
   <script src="plugins/bootstrap-switch/js/bootstrap-switch-button.min.js"></script>
 
-  
+  <!-- Select2 -->
+  <script src="plugins/select2/js/select2.full.min.js"></script>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -57,93 +64,106 @@
                 <h5 class="card-title"><?= $title; ?></h5>
               </div>
               <div class="col-sm-4">
-                <button type="button" class="btn bg-gradient-primary float-sm-right" class="btn btn-primary"  data-toggle="modal" data-target="#form"><i class="fas fa-hand-point-right"> </i> Tambah Menu</button>
+                <button type="button" class="btn bg-gradient-primary float-sm-right btn-sm" class="btn btn-primary"  data-toggle="modal" data-target="#modalform"><i class="fas fa-hand-point-right"> </i> Tambah User</button>
                 </a>
               </div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="card-body">
-              <table id="myTable1" class="table table-bordered table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th class="align-middle text-center">No</th>
-                    <th class="align-middle text-center">Aksi</th>
-                    <th class="align-middle text-center">Aktif</th>
-                    <th class="align-middle text-center">Keterangan menu</th>
-                    <th class="align-middle text-center">Gambar</th>
-                    <th class="align-middle text-center">Icon</th>
-                    <th class="align-middle text-center">Lokasi Tujuan</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php $no = 1 ; foreach ($menu as $key => $value) : ?>
-                  <tr>
-                      <td class="align-middle text-center"><?= $no++; ?></td>
-                      <td class="align-middle text-center">
-                        <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-menuid=<?= $value->menu_id; ?>><i class="fas fa-pen"> </i></button>
-                        <a href="<?= site_url('menu/remove/'.$value->menu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
-                      </td>
-                      <td class="align-middle text-center">
-                        <input type="checkbox" name="menu_active" value="<?= $value->menu_id; ?>" class="status-checkbox" <?= $value->menu_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
-                      </td>
-                      <td><?= $value->menu_nama; ?></td>
-                      <td><?= $value->menu_icon; ?></td>
-                      <td class="align-middle text-center"><i class="<?= $value->menu_icon; ?>"></i></td>
-                      <td><?= $value->menu_link; ?></td>
-                    </tr>
-                    <?php endforeach ?>
-                  </tbody>
-              </table>
-            </div>
+            <div class="card-body row justify-content-center">
+              <div class="col">
+                  <table id="myTable1" class="table table-bordered table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th class="align-middle text-center">No</th>
+                        <th class="align-middle text-center">Aksi</th>
+                        <th class="align-middle text-center">Active</th>
+                        <th class="align-middle text-center">Nama User</th>
+                        <th class="align-middle text-center">Password</th>
+                        <th class="align-middle text-center">Role</th>
+                        <th class="align-middle text-center">Update</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $no=1; foreach ($pengguna as $key => $value) : ?>
+                      <tr>
+                          <td><?= $no++; ?></td>
+                          <td>
+                            <a href="<?= site_url('user/remove/'.$value->user_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                          </td>
+                          <td class="align-middle text-center">
+                            <input type="checkbox" name="menu_active" value="<?= $value->user_active; ?>" class="status-checkbox" <?= $value->user_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
+                          </td>
+                          <td><?= $value->user_nama; ?></td>
+                          <td><?= $value->user_password; ?></td>
+                          <td><?= $value->role_nama; ?></td>
+                          <td><?= $value->user_updated_at; ?></td>
+                        </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                  </table>
+                </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Modal SPJ Pesawat -->
-  <div class="modal fade" id="form">
+  <div class="modal fade" id="modalform">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">SPJ Pesawat</h4>
+          <h4 class="modal-title"><?= $title; ?></h4>
         </div>
-        <form action="<?=site_url('menu/create');?>" method="post" id="menuform">
+        <form action="<?=site_url('user/create');?>" method="post" id="form">
           <?=csrf_field();?>
           <div class="modal-body">
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
+                <!-- <div class="form-group row"> -->
+                  <!-- <label class="col-sm-4 col-form-label" hidden>User id</label> -->
+                  <!-- <div class="col"> -->
+                    <input type="text" class="form-control" id="user_id" name="user_id" hidden>
+                  <!-- </div> -->
+                <!-- </div> -->
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" hidden>menu id</label>
+                  <label class="col-sm-4 col-form-label" >Nama User</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="menu_id" name="menu_id" hidden>
+                    <input type="text" class="form-control" id="user_nama" name="user_nama">
+                    <div class="invalid-feedback erroruser_nama"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" >Nama Menu</label>
+                  <label class="col-sm-4 col-form-label" >User Password</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="menu_nama" name="menu_nama">
+                    <input type="password" class="form-control" id="user_password" name="user_password">
+                    <div class="invalid-feedback erroruser_password"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Icon Menu</label>
+                  <label class="col-sm-4 col-form-label" >Konfir. Password</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="menu_icon" name="menu_icon">
-                    <div class="invalid-feedback errormenu_icon"></div>
+                    <input type="password" class="form-control" id="pass_confirm" name="pass_confirm">
+                    <div class="invalid-feedback errorpass_confirm"></div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Tujuan Halaman</label>
+                  <label class="col-sm-4 col-form-label" >Role User</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="menu_link" name="menu_link">
-                    <div class="invalid-feedback errormenu_link"></div>
+                    <select class="form-control select2" style="width: 100%;" name = "user_roleid" id="user_roleid">
+                      <option value="">Pilih Role Menu</option>
+                      <?php foreach ($role as $key => $value) : ?>
+                        <option value="<?= $value->role_id; ?>"><?= $value->role_nama; ?></option>
+                        <?php endforeach ?>
+                      </select>
+                      <div class="invalid-feedback erroruser_roleid"></div>
+                    <!-- <input type="text" class="form-control" id="user_roleid" name="user_roleid"> -->
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="reset" class="btn btn-default batalpesawat" data-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-primary simpanmenu">Simpan</button>
+              <button type="reset" class="btn btn-default batalbutton" data-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary simpanbutton">Simpan</button>
             </div>
           </div>
         </form>
@@ -173,34 +193,7 @@
   <!-- Script Edit dan SImpan SPJ Tiket Pesawat -->
     <script>
       $(document).ready(function(){
-        $('[data-target="#form"]').click (function() {
-          var menuid = $(this).data('menuid');
-          $('#menu_id').val(menuid);
-
-          if(menuid == null){
-            $('#menu_nama').val('');
-            $('#menu_icon').val('');
-            $('#menu_link').val('');
-            $('#pesawatspj').show();
-
-          } else {
-            $.ajax({
-              type: "get",
-              url: "<?=site_url('menu/edit/');?>" + menuid,
-              // data: "data",
-              dataType: "json",
-              success: function (response) {
-                console.log(response);
-                $('#menu_nama').val(response.menu_nama);
-                $('#menu_icon').val(response.menu_icon);
-                $('#menu_link').val(response.menu_link);
-                $('#pesawatspj').show();
-              }
-            });
-          }
-        });
-
-        $('#menuform').submit(function(e){
+        $('#form').submit(function(e){
           e.preventDefault();
           var data = new FormData(this);
           // console.log(data);
@@ -212,48 +205,54 @@
             processData: false,
             contentType: false,
             beforeSend:function(){
-                  $('.simpanmenu').attr('disabled', 'disabled');
-                  $('.simpanmenu').html('<i class="fa fa-spin fa-spinner"></i>');
+                  $('.simpanbutton').attr('disabled', 'disabled');
+                  $('.simpanbutton').html('<i class="fa fa-spin fa-spinner"></i>');
               },
               complete: function(){
-                  $('.simpanmenu').removeAttr('disabled');
-                  $('.simpanmenu').html('Simpan');
+                  $('.simpanbutton').removeAttr('disabled');
+                  $('.simpanbutton').html('Simpan');
               },
             success: function (response) {
               console.log(response);
-              if(response.error) {
-                if(response.message.spjpesawat_jenis){
-                        $('#spjpesawat_jenis').addClass('is-invalid');
-                        $('.errorspjpesawat_jenis').html(response.message.spjpesawat_jenis);
+              if(response.errors) {
+                if(response.messages.user_nama){
+                        $('#user_nama').addClass('is-invalid');
+                        $('.erroruser_nama').html(response.messages.user_nama);
                     } else {
-                        $('#spjpesawat_jenis').removeClass('is-invalid');
-                        $('.errorspjpesawat_jenis').html('');
+                        $('#user_nama').removeClass('is-invalid');
+                        $('.erroruser_nama').html('');
                 }
-                if(response.message.menu_icon){
-                        $('#menu_icon').addClass('is-invalid');
-                        $('.errormenu_icon').html(response.message.menu_icon);
+                if(response.messages.user_password){
+                        $('#user_password').addClass('is-invalid');
+                        $('.erroruser_password').html(response.messages.user_password);
                     } else {
-                        $('#menu_icon').removeClass('is-invalid');
-                        $('.errormenu_icon').html('');
+                        $('#user_password').removeClass('is-invalid');
+                        $('.erroruser_password').html('');
                 }
-                if(response.message.menu_link){
-                        $('#menu_link').addClass('is-invalid');
-                        $('.errormenu_link').html(response.message.menu_link);
+                if(response.messages.pass_confirm){
+                        $('#pass_confirm').addClass('is-invalid');
+                        $('.errorpass_confirm').html(response.messages.pass_confirm);
                     } else {
-                        $('#menu_link').removeClass('is-invalid');
-                        $('.errormenu_link').html('');
+                        $('#pass_confirm').removeClass('is-invalid');
+                        $('.errorpass_confirm').html('');
                 }
-                
+                if(response.messages.user_roleid){
+                        $('#user_roleid').addClass('is-invalid');
+                        $('.erroruser_roleid').html(response.messages.user_roleid);
+                    } else {
+                        $('#user_roleid').removeClass('is-invalid');
+                        $('.erroruser_roleid').html('');
+                } 
               } else {
-                console.log(response);
+                console . log(response);
                 Swal.fire({
                   position: "center",
                   icon: "success",
-                  title: response.message,
+                  title: response.messages,
                   showConfirmButton: false,
                   timer: 2000
                 }).then(function(){
-                  $('#pesawatspj').hide('2000');
+                  $('#form').hide('2000');
                   location.reload();
 
                 });
@@ -265,7 +264,7 @@
             }
           });
         });
-        $('.batalpesawat').on('click', function () {
+        $('.batalbutton').on('click', function () {
           location.reload();
         });
       });
@@ -274,7 +273,19 @@
     </script>
   <!-- End Script Edit dan SImpan SPJ Tiket Pesawat -->
 
-  <!-- Togle Aktiv -->
+   <script>
+ 
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+  </script>
+      
+<!-- Togle Aktiv -->
     <script>
       $(document).ready(function () {
         $('input[name="menu_active"]').on('change', function () {
@@ -285,15 +296,15 @@
                 console.log(checkboxValue);
                 $.ajax({
                   type: "POST",
-                  url: "<?= site_url('menu/updatetoggle'); ?>",
-                  data: {menu_id:checkboxValue},
+                  url: "<?= site_url('user/updatetoggle'); ?>",
+                  data: {user_id:checkboxValue},
                   // dataType: "dataType",
                   success: function (response) {
                     
                     Swal.fire({
                       icon: 'success',
                       title: 'Berhasil...',
-                      text: 'Menu Aktif',
+                      text: 'User Aktif',
                     }).then(function(){
                       location.reload();
                     });
@@ -308,14 +319,14 @@
                 console.log(checkboxValue);
                 $.ajax({
                   type: "POST",
-                  url: "<?= site_url('menu/updatetoggle'); ?>",
-                  data: {menu_id:checkboxValue},
+                  url: "<?= site_url('user/updatetoggle'); ?>",
+                  data: {user_id:checkboxValue},
                   // dataType: "dataType",
                   success: function (response) {
                     Swal.fire({
                       icon: 'success',
                       title: 'Berhasil...',
-                      text: 'Menu Tidak Aktif',
+                      text: 'User Tidak Aktif',
                     }).then(function(){
                       location.reload();
                     });

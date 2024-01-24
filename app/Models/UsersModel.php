@@ -13,14 +13,19 @@ class UsersModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_nama','user_password','user_active','user_role'];
+    protected $allowedFields    = [
+        'user_nama',
+        'user_password',
+        'user_active',
+        'user_roleid',
+    ];
 
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $createdField  = 'user_created_at';
+    protected $updatedField  = 'user_updated_at';
+    protected $deletedField  = 'user_deleted_at';
 
     // Validation
     protected $validationRules      = [];
@@ -38,4 +43,13 @@ class UsersModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function menuactive($id = null)
+    {
+        $builder = $this->db->table('users as a');
+        $builder->select('a.user_active');
+        $builder->where('a.user_id', $id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }
