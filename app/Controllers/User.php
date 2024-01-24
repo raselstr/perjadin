@@ -71,6 +71,7 @@ class User extends ResourcePresenter
                     'errors' => [
                         'required'              => 'Nama tidak Boleh Kosong',
                         'alpha_numeric_space'   => 'Tanpa menggunakan spesial karakter',
+                        'is_unique'             => 'Nama User sudah digunakan, Harap ganti dengan yang lain !!!!'
                     ]
                 ],
                 'user_password' => [
