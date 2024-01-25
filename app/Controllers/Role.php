@@ -18,7 +18,7 @@ class Role extends ResourcePresenter
         $data = [
             'title' => 'Role',
             'subtitle' => 'Home',
-            'role'  => $model->findAll(),
+            'role'  => $model->datarole(),
         ];
         // dd($data);
         return view('role/index', $data);

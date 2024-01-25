@@ -79,7 +79,6 @@
                         <th class="align-middle text-center">Active</th>
                         <th class="align-middle text-center">Nama Lengkap</th>
                         <th class="align-middle text-center">Username</th>
-                        <th class="align-middle text-center">Password</th>
                         <th class="align-middle text-center">Role</th>
                         <th class="align-middle text-center">Update</th>
                       </tr>
@@ -96,7 +95,6 @@
                           </td>
                           <td><?= $value->user_nmlengkap ?></td>
                           <td><?= $value->user_nama; ?></td>
-                          <td><?= $value->user_password; ?></td>
                           <td><?= $value->role_nama; ?></td>
                           <td><?= $value->user_updated_at; ?></td>
                         </tr>

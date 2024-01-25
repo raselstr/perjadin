@@ -24,7 +24,7 @@ class User extends ResourcePresenter
             'subtitle'  => 'Home',
             'pengguna'  => $modelrole->datarole(),
             'role'      => $modelrole->findAll(),
-            'aktif'     =>$model->menuactive(2)
+            // 'aktif'     =>$model->menuactive(2)
         ];
         // dd($data);
         return view('auth/index', $data);

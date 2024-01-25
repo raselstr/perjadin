@@ -31,6 +31,7 @@ class AuthModel extends Model
 
     function navmenu($id)
     {
+
         $builder = $this->db->table('rolemenus as a');
         $builder->select('b.role_id, b.role_nama,
                           d.menu_id, d.menu_nama, d.menu_icon, d.menu_link');

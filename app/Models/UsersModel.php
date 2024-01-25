@@ -50,6 +50,7 @@ class UsersModel extends Model
         $builder = $this->db->table('users as a');
         $builder->select('a.user_active');
         $builder->where('a.user_id', $id);
+        $builder->where('a.user_id !=', 5);
         $query = $builder->get();
         return $query->getResultArray();
     }
