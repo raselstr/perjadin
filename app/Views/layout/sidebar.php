@@ -1,3 +1,8 @@
+<?php use App\Models\AuthModel;
+  $model = new AuthModel();
+  $role = session('role_id');
+?> 
+  
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -10,32 +15,21 @@
     <div class="sidebar">
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <?php 
-            $db = \Config\Database::connect();
-            $menu = $db->query('SELECT * FROM menus WHERE menu_active=1 ORDER BY menu_id ASC');
-            $r1 = $menu->getResultArray();
-            foreach ($r1 as $key => $m1): 
-              $id_menu = $m1['menu_id'];
-              $sub = $db->query("SELECT * FROM submenus WHERE submenu_active = 1 AND menu_id = $id_menu ORDER BY submenu_id ASC");
-              if($sub->getNumRows() > 0) {
-                $r2 = $sub->getResultArray(); ?>
-                <li class="nav-item"><a href="<?= site_url($m1['menu_link']) ?>" class="nav-link"><i class="<?= $m1['menu_icon']; ?>"></i><p> <?= $m1['menu_nama']; ?><i class="fas fa-angle-left right"></i></p></a>
-                <?php foreach ($r2 as $key => $m2) : ?>
-                  <!-- <li class="nav-header">MENUS</li> -->
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item"><a href="<?= site_url($m2['submenu_link']) ?>" class="nav-link"><i class="<?= $m2['submenu_icon']; ?>"></i><p><?= $m2['submenu_nama']; ?></p></a></li>
-                    </ul>
-                  
-                <?php endforeach;
-              } else { ?>
-                <li class="nav-item"><a href="<?= site_url($m1['menu_link']) ?>" class="nav-link"><i class="<?= $m1['menu_icon']; ?>"></i><p><?= $m1['menu_nama']; ?></p></a></li>
-            <?php }
-            endforeach;
-          ?>
-          </li>
+          <?php $menu = $model->navmenu($role); ?>
+          <?php foreach ($menu as $key => $value) : ?>
+            <li class="nav-item"><a href="<?= site_url($value['menu_link']) ?>" class="nav-link"><i class="<?= $value['menu_icon']; ?>"></i><p> <?= $value['menu_nama'] ?><i class="fas fa-angle-left right"></i></p></a>
+            <?php $menuid = $value['menu_id'] ?>
+            <?php $submenu = $model->navsubmenu($role,$menuid); ?>
+            <?php foreach ($submenu as $key => $sub) : ?>
+              <ul class="nav nav-treeview">
+                <li class="nav-item"><a href="<?= site_url($sub->submenu_link) ?>" class="nav-link"><i class="<?= $sub->submenu_icon; ?>"></i><p><?= $sub->submenu_nama; ?></p></a></li>
+              </ul>
+            <?php endforeach ?>
+            <?php endforeach ?>
+            </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-  </aside>
+  </aside>      
+          
+          
