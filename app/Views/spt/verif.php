@@ -153,8 +153,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
-            <input type="text" class="form-control form-control-border" id="spt_mulai" name="spt_mulai" hidden>
-            <input type="text" class="form-control form-control-border" id="spt_mulai1" readonly>
+            <input type="text" class="form-control form-control-border" id="spt_mulai" readonly>
           </div>
           <div class="form-group">
             <label>Tanggal Mulai Perjalanan Dinas</code></label>
@@ -224,7 +223,7 @@
         minYear: 2023,
         maxYear: parseInt(moment().format('YYYY'),10),
         // minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
-        maxDate: moment($('#spt_mulai1').val(), 'DD MMMM YYYY'),
+        endDate: moment($('#spt_mulai1').val(), 'DD MMMM YYYY'),
         
       });
       // Menangani perubahan tanggal
@@ -242,14 +241,27 @@
           // Ambil nilai ID dari data-id atribut tombol yang diklik
           var id = $(this).data('id');
           var tglmulai = $(this).data('tglmulai');
-          var currentDate = new Date().toISOString().slice(0, 10);
+          // var currentDate = new Date().toISOString().slice(0, 10);
           var formattgl = moment(tglmulai, 'YYYY-MM-DD').format('DD MMMM YYYY');
           // Set nilai ID ke dalam input dengan id "spt_id" di dalam modal
           $('#spt_id').val(id);
-          $('#spt_mulai').val(tglmulai);
-          $('#spt_mulai1').val(formattgl);
-          $('#spt_tgl').val(currentDate);
+          $('#spt_mulai').val(formattgl);
+          // $('#spt_tgl').val(currentDate);
 
+          $('#spt_tgl').daterangepicker({
+            autoUpdateInput: true,
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2023,
+            maxYear: parseInt(moment().format('YYYY'),10),
+            // minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
+            maxDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),
+            
+          });
+          // Menangani perubahan tanggal
+            $('#spt_tgl').on('apply.daterangepicker', function(ev, picker) {
+              $(this).val(picker.startDate.format('DD MMMM YYYY'));
+          });
       });
 
       $('#myForm').submit(function(e) {
