@@ -54,4 +54,15 @@ class UsersModel extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+
+    function datauser()
+    {
+        $builder = $this->db->table('users');
+        $builder->select('*');
+        $builder->join('roles', 'roles.role_id = users.user_roleid');
+        $builder->where('users.user_id != 5 OR roles.role_id != 5');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
 }

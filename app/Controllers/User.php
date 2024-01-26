@@ -22,8 +22,8 @@ class User extends ResourcePresenter
         $data = [
             'title'     => 'User',
             'subtitle'  => 'Home',
-            'pengguna'  => $modelrole->datarole(),
-            'role'      => $modelrole->findAll(),
+            'pengguna'  => $model->datauser(),
+            'role'      => $modelrole->datarole(),
             // 'aktif'     =>$model->menuactive(2)
         ];
         // dd($data);

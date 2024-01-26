@@ -17,7 +17,7 @@ class AuthModel extends Model
         
         $user->unionAll($peg);
         $gabung = $this->db->newQuery()->fromSubquery($user, 'd')
-                                        ->select('d.user_nmlengkap, d.user_id, d.role_nama, d.role_id')
+                                        ->select('d.user_nmlengkap, d.user_id, d.role_nama, d.role_id, d.user_nama')
                                         ->where('d.user_nama', $id);
                             
         $hashedPassword = $this->db->newQuery()->fromSubquery($user, 'userpengguna')
