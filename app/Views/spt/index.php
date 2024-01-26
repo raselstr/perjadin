@@ -75,7 +75,7 @@
                       <th rowspan="2" class="align-middle text-center">Pelaksana</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
-                      <th rowspan="2" class="align-middle text-center">Nomor SPT, <br>SPD<br>Tanggal</th>
+                      <th rowspan="2" class="align-middle text-center">Tgl. Mulai, <br> Tgl. Selesai<br>Lama (Hari)</th>
                       <th rowspan="2" class="align-middle text-center">Tanggal dibuat</th>
                     </tr>
                     <tr>
@@ -106,7 +106,7 @@
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_nomor ?><br><?= $value->sppd_nomor ?><br><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
+                          <td class="align-middle text-center"><?= date('d M Y',strtotime($value->spt_mulai)) ?><br><?= date('d M Y',strtotime($value->spt_berakhir)) ?><br><?= $value->spt_lama ?> Hari</td>
                           <td class="align-middle text-center"><?= date('d F Y',strtotime($value->updated_at)) ?></td>
                         </tr>
                       <?php } ?>

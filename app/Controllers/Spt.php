@@ -84,6 +84,8 @@ class Spt extends ResourcePresenter
     {
         $spt = new SptModel();
         $data = $this->request->getPost();
+        $sptmulai = $this->request->getPost('spt_mulai');
+        $data['spt_mulai'] = date('Y-m-d',strtotime($sptmulai));
         // dd($data);
 
         $save = $spt->save($data);
@@ -261,6 +263,7 @@ class Spt extends ResourcePresenter
         ]);
         $tglmulai = strtotime($this->request->getVar('spt_mulai'));
         $tglspt = strtotime($this->request->getVar('spt_tgl'));
+        
 
         if(!$valid) {
             if($tglspt > $tglmulai) {
@@ -282,6 +285,8 @@ class Spt extends ResourcePresenter
                 $spt = new SptModel();
            
                 $data = $this->request->getPost();
+                $spttgl = $this->request->getPost('spt_tgl');
+                $data['spt_tgl'] = date('Y-m-d', strtotime($spttgl));
                 $spt->save($data);
                 $responsesuccess = [
                     'success'   => true,

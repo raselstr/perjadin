@@ -5,6 +5,10 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+
 <?= $this->endSection(); ?>
 
 
@@ -12,6 +16,14 @@
 <?= $this->section('scriptplugin'); ?>
   <!-- Select2 -->
   <script src="plugins/select2/js/select2.full.min.js"></script>
+  
+ <!-- InputMask -->
+  <script src="plugins/moment/moment.min.js"></script>
+  <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+
+  <!-- date-range-picker -->
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+
 <?= $this->endSection(); ?>
 
 
@@ -105,12 +117,28 @@
                               </div>
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                           <label for="spt_mulai" class="col-sm-4 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
                           <div class="col">
                             <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= old('spt_mulai') ?>">
                             <div class="invalid-feedback">
                               <?= isset($errors['spt_mulai']) ? $errors['spt_mulai'] : null ; ?>
+                            </div>
+                          </div>
+                        </div> -->
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
+                          <div class="col">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="far fa-calendar-alt"></i>
+                                </span>
+                              </div>
+                              <input type="text" class="form-control float-right <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" id="spt_mulai" name="spt_mulai">
+                              <div class="invalid-feedback">
+                                <?= isset($errors['spt_mulai']) ? $errors['spt_mulai'] : null ; ?>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -193,6 +221,29 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('script'); ?>
+
+<script>
+    // Date range picker
+    $(function() {
+      $('#spt_mulai').daterangepicker({
+        autoUpdateInput: true,
+        locale: {
+          format: 'DD MMMM YYYY'
+        },
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 2023,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        
+      });
+      // Menangani perubahan tanggal
+        $('#spt_mulai').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
+      
+    });
+  </script>
+
   <script>
   $(document).ready(function() {
     function myFunction() {
@@ -252,4 +303,6 @@
       dataJenisperjadin();
     });
   </script>
+
+   
 <?= $this->endSection(); ?>

@@ -10,8 +10,11 @@
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-  <!-- Theme style -->
-<?= $this->endSection(); ?>
+
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+
+  <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
   <!-- DataTables  & Plugins -->
@@ -32,6 +35,14 @@
   <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
   <!-- Toastr -->
   <script src="plugins/toastr/toastr.min.js"></script>
+
+  <!-- InputMask -->
+  <script src="plugins/moment/moment.min.js"></script>
+  <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+
+  <!-- date-range-picker -->
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
@@ -73,7 +84,7 @@
                       <th colspan="4" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
                       <th rowspan="2" class="align-middle text-center">No. SPT <br> SPD</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Uraian</th>
@@ -143,13 +154,25 @@
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
             <input type="text" class="form-control form-control-border" id="spt_mulai" name="spt_mulai" hidden>
-            <input type="text" class="form-control form-control-border" id="spt_mulai1" disabled>
+            <input type="text" class="form-control form-control-border" id="spt_mulai1" readonly>
           </div>
           <div class="form-group">
+            <label>Tanggal Mulai Perjalanan Dinas</code></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="far fa-calendar-alt"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control float-right" id="spt_tgl" name="spt_tgl">
+                <div class="invalid-feedback errorspttgl"></div>
+              </div>
+            </div>
+          <!-- <div class="form-group">
             <label for="exampleInputBorder">Tanggal Surat Perintah Tugas</code></label>
             <input type="date" class="form-control form-control-border" id="spt_tgl" name="spt_tgl" placeholder="Masukkan Tanggal SPT">
             <div class="invalid-feedback errorspttgl"></div>
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="exampleInputBorder">Nomor Surat Perintah Tugas</code></label>
             <input type="text" class="form-control form-control-border" id="spt_nomor" name="spt_nomor" placeholder="Input Nomor SPT">
@@ -192,6 +215,27 @@
   </script>
 
   <script>
+    // Date range picker
+    $(function() {
+      $('#spt_tgl').daterangepicker({
+        autoUpdateInput: true,
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 2023,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        // minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
+        maxDate: moment($('#spt_mulai1').val(), 'DD MMMM YYYY'),
+        
+      });
+      // Menangani perubahan tanggal
+        $('#spt_tgl').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
+      
+    });
+  </script>
+
+  <script>
     $(document).ready(function(){
       // Tangkap klik pada tombol untuk membuka modal
       $('[data-target="#exampleModalCenter"]').click(function() {
@@ -199,10 +243,11 @@
           var id = $(this).data('id');
           var tglmulai = $(this).data('tglmulai');
           var currentDate = new Date().toISOString().slice(0, 10);
+          var formattgl = moment(tglmulai, 'YYYY-MM-DD').format('DD MMMM YYYY');
           // Set nilai ID ke dalam input dengan id "spt_id" di dalam modal
           $('#spt_id').val(id);
           $('#spt_mulai').val(tglmulai);
-          $('#spt_mulai1').val(tglmulai);
+          $('#spt_mulai1').val(formattgl);
           $('#spt_tgl').val(currentDate);
 
       });
