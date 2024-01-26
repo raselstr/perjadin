@@ -9,9 +9,13 @@ class Auth extends BaseController
 {
     public function index()
     {
+        // $model = new AuthModel();
+        // $data = $model->datalogin('198309292011011013');
+
         if(session('user_id')){
             return redirect()->to(site_url('/'));
         }
+        // dd($data);
         return view('layout/login');
     }
 
@@ -46,22 +50,23 @@ class Auth extends BaseController
         $model = new AuthModel();
         $user = $this->request->getPost('user_nama');
         $pass = $this->request->getPost('password');
-        // dd($login);
-        if($user <> null && $pass <> null ){
+        // $userpengguna = $model->userpengguna($user, $pass);
+        if(!empty($user) && !empty($pass)){
             $login = $model->datalogin($user,$pass);
             if($login){
                 $params = [
                     'nama' => $login['user_nmlengkap'],
                     'role' => $login['role_nama'],
                     'role_id' => $login['role_id'],
-                ];
+                    'idpengguna' => $login['user_nama']
+                    ];
                 session()->set($params);
                 return redirect()->to(site_url('/'));
             } else {
                 return redirect()->back()->with('error', 'Kombinasi User dan Password tidak cocok !!');
             }
         } else {
-            return redirect()->back()->with('error', 'User tidak ditemukan');
+            return redirect()->back()->with('error', 'Salah satu User atau Password tidak diisi');
         }
     }
     

@@ -3,30 +3,37 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-use CodeIgniter\Database\RawSql;
 
 class AuthModel extends Model
 {
-    function datalogin($user, $pass)
+    function datalogin($id,$key)
     {
-        $builder = $this->db->table('users as a');
-        $builder->select('a.user_nmlengkap,a.user_id, b.role_nama, b.role_id');
-        $builder->join('roles as b', 'b.role_id = a.user_roleid');
-        $builder->where('a.user_nama',$user);
+        $user = $this->db->table('users as a');
+        $user->select('a.user_nama, a.user_password, a.user_nmlengkap,a.user_id, b.role_nama, b.role_id');
+        $user->join('roles as b', 'b.role_id = a.user_roleid');
 
-        $hashedPassword = $this->db->table('users')
-                        ->select('user_password')
-                        ->where('user_nama', $user)
-                        ->get()
-                        ->getRow()->user_password;
+        $peg = $this->db->table('pegawais as c');
+        $peg->select('c.pegawai_nip,"'.password_hash('bkad',PASSWORD_BCRYPT).'"as user_password, c.pegawai_nama, c.pegawai_id ,"Pelaksana Perjalanan Dinas" as role_nama, "4" as role_id');
+        
+        $user->unionAll($peg);
+        $gabung = $this->db->newQuery()->fromSubquery($user, 'd')
+                                        ->select('d.user_nmlengkap, d.user_id, d.role_nama, d.role_id')
+                                        ->where('d.user_nama', $id);
+                            
+        $hashedPassword = $this->db->newQuery()->fromSubquery($user, 'userpengguna')
+                                ->select('userpengguna.user_nama, userpengguna.user_password')
+                                ->where('userpengguna.user_nama', $id)
+                                ->get()
+                                ->getRow()->user_password;
 
-        if (password_verify($pass, $hashedPassword)) {
-            $query = $builder->get();
+                            
+        if (password_verify($key, $hashedPassword)) {
+            $query = $gabung->get();
             $result = $query->getRowArray();
+            // dd($result);
             return $result;
         }
-
-        return null; // Login gagal
+        return null;
     }
 
     function navmenu($id)
