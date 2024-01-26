@@ -37,6 +37,10 @@
   <script src="plugins/moment/moment.min.js"></script>
   <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
 
+  <!-- date-range-picker -->
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+
 <?=$this->endSection();?>
 
 <?=$this->section('content')?>
@@ -86,11 +90,11 @@
               </div>
               <label class="col-sm-1 col-form-label text-right">Tanggal Mulai</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_mulai" value="<?=date('d F Y', strtotime($data[0]->spt_mulai));?>" disabled>
+                <input type="text" class="form-control" name="spt_mulai"  id="spt_mulai"value="<?=date('d F Y', strtotime($data[0]->spt_mulai));?>" disabled>
               </div>
               <label class="col-sm-2 col-form-label text-right">Tanggal Selesai</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_berakhir" value="<?=date('d F Y', strtotime($data[0]->spt_berakhir));?>" disabled>
+                <input type="text" class="form-control" name="spt_berakhir" id="spt_berakhir" value="<?=date('d F Y', strtotime($data[0]->spt_berakhir));?>" disabled>
               </div>
             </div>
             <!-- <div class="form-group row"> -->
@@ -142,7 +146,7 @@
                     <td class="align-middle text-center"><?=$value->spjtaksi_tgl == null ? "" : date('d F Y', strtotime($value->spjtaksi_tgl));?></td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_dari;?> </td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_ke;?> </td>
-                    <td class="align-middle text-center"><?=$value->spjtaksi_harga;?></td>
+                    <td class="align-middle text-center"><?=number_format($value->spjtaksi_harga,2,',','.');?></td>
 
                   </tr>
                 <?php endforeach?>
@@ -189,11 +193,25 @@
                     <div class="invalid-feedback errorspjtaksi_jenis"></div>
                   </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Tanggal Taksi</label>
                   <div class="col">
                     <input type="date" class="form-control" id="spjtaksi_tgl" name="spjtaksi_tgl">
                     <div class="invalid-feedback errorspjtaksi_tgl"></div>
+                  </div>
+                </div> -->
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tanggal Berangkat</label>
+                  <div class="col">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                      <input type="text" class="form-control float-right" id="spjtaksi_tgl" name="spjtaksi_tgl">
+                      <div class="invalid-feedback errorspjtaksi_tgl"></div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -353,6 +371,29 @@
       });
     </script>
   <!-- End Script Tampilan Tabel -->
+
+    <script>
+      // Date range picker
+      $(function() {
+        $('#spjtaksi_tgl').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+            format: 'DD MMMM YYYY'
+          },
+          singleDatePicker: true,
+          showDropdowns: true,
+          minYear: 2023,
+          maxYear: parseInt(moment().format('YYYY'),10),
+          minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
+          maxDate: moment($('#spt_berakhir').val(), 'DD MMMM YYYY').add(2, 'days'),
+        });
+        // Menangani perubahan tanggal
+          $('#spjtaksi_tgl').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD MMMM YYYY'));
+          });
+        
+      });
+    </script>
 
   <!-- Script Hapus -->
     <script>

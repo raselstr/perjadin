@@ -54,7 +54,7 @@ class SpjHotel extends ResourcePresenter
         $model = new SpjHotelModel();
         $hotelidpelaksana = $model->hotelidpelaksana($id);
         $data = [
-            'title'     => 'Form Tiket Hotel',
+            'title'     => 'Form Bill Hotel',
             'subtitle'  => 'Home',
             'data'      => $hotelidpelaksana,
                     
@@ -76,6 +76,9 @@ class SpjHotel extends ResourcePresenter
         
         $spjhotel = new SpjHotelModel();
         $data = $this->request->getPost();
+        $checkin = $this->request->getPost('spjhotel_checkin');
+        $data['spjhotel_checkin'] = date('Y-m-d',strtotime($checkin));
+
         
         $save = $spjhotel->save($data);
         if($save){

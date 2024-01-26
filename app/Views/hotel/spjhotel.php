@@ -37,6 +37,9 @@
   <script src="plugins/moment/moment.min.js"></script>
   <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
 
+  <!-- date-range-picker -->
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+
 <?=$this->endSection();?>
 
 <?=$this->section('content')?>
@@ -86,11 +89,11 @@
               </div>
               <label class="col-sm-1 col-form-label text-right">Tanggal Mulai</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_mulai" value="<?=date('d F Y', strtotime($data['data'][0]->spt_mulai));?>" disabled>
+                <input type="text" id= "mulai" class="form-control" name="spt_mulai" value="<?=date('d F Y', strtotime($data['data'][0]->spt_mulai));?>" readonly>
               </div>
               <label class="col-sm-2 col-form-label text-right">Tanggal Selesai</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" name="spt_berakhir" value="<?=date('d F Y', strtotime($data['data'][0]->spt_berakhir));?>" disabled>
+                <input type="text" id= "akhir" class="form-control" name="spt_berakhir" value="<?=date('d F Y', strtotime($data['data'][0]->spt_berakhir));?>" readonly>
               </div>
             </div>
             <!-- <div class="form-group row"> -->
@@ -144,7 +147,7 @@
                     <td class="align-middle text-center"><?=$value->spjhotel_typekamar;?></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_checkin == null ? "" : date('d F Y', strtotime($value->spjhotel_checkin));?></td>
                     <td class="align-middle text-center"><?=$value->spjhotel_checkout == null ? "" : date('d F Y', strtotime($value->spjhotel_checkout));?></td>
-                    <td class="align-middle text-center"><?=$value->spjhotel_hargatotal;?> </td>
+                    <td class="align-middle text-center"><?=number_format($value->spjhotel_hargatotal,2,',','.');?> </td>
 
                   </tr>
                 <?php endforeach?>
@@ -209,11 +212,25 @@
                   </div>
                 </div>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Tanggal Checkin</label>
                   <div class="col">
                     <input type="date" class="form-control" id="spjhotel_checkin" name="spjhotel_checkin">
                     <div class="invalid-feedback errorspjhotel_checkin"></div>
+                  </div>
+                </div> -->
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tanggal Checkin</label>
+                  <div class="col">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                      <input type="text" class="form-control float-right" id="checkin" name="spjhotel_checkin">
+                      <div class="invalid-feedback errorspjhotel_checkin"></div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -386,6 +403,30 @@
 <?=$this->endSection()?>
 
 <?=$this->section('script')?>
+
+  <script>
+    // Date range picker
+    $(function() {
+      $('#checkin').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+          format: 'DD MMMM YYYY'
+        },
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 2023,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        minDate: moment($('#mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
+        maxDate: moment($('#akhir').val(), 'DD MMMM YYYY').add(2, 'days'),
+      });
+      // Menangani perubahan tanggal
+        $('#checkin').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
+      
+    });
+  </script>
+
   <!-- Script Tampilan Tabel -->
     <script>
       $(function () {
@@ -780,7 +821,7 @@
       $(document).ready(function() {
         function myFunction() {
           var jh = $("#spjhotel_mlm").val();
-          var tglmulai = $("#spjhotel_checkin").val();
+          var tglmulai = $("#checkin").val();
           var hari = jh * 24 * 60 * 60 * 1000;
           
           var hariakhir = new Date(new Date(tglmulai).getTime() + (hari) - 1);
@@ -791,7 +832,7 @@
           $('#spjhotel_hargatotal').val(totalharga);
         }
         // Panggil myFunction() saat nilai #spt_lama atau #spt_mulai berubah
-        $("#spjhotel_checkin, #spjhotel_mlm, #spjhotel_hargapermalam").change(function() {
+        $("#checkin, #spjhotel_mlm, #spjhotel_hargapermalam").change(function() {
           myFunction();
         });
       });

@@ -76,6 +76,8 @@ class SpjPesawat extends ResourcePresenter
         
         $spjpesawat = new SpjPesawatModel();
         $data = $this->request->getPost();
+        $checkin = $this->request->getPost('spjpesawat_tgl');
+        $data['spjpesawat_tgl'] = date('Y-m-d',strtotime($checkin));
         
         $save = $spjpesawat->save($data);
         if($save){

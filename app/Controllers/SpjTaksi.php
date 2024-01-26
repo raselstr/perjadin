@@ -74,6 +74,8 @@ class SpjTaksi extends ResourcePresenter
     {
         $spjtaksi = new SpjTaksiModel();
         $data = $this->request->getPost();
+        $checkin = $this->request->getPost('spjtaksi_tgl');
+        $data['spjtaksi_tgl'] = date('Y-m-d',strtotime($checkin));
         
         $save = $spjtaksi->save($data);
         if($save){
