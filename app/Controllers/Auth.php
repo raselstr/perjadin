@@ -7,9 +7,22 @@ use App\Models\AuthModel;
 
 class Auth extends BaseController
 {
+    protected $session;
+
+    public function __construct()
+    {
+        // Load session helper
+        helper('session');
+
+        // Mendapatkan instance dari session
+        $this->session = \Config\Services::session();
+    }
+
     public function index()
     {
-        if(session('user_id')){
+        $session = $this->session->get('role');
+
+        if(session($session)){
             return redirect()->to(site_url('/'));
         }
         return view('layout/login');
@@ -66,7 +79,7 @@ class Auth extends BaseController
                         'nama' => $login['user_nmlengkap'],
                         'role' => $login['role_nama'],
                         'role_id' => $login['role_id'],
-                        'idpengguna' => $login['user_nama']
+                        'idpengguna' => $login['userid']
                         ];
                     session()->set($params);
                     return redirect()->to(site_url('/'));

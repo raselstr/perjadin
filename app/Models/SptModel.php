@@ -95,12 +95,18 @@ class SptModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function pelaksanaspt()
+    function pelaksanaspt($id = null)
     {
         $builder = $this->db->table('spts');
         $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id');
+        $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id');
+        if($id !== null){
+            $builder->where('pegawais.pegawai_nip', $id);
+        }
+        $builder->groupBy('spts.spt_id');
         $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
         return $query->getResult();

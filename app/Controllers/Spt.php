@@ -17,22 +17,35 @@ use CodeIgniter\HTTP\IncomingRequest;
 
 class Spt extends ResourcePresenter
 {
+    protected $session;
     /**
      * Present a view of resource objects
      *
      * @return mixed
      */
+
+    public function __construct()
+    {
+        // Load session helper
+        helper('session');
+
+        // Mendapatkan instance dari session
+        $this->session = \Config\Services::session();
+    }
+
     
     public function index()
     {
         helper('date');
+        $session = $this->session->get('idpengguna');
+
         $spt = new SptModel();
-        $penugas = new PejabatModel();
-        
+        $sptpelaksana = $spt->pelaksanaspt($session);        
         $data = [
             'title'     => 'Perintah Tugas',
             'subtitle'  => 'Home',
-            'spt'       => $spt->pelaksanaspt(),
+            'spt'       => $sptpelaksana,
+            'session'   => $session,
             // 'pejabat'   => $penugas->findAll(),
         ];
         // dd($data);
@@ -216,10 +229,12 @@ class Spt extends ResourcePresenter
 
     public function verif()
     {
+        
         helper('date');
+        $session = $this->session->get('idpengguna');
         $spt = new SptModel();
         $penugas = new PejabatModel();
-        $dataspt = $spt->orderBy('created_at','DESC')->pelaksanaspt();
+        $dataspt = $spt->pelaksanaspt($session);
         $data = [
             'title'     => 'Verifikasi Surat Perintah Tugas',
             'subtitle'  => 'Home',

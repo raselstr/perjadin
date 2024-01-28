@@ -7,15 +7,28 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class SpjTaksi extends ResourcePresenter
 {
+    protected $session;
     /**
      * Present a view of resource objects
      *
      * @return mixed
      */
+
+    public function __construct()
+    {
+        // Load session helper
+        helper('session');
+
+        // Mendapatkan instance dari session
+        $this->session = \Config\Services::session();
+    }
+
     public function index()
     {
         $model = new SpjTaksiModel();
-        $spjtaksi = $model->pelaksanaall();
+        $session = $this->session->get('idpengguna');
+
+        $spjtaksi = $model->pelaksanaall($session);
         $data = [
             'title'     => 'Pertanggung Jawaban Taksi/ Angkutan Umum',
             'subtitle'  => 'Home',

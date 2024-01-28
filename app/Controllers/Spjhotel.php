@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Session\Session;
 use App\Models\SpjHotelModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 

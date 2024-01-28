@@ -8,15 +8,28 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class LaporJadin extends ResourcePresenter
 {
+    protected $session;
     /**
      * Present a view of resource objects
      *
      * @return mixed
      */
+
+    public function __construct()
+    {
+        // Load session helper
+        helper('session');
+
+        // Mendapatkan instance dari session
+        $this->session = \Config\Services::session();
+    }
+
     public function index()
     {
         $model = new LaporjadinModel();
-        $query = $model->dataspt();
+        $session = $this->session->get('idpengguna');
+
+        $query = $model->dataspt($session);
         $data = [
             'title' => 'Laporan Kegiatan Perjalanan Dinas',
             'subtitle' => 'Home',

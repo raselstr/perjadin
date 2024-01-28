@@ -63,14 +63,20 @@ class LaporjadinModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function dataspt()
+    function dataspt($id)
     {
         $builder = $this->db->table('spts');
         $builder->select('spts.*, laporjadins.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('laporjadins', 'laporjadins.laporjadin_sptid = spts.spt_id', 'LEFT');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
+        $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id', 'LEFT');
         $builder->where('spts.spt_verif',1);
+        if($id !== null){
+            $builder->where('pegawais.pegawai_nip', $id);
+        }
+        $builder->groupBy('spts.spt_id');
         $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
         return $query->getResult();
