@@ -23,7 +23,7 @@ class User extends ResourcePresenter
             'title'     => 'User',
             'subtitle'  => 'Home',
             'pengguna'  => $model->datauser(),
-            'role'      => $modelrole->datarole(),
+            'role'      => $modelrole->dataroleuser(),
             // 'aktif'     =>$model->menuactive(2)
         ];
         // dd($data);

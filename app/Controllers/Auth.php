@@ -54,7 +54,7 @@ class Auth extends BaseController
                     'nama' => 'Administrator',
                     'role' => 'Admin',
                     'role_id' => '99',
-                    'idpengguna' => '99',
+                    'idpengguna' => null,
                     ];
                 session()->set($params);
                 return redirect()->to(site_url('/'));

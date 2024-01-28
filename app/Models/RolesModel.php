@@ -39,12 +39,20 @@ class RolesModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function datarole()
+    
+    function dataroleall()
     {
         $builder = $this->db->table('roles');
         $builder->select('*');
-        $builder->join('users', 'users.user_roleid = roles.role_id', 'LEFT');
-        $builder->where('users.user_id != 5 OR roles.role_id != 5');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    function dataroleuser()
+    {
+        $builder = $this->db->table('roles as a');
+        $builder->select('*');
+        $builder->where('a.role_id != 4');
         $query = $builder->get();
         return $query->getResult();
     }

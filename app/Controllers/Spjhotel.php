@@ -2,24 +2,40 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Session\Session;
 use App\Models\SpjHotelModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
+
+
 class SpjHotel extends ResourcePresenter
 {
+    protected $session;
     /**
      * Present a view of resource objects
      *
      * @return mixed
      */
+
+    public function __construct()
+    {
+        // Load session helper
+        helper('session');
+
+        // Mendapatkan instance dari session
+        $this->session = \Config\Services::session();
+    }
+
     public function index()
     {
+        $session = $this->session->get('idpengguna');
         $model = new SpjHotelModel();
-        $spjhotel = $model->pelaksanaall();
+        $spjhotel = $model->pelaksanaall($session);
         $data = [
             'title'     => 'Pertanggung Jawaban Hotel',
             'subtitle'  => 'Home',
             'spjhotel'  => $spjhotel,
+            'session'   => $session,
                        
         ];
         // dd($data);

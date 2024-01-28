@@ -87,7 +87,7 @@ class SpjHotelModel extends Model
 
 
 
-    function pelaksanaall()
+    function pelaksanaall($id)
     {
         // dd($subquery);
         $builder = $this->db->table('pelaksanas');
@@ -97,6 +97,9 @@ class SpjHotelModel extends Model
         $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        if($id !== null){
+            $builder->where('pegawais.pegawai_nip', $id);
+        }
         $builder->where('spts.spt_verif', 1);
         $builder->where('spts.spt_jenis !=', 3);
 
