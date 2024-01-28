@@ -76,10 +76,11 @@ class AuthModel extends Model
         $builder->join('menus AS c', 'a.menu_id = c.menu_id');
         $builder->join('roles AS d', 'b.role_id = d.role_id');
         $builder->where('a.submenu_active = 1 AND c.menu_active = 1');
-        if($id !== '99'){
+        if($id !== null){
             $builder->where('b.role_id', $id);
         }
         $builder->where('a.menu_id', $menu);
+        $builder->groupBy('a.submenu_id');
 
         $builder->orderBy('a.menu_id', 'ASC');
 
