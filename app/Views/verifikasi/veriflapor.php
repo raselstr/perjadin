@@ -152,9 +152,9 @@
                           <td>Validasi</td>
                           <td>
                             <?php if($value->laporjadin_verif == 0) : ?>
-                              <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverif" data-idlapor="<?=$value->laporjadin_id;?>"><i class="fas fa-times"> </i> Bukti Hotel Belum di Verifikasi </button>
+                              <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverif" data-idlapor="<?=$value->laporjadin_id;?>"><i class="fas fa-times"> </i> Bukti Belum di Verifikasi </button>
                             <?php else : ?>
-                              <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverif" data-idlapor="<?=$value->laporjadin_id;?>"><i class="fas fa-check"> </i> Bukti Hotel sudah di Verifikasi </button>
+                              <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverif" data-idlapor="<?=$value->laporjadin_id;?>"><i class="fas fa-check"> </i> Bukti sudah di Verifikasi </button>
                             <?php endif ?>
                           </td>
                         </tr>

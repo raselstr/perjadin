@@ -253,9 +253,9 @@ use SebastianBergmann\Invoker\Invoker;
                             <td>Validasi</td>
                             <td>
                               <?php if($value->spjpesawat_verif == 0) : ?>
-                                <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-times"> </i> Bukti Hotel Belum di Verifikasi </button>
+                                <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-times"> </i> Bukti Pesawat Belum di Verifikasi </button>
                               <?php else : ?>
-                                <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> Bukti Hotel sudah di Verifikasi </button>
+                                <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> Bukti Pesawat sudah di Verifikasi </button>
                               <?php endif ?>
                             </td>
                           </tr>
@@ -318,9 +318,9 @@ use SebastianBergmann\Invoker\Invoker;
                             <td>Validasi</td>
                             <td>
                               <?php if($value->spjtaksi_verif == 0) : ?>
-                                <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-times"> </i> Bukti Hotel Belum di Verifikasi </button>
+                                <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-times"> </i> Bukti Taksi Belum di Verifikasi </button>
                               <?php else : ?>
-                                <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-check"> </i> Bukti Hotel sudah di Verifikasi </button>
+                                <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-check"> </i> Bukti Taksi sudah di Verifikasi </button>
                               <?php endif ?>
                             </td>
                           </tr>
@@ -455,7 +455,11 @@ use SebastianBergmann\Invoker\Invoker;
                             <?php endforeach ?>
                             <div class="row">
                               <div class="col">
-                                <button type="submit" class="btn bg-gradient-primary float-right">Validasi</button>
+                                <?php if($uh[0]->uangharian_verif == null) : ?>
+                                  <button type="submit" class="btn bg-gradient-danger float-right">Belum di Verifikasi</button>
+                                  <?php else : ?>
+                                    <button type="submit" class="btn bg-gradient-primary float-right">Sudah di Verifikasi</button>
+                                  <?php endif ?>
                               </div>
                             </div>
                           </div>
