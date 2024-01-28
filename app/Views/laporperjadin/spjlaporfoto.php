@@ -72,30 +72,33 @@
               <tbody>
                 <tr>
                   <td>1.</td>
-                  <td>Nomor SPT dan SPD</td>
-                  <td><?= $data[0]->spt_nomor; ?> <br> <?= $data[0]->sppd_nomor; ?></td>
+                  <td>Dasar</td>
+                  <td><?= $data[0]->spt_nomor; ?> <br> <?= $data[0]->sppd_nomor; ?><br><?= $data[0]->laporjadin_nodpa; ?></td>
                 </tr>
                 <tr>
                   <td>2.</td>
-                  <td>Tanggal SPT dan SPD</td>
-                  <td><?=date('d F Y', strtotime($data[0]->spt_tgl));?></td>
-                </tr>
-                <tr>
-                  <td>3.</td>
                   <td>Tanggal Berangkat dan Kembali</td>
                   <td><?=date('d F Y', strtotime($data[0]->spt_mulai));?> &nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp; <?=date('d F Y', strtotime($data[0]->spt_berakhir));?></td>
                 </tr>
                 <tr>
-                  <td>4.</td>
-                  <td>Lokasi Perjalanan Dinas</td>
+                  <td>3.</td>
+                  <td>Lokasi dan Tujuan Perjalanan Dinas </td>
                   <td>
-                    <?= $data[0]->lokasiperjadin_nama; ?>
+                    <?= $data[0]->lokasiperjadin_nama; ?><br>
+                    <?= $data[0]->spt_uraian; ?> ke <?= $data[0]->spt_tempat; ?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Laporan Pertemuan</td>
+                  <td>
+                    <?= $data[0]->laporjadin_pembuka; ?>
                   </td>
                 </tr>
                 <tr>
                   <td>5.</td>
-                  <td>Tujuan Perjaanan Dinas</td>
-                  <td><?= $data[0]->spt_uraian; ?> ke <?= $data[0]->spt_tempat; ?></td>
+                  <td>Laporan Hasil Konsultasi</td>
+                  <td><?= $data[0]->laporjadin_hasil; ?></td>
                 </tr>
                 <tr>
                   <td></td><td></td><td></td>
@@ -115,38 +118,40 @@
                   <input type="text" class="form-control" name="oldlaporjadin_foto3" value="<?= $data[0]->laporjadin_foto3; ?>" hidden>
                 </div>
               </div>
+              <?php if(session("role_id") == "4") : ?>
               <div class="form-group row">
-                <label for="exampleInputFile" class="col-sm-2 col-form-label">Foto Kegiatan<code>*</code> </label>
-                <div class="col-sm-3">
-                  <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['laporjadin_foto1']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto1" id="laporjadin_foto1">
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto1" name="nama-foto1">Pilih Foto</label>
-                    <div class="invalid-feedback">
-                        <?= isset($errors['laporjadin_foto1']) ? $errors['laporjadin_foto1'] : null ; ?>
+                  <label for="exampleInputFile" class="col-sm-2 col-form-label">Foto Kegiatan<code>*</code> </label>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <input class="custom-file-input <?= isset($errors['laporjadin_foto1']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto1" id="laporjadin_foto1">
+                      <label class="custom-file-label" for="custom-file-label" id="nama-foto1" name="nama-foto1">Pilih Foto</label>
+                      <div class="invalid-feedback">
+                          <?= isset($errors['laporjadin_foto1']) ? $errors['laporjadin_foto1'] : null ; ?>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['laporjadin_foto2']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto2" id="laporjadin_foto2" >
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto2" name="nama-foto2">Pilih Foto</label>
-                    <div class="invalid-feedback">
-                        <?= isset($errors['laporjadin_foto2']) ? $errors['laporjadin_foto2'] : null ; ?>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <input class="custom-file-input <?= isset($errors['laporjadin_foto2']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto2" id="laporjadin_foto2" >
+                      <label class="custom-file-label" for="custom-file-label" id="nama-foto2" name="nama-foto2">Pilih Foto</label>
+                      <div class="invalid-feedback">
+                          <?= isset($errors['laporjadin_foto2']) ? $errors['laporjadin_foto2'] : null ; ?>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="input-group">
-                    <input class="custom-file-input <?= isset($errors['laporjadin_foto3']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto3" id="laporjadin_foto3" >
-                    <label class="custom-file-label" for="custom-file-label" id="nama-foto3" name="nama-foto3">Pilih Foto</label>
-                    <div class="invalid-feedback">
-                        <?= isset($errors['laporjadin_foto3']) ? $errors['laporjadin_foto3'] : null ; ?>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <input class="custom-file-input <?= isset($errors['laporjadin_foto3']) ? 'is-invalid' : null ; ?>" type="file" name="laporjadin_foto3" id="laporjadin_foto3" >
+                      <label class="custom-file-label" for="custom-file-label" id="nama-foto3" name="nama-foto3">Pilih Foto</label>
+                      <div class="invalid-feedback">
+                          <?= isset($errors['laporjadin_foto3']) ? $errors['laporjadin_foto3'] : null ; ?>
+                      </div>
                     </div>
                   </div>
-                </div>
               </div>
-              <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
               <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
+              <?php endif ?>
+              <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
             </div>
           </form>
           <div class="card-footer">
