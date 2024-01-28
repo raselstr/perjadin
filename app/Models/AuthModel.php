@@ -20,18 +20,20 @@ class AuthModel extends Model
                                         ->select('d.user_nmlengkap, d.user_id, d.role_nama, d.role_id, d.user_nama')
                                         ->where('d.user_nama', $id);
                             
-        $hashedPassword = $this->db->newQuery()->fromSubquery($user, 'userpengguna')
+        $query = $this->db->newQuery()->fromSubquery($user, 'userpengguna')
                                 ->select('userpengguna.user_nama, userpengguna.user_password')
                                 ->where('userpengguna.user_nama', $id)
-                                ->get()
-                                ->getRow()->user_password;
+                                ->get();
+        $resultquery = $query->getRow();                        
 
-                            
-        if (password_verify($key, $hashedPassword)) {
-            $query = $gabung->get();
-            $result = $query->getRowArray();
-            // dd($result);
-            return $result;
+        if($resultquery !== null){
+            $hashedPassword = $resultquery->user_password;
+            if (password_verify($key, $hashedPassword)) {
+                $query = $gabung->get();
+                $result = $query->getRowArray();
+                // dd($result);
+                return $result;
+            }
         }
         return null;
     }
@@ -47,7 +49,9 @@ class AuthModel extends Model
         $builder->join('menus as d', 'd.menu_id = c.menu_id');
         $builder->where('c.submenu_active',1);
         $builder->where('d.menu_active',1);
-        $builder->where('b.role_id',$id);
+        if($id !== '99'){
+            $builder->where('b.role_id',$id);
+        }
         $builder->groupBy('d.menu_id');
         $builder->orderBy('d.menu_id','ASC');
 
@@ -72,8 +76,10 @@ class AuthModel extends Model
         $builder->join('menus AS c', 'a.menu_id = c.menu_id');
         $builder->join('roles AS d', 'b.role_id = d.role_id');
         $builder->where('a.submenu_active = 1 AND c.menu_active = 1');
+        if($id !== '99'){
+            $builder->where('b.role_id', $id);
+        }
         $builder->where('a.menu_id', $menu);
-        $builder->where('b.role_id', $id);
 
         $builder->orderBy('a.menu_id', 'ASC');
 

@@ -29,7 +29,9 @@ class UsersModel extends Model
     protected $deletedField  = 'user_deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
