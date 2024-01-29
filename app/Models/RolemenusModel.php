@@ -52,4 +52,18 @@ class RolemenusModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    function datarolefilter($id,  $key)
+    {
+        $filterrole = $this->db->table('rolemenus');
+        $filterrole->select('submenus.submenu_link');
+        $filterrole->join('roles', 'roles.role_id = rolemenus.role_id');
+        $filterrole->join('submenus', 'submenus.submenu_id = rolemenus.submenu_id');
+        if($id <> null){
+            $filterrole->where('rolemenus.role_id', $id);
+        };
+        $filterrole->where('submenus.submenu_link', $key);
+        $query = $filterrole->get();
+        return $query->getRowArray();
+    }
 }
