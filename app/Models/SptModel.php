@@ -99,10 +99,10 @@ class SptModel extends Model
     {
         $builder = $this->db->table('spts');
         $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
-        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
-        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
-        $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id');
-        $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas', 'LEFT');
+        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan', 'LEFT');
+        $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
+        $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id', 'LEFT');
         if($id !== null){
             $builder->where('pegawais.pegawai_nip', $id);
         }

@@ -83,6 +83,7 @@ class AuthModel extends Model
         $builder->groupBy('a.submenu_id');
 
         $builder->orderBy('a.menu_id', 'ASC');
+        $builder->orderBy('a.submenu_id', 'ASC');
 
         $query = $builder->get();
         $result = $query->getResult();
