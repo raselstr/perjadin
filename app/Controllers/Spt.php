@@ -48,7 +48,7 @@ class Spt extends ResourcePresenter
             'session'   => $session,
             // 'pejabat'   => $penugas->findAll(),
         ];
-        dd($data);
+        // dd($data);
         return view('spt/index', $data);
     }
 
