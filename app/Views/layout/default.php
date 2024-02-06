@@ -19,7 +19,7 @@
   
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->

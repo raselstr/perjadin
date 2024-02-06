@@ -103,6 +103,8 @@
       </div>
     </div>
   </div>
+  
+  
   <!-- Modal SPJ Pesawat -->
   <div class="modal fade" id="form">
     <div class="modal-dialog">
@@ -126,7 +128,13 @@
                   <div class="col">
                     <select class="form-control select2" style="width: 100%;" name = "role_id" id="role_id">
                       <option>Pilih Role Menu</option>
-                        <option value="<?= $role->role_id; ?>"><?= $role->role_nama; ?></option>
+                        <?php if(is_array($role)) :?>
+                          <?php foreach ($role as $key => $value) : ?>
+                            <option value="<?= $value->role_id; ?>"><?= $value->role_nama; ?></option>
+                          <?php endforeach ?>
+                          <?php else: ?>
+                            <option value="<?= $role->role_id; ?>"><?= $role->role_nama; ?></option>
+                          <?php endif ?>
                     </select>
                   </div>
                 </div>
@@ -135,13 +143,17 @@
                   <div class="col">
                     <div class="select2-purple">
                       <select class="select2" multiple="multiple" data-placeholder="Pilih Sub Menu" style="width: 100%;" name="submenu_id[]" id="submenu_id">
-                        <?php foreach ($submenu as $key => $value) : ?>
-                          <option value="<?= $value->submenu_id; ?>"><?= $value->submenu_id. '. ' .$value->submenu_nama; ?></option>
-                          <?php endforeach ?>
-                        </select>
-                      </div>
+                          <?php if(!empty($submenu)) : ?>
+                            <?php foreach ($submenu as $key => $value): ?>
+                              <option value="<?=$value->submenu_id;?>"><?=$value->submenu_id. '. ' .$value->submenu_nama;?></option>
+                            <?php endforeach?>
+                            <?php else: ?>
+                              <option value="<?= $value->submenu_id; ?>"><?= $value->submenu_id. '. ' .$value->submenu_nama; ?></option>
+                            <?php endif ?>
+                      </select>
                     </div>
                   </div>
+                </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="reset" class="btn btn-default batalbutton" data-dismiss="modal">Batal</button>
@@ -150,11 +162,11 @@
           </div>
         </form>
       <!-- /.modal-content -->
-    </div>
+      </div>
     <!-- /.modal-dialog -->
-  </div>
+    </div>
   <!-- /.modal -->
-
+  </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
