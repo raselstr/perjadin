@@ -106,7 +106,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">SPJ Pesawat</h4>
+          <h4 class="modal-title"><?= $title; ?></h4>
         </div>
         <form action="<?=site_url('menu/create');?>" method="post" id="menuform">
           <?=csrf_field();?>

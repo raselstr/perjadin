@@ -132,14 +132,14 @@
                           <td colspan="2" style="width:20%">Uang Harian</td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
                             <?php $qrharian = $model->rampungharian($pelaksana_id);?>
-                            <?php $harian = 0;
-                              foreach ($qrharian as $key => $harian): ?>
-                              <i><?=$value->spt_lama?> hari x Rp. <?= $harian = number_format($harian->uangharian_perhari,0,',','.'); ?></i><br>
-                            <?php endforeach?>
+                            <?php $totharian = 0;
+                              foreach ($qrharian as $key => $harians): ?>
+                              <i><?=$value->spt_lama?> hari x Rp. <?= $harian = number_format($harians->uangharian_perhari,0,',','.'); $totharian = $harians->uangharian_jumlah?></i><br>
+                              <?php endforeach?>
                             </td>
                             <td class="align-middle text-right">
-                              <?= number_format($harian,2,',','.'); ?>
-                          </td>
+                              <?= number_format($totharian,2,',','.'); ?>
+                            </td>
                           <td class="align-top text-right" rowspan="9"><strong></strong></td>
                         </tr>
                         <?php $qrpesawat = $model->rampungpesawat($pelaksana_id);?>

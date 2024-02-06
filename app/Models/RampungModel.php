@@ -118,7 +118,6 @@ class RampungModel extends Model
 
         $query = $builder->get();
         $result = $query->getResult();
-
         return $result;
     }
 

@@ -41,18 +41,14 @@ $routes->presenter('pelaksana');
 
 $routes->get('spjhotel/formspj/(:num)', 'spjhotel::formspj/$1');
 $routes->post('spjhotel/upload', 'spjhotel::upload');
-$routes->post('spjhotel/verif', 'spjhotel::verif');
-
 $routes->presenter('spjhotel');
 
 $routes->get('spjpesawat/formspj/(:num)', 'SpjPesawat::formspj/$1');
 $routes->post('spjpesawat/upload', 'SpjPesawat::upload');
-$routes->post('spjpesawat/verif', 'SpjPesawat::verif');
 $routes->presenter('spjpesawat');
 
 $routes->get('spjtaksi/formspj/(:num)', 'SpjTaksi::formspj/$1');
 $routes->post('spjtaksi/upload', 'SpjTaksi::upload');
-$routes->post('spjtaksi/verif', 'SpjTaksi::verif');
 $routes->presenter('spjtaksi');
 
 
@@ -63,6 +59,10 @@ $routes->post('laporjadin/verif','LaporJadin::verif');
 $routes->presenter('laporjadin');
 
 
+$routes->post('verifikasi/verifuangharian', 'Verifikasi::verifuangharian');
+$routes->post('verifikasi/veriftaksi', 'Verifikasi::veriftaksi');
+$routes->post('verifikasi/verifhotel', 'Verifikasi::verifhotel');
+$routes->post('verifikasi/verifpesawat', 'Verifikasi::verifpesawat');
 $routes->get('verifikasi/showlapor/(:num)','Verifikasi::showlapor/$1');
 $routes->get('verifikasi/form/(:num)','Verifikasi::form/$1');
 $routes->presenter('verifikasi');

@@ -53,16 +53,16 @@ class UangHarian extends ResourcePresenter
      *
      * @return mixed
      */
-    public function create()
-    {
+    // public function create()
+    // {
         
         
-        $uangharian = new UangHarianModel();
-        $data = $this->request->getPost();
+    //     $uangharian = new UangHarianModel();
+    //     $data = $this->request->getPost();
         
-        $uangharian->save($data);
-        return redirect()->back()->with('Info','Data Berhasil disimpan');
-    }
+    //     $uangharian->save($data);
+    //     return redirect()->back()->with('Info','Data Berhasil disimpan');
+    // }
 
      /**
      * Present a view to edit the properties of a specific resource object
@@ -73,34 +73,10 @@ class UangHarian extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $spjhotel = new SpjHotelModel();
-        $data = $spjhotel->find($id);
-        return $this->response->setJSON($data);
+        //
     }
 
-    public function verif()
-    {
-        $spjhotel = new SpjHotelModel();
-        if ($this->request->isAJAX()) {
-            $data = $this->request->getPost();
-
-            $saved = $spjhotel->save($data);
-
-            if ($saved) {
-                $pesan = [
-                    'error' => false,
-                    'messages' => 'Data berhasil disimpan ke database.'
-                ];
-            } else {
-                $pesan = [
-                    'error' => true,
-                    'messages' => 'Gagal menyimpan data ke database.'
-                ];
-            }
-
-            return $this->response->setJSON($pesan);
-        } 
-    }
+    
     /**
      * Process the updating, full or partial, of a specific resource object.
      * This should be a POST.
@@ -123,11 +99,7 @@ class UangHarian extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        $spjhotel = new SpjHotelModel();
-        $spjhotel->delete($id);
-        
-        // return $this->response->setJSON($pesan);
-        return redirect()->back();
+        //    
     }
 
     /**
