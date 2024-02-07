@@ -15,9 +15,10 @@ $angkaterbilang = new PelaksanaModel();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= $title; ?></title>
   <base href="<?= base_url('templates'); ?>/">
-
+  
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:800&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 
@@ -61,6 +62,7 @@ $angkaterbilang = new PelaksanaModel();
                   </div>
                 </div>
                 <div class="row"></div>
+                <h5>
                 <?php foreach ($data as $key => $value): ?>
                         <div class="row invoice-info">
                           <div class="col-sm-8 invoice-col">
@@ -81,10 +83,11 @@ $angkaterbilang = new PelaksanaModel();
                         </div>
                         <?php endforeach?>
                         <!-- /.row -->
-
+                </h5>  
                 <!-- Table row -->
                 <div class="row">
                   <div class="col-12 table-responsive">
+                    <h6>
                     <table class="table table-sm">
                       <thead>
                         <tr>
@@ -258,6 +261,7 @@ $angkaterbilang = new PelaksanaModel();
                         <?php endforeach?>
                       </tbody>
                     </table>
+                    </h6>
                   </div>
                   <!-- /.col -->
                 </div>
@@ -270,6 +274,7 @@ $angkaterbilang = new PelaksanaModel();
                   <div class="col-6">
                     
                     <div class="table-responsive">
+                      <h5>
                       <table class="table">
                         <tr>
                           <th style="width:30%">Total Keseluruhan </th>
@@ -307,11 +312,13 @@ $angkaterbilang = new PelaksanaModel();
                           </td>
                         </tr>
                       </table>
+                      </h5>
                     </div>
                   </div>
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
+                <h5>
                       <?php foreach ($data as $key => $value): ?>
                         <div class="row invoice-info">
                           <div class="col-sm-1 invoice-col">
@@ -343,7 +350,7 @@ $angkaterbilang = new PelaksanaModel();
                         </div>
                         <?php endforeach?>
                         <!-- /.row -->
-                 
+                </h5> 
               </div>
               <!-- /.invoice -->
             </div><!-- /.col -->
