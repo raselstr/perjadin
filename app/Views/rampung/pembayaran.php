@@ -120,7 +120,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $no = 1; 
+                        <?php $no = 1;
+                          $sptid =0; 
                           foreach ($all as $key => $value) : ?>
                             <?php 
                               $pelaksana_id = $value->pelaksana_id; 
@@ -340,7 +341,7 @@
                 <!-- this row will not appear when printing -->
                 <div class="row no-print">
                   <div class="col-12">
-                    <a href="pembayaran.php" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                    <a href="<?= site_url('rampung/formcetak/'.$sptid); ?>" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
                     <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                       Payment
                     </button>

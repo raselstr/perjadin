@@ -2,9 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\LaporjadinModel;
-use App\Models\RampungModel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Models\VerifModel;
+use App\Models\RampungModel;
+use App\Models\LaporjadinModel;
+use App\Models\PelaksanaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class Rampung extends ResourcePresenter
@@ -43,6 +46,37 @@ class Rampung extends ResourcePresenter
         ];
         // dd($data);
         return view('rampung/pembayaran', $data);
+    }
+
+    public function formcetak($id=null)
+    {
+        $model = new RampungModel();
+        $modelterbilang = new PelaksanaModel();
+        $qrall = $model->rampungall($id);
+        $qrutama = $model->rampungutama($id);
+         
+        // $harian = $model->rampungperpelaksana(1,6);
+
+        $data = [
+            'title' => 'Pembayaran Rampung Perjalanan Dinas',
+            'subtitle' => 'Home',
+            'data' => $qrutama,
+            'all' => $qrall,
+            // 'harian' => $harian,
+        ];
+        // dd($data);
+        return view('rampung/pembayaranprint', $data);
+        // $html = view('rampung/invoice-print', $data);
+        
+       
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
+
+        // $dompdf = new Dompdf($options);
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portraid');
+        // $dompdf->render();
+        // $dompdf->stream('Rampung',array("Attachment"=>false));
     }
 
     /**

@@ -67,6 +67,7 @@ $routes->get('verifikasi/showlapor/(:num)','Verifikasi::showlapor/$1');
 $routes->get('verifikasi/form/(:num)','Verifikasi::form/$1');
 $routes->presenter('verifikasi');
 
+$routes->get('rampung/formcetak/(:num)','Rampung::formcetak/$1');
 $routes->get('rampung/form/(:num)','Rampung::form/$1');
 $routes->presenter('rampung');
 
