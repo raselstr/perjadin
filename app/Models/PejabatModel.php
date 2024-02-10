@@ -13,7 +13,12 @@ class PejabatModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['pejabat_nama','pejabat_namajabatan','pejabat_nip','pejabat_pangkat'];
+    protected $allowedFields    = [
+        'pejabat_namajabatan',
+        'pejabat_nama',
+        'pejabat_nip',
+        'pejabat_pangkat'
+    ];
 
     // Dates
     protected $useTimestamps = false;

@@ -16,6 +16,7 @@ $routes->presenter('register');
 
 $routes->presenter('role');
 $routes->presenter('rolemenu');
+$routes->presenter('pejabatpenandatangan');
 
 $routes->post('user/updatetoggle', 'User::updatetoggle');
 $routes->presenter('user');
