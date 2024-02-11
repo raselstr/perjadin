@@ -31,12 +31,15 @@ class BpkModel extends Model
             c.pegawai_tingkat, 
             d.pangkat_nama, 
             d.pangkat_gol,
-            e.jenisperjadin_nama
+            e.jenisperjadin_nama,
+            f.tingkat_nama, 
+	        f.tingkat_uraian
             ');
             $builder->join('pelaksanas AS b', 'a.spt_id = b.spt_id');
             $builder->join('pegawais AS c', 'b.pegawai_id = c.pegawai_id');
             $builder->join('pangkats AS d', 'c.pangkat_id = d.pangkat_id');
             $builder->join('jenisperjadins AS e', 'a.spt_jenis = e.jenisperjadin_id');
+            $builder->join('tingkats AS f', 'c.pegawai_tingkat = f.tingkat_id');
             $builder->where('a.spt_verif', 1);
             $builder->orderBy('a.created_at', 'ASC');
             $query = $builder->get();

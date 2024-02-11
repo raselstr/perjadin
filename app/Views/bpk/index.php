@@ -70,6 +70,8 @@
                         <th class="align-middle text-center">No</th>
                         <th class="align-middle text-center">Tahun</th>
                         <th class="align-middle text-center">Jenis Perjalanan</th>
+                        <th class="align-middle text-center">Nama</th>
+                        <th class="align-middle text-center">Jabatan/ Gol</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -78,6 +80,11 @@
                           <td class="align-middle text-center"><?=$no++;?></td>
                           <td class="align-middle text-center"><?= $value->spt_tahun; ?></td>
                           <td class="align-middle text-center"><?= $value->jenisperjadin_nama; ?></td>
+                          <td class="align-middle text-left"><?= $value->pegawai_nama; ?></td>
+                          <td class="align-middle text-center">
+                            <?= $value->pegawai_jabatan; ?><br><?= $value->pangkat_nama; ?> (<?= $value->pangkat_gol; ?>)
+                            <br>Tingkat <?= $value->tingkat_nama; ?> 
+                          </td>
                         </tr>
                         <?php endforeach?>
                       </tbody>
