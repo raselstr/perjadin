@@ -33,15 +33,51 @@ class BpkModel extends Model
             d.pangkat_gol,
             e.jenisperjadin_nama,
             f.tingkat_nama, 
-	        f.tingkat_uraian
+	        f.tingkat_uraian,
+            g.lokasiperjadin_nama
             ');
             $builder->join('pelaksanas AS b', 'a.spt_id = b.spt_id');
             $builder->join('pegawais AS c', 'b.pegawai_id = c.pegawai_id');
             $builder->join('pangkats AS d', 'c.pangkat_id = d.pangkat_id');
             $builder->join('jenisperjadins AS e', 'a.spt_jenis = e.jenisperjadin_id');
             $builder->join('tingkats AS f', 'c.pegawai_tingkat = f.tingkat_id');
+            $builder->join('lokasiperjadins AS g', 'a.spt_tujuan = g.lokasiperjadin_id');
             $builder->where('a.spt_verif', 1);
             $builder->orderBy('a.created_at', 'ASC');
+            $query = $builder->get();
+            return $query->getResult();
+        }
+
+        function bpkharian($pelaksana)
+        {
+            $builder = $this->db->table('spts AS a');
+            $builder->select('
+                a.spt_id,
+                c.uangharian_jumlah, 
+                c.uangharian_jumlahbiayatransport, 
+                c.uangharian_jumlahrepresentasi, 
+                c.uangharian_jumlahsewamobil, 
+            ');
+            $builder->join('pelaksanas AS b', 'a.spt_id = b.spt_id', 'LEFT');
+            $builder->join('uangharians AS c', 'b.pelaksana_id = c.uangharian_idpelaksana', 'LEFT');
+            $builder->where('b.pelaksana_id', $pelaksana);
+            $query = $builder->get();
+            return $query->getResult();
+        }
+
+        function bpkpesawat($pelaksana)
+        {
+            $builder = $this->db->table('spts AS a');
+            $builder->select('
+                a.spt_id,
+                c.uangharian_jumlah, 
+                c.uangharian_jumlahbiayatransport, 
+                c.uangharian_jumlahrepresentasi, 
+                c.uangharian_jumlahsewamobil, 
+            ');
+            $builder->join('pelaksanas AS b', 'a.spt_id = b.spt_id', 'LEFT');
+            $builder->join('uangharians AS c', 'b.pelaksana_id = c.uangharian_idpelaksana', 'LEFT');
+            $builder->where('b.pelaksana_id', $pelaksana);
             $query = $builder->get();
             return $query->getResult();
         }

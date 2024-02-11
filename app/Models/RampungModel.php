@@ -87,6 +87,24 @@ class RampungModel extends Model
 
         return $result;
     }
+    function rampungpesawatberangkat($id)
+    {
+        $builder = $this->db->table('spjpesawats As a');
+        $builder->select('a.*');
+        $builder->join('pelaksanas As b', 'b.pelaksana_id = a.spjpesawat_pelaksanaid', 'RIGHT');
+        $builder->join('spts As c', 'c.spt_id = b.spt_id');
+        $builder->join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
+        $builder->where('c.spt_verif', 1);
+        $builder->where('a.spjpesawat_pelaksanaid', $id);
+        $builder->where('a.spjpesawat_verif', 1);
+        $builder->where('a.spjpesawat_jenis', 'Berangkat');
+        $builder->orderBy('a.spjpesawat_created_at', 'ASC');
+
+        $query = $builder->get();
+        $result = $query->getResult();
+
+        return $result;
+    }
     function rampungtaksi($id)
     {
         $builder = $this->db->table('spjtaksis As a');
@@ -110,11 +128,10 @@ class RampungModel extends Model
         $builder = $this->db->table('uangharians As a');
         $builder->select('a.*');
         $builder->join('pelaksanas As b', 'b.pelaksana_id = a.uangharian_idpelaksana', 'RIGHT');
-        $builder->join('spts As c', 'c.spt_id = b.spt_id');
-        $builder->join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
+        $builder->join('spts As c', 'c.spt_id = b.spt_id','RIGHT');
+        $builder->join('pegawais As d', 'd.pegawai_id = b.pegawai_id', 'RIGHT');
         $builder->where('c.spt_verif', 1);
-        $builder->where('a.uangharian_idpelaksana', $id);
-        $builder->where('a.uangharian_verif', 1);
+        $builder->where('b.pelaksana_id', $id);
 
         $query = $builder->get();
         $result = $query->getResult();

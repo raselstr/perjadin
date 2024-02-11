@@ -20,6 +20,7 @@ class Bpk extends ResourcePresenter
             'title' => 'Rekapitulasi',
             'subtitle' => 'Home',
             'data'  => $model->rekapbpkall(),
+            // 'uhs'    => $model->harian($pelaksana),
         ];
         // dd($data);
         return view('bpk/index', $data);
