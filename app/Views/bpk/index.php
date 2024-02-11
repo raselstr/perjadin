@@ -68,8 +68,8 @@
                     <thead>
                       <tr>
                         <th class="align-middle text-center">No</th>
-                        <th class="align-middle text-center">Aksi</th>
-                        <th class="align-middle text-center">Nama Role</th>
+                        <th class="align-middle text-center">Tahun</th>
+                        <th class="align-middle text-center">Jenis Perjalanan</th>
                       </tr>
                     </thead>
                     <tbody>
