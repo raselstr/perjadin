@@ -12,6 +12,9 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+        <li class="image">
+          <a href="<?= site_url('/'); ?>" class="nav-link">Tahun <?= session('tahun') ?></a>
+        </li>
         <div class="user-block ">
                 <span class="username"><a href="<?= site_url('/'); ?>"><?= session('nama') ?></a></span>
                 <span class="description"><?= session('role') ?></span>
@@ -21,17 +24,17 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <div class="user-panel ">
-            <div class="image "><img src="dist/img/user2-160x160.jpg" class="img-circle img-bordered-sm" alt="User Image"></div>
+            <div class="image "><img src="<?= base_url('images/logo.jpeg'); ?>" class="img-circle" alt="User Image"></div>
           </div>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-menu dropdown-menu-right">
             <span class="dropdown-item dropdown-header">Informasi dan Data Profil</span>
             <!-- <div class="dropdown-divider"></div> -->
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> Profil
+            <a href="<?= site_url('/'); ?>" class="dropdown-item">
+              <i class="fas fa-user mr-2"></i> Profil
               <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
             </a>
             <a href="<?= site_url('logout'); ?>" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> Logout
+              <i class="fas fa-sign-out-alt mr-2"></i> Keluar
               <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
             </a>
           </div>

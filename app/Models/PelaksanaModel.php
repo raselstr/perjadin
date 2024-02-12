@@ -230,7 +230,7 @@ class PelaksanaModel extends Model
 
     function kabanpelaksana($id=null)
     {
-        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id','Kaban');
+        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id',esc('Kaban'));
         // dd($subquery);
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');

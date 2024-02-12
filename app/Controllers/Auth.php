@@ -46,6 +46,7 @@ class Auth extends BaseController
         $model = new AuthModel();
         $user = $this->request->getPost('user_nama');
         $pass = $this->request->getPost('password');
+        $tahun = $this->request->getPost('tahun');
         // $userpengguna = $model->userpengguna($user, $pass);
         // dd($user,$pass);
         if(!empty($user) && !empty($pass)){
@@ -55,6 +56,7 @@ class Auth extends BaseController
                     'role' => 'Admin',
                     'role_id' => null,
                     'idpengguna' => null,
+                    'tahun' => $tahun,
                     ];
                 session()->set($params);
                 return redirect()->to(site_url('/'));
@@ -66,7 +68,8 @@ class Auth extends BaseController
                         'nama' => $login['user_nmlengkap'],
                         'role' => $login['role_nama'],
                         'role_id' => $login['role_id'],
-                        'idpengguna' => $login['userid']
+                        'idpengguna' => $login['userid'],
+                        'tahun'     => $tahun,
                         ];
                     session()->set($params);
                     return redirect()->to(site_url('/'));
