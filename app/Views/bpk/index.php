@@ -57,123 +57,256 @@ use App\Models\RampungModel;
         <?=$this->include('layout/infobox');?>
       </div>
       <div class="col">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary">
           <div class="card-header">
-            <div class="row">
-              <div class="col-sm-8">
-                <h5 class="card-title"><?=$title;?></h5>
-              </div>
-              <div class="col-sm-4">
-                <button type="button" class="btn bg-gradient-primary float-sm-right btn-sm" class="btn btn-primary"  data-toggle="modal" data-target="#form"><i class="fas fa-hand-point-right"> </i> Tambah Menu</button>
-                </a>
-              </div>
-            </div>
+            <h5 class="card-title"><?=$title;?></h5>
           </div>
-            <div class="card-body row justify-content-center">
-              <div class="col-8">
-                  <table id="myTable1" class="table table-bordered table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th class="align-middle text-center" rowspan="3">NO</th>
-                        <th class="align-middle text-center" rowspan="3">TAHUN</th>
-                        <th class="align-middle text-center" rowspan="3">JENIS PERJALANAN</th>
-                        <th class="align-middle text-center" rowspan="3">NAMA</th>
-                        <th class="align-middle text-center" rowspan="3">JABATAN/ GOL/ TINGKAT BIAYA</th>
-                        <th class="align-middle text-center" rowspan="2" colspan="6">SURAT PERINTAH TUGAS</th>
-                        <th class="align-middle text-center" rowspan="2" colspan="6">SURAT PERJALANAN DINAS</th>
-                        <th class="align-middle text-center" rowspan="2" colspan="4">BIAYA PERJALANAN DINAS</th>
-                        <th class="align-middle text-center" colspan="4">PESAWAT</th>
-                      </tr>
-                      <tr>
-                        <th class="align-middle text-center" colspan="2">BERANGKAT</th>
-                        <th class="align-middle text-center" colspan="2">KEMBALI</th>
-                      </tr>
-                      <tr>
-                        <th class="align-middle text-center">NO. SPT</th>
-                        <th class="align-middle text-center">TANGGAL</th>
-                        <th class="align-middle text-center">TEMPAT TUJUAN</th>
-                        <th class="align-middle text-center">JUMLAH HARI</th>
-                        <th class="align-middle text-center">TGL. BERANGKAT</th>
-                        <th class="align-middle text-center">TGL. KEMBALI</th>
-                        <th class="align-middle text-center">NO. SPD</th>
-                        <th class="align-middle text-center">TANGGAL</th>
-                        <th class="align-middle text-center">TEMPAT TUJUAN</th>
-                        <th class="align-middle text-center">JUMLAH HARI</th>
-                        <th class="align-middle text-center">TGL. BERANGKAT</th>
-                        <th class="align-middle text-center">TGL. KEMBALI</th>
-                        <th class="align-middle text-center">UANG HARIAN</th>
-                        <th class="align-middle text-center">PENGGANTI TRANSPORT</th>
-                        <th class="align-middle text-center">REPRESENTATIF</th>
-                        <th class="align-middle text-center">SEWA MOBIL</th>
-                        <th class="align-middle text-center">MASKAPAI</th>
-                        <th class="align-middle text-center">NO. TIKET</th>
-                        <th class="align-middle text-center">KODE BOKING</th>
-                        <th class="align-middle text-center">TANGGAL PENERBANGAN</th>
-                        <th class="align-middle text-center">HARGA</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php $no = 1;foreach ($data as $key => $value): 
-                        $idpelaksana = $value->pelaksana_id;
-                        ?>
-                      <tr>
-                          <td class="align-middle text-center"><?=$no++;?></td>
-                          <td class="align-middle text-center"><?= $value->spt_tahun; ?></td>
-                          <td class="align-middle text-center"><?= $value->jenisperjadin_nama; ?></td>
-                          <td class="align-middle text-left"><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></td>
-                          <td class="align-middle text-center">
-                            <?= $value->pegawai_jabatan; ?><br><?= $value->pangkat_nama; ?> (<?= $value->pangkat_gol; ?>)
-                            <br>Tingkat <?= $value->tingkat_nama; ?> 
-                          </td>
-                          <td class="align-middle text-center"><?= $value->spt_nomor; ?></td>
-                          <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_tgl)); ?></td>
-                          <td class="align-middle text-center"><?= $value->lokasiperjadin_nama; ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_lama; ?> hari</td>
-                          <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_mulai)); ?></td>
-                          <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_berakhir)); ?></td>
-                          <td class="align-middle text-center"><?= $value->sppd_nomor; ?></td>
-                          <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_tgl)); ?></td>
-                          <td class="align-middle text-center"><?= $value->lokasiperjadin_nama; ?></td>
-                          <td class="align-middle text-center"><?= $value->spt_lama; ?> hari</td>
-                          <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_mulai)); ?></td>
-                          <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_berakhir)); ?></td>
-                          <?php 
-                          $uharian = $modelrampung->rampungharian($idpelaksana);
-                          foreach ($uharian as $key => $uh) :?>
-                          <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlah,2,',','.') ?></td>
-                          <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlahbiayatransport,2,',','.') ?></td>
-                          <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlahrepresentasi,2,',','.') ?></td>
-                          <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlahsewamobil,2,',','.') ?></td>
-                          <?php endforeach ?>
-                          <?php 
-                          $bpkpesawat = $modelrampung->rampungpesawatberangkat($idpelaksana) ?>
-                          <td class="align-middle text-left">
-                            <?php foreach ($bpkpesawat as $key => $pesawat) :?>
-                            <?= $pesawat->spjpesawat_maskapai ?><br>
-                            <?php endforeach ?>
-                          </td>
-                          <td class="align-middle text-left">
-                            <?php foreach ($bpkpesawat as $key => $pesawat): ?>
-                            <?=$pesawat->spjpesawat_notiket?><br>
-                            <?php endforeach?>
-                          </td>
-                          <td class="align-middle text-left">
-                            <?php foreach ($bpkpesawat as $key => $pesawat): ?>
-                            <?=$pesawat->spjpesawat_kdboking?><br>
-                            <?php endforeach?>
-                          </td>
-                          <td class="align-middle text-left">
-                            <?php foreach ($bpkpesawat as $key => $pesawat): ?>
-                            <?=date('d-m-Y',strtotime($pesawat->spjpesawat_tgl))?><br>
-                            <?php endforeach?>
-                            
-                          </td>
-
-                        </tr>
+          <div class="card"></div>
+            <!-- <div class="card-body row justify-content-center"> -->
+          <div class="card-body table-responsive p-0 " style="height: 900px;">
+            <div class="col-12">
+              <table id="myTable1" class="table table-bordered table-head-fixed table-sm">
+                <thead>
+                  <tr>
+                    <th class="align-middle text-center" rowspan="3">NO</th>
+                    <th class="align-middle text-center" rowspan="3">TAHUN</th>
+                    <th class="align-middle text-center" rowspan="3">JENIS PERJALANAN</th>
+                    <th class="align-middle text-center" rowspan="3">NAMA</th>
+                    <th class="align-middle text-center" rowspan="3">JABATAN/ GOL/ TINGKAT BIAYA</th>
+                    <th class="align-middle text-center" rowspan="2" colspan="6">SURAT PERINTAH TUGAS</th>
+                    <th class="align-middle text-center" rowspan="2" colspan="6">SURAT PERJALANAN DINAS</th>
+                    <th class="align-middle text-center" rowspan="2" colspan="4">BIAYA PERJALANAN DINAS</th>
+                    <th class="align-middle text-center" colspan="10">PESAWAT</th>
+                    <th class="align-middle text-center" colspan="8" rowspan="2">HOTEL</th>
+                    <th class="align-middle text-center" colspan="6">TAKSI/TRANSPORT LOKAL</th>
+                    <th class="align-middle text-center" rowspan="3">TOTAL</th>
+                  </tr>
+                  <tr>
+                    <th class="align-middle text-center" colspan="5">BERANGKAT</th>
+                    <th class="align-middle text-center" colspan="5">KEMBALI</th>
+                    <th class="align-middle text-center" colspan="3">BERANGKAT</th>
+                    <th class="align-middle text-center" colspan="3">KEMBALI</th>
+                  </tr>
+                  <tr>
+                    <th class="align-middle text-center">NO. SPT</th>
+                    <th class="align-middle text-center">TANGGAL</th>
+                    <th class="align-middle text-center">TEMPAT TUJUAN</th>
+                    <th class="align-middle text-center">JUMLAH HARI</th>
+                    <th class="align-middle text-center">TGL. BERANGKAT</th>
+                    <th class="align-middle text-center">TGL. KEMBALI</th>
+                    <th class="align-middle text-center">NO. SPD</th>
+                    <th class="align-middle text-center">TANGGAL</th>
+                    <th class="align-middle text-center">TEMPAT TUJUAN</th>
+                    <th class="align-middle text-center">JUMLAH HARI</th>
+                    <th class="align-middle text-center">TGL. BERANGKAT</th>
+                    <th class="align-middle text-center">TGL. KEMBALI</th>
+                    <th class="align-middle text-center">UANG HARIAN</th>
+                    <th class="align-middle text-center">PENGGANTI TRANSPORT</th>
+                    <th class="align-middle text-center">REPRESENTATIF</th>
+                    <th class="align-middle text-center">SEWA MOBIL</th>
+                    <th class="align-middle text-center">MASKAPAI (Berangkat)</th>
+                    <th class="align-middle text-center">NO. TIKET</th>
+                    <th class="align-middle text-center">KODE BOKING</th>
+                    <th class="align-middle text-center">TANGGAL PENERBANGAN</th>
+                    <th class="align-middle text-center">HARGA</th>
+                    <th class="align-middle text-center">MASKAPAI (Kembali)</th>
+                    <th class="align-middle text-center">NO. TIKET</th>
+                    <th class="align-middle text-center">KODE BOKING</th>
+                    <th class="align-middle text-center">TANGGAL PENERBANGAN</th>
+                    <th class="align-middle text-center">HARGA</th>
+                    <th class="align-middle text-center">NAMA DAN LOKASI HOTEL</th>
+                    <th class="align-middle text-center">TIPE KAMAR</th>
+                    <th class="align-middle text-center">NOMOR KAMAR</th>
+                    <th class="align-middle text-center">TGL. CHECKIN</th>
+                    <th class="align-middle text-center">TGL. CHECKOUT</th>
+                    <th class="align-middle text-center">LAMA</th>
+                    <th class="align-middle text-center">HARGA PER MALAM</th>
+                    <th class="align-middle text-center">TOTAL HARGA</th>
+                    <th class="align-middle text-center">TUJUAN</th>
+                    <th class="align-middle text-center">TGL. BERANGKAT</th>
+                    <th class="align-middle text-center">HARGA</th>
+                    <th class="align-middle text-center">TUJUAN</th>
+                    <th class="align-middle text-center">TGL. BERANGKAT</th>
+                    <th class="align-middle text-center">HARGA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $no = 1;foreach ($data as $key => $value): 
+                    $idpelaksana = $value->pelaksana_id;
+                    $idspt = $value->spt_id;
+                    ?>
+                  <tr>
+                      <td class="align-middle text-center"><?=$no++;?></td>
+                      <td class="align-middle text-center"><?= $value->spt_tahun; ?></td>
+                      <td class="align-middle text-center"><?= $value->jenisperjadin_nama; ?></td>
+                      <td class="align-middle text-left"><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></td>
+                      <td class="align-middle text-center">
+                        <?= $value->pegawai_jabatan; ?><br><?= $value->pangkat_nama; ?> (<?= $value->pangkat_gol; ?>)
+                        <br>Tingkat <?= $value->tingkat_nama; ?> 
+                      </td>
+                      <td class="align-middle text-center"><?= $value->spt_nomor; ?></td>
+                      <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_tgl)); ?></td>
+                      <td class="align-middle text-center"><?= $value->lokasiperjadin_nama; ?></td>
+                      <td class="align-middle text-center"><?= $value->spt_lama; ?> hari</td>
+                      <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_mulai)); ?></td>
+                      <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_berakhir)); ?></td>
+                      <td class="align-middle text-center"><?= $value->sppd_nomor; ?></td>
+                      <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_tgl)); ?></td>
+                      <td class="align-middle text-center"><?= $value->lokasiperjadin_nama; ?></td>
+                      <td class="align-middle text-center"><?= $value->spt_lama; ?> hari</td>
+                      <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_mulai)); ?></td>
+                      <td class="align-middle text-center"><?= date('d-m-Y',strtotime($value->spt_berakhir)); ?></td>
+                      <?php 
+                      $uharian = $modelrampung->rampungharian($idpelaksana);
+                      foreach ($uharian as $key => $uh) :?>
+                      <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlah,2,',','.') ?></td>
+                      <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlahbiayatransport,2,',','.') ?></td>
+                      <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlahrepresentasi,2,',','.') ?></td>
+                      <td class="align-middle text-right"><?= number_format($uh->uangharian_jumlahsewamobil,2,',','.') ?></td>
+                      <?php endforeach ?>
+                      <?php 
+                      $bpkpesawat = $modelrampung->rampungpesawatberangkat($idpelaksana) ?>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkpesawat as $key => $pesawat) :?>
+                        <?= $pesawat->spjpesawat_maskapai ?><br>
+                        <?php endforeach ?>
+                      </td>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=$pesawat->spjpesawat_notiket?><br>
                         <?php endforeach?>
-                      </tbody>
-                  </table>
-                </div>
+                      </td>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=$pesawat->spjpesawat_kdboking?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=date('d-m-Y',strtotime($pesawat->spjpesawat_tgl))?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-right">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=number_format($pesawat->spjpesawat_harga,2,',','.')?><br>
+                        <?php endforeach?>
+                      </td>
+                      <?php 
+                      $bpkpesawat = $modelrampung->rampungpesawatkembali($idpelaksana) ?>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkpesawat as $key => $pesawat) :?>
+                        <?= $pesawat->spjpesawat_maskapai ?><br>
+                        <?php endforeach ?>
+                      </td>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=$pesawat->spjpesawat_notiket?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=$pesawat->spjpesawat_kdboking?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=date('d-m-Y',strtotime($pesawat->spjpesawat_tgl))?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-right">
+                        <?php foreach ($bpkpesawat as $key => $pesawat): ?>
+                        <?=number_format($pesawat->spjpesawat_harga,2,',','.')?><br>
+                        <?php endforeach?>
+                      </td>
+                      <?php 
+                      $bpkhotel = $modelrampung->rampunghotel($idpelaksana) ?>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpkhotel as $key => $hotel) :?>
+                        <?= $hotel->spjhotel_nama ?> - <?= $hotel->spjhotel_lokasi ?><br>
+                        <?php endforeach ?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=$hotel->spjhotel_typekamar?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=$hotel->spjhotel_nokamar?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=date('d-m-Y',strtotime($hotel->spjhotel_checkin))?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=date('d-m-Y',strtotime($hotel->spjhotel_checkout))?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=$hotel->spjhotel_mlm?> mlm<br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-right">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=number_format($hotel->spjhotel_hargapermalam,2,',','.')?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-right">
+                        <?php foreach ($bpkhotel as $key => $hotel): ?>
+                        <?=number_format($hotel->spjhotel_hargatotal,2,',','.')?><br>
+                        <?php endforeach?>
+                      </td>
+                      <?php 
+                      $bpktaksi = $modelrampung->rampungtaksiberangkat($idpelaksana) ?>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpktaksi as $key => $taksi) :?>
+                        <?= $taksi->spjtaksi_dari ?> ke <?= $taksi->spjtaksi_ke ?><br>
+                        <?php endforeach ?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpktaksi as $key => $taksi): ?>
+                        <?=date('d-m-Y',strtotime($taksi->spjtaksi_tgl))?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-right">
+                        <?php foreach ($bpktaksi as $key => $taksi): ?>
+                        <?=number_format($taksi->spjtaksi_harga,2,',','.')?><br>
+                        <?php endforeach?>
+                      </td>
+                      <?php 
+                      $bpktaksi = $modelrampung->rampungtaksikembali($idpelaksana) ?>
+                      <td class="align-middle text-left">
+                        <?php foreach ($bpktaksi as $key => $taksi) :?>
+                        <?= $taksi->spjtaksi_dari ?> ke <?= $taksi->spjtaksi_ke ?><br>
+                        <?php endforeach ?>
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php foreach ($bpktaksi as $key => $taksi): ?>
+                        <?=date('d-m-Y',strtotime($taksi->spjtaksi_tgl))?><br>
+                        <?php endforeach?>
+                      </td>
+                      <td class="align-middle text-right">
+                        <?php foreach ($bpktaksi as $key => $taksi): ?>
+                        <?=number_format($taksi->spjtaksi_harga,2,',','.')?><br>
+                        <?php endforeach?>
+                      </td>
+                      <?php 
+                      $subtotal = $modelrampung->rampungperpelaksana($idspt, $idpelaksana) ?>
+                      <td class="align-middle text-right">
+                        <?php foreach ($subtotal as $key => $sub) :?>
+                        <?= number_format($sub->subtotal,2,',','.') ?>
+                        <?php endforeach ?>
+                      </td>
+
+                    </tr>
+                    <?php endforeach?>
+                  </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -186,15 +319,19 @@ use App\Models\RampungModel;
   <script>
     $(function () {
       $("#myTable1").DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": false,
-        "info": false,
-        "autoWidth": false,
-        "responsive": true,
-        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-      })
+      "responsive": false, "lengthChange": false, "autoWidth": false, 
+      "buttons": ["copy", "csv", "excel"]
+    }).buttons().container().appendTo('#myTable1_wrapper .col-md-6:eq(0)');
+      // $("#myTable1").DataTable({
+      //   "paging": true,
+      //   "lengthChange": false,
+      //   "searching": true,
+      //   "ordering": false,
+      //   "info": false,
+      //   "autoWidth": false,
+      //   "responsive": true,
+        // "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+      // })
     });
   </script>
   <!-- Script Edit dan SImpan SPJ Tiket Pesawat -->

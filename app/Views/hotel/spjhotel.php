@@ -820,14 +820,13 @@
     <script>
       $(document).ready(function() {
         function myFunction() {
-          var jh = $("#spjhotel_mlm").val();
-          var tglmulai = $("#checkin").val();
-          var hari = jh * 24 * 60 * 60 * 1000;
-          
-          var hariakhir = new Date(new Date(tglmulai).getTime() + (hari) - 1);
-          $("#spjhotel_checkout").val(hariakhir.toISOString().slice(0, 10));
+          var jh = parseInt($("#spjhotel_mlm").val());
+          var tglmulai = new Date($("#checkin").val());
+          var hari = jh + 1;
+          tglmulai.setDate(tglmulai.getDate()+ hari);
+          $("#spjhotel_checkout").val(tglmulai.toISOString().slice(0, 10));
 
-          var harga = $('#spjhotel_hargapermalam').val();
+          var harga = parseFloat($('#spjhotel_hargapermalam').val());
           var totalharga = harga * jh;
           $('#spjhotel_hargatotal').val(totalharga);
         }
@@ -838,6 +837,4 @@
       });
     </script>
   <!-- End Tanggal Check Out Otomatis -->
-
-  
 <?=$this->endSection()?>
