@@ -197,29 +197,29 @@ class SpjTaksi extends ResourcePresenter
         return $this->response->setJSON($data);
     }
 
-    public function verif()
-    {
-        $spjtaksi = new SpjTaksiModel();
-        if ($this->request->isAJAX()) {
-            $data = $this->request->getPost();
+    // public function verif()
+    // {
+    //     $spjtaksi = new SpjTaksiModel();
+    //     if ($this->request->isAJAX()) {
+    //         $data = $this->request->getPost();
 
-            $saved = $spjtaksi->save($data);
+    //         $saved = $spjtaksi->save($data);
 
-            if ($saved) {
-                $pesan = [
-                    'error' => false,
-                    'messages' => 'Data berhasil disimpan ke database.'
-                ];
-            } else {
-                $pesan = [
-                    'error' => true,
-                    'messages' => 'Gagal menyimpan data ke database.'
-                ];
-            }
+    //         if ($saved) {
+    //             $pesan = [
+    //                 'error' => false,
+    //                 'messages' => 'Data berhasil disimpan ke database.'
+    //             ];
+    //         } else {
+    //             $pesan = [
+    //                 'error' => true,
+    //                 'messages' => 'Gagal menyimpan data ke database.'
+    //             ];
+    //         }
 
-            return $this->response->setJSON($pesan);
-        } 
-    }
+    //         return $this->response->setJSON($pesan);
+    //     } 
+    // }
     /**
      * Process the updating, full or partial, of a specific resource object.
      * This should be a POST.

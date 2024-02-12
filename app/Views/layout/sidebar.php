@@ -17,10 +17,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item"><a href="<?= site_url("/") ?>" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p></a></li>
           <?php $menu = $model->navmenu($role);?>
-
           <?php foreach ($menu as $key => $value) : ?>
-            <li class="nav-item"><a href="<?= site_url($value['menu_link']) ?>" class="nav-link"><i class="<?= $value['menu_icon']; ?>"></i><p> <?= $value['menu_nama'] ?><i class="fas fa-angle-left right"></i></p></a>
-            <?php $menuid = $value['menu_id'] ?>
+            <li class="nav-item"><a href="<?= site_url($value->menu_link) ?>" class="nav-link"><i class="<?= $value->menu_icon; ?>"></i><p> <?= $value->menu_nama ?><i class="fas fa-angle-left right"></i></p></a>
+            <?php $menuid = $value->menu_id ?>
             <?php $submenu = $model->navsubmenu($role,$menuid); ?>
             <?php foreach ($submenu as $key => $sub) : ?>
               <ul class="nav nav-treeview">

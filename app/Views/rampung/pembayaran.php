@@ -120,7 +120,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $no = 1; 
+                        <?php $no = 1;
+                          $sptid =0; 
                           foreach ($all as $key => $value) : ?>
                             <?php 
                               $pelaksana_id = $value->pelaksana_id; 
@@ -132,14 +133,14 @@
                           <td colspan="2" style="width:20%">Uang Harian</td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
                             <?php $qrharian = $model->rampungharian($pelaksana_id);?>
-                            <?php $harian = 0;
-                              foreach ($qrharian as $key => $harian): ?>
-                              <i><?=$value->spt_lama?> hari x Rp. <?= $harian = number_format($harian->uangharian_perhari,0,',','.'); ?></i><br>
-                            <?php endforeach?>
+                            <?php $totharian = 0;
+                              foreach ($qrharian as $key => $harians): ?>
+                              <i><?=$value->spt_lama?> hari x Rp. <?= $harian = number_format($harians->uangharian_perhari,0,',','.'); $totharian = $harians->uangharian_jumlah?></i><br>
+                              <?php endforeach?>
                             </td>
                             <td class="align-middle text-right">
-                              <?= number_format($harian,2,',','.'); ?>
-                          </td>
+                              <?= number_format($totharian,2,',','.'); ?>
+                            </td>
                           <td class="align-top text-right" rowspan="9"><strong></strong></td>
                         </tr>
                         <?php $qrpesawat = $model->rampungpesawat($pelaksana_id);?>
@@ -340,13 +341,7 @@
                 <!-- this row will not appear when printing -->
                 <div class="row no-print">
                   <div class="col-12">
-                    <a href="pembayaran.php" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                    <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                      Payment
-                    </button>
-                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                      <i class="fas fa-download"></i> Generate PDF
-                    </button>
+                    <a href="<?= site_url('rampung/formcetak/'.$sptid); ?>" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
                   </div>
                 </div>
               </div>

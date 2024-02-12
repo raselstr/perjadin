@@ -2,11 +2,20 @@
 
 namespace App\Controllers;
 
-use App\Models\LaporjadinModel;
 use App\Models\SptModel;
-use App\Models\UangHarianModel;
 use App\Models\VerifModel;
+use App\Models\SpjhotelModel;
+use App\Models\SpjTaksiModel;
+use App\Models\LaporjadinModel;
+use App\Models\SpjPesawatModel;
+use App\Models\UangHarianModel;
+use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\RESTful\ResourcePresenter;
+
+/**
+ * @property IncomingRequest $request
+ */
+
 
 class Verifikasi extends ResourcePresenter
 {
@@ -217,6 +226,101 @@ class Verifikasi extends ResourcePresenter
 
             return $this->response->setJSON($pesan);
         } 
+    }
+
+
+    public function verifpesawat()
+    {
+        $spjpesawat = new SpjPesawatModel();
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getPost();
+
+            $saved = $spjpesawat->save($data);
+
+            if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
+
+            return $this->response->setJSON($pesan);
+        } 
+    }
+
+    public function verifhotel()
+    {
+        $spjhotel = new SpjhotelModel();
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getPost();
+
+            $saved = $spjhotel->save($data);
+
+            if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
+
+            return $this->response->setJSON($pesan);
+        } 
+    }
+
+    public function veriftaksi()
+    {
+        $spjtaksi = new SpjTaksiModel();
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getPost();
+
+            $saved = $spjtaksi->save($data);
+
+            if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
+
+            return $this->response->setJSON($pesan);
+        } 
+    }
+
+
+    public function verifuangharian()
+    {
+        $uangharian = new UangHarianModel();
+        $data = $this->request->getPost();
+        
+        $saved = $uangharian->save($data);
+        if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
+
+            return $this->response->setJSON($pesan);
     }
 
 

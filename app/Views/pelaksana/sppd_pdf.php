@@ -370,7 +370,9 @@ table.tabel3.author {
     </tr>
   </table>
 </div>
-
+<script>
+  window.addEventListener("load", window.print());
+</script>
 </body>
 
 </html>

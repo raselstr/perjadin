@@ -56,8 +56,7 @@ class AuthModel extends Model
         $builder->orderBy('d.menu_id','ASC');
 
         $query = $builder->get();
-
-        return $query->getResultArray();
+        return $query->getResult();
     }
     function navsubmenu($id, $menu)
     {
@@ -72,9 +71,9 @@ class AuthModel extends Model
                 a.submenu_link, 
                 a.submenu_active
             ');
-        $builder->join('rolemenus AS b', 'a.submenu_id = b.submenu_id');
-        $builder->join('menus AS c', 'a.menu_id = c.menu_id');
-        $builder->join('roles AS d', 'b.role_id = d.role_id');
+        $builder->join('rolemenus AS b', 'a.submenu_id = b.submenu_id','LEFT');
+        $builder->join('menus AS c', 'a.menu_id = c.menu_id','LEFT');
+        $builder->join('roles AS d', 'b.role_id = d.role_id','LEFT');
         $builder->where('a.submenu_active = 1 AND c.menu_active = 1');
         if($id !== null){
             $builder->where('b.role_id', $id);
@@ -87,8 +86,6 @@ class AuthModel extends Model
 
         $query = $builder->get();
         $result = $query->getResult();
-
         return $result;
-
     }
 }

@@ -142,43 +142,90 @@ class PelaksanaModel extends Model
         return $query->getResult();
     }
 
+    // public function angkaKeHuruf($angka)
+    // {
+    //     $units = ['', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan','Sepuluh'];
+    //     $teens = ['', 'Sebelas', 'Dua Belas', 'Tiga Belas', 'Empat Belas', 'Lima Belas', 'Enam Belas', 'Tujuh Belas', 'Delapan Belas', 'Sembilan Belas'];
+    //     $tens = ['', 'Sepuluh', 'Dua Puluh', 'Tiga Puluh', 'Empat Puluh', 'Lima Puluh', 'Enam Puluh', 'Tujuh Puluh', 'Delapan Puluh', 'Sembilan Puluh'];
+
+    //     $result = '';
+
+    //     if ($angka == 0) {
+    //         $result = 'Nol';
+    //     } elseif ($angka <= 10) {
+    //         $result = $units[$angka];
+    //     } elseif ($angka < 20) {
+    //         $result = $teens[$angka - 10];
+    //     } elseif ($angka < 100) {
+    //         $puluh = ($angka % 100 - $angka % 10) / 10;
+    //         $satuan = $angka % 10;
+    //         $result = $tens[$puluh];
+    //         if ($satuan > 0) {
+    //             $result .= ' ' . $units[$satuan];
+    //         }
+    //     } elseif ($angka < 1000) {
+    //         $ratus = ($angka % 1000 - $angka % 100) / 100;
+    //         $puluh = ($angka % 100 - $angka % 10) / 10;
+    //         $satuan = $angka % 10;
+    //         $result = $units[$ratus] . ' Ratus ';
+    //         if ($puluh == 1 && $satuan > 0) {
+    //             $result .= $teens[$satuan];
+    //         } else {
+    //             $result .= $tens[$puluh];
+    //             if ($satuan > 0) {
+    //                 $result .= ' ' . $units[$satuan];
+    //             }
+    //         }
+    //     }
+
+    //     return $result;
+    // }
+
     public function angkaKeHuruf($angka)
     {
-        $units = ['', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan','Sepuluh'];
-        $teens = ['', 'Sebelas', 'Dua Belas', 'Tiga Belas', 'Empat Belas', 'Lima Belas', 'Enam Belas', 'Tujuh Belas', 'Delapan Belas', 'Sembilan Belas'];
-        $tens = ['', 'Sepuluh', 'Dua Puluh', 'Tiga Puluh', 'Empat Puluh', 'Lima Puluh', 'Enam Puluh', 'Tujuh Puluh', 'Delapan Puluh', 'Sembilan Puluh'];
+        $bilangan = array(
+            '',
+            'satu',
+            'dua',
+            'tiga',
+            'empat',
+            'lima',
+            'enam',
+            'tujuh',
+            'delapan',
+            'sembilan'
+        );
 
-        $result = '';
-
-        if ($angka == 0) {
-            $result = 'Nol';
-        } elseif ($angka <= 10) {
-            $result = $units[$angka];
+        if ($angka < 10) {
+            return $bilangan[$angka];
         } elseif ($angka < 20) {
-            $result = $teens[$angka - 10];
+            // Bilangan antara 10 hingga 19
+            $bilanganBelasan = array(
+                'sepuluh',
+                'sebelas',
+                'dua belas',
+                'tiga belas',
+                'empat belas',
+                'lima belas',
+                'enam belas',
+                'tujuh belas',
+                'delapan belas',
+                'sembilan belas'
+            );
+            return $bilanganBelasan[$angka - 10];
         } elseif ($angka < 100) {
-            $puluh = ($angka % 100 - $angka % 10) / 10;
-            $satuan = $angka % 10;
-            $result = $tens[$puluh];
-            if ($satuan > 0) {
-                $result .= ' ' . $units[$satuan];
-            }
+            // Bilangan antara 20 hingga 99
+            return $bilangan[$angka / 10] . ' puluh ' . $bilangan[$angka % 10];
         } elseif ($angka < 1000) {
-            $ratus = ($angka % 1000 - $angka % 100) / 100;
-            $puluh = ($angka % 100 - $angka % 10) / 10;
-            $satuan = $angka % 10;
-            $result = $units[$ratus] . ' Ratus ';
-            if ($puluh == 1 && $satuan > 0) {
-                $result .= $teens[$satuan];
-            } else {
-                $result .= $tens[$puluh];
-                if ($satuan > 0) {
-                    $result .= ' ' . $units[$satuan];
-                }
-            }
+            // Bilangan antara 100 hingga 999
+            return $bilangan[$angka / 100] . ' ratus ' . $this->angkaKeHuruf($angka % 100);
+        } elseif ($angka < 1000000) {
+            // Bilangan antara 1000 hingga 999999
+            return $this->angkaKeHuruf($angka / 1000) . ' ribu ' . $this->angkaKeHuruf($angka % 1000);
+        } elseif ($angka < 1000000000) {
+            // Bilangan antara 1 juta hingga 999 juta
+            return $this->angkaKeHuruf($angka / 1000000) . ' juta ' . $this->angkaKeHuruf($angka % 1000000);
         }
-
-        return $result;
     }
 
     function kabanpelaksana($id=null)

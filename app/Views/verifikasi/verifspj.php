@@ -339,7 +339,7 @@ use SebastianBergmann\Invoker\Invoker;
                   
                   <?php foreach ($data['data'] as $key => $value) : ?>
                     <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->lokasiperjadin_id);?>
-                      <form action="<?=site_url('uangharian/create');?>" method="post" id="formharian">
+                      <form action="<?=site_url('verifikasi/verifuangharian');?>" method="post" id="formharian">
                         <?=csrf_field();?>
                             <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
                             <!-- <div class="form-group row"> -->
@@ -456,9 +456,9 @@ use SebastianBergmann\Invoker\Invoker;
                             <div class="row">
                               <div class="col">
                                 <?php if($uh[0]->uangharian_verif == null) : ?>
-                                  <button type="submit" class="btn bg-gradient-danger float-right">Belum di Verifikasi</button>
+                                  <button type="submit" class="btn bg-gradient-danger float-right tmblverifuh">Belum di Verifikasi</button>
                                   <?php else : ?>
-                                    <button type="submit" class="btn bg-gradient-primary float-right">Sudah di Verifikasi</button>
+                                    <button type="submit" class="btn bg-gradient-primary float-right" disabled>Sudah di Verifikasi</button>
                                   <?php endif ?>
                               </div>
                             </div>
@@ -483,7 +483,7 @@ use SebastianBergmann\Invoker\Invoker;
           <div class="modal-header">
             <h4 class="modal-title">Verifikasi</h4>
           </div>
-          <form action="<?= site_url('spjhotel/verif'); ?>" method="post" id="formverif">
+          <form action="<?= site_url('verifikasi/verifhotel'); ?>" method="post" id="formverif">
             <?php csrf_field() ?>
               <div class="modal-body">
                 <div class="text-center">
@@ -519,7 +519,7 @@ use SebastianBergmann\Invoker\Invoker;
           <div class="modal-header">
             <h4 class="modal-title">Verifikasi</h4>
           </div>
-          <form action="<?= site_url('spjtaksi/verif'); ?>" method="post" id="formveriftaksi">
+          <form action="<?= site_url('verifikasi/veriftaksi'); ?>" method="post" id="formveriftaksi">
             <?php csrf_field() ?>
               <div class="modal-body">
                 <div class="text-center">
@@ -555,7 +555,7 @@ use SebastianBergmann\Invoker\Invoker;
           <div class="modal-header">
             <h4 class="modal-title">Verifikasi</h4>
           </div>
-          <form action="<?= site_url('spjpesawat/verif'); ?>" method="post" id="formverifpesawat">
+          <form action="<?= site_url('verifikasi/verifpesawat'); ?>" method="post" id="formverifpesawat">
             <?php csrf_field() ?>
               <div class="modal-body">
                 <div class="text-center">
@@ -743,6 +743,52 @@ use SebastianBergmann\Invoker\Invoker;
 
     </script>
   <!-- End Script Validasi Tiket taksi -->
+
+  <script>
+    $(document).ready(function(){
+      $('#formharian').submit(function(e){
+        e.preventDefault();
+        var data = new FormData(this);
+        // console.log(data);
+
+        $.ajax({
+          type: "post",
+          url: $(this).attr('action'),
+          data: data,
+          processData: false,
+          contentType: false,
+          beforeSend:function(){
+                $('.tmblverifuh').attr('disabled', 'disabled');
+                $('.tmblverifuh').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function(){
+                $('.tmblverifuh').removeAttr('disabled');
+                $('.tmblverifuh').html('Sudah di Verifikasi');
+            },
+          success: function (response) {
+            console.log(response);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: response.messages,
+                showConfirmButton: false,
+                timer: 2000
+              }).then(function(){
+                location.reload();
+
+              });
+            },
+          error: function(xhr, status, error) {
+              // Tangani kesalahan jika terjadi
+              console.error();
+          }
+        });
+      });
+    });
+
+
+  </script>
+<!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
 
   
 <?=$this->endSection()?>

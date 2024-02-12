@@ -2,11 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\SpjHotelModel;
-use App\Models\UangHarianModel;
+use App\Models\PejabatModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
-class UangHarian extends ResourcePresenter
+class Pejabatpenandatangan extends ResourcePresenter
 {
     /**
      * Present a view of resource objects
@@ -15,7 +14,14 @@ class UangHarian extends ResourcePresenter
      */
     public function index()
     {
-        //
+        $model = new PejabatModel();
+        $data = [
+            'title' => 'Pejabat Penandatangan',
+            'subtitle' => 'Home',
+            'pejabat'  => $model->findAll(),
+        ];
+        // dd($data);
+        return view('pejabatttd/index', $data);
     }
 
     /**
@@ -40,31 +46,38 @@ class UangHarian extends ResourcePresenter
         //
     }
 
-        
-    public function formspj($id)
-    {
-        //
-        
-    }
-
     /**
      * Process the creation/insertion of a new resource object.
      * This should be a POST.
      *
      * @return mixed
      */
-    // public function create()
-    // {
-        
-        
-    //     $uangharian = new UangHarianModel();
-    //     $data = $this->request->getPost();
-        
-    //     $uangharian->save($data);
-    //     return redirect()->back()->with('Info','Data Berhasil disimpan');
-    // }
+    public function create()
+    {
+        if($this->request->isAJAX()){
+            $model = new RolesModel();
+            $data = $this->request->getPost();
+            
+            $save = $model->save($data);
+            if($save){
+                $ket = [
+                        'error' => false,
+                        'message' => 'Data Berhasil',
+                    ];
+                return $this->response->setJSON($ket);
+            } else {
+                $validationerror = [
+                    'error'     => true,
+                    'message'   => $model->errors(),
+                ];
+                return $this->response->setJSON($validationerror);
+            };
+        } else {
+            '<p> Anda tidak berhak mengisi ini</p>';
+        }
+    }
 
-     /**
+    /**
      * Present a view to edit the properties of a specific resource object
      *
      * @param mixed $id
@@ -73,10 +86,11 @@ class UangHarian extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $model = new RolesModel();
+        $data = $model->find($id);
+        return $this->response->setJSON($data);
     }
 
-    
     /**
      * Process the updating, full or partial, of a specific resource object.
      * This should be a POST.
@@ -99,7 +113,10 @@ class UangHarian extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //    
+        $model = new RolesModel();
+        $model->delete($id);
+        
+        return redirect()->back();
     }
 
     /**

@@ -13,9 +13,10 @@ class RoleFilter implements FilterInterface
     {
         
         $model = new RolemenusModel();
-        $url = $request->uri->getSegment(1);
+        $url    = $request->uri->getSegment(1);
         $permintaan = $url;
         $menurole = $model->datarolefilter(session('role_id'), $permintaan);
+        // dd($menurole);
         if ($menurole === null) {
             return redirect()->to(site_url('error'));
 

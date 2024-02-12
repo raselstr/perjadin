@@ -13,10 +13,6 @@
   <!-- Bootstrap Switch Button -->
   <link rel="stylesheet" href="plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch-button.min.css">
 
-  <!-- Select2 -->
-  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptplugin'); ?>
@@ -39,10 +35,6 @@
 
   <!-- Bootstrap Switch Button -->
   <script src="plugins/bootstrap-switch/js/bootstrap-switch-button.min.js"></script>
-
-  <!-- Select2 -->
-  <script src="plugins/select2/js/select2.full.min.js"></script>
- 
 
   
 <?= $this->endSection(); ?>
@@ -70,90 +62,85 @@
               </div>
             </div>
           </div>
-          <div class="card-body row justify-content-center">
-            <div class="col-8">
-              <table id="myTable1" class="table table-bordered table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th class="align-middle text-center">No</th>
-                    <th class="align-middle text-center">Aksi</th>
-                    <th class="align-middle text-center">Role Menu </th>
-                    <th class="align-middle text-center">Sub Menu </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php $no = 1 ; foreach ($rolemenu as $key => $value) : ?>
-                  <tr>
-                      <td class="align-middle text-center"><?= $no++; ?></td>
-                      <td class="align-middle text-center">
-                        <a href="<?= site_url('rolemenu/remove/'.$value->rolemenu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
-                      </td>
-                      <td><?= $value->role_nama; ?></td>
-                      <td><?= $value->submenu_nama; ?></td>
-                    </tr>
-                    <?php endforeach ?>
-                  </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card-footer">
-            <a href="<?= site_url('role'); ?>" type="button" class="btn bg-gradient-warning btn-sm"><i class="fas fa-hand-point-left"></i> Kembali</a>
+            <div class="card-body row justify-content-center">
+              <div class="col-8">
+                  <table id="myTable1" class="table table-bordered table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th class="align-middle text-center">No</th>
+                        <th class="align-middle text-center">Aksi</th>
+                        <th class="align-middle text-center">Kode Jabatan</th>
+                        <th class="align-middle text-center">Nama</th>
+                        <th class="align-middle text-center">Jabatan</th>
+                        <th class="align-middle text-center">NIP</th>
+                        <th class="align-middle text-center">Pangkat</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $no = 1 ; foreach ($pejabat as $key => $value) : ?>
+                      <tr>
+                          <td class="align-middle text-center"><?= $no++; ?></td>
+                          <td class="align-middle text-center">
+                            <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-pejabatid=<?= $value->pejabat_id; ?>><i class="fas fa-pen"> </i></button>
+                            <a href="<?= site_url('pejabatpenandatangan/remove/'.$value->pejabat_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                          </td>
+                          <td><?= $value->pejabat_id; ?></td>
+                          <td><?= $value->pejabat_nama; ?></td>
+                          <td class="align-middle text-center"><?= $value->pejabat_namajabatan; ?></td>
+                          <td class="align-middle text-center"><?= $value->pejabat_nip; ?></td>
+                          <td class="align-middle text-center"><?= $value->pejabat_pangkat; ?></td>
+                        </tr>
+                        <?php endforeach ?>
+                      </tbody>
+                  </table>
+                </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
   <!-- Modal SPJ Pesawat -->
   <div class="modal fade" id="form">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Tambah Role</h4>
+        <div class="modal-header"><?= $title; ?></h4>
         </div>
-        <form action="<?=site_url('rolemenu/create');?>" method="post" id="menuform">
+        <form action="<?=site_url('pejabatpenandatangan/create');?>" method="post" id="menuform">
           <?=csrf_field();?>
           <div class="modal-body">
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" hidden>role menu id</label>
+                  <label class="col-sm-4 col-form-label" >pejabat Kode</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="rolemenu_id" name="rolemenu_id" hidden>
+                    <input type="text" class="form-control" id="pejabat_id" name="pejabat_id">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" >Nama Role</label>
+                  <label class="col-sm-4 col-form-label" >Nama pejabat</label>
                   <div class="col">
-                    <select class="form-control select2" style="width: 100%;" name = "role_id" id="role_id">
-                      <option>Pilih Role Menu</option>
-                        <?php if(is_array($role)) :?>
-                          <?php foreach ($role as $key => $value) : ?>
-                            <option value="<?= $value->role_id; ?>"><?= $value->role_nama; ?></option>
-                          <?php endforeach ?>
-                          <?php else: ?>
-                            <option value="<?= $role->role_id; ?>"><?= $role->role_nama; ?></option>
-                          <?php endif ?>
-                    </select>
+                    <input type="text" class="form-control" id="pejabat_nama" name="pejabat_nama">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" >Sub Menu</label>
+                  <label class="col-sm-4 col-form-label" >Jabatan</label>
                   <div class="col">
-                    <div class="select2-purple">
-                      <select class="select2" multiple="multiple" data-placeholder="Pilih Sub Menu" style="width: 100%;" name="submenu_id[]" id="submenu_id">
-                          <?php if(!empty($submenu)) : ?>
-                            <?php foreach ($submenu as $key => $value): ?>
-                              <option value="<?=$value->submenu_id;?>"><?=$value->submenu_id. '. ' .$value->submenu_nama;?></option>
-                            <?php endforeach?>
-                            <?php else: ?>
-                              <option value="<?= $value->submenu_id; ?>"><?= $value->submenu_id. '. ' .$value->submenu_nama; ?></option>
-                            <?php endif ?>
-                      </select>
-                    </div>
+                    <input type="text" class="form-control" id="pejabat_namajabatan" name="pejabat_namajabatan">
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label" >NIP</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="pejabat_nip" name="pejabat_nip">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label" >Pangkat/Gol</label>
+                  <div class="col">
+                    <input type="text" class="form-control" id="pejabat_pangkat" name="pejabat_pangkat">
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="reset" class="btn btn-default batalbutton" data-dismiss="modal">Batal</button>
@@ -162,11 +149,11 @@
           </div>
         </form>
       <!-- /.modal-content -->
-      </div>
-    <!-- /.modal-dialog -->
     </div>
-  <!-- /.modal -->
+    <!-- /.modal-dialog -->
   </div>
+  <!-- /.modal -->
+
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
@@ -187,6 +174,27 @@
   <!-- Script Edit dan SImpan SPJ Tiket Pesawat -->
     <script>
       $(document).ready(function(){
+        $('[data-target="#form"]').click (function() {
+          var pejabatid = $(this).data('pejabatid');
+          $('#pejabat_id').val(pejabatid);
+
+          if(pejabatid == null){
+            $('#pejabat_nama').val('');
+
+          } else {
+            $.ajax({
+              type: "get",
+              url: "<?=site_url('pejabat/edit/');?>" + pejabatid,
+              // data: "data",
+              dataType: "json",
+              success: function (response) {
+                console.log(response);
+                $('#pejabat_nama').val(response.pejabat_nama);
+              }
+            });
+          }
+        });
+
         $('#menuform').submit(function(e){
           e.preventDefault();
           var data = new FormData(this);
@@ -234,15 +242,4 @@
 
     </script>
   <!-- End Script Edit dan SImpan SPJ Tiket Pesawat -->
-  <script>
-    $(function () {
-    //Initialize Select2 Elements
-      $('.select2').select2()
-
-      //Initialize Select2 Elements
-      $('.select2bs4').select2({
-        theme: 'bootstrap4'
-      })
-    })
-  </script>
 <?= $this->endSection() ?>

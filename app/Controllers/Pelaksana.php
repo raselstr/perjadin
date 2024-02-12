@@ -186,18 +186,18 @@ class Pelaksana extends ResourcePresenter
             'pelaksana'     => $cek,
         ];
         // dd($data);
-        // return view('pelaksana/spt_pdf', $data);
-        $html = view('pelaksana/spt_pdf', $data);
+        return view('pelaksana/spt_pdf', $data);
+        // $html = view('pelaksana/spt_pdf', $data);
         
        
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portraid');
-        $dompdf->render();
-        $dompdf->stream('Dokumenku',array("Attachment"=>false));
+        // $dompdf = new Dompdf($options);
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portraid');
+        // $dompdf->render();
+        // $dompdf->stream('Dokumenku',array("Attachment"=>false));
 
     }
     // Kunci menampilkan image di DOMPdf 
@@ -238,18 +238,18 @@ class Pelaksana extends ResourcePresenter
             'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt['data'][0]->spt_lama))
         ];
         // dd($data);
-        // return view('pelaksana/sppd_pdf', $data);
-        $html = view('pelaksana/sppd_pdf', $data);
+        return view('pelaksana/sppd_pdf', $data);
+        // $html = view('pelaksana/sppd_pdf', $data);
         
        
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portraid');
-        $dompdf->render();
-        $dompdf->stream('SPPD',array("Attachment"=>false));
+        // $dompdf = new Dompdf($options);
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portraid');
+        // $dompdf->render();
+        // $dompdf->stream('SPPD',array("Attachment"=>false));
 
     }
 
@@ -268,18 +268,18 @@ class Pelaksana extends ResourcePresenter
             // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))
         ];
         // dd($data);
-        // return view('pelaksana/sptbupati_pdf', $data);
-        $html = view('pelaksana/sptbupati_pdf', $data);
+        return view('pelaksana/sptbupati_pdf', $data);
+        // $html = view('pelaksana/sptbupati_pdf', $data);
         
        
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portraid');
-        $dompdf->render();
-        $dompdf->stream('SPPD',array("Attachment"=>false));
+        // $dompdf = new Dompdf($options);
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portraid');
+        // $dompdf->render();
+        // $dompdf->stream('SPPD',array("Attachment"=>false));
 
        
     }
@@ -299,18 +299,18 @@ class Pelaksana extends ResourcePresenter
             // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))
         ];
         // dd($data);
-        // return view('pelaksana/sptbupati_pdf', $data);
-        $html = view('pelaksana/sptsekda_pdf', $data);
+        return view('pelaksana/sptbupati_pdf', $data);
+        // $html = view('pelaksana/sptsekda_pdf', $data);
         
        
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portraid');
-        $dompdf->render();
-        $dompdf->stream('SPPD',array("Attachment"=>false));
+        // $dompdf = new Dompdf($options);
+        // $dompdf->loadHtml($html);
+        // $dompdf->setPaper('A4', 'portraid');
+        // $dompdf->render();
+        // $dompdf->stream('SPPD',array("Attachment"=>false));
 
        
     }
