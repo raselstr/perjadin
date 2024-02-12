@@ -37,9 +37,9 @@
   text-align: right;
 }
 
-.page-number:before {
+/* .page-number:before {
   content: "hal : " counter(page);
-}
+} */
 
 .page-break {
   page-break-before: auto;
@@ -160,7 +160,7 @@ table.tabel3.author {
 <div id="footer">
   <div class="page-number"></div>
 </div>
-<div class="absolute" style="top:-20px;left:0px;">
+<div class="absolute" style="top:-5px;left:0px;">
   <img src="<?= $imageSrc ?>" width="100%">
 </div>
 <!-- <div class="card " style="top:165px;left:20px;position:relative;"> -->
@@ -193,7 +193,7 @@ table.tabel3.author {
     <tr>
       <td rowspan="2" class="isi no">2.</td>
       <td rowspan="2" colspan="2" class="isi">Nama/ NIP Pegawai yang melaksanakan Perjalanan Dinas</td>
-      <td colspan="2" width="30%">Nama</td>
+      <td colspan="2" width="15%">Nama</td>
       <td width=2%>:</td>
       <td colspan="3" ><?= $utama[0]->pegawai_nama; ?></td>
       <tr>

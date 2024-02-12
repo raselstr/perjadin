@@ -22,14 +22,15 @@
     }
     #footer {
         bottom: 0;
+        
     }
     .page-number {
       text-align: right;
     }
 
-    .page-number:before {
-      content: "hal : " counter(page);
-    }
+    /* .page-number:before {
+      content: "BKAD Asahan";
+    } */
 
     .page-break {
       page-break-before: auto;
