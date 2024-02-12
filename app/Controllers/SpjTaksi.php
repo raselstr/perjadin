@@ -27,8 +27,9 @@ class SpjTaksi extends ResourcePresenter
     {
         $model = new SpjTaksiModel();
         $session = $this->session->get('idpengguna');
+        $sessionthn = $this->session->get('tahun');
 
-        $spjtaksi = $model->pelaksanaall($session);
+        $spjtaksi = $model->pelaksanaall($sessionthn, $session);
         $data = [
             'title'     => 'Pertanggung Jawaban Taksi/ Angkutan Umum',
             'subtitle'  => 'Home',

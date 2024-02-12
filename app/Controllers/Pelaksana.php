@@ -22,10 +22,12 @@ class Pelaksana extends ResourcePresenter
      */
     public function index()
     {
+        $thn = session('tahun');
+        $idpengguna = session('idpengguna');
         $spt = new SptModel();
-        $dataspt = $spt->pelaksanaspt();
+        $dataspt = $spt->pelaksanaspt($thn, $idpengguna);
         $data = [
-            'title'     => 'Surat Perintah Tugas',
+            'title'     => 'Draft Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
 

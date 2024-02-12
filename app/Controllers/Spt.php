@@ -38,9 +38,10 @@ class Spt extends ResourcePresenter
     {
         helper('date');
         $session = $this->session->get('idpengguna');
+        $sessionthn = $this->session->get('tahun');
 
         $spt = new SptModel();
-        $sptpelaksana = $spt->pelaksanaspt($session);        
+        $sptpelaksana = $spt->pelaksanaspt($sessionthn,$session);        
         $data = [
             'title'     => 'Perintah Tugas',
             'subtitle'  => 'Home',
@@ -232,9 +233,10 @@ class Spt extends ResourcePresenter
         
         helper('date');
         $session = $this->session->get('idpengguna');
+        $sessionthn = $this->session->get('tahun');
         $spt = new SptModel();
         $penugas = new PejabatModel();
-        $dataspt = $spt->pelaksanaspt($session);
+        $dataspt = $spt->pelaksanaspt($sessionthn, $session);
         $data = [
             'title'     => 'Verifikasi Surat Perintah Tugas',
             'subtitle'  => 'Home',

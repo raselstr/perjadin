@@ -28,8 +28,9 @@ class SpjHotel extends ResourcePresenter
     public function index()
     {
         $session = $this->session->get('idpengguna');
+        $sessionthn = $this->session->get('tahun');
         $model = new SpjHotelModel();
-        $spjhotel = $model->pelaksanaall($session);
+        $spjhotel = $model->pelaksanaall($sessionthn, $session);
         $data = [
             'title'     => 'Pertanggung Jawaban Hotel',
             'subtitle'  => 'Home',

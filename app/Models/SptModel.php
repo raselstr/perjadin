@@ -95,7 +95,7 @@ class SptModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function pelaksanaspt($id = null)
+    function pelaksanaspt($thn, $id = null)
     {
         $builder = $this->db->table('spts');
         $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
@@ -103,6 +103,7 @@ class SptModel extends Model
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan', 'LEFT');
         $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
         $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id', 'LEFT');
+        $builder->where('spts.spt_tahun', $thn);
         if($id !== null){
             $builder->where('pegawais.pegawai_nip', $id);
         }

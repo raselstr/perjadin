@@ -26,8 +26,9 @@ class Verifikasi extends ResourcePresenter
      */
     public function index()
     {
+        $thn = session('tahun');
         $model = new VerifModel();
-        $query = $model->verifdataspt();
+        $query = $model->verifdataspt($thn);
         $qrhotel = $model->verifhotel();
         $data = [
             'title' => 'Verifikasi Data Perjalanan Dinas',

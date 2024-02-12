@@ -19,8 +19,9 @@ class Rampung extends ResourcePresenter
      */
     public function index()
     {
+        $thn = session('tahun');
         $model = new RampungModel();
-        $query = $model->rampungdataspt();
+        $query = $model->rampungdataspt($thn);
         $data = [
             'title' => 'Biaya Rampung',
             'subtitle' => 'Home',

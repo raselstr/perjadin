@@ -27,7 +27,8 @@ class SpjPesawat extends ResourcePresenter
     {
         $model = new SpjPesawatModel();
         $session = $this->session->get('idpengguna');
-        $spjpesawat = $model->pelaksanaall($session);
+        $sessionthn = $this->session->get('tahun');
+        $spjpesawat = $model->pelaksanaall($sessionthn, $session);
         $data = [
             'title'     => 'Pertanggung Jawaban Pesawat',
             'subtitle'  => 'Home',

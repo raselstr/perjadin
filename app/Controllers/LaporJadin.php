@@ -28,8 +28,9 @@ class LaporJadin extends ResourcePresenter
     {
         $model = new LaporjadinModel();
         $session = $this->session->get('idpengguna');
+        $sessionthn = $this->session->get('tahun');
 
-        $query = $model->dataspt($session);
+        $query = $model->dataspt($sessionthn, $session);
         $data = [
             'title' => 'Laporan Kegiatan Perjalanan Dinas',
             'subtitle' => 'Home',

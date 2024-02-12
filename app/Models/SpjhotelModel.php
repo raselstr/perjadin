@@ -87,7 +87,7 @@ class SpjHotelModel extends Model
 
 
 
-    function pelaksanaall($id)
+    function pelaksanaall($thn,$id)
     {
         // dd($subquery);
         $builder = $this->db->table('pelaksanas');
@@ -101,6 +101,7 @@ class SpjHotelModel extends Model
             $builder->where('pegawais.pegawai_nip', $id);
         }
         $builder->where('spts.spt_verif', 1);
+        $builder->where('spts.spt_tahun', $thn);
         $builder->where('spts.spt_jenis !=', 3);
 
         $query = $builder->get();
