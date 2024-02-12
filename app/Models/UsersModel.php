@@ -52,7 +52,6 @@ class UsersModel extends Model
         $builder = $this->db->table('users as a');
         $builder->select('a.user_active');
         $builder->where('a.user_id', $id);
-        $builder->where('a.user_id !=', 5);
         $query = $builder->get();
         return $query->getResultArray();
     }
@@ -62,7 +61,6 @@ class UsersModel extends Model
         $builder = $this->db->table('users');
         $builder->select('*');
         $builder->join('roles', 'roles.role_id = users.user_roleid');
-        $builder->where('users.user_id != 5 OR roles.role_id != 5');
         $query = $builder->get();
         return $query->getResult();
     }

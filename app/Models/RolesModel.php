@@ -52,7 +52,6 @@ class RolesModel extends Model
     {
         $builder = $this->db->table('roles as a');
         $builder->select('*');
-        $builder->where('a.role_id != 4');
         $query = $builder->get();
         return $query->getResult();
     }
