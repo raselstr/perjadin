@@ -57,7 +57,7 @@
       <form action="<?= site_url('loginProses'); ?>" method="post">
         <?= csrf_field(); ?>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" name="user_nama">
+            <input type="text" class="form-control" placeholder="Username" name="user_nama" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" placeholder="Password" name="password" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <select class="form-control"  name = "tahun" id="tahun">
+            <select class="form-control"  name = "tahun" id="tahun" required>
               <option value="">Pilih Tahun</option>
               <option value="2024">2024</option>
               <option value="2023">2023</option>
