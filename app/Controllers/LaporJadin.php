@@ -302,42 +302,54 @@ class LaporJadin extends ResourcePresenter
                 if($nmfoto1 != "") {
                     $imagePath1 = $foto1;
                     $image->withFile($imagePath1);
-                    $image->resize(800, 600, true, 'height');
-                    $image->move(FCPATH . 'image/dokuemtasi', $nama1);
+                    $image->resize(800, 600, true);
+                    $image->quality(80);
+
+                    $image->save(FCPATH . 'image/dokuemtasi/'. $nama1);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
                 } else {
                     $imagePath1 = $foto1;
                     $image->withFile($imagePath1);
-                    $image->resize(800, 600, true, 'height');
-                    $image->move(FCPATH . 'image/dokuemtasi', $nama1);
+                    $image->resize(800, 600, true);
+                    $image->quality(80);
+
+                    $image->save(FCPATH . 'image/dokuemtasi/'. $nama1);
                 }
             }
             if ($data['laporjadin_foto2'] != "" && $data['laporjadin_foto2'] != $oldfoto2) {
                 if($nmfoto2 != "") { 
                     $imagePath2 = $foto2;
                     $image->withFile($imagePath2);
-                    $image->resize(800, 600, true, 'height');
-                    $image->move(FCPATH . 'image/dokuemtasi', $nama2);
+                    $image->resize(800, 600, true);
+                    $image->quality(80);
+
+                    $image->save(FCPATH . 'image/dokuemtasi/'. $nama2);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto2);
                 } else {
                     $imagePath2 = $foto2;
                     $image->withFile($imagePath2);
-                    $image->resize(800, 600, true, 'height');
-                    $image->move(FCPATH . 'image/dokuemtasi', $nama2);
+                    $image->resize(800, 600, true);
+                    $image->quality(80);
+
+                    $image->save(FCPATH . 'image/dokuemtasi/'. $nama2);
                 }
             }
             if ($data['laporjadin_foto3'] != "" && $data['laporjadin_foto3'] != $oldfoto3) {
                 if($nmfoto3 != "") { 
                     $imagePath3 = $foto3;
                     $image->withFile($imagePath3);
-                    $image->resize(800, 600, true, 'height');
-                    $image->move(FCPATH . 'image/dokuemtasi', $nama3);
+                    $image->resize(800, 600, true);
+                    $image->quality(80);
+
+                    $image->save(FCPATH . 'image/dokuemtasi/'. $nama3);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto3);
                 } else {
                     $imagePath3 = $foto3;
                     $image->withFile($imagePath3);
-                    $image->resize(800, 600, true, 'height');
-                    $image->move(FCPATH . 'image/dokuemtasi', $nama3);
+                    $image->resize(800, 600, true);
+                    $image->quality(80);
+
+                    $image->save(FCPATH . 'image/dokuemtasi/'. $nama3);
                 }
             }
             // dd($image);
