@@ -226,28 +226,26 @@ class LaporJadin extends ResourcePresenter
         
         $valid = $this->validate([
             'laporjadin_foto1' => [
-                'rules'     => 'uploaded[laporjadin_foto1]|max_size[laporjadin_foto1,2048]|is_image[laporjadin_foto1]|mime_in[laporjadin_foto1,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto1,4000,3000]',
+                'rules'     => 'uploaded[laporjadin_foto1]|max_size[laporjadin_foto1,5048]|is_image[laporjadin_foto1]|mime_in[laporjadin_foto1,image/png,image/jpeg,image/jpg,image/gif]',
                 'errors'    => [
                     'uploaded'      => 'File harus di upload',
-                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 5 Mb',
                     'is_image'      => 'Data yang diupload Bukan Foto',
                     'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
-                    'max_dims'      => 'Lebar dan tinggi Foto terlalu besar',
                 ]
             ],
             'laporjadin_foto2' => [
-                'rules'     => 'max_size[laporjadin_foto2,2048]|is_image[laporjadin_foto2]|mime_in[laporjadin_foto2,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto2,4000,3000]',
+                'rules'     => 'max_size[laporjadin_foto2,5048]|is_image[laporjadin_foto2]|mime_in[laporjadin_foto2,image/png,image/jpeg,image/jpg,image/gif]',
                 'errors'    => [
-                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 5 Mb',
                     'is_image'      => 'Data yang diupload Bukan Foto',
                     'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
-                    'max_dims'      => 'Lebar dan tinggi Foto terlalu besar',
                 ]
             ],
             'laporjadin_foto3' => [
-                'rules'     => 'max_size[laporjadin_foto3,2048]|is_image[laporjadin_foto3]|mime_in[laporjadin_foto3,image/png,image/jpeg,image/jpg,image/gif],max_dims[laporjadin_foto3,4000,3000]',
+                'rules'     => 'max_size[laporjadin_foto3,5048]|is_image[laporjadin_foto3]|mime_in[laporjadin_foto3,image/png,image/jpeg,image/jpg,image/gif]',
                 'errors'    => [
-                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                    'max_size'      => 'Besar file foto yang diupload tidak lebih dari 5 Mb',
                     'is_image'      => 'Data yang diupload Bukan Foto',
                     'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
                     'max_dims'      => 'Lebar dan tinggi Foto terlalu besar',
