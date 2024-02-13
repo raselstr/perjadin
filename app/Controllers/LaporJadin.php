@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\LaporjadinModel;
+use Config\Services;
 use App\Models\SptModel;
+use App\Models\LaporjadinModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class LaporJadin extends ResourcePresenter
@@ -292,34 +293,61 @@ class LaporJadin extends ResourcePresenter
         $nmfoto3 = file_exists(FCPATH . 'image/dokuemtasi/' . $oldfoto3) ? $oldfoto3 : null;
         
         // dd($data, $nmfoto1, $nmfoto2, $nmfoto3);
-        
+        $image = Services::image('gd');
+
+
         $save = $model->save($data);
         if ($save) {
             if ($data['laporjadin_foto1'] != "" && $data['laporjadin_foto1'] != $oldfoto1) {
-                if($nmfoto1 != "") { 
-                    $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
+                if($nmfoto1 != "") {
+                    $imagePath1 = $foto1;
+                    $image->withFile($imagePath1);
+                    $image->resize(800, 600, true, 'height');
+
+ 
+                    $image->move(FCPATH . 'image/dokuemtasi', $nama1);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
                 } else {
-                    $foto1->move(FCPATH . 'image/dokuemtasi', $nama1);
+                    $imagePath1 = $foto1;
+                    $image->withFile($imagePath1);
+                    $image->resize(800, 600, true, 'height');
+ 
+                    $image->move(FCPATH . 'image/dokuemtasi', $nama1);
                 }
             }
             if ($data['laporjadin_foto2'] != "" && $data['laporjadin_foto2'] != $oldfoto2) {
                 if($nmfoto2 != "") { 
-                    $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
+                    $imagePath2 = $foto2;
+                    $image->withFile($imagePath2);
+                    $image->resize(800, 600, true);
+ 
+                    $image->move(FCPATH . 'image/dokuemtasi', $nama2);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto2);
                 } else {
-                    $foto2->move(FCPATH . 'image/dokuemtasi', $nama2);
+                    $imagePath2 = $foto2;
+                    $image->withFile($imagePath2);
+                    $image->resize(800, 600, true);
+ 
+                    $image->move(FCPATH . 'image/dokuemtasi', $nama2);
                 }
             }
             if ($data['laporjadin_foto3'] != "" && $data['laporjadin_foto3'] != $oldfoto3) {
                 if($nmfoto3 != "") { 
-                    $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
+                    $imagePath3 = $foto3;
+                    $image->withFile($imagePath3);
+                    $image->resize(800, 600, true);
+ 
+                    $image->move(FCPATH . 'image/dokuemtasi', $nama3);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto3);
                 } else {
-                    $foto3->move(FCPATH . 'image/dokuemtasi', $nama3);
+                    $imagePath3 = $foto3;
+                    $image->withFile($imagePath3);
+                    $image->resize(800, 600, true);
+ 
+                    $image->move(FCPATH . 'image/dokuemtasi', $nama3);
                 }
             }
-            
+            // dd($image);
             return redirect()->back()->with('info', 'Data Berhasil di Simpan');
         } 
     }
