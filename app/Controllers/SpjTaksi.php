@@ -120,10 +120,10 @@ class SpjTaksi extends ResourcePresenter
             $fototiketlama  = $this->request->getVar('fototiketlama');
             $valid = $this->validate([
                 'spjtaksi_fototiket' => [
-                    'rules'     => 'uploaded[spjtaksi_fototiket]|max_size[spjtaksi_fototiket,2048]|is_image[spjtaksi_fototiket]|mime_in[spjtaksi_fototiket,image/png,image/jpeg,image/jpg,image/gif]',
+                    'rules'     => 'uploaded[spjtaksi_fototiket]|max_size[spjtaksi_fototiket,5048]|is_image[spjtaksi_fototiket]|mime_in[spjtaksi_fototiket,image/png,image/jpeg,image/jpg,image/gif]',
                     'errors'    => [
                         'uploaded'      => 'File harus di upload',
-                        'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                        'max_size'      => 'Besar file foto yang diupload tidak lebih dari 5 Mb',
                         'is_image'      => 'Data yang diupload Bukan Foto',
                         'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
                     ]

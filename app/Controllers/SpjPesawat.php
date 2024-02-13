@@ -123,10 +123,10 @@ class SpjPesawat extends ResourcePresenter
             $scanbilllama   = $this->request->getVar('scanbilllama');
             $valid = $this->validate([
                 'spjpesawat_fototiket' => [
-                    'rules'     => 'uploaded[spjpesawat_fototiket]|max_size[spjpesawat_fototiket,2048]|is_image[spjpesawat_fototiket]|mime_in[spjpesawat_fototiket,image/png,image/jpeg,image/jpg,image/gif]',
+                    'rules'     => 'uploaded[spjpesawat_fototiket]|max_size[spjpesawat_fototiket,5048]|is_image[spjpesawat_fototiket]|mime_in[spjpesawat_fototiket,image/png,image/jpeg,image/jpg,image/gif]',
                     'errors'    => [
                         'uploaded'      => 'File harus di upload',
-                        'max_size'      => 'Besar file foto yang diupload tidak lebih dari 2 Mb',
+                        'max_size'      => 'Besar file foto yang diupload tidak lebih dari 5 Mb',
                         'is_image'      => 'Data yang diupload Bukan Foto',
                         'mime_in'       => 'Ekstensi File Foto yang diperbolehkan JPG, JPEG dan PNG',
                     ]
