@@ -231,24 +231,49 @@ class Spt extends ResourcePresenter
     public function verif()
     {
         
-        helper('date');
-        $session = $this->session->get('idpengguna');
-        $sessionthn = $this->session->get('tahun');
-        $spt = new SptModel();
-        $penugas = new PejabatModel();
-        $dataspt = $spt->pelaksanaspt($sessionthn, $session);
-        $data = [
-            'title'     => 'Verifikasi Surat Perintah Tugas',
-            'subtitle'  => 'Home',
-            'spt'       => $dataspt,
-            'pejabat'   => $penugas->findAll(),
-        ];
-        // dd($data);
-        return view('spt/verif', $data);
+        // helper('date');
+        // $session = $this->session->get('idpengguna');
+        // $sessionthn = $this->session->get('tahun');
+        
+        // $spt = new SptModel();
+        // // $penugas = new PejabatModel();
+        
+        
+        // $dataspt = $spt->pelaksanaspt($sessionthn, $session);
+        // $data = [
+        //     'title'     => 'Verifikasi Surat Perintah Tugas',
+        //     'subtitle'  => 'Home',
+        //     'spt'       => $dataspt,
+        //     // 'pejabat'   => $penugas->findAll(),
+        // ];
+        // // dd($data);
+        // return view('spt/verif', $data);
     }
 
     public function simpanverif ()
     {
+        $pelaksana = new PelaksanaModel();
+        $sesispt = $this->request->getPost('sesisptid');
+        $cek = $pelaksana->caripengikut($sesispt);
+        $cekutama = $pelaksana->cariutama($sesispt);
+        // dd($cek, $cekutama);
+        if($cek <= 0) {
+            $response = [
+                    'error'   => true,
+                    'messages'   => 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!',
+                ];
+                return $this->response->setJSON($response);
+            // session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+            // return redirect()->back();
+        } elseif ($cekutama > 1 OR $cekutama == 0) {
+            $response = [
+                    'error'   => true,
+                    'messages'   => 'Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!',
+                ];
+                return $this->response->setJSON($response);
+            // session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
+            // return redirect()->back();
+        }
         $validation = \Config\Services::validation();
         // $tgl_mulai = $spt->valid_tanggalspt($id);
         $valid = $this->validate([

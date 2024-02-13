@@ -113,6 +113,25 @@ class SptModel extends Model
         return $query->getResult();
     }
 
+    function verifpelaksanaspt($thn, $id = null)
+    {
+        $builder = $this->db->table('spts');
+        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas', 'LEFT');
+        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan', 'LEFT');
+        $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
+        $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id', 'LEFT');
+        $builder->where('spts.spt_tahun', $thn);
+        $builder->where('pelaksanas.spt_id !=', null);
+        if($id !== null){
+            $builder->where('pegawais.pegawai_nip', $id);
+        }
+        $builder->groupBy('spts.spt_id');
+        $builder->orderBy('spts.created_at', 'DESC');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
     function valid_tanggalspt($id)
     {
         $builder = $this->db->table('spts');

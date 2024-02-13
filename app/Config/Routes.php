@@ -19,6 +19,8 @@ $routes->presenter('rolemenu');
 $routes->presenter('pejabatpenandatangan');
 $routes->presenter('bpk');
 
+$routes->presenter('verifspt');
+
 $routes->post('user/updatetoggle', 'User::updatetoggle');
 $routes->presenter('user');
 $routes->presenter('pegawai');

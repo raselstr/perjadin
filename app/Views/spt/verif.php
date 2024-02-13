@@ -102,8 +102,12 @@
                           <td class="align-middle text-center">
                             <?php if ($value->spt_verif == '1') : ?>
                               <button type="button" class="btn btn-block btn-outline-success btn-sm" disabled>Disetujui</button>
-                            <?php else : ?>
-                              <button type="button" class="btn btn-block btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Belum Disetujui</button>
+                              <?php else : ?>
+                                <?php if (session('role_id') == '4') : ?>
+                                  <button type="button" class="btn btn-block btn-outline-danger btn-sm" id="tblverif" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>" disabled>Belum Disetujui</button>
+                                <?php else : ?>
+                                  <button type="button" class="btn btn-block btn-outline-danger btn-sm" id="tblverif" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Belum Disetujui</button>
+                                <?php endif ?>
                             <?php endif ?>
                           </td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
@@ -143,7 +147,7 @@
         <div id="responseContainer">
             <!-- Data akan ditampilkan di sini -->
         </div>
-        <form id= "myForm" action="<?= site_url('spt/simpanverif') ?>" method="post">
+        <form id= "myForm" action="<?= site_url('verifspt/create') ?>" method="post">
         <?php csrf_field() ?>
         <div class="modal-body">
           <div class="form-group">
@@ -234,42 +238,40 @@
     });
   </script>
 
+
   <script>
     $(document).ready(function(){
       // Tangkap klik pada tombol untuk membuka modal
       $('[data-target="#exampleModalCenter"]').click(function() {
-          // Ambil nilai ID dari data-id atribut tombol yang diklik
-          var id = $(this).data('id');
-          var tglmulai = $(this).data('tglmulai');
-          // var currentDate = new Date().toISOString().slice(0, 10);
-          var formattgl = moment(tglmulai, 'YYYY-MM-DD').format('DD MMMM YYYY');
-          // Set nilai ID ke dalam input dengan id "spt_id" di dalam modal
-          $('#spt_id').val(id);
-          $('#spt_mulai').val(formattgl);
-          // $('#spt_tgl').val(currentDate);
+        // Ambil nilai ID dari data-id atribut tombol yang diklik
+        var id = $(this).data('id');
+        var tglmulai = $(this).data('tglmulai');
+        // var currentDate = new Date().toISOString().slice(0, 10);
+        var formattgl = moment(tglmulai, 'YYYY-MM-DD').format('DD MMMM YYYY');
+        // Set nilai ID ke dalam input dengan id "spt_id" di dalam modal
+        $('#spt_id').val(id);
+        $('#spt_mulai').val(formattgl);
+        
+        // $('#spt_tgl').val(currentDate);
 
-          $('#spt_tgl').daterangepicker({
-            autoUpdateInput: true,
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 2023,
-            maxYear: parseInt(moment().format('YYYY'),10),
-            // minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
-            maxDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),
-            
-          });
-          // Menangani perubahan tanggal
-            $('#spt_tgl').on('apply.daterangepicker', function(ev, picker) {
-              $(this).val(picker.startDate.format('DD MMMM YYYY'));
-          });
+        $('#spt_tgl').daterangepicker({
+          autoUpdateInput: true,
+          singleDatePicker: true,
+          showDropdowns: true,
+          minYear: 2023,
+          maxYear: parseInt(moment().format('YYYY'),10),
+          // minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
+          maxDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),
+          
+        });
+        // Menangani perubahan tanggal
+          $('#spt_tgl').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
       });
 
       $('#myForm').submit(function(e) {
         e.preventDefault();
-
-        // var sptId = $('#spt_id').val();
-        // var tanggalspt = $('#spt_tgl').val();
-        // var tanggalmulai = $('#spt_mulai').val();
         var formData = $("#myForm").serialize();
         
         $.ajax({
