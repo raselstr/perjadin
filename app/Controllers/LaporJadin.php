@@ -303,15 +303,12 @@ class LaporJadin extends ResourcePresenter
                     $imagePath1 = $foto1;
                     $image->withFile($imagePath1);
                     $image->resize(800, 600, true, 'height');
-
- 
                     $image->move(FCPATH . 'image/dokuemtasi', $nama1);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto1);
                 } else {
                     $imagePath1 = $foto1;
                     $image->withFile($imagePath1);
                     $image->resize(800, 600, true, 'height');
- 
                     $image->move(FCPATH . 'image/dokuemtasi', $nama1);
                 }
             }
@@ -319,15 +316,13 @@ class LaporJadin extends ResourcePresenter
                 if($nmfoto2 != "") { 
                     $imagePath2 = $foto2;
                     $image->withFile($imagePath2);
-                    $image->resize(800, 600, true);
- 
+                    $image->resize(800, 600, true, 'height');
                     $image->move(FCPATH . 'image/dokuemtasi', $nama2);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto2);
                 } else {
                     $imagePath2 = $foto2;
                     $image->withFile($imagePath2);
-                    $image->resize(800, 600, true);
- 
+                    $image->resize(800, 600, true, 'height');
                     $image->move(FCPATH . 'image/dokuemtasi', $nama2);
                 }
             }
@@ -335,15 +330,13 @@ class LaporJadin extends ResourcePresenter
                 if($nmfoto3 != "") { 
                     $imagePath3 = $foto3;
                     $image->withFile($imagePath3);
-                    $image->resize(800, 600, true);
- 
+                    $image->resize(800, 600, true, 'height');
                     $image->move(FCPATH . 'image/dokuemtasi', $nama3);
                     unlink(FCPATH . 'image/dokuemtasi/' . $oldfoto3);
                 } else {
                     $imagePath3 = $foto3;
                     $image->withFile($imagePath3);
-                    $image->resize(800, 600, true);
- 
+                    $image->resize(800, 600, true, 'height');
                     $image->move(FCPATH . 'image/dokuemtasi', $nama3);
                 }
             }
