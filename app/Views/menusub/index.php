@@ -83,7 +83,9 @@
                       <td class="align-middle text-center"><?= $no++; ?></td>
                       <td class="align-middle text-center">
                         <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-submenuid=<?= $value->submenu_id; ?>><i class="fas fa-pen"> </i></button>
-                        <a href="<?= site_url('menusub/remove/'.$value->submenu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                        <?php if(session('role') == "Admin") : ?>
+                          <a href="<?= site_url('menusub/remove/'.$value->submenu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                        <?php endif ?>
                       </td>
                       <td class="align-middle text-center">
                         <input type="checkbox" name="submenu_active" value="<?= $value->submenu_id; ?>" class="status-checkbox" <?= $value->submenu_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
