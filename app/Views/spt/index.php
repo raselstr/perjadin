@@ -102,7 +102,7 @@
                             <td class="align-middle text-center">Disetujui</td>
                             <td class="align-middle text-center">Disetujui</td>
                           <?php endif ?>
-                          <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
+                          <td class="align-middle"><?= $value->spt_pjb_tugas == 1 ? "Kaban" : "Sekretaris" ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>

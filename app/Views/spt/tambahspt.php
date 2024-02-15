@@ -62,8 +62,8 @@
                           <div class="col">
                             <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Pejabat yang berwenang ...!</option>
-                              <?php foreach ($pejabat as $key => $value) { ?>
-                                <option value="<?= $value->pejabat_id ?>" <?= old('spt_pjb_tugas') == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_kode; ?></option>
+                              <?php foreach ($pejabat as $key => $jab) { ?>
+                                <option value="<?= $jab->pejabat_id ?>" <?= $jab->pejabat_id == 'spt_pjb_tugas' ? 'selected':null?>><?= $jab->pejabat_kode; ?></option>
                               <?php } ?>
                             </select>
                             <div class="invalid-feedback">
@@ -118,15 +118,6 @@
                               </div>
                           </div>
                         </div>
-                        <!-- <div class="form-group row">
-                          <label for="spt_mulai" class="col-sm-4 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
-                          <div class="col">
-                            <input class="form-control <?= isset($errors['spt_mulai']) ? 'is-invalid' : null ; ?>" type="date" name="spt_mulai" placeholder="Tanggal Mulai Perjalanan Dinas" id="spt_mulai" value="<?= old('spt_mulai') ?>">
-                            <div class="invalid-feedback">
-                              <?= isset($errors['spt_mulai']) ? $errors['spt_mulai'] : null ; ?>
-                            </div>
-                          </div>
-                        </div> -->
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Tanggal Mulai Perjalanan Dinas</label>
                           <div class="col">
@@ -163,7 +154,7 @@
                         </div>
 
                         <div class="form-group row">
-                          <label for="spt_tempat" class="col-sm-4 col-form-label">Tempat Tujuan Perjadin</label>
+                          <label for="spt_tempat" class="col-sm-4 col-form-label">Tempat Tujuan Perjalanan Dinas</label>
                           <div class="col">
                             <input class="form-control <?= isset($errors['spt_tempat']) ? 'is-invalid' : null ; ?>" type="text" name="spt_tempat" placeholder="Tempat Tujuan Misal : Badan/Dinas/Kementerian beserta Alamatnya" id="spt_tempat" value="<?= old('spt_tempat') ?>">
                               <div class="invalid-feedback">

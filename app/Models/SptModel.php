@@ -154,4 +154,8 @@ class SptModel extends Model
         return $options;
     }
 
+    public function pejabatttd()
+    {
+        
+    }
 }

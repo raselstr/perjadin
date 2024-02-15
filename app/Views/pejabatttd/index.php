@@ -69,6 +69,7 @@
                         <th class="align-middle text-center">No</th>
                         <th class="align-middle text-center">Aksi</th>
                         <th class="align-middle text-center">status</th>
+                        <th class="align-middle text-center">Kode Pejabat</th>
                         <th class="align-middle text-center">Nama</th>
                         <th class="align-middle text-center">Jabatan</th>
                         <th class="align-middle text-center">NIP</th>
@@ -86,6 +87,7 @@
                           <td class="align-middle text-center">
                             <input type="checkbox" name="menu_active" value="<?= $value->pejabat_id; ?>" class="status-checkbox" <?= $value->pejabat_aktif == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
                           </td>
+                          <td><?= $value->pejabat_kode; ?></td>
                           <td><?= $value->pejabat_nama; ?></td>
                           <td class="align-middle text-center"><?= $value->pejabat_namajabatan; ?></td>
                           <td class="align-middle text-center"><?= $value->pejabat_nip; ?></td>
@@ -118,7 +120,7 @@
                     <select name="pejabat_kode" id="pejabat_kode" class="form-control">
                       <option value="">Kode pejabat ...!</option>
                       <?php foreach ($kodejab as $key => $isi) : ?>
-                        <option value="<?= $key ?>" <?= 'pejabat_kode' == $key ? 'selected' : null ?>><?= $isi; ?></option>
+                        <option value="<?= $isi ?>" <?= 'pejabat_kode' == $isi ? 'selected' : null ?>><?= $isi; ?></option>
                         <?php endforeach ?>
                       </select>
                       <div class="invalid-feedback errorpejabat_kode"></div>

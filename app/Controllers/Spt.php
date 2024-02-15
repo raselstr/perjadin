@@ -81,8 +81,9 @@ class Spt extends ResourcePresenter
             'subtitle'  => 'Home',
             'lokasi'    => $lokasiperjadin->findAll(),
             'jenis'     => $jenisperjadin->findAll(),
-            'pejabat'   => $pejabat->findAll(),
+            'pejabat'   => $pejabat->pejabataktif(),
             'acara'     => $acara->getOptions(),
+
         ];
         // dd($data);
         return view('spt/tambahspt', $data);
@@ -134,7 +135,7 @@ class Spt extends ResourcePresenter
                 'spt'       => $dataspt,
                 'lokasi'    => $lokasiperjadin->findAll(),
                 'jenis'     => $jenisperjadin->findAll(),
-                'pejabat'   => $pejabat->findAll(),
+                'pejabat'   => $pejabat->getOptions(),
                 'acara'     => $spt->getOptions(),
             ];
         //    dd($data);

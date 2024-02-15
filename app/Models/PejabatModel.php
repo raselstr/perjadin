@@ -87,4 +87,13 @@ class PejabatModel extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+
+    function pejabataktif()
+    {
+        $builder = $this->db->table('pejabats as a');
+        $builder->select('*');
+        $builder->where('a.pejabat_aktif', 1);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
