@@ -14,10 +14,12 @@ class PejabatModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
+        'pejabat_kode',
         'pejabat_namajabatan',
         'pejabat_nama',
         'pejabat_nip',
         'pejabat_pangkat',
+        'pejabat_aktif',
     ];
 
     // Dates
@@ -29,10 +31,28 @@ class PejabatModel extends Model
 
     // Validation
     protected $validationRules = [
-
+        'pejabat_kode' => 'required',
+        'pejabat_namajabatan' => 'required',
+        'pejabat_nama' => 'required',
+        'pejabat_nip' => 'required',
+        'pejabat_pangkat' => 'required',
     ];
     protected $validationMessages = [
-
+        'pejabat_kode' => [
+            'required' => ' Wajib diisi..!!'
+        ],
+        'pejabat_namajabatan' => [
+            'required' => ' Wajib diisi..!!'
+        ],
+        'pejabat_nama' => [
+            'required' => ' Wajib diisi..!!'
+        ],
+        'pejabat_nip' => [
+            'required' => ' Wajib diisi..!!'
+        ],
+        'pejabat_pangkat' => [
+            'required' => ' Wajib diisi..!!'
+        ],
     ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
@@ -47,4 +67,15 @@ class PejabatModel extends Model
     protected $afterFind = [];
     protected $beforeDelete = [];
     protected $afterDelete = [];
+
+
+
+    public function getOptions()
+    {
+        $options = [
+            '1' => 'Kaban',
+            '2' => 'Sekretaris',
+        ];
+        return $options;
+    }
 }

@@ -1,4 +1,3 @@
-
 <?= $this->extend('layout/default'); ?>
 
 <?= $this->section('stylesheet'); ?>
@@ -69,7 +68,7 @@
                       <tr>
                         <th class="align-middle text-center">No</th>
                         <th class="align-middle text-center">Aksi</th>
-                        <th class="align-middle text-center">Kode Jabatan</th>
+                        <th class="align-middle text-center">status</th>
                         <th class="align-middle text-center">Nama</th>
                         <th class="align-middle text-center">Jabatan</th>
                         <th class="align-middle text-center">NIP</th>
@@ -84,7 +83,7 @@
                             <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-pejabatid=<?= $value->pejabat_id; ?>><i class="fas fa-pen"> </i></button>
                             <a href="<?= site_url('pejabatpenandatangan/remove/'.$value->pejabat_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
                           </td>
-                          <td><?= $value->pejabat_id; ?></td>
+                          <td class="align-middle text-center"><?= $value->pejabat_aktif; ?></td>
                           <td><?= $value->pejabat_nama; ?></td>
                           <td class="align-middle text-center"><?= $value->pejabat_namajabatan; ?></td>
                           <td class="align-middle text-center"><?= $value->pejabat_nip; ?></td>
@@ -110,34 +109,44 @@
           <div class="modal-body">
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
-                <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" >pejabat Kode</label>
+              <div class="form-group row">
+                  <label for="pejabat_kode" class="col-sm-4 col-form-label">Kode Jabatan</label>
                   <div class="col">
-                    <input type="text" class="form-control" id="pejabat_id" name="pejabat_id">
+                    <select name="pejabat_kode" id="pejabat_kode" class="form-control">
+                      <option value="">Kode pejabat ...!</option>
+                      <?php foreach ($kodejab as $key => $isi) : ?>
+                        <option value="<?= $key ?>" <?= 'pejabat_kode' == $key ? 'selected' : null ?>><?= $isi; ?></option>
+                        <?php endforeach ?>
+                      </select>
+                      <div class="invalid-feedback errorpejabat_kode"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label" >Nama pejabat</label>
                   <div class="col">
                     <input type="text" class="form-control" id="pejabat_nama" name="pejabat_nama">
+                    <div class="invalid-feedback errorpejabat_nama"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label" >Jabatan</label>
                   <div class="col">
                     <input type="text" class="form-control" id="pejabat_namajabatan" name="pejabat_namajabatan">
+                    <div class="invalid-feedback errorpejabat_namajabatan"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label" >NIP</label>
                   <div class="col">
                     <input type="text" class="form-control" id="pejabat_nip" name="pejabat_nip">
+                    <div class="invalid-feedback errorpejabat_nip"></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label" >Pangkat/Gol</label>
                   <div class="col">
                     <input type="text" class="form-control" id="pejabat_pangkat" name="pejabat_pangkat">
+                    <div class="invalid-feedback errorpejabat_pangkat"></div>
                   </div>
                 </div>
               </div>
@@ -179,17 +188,25 @@
           $('#pejabat_id').val(pejabatid);
 
           if(pejabatid == null){
+            $('#pejabat_kode').val('');
             $('#pejabat_nama').val('');
+            $('#pejabat_namajabatan').val('');
+            $('#pejabat_nip').val('');
+            $('#pejabat_pangkat').val('');
 
           } else {
             $.ajax({
               type: "get",
-              url: "<?=site_url('pejabat/edit/');?>" + pejabatid,
+              url: "<?=site_url('pejabatpenandatangan/edit/');?>" + pejabatid,
               // data: "data",
               dataType: "json",
               success: function (response) {
                 console.log(response);
+                $('#pejabat_kode').val(response.pejabat_kode);
                 $('#pejabat_nama').val(response.pejabat_nama);
+                $('#pejabat_namajabatan').val(response.pejabat_namajabatan);
+                $('#pejabat_nip').val(response.pejabat_nip);
+                $('#pejabat_pangkat').val(response.pejabat_pangkat);
               }
             });
           }
@@ -216,6 +233,45 @@
               },
             success: function (response) {
               console.log(response);
+              if(response.error) {
+                if(response.message.pejabat_kode){
+                        $('#pejabat_kode').addClass('is-invalid');
+                        $('.errorpejabat_kode').html(response.message.pejabat_kode);
+                    } else {
+                        $('#pejabat_kode').removeClass('is-invalid');
+                        $('.errorpejabat_kode').html('');
+                }
+                if(response.message.pejabat_nama){
+                        $('#pejabat_nama').addClass('is-invalid');
+                        $('.errorpejabat_nama').html(response.message.pejabat_nama);
+                    } else {
+                        $('#pejabat_nama').removeClass('is-invalid');
+                        $('.errorpejabat_nama').html('');
+                }
+                if(response.message.pejabat_namajabatan){
+                        $('#pejabat_namajabatan').addClass('is-invalid');
+                        $('.errorpejabat_namajabatan').html(response.message.pejabat_namajabatan);
+                    } else {
+                        $('#pejabat_namajabatan').removeClass('is-invalid');
+                        $('.errorpejabat_namajabatan').html('');
+                }
+                if(response.message.pejabat_nip){
+                        $('#pejabat_nip').addClass('is-invalid');
+                        $('.errorpejabat_nip').html(response.message.pejabat_nip);
+                    } else {
+                        $('#pejabat_nip').removeClass('is-invalid');
+                        $('.errorpejabat_nip').html('');
+                }
+                if(response.message.pejabat_pangkat){
+                        $('#pejabat_pangkat').addClass('is-invalid');
+                        $('.errorpejabat_pangkat').html(response.message.pejabat_pangkat);
+                    } else {
+                        $('#pejabat_pangkat').removeClass('is-invalid');
+                        $('.errorpejabat_pangkat').html('');
+                }
+                
+              } else {
+                console.log(response);
                 Swal.fire({
                   position: "center",
                   icon: "success",
@@ -227,6 +283,7 @@
                   location.reload();
 
                 });
+              }
             },
             error: function(xhr, status, error) {
                 // Tangani kesalahan jika terjadi

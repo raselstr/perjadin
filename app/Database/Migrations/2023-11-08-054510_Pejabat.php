@@ -10,8 +10,14 @@ class Pejabat extends Migration
     {
         $this->forge->addField([
             'pejabat_id' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 20,
+                'type'              => 'BIGINT',
+                'constraint'        => 20,
+                'unsigned'          => true,
+                'auto_increment'    => true, 
+            ],
+            'pejabat_kode' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 20
             ],
             'pejabat_nama' => [
                 'type'          => 'VARCHAR',
@@ -28,6 +34,10 @@ class Pejabat extends Migration
             'pejabat_pangkat' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 50
+            ],
+            'pejabat_aktif' => [
+                'type'          => 'INT',
+                'default'    => 1
             ],
             
         ]);

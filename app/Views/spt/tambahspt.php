@@ -63,7 +63,7 @@
                             <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Pejabat yang berwenang ...!</option>
                               <?php foreach ($pejabat as $key => $value) { ?>
-                                <option value="<?= $value->pejabat_id ?>" <?= old('spt_pjb_tugas') == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_id; ?></option>
+                                <option value="<?= $value->pejabat_id ?>" <?= old('spt_pjb_tugas') == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_kode; ?></option>
                               <?php } ?>
                             </select>
                             <div class="invalid-feedback">
@@ -103,6 +103,7 @@
                           <label for="spt_dasar" class="col-sm-4 col-form-label">Dasar Perjalanan Dinas</label>
                           <div class="col">
                             <input class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" type="text" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar" value="<?= old('spt_dasar') ?>">
+                            <span><code>*Biarkan kosong jika Dasar Perjalanan dinas tidak ada</code></span>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_dasar']) ? $errors['spt_dasar'] : null ; ?>
                               </div>

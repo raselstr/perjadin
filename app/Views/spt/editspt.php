@@ -52,7 +52,7 @@
                             <select name="spt_pjb_tugas" id="spt_pjb_tugas" class="form-control <?= isset($errors['spt_pjb_tugas']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Pejabat yang berwenang ...!</option>
                               <?php foreach ($pejabat as $key => $value) { ?>
-                                <option value="<?= $value->pejabat_id ?>" <?= $spt->spt_pjb_tugas == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_id; ?></option>
+                                <option value="<?= $value->pejabat_id ?>" <?= $spt->spt_pjb_tugas == $value->pejabat_id ? 'selected':null?>><?= $value->pejabat_kode; ?></option>
                               <?php } ?>
                             </select>
                             <div class="invalid-feedback">

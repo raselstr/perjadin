@@ -19,6 +19,7 @@ class Pejabatpenandatangan extends ResourcePresenter
             'title' => 'Pejabat Penandatangan',
             'subtitle' => 'Home',
             'pejabat'  => $model->findAll(),
+            'kodejab'   => $model->getOptions(),
         ];
         // dd($data);
         return view('pejabatttd/index', $data);
@@ -55,7 +56,7 @@ class Pejabatpenandatangan extends ResourcePresenter
     public function create()
     {
         if($this->request->isAJAX()){
-            $model = new RolesModel();
+            $model = new PejabatModel();
             $data = $this->request->getPost();
             
             $save = $model->save($data);
@@ -86,7 +87,7 @@ class Pejabatpenandatangan extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $model = new RolesModel();
+        $model = new PejabatModel();
         $data = $model->find($id);
         return $this->response->setJSON($data);
     }
@@ -113,7 +114,7 @@ class Pejabatpenandatangan extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        $model = new RolesModel();
+        $model = new PejabatModel();
         $model->delete($id);
         
         return redirect()->back();
