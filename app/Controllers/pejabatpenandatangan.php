@@ -131,4 +131,23 @@ class Pejabatpenandatangan extends ResourcePresenter
     {
         //
     }
+
+    public function updatetoggle()
+    {
+        $itemModel = new PejabatModel();
+        $pejabat_id = $this->request->getPost('pejabat_id');
+        $aktif = $itemModel->menuactive($pejabat_id);
+
+        
+        $status = $aktif[0]['pejabat_aktif'];
+        // dd($status);
+
+        // if (!empty($itemIds)) {
+        if($status == '1'){
+            // $itemModel->where('pejabat_id',$itemIds)->set('menu_aktif',0)->update($itemIds);
+            $itemModel->where('pejabat_id', $pejabat_id)->set(['pejabat_aktif' => 0])->update();
+        } else {
+            $itemModel->where('pejabat_id', $pejabat_id)->set(['pejabat_aktif' => 1])->update();
+        }
+    }
 }

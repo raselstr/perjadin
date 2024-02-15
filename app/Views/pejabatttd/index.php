@@ -83,7 +83,9 @@
                             <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-pejabatid=<?= $value->pejabat_id; ?>><i class="fas fa-pen"> </i></button>
                             <a href="<?= site_url('pejabatpenandatangan/remove/'.$value->pejabat_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
                           </td>
-                          <td class="align-middle text-center"><?= $value->pejabat_aktif; ?></td>
+                          <td class="align-middle text-center">
+                            <input type="checkbox" name="menu_active" value="<?= $value->pejabat_id; ?>" class="status-checkbox" <?= $value->pejabat_aktif == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">
+                          </td>
                           <td><?= $value->pejabat_nama; ?></td>
                           <td class="align-middle text-center"><?= $value->pejabat_namajabatan; ?></td>
                           <td class="align-middle text-center"><?= $value->pejabat_nip; ?></td>
@@ -109,6 +111,7 @@
           <div class="modal-body">
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
+              <input type="text" class="form-control" id="pejabat_id" name="pejabat_id" hidden>
               <div class="form-group row">
                   <label for="pejabat_kode" class="col-sm-4 col-form-label">Kode Jabatan</label>
                   <div class="col">
@@ -299,4 +302,63 @@
 
     </script>
   <!-- End Script Edit dan SImpan SPJ Tiket Pesawat -->
+
+ <!-- Togle Aktiv -->
+    <script>
+      $(document).ready(function () {
+        $('input[name="menu_active"]').on('change', function () {
+            var checkboxValue = $(this).val();
+            var isChecked = $(this).is(':checked');
+            
+            if (isChecked) {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('pejabatpenandatangan/updatetoggle'); ?>",
+                  data: {pejabat_id:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil...',
+                      text: 'Pejabat Penandatangan Aktif',
+                    }).then(function(){
+                      location.reload();
+                    });
+                    // location.reload();
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            } else {
+                console.log(checkboxValue);
+                $.ajax({
+                  type: "POST",
+                  url: "<?= site_url('pejabatpenandatangan/updatetoggle'); ?>",
+                  data: {pejabat_id:checkboxValue},
+                  // dataType: "dataType",
+                  success: function (response) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil...',
+                      text: 'Pejabat Penandatangan Tidak Aktif',
+                    }).then(function(){
+                      location.reload();
+                    });
+                    // location.reload();
+                    // alert('Status item berhasil diubah');
+                  },
+                  error: function (error) {
+                      // Handle error, if any
+                      console . error(error);
+                  }
+                });
+            }
+        });
+      });
+    </script>
+  <!--  -->
 <?= $this->endSection() ?>

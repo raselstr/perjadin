@@ -16,8 +16,7 @@ class Pejabat extends Migration
                 'auto_increment'    => true, 
             ],
             'pejabat_kode' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => 20
+                'type'          => 'INT',
             ],
             'pejabat_nama' => [
                 'type'          => 'VARCHAR',

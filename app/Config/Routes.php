@@ -16,7 +16,10 @@ $routes->presenter('register');
 
 $routes->presenter('role');
 $routes->presenter('rolemenu');
+
+$routes->post('pejabatpenandatangan/updatetoggle','Pejabatpenandatangan::updatetoggle');
 $routes->presenter('pejabatpenandatangan');
+
 $routes->presenter('bpk');
 
 $routes->presenter('verifspt');

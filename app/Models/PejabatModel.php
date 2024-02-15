@@ -78,4 +78,13 @@ class PejabatModel extends Model
         ];
         return $options;
     }
+
+    function menuactive($id = null)
+    {
+        $builder = $this->db->table('pejabats as a');
+        $builder->select('a.pejabat_aktif');
+        $builder->where('a.pejabat_id', $id);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }
