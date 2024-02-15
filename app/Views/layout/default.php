@@ -22,6 +22,10 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__wobble" src="<?= base_url('images/logo.jpeg'); ?>" alt="AdminLTELogo" height="120" width="160">
+  </div>
   <!-- Navbar -->
   <?= $this->include('layout/navbar'); ?>
   <!-- /.navbar -->
