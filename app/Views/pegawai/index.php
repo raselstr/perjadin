@@ -75,6 +75,7 @@
                     <th>NIP</th>
                     <th>Nama Pegawai</th>
                     <th>Jabatan</th>
+                    <th>Tanggal Lahir</th>
                     <th>Eselon</th>
                     <th>Pangkat</th>
                     <th>Foto</th>
@@ -90,6 +91,7 @@
                           <td><?= $value->pegawai_nip ?></td>
                           <td><?= $value->pegawai_nama ?></td>
                           <td><?= $value->pegawai_jabatan ?></td>
+                          <td><?= $value->pegawai_tgllahir ?></td>
                           <td><?= $value->eselon_nama ?></td>
                           <td><?= $value->pangkat_nama ?></td>
                           <td><?= $value->pegawai_foto ?></td>

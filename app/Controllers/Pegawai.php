@@ -90,6 +90,8 @@ class Pegawai extends ResourcePresenter
     {
        $pegawais = new PegawaisModel();
        $data = $this->request->getPost();
+       $peglahir = $this->request->getPost('pegawai_tgllahir');
+       $data['pegawai_tgllahir'] = date('Y-m-d', strtotime($peglahir));
 
        $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
     //    dd($foto->getPath());
@@ -134,7 +136,7 @@ class Pegawai extends ResourcePresenter
         $peg = $pegawais->find($id);
         if(is_object($peg)){
             $data = [
-                'title'     => 'Edit Tambah Pegawai',
+                'title'     => 'Edit data Pegawai',
                 'subtitle'  => 'Home',
                 'peg'       => $peg,
                 'pegawai'   => $pegawais->findAll(),
@@ -161,9 +163,12 @@ class Pegawai extends ResourcePresenter
     {
         $pegawais = new PegawaisModel();
         $data = $this->request->getPost();
-        
+        $peglahir = $this->request->getPost('pegawai_tgllahir');
+        $data['pegawai_tgllahir'] = date('Y-m-d', strtotime($peglahir));
+
         $fotolama = $this->request->getVar('pegawai_fotolama');
         $foto        = $this->request->getFile('pegawai_foto'); //Ambil file foto
+
         // dd($foto);
         if($foto->getError() == 4){
             $data['pegawai_foto'] = $fotolama;

@@ -95,10 +95,26 @@ class SptModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    function sptall($id = null)
+    {
+        $session = session('tahun');
+        $builder = $this->db->table('spts');
+        $builder->select('spts.*, pejabats.pejabat_nama, pejabats.pejabat_kode,lokasiperjadins.lokasiperjadin_nama');
+        $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas', 'LEFT');
+        $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan', 'LEFT');
+        $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
+        $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id', 'LEFT');
+        $builder->where('spts.spt_tahun', $session);
+        $builder->where('spts.spt_id', $id);
+        $builder->groupBy('spts.spt_id');
+        $builder->orderBy('spts.created_at', 'DESC');
+        $query = $builder->get();
+        return $query->getResult();
+    }
     function pelaksanaspt($thn, $id = null)
     {
         $builder = $this->db->table('spts');
-        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('spts.*, pejabats.pejabat_nama, pejabats.pejabat_kode,lokasiperjadins.lokasiperjadin_nama');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas', 'LEFT');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan', 'LEFT');
         $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
@@ -116,7 +132,7 @@ class SptModel extends Model
     function verifpelaksanaspt($thn, $id = null)
     {
         $builder = $this->db->table('spts');
-        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('spts.*, pejabats.pejabat_nama, pejabats.pejabat_kode, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas', 'LEFT');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan', 'LEFT');
         $builder->join('pelaksanas', 'pelaksanas.spt_id = spts.spt_id', 'LEFT');
@@ -154,8 +170,5 @@ class SptModel extends Model
         return $options;
     }
 
-    public function pejabatttd()
-    {
-        
-    }
+    
 }

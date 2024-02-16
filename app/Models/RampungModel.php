@@ -11,7 +11,7 @@ class RampungModel extends Model
     function rampungdataspt($thn)
     {
         $builder = $this->db->table('spts');
-        $builder->select('spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('spts.*, pejabats.pejabat_nama, pejabats.pejabat_kode, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $builder->where('spts.spt_verif',1);
@@ -24,13 +24,15 @@ class RampungModel extends Model
     function rampungall($id)
     {
         $builder = $this->db->table('pelaksanas');
-        $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama,  pejabats.pejabat_kode,lokasiperjadins.lokasiperjadin_nama');
         $builder->join('spts', 'spts.spt_id = pelaksanas.spt_id');
         $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $builder->where('spts.spt_verif',1);
         $builder->where('spts.spt_id',$id);
+        $builder->orderBy('pegawais.eselon_id', 'DESC');
+        $builder->orderBy('pegawais.pangkat_id', 'DESC');
         $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
         $result = $query->getResult();
@@ -39,7 +41,7 @@ class RampungModel extends Model
     function rampungutama($id)
     {
         $builder = $this->db->table('pelaksanas');
-        $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('pelaksanas.*, spts.*, pegawais.*, pejabats.pejabat_nama, pejabats.pejabat_kode, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('spts', 'spts.spt_id = pelaksanas.spt_id');
         $builder->join('pegawais', 'pegawais.pegawai_id = pelaksanas.pegawai_id');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');

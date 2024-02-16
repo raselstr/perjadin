@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title><?= $title ; $spt['data'][0]->spt_nomor;?></title>
   <style>
     @page {
       /* size: 22; */
@@ -296,7 +296,7 @@
           </td>
         </tr>
         <tr><td><br></td></tr>
-        <?php if($spt['data'][0]->pejabat_id <> "Kaban") { ?>
+        <?php if($spt['data'][0]->pejabat_kode <> "Kaban") { ?>
           <tr>
             <td id="ttdan">An.</td>
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>

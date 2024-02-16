@@ -1,4 +1,9 @@
-
+<?php 
+  use App\Models\PelaksanaModel;
+  use App\Models\SptModel;
+  $itemModel = new PelaksanaModel;
+  $verif = new SptModel;
+?>
 <?= $this->extend('layout/default'); ?>
 
 <?= $this->section('stylesheet'); ?>
@@ -101,9 +106,6 @@
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle text-center"> 
                             <?php 
-                              $db = \Config\Database::connect();
-                              $itemModel = new App\Models\PelaksanaModel;
-                              $verif = new App\Models\SptModel;
                               $true = $itemModel->kabanpelaksana($value->spt_id);
                               // dd($true);
                               if (!empty($true) ) : ?>

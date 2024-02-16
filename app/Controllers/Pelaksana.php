@@ -26,12 +26,14 @@ class Pelaksana extends ResourcePresenter
         $idpengguna = session('idpengguna');
         $spt = new SptModel();
         $dataspt = $spt->pelaksanaspt($thn, $idpengguna);
+
         $data = [
             'title'     => 'Draft Surat Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
 
         ];
+        // dd($data);
         return view('pelaksana/index', $data);
     }
     
@@ -182,7 +184,7 @@ class Pelaksana extends ResourcePresenter
         // dd($dataspt);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
-            'title'     => 'Surat Perintah Tugas',
+            'title'     => 'Surat Perintah Tugas Nomor :',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'pelaksana'     => $cek,
@@ -231,7 +233,7 @@ class Pelaksana extends ResourcePresenter
         $dataspt = $pelaksana->datapelaksana($id);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
-            'title'     => 'Surat Perintah Tugas',
+            'title'     => 'Surat Perjalanan Dinas Nomor : ',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'utama'     => $namautama,
@@ -263,8 +265,8 @@ class Pelaksana extends ResourcePresenter
         // $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kopbupati.png'),
-            // 'title'     => 'Surat Perintah Tugas',
-            // 'subtitle'  => 'Home',
+            'title'     => 'Surat Perintah Tugas Bupati Asahan',
+            'subtitle'  => 'Home',
             'kaban'       => $kabanpelaksana,
             
             // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))
@@ -294,8 +296,8 @@ class Pelaksana extends ResourcePresenter
         // $kabanpelaksana = $itemModel->kabanpelaksana($itemIds);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kopsekda.png'),
-            // 'title'     => 'Surat Perintah Tugas',
-            // 'subtitle'  => 'Home',
+            'title'     => 'Surat Perintah Tugas Sekretaris Daerah',
+            'subtitle'  => 'Home',
             'kaban'       => $kabanpelaksana,
             
             // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))

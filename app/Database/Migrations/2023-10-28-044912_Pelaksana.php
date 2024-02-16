@@ -10,38 +10,40 @@ class Pelaksana extends Migration
     {
         $this->forge->addField([
             'pelaksana_id' => [
-                'type'           => 'BIGINT',
-                'constraint'     => 20,
-                'unsigned'       => true,
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'spt_id' => [
-                'type'          => 'INT',
-                'constraint'    => 20
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'pegawai_id' => [
-                'type'          => 'INT',
-                'constraint'    => 20
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'pelaksana_utama' => [
-                'type'          => 'INT',
-                'constraint'    => 1,
-                'default'       => 0,
+                'type' => 'INT',
+                'constraint' => 1,
+                'default' => 0,
             ],
         ]);
         $this->forge->addKey('pelaksana_id', true);
-        $this->forge->addForeignKey('spt_id','spts','spt_id','RESCRICT', '', 'my_fk_pelaksanaspt');
-        $this->forge->addForeignKey('pegawai_id','pegawais','pegawai_id','','','my_fk_pelaksanapegawai');
-        $this->forge->addUniqueKey(['spt_id','pegawai_id'],'uniqkey');
+        // $this->forge->addForeignKey('spt_id', 'spts', 'spt_id', '', '', 'myfkpelaksanaspt');
+        // $this->forge->addForeignKey('pegawai_id', 'pegawais', 'pegawai_id', '', '', 'myfkpelaksanapegawai');
+        $this->forge->addUniqueKey(['spt_id', 'pegawai_id'], 'uniqkey');
 
         $this->forge->createTable('pelaksanas');
     }
 
     public function down()
     {
-        
-        $this->forge->dropForeignKey('pelaksanas','my_fk_pelaksanaspt');
-        $this->forge->dropForeignKey('pelaksanas','my_fk_pelaksanapegawai');
+
+        $this->forge->dropForeignKey('pelaksanas', 'myfkpelaksanaspt');
+        $this->forge->dropForeignKey('pelaksanas', 'myfkpelaksanapegawai');
 
         $this->forge->dropTable('pelaksanas');
     }

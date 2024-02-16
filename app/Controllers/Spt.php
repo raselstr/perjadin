@@ -41,13 +41,14 @@ class Spt extends ResourcePresenter
         $sessionthn = $this->session->get('tahun');
 
         $spt = new SptModel();
+        $pejabat = new PejabatModel();
+
         $sptpelaksana = $spt->pelaksanaspt($sessionthn,$session);        
         $data = [
             'title'     => 'Perintah Tugas',
             'subtitle'  => 'Home',
             'spt'       => $sptpelaksana,
             'session'   => $session,
-            // 'pejabat'   => $penugas->findAll(),
         ];
         // dd($data);
         return view('spt/index', $data);
@@ -127,22 +128,21 @@ class Spt extends ResourcePresenter
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
 
-        $dataspt = $spt->find($id);
-        if(is_object($dataspt)){
+        // $dataspt = $spt->find($id);
+        $dataspt = $spt->sptall($id);
+
             $data = [
                 'title'     => 'Edit Tambah Pegawai',
                 'subtitle'  => 'Home',
                 'spt'       => $dataspt,
                 'lokasi'    => $lokasiperjadin->findAll(),
                 'jenis'     => $jenisperjadin->findAll(),
-                'pejabat'   => $pejabat->getOptions(),
+                'pejabat'   => $pejabat->pejabataktif(),
                 'acara'     => $spt->getOptions(),
             ];
         //    dd($data);
-            return view('spt/editspt', $data);
-        } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        }
+        return view('spt/editspt', $data);
+        
        
     }
 
@@ -194,20 +194,16 @@ class Spt extends ResourcePresenter
         $spt = new SptModel();
         $pelaksana = new PegawaisModel();
         $pegpelaksana = new PelaksanaModel();
-        $dataspt = $spt->find($id);
+        $dataspt = $spt->sptall($id);
         $data = [
             'title'     => 'Tambah Pelaksana Perjalanan Dinas',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'peg'       => $pelaksana->orderBy('pegawais.pegawai_id')->findAll(),
             'pelks'     => $pegpelaksana->datapelaksanaall($id),
-            
             ];
-
         // dd($data);    
         return view('spt/pelaksanaspt', $data);
-        
-
     }
 
     // Membuat Select Option Dinamis / Select option bertingkat

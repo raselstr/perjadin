@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-<title>Printed document</title>
+<title><?= $title; $spt['data'][0]->sppd_nomor ?></title>
 
 <style type="text/css">
 @page {
@@ -270,14 +270,14 @@ table.tabel3.author {
       </tr>
       <tr>
         <th colspan="2" class="isi">Nama</td>
-        <th colspan="3" class="isi">Pangkat</td>
+        <th colspan="3" class="isi">Tanggal Lahir</td>
         <th colspan="3" class="isi">Jabatan</td>
       </tr>
       <?php $no = "a"; foreach ($pengikut as $key => $value) : ?>
         <tr>
           <td class="bawah pengikut"><?= $no++; ?>.</td>
           <td class="bawah pengikut"><?= $value->pegawai_nama; ?> - <?= $value->pegawai_nip; ?></td>
-          <td colspan="3" class="isi pengikut"><?= $value->pangkat_nama; ?></td>
+          <td colspan="3" class="isi pengikut no"><?= date('d-m-Y', strtotime($value->pegawai_tgllahir)); ?></td>
           <td colspan="3" class="isi pengikut"><?= $value->pegawai_jabatan; ?></td>
         </tr>
       <?php endforeach; ?>
@@ -334,7 +334,7 @@ table.tabel3.author {
       </td>
     </tr>
     <tr><td><br></td></tr>
-    <?php if($spt['data'][0]->pejabat_id <> "Kaban") { ?>
+    <?php if($spt['data'][0]->pejabat_kode <> "Kaban") { ?>
       <tr>
         <td class="ttd ttdan">An. </td>
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>

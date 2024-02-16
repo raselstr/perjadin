@@ -41,6 +41,8 @@ class VerifModel extends Model
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         $builder->where('spts.spt_verif',1);
         $builder->where('spts.spt_id',$id);
+        $builder->orderBy('pegawais.eselon_id', 'DESC');
+        $builder->orderBy('pegawais.pangkat_id', 'DESC');
         $builder->orderBy('spts.created_at', 'DESC');
         $query = $builder->get();
         $result = [

@@ -66,7 +66,7 @@ class LaporjadinModel extends Model
     function dataspt($thn, $id)
     {
         $builder = $this->db->table('spts');
-        $builder->select('spts.*, laporjadins.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('spts.*, laporjadins.*, pejabats.pejabat_nama, pejabats.pejabat_kode, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('laporjadins', 'laporjadins.laporjadin_sptid = spts.spt_id', 'LEFT');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
@@ -86,7 +86,7 @@ class LaporjadinModel extends Model
     function datasptid($id)
     {
         $builder = $this->db->table('laporjadins');
-        $builder->select('laporjadins.*, spts.*, pejabats.pejabat_nama, lokasiperjadins.lokasiperjadin_nama');
+        $builder->select('laporjadins.*, spts.*, pejabats.pejabat_nama, pejabats.pejabat_kode, lokasiperjadins.lokasiperjadin_nama');
         $builder->join('spts', 'spts.spt_id = laporjadins.laporjadin_sptid', 'RIGHT');
         $builder->join('pejabats', 'pejabats.pejabat_id = spts.spt_pjb_tugas');
         $builder->join('lokasiperjadins', 'lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');

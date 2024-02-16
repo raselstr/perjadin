@@ -13,7 +13,15 @@ class PegawaisModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['pegawai_nip','pegawai_nama','pegawai_jabatan','eselon_id','pangkat_id','pegawai_tingkat','pegawai_foto'];
+    protected $allowedFields    = [
+        'pegawai_nip',
+        'pegawai_nama',
+        'pegawai_jabatan',
+        'pegawai_tgllahir',
+        'eselon_id',
+        'pangkat_id',
+        'pegawai_tingkat',
+        'pegawai_foto'];
 
     // Dates
     protected $useTimestamps = false;
@@ -28,6 +36,7 @@ class PegawaisModel extends Model
         'pegawai_nip'       => 'required|max_length[18]|min_length[9]|numeric|is_unique[pegawais.pegawai_nip,pegawai_id,{pegawai_id}]',
         'pegawai_nama'      => 'required|max_length[100]|min_length[3]',
         'pegawai_jabatan'   => 'required|max_length[100]|min_length[4]',
+        'pegawai_tgllahir'  => 'required',
         'eselon_id'         => 'required',
         'pangkat_id'        => 'required',
         'pegawai_tingkat'   => 'required',
@@ -49,6 +58,9 @@ class PegawaisModel extends Model
             'required'              => 'Jabatan Wajib diisi',
             'max_length'            => 'Jabatan Maksimal 50 Karakter',
             'min_length'            => 'Jabatan Minimal 5 Karakter',
+        ],
+        'pegawai_tgllahir' => [
+            'required'              => 'Tanggal Lahir Wajib dipilih sesuai daftar',
         ],
         'eselon_id' => [
             'required'              => 'Eselon Wajib dipilih sesuai daftar',

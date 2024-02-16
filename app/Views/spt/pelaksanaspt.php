@@ -58,7 +58,7 @@
                       <div class="col-8">
                         <div class="form-group row">
                           <div class="col">
-                            <input type="text" name="spt_id" placeholder="Tahun" id="spt_id" value="<?= $spt->spt_id ?>" hidden>
+                            <input type="text" name="spt_id" placeholder="Tahun" id="spt_id" value="<?= $spt[0]->spt_id ?>" hidden>
                           </div>
                         </div>
                         <table class="table">
@@ -73,18 +73,18 @@
                             <tr>
                               <td>1.</td>
                               <td>Pejabat Pemberi Tugas</td>
-                              <td><?= $spt->spt_pjb_tugas ?></td>
+                              <td><?= $spt[0]->pejabat_kode ?></td>
                             </tr>
                             <tr>
                               <td>2.</td>
                               <td>Maksud Perjalanan Dinas</td>
-                              <td><?= $spt->spt_uraian ?></td>
+                              <td><?= $spt[0]->spt_uraian ?></td>
                             </tr>
                             <tr>
                               <td>3.</td>
                               <td>Lama Perjalanan Dinas</td>
                               <td>
-                                <?= $spt->spt_lama ?> hari &nbsp;&nbsp;(<?= date('d F Y', strtotime($spt->spt_mulai))?> &nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp; <?= date('d F Y',strtotime($spt->spt_berakhir)) ?>)
+                                <?= $spt[0]->spt_lama ?> hari &nbsp;&nbsp;(<?= date('d F Y', strtotime($spt[0]->spt_mulai))?> &nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp; <?= date('d F Y',strtotime($spt[0]->spt_berakhir)) ?>)
                               </td>
                             </tr>
                           </tbody>
@@ -161,7 +161,7 @@
           <?= csrf_field() ?>
             <div class="modal-body">
               <div class="form-group">
-                <input class="form-control"  name = "spt_id" type="text" value="<?= $spt->spt_id ?>" hidden>
+                <input class="form-control"  name = "spt_id" type="text" value="<?= $spt[0]->spt_id ?>" hidden>
               </div>
               <div class="form-group">
                 <label>Pilih Nama Pegawai</label>

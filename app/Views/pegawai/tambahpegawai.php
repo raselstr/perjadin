@@ -1,4 +1,18 @@
 <?= $this->extend('layout/default'); ?>
+<?= $this->section('stylesheet'); ?>
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('scriptplugin'); ?>
+  
+ <!-- InputMask -->
+  <script src="plugins/moment/moment.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<?= $this->endSection(); ?>
 
 <?= $this->section('content') ?>
 <!-- Content Wrapper. Contains page content -->
@@ -49,6 +63,22 @@
                               <div class="invalid-feedback">
                                   <?= isset($errors['pegawai_jabatan']) ? $errors['pegawai_jabatan'] : null ; ?>
                               </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                          <div class="col">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="far fa-calendar-alt"></i>
+                                </span>
+                              </div>
+                              <input type="text" class="form-control float-right <?= isset($errors['pegawai_tgllahir']) ? 'is-invalid' : null ; ?>" id="pegawai_tgllahir" name="pegawai_tgllahir">
+                              <div class="invalid-feedback">
+                                <?= isset($errors['pegawai_tgllahir']) ? $errors['pegawai_tgllahir'] : null ; ?>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-group row">
@@ -149,6 +179,25 @@
         document.getElementById("img-preview").src = oFREvent.target.result;
       };
     };
+  </script>
+  <script>
+    // Date range picker
+    $(function() {
+      $('#pegawai_tgllahir').daterangepicker({
+        autoUpdateInput: true,
+        locale: {
+          format: 'DD MMMM YYYY'
+        },
+        singleDatePicker: true,
+        showDropdowns: true,
+        
+      });
+      // Menangani perubahan tanggal
+        $('#pegawai_tgllahir').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
+      
+    });
   </script>
 <?= $this->endSection() ?>
     

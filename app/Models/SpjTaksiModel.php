@@ -89,7 +89,8 @@ class SpjTaksiModel extends Model
         }
         $builder -> where('spts.spt_verif', 1);
         $builder -> where('spts.spt_tahun', $thn);
-        $builder -> where('spts.spt_jenis', 2);
+        $builder -> where('spts.spt_jenis !=', 3);
+        $builder -> where('spts.spt_transport !=', esc('Mobil Dinas'));
         $query = $builder->get();
         return $query->getResult();
     }

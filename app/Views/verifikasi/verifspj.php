@@ -123,351 +123,336 @@ use SebastianBergmann\Invoker\Invoker;
                 <?php endforeach ?>
               </tbody>
             </table>
-            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Hotel</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Pesawat</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Taksi</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-harian-tab" data-toggle="pill" href="#custom-tabs-one-harian" role="tab" aria-controls="custom-tabs-one-harian" aria-selected="false">Uang Harian</a>
-              </li>
-            </ul>
-            <div class="card-body">
-              <div class="tab-content" id="custom-tabs-one-tabContent">
-                <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th style="width: 20px">#</th>
-                        <th>Uraian</th>
-                        <th style="width: 80%">Keterangan</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php $no = 1; foreach ($hotel['data'] as $key => $value) : ?>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Nama Hotel</td>
-                          <td><?= $value->spjhotel_nama; ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Lokasi</td>
-                          <td><?= $value->spjhotel_lokasi; ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Nomor Kamar</td>
-                          <td><?= $value->spjhotel_nokamar; ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Tipe Kamar</td>
-                          <td><?= $value->spjhotel_typekamar; ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Cin & Cout</td>
-                          <td><?= date('d F Y', strtotime($value->spjhotel_checkin)); ?> &nbsp;&nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp;&nbsp; <?= date('d F Y', strtotime($value->spjhotel_checkout)); ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Harga Per Malam</td>
-                          <td><?= $value->spjhotel_hargapermalam; ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Harga Total</td>
-                          <td><?= $value->spjhotel_hargatotal; ?></td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Validasi</td>
-                          <td>
-                            <?php if($value->spjhotel_verif == 0) : ?>
-                              <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverif" data-idhotel="<?=$value->spjhotel_id;?>"><i class="fas fa-times"> </i> Bukti Hotel Belum di Verifikasi </button>
-                            <?php else : ?>
-                              <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverif" data-idhotel="<?=$value->spjhotel_id;?>"><i class="fas fa-check"> </i> Bukti Hotel sudah di Verifikasi </button>
-                            <?php endif ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><?= $no++; ?>.</td>
-                          <td>Bill</td>
-                          <td>
-                            <iframe src="<?= base_url('image/hotel/bill/' . $value->spjhotel_bill)?>" width="100%" height="600" style="border:1px solid #666;"></iframe>
-                          </td>
-                        </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                  <table class="table table-sm">
-                      <thead>
-                        <tr>
-                          <th style="width: 20px">#</th>
-                          <th>Uraian</th>
-                          <th style="width: 80%">Keterangan</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php $no = 1; foreach ($pesawat as $key => $value) : ?>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Maskapai</td>
-                            <td><?= $value->spjpesawat_maskapai; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Jenis</td>
-                            <td><?= $value->spjpesawat_jenis; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Kode Boking <?= $value->spjpesawat_jenis; ?></td>
-                            <td><?= $value->spjpesawat_kdboking; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Tujuan </td>
-                            <td><?= $value->spjpesawat_ke; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Tanggal <?= $value->spjpesawat_jenis; ?></td>
-                            <td><?= date('d F Y', strtotime($value->spjpesawat_tgl)); ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Harga Tiket Per Orang</td>
-                            <td><?= $value->spjpesawat_harga; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Validasi</td>
-                            <td>
-                              <?php if($value->spjpesawat_verif == 0) : ?>
-                                <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-times"> </i> Bukti Pesawat Belum di Verifikasi </button>
-                              <?php else : ?>
-                                <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> Bukti Pesawat sudah di Verifikasi </button>
-                              <?php endif ?>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Boarding Tiket <?= $value->spjpesawat_jenis; ?></td>
-                            <td>
-                              <img src="<?= base_url('image/pesawat/tiket/' . $value->spjpesawat_fototiket)?>" width="100%" height="200" style="border:1px solid #666;">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Bill <?= $value->spjpesawat_jenis; ?></td>
-                            <td>
-                              <iframe src="<?= base_url('image/pesawat/bill/' . $value->spjpesawat_bill)?>" width="100%" height="400" style="border:1px solid #666;"></iframe>
-                            </td>
-                          </tr>
+            <div class="row">
+              <div class="col-12">
+                <div class="card card-primary card-tabs">
+                  <div class="card-header p-0 pt-1">
+                    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Hotel</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Pesawat</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Taksi</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-harian-tab" data-toggle="pill" href="#custom-tabs-one-harian" role="tab" aria-controls="custom-tabs-one-harian" aria-selected="false">Uang Harian</a>
+                      </li>
+                    </ul>
+                  </div>
+                    <div class="card-body">
+                      <div class="tab-content" id="custom-tabs-one-tabContent">
+                        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                          <table class="table table-sm">
+                            <thead>
+                              <tr>
+                                <th style="width: 20px">#</th>
+                                <th>Uraian</th>
+                                <th style="width: 80%">Keterangan</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php $no = 1; foreach ($hotel['data'] as $key => $value) : ?>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Nama Hotel</td>
+                                  <td><?= $value->spjhotel_nama; ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Lokasi</td>
+                                  <td><?= $value->spjhotel_lokasi; ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Nomor Kamar</td>
+                                  <td><?= $value->spjhotel_nokamar; ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Tipe Kamar</td>
+                                  <td><?= $value->spjhotel_typekamar; ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Cin & Cout</td>
+                                  <td><?= date('d F Y', strtotime($value->spjhotel_checkin)); ?> &nbsp;&nbsp;&nbsp;&nbsp; s.d &nbsp;&nbsp;&nbsp;&nbsp; <?= date('d F Y', strtotime($value->spjhotel_checkout)); ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Harga Per Malam</td>
+                                  <td><?= $value->spjhotel_hargapermalam; ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Harga Total</td>
+                                  <td><?= $value->spjhotel_hargatotal; ?></td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Validasi</td>
+                                  <td>
+                                    <?php if($value->spjhotel_verif == 0) : ?>
+                                      <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverif" data-idhotel="<?=$value->spjhotel_id;?>"><i class="fas fa-times"> </i> Bukti Hotel Belum di Verifikasi </button>
+                                    <?php else : ?>
+                                      <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverif" data-idhotel="<?=$value->spjhotel_id;?>"><i class="fas fa-check"> </i> Bukti Hotel sudah di Verifikasi </button>
+                                    <?php endif ?>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td><?= $no++; ?>.</td>
+                                  <td>Bill</td>
+                                  <td>
+                                    <iframe src="<?= base_url('image/hotel/bill/' . $value->spjhotel_bill)?>" width="100%" height="600" style="border:1px solid #666;"></iframe>
+                                  </td>
+                                </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                          <table class="table table-sm">
+                              <thead>
+                                <tr>
+                                  <th style="width: 20px">#</th>
+                                  <th>Uraian</th>
+                                  <th style="width: 80%">Keterangan</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php $no = 1; foreach ($pesawat as $key => $value) : ?>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Maskapai</td>
+                                    <td><?= $value->spjpesawat_maskapai; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Jenis</td>
+                                    <td><?= $value->spjpesawat_jenis; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Kode Boking <?= $value->spjpesawat_jenis; ?></td>
+                                    <td><?= $value->spjpesawat_kdboking; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Tujuan </td>
+                                    <td><?= $value->spjpesawat_ke; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Tanggal <?= $value->spjpesawat_jenis; ?></td>
+                                    <td><?= date('d F Y', strtotime($value->spjpesawat_tgl)); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Harga Tiket Per Orang</td>
+                                    <td><?= $value->spjpesawat_harga; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Validasi</td>
+                                    <td>
+                                      <?php if($value->spjpesawat_verif == 0) : ?>
+                                        <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-times"> </i> Bukti Pesawat Belum di Verifikasi </button>
+                                      <?php else : ?>
+                                        <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalverifpesawat" data-idpes="<?=$value->spjpesawat_id;?>"><i class="fas fa-check"> </i> Bukti Pesawat sudah di Verifikasi </button>
+                                      <?php endif ?>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Boarding Tiket <?= $value->spjpesawat_jenis; ?></td>
+                                    <td>
+                                      <img src="<?= base_url('image/pesawat/tiket/' . $value->spjpesawat_fototiket)?>" width="100%" height="200" style="border:1px solid #666;">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Bill <?= $value->spjpesawat_jenis; ?></td>
+                                    <td>
+                                      <iframe src="<?= base_url('image/pesawat/bill/' . $value->spjpesawat_bill)?>" width="100%" height="400" style="border:1px solid #666;"></iframe>
+                                    </td>
+                                  </tr>
+                                  <?php endforeach ?>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                          <table class="table table-sm">
+                              <thead>
+                                <tr>
+                                  <th style="width: 20px">#</th>
+                                  <th>Uraian</th>
+                                  <th style="width: 80%">Keterangan</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php $no = 1; foreach ($taksi as $key => $value) : ?>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Jenis</td>
+                                    <td><?= $value->spjtaksi_jenis; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Tujuan dari </td>
+                                    <td><?= $value->spjtaksi_dari; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Ke </td>
+                                    <td><?= $value->spjtaksi_ke; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Tanggal <?= $value->spjtaksi_jenis; ?></td>
+                                    <td><?= date('d F Y', strtotime($value->spjtaksi_tgl)); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Harga Tiket Per Orang</td>
+                                    <td><?= $value->spjtaksi_harga; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Validasi</td>
+                                    <td>
+                                      <?php if($value->spjtaksi_verif == 0) : ?>
+                                        <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-times"> </i> Bukti Taksi Belum di Verifikasi </button>
+                                      <?php else : ?>
+                                        <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-check"> </i> Bukti Taksi sudah di Verifikasi </button>
+                                      <?php endif ?>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><?= $no++; ?>.</td>
+                                    <td>Tiket <?= $value->spjtaksi_jenis; ?></td>
+                                    <td>
+                                      <img src="<?= base_url('image/taksi/tiket/' . $value->spjtaksi_fototiket)?>" width="100%" height="200" style="border:1px solid #666;">
+                                    </td>
+                                  </tr>
+                                  <?php endforeach ?>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-one-harian" role="tabpanel" aria-labelledby="custom-tabs-one-harian-tab">
+                          
+                          <?php foreach ($data['data'] as $key => $value) : ?>
+                            <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->lokasiperjadin_id);?>
+                              <form action="<?=site_url('verifikasi/verifuangharian');?>" method="post" id="formharian">
+                                <?=csrf_field();?>
+                                        <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?= $uh[0]->uangharian_id ?>" hidden>
+                                        <input type="text" class="form-control" id="uangharian_idpelaksana" name="uangharian_idpelaksana" value = <?= $value->pelaksana_id; ?> hidden>
+                                        <input type="text" class="form-control" id="uangharian_sptid" name="uangharian_sptid" value = <?= $value->spt_id; ?> hidden>
+                                        <input type="text" class="form-control" id="uangharian_tingkatid" name="uangharian_tingkatid" value = <?= $value->pegawai_tingkat; ?> hidden>
+                                        <input type="text" class="form-control" id="uangharian_verif" name="uangharian_verif" value = "1"  hidden>
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label" hidden>Id Lokasi</label>
+                                      <div class="col">
+                                        <input type="text" class="form-control" id="uangharian_lokasiid" name="uangharian_lokasiid" value = <?= $value->lokasiperjadin_id ?> hidden>
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label" >Lama Perjalanan (Hari)</label>
+                                      <div class="col">
+                                        <input type="text" class="form-control" id="uangharian_lama" name="uangharian_lama" value = <?= $value->spt_lama ?>  readonly>
+                                      </div>
+                                    </div>
+                                    <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id);?>
+                                    <?php foreach ($qrperbup as $key => $harian): ?>
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label">Uang Harian Perhari</label>
+                                      <div class="col-sm-2">
+                                          <?php if($harian->spt_acara == 1 ) {
+                                                $harian = $harian->perbup_uhdiklat ;
+                                              } elseif ($harian->spt_acara == 2){
+                                                $harian = $harian->perbup_uhrapat_fullboad ;
+                                              } elseif ($harian->spt_acara == 3){
+                                                $harian = $harian->perbup_uhrapat_fullday ;
+                                              } elseif ($harian->spt_acara == 4){
+                                                $harian = $harian->perbup_uhrapat_residencedlmkota ;
+                                              } else {
+                                                $harian = $harian->perbup_uh ;
+                                          }?>
+                                        <input type="text" class="form-control" id="uangharian_perhari" name="uangharian_perhari" value = <?= $harian ?> readonly>
+                                      </div>
+                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="uangharian_jumlah" name="uangharian_jumlah" value = <?= intval($value->spt_lama)*intval($harian) ?>  readonly>
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label" >Biaya Transport</label>
+                                      <div class="col">
+                                        <?php if($value->spt_jenis == 1 ) {
+                                          foreach ($qrperbup as $key => $transport) {
+                                            $transfort = $transport->perbup_taksi_transportdarat;
+                                            }
+                                          } else {
+                                            foreach ($qrperbup as $key => $transport) {
+                                            $transfort = 0;
+                                            }
+                                          }?>
+                                        <input type="text" class="form-control" id="uangharian_biayatransport" name="uangharian_biayatransport" value = <?= $transfort ?> readonly>
+                                      </div>
+                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?= intval($value->spt_lama)*intval($transfort) ?> readonly >
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label" >Uang Representasi</label>
+                                      <div class="col">
+                                        <?php
+                                          foreach ($qrperbup as $key => $representasi) {
+                                            $representasi = $representasi->perbup_representasi;
+                                            }                                 
+                                        ?>
+                                        <input type="text" class="form-control" id="uangharian_representasi" name="uangharian_representasi" value = <?= $representasi ?> readonly>
+                                      </div>
+                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="uangharian_jumlahrepresentasi" name="uangharian_jumlahrepresentasi" value = <?= intval($value->spt_lama)*intval($representasi) ?> readonly  >
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label" >Sewa Mobil Per 8 Jam</label>
+                                      <div class="col">
+                                        <?php
+                                          foreach ($qrperbup as $key => $sewa) {
+                                            $sewa = $sewa->perbup_sewakendaraan;
+                                            }                                 
+                                        ?>
+                                        <input type="text" class="form-control" id="uangharian_sewamobil" name="uangharian_sewamobil" value = <?= $sewa ?> readonly>
+                                      </div>
+                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?= intval($value->spt_lama)*intval($sewa) ?>  readonly>
+                                      </div>
+                                    </div>
+                                    <?php endforeach ?>
+                                    <div class="row">
+                                      <div class="col">
+                                        <?php if($uh[0]->uangharian_verif == null) : ?>
+                                          <button type="submit" class="btn bg-gradient-danger float-right tmblverifuh">Belum di Verifikasi</button>
+                                          <?php else : ?>
+                                            <button type="submit" class="btn bg-gradient-primary float-right" disabled>Sudah di Verifikasi</button>
+                                          <?php endif ?>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </form>
                           <?php endforeach ?>
-                      </tbody>
-                  </table>
-                </div>
-                <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                  <table class="table table-sm">
-                      <thead>
-                        <tr>
-                          <th style="width: 20px">#</th>
-                          <th>Uraian</th>
-                          <th style="width: 80%">Keterangan</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php $no = 1; foreach ($taksi as $key => $value) : ?>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Jenis</td>
-                            <td><?= $value->spjtaksi_jenis; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Tujuan dari </td>
-                            <td><?= $value->spjtaksi_dari; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Ke </td>
-                            <td><?= $value->spjtaksi_ke; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Tanggal <?= $value->spjtaksi_jenis; ?></td>
-                            <td><?= date('d F Y', strtotime($value->spjtaksi_tgl)); ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Harga Tiket Per Orang</td>
-                            <td><?= $value->spjtaksi_harga; ?></td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Validasi</td>
-                            <td>
-                              <?php if($value->spjtaksi_verif == 0) : ?>
-                                <button type="button" class="btn bg-gradient-warning " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-times"> </i> Bukti Taksi Belum di Verifikasi </button>
-                              <?php else : ?>
-                                <button type="button" class="btn bg-gradient-success " data-toggle="modal" data-target="#modalveriftaksi" data-idtaksi="<?=$value->spjtaksi_id;?>"><i class="fas fa-check"> </i> Bukti Taksi sudah di Verifikasi </button>
-                              <?php endif ?>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><?= $no++; ?>.</td>
-                            <td>Tiket <?= $value->spjtaksi_jenis; ?></td>
-                            <td>
-                              <img src="<?= base_url('image/taksi/tiket/' . $value->spjtaksi_fototiket)?>" width="100%" height="200" style="border:1px solid #666;">
-                            </td>
-                          </tr>
-                          <?php endforeach ?>
-                      </tbody>
-                  </table>
-                </div>
-                <div class="tab-pane fade" id="custom-tabs-one-harian" role="tabpanel" aria-labelledby="custom-tabs-one-harian-tab">
-                  
-                  <?php foreach ($data['data'] as $key => $value) : ?>
-                    <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->lokasiperjadin_id);?>
-                      <form action="<?=site_url('verifikasi/verifuangharian');?>" method="post" id="formharian">
-                        <?=csrf_field();?>
-                            <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
-                            <!-- <div class="form-group row"> -->
-                              <!-- <label class="col-sm-4 col-form-label" hidden >Id Uang Harian</label>
-                              <div class="col"> -->
-                                <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?= $uh[0]->uangharian_id ?>" hidden>
-                              <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="form-group row"> -->
-                              <!-- <label class="col-sm-4 col-form-label" hidden>Id Pelaksana</label> -->
-                              <!-- <div class="col"> -->
-                                <input type="text" class="form-control" id="uangharian_idpelaksana" name="uangharian_idpelaksana" value = <?= $value->pelaksana_id; ?> hidden>
-                              <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="form-group row"> -->
-                              <!-- <label class="col-sm-4 col-form-label" hidden >Id SPT</label hidden> -->
-                              <!-- <div class="col"> -->
-                                <input type="text" class="form-control" id="uangharian_sptid" name="uangharian_sptid" value = <?= $value->spt_id; ?> hidden>
-                              <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="form-group row"> -->
-                              <!-- <label class="col-sm-4 col-form-label" hidden>Id Tingkat SPPD</label> -->
-                              <!-- <div class="col"> -->
-                                <input type="text" class="form-control" id="uangharian_tingkatid" name="uangharian_tingkatid" value = <?= $value->pegawai_tingkat; ?> hidden>
-                                <input type="text" class="form-control" id="uangharian_verif" name="uangharian_verif" value = "1"  hidden>
-                              <!-- </div> -->
-                            <!-- </div> -->
-                            <div class="form-group row">
-                              <label class="col-sm-4 col-form-label" hidden>Id Lokasi</label>
-                              <div class="col">
-                                <input type="text" class="form-control" id="uangharian_lokasiid" name="uangharian_lokasiid" value = <?= $value->lokasiperjadin_id ?> hidden>
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="col-sm-4 col-form-label" >Id Lama Perjalanan</label>
-                              <div class="col">
-                                <input type="text" class="form-control" id="uangharian_lama" name="uangharian_lama" value = <?= $value->spt_lama ?>  readonly>
-                              </div>
-                            </div>
-                            <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id);?>
-                            <?php foreach ($qrperbup as $key => $harian): ?>
-                            <div class="form-group row">
-                              <label class="col-sm-4 col-form-label">Uang Harian Perhari</label>
-                              <div class="col-sm-2">
-                                  <?php if($harian->spt_acara == 1 ) {
-                                        $harian = $harian->perbup_uhdiklat ;
-                                      } elseif ($harian->spt_acara == 2){
-                                        $harian = $harian->perbup_uhrapat_fullboad ;
-                                      } elseif ($harian->spt_acara == 3){
-                                        $harian = $harian->perbup_uhrapat_fullday ;
-                                      } elseif ($harian->spt_acara == 4){
-                                        $harian = $harian->perbup_uhrapat_residencedlmkota ;
-                                      } else {
-                                        $harian = $harian->perbup_uh ;
-                                  }?>
-
-                                <input type="text" class="form-control" id="uangharian_perhari" name="uangharian_perhari" value = <?= $harian ?> readonly>
-                              </div>
-                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                              <div class="col-sm-4">
-                                <input type="text" class="form-control" id="uangharian_jumlah" name="uangharian_jumlah" value = <?= intval($value->spt_lama)*intval($harian) ?>  readonly>
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="col-sm-4 col-form-label" >Biaya Transport</label>
-                              <div class="col">
-                                <?php if($value->spt_jenis == 1 ) {
-                                  foreach ($qrperbup as $key => $transport) {
-                                    $transfort = $transport->perbup_taksi_transportdarat;
-                                    }
-                                  } else {
-                                    foreach ($qrperbup as $key => $transport) {
-                                    $transfort = 0;
-                                    }
-                                  }?>
-                                <input type="text" class="form-control" id="uangharian_biayatransport" name="uangharian_biayatransport" value = <?= $transfort ?> readonly>
-                              </div>
-                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                              <div class="col-sm-4">
-                                <input type="text" class="form-control" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?= intval($value->spt_lama)*intval($transfort) ?> readonly >
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="col-sm-4 col-form-label" >Uang Representasi</label>
-                              <div class="col">
-                                <?php
-                                  foreach ($qrperbup as $key => $representasi) {
-                                    $representasi = $representasi->perbup_representasi;
-                                    }                                 
-                                ?>
-                                <input type="text" class="form-control" id="uangharian_representasi" name="uangharian_representasi" value = <?= $representasi ?> readonly>
-                              </div>
-                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                              <div class="col-sm-4">
-                                <input type="text" class="form-control" id="uangharian_jumlahrepresentasi" name="uangharian_jumlahrepresentasi" value = <?= intval($value->spt_lama)*intval($representasi) ?> readonly  >
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="col-sm-4 col-form-label" >Sewa Mobil Per 8 Jam</label>
-                              <div class="col">
-                                <?php
-                                  foreach ($qrperbup as $key => $sewa) {
-                                    $sewa = $sewa->perbup_sewakendaraan;
-                                    }                                 
-                                ?>
-                                <input type="text" class="form-control" id="uangharian_sewamobil" name="uangharian_sewamobil" value = <?= $sewa ?> readonly>
-                              </div>
-                              <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                              <div class="col-sm-4">
-                                <input type="text" class="form-control" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?= intval($value->spt_lama)*intval($sewa) ?>  readonly>
-                              </div>
-                            </div>
-                            <?php endforeach ?>
-                            <div class="row">
-                              <div class="col">
-                                <?php if($uh[0]->uangharian_verif == null) : ?>
-                                  <button type="submit" class="btn bg-gradient-danger float-right tmblverifuh">Belum di Verifikasi</button>
-                                  <?php else : ?>
-                                    <button type="submit" class="btn bg-gradient-primary float-right" disabled>Sudah di Verifikasi</button>
-                                  <?php endif ?>
-                              </div>
-                            </div>
-                          </div>
-                      </form>
-                  <?php endforeach ?>
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
-            </div>
             <div class="card-footer">
               <a href="<?= site_url('verifikasi/form/'.$value->spt_id); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
             </div>

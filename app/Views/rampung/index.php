@@ -78,7 +78,7 @@
                         <td class="align-middle text-center">
                           <a href="<?= site_url('rampung/form/'.$value->spt_id); ?>" type="button" class="btn bg-secondary" title="Laporan Rampung"><i class="fas fa-newspaper"></i>  </a>
                         </td>
-                        <td class="align-middle"><?= $value->spt_pjb_tugas ?></td>
+                        <td class="align-middle"><?= $value->pejabat_kode ?></td>
                         <td class="align-middle"><?= $value->spt_uraian ?></td>
                         <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                         <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>

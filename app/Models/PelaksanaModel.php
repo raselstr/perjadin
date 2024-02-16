@@ -60,9 +60,12 @@ class PelaksanaModel extends Model
     }
     function datapelaksana($id=null)
     {   
-        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip');
-                    $subquery->where('pejabats.pejabat_id','Kaban');
-        // dd($subquery);
+        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')
+                            ->join('spts','spts.spt_pjb_tugas = pejabats.pejabat_id')
+                            ->where('pejabats.pejabat_kode',esc('Kaban'))
+                            ->groupby('pejabats.pejabat_nip')
+                            ->get();
+        $nip = $subquery->getRow();
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
         $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
@@ -72,7 +75,7 @@ class PelaksanaModel extends Model
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
 
         $builder->where('pelaksanas.spt_id',$id);
-        $builder->where('pegawais.pegawai_nip !=',$subquery);
+        $builder->where('pegawais.pegawai_nip !=',$nip->pejabat_nip);
 
         $builder->orderBy('pangkats.pangkat_id', 'DESC');
         $query = $builder->get();
@@ -138,6 +141,8 @@ class PelaksanaModel extends Model
         $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
         $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
         $builder->where($array);
+        $builder->orderBy('pegawais.eselon_id', 'DESC');
+        $builder->orderBy('pangkats.pangkat_id', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }
@@ -230,7 +235,13 @@ class PelaksanaModel extends Model
 
     function kabanpelaksana($id=null)
     {
-        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')->where('pejabats.pejabat_id',esc('Kaban'));
+       $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')
+                            ->join('spts','spts.spt_pjb_tugas = pejabats.pejabat_id')
+                            ->where('pejabats.pejabat_kode',esc('Kaban'))
+                            ->groupby('pejabats.pejabat_nip')
+                            ->get();
+        $nip = $subquery->getRow();
+                            // ->where('pejabats.pejabat_aktif',1);
         // dd($subquery);
         $builder = $this->db->table('pelaksanas');
         $builder->select('*');
@@ -241,7 +252,7 @@ class PelaksanaModel extends Model
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
         
         $builder->where('pelaksanas.spt_id',$id);
-        $builder->where('pegawais.pegawai_nip =',$subquery);
+        $builder->where('pegawais.pegawai_nip =',$nip->pejabat_nip);
         $query = $builder->get();
         return $query->getResult();
     }
