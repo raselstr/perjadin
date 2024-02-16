@@ -381,14 +381,18 @@ use SebastianBergmann\Invoker\Invoker;
                                           }?>
                                         <input type="text" class="form-control" id="uangharian_perhari" name="uangharian_perhari" value = <?= $harian ?> readonly>
                                       </div>
-                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                                      <div class="col-sm-4">
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen">
+                                      </div>
+                                      <label class="col-sm col-form-label align-middle text-left">%</label>
+                                      <label class="col col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-2">
                                         <input type="text" class="form-control" id="uangharian_jumlah" name="uangharian_jumlah" value = <?= intval($value->spt_lama)*intval($harian) ?>  readonly>
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Biaya Transport</label>
-                                      <div class="col">
+                                      <div class="col-sm-2">
                                         <?php if($value->spt_jenis == 1 ) {
                                           foreach ($qrperbup as $key => $transport) {
                                             $transfort = $transport->perbup_taksi_transportdarat;
@@ -400,14 +404,18 @@ use SebastianBergmann\Invoker\Invoker;
                                           }?>
                                         <input type="text" class="form-control" id="uangharian_biayatransport" name="uangharian_biayatransport" value = <?= $transfort ?> readonly>
                                       </div>
-                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                                      <div class="col-sm-4">
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen">
+                                      </div>
+                                      <label class="col-sm col-form-label align-middle text-left">%</label>
+                                      <label class="col col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-2">
                                         <input type="text" class="form-control" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?= intval($value->spt_lama)*intval($transfort) ?> readonly >
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Uang Representasi</label>
-                                      <div class="col">
+                                      <div class="col-sm-2">
                                         <?php
                                           foreach ($qrperbup as $key => $representasi) {
                                             $representasi = $representasi->perbup_representasi;
@@ -415,14 +423,18 @@ use SebastianBergmann\Invoker\Invoker;
                                         ?>
                                         <input type="text" class="form-control" id="uangharian_representasi" name="uangharian_representasi" value = <?= $representasi ?> readonly>
                                       </div>
-                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                                      <div class="col-sm-4">
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen">
+                                      </div>
+                                      <label class="col-sm col-form-label align-middle text-left">%</label>
+                                      <label class="col col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-2">
                                         <input type="text" class="form-control" id="uangharian_jumlahrepresentasi" name="uangharian_jumlahrepresentasi" value = <?= intval($value->spt_lama)*intval($representasi) ?> readonly  >
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Sewa Mobil Per 8 Jam</label>
-                                      <div class="col">
+                                      <div class="col-sm-2">
                                         <?php
                                           foreach ($qrperbup as $key => $sewa) {
                                             $sewa = $sewa->perbup_sewakendaraan;
@@ -430,8 +442,12 @@ use SebastianBergmann\Invoker\Invoker;
                                         ?>
                                         <input type="text" class="form-control" id="uangharian_sewamobil" name="uangharian_sewamobil" value = <?= $sewa ?> readonly>
                                       </div>
-                                      <label class="col-sm-2 col-form-label align-middle text-right">Jumlah</label>
-                                      <div class="col-sm-4">
+                                      <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen">
+                                      </div>
+                                      <label class="col-sm col-form-label align-middle text-left">%</label>
+                                      <label class="col-sm col-form-label align-middle text-right">Jumlah</label>
+                                      <div class="col-sm-2">
                                         <input type="text" class="form-control" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?= intval($value->spt_lama)*intval($sewa) ?>  readonly>
                                       </div>
                                     </div>
