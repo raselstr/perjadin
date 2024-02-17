@@ -102,7 +102,7 @@
                         <div class="form-group row">
                           <label for="spt_dasar" class="col-sm-4 col-form-label">Dasar Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" type="text" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar" value="<?= old('spt_dasar') ?>">
+                            <textarea class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar"><?= old('spt_dasar') ?></textarea>
                             <span><code>*Biarkan kosong jika Dasar Perjalanan dinas tidak ada</code></span>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_dasar']) ? $errors['spt_dasar'] : null ; ?>
@@ -112,7 +112,7 @@
                         <div class="form-group row">
                           <label for="spt_uraian" class="col-sm-4 col-form-label">Maksud Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= old('spt_uraian') ?>">
+                            <textarea class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" ><?= old('spt_uraian') ?></textarea>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_uraian']) ? $errors['spt_uraian'] : null ; ?>
                               </div>
@@ -146,7 +146,7 @@
                         <div class="form-group row">
                           <label for="spt_berakhir" class="col-sm-4 col-form-label">Tanggal Berakhir Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_berakhir']) ? 'is-invalid' : null ; ?>" type="date" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= old('spt_berakhir') ?>" readonly>
+                            <input class="form-control <?= isset($errors['spt_berakhir']) ? 'is-invalid' : null ; ?>" type="text" name="spt_berakhir" placeholder="Tanggal Berakhir Perjalanan Dinas" id="spt_berakhir" value="<?= old('spt_berakhir') ?>" readonly>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_berakhir']) ? $errors['spt_berakhir'] : null ; ?>
                               </div>
@@ -238,13 +238,14 @@
 
   <script>
   $(document).ready(function() {
+    
     function myFunction() {
       var jh = $("#spt_lama").val();
       var tglmulai = $("#spt_mulai").val();
       var hari = jh * 24 * 60 * 60 * 1000;
 
       var hariakhir = new Date(new Date(tglmulai).getTime() + (hari) - 1);
-      $("#spt_berakhir").val(hariakhir.toISOString().slice(0, 10));
+      $("#spt_berakhir").val(moment(hariakhir).format('DD MMMM YYYY'));
     }
 
     const tahun = new Date();

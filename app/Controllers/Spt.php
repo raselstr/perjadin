@@ -101,7 +101,10 @@ class Spt extends ResourcePresenter
         $spt = new SptModel();
         $data = $this->request->getPost();
         $sptmulai = $this->request->getPost('spt_mulai');
+        $sptakhir = $this->request->getPost('spt_berakhir');
+        
         $data['spt_mulai'] = date('Y-m-d',strtotime($sptmulai));
+        $data['spt_berakhir'] = date('Y-m-d',strtotime($sptakhir));
         // dd($data);
 
         $save = $spt->save($data);

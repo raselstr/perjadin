@@ -165,7 +165,7 @@
                             <select name="spt_transport" id="spt_transport" class="form-control <?= isset($errors['spt_transport']) ? 'is-invalid' : null ; ?>">
                               <option value="">Pilih Jenis Transportasi</option>
                               <option value="Mobil Dinas"<?= $spt[0]->spt_transport == "Mobil Dinas" ? 'selected':null?>>Mobil Dinas</option>
-                              <option value="Angkutan Umum Darat"<?= $spt[0]->spt_transport == "Angkutan Umum Darat" ? 'selected':null?>>Angkutan Umum Darat</option>
+                              <option value="Angkutan Umum"<?= $spt[0]->spt_transport == "Angkutan Umum" ? 'selected':null?>>Angkutan Umum</option>
                               <option value="Pesawat Udara"<?= $spt[0]->spt_transport == "Pesawat Udara" ? 'selected':null?>>Pesawat Udara</option>
                             </select>
                               <div class="invalid-feedback">
