@@ -170,5 +170,15 @@ class SptModel extends Model
         return $options;
     }
 
-    
+    public function grafik()
+    {
+        $builder = $this->db->table('spts as a')
+                            ->select('MONTH(a.spt_tgl) as bulan, count(a.spt_tgl) as jumlah')
+                            ->groupBy('bulan')
+                            ->having('jumlah !=',0)
+                            ->get();
+        $result = $builder->getResult();
+        return $result;
+        
+    }
 }
