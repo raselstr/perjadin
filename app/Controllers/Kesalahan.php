@@ -9,7 +9,7 @@ class Kesalahan extends BaseController
     public function index()
     {
         $data =[
-            'title' => 'Halaman ini bukan Hak Anda !!!!',
+            'title' => 'Maaf, Error !!!!',
             'subtitle' => 'Home',
         ];
         return view('layout/500', $data);

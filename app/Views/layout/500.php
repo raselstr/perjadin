@@ -60,8 +60,24 @@
               </div>
             </div>
           </div>
-            
         </div>
+        <section class="content">
+      <div class="error-page">
+        <h2 class="headline text-danger">500</h2>
+
+        <div class="error-content">
+          <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! ada masalah.</h3>
+
+          <p>
+            Halaman yang anda buka, tidak ditemukan atau bukan hak anda untuk membuka halaman tersebut.
+            <br>Silahkan, kembali <a href="<?= site_url('/'); ?>">ke dashboard</a>
+          </p>
+        </div>
+      </div>
+      <!-- /.error-page -->
+
+    </section>
+    <!-- /.content -->
       </div>
     </div>
   </div>
