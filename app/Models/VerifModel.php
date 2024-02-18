@@ -75,7 +75,7 @@ class VerifModel extends Model
     function verifhotel($id = null)
     {
         $builder = $this->db->table('spjhotels As a');
-        $builder->select('a.*, b.pelaksana_id, c.spt_id, c.spt_nomor, c.spt_tgl, c.spt_mulai, c.spt_berakhir, c.spt_tempat,d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
+        $builder->select('a.*, b.pelaksana_id, c.spt_id, c.spt_jenis, c.spt_tujuan, c.spt_lama, c.spt_nomor, c.spt_tgl, c.spt_mulai, c.spt_berakhir, c.spt_tempat,d.pegawai_nama, d.pegawai_nip,d.pegawai_id, c.spt_uraian');
         $builder->join('pelaksanas As b', 'b.pelaksana_id = a.spjhotel_pelaksanaid', 'RIGHT');
         $builder->join('spts As c', 'c.spt_id = b.spt_id');
         $builder->join('pegawais As d', 'd.pegawai_id = b.pegawai_id');

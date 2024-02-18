@@ -7,6 +7,7 @@ use App\Models\VerifModel;
 use App\Models\SpjhotelModel;
 use App\Models\SpjTaksiModel;
 use App\Models\LaporjadinModel;
+use App\Models\SpjHotelModel as ModelsSpjHotelModel;
 use App\Models\SpjPesawatModel;
 use App\Models\UangHarianModel;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -123,15 +124,23 @@ class Verifikasi extends ResourcePresenter
      */
     public function create()
     {
-        $model = new LaporjadinModel();
+        $model = new SpjhotelModel();
         $post = $this->request->getPost();
-        $save = $model->save($post);
-            // dd($model->errors());
-            if ($save) {
-                return redirect()->to(site_url('laporjadin'))->with('info', 'Data Berhasil di Simpan');
+        $saved = $model->save($post);
+        if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
             } else {
-                return redirect()->back()->withInput()->with('validation', $model->errors());
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
             }
+
+            return $this->response->setJSON($pesan);
+        
     }
 
     /**
@@ -205,29 +214,29 @@ class Verifikasi extends ResourcePresenter
         //
     }
 
-    public function verif()
-    {
-        $model = new LaporjadinModel();
-        if ($this->request->isAJAX()) {
-            $data = $this->request->getPost();
+    // public function verif()
+    // {
+    //     $model = new LaporjadinModel();
+    //     if ($this->request->isAJAX()) {
+    //         $data = $this->request->getPost();
 
-            $saved = $model->save($data);
+    //         $saved = $model->save($data);
 
-            if ($saved) {
-                $pesan = [
-                    'error' => false,
-                    'messages' => 'Data berhasil disimpan ke database.'
-                ];
-            } else {
-                $pesan = [
-                    'error' => true,
-                    'messages' => 'Gagal menyimpan data ke database.'
-                ];
-            }
+    //         if ($saved) {
+    //             $pesan = [
+    //                 'error' => false,
+    //                 'messages' => 'Data berhasil disimpan ke database.'
+    //             ];
+    //         } else {
+    //             $pesan = [
+    //                 'error' => true,
+    //                 'messages' => 'Gagal menyimpan data ke database.'
+    //             ];
+    //         }
 
-            return $this->response->setJSON($pesan);
-        } 
-    }
+    //         return $this->response->setJSON($pesan);
+    //     } 
+    // }
 
 
     public function verifpesawat()
