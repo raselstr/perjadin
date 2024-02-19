@@ -175,7 +175,7 @@ table.tabel3.author {
       <tr>
         <td colspan="2">
           <?php if(empty($spt[0]->sppd_nomor)) : ?>
-            Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2023
+            Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2024
           <?php else : ?>
             Nomor : <?= $spt[0]->sppd_nomor; ?>
           <?php endif ?>

@@ -171,10 +171,11 @@ class Pelaksana extends ResourcePresenter
         $cek = $pelaksana->caripengikut($id);
         $cekutama = $pelaksana->cariutama($id);
         // dd($cek, $cekutama);
-        if($cek <= 0) {
-            session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
-            return redirect()->back();
-        } elseif ($cekutama > 1 OR $cekutama == 0) {
+        // if($cek <= 0) {
+        //     session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+        //     return redirect()->back();
+        // } else
+        if ($cekutama > 1 OR $cekutama == 0) {
                 session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
                 return redirect()->back();
             }
@@ -223,10 +224,11 @@ class Pelaksana extends ResourcePresenter
         $cekutama = $pelaksana->cariutama($id);
         $namautama = $pelaksana->pelaksanautama($id);
         $namapengikut = $pelaksana->pelaksanapengikut($id);
-        if($cek <= 0) {
-            session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
-            return redirect()->back();
-        } elseif ($cekutama > 1 OR $cekutama == 0) {
+        // if($cek <= 0) {
+        //     session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
+        //     return redirect()->back();
+        // } else
+        if ($cekutama > 1 OR $cekutama == 0) {
                 session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
                 return redirect()->back();
             }

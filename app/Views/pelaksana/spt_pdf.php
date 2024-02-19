@@ -158,7 +158,7 @@
             <?php if (empty($spt['data'][0]->spt_nomor)) : ?>
               Nomor : 800.1.11.1/
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/BKAD/
-              &nbsp;&nbsp;&nbsp;&nbsp;/2023
+              &nbsp;&nbsp;&nbsp;&nbsp;/2024
             <?php else : ?>
               Nomor : <?= $spt['data'][0]->spt_nomor ?>
             <?php endif ?>
