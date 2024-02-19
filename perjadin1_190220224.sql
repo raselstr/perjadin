@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Waktu pembuatan: 19 Feb 2024 pada 09.46
+-- Waktu pembuatan: 19 Feb 2024 pada 15.23
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -1024,6 +1024,13 @@ CREATE TABLE `spjhotels` (
   `spjhotel_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data untuk tabel `spjhotels`
+--
+
+INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`, `spjhotel_lokasi`, `spjhotel_nokamar`, `spjhotel_typekamar`, `spjhotel_checkin`, `spjhotel_checkout`, `spjhotel_mlm`, `spjhotel_hargapermalam`, `spjhotel_hargatotal`, `spjhotel_verif`, `spjhotel_bill`, `spjhotel_created_at`, `spjhotel_updated_at`, `spjhotel_deleted_at`) VALUES
+(1, 4, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-02-16', '2024-02-17', 1, 992000, 297600, 1, '', '2024-02-19 17:23:25', '2024-02-19 17:23:25', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1107,7 +1114,7 @@ INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`,
 (1, 2024, '0001/SPT', '0001/SPD', '2024-02-16', 1, 1, 0, '', 'Perjalan dinas ke BKAD', 3, '2024-02-16', '2024-02-18', 27, 'Mobil Dinas', 'fgdf', 1, '2024-02-16 14:59:20', '2024-02-16 19:50:29', NULL),
 (2, 2024, '0002/SPT', '0002/SPD', '2024-02-16', 1, 2, 0, '', 'Konsultasi SIPD', 2, '2024-02-16', '2024-02-17', 49, 'Pesawat Udara', 'Kemendagri', 1, '2024-02-16 20:22:21', '2024-02-16 21:53:47', NULL),
 (3, 2024, '0003/SPT', '0003/SPD', '2024-02-16', 2, 3, 0, '', 'Rekonsiliasi Data Aset', 1, '2024-02-16', '2024-02-16', 84, 'Mobil Dinas', 'SDN Mandoge', 1, '2024-02-16 21:56:46', '2024-02-16 21:58:49', NULL),
-(4, 2024, NULL, NULL, NULL, 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-19', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 0, '2024-02-19 08:47:14', '2024-02-19 08:47:14', NULL);
+(4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-19', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -1186,6 +1193,7 @@ CREATE TABLE `uangharians` (
   `uangharian_lokasiid` int(11) NOT NULL,
   `uangharian_lama` int(11) NOT NULL,
   `uangharian_perhari` double NOT NULL,
+  `uangharian_jumlahpersen` text NOT NULL,
   `uangharian_jumlah` double NOT NULL,
   `uangharian_biayatransport` double NOT NULL,
   `uangharian_jumlahbiayatransport` double NOT NULL,
@@ -1196,6 +1204,13 @@ CREATE TABLE `uangharians` (
   `uangharian_total` double NOT NULL,
   `uangharian_verif` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data untuk tabel `uangharians`
+--
+
+INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharian_sptid`, `uangharian_tingkatid`, `uangharian_lokasiid`, `uangharian_lama`, `uangharian_perhari`, `uangharian_jumlahpersen`, `uangharian_jumlah`, `uangharian_biayatransport`, `uangharian_jumlahbiayatransport`, `uangharian_representasi`, `uangharian_jumlahrepresentasi`, `uangharian_sewamobil`, `uangharian_jumlahsewamobil`, `uangharian_total`, `uangharian_verif`) VALUES
+(2, 13, 4, 4, 39, 3, 370000, '30%', 333000, 0, 0, 0, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1461,7 +1476,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT untuk tabel `spjhotels`
 --
 ALTER TABLE `spjhotels`
-  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `spjpesawats`
@@ -1497,7 +1512,7 @@ ALTER TABLE `tingkats`
 -- AUTO_INCREMENT untuk tabel `uangharians`
 --
 ALTER TABLE `uangharians`
-  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
