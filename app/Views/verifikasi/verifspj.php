@@ -406,11 +406,11 @@ $model = new RampungModel();
                             <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->lokasiperjadin_id);?>
                               <form action="<?=site_url('verifikasi/verifuangharian');?>" method="post" id="formharian">
                                 <?=csrf_field();?>
-                                        <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?=$uh[0]->uangharian_id?>" hidden>
-                                        <input type="text" class="form-control" id="uangharian_idpelaksana" name="uangharian_idpelaksana" value = <?=$value->pelaksana_id;?> hidden>
-                                        <input type="text" class="form-control" id="uangharian_sptid" name="uangharian_sptid" value = <?=$value->spt_id;?> hidden>
-                                        <input type="text" class="form-control" id="uangharian_tingkatid" name="uangharian_tingkatid" value = <?=$value->pegawai_tingkat;?> hidden>
-                                        <input type="text" class="form-control" id="uangharian_verif" name="uangharian_verif" value = "1"  hidden>
+                                  <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?=$uh[0]->uangharian_id?>" >
+                                  <input type="text" class="form-control" id="uangharian_idpelaksana" name="uangharian_idpelaksana" value = <?=$value->pelaksana_id;?> hidden>
+                                  <input type="text" class="form-control" id="uangharian_sptid" name="uangharian_sptid" value = <?=$value->spt_id;?> hidden>
+                                  <input type="text" class="form-control" id="uangharian_tingkatid" name="uangharian_tingkatid" value = <?=$value->pegawai_tingkat;?> hidden>
+                                  <input type="text" class="form-control" id="uangharian_verif" name="uangharian_verif" value = "1"  hidden>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" hidden>Id Lokasi</label>
                                       <div class="col">
@@ -439,15 +439,15 @@ $model = new RampungModel();
                                             } else {
                                                 $harian = $harian->perbup_uh;
                                             }?>
-                                        <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$harian?> readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$uh[0]->uangharian_id == null ? $harian : $uh[0]->uangharian_perhari?> readonly>
                                       </div>
                                       <div class="col-sm-1">
-                                        <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="100%">
+                                        <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="<?=$uh[0]->uangharian_id == null ? "100%" : $uh[0]->uangharian_jumlahpersen?>">
                                       </div>
                                       <label class="col-sm col-form-label align-middle text-left">% Pembayaran</label>
                                       <label class="col col-form-label align-middle text-right">Jumlah</label>
                                       <div class="col-sm-2">
-                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=intval($value->spt_lama) * intval($harian)?>  readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=$uh[0]->uangharian_id == null ? intval($value->spt_lama) * intval($harian) : $uh[0]->uangharian_jumlah?> readonly>
                                       </div>
                                     </div>
                                     <div class="form-group row">

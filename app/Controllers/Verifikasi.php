@@ -72,6 +72,7 @@ class Verifikasi extends ResourcePresenter
         $qrhotel = $model ->verifhotel($id);
         $qrpesawat = $model->verifpesawat($id);
         $qrtaksi = $model->veriftaksi($id);
+        
         $uh = $modeluh->cariid($id);
 
         $data = [
