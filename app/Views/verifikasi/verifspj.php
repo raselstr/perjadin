@@ -241,18 +241,18 @@ $model = new RampungModel();
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Biaya Per Malam Tarif Perbup</label>
+                                <label class="col-sm-4 col-form-label">Biaya Penginapan Per Malam sesuai Peraturan Bupati</label>
                                 <div class="col">
                                   <input type="number" class="form-control" id="spjhotel_hargapermalam" name="spjhotel_hargapermalam" value="<?= $hargahotel ?>" readonly>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Total Biaya Penginapan 30%</label>
+                                <label class="col-sm-4 col-form-label">Total Biaya Penginapan 30% yang dibayarkan</label>
                                 <div class="col">
                                   <input type="number" class="form-control" id="spjhotel_hargatotal" name="spjhotel_hargatotal" value="<?= $totalhargahotel; ?>" readonly>
                                 </div>
                               </div>
-                              <button type="submit" class="btn bg-gradient-primary float-right tmblverif30">Verifikasi</button>
+                              <button type="submit" class="btn bg-gradient-warning float-right tmblverif30">Bayarkan melalui APBD ?</button>
                             </form>
                           </div>
                         <?php else : ?>
@@ -439,20 +439,20 @@ $model = new RampungModel();
                                             } else {
                                                 $harian = $harian->perbup_uh;
                                             }?>
-                                        <input type="text" class="form-control" id="uangharian_perhari" name="uangharian_perhari" value = <?=$harian?> readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$harian?> readonly>
                                       </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="100%">
+                                      <div class="col-sm-1">
+                                        <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="100%">
                                       </div>
-                                      <label class="col-sm col-form-label align-middle text-left">%</label>
+                                      <label class="col-sm col-form-label align-middle text-left">% Pembayaran</label>
                                       <label class="col col-form-label align-middle text-right">Jumlah</label>
                                       <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=intval($value->spt_lama) * intval($harian)?>  readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=intval($value->spt_lama) * intval($harian)?>  readonly>
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Pengganti Biaya Transport</label>
-                                      <div class="col-sm-2">
+                                      <div class="col-sm-4">
                                         <?php if ($value->spt_jenis == 1) {
                                                   foreach ($qrperbup as $key => $transport) {
                                                       $transfort = $transport->perbup_taksi_transportdarat;
@@ -462,53 +462,41 @@ $model = new RampungModel();
                                                       $transfort = 0;
                                                   }
                                               }?>
-                                        <input type="text" class="form-control" id="uangharian_biayatransport" name="uangharian_biayatransport" value = <?=$transfort?> readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_biayatransport" name="uangharian_biayatransport" value = <?=$transfort?> readonly>
                                       </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_biayatransportpersen" name="uangharian_biayatransportpersen" value="100%">
-                                      </div>
-                                      <label class="col-sm col-form-label align-middle text-left">%</label>
                                       <label class="col col-form-label align-middle text-right">Jumlah</label>
                                       <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?=intval($value->spt_lama) * intval($transfort)?> readonly >
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?=intval($value->spt_lama) * intval($transfort)?> readonly >
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Uang Representasi</label>
-                                      <div class="col-sm-2">
+                                      <div class="col-sm-4">
                                         <?php
                                           foreach ($qrperbup as $key => $representasi) {
                                               $representasi = $representasi->perbup_representasi;
                                           }
                                           ?>
-                                        <input type="text" class="form-control" id="uangharian_representasi" name="uangharian_representasi" value = <?=$representasi?> readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_representasi" name="uangharian_representasi" value = <?=$representasi?> readonly>
                                       </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_representasipersen" name="uangharian_representasipersen" value="100%">
-                                      </div>
-                                      <label class="col-sm col-form-label align-middle text-left">%</label>
                                       <label class="col col-form-label align-middle text-right">Jumlah</label>
                                       <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_jumlahrepresentasi" name="uangharian_jumlahrepresentasi" value = <?=intval($value->spt_lama) * intval($representasi)?> readonly  >
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlahrepresentasi" name="uangharian_jumlahrepresentasi" value = <?=intval($value->spt_lama) * intval($representasi)?> readonly  >
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Sewa Mobil Per 8 Jam</label>
-                                      <div class="col-sm-2">
+                                      <div class="col-sm-4">
                                         <?php
                                             foreach ($qrperbup as $key => $sewa) {
                                                 $sewa = $sewa->perbup_sewakendaraan;
                                             }
                                             ?>
-                                        <input type="text" class="form-control" id="uangharian_sewamobil" name="uangharian_sewamobil" value = <?=$sewa?> readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_sewamobil" name="uangharian_sewamobil" value = <?=$sewa?> readonly>
                                       </div>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_sewamobilpersen" name="uangharian_sewamobilpersen" value="100%">
-                                      </div>
-                                      <label class="col-sm col-form-label align-middle text-left">%</label>
                                       <label class="col-sm col-form-label align-middle text-right">Jumlah</label>
                                       <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?=intval($value->spt_lama) * intval($sewa)?>  readonly>
+                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?=intval($value->spt_lama) * intval($sewa)?>  readonly>
                                       </div>
                                     </div>
                                     <?php endforeach?>
@@ -895,7 +883,23 @@ $model = new RampungModel();
 
 
   </script>
-<!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
+  <!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
+
+  <script>
+    $(document).ready(function() {
+      function myFunction() {
+        var uangharian = parseInt($("#uangharian_perhari").val());
+        var jlhhari = parseInt($("#uangharian_lama").val());
+        var persenbayar = parseFloat($("#uangharian_jumlahpersen").val())/100;
+        var totalbayar = uangharian * jlhhari * persenbayar;
+        $('#uangharian_jumlah').val(totalbayar);
+      }
+      // Panggil myFunction() saat nilai #spt_lama atau #spt_mulai berubah
+      $("#uangharian_jumlahpersen").change(function() {
+        myFunction();
+      });
+    });
+  </script>
 
 
 <?=$this->endSection()?>

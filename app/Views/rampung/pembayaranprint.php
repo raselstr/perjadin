@@ -3,7 +3,7 @@
 use App\Models\PelaksanaModel;
 use App\Models\RampungModel;
 $model = new RampungModel();
-$angkaterbilang = new PelaksanaModel(); 
+$angkaterbilang = new PelaksanaModel();
 
 ?>
 
@@ -13,11 +13,11 @@ $angkaterbilang = new PelaksanaModel();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= $title; ?></title>
-  <base href="<?= base_url('templates'); ?>/">
-  
+  <title><?=$title;?></title>
+  <base href="<?=base_url('templates');?>/">
+
   <!-- Google Font: Source Sans Pro -->
-  
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:800&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -32,7 +32,7 @@ $angkaterbilang = new PelaksanaModel();
 
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  
+
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
@@ -75,15 +75,15 @@ $angkaterbilang = new PelaksanaModel();
                               <tr>
                                 <th><b>Tanggal SPD</b></th>
                                 <td>:</td>
-                                <td><?=date('d F Y', strtotime($value->spt_nomor));?></td>
+                                <td><?=date('d F Y', strtotime($value->spt_tgl));?></td>
                               </tr>
-                            </table>  
+                            </table>
                           </div>
                           <!-- /.col -->
                         </div>
                         <?php endforeach?>
                         <!-- /.row -->
-                </h5>  
+                </h5>
                 <!-- Table row -->
                 <div class="row">
                   <div class="col-12 table-responsive">
@@ -99,21 +99,21 @@ $angkaterbilang = new PelaksanaModel();
                       </thead>
                       <tbody>
                         <?php $no = 1;
-                          foreach ($all as $key => $value): ?>
+foreach ($all as $key => $value): ?>
                                                       <?php
-                          $pelaksana_id = $value->pelaksana_id;
-                          $sptid = $value->spt_id;
-                          ?>
+$pelaksana_id = $value->pelaksana_id;
+$sptid = $value->spt_id;
+?>
                         <tr>
+                          <?php $qrharian = $model->rampungharian($pelaksana_id);?>
                           <td rowspan="9"><?=$no++;?></td>
                           <td style="width:23%" rowspan="9"><i><?=$value->pegawai_nama;?><br>NIP. <?=$value->pegawai_nip;?></i></td>
-                          <td colspan="2" style="width:20%">Uang Harian</td>
+                          <td colspan="2" style="width:20%">Uang Harian <?= $qrharian[0]->uangharian_jumlahpersen; ?></td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
-                            <?php $qrharian = $model->rampungharian($pelaksana_id);?>
                             <?php $totharian = 0;
-                              foreach ($qrharian as $key => $harians): ?>
-                              <i><?=$value->spt_lama?> hari x Rp. <?=$harian = number_format($harians->uangharian_perhari, 0, ',', '.');
-                              $totharian = $harians->uangharian_jumlah?></i><br>
+                                foreach ($qrharian as $key => $harians): ?>
+                                  <i><?=$value->spt_lama?> hari x Rp. <?=$harian = number_format($harians->uangharian_perhari, 0, ',', '.');
+                                $totharian = $harians->uangharian_jumlah?></i><br>
                               <?php endforeach?>
                             </td>
                             <td class="align-middle text-right">
@@ -140,10 +140,10 @@ $angkaterbilang = new PelaksanaModel();
                           </td>
                           <td class="align-top text-right" style="width:15%">
                             <?php $total2 = 0;
-                              foreach ($qrpesawat as $key => $value) {
-                                  $subtotal = intval($value->spjpesawat_harga);
-                                  $total2 += $subtotal;
-                              }?>
+foreach ($qrpesawat as $key => $value) {
+    $subtotal = intval($value->spjpesawat_harga);
+    $total2 += $subtotal;
+}?>
                             <?=number_format($total2, 2, ',', '.');?>
                           </td>
                         </tr>
@@ -163,10 +163,10 @@ $angkaterbilang = new PelaksanaModel();
                           </td>
                           <td class="align-middle text-right">
                             <?php $total3 = 0;
-                              foreach ($qrtaksi as $key => $value) {
-                                  $subtotal = intval($value->spjtaksi_harga);
-                                  $total3 += $subtotal;
-                              }?>
+foreach ($qrtaksi as $key => $value) {
+    $subtotal = intval($value->spjtaksi_harga);
+    $total3 += $subtotal;
+}?>
                             <?=number_format($total3, 2, ',', '.');?>
                           </td>
                         </tr>
@@ -187,10 +187,10 @@ $angkaterbilang = new PelaksanaModel();
                           <td colspan="4">Biaya Penginapan</td>
                           <td class="align-middle text-right">
                             <?php $total4 = 0;
-                              foreach ($qrhotel as $key => $value) {
-                                  $subtotal = intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam);
-                                  $total4 += $subtotal;
-                              }?>
+foreach ($qrhotel as $key => $value) {
+    $subtotal = intval($value->spjhotel_hargatotal);
+    $total4 += $subtotal;
+}?>
                             <?=number_format($total4, 2, ',', '.');?>
                           </td>
                         </tr>
@@ -208,7 +208,7 @@ $angkaterbilang = new PelaksanaModel();
                           </td>
                           <td class="align-middle text-right">
                             <?php foreach ($qrhotel as $key => $value): ?>
-                              <i>= &nbsp;&nbsp;&nbsp;<?=number_format(intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam), 0, ',', '.')?></i><br>
+                              <i>= &nbsp;&nbsp;&nbsp;<?=number_format(intval($value->spjhotel_hargatotal), 0, ',', '.')?></i><br>
                             <?php endforeach?>
                           </td>
                         </tr>
@@ -216,20 +216,20 @@ $angkaterbilang = new PelaksanaModel();
                           <td colspan="2">Uang Representasi</td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
                             <?php $jlhrepresentasi = 0;
-                              $jlhsewamobil = 0;
-                              $lama = 0;
-                              $representasi = 0;
-                              $sewa = 0;
+$jlhsewamobil = 0;
+$lama = 0;
+$representasi = 0;
+$sewa = 0;
 
-                              foreach ($qrharian as $key => $harian):
-                                  $jlhrepresentasi = $harian->uangharian_jumlahrepresentasi;
-                                  $jlhsewamobil = $harian->uangharian_jumlahsewamobil;
-                                  $lama = $harian->uangharian_lama;
-                                  $representasi = $harian->uangharian_representasi;
-                                  $sewa = $harian->uangharian_sewamobil;
-                                  ?>
-	                              <i><?=$lama?> hari x Rp. <?=number_format($representasi, 0, ',', '.');?></i><br>
-	                              <?php endforeach?>
+foreach ($qrharian as $key => $harian):
+    $jlhrepresentasi = $harian->uangharian_jumlahrepresentasi;
+    $jlhsewamobil = $harian->uangharian_jumlahsewamobil;
+    $lama = $harian->uangharian_lama;
+    $representasi = $harian->uangharian_representasi;
+    $sewa = $harian->uangharian_sewamobil;
+    ?>
+			                              <i><?=$lama?> hari x Rp. <?=number_format($representasi, 0, ',', '.');?></i><br>
+			                              <?php endforeach?>
                             </td>
                             <td class="align-middle text-right">
                               <?=number_format($jlhrepresentasi, 2, ',', '.');?>
@@ -272,7 +272,7 @@ $angkaterbilang = new PelaksanaModel();
                   <div class="col-6"></div>
                   <!-- /.col -->
                   <div class="col-6">
-                    
+
                     <div class="table-responsive">
                       <h5>
                       <table class="table">
@@ -281,29 +281,29 @@ $angkaterbilang = new PelaksanaModel();
                           <td class="align-middle text-right">
                             <strong>
                               <?php $sumgrand = 0;
-                                foreach ($all as $key => $value):
-                                    $pelaksana_id = $value->pelaksana_id;
-                                    $sptid = $value->spt_id;
-                                    $grand = $model->rampungperpelaksana($sptid, $pelaksana_id);
-                                    foreach ($grand as $key => $grandtotal):
-                                        $sumtotal = intval($grandtotal->subtotal);
-                                        $sumgrand += $sumtotal;
-                                    endforeach;
-                                endforeach;
-                                echo number_format($sumgrand, 2, ',', '.');
-                                ?>
+foreach ($all as $key => $value):
+    $pelaksana_id = $value->pelaksana_id;
+    $sptid = $value->spt_id;
+    $grand = $model->rampungperpelaksana($sptid, $pelaksana_id);
+    foreach ($grand as $key => $grandtotal):
+        $sumtotal = intval($grandtotal->subtotal);
+        $sumgrand += $sumtotal;
+    endforeach;
+endforeach;
+echo number_format($sumgrand, 2, ',', '.');
+?>
                             </strong>
                           </td>
                         </tr>
                         <tr>
                           <th>Terbilang </th>
                           <td>
-                            <?php 
+                            <?php
 
-                            $terbilangangka = $angkaterbilang->angkaKeHuruf($sumgrand);
-                            // dd($terbilangangka);
-                              echo '<strong>'.strtoupper($terbilangangka . "Rupiah").'</strong>'; 
-                            ?>
+$terbilangangka = $angkaterbilang->angkaKeHuruf($sumgrand);
+// dd($terbilangangka);
+echo '<strong>' . strtoupper($terbilangangka . "Rupiah") . '</strong>';
+?>
                           </td>
                         </tr>
                         <tr>
@@ -322,22 +322,22 @@ $angkaterbilang = new PelaksanaModel();
                       <?php foreach ($data as $key => $value): ?>
                         <div class="row invoice-info">
                           <div class="col-sm-1 invoice-col">
-                            
+
                           </div>
                           <div class="col-sm-6 invoice-col">
                             Telah dibayar sejumlah <br>
-                            Rp. <?= number_format($sumgrand, 2, ',', '.'); ?>
+                            Rp. <?=number_format($sumgrand, 2, ',', '.');?>
                             <address>
                               Bendahara Pengeluaran<br><br><br><br>
                               <strong>GUSLAN HARAHAP</strong><br>
                               NIP. 198101992000011001<br>
-                              
+
                             </address>
                           </div>
                           <!-- /.col -->
                           <div class="col-sm-5 invoice-col">
                             Telah menerima jumlah uang sebesar <br>
-                            Rp. <?= number_format($sumgrand, 2, ',', '.'); ?>
+                            Rp. <?=number_format($sumgrand, 2, ',', '.');?>
                             <address>
                               Yang Menerima<br><br><br><br>
                               <strong><?=$value->pegawai_nama;?></strong><br>
@@ -345,12 +345,12 @@ $angkaterbilang = new PelaksanaModel();
                             </address>
                           </div>
                           <!-- /.col -->
-                          
+
                           <!-- /.col -->
                         </div>
                         <?php endforeach?>
                         <!-- /.row -->
-                </h5> 
+                </h5>
               </div>
               <!-- /.invoice -->
             </div><!-- /.col -->

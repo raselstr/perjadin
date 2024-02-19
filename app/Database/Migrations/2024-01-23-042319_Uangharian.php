@@ -33,6 +33,10 @@ class Uangharian extends Migration
             'uangharian_perhari' => [
                 'type'       => 'DOUBLE',
             ],
+            'uangharian_jumlahpersen' => [
+                'type'       => 'VARCHAR',
+                'constraint'     => 10,
+            ],
             'uangharian_jumlah' => [
                 'type'       => 'DOUBLE',
             ],

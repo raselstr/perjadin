@@ -100,7 +100,7 @@
                   <div class="col-sm-4 invoice-col">
                     <b>Lampiran SPD Nomor : <?= $value->sppd_nomor; ?></b><br>
                     <br>
-                    <b>Tanggal SPD : </b><?=date('d F Y', strtotime($value->spt_nomor));?><br>
+                    <b>Tanggal SPD : </b><?=date('d F Y', strtotime($value->spt_tgl));?><br>
                   </div>
                   <!-- /.col -->
                 </div>
@@ -128,11 +128,11 @@
                               $sptid = $value->spt_id;
                             ?>
                         <tr>
+                          <?php $qrharian = $model->rampungharian($pelaksana_id);?>
                           <td rowspan="9"><?= $no++; ?></td>
                           <td style="width:23%" rowspan="9"><i><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></i></td>
-                          <td colspan="2" style="width:20%">Uang Harian</td>
+                          <td colspan="2" style="width:20%">Uang Harian <?= $qrharian[0]->uangharian_jumlahpersen; ?></td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
-                            <?php $qrharian = $model->rampungharian($pelaksana_id);?>
                             <?php $totharian = 0;
                               foreach ($qrharian as $key => $harians): ?>
                               <i><?=$value->spt_lama?> hari x Rp. <?= $harian = number_format($harians->uangharian_perhari,0,',','.'); $totharian = $harians->uangharian_jumlah?></i><br>
@@ -210,7 +210,7 @@
                           <td class="align-middle text-right">
                             <?php $total4 = 0; 
                               foreach ($qrhotel as $key => $value) {
-                              $subtotal = intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam);
+                              $subtotal = intval($value->spjhotel_hargatotal);
                               $total4 += $subtotal;
                             } ?>
                             <?= number_format($total4,2,',','.'); ?>
@@ -230,7 +230,7 @@
                           </td>
                           <td class="align-middle text-right">
                             <?php foreach ($qrhotel as $key => $value): ?>
-                              <i>= &nbsp;&nbsp;&nbsp;<?= number_format(intval($value->spjhotel_mlm) * intval($value->spjhotel_hargapermalam),0,',','.') ?></i><br>
+                              <i>= &nbsp;&nbsp;&nbsp;<?= number_format(intval($value->spjhotel_hargatotal),0,',','.') ?></i><br>
                             <?php endforeach ?>
                           </td>
                         </tr>

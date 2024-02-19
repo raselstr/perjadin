@@ -20,6 +20,7 @@ class UangHarianModel extends Model
         'uangharian_lokasiid',
         'uangharian_lama',
         'uangharian_perhari',
+        'uangharian_jumlahpersen',
         'uangharian_jumlah',
         'uangharian_biayatransport',
         'uangharian_jumlahbiayatransport',
