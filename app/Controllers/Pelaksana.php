@@ -321,5 +321,16 @@ class Pelaksana extends ResourcePresenter
        
     }
     
+    public function spdback()
+    {
+        $data = [
+            'title'     => 'Sppd Belakang',
+            'subtitle'  => 'Home',
+
+        ];
+        // dd($data);
+        return view('pelaksana/spdback', $data);
+    }
+    
     
 }

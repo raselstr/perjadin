@@ -122,6 +122,7 @@
                             </td>
                             <td class="align-middle text-center">
                               <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
+                              <a href="<?= site_url('pelaksana/spdback'); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-warning"><i class="fas fa-print"></i></a>
                             </td>
                             <?php else : ?>
                               <td class="align-middle text-center">
