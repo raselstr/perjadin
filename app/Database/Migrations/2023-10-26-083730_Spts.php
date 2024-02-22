@@ -44,12 +44,12 @@ class Spts extends Migration
                 'type' => 'INT',
             ],
             'spt_dasar' => [
-                'type' => 'VARCHAR',
+                'type' => 'TEXT',
                 'constraint' => 255,
                 'null' => true,
             ],
             'spt_uraian' => [
-                'type' => 'VARCHAR',
+                'type' => 'TEXT',
                 'constraint' => 255,
             ],
             'spt_lama' => [

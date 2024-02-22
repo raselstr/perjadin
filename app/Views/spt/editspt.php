@@ -91,7 +91,7 @@
                         <div class="form-group row">
                           <label for="spt_dasar" class="col-sm-4 col-form-label">Dasar Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" type="text" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar" value="<?= old("spt_dasar") ? old("spt_dasar") : $spt[0]->spt_dasar ?>">
+                            <textarea class="form-control <?= isset($errors['spt_dasar']) ? 'is-invalid' : null ; ?>" type="text" name="spt_dasar" placeholder="Dasar Perjalanan Dinas" id="spt_dasar" value="<?= old("spt_dasar") ? old("spt_dasar") : $spt[0]->spt_dasar ?>"></textarea>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_dasar']) ? $errors['spt_dasar'] : null ; ?>
                               </div>
@@ -100,7 +100,7 @@
                         <div class="form-group row">
                           <label for="spt_uraian" class="col-sm-4 col-form-label">Maksud Perjalanan Dinas</label>
                           <div class="col">
-                            <input class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian" value="<?= old("spt_uraian") ? old("spt_uraian") : $spt[0]->spt_uraian ?>">
+                            <textarea class="form-control <?= isset($errors['spt_uraian']) ? 'is-invalid' : null ; ?>" type="text" name="spt_uraian" placeholder="Maksud Perjalanan Dinas" id="spt_uraian"> <?= old("spt_uraian") ? old("spt_uraian") : $spt[0]->spt_uraian ?></textarea>
                               <div class="invalid-feedback">
                                   <?= isset($errors['spt_uraian']) ? $errors['spt_uraian'] : null ; ?>
                               </div>
