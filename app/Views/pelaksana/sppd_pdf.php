@@ -89,6 +89,9 @@ table.tabel2 {
  
   /* border: 1pt solid black;  */
 }
+.kanan {
+  text-align: right;
+}
 table.tabel2 th {
   font-size: large;
 }
@@ -101,8 +104,11 @@ table.tabel1 td{
 table.tabel2 td{
   /* position: absolute; */
   /* border: 1px solid black; */
-  text-align: center;
+  /* text-align: center; */
   padding: 0px;
+}
+.rata_kanan{
+  text-align: right;
 }
 
 table.tabel1,.isi {
@@ -166,28 +172,39 @@ table.tabel3.author {
 <!-- <div class="card " style="top:165px;left:20px;position:relative;"> -->
   <table class="tabel2">
     <tr>
-      <td></td>
-      <td width="25%">Lembar ke : ...................</td>
+      <td width="50%"></td>
+      <td>Lembar ke&nbsp;&nbsp; </td>
+      <td width="35%"> : ...................</td>
     </tr>
-      <tr>
-        <th colspan="2"><u>SURAT PERJALANAN DINAS (SPD)</u></th>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <?php if(empty($spt[0]->sppd_nomor)) : ?>
-            Nomor : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2024
+    <tr>
+      <td></td>
+      <td>Kode No&nbsp;&nbsp; </td>
+      <td width="25%"> : ...................</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Nomor&nbsp;&nbsp; </td>
+      <td colspan="2">
+        <?php if(empty($spt[0]->sppd_nomor)) : ?>
+          : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2024
           <?php else : ?>
-            Nomor : <?= $spt[0]->sppd_nomor; ?>
-          <?php endif ?>
+            : <?= $spt[0]->sppd_nomor; ?>
+            <?php endif ?>
           </td>
-
-      </tr>
+        </tr>
+        <tr>
+          <td>&nbsp;</td><td></td><td></td>
+        </tr>
+    <tr>
+      <th colspan="3"><u>SURAT PERJALANAN DINAS (SPD)</u></th>
+    </tr>
+      
     
   </table>
   <table class="tabel1">
     <tr>
       <td width="4%" class="isi no">1.</td>
-      <td colspan="2" class="isi">Pejabat Berwenang yang memberikan Perintah</td>
+      <td colspan="2" class="isi">Pengguna Anggaran/ Kuasa Pengguna Anggaran</td>
       <td colspan="6" class="isi">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
     </tr>
     <tr>
@@ -271,7 +288,7 @@ table.tabel3.author {
       <tr>
         <th colspan="2" class="isi">Nama</td>
         <th colspan="3" class="isi">Tanggal Lahir</td>
-        <th colspan="3" class="isi">Jabatan</td>
+        <th colspan="3" class="isi">Keterangan</td>
       </tr>
       <?php $no = "a"; foreach ($pengikut as $key => $value) : ?>
         <tr>
@@ -290,12 +307,12 @@ table.tabel3.author {
       </tr>
       <tr>
         <td>a.</td>
-        <td>Instansi</td>
+        <td>SKPD</td>
         <td colspan="6" class="kiri">BKAD KAB. ASAHAN</td>
       </tr>
       <tr>
         <td>b.</td>
-        <td>Akun</td>
+        <td>Kode Rekening</td>
         <td colspan="6" class="kiri bawah"></td>
       </tr>
     <tr>
