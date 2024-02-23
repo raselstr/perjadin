@@ -172,8 +172,10 @@ class SptModel extends Model
 
     public function grafik()
     {
+        $tahun = session('tahun');
         $builder = $this->db->table('spts as a')
                             ->select('MONTH(a.spt_tgl) as bulan, count(a.spt_tgl) as jumlah')
+                            ->where('a.spt_tahun',$tahun)
                             ->groupBy('bulan')
                             ->having('jumlah !=',0)
                             ->get();
