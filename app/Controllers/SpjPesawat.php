@@ -175,7 +175,7 @@ class SpjPesawat extends ResourcePresenter
             $save = $spjpesawat->save($data);
             if($save) {
                 if($fototiketlama == null){
-                    if($lamafoto) {
+                    if($lamafoto == false) {
                         $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
                     } 
                 } else {
