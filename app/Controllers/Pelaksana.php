@@ -324,7 +324,7 @@ class Pelaksana extends ResourcePresenter
     public function spdback()
     {
         $data = [
-            'title'     => 'Sppd Belakang',
+            'title'     => 'Bukti Diterima ditempat Tujuan',
             'subtitle'  => 'Home',
 
         ];

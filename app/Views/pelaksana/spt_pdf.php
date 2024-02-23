@@ -261,7 +261,7 @@
         </tr>
         <tr>
           <td id="isiberita" width="5%">1.</td>
-          <td colspan="10" id="isiberita"><?= $spt['data'][0]->spt_uraian; ?> ke <?= $spt['data'][0]->spt_tempat; ?>, di <?= $spt['data'][0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($spt['data'][0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($spt['data'][0]->spt_berakhir)); ?>.</td>
+          <td colspan="10" id="isiberita"><?= $spt['data'][0]->spt_uraian; ?> ke <?= $spt['data'][0]->spt_tempat; ?>, <?= $spt['data'][0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($spt['data'][0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($spt['data'][0]->spt_berakhir)); ?>.</td>
         </tr>
         <tr>
           <td id="isiberita">2.</td>
@@ -319,7 +319,7 @@
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd"><?= $spt['data'][0]->pejabat_nama; ?></td>
+          <td colspan="3" id="ttd"><b><?= $spt['data'][0]->pejabat_nama; ?></b></td>
         </tr>
         <tr>
           <td id="ttd"></td>
