@@ -476,7 +476,7 @@
               'alt': 'Deskripsi Gambar',
               'width': '100%',
               'height': '600'
-            });
+            }).addClass('img-fluid');
 
           $('#tampilfoto').html(linkhotel);
         });

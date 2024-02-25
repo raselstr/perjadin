@@ -180,8 +180,8 @@ class SpjPesawat extends ResourcePresenter
                     if($lamafoto == null) {
                         $imagePath1 = $foto;
                         $image->withFile($imagePath1);
-                        $image->resize(800, 600, true);
-                        $image->quality(80);
+                        $image->resize(600, 400, true);
+                        $image->quality(70);
 
                         $image->save(FCPATH . 'image/pesawat/tiket/'. $namafoto);
                         // $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
@@ -190,15 +190,15 @@ class SpjPesawat extends ResourcePresenter
                     if($lamafoto == null) {
                         $imagePath1 = $foto;
                         $image->withFile($imagePath1);
-                        $image->resize(800, 600, true);
-                        $image->quality(80);
+                        $image->resize(600, 400, true);
+                        $image->quality(70);
 
                         $image->save(FCPATH . 'image/pesawat/tiket/'. $namafoto);
                     } else {
                          $imagePath1 = $foto;
                         $image->withFile($imagePath1);
-                        $image->resize(800, 600, true);
-                        $image->quality(80);
+                        $image->resize(600, 400, true);
+                        $image->quality(70);
 
                         $image->save(FCPATH . 'image/pesawat/tiket/'. $namafoto);
                         unlink(FCPATH . 'image/pesawat/tiket/' . $fototiketlama);

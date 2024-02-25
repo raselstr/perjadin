@@ -488,8 +488,8 @@
             'src': imageUrl,
             'alt': 'Deskripsi Gambar',
             'width': '100%',
-            'height': '600'
-          });
+            'height': '100%'
+          }).addClass('img-fluid');
 
         $('#tampilfoto').html(linkhotel);
        });
