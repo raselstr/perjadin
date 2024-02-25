@@ -292,9 +292,9 @@
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label" hidden>Id spjpesawat</label>
                 <div class="col">
-                  <input type="text" class="form-control" id="id" name="spjpesawat_id" >
-                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" >
-                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" >
+                  <input type="text" class="form-control" id="id" name="spjpesawat_id" hidden>
+                  <input type="text" class="form-control" id="fototiketlama" name="fototiketlama" hidden>
+                  <input type="text" class="form-control" id="scanbilllama" name="scanbilllama" hidden>
                 </div>
               </div>
               <div class="form-group row">
@@ -768,12 +768,11 @@
                     title: response.messages,
                     showConfirmButton: false,
                     timer: 2000
-                  })
-                  // .then(function(){
-                  //   $('#pesawatbill').hide('2000');
-                  //   location.reload();
+                  }).then(function(){
+                    $('#pesawatbill').hide('2000');
+                    location.reload();
 
-                  // });
+                  });
                 };
             },
             error: function(xhr, status, error) {

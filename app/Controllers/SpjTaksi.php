@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Config\Services;
 use App\Models\SpjTaksiModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -130,7 +131,7 @@ class SpjTaksi extends ResourcePresenter
                 ],
             ]);
 
-            $lamafoto = file_exists(FCPATH. 'image/taksi/tiket/'. $fototiketlama);
+            $lamafoto = file_exists(FCPATH. 'image/taksi/tiket/'. $fototiketlama) ? $fototiketlama : null;
             if($idtaksi == null) {
                 $errors = [
                     'errors' => true,
@@ -154,19 +155,36 @@ class SpjTaksi extends ResourcePresenter
             
             $namafoto = $foto->getRandomName();
             $data['spjtaksi_fototiket'] = $namafoto;
-            
+            $image = Services::image('gd');
+
             $save = $spjtaksi->save($data);
             if($save) {
                 if($fototiketlama == null){
-                    if($lamafoto) {
-                        $foto->move(FCPATH . 'image/taksi/tiket', $namafoto);
+                    if($lamafoto == null) {
+                        $imagePath1 = $foto;
+                        $image->withFile($imagePath1);
+                        $image->resize(800, 600, true);
+                        $image->quality(80);
+
+                        $image->save(FCPATH . 'image/taksi/tiket/'. $namafoto);
+                        // $foto->move(FCPATH . 'image/taksi/tiket', $namafoto);
                     } 
                 } else {
-                    if($lamafoto) {
-                        $foto->move(FCPATH . 'image/taksi/tiket', $namafoto);
-                        unlink(FCPATH . 'image/taksi/tiket/' . $fototiketlama);
+                    if($lamafoto == null) {
+                        $imagePath1 = $foto;
+                        $image->withFile($imagePath1);
+                        $image->resize(800, 600, true);
+                        $image->quality(80);
+
+                        $image->save(FCPATH . 'image/taksi/tiket/'. $namafoto);
                     } else {
-                        $foto->move(FCPATH . 'image/taksi/tiket', $namafoto);
+                        $imagePath1 = $foto;
+                        $image->withFile($imagePath1);
+                        $image->resize(800, 600, true);
+                        $image->quality(80);
+
+                        $image->save(FCPATH . 'image/taksi/tiket/'. $namafoto);
+                        unlink(FCPATH . 'image/taksi/tiket/' . $fototiketlama);
 
                     }
                 }
