@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Waktu pembuatan: 26 Feb 2024 pada 04.50
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 7.4.27
+-- Generation Time: Feb 26, 2024 at 04:59 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `eselons`
+-- Table structure for table `eselons`
 --
 
 CREATE TABLE `eselons` (
@@ -33,7 +33,7 @@ CREATE TABLE `eselons` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `eselons`
+-- Dumping data for table `eselons`
 --
 
 INSERT INTO `eselons` (`eselon_id`, `eselon_nama`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `eselons` (`eselon_id`, `eselon_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenisperjadins`
+-- Table structure for table `jenisperjadins`
 --
 
 CREATE TABLE `jenisperjadins` (
@@ -55,7 +55,7 @@ CREATE TABLE `jenisperjadins` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `jenisperjadins`
+-- Dumping data for table `jenisperjadins`
 --
 
 INSERT INTO `jenisperjadins` (`jenisperjadin_id`, `jenisperjadin_nama`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `jenisperjadins` (`jenisperjadin_id`, `jenisperjadin_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporjadins`
+-- Table structure for table `laporjadins`
 --
 
 CREATE TABLE `laporjadins` (
@@ -85,17 +85,10 @@ CREATE TABLE `laporjadins` (
   `laporjadin_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data untuk tabel `laporjadins`
---
-
-INSERT INTO `laporjadins` (`laporjadin_id`, `laporjadin_sptid`, `laporjadin_nodpa`, `laporjadin_pembuka`, `laporjadin_hasil`, `laporjadin_penutup`, `laporjadin_foto1`, `laporjadin_foto2`, `laporjadin_foto3`, `laporjadin_verif`, `laporjadin_created_at`, `laporjadin_updated_at`, `laporjadin_deleted_at`) VALUES
-(17, 16, '-', '<p>Acara Pembukaan dimulai pada pukul 21.00 WIb oleh Direktur GTK Kementerian Pendidikan, Kebudayaan Riset dan Teknologi</p>', '<p>Rekon telah terlaksana, dan laporan realisasi TPG dan Tamsil telah diterima oleh Kemdikbud dan Kemenkeu</p>', 'Penutupan Acara tidak dilakukan', '1708693306_588dd5c18915a722da0e.jpg', '1708693306_141d7896d5fa61c99973.jpg', '1708693306_ff204726186e0dc112d3.jpg', 0, '2024-02-23 20:01:05', '2024-02-23 20:01:46', NULL);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lokasiperjadins`
+-- Table structure for table `lokasiperjadins`
 --
 
 CREATE TABLE `lokasiperjadins` (
@@ -105,34 +98,34 @@ CREATE TABLE `lokasiperjadins` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `lokasiperjadins`
+-- Dumping data for table `lokasiperjadins`
 --
 
 INSERT INTO `lokasiperjadins` (`lokasiperjadin_id`, `jenisperjadin_id`, `lokasiperjadin_nama`) VALUES
-(1, 1, 'Kabupaten Batu Bara'),
-(2, 1, 'Kabupaten Dairi'),
-(3, 1, 'Kabupaten Deli Serdang'),
-(4, 1, 'Kabupaten Humbang Hasundutan'),
-(5, 1, 'Kabupaten Karo'),
-(6, 1, 'Kabupaten Labuhanbatu'),
-(7, 1, 'Kabupaten Labuhanbatu Selatan '),
-(8, 1, 'Kabupaten Labuhanbatu Utara'),
-(9, 1, 'Kabupaten Langkat'),
-(10, 1, 'Kabupaten Mandailing Natal'),
-(11, 1, 'Kabupaten Nias'),
-(12, 1, 'Kabupaten Nias Barat'),
-(13, 1, 'Kabupaten Nias Selatan'),
-(14, 1, 'Kabupaten Nias Utara'),
-(15, 1, 'Kabupaten Padang Lawas'),
-(16, 1, 'Kabupaten Padang Lawas Utara'),
-(17, 1, 'Kabupaten Pakpak Bharat'),
-(18, 1, 'Kabupaten Samosir'),
-(19, 1, 'Kabupaten Serdang Bedagai'),
-(20, 1, 'Kabupaten Simalungun'),
-(21, 1, 'Kabupaten Tapanuli Selatan'),
-(22, 1, 'Kabupaten Tapanuli Tengah'),
-(23, 1, 'Kabupaten Tapanuli Utara'),
-(24, 1, 'Kabupaten Toba'),
+(1, 1, 'Kabupaten Batu Bara - Limapuluh'),
+(2, 1, 'Kabupaten Dairi - Sidikalang'),
+(3, 1, 'Kabupaten Deli Serdang - Lubuk Pakam'),
+(4, 1, 'Kabupaten Humbang Hasundutan - Dolok Sanggul'),
+(5, 1, 'Kabupaten Karo - Kabanjahe'),
+(6, 1, 'Kabupaten Labuhanbatu - Rantau Prapat'),
+(7, 1, 'Kabupaten Labuhanbatu Selatan - Kota Pinang'),
+(8, 1, 'Kabupaten Labuhanbatu Utara - Aek Kanopan'),
+(9, 1, 'Kabupaten Langkat - Stabat'),
+(10, 1, 'Kabupaten Mandailing Natal - Panyabungan'),
+(11, 1, 'Kabupaten Nias - Gido'),
+(12, 1, 'Kabupaten Nias Barat - Lahomi'),
+(13, 1, 'Kabupaten Nias Selatan - Teluk Dalam'),
+(14, 1, 'Kabupaten Nias Utara - Lotu'),
+(15, 1, 'Kabupaten Padang Lawas - Sibuhuan'),
+(16, 1, 'Kabupaten Padang Lawas Utara - Gunung Tua'),
+(17, 1, 'Kabupaten Pakpak Bharat - Salak'),
+(18, 1, 'Kabupaten Samosir - Pangururan'),
+(19, 1, 'Kabupaten Serdang Bedagai - Sei Rampah'),
+(20, 1, 'Kabupaten Simalungun - Raya'),
+(21, 1, 'Kabupaten Tapanuli Selatan - Sipirok'),
+(22, 1, 'Kabupaten Tapanuli Tengah - Pandan'),
+(23, 1, 'Kabupaten Tapanuli Utara - Tarutung'),
+(24, 1, 'Kabupaten Toba - Balige'),
 (25, 1, 'Kota Binjai'),
 (26, 1, 'Kota Gunungsitoli'),
 (27, 1, 'Kota Medan'),
@@ -141,44 +134,44 @@ INSERT INTO `lokasiperjadins` (`lokasiperjadin_id`, `jenisperjadin_id`, `lokasip
 (30, 1, 'Kota Sibolga'),
 (31, 1, 'Kota Tanjungbalai'),
 (32, 1, 'Kota Tebing Tinggi'),
-(33, 2, 'Provinsi Sumatera Utara'),
-(34, 2, 'Nanggroe Aceh Darussalam'),
-(35, 2, 'Sumatera Selatan'),
-(36, 2, 'Sumatera Barat'),
-(37, 2, 'Bengkulu'),
-(38, 2, 'Riau'),
-(39, 2, 'Kepulauan Riau'),
-(40, 2, 'Jambi'),
-(41, 2, 'Lampung'),
-(42, 2, 'Bangka Belitung'),
-(43, 2, 'Kalimantan Barat'),
-(44, 2, 'Kalimantan Timur'),
-(45, 2, 'Kalimantan Selatan'),
-(46, 2, 'Kalimantan Tengah'),
-(47, 2, 'Kalimantan Utara'),
-(48, 2, 'Banten'),
-(49, 2, 'DKI Jakarta'),
-(50, 2, 'Jawa Barat'),
-(51, 2, 'Jawa Tengah'),
-(52, 2, 'Daerah Istimewa Yogyakarta'),
-(53, 2, 'Jawa Timur'),
-(54, 2, 'Bali'),
-(55, 2, 'Nusa Tenggara Timur'),
-(56, 2, 'Nusa Tenggara Barat'),
-(57, 2, 'Gorontalo'),
-(58, 2, 'Sulawesi Barat'),
-(59, 2, 'Sulawesi Tengah'),
-(60, 2, 'Sulawesi Utara'),
-(61, 2, 'Sulawesi Tenggara'),
-(62, 2, 'Sulawesi Selatan'),
-(63, 2, 'Maluku Utara'),
-(64, 2, 'Maluku'),
-(65, 2, 'Papua Barat'),
-(66, 2, 'Papua'),
-(67, 2, 'Papua Tengah'),
-(68, 2, 'Papua Pegunungan'),
-(69, 2, 'Papua Selatan'),
-(70, 2, 'Papua Barat Daya'),
+(33, 2, 'Provinsi Sumatera Utara - Medan'),
+(34, 2, 'Nanggroe Aceh Darussalam - Banda Aceh'),
+(35, 2, 'Sumatera Selatan - Palembang'),
+(36, 2, 'Sumatera Barat -  Padang'),
+(37, 2, 'Bengkulu - Bengkulu'),
+(38, 2, 'Riau - Pekanbaru'),
+(39, 2, 'Kepulauan Riau - Tanjung Pinang'),
+(40, 2, 'Jambi - Jambi'),
+(41, 2, 'Lampung - Bandar Lampung'),
+(42, 2, 'Bangka Belitung - Pangkal Pinang'),
+(43, 2, 'Kalimantan Barat - Pontianak'),
+(44, 2, 'Kalimantan Timur - Samarinda'),
+(45, 2, 'Kalimantan Selatan - Banjarbaru'),
+(46, 2, 'Kalimantan Tengah - Palangkaraya'),
+(47, 2, 'Kalimantan Utara - Tanjung Selor'),
+(48, 2, 'Banten - Serang'),
+(49, 2, 'DKI Jakarta - Jakarta'),
+(50, 2, 'Jawa Barat - Bandung'),
+(51, 2, 'Jawa Tengah - Semarang'),
+(52, 2, 'Daerah Istimewa Yogyakarta - Yogyakarta'),
+(53, 2, 'Jawa Timur - Surabaya'),
+(54, 2, 'Bali - Denpasar'),
+(55, 2, 'Nusa Tenggara Timur - Kupang'),
+(56, 2, 'Nusa Tenggara Barat - Mataram'),
+(57, 2, 'Gorontalo - Gorontalo'),
+(58, 2, 'Sulawesi Barat - Mamuju'),
+(59, 2, 'Sulawesi Tengah - Palu'),
+(60, 2, 'Sulawesi Utara - Manado'),
+(61, 2, 'Sulawesi Tenggara - Kendari'),
+(62, 2, 'Sulawesi Selatan - Makassar'),
+(63, 2, 'Maluku Utara - Sofifi'),
+(64, 2, 'Maluku - Ambon'),
+(65, 2, 'Papua Barat - Manokwari'),
+(66, 2, 'Papua - Jayapura'),
+(67, 2, 'Papua Tengah - Nabire'),
+(68, 2, 'Papua Pegunungan - Jayawijaya'),
+(69, 2, 'Papua Selatan - Merauke'),
+(70, 2, 'Papua Barat Daya - Sorong'),
 (71, 3, 'Kecamatan Meranti'),
 (72, 3, 'Kecamatan Pulo Bandring'),
 (73, 3, 'Kecamatan Air Joman'),
@@ -206,7 +199,7 @@ INSERT INTO `lokasiperjadins` (`lokasiperjadin_id`, `jenisperjadin_id`, `lokasip
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE `menus` (
@@ -219,7 +212,7 @@ CREATE TABLE `menus` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`menu_id`, `menu_nama`, `menu_icon`, `menu_link`, `menu_active`, `role_id`) VALUES
@@ -232,7 +225,7 @@ INSERT INTO `menus` (`menu_id`, `menu_nama`, `menu_icon`, `menu_link`, `menu_act
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -246,7 +239,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
@@ -255,11 +248,11 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (3, '2023-09-23-010516', 'App\\Database\\Migrations\\Submenus', 'default', 'App', 1700882370, 1),
 (4, '2023-10-08-073159', 'App\\Database\\Migrations\\Roles', 'default', 'App', 1700882370, 1),
 (5, '2023-10-08-080338', 'App\\Database\\Migrations\\Rolemenus', 'default', 'App', 1700882370, 1),
-(51, '2023-10-13-100408', 'App\\Database\\Migrations\\Pegawais', 'default', 'App', 1708918790, 13),
+(35, '2023-10-13-100408', 'App\\Database\\Migrations\\Pegawais', 'default', 'App', 1705670005, 6),
 (7, '2023-10-20-033606', 'App\\Database\\Migrations\\Eselons', 'default', 'App', 1700882370, 1),
 (8, '2023-10-20-035504', 'App\\Database\\Migrations\\Pangkat', 'default', 'App', 1700882370, 1),
-(9, '2023-10-26-083730', 'App\\Database\\Migrations\\Spts', 'default', 'App', 1700882370, 1),
-(10, '2023-10-28-044912', 'App\\Database\\Migrations\\Pelaksana', 'default', 'App', 1700882370, 1),
+(53, '2023-10-28-044912', 'App\\Database\\Migrations\\Pelaksana', 'default', 'App', 1708069706, 14),
+(52, '2023-10-26-083730', 'App\\Database\\Migrations\\Spts', 'default', 'App', 1708069134, 13),
 (11, '2023-10-30-161925', 'App\\Database\\Migrations\\Jenisperjadin', 'default', 'App', 1700882370, 1),
 (12, '2023-10-30-162735', 'App\\Database\\Migrations\\Lokasiperjadin', 'default', 'App', 1700882370, 1),
 (50, '2023-11-08-054510', 'App\\Database\\Migrations\\Pejabat', 'default', 'App', 1707989257, 12),
@@ -274,7 +267,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pangkats`
+-- Table structure for table `pangkats`
 --
 
 CREATE TABLE `pangkats` (
@@ -285,7 +278,7 @@ CREATE TABLE `pangkats` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `pangkats`
+-- Dumping data for table `pangkats`
 --
 
 INSERT INTO `pangkats` (`pangkat_id`, `pangkat_nama`, `pangkat_gol`, `pangkat_pajak`) VALUES
@@ -310,7 +303,7 @@ INSERT INTO `pangkats` (`pangkat_id`, `pangkat_nama`, `pangkat_gol`, `pangkat_pa
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawais`
+-- Table structure for table `pegawais`
 --
 
 CREATE TABLE `pegawais` (
@@ -319,14 +312,14 @@ CREATE TABLE `pegawais` (
   `pegawai_nama` varchar(100) NOT NULL,
   `pegawai_jabatan` varchar(100) NOT NULL,
   `pegawai_tgllahir` date DEFAULT NULL,
-  `eselon_id` int(10) UNSIGNED NOT NULL,
-  `pangkat_id` int(10) UNSIGNED NOT NULL,
-  `pegawai_tingkat` int(10) UNSIGNED NOT NULL,
+  `eselon_id` int(10) NOT NULL,
+  `pangkat_id` int(10) NOT NULL,
+  `pegawai_tingkat` int(10) NOT NULL,
   `pegawai_foto` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `pegawais`
+-- Dumping data for table `pegawais`
 --
 
 INSERT INTO `pegawais` (`pegawai_id`, `pegawai_nip`, `pegawai_nama`, `pegawai_jabatan`, `pegawai_tgllahir`, `eselon_id`, `pangkat_id`, `pegawai_tingkat`, `pegawai_foto`) VALUES
@@ -392,7 +385,7 @@ INSERT INTO `pegawais` (`pegawai_id`, `pegawai_nip`, `pegawai_nama`, `pegawai_ja
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pejabats`
+-- Table structure for table `pejabats`
 --
 
 CREATE TABLE `pejabats` (
@@ -406,7 +399,7 @@ CREATE TABLE `pejabats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `pejabats`
+-- Dumping data for table `pejabats`
 --
 
 INSERT INTO `pejabats` (`pejabat_id`, `pejabat_kode`, `pejabat_nama`, `pejabat_namajabatan`, `pejabat_nip`, `pejabat_pangkat`, `pejabat_aktif`) VALUES
@@ -416,33 +409,40 @@ INSERT INTO `pejabats` (`pejabat_id`, `pejabat_kode`, `pejabat_nama`, `pejabat_n
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pelaksanas`
+-- Table structure for table `pelaksanas`
 --
 
 CREATE TABLE `pelaksanas` (
   `pelaksana_id` bigint(20) UNSIGNED NOT NULL,
-  `spt_id` int(11) NOT NULL,
-  `pegawai_id` int(11) NOT NULL,
-  `pelaksana_utama` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `spt_id` bigint(20) UNSIGNED NOT NULL,
+  `pegawai_id` bigint(20) UNSIGNED NOT NULL,
+  `pelaksana_utama` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `pelaksanas`
+-- Dumping data for table `pelaksanas`
 --
 
 INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_utama`) VALUES
-(36, 16, 30, 1),
-(30, 13, 6, 0),
-(31, 13, 30, 0),
-(32, 8, 1, 1),
-(33, 8, 3, 0),
-(34, 15, 1, 1),
-(35, 15, 2, 0);
+(1, 1, 1, 1),
+(2, 1, 2, 0),
+(4, 2, 6, 1),
+(5, 2, 30, 0),
+(6, 2, 15, 0),
+(7, 2, 8, 0),
+(8, 2, 31, 0),
+(9, 2, 29, 0),
+(10, 3, 12, 1),
+(11, 3, 14, 0),
+(12, 3, 38, 0),
+(13, 4, 30, 1),
+(14, 5, 6, 1),
+(15, 5, 30, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perbups`
+-- Table structure for table `perbups`
 --
 
 CREATE TABLE `perbups` (
@@ -462,7 +462,7 @@ CREATE TABLE `perbups` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `perbups`
+-- Dumping data for table `perbups`
 --
 
 INSERT INTO `perbups` (`perbup_id`, `perbup_tingkatid`, `perbup_lokasiid`, `perbup_kota`, `perbup_hotel`, `perbup_uh`, `perbup_uhdiklat`, `perbup_uhrapat_fullboad`, `perbup_uhrapat_fullday`, `perbup_uhrapat_residencedlmkota`, `perbup_taksi_transportdarat`, `perbup_representasi`, `perbup_sewakendaraan`) VALUES
@@ -935,7 +935,7 @@ INSERT INTO `perbups` (`perbup_id`, `perbup_tingkatid`, `perbup_lokasiid`, `perb
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rolemenus`
+-- Table structure for table `rolemenus`
 --
 
 CREATE TABLE `rolemenus` (
@@ -950,7 +950,7 @@ CREATE TABLE `rolemenus` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `rolemenus`
+-- Dumping data for table `rolemenus`
 --
 
 INSERT INTO `rolemenus` (`rolemenu_id`, `role_id`, `menu_id`, `submenu_id`, `lihat`, `tambah`, `ubah`, `hapus`) VALUES
@@ -978,12 +978,15 @@ INSERT INTO `rolemenus` (`rolemenu_id`, `role_id`, `menu_id`, `submenu_id`, `lih
 (42, 3, 0, 23, 'false', 'false', 'false', 'false'),
 (41, 2, 0, 23, 'false', 'false', 'false', 'false'),
 (40, 1, 0, 23, 'false', 'false', 'false', 'false'),
-(39, 2, 0, 20, 'false', 'false', 'false', 'false');
+(39, 2, 0, 20, 'false', 'false', 'false', 'false'),
+(46, 6, 0, 4, 'false', 'false', 'false', 'false'),
+(47, 6, 0, 5, 'false', 'false', 'false', 'false'),
+(48, 6, 0, 23, 'false', 'false', 'false', 'false');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -992,19 +995,20 @@ CREATE TABLE `roles` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`role_id`, `role_nama`) VALUES
 (1, 'Kepala - Sekretaris'),
 (2, 'Bagian Kepegawaian'),
 (3, 'Bagian Keuangan'),
-(4, 'Pelaksana Perjalanan Dinas');
+(4, 'Pelaksana Perjalanan Dinas'),
+(6, 'Bidang');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `spjhotels`
+-- Table structure for table `spjhotels`
 --
 
 CREATE TABLE `spjhotels` (
@@ -1026,10 +1030,17 @@ CREATE TABLE `spjhotels` (
   `spjhotel_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `spjhotels`
+--
+
+INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`, `spjhotel_lokasi`, `spjhotel_nokamar`, `spjhotel_typekamar`, `spjhotel_checkin`, `spjhotel_checkout`, `spjhotel_mlm`, `spjhotel_hargapermalam`, `spjhotel_hargatotal`, `spjhotel_verif`, `spjhotel_bill`, `spjhotel_created_at`, `spjhotel_updated_at`, `spjhotel_deleted_at`) VALUES
+(1, 4, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-02-16', '2024-02-17', 1, 992000, 297600, 1, '', '2024-02-19 17:23:25', '2024-02-19 17:23:25', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `spjpesawats`
+-- Table structure for table `spjpesawats`
 --
 
 CREATE TABLE `spjpesawats` (
@@ -1051,18 +1062,10 @@ CREATE TABLE `spjpesawats` (
   `spjpesawat_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data untuk tabel `spjpesawats`
---
-
-INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawat_jenis`, `spjpesawat_maskapai`, `spjpesawat_notiket`, `spjpesawat_kdboking`, `spjpesawat_tgl`, `spjpesawat_dari`, `spjpesawat_ke`, `spjpesawat_harga`, `spjpesawat_verif`, `spjpesawat_fototiket`, `spjpesawat_bill`, `spjpesawat_created_at`, `spjpesawat_updated_at`, `spjpesawat_deleted_at`) VALUES
-(8, 36, 'Kembali', 'Citilink', '-', 'IBPCPS', '2024-02-22', 'Bandara Hang Nadim - Bata', 'Bandara Kualanamu - Medan', 1021246, 0, '1708694307_10967f8c82112f33e285.jpg', '1708694307_55e6721910cdf6dc0656.pdf', '2024-02-23 19:43:56', '2024-02-23 20:18:27', NULL),
-(7, 36, 'Berangkat', 'Citilink', '-', 'MHM1TQ', '2024-02-20', 'Bandara Kualanamu - Medan', 'Bandara Hang Nadim - Bata', 1317097, 0, '1708694528_d0840d95d212f0bebb69.jpg', '1708694528_fd3805fee3d559b853cb.pdf', '2024-02-23 19:40:38', '2024-02-23 20:22:08', NULL);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `spjtaksis`
+-- Table structure for table `spjtaksis`
 --
 
 CREATE TABLE `spjtaksis` (
@@ -1083,7 +1086,7 @@ CREATE TABLE `spjtaksis` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `spts`
+-- Table structure for table `spts`
 --
 
 CREATE TABLE `spts` (
@@ -1092,12 +1095,12 @@ CREATE TABLE `spts` (
   `spt_nomor` varchar(100) DEFAULT NULL,
   `sppd_nomor` varchar(100) DEFAULT NULL,
   `spt_tgl` date DEFAULT NULL,
-  `spt_pjb_tugas` varchar(100) NOT NULL,
+  `spt_pjb_tugas` bigint(20) UNSIGNED NOT NULL,
   `spt_jenis` int(11) NOT NULL,
   `spt_acara` int(11) NOT NULL,
   `spt_dasar` text DEFAULT NULL,
   `spt_uraian` text NOT NULL,
-  `spt_lama` int(11) NOT NULL,
+  `spt_lama` int(20) NOT NULL,
   `spt_mulai` date NOT NULL,
   `spt_berakhir` date NOT NULL,
   `spt_tujuan` int(11) NOT NULL,
@@ -1107,19 +1110,23 @@ CREATE TABLE `spts` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `spts`
+-- Dumping data for table `spts`
 --
 
 INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`, `spt_pjb_tugas`, `spt_jenis`, `spt_acara`, `spt_dasar`, `spt_uraian`, `spt_lama`, `spt_mulai`, `spt_berakhir`, `spt_tujuan`, `spt_transport`, `spt_tempat`, `spt_verif`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(16, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-20', '1', 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-20', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung,Kec. Bengkong, Kota Batam', 1, '2024-02-23 18:10:23', '2024-02-23 19:24:14', NULL);
+(1, 2024, '0001/SPT', '0001/SPD', '2024-02-16', 1, 1, 0, '', 'Perjalan dinas ke BKAD', 3, '2024-02-16', '2024-02-18', 27, 'Mobil Dinas', 'fgdf', 1, '2024-02-16 14:59:20', '2024-02-16 19:50:29', NULL),
+(2, 2024, '0002/SPT', '0002/SPD', '2024-02-16', 1, 2, 0, '', 'Konsultasi SIPD', 2, '2024-02-16', '2024-02-17', 49, 'Pesawat Udara', 'Kemendagri', 1, '2024-02-16 20:22:21', '2024-02-16 21:53:47', NULL),
+(3, 2024, '0003/SPT', '0003/SPD', '2024-02-16', 2, 3, 0, '', 'Rekonsiliasi Data Aset', 1, '2024-02-16', '2024-02-16', 84, 'Mobil Dinas', 'SDN Mandoge', 1, '2024-02-16 21:56:46', '2024-02-16 21:58:49', NULL),
+(4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-19', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL),
+(5, 2024, NULL, NULL, NULL, 1, 2, 0, '', 'Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 20', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 0, '2024-02-22 23:05:45', '2024-02-22 23:21:56', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `submenus`
+-- Table structure for table `submenus`
 --
 
 CREATE TABLE `submenus` (
@@ -1133,7 +1140,7 @@ CREATE TABLE `submenus` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `submenus`
+-- Dumping data for table `submenus`
 --
 
 INSERT INTO `submenus` (`submenu_id`, `menu_id`, `submenu_nama`, `submenu_icon`, `submenu_link`, `submenu_active`, `role_id`) VALUES
@@ -1159,7 +1166,7 @@ INSERT INTO `submenus` (`submenu_id`, `menu_id`, `submenu_nama`, `submenu_icon`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tingkats`
+-- Table structure for table `tingkats`
 --
 
 CREATE TABLE `tingkats` (
@@ -1169,7 +1176,7 @@ CREATE TABLE `tingkats` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tingkats`
+-- Dumping data for table `tingkats`
 --
 
 INSERT INTO `tingkats` (`tingkat_id`, `tingkat_nama`, `tingkat_uraian`) VALUES
@@ -1182,7 +1189,7 @@ INSERT INTO `tingkats` (`tingkat_id`, `tingkat_nama`, `tingkat_uraian`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `uangharians`
+-- Table structure for table `uangharians`
 --
 
 CREATE TABLE `uangharians` (
@@ -1193,6 +1200,7 @@ CREATE TABLE `uangharians` (
   `uangharian_lokasiid` int(11) NOT NULL,
   `uangharian_lama` int(11) NOT NULL,
   `uangharian_perhari` double NOT NULL,
+  `uangharian_jumlahpersen` text NOT NULL,
   `uangharian_jumlah` double NOT NULL,
   `uangharian_biayatransport` double NOT NULL,
   `uangharian_jumlahbiayatransport` double NOT NULL,
@@ -1204,10 +1212,17 @@ CREATE TABLE `uangharians` (
   `uangharian_verif` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `uangharians`
+--
+
+INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharian_sptid`, `uangharian_tingkatid`, `uangharian_lokasiid`, `uangharian_lama`, `uangharian_perhari`, `uangharian_jumlahpersen`, `uangharian_jumlah`, `uangharian_biayatransport`, `uangharian_jumlahbiayatransport`, `uangharian_representasi`, `uangharian_jumlahrepresentasi`, `uangharian_sewamobil`, `uangharian_jumlahsewamobil`, `uangharian_total`, `uangharian_verif`) VALUES
+(2, 13, 4, 4, 39, 3, 370000, '30%', 333000, 0, 0, 0, 0, 0, 0, 0, 1);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -1223,84 +1238,87 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_nama`, `user_nmlengkap`, `user_password`, `user_active`, `user_roleid`, `user_created_at`, `user_updated_at`, `user_deleted_at`) VALUES
 (1, 'rasel', 'Rahmad Saleh Sitorus', '$2y$10$6uLO3c4NRd87GgimJHoAh.ech1dVNjoDrW/l6XwI1YLxB77wGQlDO', 1, 2, '2024-01-24 12:46:02', '2024-01-24 20:08:35', NULL),
 (2, 'rahmad', 'Rahmad', '$2y$10$.fs6SndYgVLFzktNWnN1eesRTfXXahvBYmaki3o95t/h.GYIs.VjW', 1, 3, '2024-01-25 10:31:40', '2024-01-25 17:31:40', NULL),
-(3, 'saleh', 'R. Saleh', '$2y$10$ALx0qLP10kq2GclpCUZq/.5ByWZf48qGlTL9OW0QVmKUZxt7iP3PS', 1, 1, '2024-01-25 10:32:12', '2024-01-25 17:32:12', NULL);
+(3, 'saleh', 'R. Saleh', '$2y$10$ALx0qLP10kq2GclpCUZq/.5ByWZf48qGlTL9OW0QVmKUZxt7iP3PS', 1, 1, '2024-01-25 10:32:12', '2024-01-25 17:32:12', NULL),
+(6, 'perbendaharaan', 'Bidang Perbendaharaan', '$2y$10$BYn/jrCXblCx8Qmgnsn0Lu0ekH9TepGb.mE761uyfq5AYPA4hoBHa', 1, 6, '2024-02-22 04:03:50', '2024-02-22 11:03:50', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `eselons`
+-- Indexes for table `eselons`
 --
 ALTER TABLE `eselons`
   ADD PRIMARY KEY (`eselon_id`);
 
 --
--- Indeks untuk tabel `jenisperjadins`
+-- Indexes for table `jenisperjadins`
 --
 ALTER TABLE `jenisperjadins`
   ADD PRIMARY KEY (`jenisperjadin_id`);
 
 --
--- Indeks untuk tabel `laporjadins`
+-- Indexes for table `laporjadins`
 --
 ALTER TABLE `laporjadins`
   ADD PRIMARY KEY (`laporjadin_id`),
   ADD KEY `FKlaporjadinsptid` (`laporjadin_sptid`);
 
 --
--- Indeks untuk tabel `lokasiperjadins`
+-- Indexes for table `lokasiperjadins`
 --
 ALTER TABLE `lokasiperjadins`
   ADD PRIMARY KEY (`lokasiperjadin_id`),
   ADD KEY `fkjenisperjadinlokasi` (`jenisperjadin_id`);
 
 --
--- Indeks untuk tabel `menus`
+-- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`menu_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pangkats`
+-- Indexes for table `pangkats`
 --
 ALTER TABLE `pangkats`
   ADD PRIMARY KEY (`pangkat_id`);
 
 --
--- Indeks untuk tabel `pegawais`
+-- Indexes for table `pegawais`
 --
 ALTER TABLE `pegawais`
-  ADD PRIMARY KEY (`pegawai_id`);
+  ADD PRIMARY KEY (`pegawai_id`),
+  ADD KEY `pegawaieselonidFK` (`eselon_id`),
+  ADD KEY `pegawaipangkatidFK` (`pangkat_id`),
+  ADD KEY `pegawaitingkatidFK` (`pegawai_tingkat`);
 
 --
--- Indeks untuk tabel `pejabats`
+-- Indexes for table `pejabats`
 --
 ALTER TABLE `pejabats`
   ADD PRIMARY KEY (`pejabat_id`);
 
 --
--- Indeks untuk tabel `pelaksanas`
+-- Indexes for table `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
   ADD PRIMARY KEY (`pelaksana_id`),
-  ADD UNIQUE KEY `uniqkey` (`spt_id`,`pegawai_id`),
-  ADD KEY `my_fk_pelaksanapegawai` (`pegawai_id`);
+  ADD UNIQUE KEY `uniqkey` (`spt_id`,`pegawai_id`);
 
 --
--- Indeks untuk tabel `perbups`
+-- Indexes for table `perbups`
 --
 ALTER TABLE `perbups`
   ADD PRIMARY KEY (`perbup_id`),
@@ -1308,7 +1326,7 @@ ALTER TABLE `perbups`
   ADD KEY `perbuplokasiidFK` (`perbup_lokasiid`);
 
 --
--- Indeks untuk tabel `rolemenus`
+-- Indexes for table `rolemenus`
 --
 ALTER TABLE `rolemenus`
   ADD PRIMARY KEY (`rolemenu_id`),
@@ -1317,54 +1335,54 @@ ALTER TABLE `rolemenus`
   ADD KEY `submenuidroleFK` (`submenu_id`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- Indeks untuk tabel `spjhotels`
+-- Indexes for table `spjhotels`
 --
 ALTER TABLE `spjhotels`
   ADD PRIMARY KEY (`spjhotel_id`),
   ADD KEY `FKspjhotelpelaksanaid` (`spjhotel_pelaksanaid`);
 
 --
--- Indeks untuk tabel `spjpesawats`
+-- Indexes for table `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
   ADD PRIMARY KEY (`spjpesawat_id`),
   ADD KEY `FKspjpesawatpelaksanaid` (`spjpesawat_pelaksanaid`);
 
 --
--- Indeks untuk tabel `spjtaksis`
+-- Indexes for table `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
   ADD PRIMARY KEY (`spjtaksi_id`),
   ADD KEY `FKspjtaksipelaksanaid` (`spjtaksi_pelaksanaid`);
 
 --
--- Indeks untuk tabel `spts`
+-- Indexes for table `spts`
 --
 ALTER TABLE `spts`
   ADD PRIMARY KEY (`spt_id`),
   ADD KEY `FKpejabatpemberitugas` (`spt_pjb_tugas`);
 
 --
--- Indeks untuk tabel `submenus`
+-- Indexes for table `submenus`
 --
 ALTER TABLE `submenus`
   ADD PRIMARY KEY (`submenu_id`),
   ADD KEY `menuidFK` (`menu_id`);
 
 --
--- Indeks untuk tabel `tingkats`
+-- Indexes for table `tingkats`
 --
 ALTER TABLE `tingkats`
   ADD PRIMARY KEY (`tingkat_id`);
 
 --
--- Indeks untuk tabel `uangharians`
+-- Indexes for table `uangharians`
 --
 ALTER TABLE `uangharians`
   ADD PRIMARY KEY (`uangharian_id`),
@@ -1374,141 +1392,157 @@ ALTER TABLE `uangharians`
   ADD KEY `uangharianpsptidFK` (`uangharian_sptid`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `roleidFK` (`user_roleid`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `eselons`
+-- AUTO_INCREMENT for table `eselons`
 --
 ALTER TABLE `eselons`
   MODIFY `eselon_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `jenisperjadins`
+-- AUTO_INCREMENT for table `jenisperjadins`
 --
 ALTER TABLE `jenisperjadins`
   MODIFY `jenisperjadin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `laporjadins`
+-- AUTO_INCREMENT for table `laporjadins`
 --
 ALTER TABLE `laporjadins`
-  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `lokasiperjadins`
+-- AUTO_INCREMENT for table `lokasiperjadins`
 --
 ALTER TABLE `lokasiperjadins`
   MODIFY `lokasiperjadin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT untuk tabel `menus`
+-- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `menu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT untuk tabel `pangkats`
+-- AUTO_INCREMENT for table `pangkats`
 --
 ALTER TABLE `pangkats`
   MODIFY `pangkat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `pegawais`
+-- AUTO_INCREMENT for table `pegawais`
 --
 ALTER TABLE `pegawais`
   MODIFY `pegawai_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT untuk tabel `pejabats`
+-- AUTO_INCREMENT for table `pejabats`
 --
 ALTER TABLE `pejabats`
-  MODIFY `pejabat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `pejabat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `pelaksanas`
+-- AUTO_INCREMENT for table `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
-  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `perbups`
+-- AUTO_INCREMENT for table `perbups`
 --
 ALTER TABLE `perbups`
   MODIFY `perbup_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=466;
 
 --
--- AUTO_INCREMENT untuk tabel `rolemenus`
+-- AUTO_INCREMENT for table `rolemenus`
 --
 ALTER TABLE `rolemenus`
-  MODIFY `rolemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `rolemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `role_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `spjhotels`
+-- AUTO_INCREMENT for table `spjhotels`
 --
 ALTER TABLE `spjhotels`
-  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `spjpesawats`
+-- AUTO_INCREMENT for table `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
-  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `spjtaksis`
+-- AUTO_INCREMENT for table `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
-  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `spts`
+-- AUTO_INCREMENT for table `spts`
 --
 ALTER TABLE `spts`
-  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `submenus`
+-- AUTO_INCREMENT for table `submenus`
 --
 ALTER TABLE `submenus`
   MODIFY `submenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `tingkats`
+-- AUTO_INCREMENT for table `tingkats`
 --
 ALTER TABLE `tingkats`
   MODIFY `tingkat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `uangharians`
+-- AUTO_INCREMENT for table `uangharians`
 --
 ALTER TABLE `uangharians`
-  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `pelaksanas`
+--
+ALTER TABLE `pelaksanas`
+  ADD CONSTRAINT `myfkpelaksanaspt` FOREIGN KEY (`spt_id`) REFERENCES `spts` (`spt_id`);
+
+--
+-- Constraints for table `spts`
+--
+ALTER TABLE `spts`
+  ADD CONSTRAINT `FKpejabatpemberitugas` FOREIGN KEY (`spt_pjb_tugas`) REFERENCES `pejabats` (`pejabat_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
