@@ -30,14 +30,69 @@
           <td>Surat Perintah Tugas dari : (nama kepala) Nomor : (nomor spt) Tanggal (tgl spt)</td>
         </tr>
         <tr>
-          <td>2.</td>
+          <td>3.</td>
           <td>Surat Perintah Tugas dari : (nama kepala) Nomor : (nomor spt) Tanggal (tgl spt)</td>
         </tr>
         <tr>
-          <td>2.</td>
+          <td>4.</td>
           <td>Surat Perintah Tugas dari : (nama kepala) Nomor : (nomor spt) Tanggal (tgl spt)</td>
         </tr>
-
+        <tr>
+          <td>II.</td>
+          <td>Maksud Perjalanan Dinas</td>
+          <td>:</td>
+          <td>-</td>
+          <td>Berita</td>
+        </tr>
+        <tr>
+          <td>III.</td>
+          <td>Dinas/ Instansi yang dikunjungi</td>
+          <td>:</td>
+          <td>-</td>
+          <td>Berita</td>
+        </tr>
+        <tr>
+          <td>IV.</td>
+          <td>Waktu Pelaksanaan</td>
+          <td>:</td>
+          <td>-</td>
+          <td>Berita</td>
+        </tr>
+        <tr>
+          <td>V.</td>
+          <td>Hasil</td>
+          <td>:</td>
+          <td>-</td>
+          <td>Berita</td>
+        </tr>
+        <tr>
+          <td>VI.</td>
+          <td>Penutup</td>
+          <td>:</td>
+          <td>-</td>
+          <td>Berita</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>tgl</td>
+          <td>Yang Membuat</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>1.</td>
+          <td>Nama</td>
+          <td>................................</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>2.</td>
+          <td>Nama</td>
+          <td>................................</td>
+        </tr>
       </table>
     </h5>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
