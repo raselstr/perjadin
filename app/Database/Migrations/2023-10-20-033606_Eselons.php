@@ -12,7 +12,7 @@ class Eselons extends Migration
         $this->forge->addField([
             'eselon_id' => [
                 'type'           => 'INT',
-                'constraint'     => 20,
+                'constraint'     => 10,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],

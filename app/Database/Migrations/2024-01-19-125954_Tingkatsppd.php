@@ -11,7 +11,7 @@ class Tingkatsppd extends Migration
         $this->forge->addField([
             'tingkat_id' => [
                 'type'           => 'INT',
-                'constraint'     => 2,
+                'constraint'     => 10,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],

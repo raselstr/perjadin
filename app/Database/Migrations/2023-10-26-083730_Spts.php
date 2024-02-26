@@ -11,7 +11,7 @@ class Spts extends Migration
         $this->forge->addField([
             'spt_id' => [
                 'type' => 'BIGINT',
-                'constraint'     => 20,
+                'constraint' => 20,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
@@ -45,12 +45,10 @@ class Spts extends Migration
             ],
             'spt_dasar' => [
                 'type' => 'TEXT',
-                'constraint' => 255,
                 'null' => true,
             ],
             'spt_uraian' => [
                 'type' => 'TEXT',
-                'constraint' => 255,
             ],
             'spt_lama' => [
                 'type' => 'INT',

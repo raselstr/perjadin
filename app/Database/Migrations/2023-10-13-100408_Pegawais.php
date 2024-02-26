@@ -27,17 +27,24 @@ class Pegawais extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'pegawai_tgllahir' => [
+                'type' => 'DATE',
+                'default' => null,
+            ],
             'eselon_id' => [
                 'type' => 'INT',
-                'constraint' => 2,
+                'constraint' => 10,
+                'unsigned' => true,
             ],
             'pangkat_id' => [
                 'type' => 'INT',
-                'constraint' => 2,
+                'constraint' => 10,
+                'unsigned' => true,
             ],
             'pegawai_tingkat' => [
                 'type' => 'INT',
-                'constraint' => 2,
+                'constraint' => 10,
+                'unsigned' => true,
             ],
             'pegawai_foto' => [
                 'type' => 'VARCHAR',

@@ -12,7 +12,7 @@ class Pangkat extends Migration
         $this->forge->addField([
             'pangkat_id' => [
                 'type'           => 'INT',
-                'constraint'     => 20,
+                'constraint'     => 10,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
