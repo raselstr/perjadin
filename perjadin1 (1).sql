@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Generation Time: Feb 26, 2024 at 04:59 AM
+-- Generation Time: Feb 26, 2024 at 06:08 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -84,6 +84,13 @@ CREATE TABLE `laporjadins` (
   `laporjadin_updated_at` datetime DEFAULT NULL,
   `laporjadin_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laporjadins`
+--
+
+INSERT INTO `laporjadins` (`laporjadin_id`, `laporjadin_sptid`, `laporjadin_nodpa`, `laporjadin_pembuka`, `laporjadin_hasil`, `laporjadin_penutup`, `laporjadin_foto1`, `laporjadin_foto2`, `laporjadin_foto3`, `laporjadin_verif`, `laporjadin_created_at`, `laporjadin_updated_at`, `laporjadin_deleted_at`) VALUES
+(1, 4, '-', '<p>Acara Rekonsiliasi dibuka Oleh Kepala Bidang GTK Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi RI</p>', '<p>Rekon berlangsung mulai pukul 09.00 wib pada tanggal 21 Pebruari 2024</p><p>Pemerintah Kabupaten Asahan telah melaksanakan Rekonsiliasi Data pada pukul 11.00 wib dan diterima oleh pewakilan Kementerian Pendidikan, dan data sudah dianggap benar, begitu juga saat melakukan rekonsiliasi realisasi penyerapan pada perwakilan kementerin Keungan, bahwa realisasi sudah dianggap benar.</p>', '<p>Acara penutupan tidak dilakukan</p>', '1708923084_21f2b2472f2bcb7601ce.jpg', '1708923084_f95145a3a6bfebd1c1b0.jpg', '1708923084_a7b741c399ef1973c298.jpg', 0, '2024-02-26 11:50:03', '2024-02-26 11:51:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -424,17 +431,6 @@ CREATE TABLE `pelaksanas` (
 --
 
 INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_utama`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 0),
-(4, 2, 6, 1),
-(5, 2, 30, 0),
-(6, 2, 15, 0),
-(7, 2, 8, 0),
-(8, 2, 31, 0),
-(9, 2, 29, 0),
-(10, 3, 12, 1),
-(11, 3, 14, 0),
-(12, 3, 38, 0),
 (13, 4, 30, 1),
 (14, 5, 6, 1),
 (15, 5, 30, 0);
@@ -1030,13 +1026,6 @@ CREATE TABLE `spjhotels` (
   `spjhotel_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `spjhotels`
---
-
-INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`, `spjhotel_lokasi`, `spjhotel_nokamar`, `spjhotel_typekamar`, `spjhotel_checkin`, `spjhotel_checkout`, `spjhotel_mlm`, `spjhotel_hargapermalam`, `spjhotel_hargatotal`, `spjhotel_verif`, `spjhotel_bill`, `spjhotel_created_at`, `spjhotel_updated_at`, `spjhotel_deleted_at`) VALUES
-(1, 4, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-02-16', '2024-02-17', 1, 992000, 297600, 1, '', '2024-02-19 17:23:25', '2024-02-19 17:23:25', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -1062,6 +1051,14 @@ CREATE TABLE `spjpesawats` (
   `spjpesawat_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `spjpesawats`
+--
+
+INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawat_jenis`, `spjpesawat_maskapai`, `spjpesawat_notiket`, `spjpesawat_kdboking`, `spjpesawat_tgl`, `spjpesawat_dari`, `spjpesawat_ke`, `spjpesawat_harga`, `spjpesawat_verif`, `spjpesawat_fototiket`, `spjpesawat_bill`, `spjpesawat_created_at`, `spjpesawat_updated_at`, `spjpesawat_deleted_at`) VALUES
+(1, 13, 'Berangkat', 'Citilink', '-', 'MHM1TQ', '2024-02-20', 'Bandara Kualanamu', 'Bandara Hang Nadim', 1317097, 0, '1708921782_04c2319594635a02ce60.jpg', '1708921782_244b24f62d2a9415d8b3.pdf', '2024-02-26 11:23:16', '2024-02-26 11:29:42', NULL),
+(2, 13, 'Kembali', 'Citilink', '-', 'IBPCPS', '2024-02-22', 'Bandara Hang Nadim', 'Bandara Kualanmu', 1021246, 0, '1708921986_82e87cf913279f7d1923.jpg', '1708921986_9dfb77b3777f4b585190.pdf', '2024-02-26 11:32:25', '2024-02-26 11:33:06', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1082,6 +1079,16 @@ CREATE TABLE `spjtaksis` (
   `spjtaksi_updated_at` datetime DEFAULT NULL,
   `spjtaksi_deleted_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `spjtaksis`
+--
+
+INSERT INTO `spjtaksis` (`spjtaksi_id`, `spjtaksi_pelaksanaid`, `spjtaksi_jenis`, `spjtaksi_tgl`, `spjtaksi_dari`, `spjtaksi_ke`, `spjtaksi_harga`, `spjtaksi_verif`, `spjtaksi_fototiket`, `spjtaksi_created_at`, `spjtaksi_updated_at`, `spjtaksi_deleted_at`) VALUES
+(1, 13, 'Berangkat', '2024-02-20', 'Kisaran', 'Bndara Kualanamu', 140000, 0, '1708922187_6e3aa43f094bf6558fb4.jpg', '2024-02-26 11:35:18', '2024-02-26 11:36:27', NULL),
+(2, 13, 'Berangkat', '2024-02-20', 'Bandara Hang Nadim', 'Hotel Golden View', 200000, 0, '1708922283_78a4a89f37f9d2c812f8.jpg', '2024-02-26 11:37:05', '2024-02-26 11:38:03', NULL),
+(3, 13, 'Kembali', '2024-02-22', 'Hotel', 'Bandara Hwng Nadim', 200000, 0, '1708922370_da549a7a32e41b56c6e8.jpg', '2024-02-26 11:38:35', '2024-02-26 11:39:30', NULL),
+(4, 13, 'Kembali', '2024-02-22', 'Bandara Kualanamu', 'Kisaran', 140000, 0, '1708922509_9c69fca1e7b94d28fc19.jpg', '2024-02-26 11:41:14', '2024-02-26 11:41:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -1117,11 +1124,8 @@ CREATE TABLE `spts` (
 --
 
 INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`, `spt_pjb_tugas`, `spt_jenis`, `spt_acara`, `spt_dasar`, `spt_uraian`, `spt_lama`, `spt_mulai`, `spt_berakhir`, `spt_tujuan`, `spt_transport`, `spt_tempat`, `spt_verif`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2024, '0001/SPT', '0001/SPD', '2024-02-16', 1, 1, 0, '', 'Perjalan dinas ke BKAD', 3, '2024-02-16', '2024-02-18', 27, 'Mobil Dinas', 'fgdf', 1, '2024-02-16 14:59:20', '2024-02-16 19:50:29', NULL),
-(2, 2024, '0002/SPT', '0002/SPD', '2024-02-16', 1, 2, 0, '', 'Konsultasi SIPD', 2, '2024-02-16', '2024-02-17', 49, 'Pesawat Udara', 'Kemendagri', 1, '2024-02-16 20:22:21', '2024-02-16 21:53:47', NULL),
-(3, 2024, '0003/SPT', '0003/SPD', '2024-02-16', 2, 3, 0, '', 'Rekonsiliasi Data Aset', 1, '2024-02-16', '2024-02-16', 84, 'Mobil Dinas', 'SDN Mandoge', 1, '2024-02-16 21:56:46', '2024-02-16 21:58:49', NULL),
 (4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-19', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL),
-(5, 2024, NULL, NULL, NULL, 1, 2, 0, '', 'Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 20', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 0, '2024-02-22 23:05:45', '2024-02-22 23:21:56', NULL);
+(5, 2024, NULL, NULL, NULL, 1, 2, 0, '', ' Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 2024, serta interkoneksi SIPD Penatausahaan dengan Bank Daerah sebgaimana surat Sekretaris Daerah No. 900.1.15.9/0545/UM-BKAD/II/2024 Tanggal 02 Pebruari 2024 Perihal Permohonan Pendampingan Penggunaan Aplikasi SIPD Penatausahaan', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 0, '2024-02-22 23:05:45', '2024-02-26 11:18:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -1211,13 +1215,6 @@ CREATE TABLE `uangharians` (
   `uangharian_total` double NOT NULL,
   `uangharian_verif` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `uangharians`
---
-
-INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharian_sptid`, `uangharian_tingkatid`, `uangharian_lokasiid`, `uangharian_lama`, `uangharian_perhari`, `uangharian_jumlahpersen`, `uangharian_jumlah`, `uangharian_biayatransport`, `uangharian_jumlahbiayatransport`, `uangharian_representasi`, `uangharian_jumlahrepresentasi`, `uangharian_sewamobil`, `uangharian_jumlahsewamobil`, `uangharian_total`, `uangharian_verif`) VALUES
-(2, 13, 4, 4, 39, 3, 370000, '30%', 333000, 0, 0, 0, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1418,7 +1415,7 @@ ALTER TABLE `jenisperjadins`
 -- AUTO_INCREMENT for table `laporjadins`
 --
 ALTER TABLE `laporjadins`
-  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lokasiperjadins`
@@ -1490,13 +1487,13 @@ ALTER TABLE `spjhotels`
 -- AUTO_INCREMENT for table `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
-  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
-  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `spts`
