@@ -172,16 +172,8 @@
             <div class="card-body">
               <!-- <p>One fine body&hellip;</p> membuat lambang titik titik-->
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" hidden>Id spjhotel</label>
-                  <div class="col">
                     <input type="text" class="form-control" id="spjhotel_id" name="spjhotel_id" hidden>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-sm-4 col-form-label" hidden>Id Pelaksana</label>
-                  <div class="col">
                     <input type="text" class="form-control" id="spjhotel_pelaksanaid" name="spjhotel_pelaksanaid" hidden>
-                  </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Nama Hotel</label>
@@ -319,7 +311,7 @@
 
   <!-- Modal Foto -->
     <div class="modal fade" id="modalfoto" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog">
+      <div class="modal-dialog  modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Foto Tiket</h4>
@@ -379,7 +371,7 @@
 
   <!-- Modal Scan Bill -->
     <div class="modal fade" id="modalscan" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog">
+      <div class="modal-dialog  modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Scan Bill</h4>
@@ -483,8 +475,8 @@
               'src': imageUrl,
               'alt': 'Deskripsi Gambar',
               'width': '100%',
-              'height': '200'
-            });
+              'height': '600'
+            }).addClass('img-fluid');
 
           $('#tampilfoto').html(linkhotel);
         });
@@ -510,7 +502,7 @@
               'src': imageUrl,
               'title': 'Deskripsi bill',
               'width': '100%',
-              'height': '200',
+              'height': '600',
               'style' : 'border:none;'
             });
 

@@ -134,7 +134,6 @@ class SpjHotel extends ResourcePresenter
                 ],
             ]);
 
-            $lamabill = file_exists (FCPATH. 'image/hotel/bill/'.$scanbilllama);
             if($idhotel == null) {
                 $errors = [
                     'errors' => true,
@@ -145,15 +144,16 @@ class SpjHotel extends ResourcePresenter
                 return $this->response->setJSON($errors);
             } else {
             if(!$valid) {
-
+                
                 $errors = [
-                        'errors' => true,
-                        'messages' => $validation->getErrors(),
-                    ];
+                    'errors' => true,
+                    'messages' => $validation->getErrors(),
+                ];
                 return $this->response->setJSON($errors);
-                }
+            }
             }
             
+            $lamabill = file_exists (FCPATH. 'image/hotel/bill/'.$scanbilllama) ? $scanbilllama : null;
             $namascan = $scan->getRandomName();
             $data['spjhotel_bill'] = $namascan;
             

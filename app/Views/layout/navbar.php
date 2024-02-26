@@ -20,32 +20,25 @@
                 <span class="description"><?= session('role') ?></span>
         </div>
       </li>
-      
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <div class="user-panel ">
-            <div class="image "><img src="<?= base_url('images/logo.jpeg'); ?>" class="img-circle" alt="User Image"></div>
-          </div>
-          <div class="dropdown-menu dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">Informasi dan Data Profil</span>
-            <!-- <div class="dropdown-divider"></div> -->
-            <a href="<?= site_url('/'); ?>" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i> Profil
-              <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
-            </a>
-            <a href="<?= site_url('logout'); ?>" class="dropdown-item">
-              <i class="fas fa-sign-out-alt mr-2"></i> Keluar
-              <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
-            </a>
-          </div>
+      <li class="nav-item dropdown user-menu">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+          <img src="<?= base_url('images/logo.png'); ?>" class="user-image img-circle " alt="User Image">
         </a>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <!-- User image -->
+          <li class="user-header bg-primary">
+            <img src="<?= base_url('images/logo.png'); ?>" class="elevation-2" alt="User Image">
+
+            <p>
+              <?= session('nama') ?>
+              <small><?= session('role') ?></small>
+            </p>
+          </li>
+          <li class="user-footer">
+            <a href="<?= site_url('/'); ?>" class="btn btn-default btn-flat">Profile</a>
+            <a href="<?= site_url('logout'); ?>" class="btn btn-default btn-flat float-right">Keluar</a>
+          </li>
+        </ul>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li> -->
     </ul>
-
-
   </nav>

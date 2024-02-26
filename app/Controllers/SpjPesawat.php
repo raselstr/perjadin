@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Config\Services;
 use App\Models\SpjPesawatModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -141,8 +142,6 @@ class SpjPesawat extends ResourcePresenter
                 ],
             ]);
 
-            $lamafoto = file_exists(FCPATH. 'image/pesawat/tiket/'. $fototiketlama);
-            $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama);
             if($idpesawat == null) {
                 $errors = [
                     'errors' => true,
@@ -153,15 +152,17 @@ class SpjPesawat extends ResourcePresenter
                 return $this->response->setJSON($errors);
             } else {
             if(!$valid) {
-
+                
                 $errors = [
-                        'errors' => true,
-                        'messages' => $validation->getErrors(),
-                    ];
+                    'errors' => true,
+                    'messages' => $validation->getErrors(),
+                ];
                 return $this->response->setJSON($errors);
-                }
+            }
             }
 
+            $lamafoto = file_exists(FCPATH. 'image/pesawat/tiket/'. $fototiketlama) ? $fototiketlama : null;
+            $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama);
             
             
             $namafoto = $foto->getRandomName();
@@ -171,16 +172,35 @@ class SpjPesawat extends ResourcePresenter
             $namascan = $scan->getRandomName();
             $data['spjpesawat_bill'] = $namascan;
             
-            
+            $image = Services::image('gd');
+
             $save = $spjpesawat->save($data);
             if($save) {
                 if($fototiketlama == null){
-                    if($lamafoto == false) {
-                        $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
+                    if($lamafoto == null) {
+                        $imagePath1 = $foto;
+                        $image->withFile($imagePath1);
+                        $image->resize(600, 400, true);
+                        $image->quality(70);
+
+                        $image->save(FCPATH . 'image/pesawat/tiket/'. $namafoto);
+                        // $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
                     } 
                 } else {
-                    if($lamafoto) {
-                        $foto->move(FCPATH . 'image/pesawat/tiket', $namafoto);
+                    if($lamafoto == null) {
+                        $imagePath1 = $foto;
+                        $image->withFile($imagePath1);
+                        $image->resize(600, 400, true);
+                        $image->quality(70);
+
+                        $image->save(FCPATH . 'image/pesawat/tiket/'. $namafoto);
+                    } else {
+                         $imagePath1 = $foto;
+                        $image->withFile($imagePath1);
+                        $image->resize(600, 400, true);
+                        $image->quality(70);
+
+                        $image->save(FCPATH . 'image/pesawat/tiket/'. $namafoto);
                         unlink(FCPATH . 'image/pesawat/tiket/' . $fototiketlama);
                     } 
                 }

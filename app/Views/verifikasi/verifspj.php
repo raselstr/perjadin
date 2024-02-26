@@ -317,7 +317,7 @@ $model = new RampungModel();
                                       <td><?=$no++;?>.</td>
                                       <td>Boarding Tiket <?=$value->spjpesawat_jenis;?></td>
                                       <td>
-                                        <img src="<?=base_url('image/pesawat/tiket/' . $value->spjpesawat_fototiket)?>" width="100%" height="200" style="border:1px solid #666;">
+                                        <img src="<?=base_url('image/pesawat/tiket/' . $value->spjpesawat_fototiket)?>" width="100%" height="50%" style="border:1px solid #666;" class="img-fluid">
                                       </td>
                                     </tr>
                                     <tr>
@@ -388,7 +388,7 @@ $model = new RampungModel();
                                     <td><?=$no++;?>.</td>
                                     <td>Tiket <?=$value->spjtaksi_jenis;?></td>
                                     <td>
-                                      <img src="<?=base_url('image/taksi/tiket/' . $value->spjtaksi_fototiket)?>" width="100%" height="200" style="border:1px solid #666;">
+                                      <img src="<?=base_url('image/taksi/tiket/' . $value->spjtaksi_fototiket)?>" width="100%" height="200" style="border:1px solid #666;" class="img-fluid">
                                     </td>
                                   </tr>
                                   <?php endforeach?>
