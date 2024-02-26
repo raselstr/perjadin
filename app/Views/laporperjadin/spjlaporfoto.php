@@ -151,6 +151,7 @@
               </div>
               <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
               <?php endif ?>
+              <a href="<?= site_url('laporjadin/lapor/'.$data[0]->spt_id); ?>" type="button" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-print"> </i>   Cetak</a>
               <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
             </div>
           </form>
