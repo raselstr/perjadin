@@ -10,10 +10,11 @@
     <h5>
       <table class="table table-bordered border-black">
         <tr>
-          <td colspan="5">I.</td>
+          <td colspan="5">LAPORAN PERJALANAN DINAS</td>
         </tr>
         <tr>
-          <td colspan="5">judul</td>
+          <td colspan="5">Ke <?= $data[0]->spt_tempat; ?> di <?= $data[0]->lokasiperjadin_nama; ?> 
+          dalam rangka <?= $data[0]->spt_uraian; ?></td>
         </tr>
         <tr>
           <td colspan="5">&nbsp;</td>
@@ -23,11 +24,11 @@
           <td rowspan="4">Dasar Pelaksanaan</td>
           <td rowspan="4">:</td>
           <td>1.</td>
-          <td>Dokumen Pelaksanaan Kegiatan - DPA TA. ......... Nomor : ................</td>
+          <td>Dokumen Pelaksanaan Kegiatan <?= $data[0]->laporjadin_nodpa; ?> </td>
         </tr>
         <tr>
           <td>2.</td>
-          <td>Surat Perintah Tugas dari : (nama kepala) Nomor : (nomor spt) Tanggal (tgl spt)</td>
+          <td>Surat Perintah Tugas dari : <?= $data[0]->pejabat_nama; ?> Nomor : <?= $data[0]->spt_nomor; ?> Tanggal <?= $data[0]->spt_tgl; ?></td>
         </tr>
         <tr>
           <td>3.</td>
