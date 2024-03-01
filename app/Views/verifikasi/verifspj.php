@@ -423,23 +423,27 @@ $model = new RampungModel();
                                         <input type="text" class="form-control" id="uangharian_lama" name="uangharian_lama" value = <?=$value->spt_lama?>  readonly>
                                       </div>
                                     </div>
-                                    <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id);?>
-                                    <?php foreach ($qrperbup as $key => $harian): ?>
+
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label">Uang Harian Perhari</label>
                                       <div class="col-sm-2">
-                                          <?php if ($harian->spt_acara == 1) {
-                                                $harian = $harian->perbup_uhdiklat;
-                                            } elseif ($harian->spt_acara == 2) {
-                                                $harian = $harian->perbup_uhrapat_fullboad;
-                                            } elseif ($harian->spt_acara == 3) {
-                                                $harian = $harian->perbup_uhrapat_fullday;
-                                            } elseif ($harian->spt_acara == 4) {
-                                                $harian = $harian->perbup_uhrapat_residencedlmkota;
-                                            } else {
-                                                $harian = $harian->perbup_uh;
-                                            }?>
-                                        <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$uh[0]->uangharian_id == null ? $harian : $uh[0]->uangharian_perhari?> readonly>
+                                        <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id);?>
+                                          <?php foreach ($qrperbup as $key => $harian): ?>
+                                            <?php if ($harian->spt_acara == 1) {
+                                                  $harian = $harian->perbup_uhdiklat;
+                                              } elseif ($harian->spt_acara == 2) {
+                                                  $harian = $harian->perbup_uhrapat_fullboad;
+                                              } elseif ($harian->spt_acara == 3) {
+                                                  $harian = $harian->perbup_uhrapat_fullday;
+                                              } elseif ($harian->spt_acara == 4) {
+                                                  $harian = $harian->perbup_uhrapat_residencedlmkota;
+                                              } elseif ($harian->spt_acara == 0) {
+                                                  $harian = $harian->perbup_uh;
+                                              } else {
+                                                  $harian = 0;
+                                              }?>
+                                          <?php endforeach?>
+                                          <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$uh[0]->uangharian_id == null ? $harian : $uh[0]->uangharian_perhari?> readonly>
                                       </div>
                                       <div class="col-sm-1">
                                         <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="<?=$uh[0]->uangharian_id == null ? "100%" : $uh[0]->uangharian_jumlahpersen?>">
@@ -450,6 +454,7 @@ $model = new RampungModel();
                                         <input type="text" class="form-control align-middle text-right" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=$uh[0]->uangharian_id == null ? intval($value->spt_lama) * intval($harian) : $uh[0]->uangharian_jumlah?> readonly>
                                       </div>
                                     </div>
+
                                     <div class="form-group row">
                                       <label class="col-sm-4 col-form-label" >Pengganti Biaya Transport</label>
                                       <div class="col-sm-4">
@@ -499,7 +504,6 @@ $model = new RampungModel();
                                         <input type="text" class="form-control align-middle text-right" id="uangharian_jumlahsewamobil" name="uangharian_jumlahsewamobil" value = <?=intval($value->spt_lama) * intval($sewa)?>  readonly>
                                       </div>
                                     </div>
-                                    <?php endforeach?>
                                     <div class="row">
                                       <div class="col">
                                         <?php if ($uh[0]->uangharian_verif == null): ?>

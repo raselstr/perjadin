@@ -40,6 +40,15 @@ class Uangharian extends Migration
             'uangharian_jumlah' => [
                 'type'       => 'DOUBLE',
             ],
+            'uangharian_harianundangan' => [
+                'type'       => 'DOUBLE',
+            ],
+            'uangharian_hariundangan' => [
+                'type'       => 'INT',
+            ],
+            'uangharian_jlhharianundangan' => [
+                'type'       => 'DOUBLE',
+            ],
             'uangharian_biayatransport' => [
                 'type'       => 'DOUBLE',
             ],
