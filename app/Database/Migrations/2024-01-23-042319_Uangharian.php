@@ -11,21 +11,26 @@ class Uangharian extends Migration
         $this->forge->addField([
             'uangharian_id' => [
                 'type'           => 'INT',
-                'constraint'     => 20,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'uangharian_idpelaksana' => [
-                'type'       => 'INT',
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'uangharian_sptid' => [
-                'type'       => 'INT',
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'uangharian_tingkatid' => [
-                'type'       => 'INT',
+                'type'           => 'INT',
+                'unsigned'       => true,
             ],
             'uangharian_lokasiid' => [
-                'type'       => 'INT',
+                'type'           => 'INT',
+                'unsigned'       => true,
             ],
             'uangharian_lama' => [
                 'type'       => 'INT',
@@ -33,9 +38,12 @@ class Uangharian extends Migration
             'uangharian_perhari' => [
                 'type'       => 'DOUBLE',
             ],
+            'uangharian_jlhhari' => [
+                'type'       => 'INT',
+            ],
             'uangharian_jumlahpersen' => [
                 'type'       => 'VARCHAR',
-                'constraint'     => 10,
+                'constraint' => 10,
             ],
             'uangharian_jumlah' => [
                 'type'       => 'DOUBLE',

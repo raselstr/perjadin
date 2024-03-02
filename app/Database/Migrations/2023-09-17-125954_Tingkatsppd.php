@@ -11,17 +11,16 @@ class Tingkatsppd extends Migration
         $this->forge->addField([
             'tingkat_id' => [
                 'type'           => 'INT',
-                'constraint'     => 10,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'tingkat_nama' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '60',
+                'constraint' => 60,
             ],
             'tingkat_uraian' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => 100,
             ],
             
         ]);

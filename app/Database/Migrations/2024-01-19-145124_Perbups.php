@@ -16,10 +16,12 @@ class Perbups extends Migration
                 'auto_increment' => true,
             ],
             'perbup_tingkatid' => [
-                'type'       => 'INT',
+                'type'           => 'INT',
+                'unsigned'       => true,
             ],
             'perbup_lokasiid' => [
-                'type'       => 'INT',
+                'type'           => 'INT',
+                'unsigned'       => true,
             ],
             'perbup_kota' => [
                 'type'       => 'VARCHAR',

@@ -16,7 +16,9 @@ class Laporjadin extends Migration
                 'auto_increment'    => true, 
             ],   
             'laporjadin_sptid' => [
-                'type'          => 'BIGINT',
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'laporjadin_nodpa' => [
                 'type'          => 'VARCHAR',

@@ -11,7 +11,6 @@ class Pejabat extends Migration
         $this->forge->addField([
             'pejabat_id' => [
                 'type'              => 'BIGINT',
-                'constraint'        => 20,
                 'unsigned'          => true,
                 'auto_increment'    => true, 
             ],

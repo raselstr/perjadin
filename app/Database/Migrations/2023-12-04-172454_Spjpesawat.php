@@ -16,8 +16,9 @@ class Spjpesawat extends Migration
                 'auto_increment'     => true, 
             ],   
             'spjpesawat_pelaksanaid' => [
-                'type'              => 'INT',
-                'unsigned'          => true,
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'spjpesawat_jenis'      => [
                 'type'              => 'VARCHAR',

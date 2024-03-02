@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class TingkatModel extends Model
 {
-    protected $DBGroup          = 'default';
+    // protected $DBGroup          = 'default';
     protected $table            = 'tingkats';
     protected $primaryKey       = 'tingkat_id';
     protected $useAutoIncrement = true;

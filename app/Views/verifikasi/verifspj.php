@@ -418,45 +418,75 @@ $model = new RampungModel();
                                       </div>
                                     </div>
                                     <div class="form-group row">
-                                      <label class="col-sm-4 col-form-label" >Lama Perjalanan (Hari)</label>
+                                      <label class="col-sm-3 col-form-label" >Lama Perjalanan (Hari)</label>
                                       <div class="col">
                                         <input type="text" class="form-control" id="uangharian_lama" name="uangharian_lama" value = <?=$value->spt_lama?>  readonly>
                                       </div>
                                     </div>
+                                    <div class="form-group row">
+                                      <label class="col-sm-3 col-form-label">Uang Harian Perhari sesuai Undangan</label>
+                                      <div class="col-sm-2">
+                                        <?php 
+                                            $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id) ;
+                                            $harianund = 0;
+                                            $harian = 0;
+                                            foreach ($qrperbup as $key => $perbupharianund) {
+                                                if ($perbupharianund->spt_acara == 1) {
+                                                $harianund = $perbupharianund->perbup_uhdiklat;
+                                                $harian = $perbupharianund->perbup_uh;
+
+                                                } elseif ($perbupharianund->spt_acara == 2) {
+                                                    $harianund = $perbupharianund->perbup_uhrapat_fullboad;
+                                                    $harian = $perbupharianund->perbup_uh;
+
+                                                } elseif ($perbupharianund->spt_acara == 3) {
+                                                    $harianund = $perbupharianund->perbup_uhrapat_fullday;
+                                                    $harian = $perbupharianund->perbup_uh;
+
+                                                } elseif ($perbupharianund->spt_acara == 4) {
+                                                    $harianund = $perbupharianund->perbup_uhrapat_residencedlmkota;
+                                                    $harian = $perbupharianund->perbup_uh;
+
+                                                } elseif ($perbupharianund->spt_acara == 0) {
+                                                    $harianund = 0;
+                                                    $harian = $perbupharianund->perbup_uh;
+                                              }
+                                                }
+
+                                          ?>
+
+                                          <input type="text" class="form-control align-middle text-right" id="uangharian_harianundangan" name="uangharian_harianundangan" value = "<?=$uh[0]->uangharian_id == null ? $harianund : $uh[0]->uangharian_harianundangan?>" readonly>
+                                          </div>
+                                        <div class="col-sm-1">
+                                          <input type="text" class="form-control align-middle text-center" id="uangharian_hariundangan" name="uangharian_hariundangan" value="<?=$uh[0]->uangharian_id == null ? "0" : $uh[0]->uangharian_hariundangan?>">
+                                        </div>
+                                        <label class="col-sm col-form-label align-middle text-left">jumlah hari dibayar</label>
+                                        <label class="col col-form-label align-middle text-right">Jumlah</label>
+                                        <div class="col-sm-2">
+                                          <input type="text" class="form-control align-middle text-right" id="uangharian_jlhharianundangan" name="uangharian_jlhharianundangan" value="<?=$uh[0]->uangharian_id == null ? "0" : $uh[0]->uangharian_jlhharianundangan?>" readonly>
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Uang Harian Perhari</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$uh[0]->uangharian_id == null ? $harian : $uh[0]->uangharian_perhari?> readonly>
+                                        </div>
+                                        <div class="col-sm-1">
+                                          <input type="text" class="form-control align-middle text-center" id="uangharian_jlhhari" name="uangharian_jlhhari" value="<?= $value->spt_lama ?>" readonly>
+                                        </div>
+                                        <div class="col-sm-1">
+                                          <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="<?=$uh[0]->uangharian_id == null ? "100%" : $uh[0]->uangharian_jumlahpersen?>">
+                                        </div>
+                                        <label class="col-sm col-form-label align-middle text-left">% Pembayaran</label>
+                                        <label class="col col-form-label align-middle text-right">Jumlah</label>
+                                        <div class="col-sm-2">
+                                          <input type="text" class="form-control align-middle text-right" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=$uh[0]->uangharian_id == null ? intval($value->spt_lama) * intval($harian) : $uh[0]->uangharian_jumlah?> readonly>
+                                        </div>
+                                      </div>
+                                    
 
                                     <div class="form-group row">
-                                      <label class="col-sm-4 col-form-label">Uang Harian Perhari</label>
-                                      <div class="col-sm-2">
-                                        <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->pelaksana_id);?>
-                                          <?php foreach ($qrperbup as $key => $harian): ?>
-                                            <?php if ($harian->spt_acara == 1) {
-                                                  $harian = $harian->perbup_uhdiklat;
-                                              } elseif ($harian->spt_acara == 2) {
-                                                  $harian = $harian->perbup_uhrapat_fullboad;
-                                              } elseif ($harian->spt_acara == 3) {
-                                                  $harian = $harian->perbup_uhrapat_fullday;
-                                              } elseif ($harian->spt_acara == 4) {
-                                                  $harian = $harian->perbup_uhrapat_residencedlmkota;
-                                              } elseif ($harian->spt_acara == 0) {
-                                                  $harian = $harian->perbup_uh;
-                                              } else {
-                                                  $harian = 0;
-                                              }?>
-                                          <?php endforeach?>
-                                          <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$uh[0]->uangharian_id == null ? $harian : $uh[0]->uangharian_perhari?> readonly>
-                                      </div>
-                                      <div class="col-sm-1">
-                                        <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="<?=$uh[0]->uangharian_id == null ? "100%" : $uh[0]->uangharian_jumlahpersen?>">
-                                      </div>
-                                      <label class="col-sm col-form-label align-middle text-left">% Pembayaran</label>
-                                      <label class="col col-form-label align-middle text-right">Jumlah</label>
-                                      <div class="col-sm-2">
-                                        <input type="text" class="form-control align-middle text-right" id="uangharian_jumlah" name="uangharian_jumlah" value = <?=$uh[0]->uangharian_id == null ? intval($value->spt_lama) * intval($harian) : $uh[0]->uangharian_jumlah?> readonly>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                      <label class="col-sm-4 col-form-label" >Pengganti Biaya Transport</label>
+                                      <label class="col-sm-3 col-form-label" >Pengganti Biaya Transport</label>
                                       <div class="col-sm-4">
                                         <?php if ($value->spt_jenis == 1) {
                                                   foreach ($qrperbup as $key => $transport) {
@@ -475,7 +505,7 @@ $model = new RampungModel();
                                       </div>
                                     </div>
                                     <div class="form-group row">
-                                      <label class="col-sm-4 col-form-label" >Uang Representasi</label>
+                                      <label class="col-sm-3 col-form-label" >Uang Representasi</label>
                                       <div class="col-sm-4">
                                         <?php
                                           foreach ($qrperbup as $key => $representasi) {
@@ -490,7 +520,7 @@ $model = new RampungModel();
                                       </div>
                                     </div>
                                     <div class="form-group row">
-                                      <label class="col-sm-4 col-form-label" >Sewa Mobil Per 8 Jam</label>
+                                      <label class="col-sm-3 col-form-label" >Sewa Mobil Per 8 Jam</label>
                                       <div class="col-sm-4">
                                         <?php
                                             foreach ($qrperbup as $key => $sewa) {
@@ -507,7 +537,7 @@ $model = new RampungModel();
                                     <div class="row">
                                       <div class="col">
                                         <?php if ($uh[0]->uangharian_verif == null): ?>
-                                          <button type="submit" class="btn bg-gradient-danger float-right tmblverifuh">Belum di Verifikasi</button>
+                                          <button type="submit" class="btn bg-gradient-warning float-right tmblverifuh">Simpan dan Verifikasi</button>
                                           <?php else: ?>
                                             <button type="submit" class="btn bg-gradient-primary float-right" disabled>Sudah di Verifikasi</button>
                                           <?php endif?>
@@ -522,7 +552,7 @@ $model = new RampungModel();
                 </div>
               </div>
             <div class="card-footer">
-              <a href="<?=site_url('verifikasi/form/' . $value->spt_id);?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
+              <a href="<?=site_url('verifikasi/form/' . $value->spt_id);?>" type="button" class="btn bg-gradient-primary float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
             </div>
           </div>
         </div>
@@ -890,20 +920,28 @@ $model = new RampungModel();
   <!-- End Script Edit dan SImpan SPJ Tiket Taksi -->
 
   <script>
-    $(document).ready(function() {
-      function myFunction() {
-        var uangharian = parseInt($("#uangharian_perhari").val());
-        var jlhhari = parseInt($("#uangharian_lama").val());
-        var persenbayar = parseFloat($("#uangharian_jumlahpersen").val())/100;
-        var totalbayar = uangharian * jlhhari * persenbayar;
-        $('#uangharian_jumlah').val(totalbayar);
-      }
-      // Panggil myFunction() saat nilai #spt_lama atau #spt_mulai berubah
-      $("#uangharian_jumlahpersen").change(function() {
-        myFunction();
-      });
+  $(document).ready(function() {
+    function myFunction() {
+      var harianundangan = parseInt($("#uangharian_harianundangan").val());
+      var hariundangan = parseInt($("#uangharian_hariundangan").val());
+      var uangharian = parseInt($("#uangharian_perhari").val());
+      var jlhhari = parseInt($("#uangharian_lama").val());
+      var persenbayar = parseFloat($("#uangharian_jumlahpersen").val()) / 100;
+      var jlhharianunda = harianundangan * hariundangan;
+      var jlhharinonundangan = jlhhari - hariundangan;
+      var totalbayar = uangharian * jlhharinonundangan * persenbayar;
+      $("#uangharian_jlhhari").val(jlhharinonundangan);
+      $("#uangharian_jlhharianundangan").val(jlhharianunda);
+      $('#uangharian_jumlah').val(totalbayar);
+    }
+
+    // Panggil myFunction() saat nilai #uangharian_jumlahpersen atau #uangharian_hariundangan berubah
+    $("#uangharian_jumlahpersen, #uangharian_hariundangan").change(function() {
+      myFunction();
     });
-  </script>
+  });
+</script>
+
 
 
 <?=$this->endSection()?>

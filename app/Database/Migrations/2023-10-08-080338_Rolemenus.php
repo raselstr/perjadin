@@ -12,18 +12,20 @@ class Rolemenus extends Migration
         $this->forge->addField([
             'rolemenu_id' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'role_id' => [
                 'type'       => 'BIGINT',
+                'unsigned'       => true,
             ],
             'menu_id' => [
                 'type'          => 'BIGINT',
+                'unsigned'       => true,
             ],
             'submenu_id' => [
                 'type'          => 'BIGINT',
+                'unsigned'       => true,
             ],
             'lihat' => [
                 'type'          => 'ENUM',
@@ -48,9 +50,9 @@ class Rolemenus extends Migration
             
         ]);
         $this->forge->addKey('rolemenu_id', true);
-        $this->forge->addForeignKey('role_id', 'roles', 'role_id','','','roleidmenuFK');
-        $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','','','menuidroleFK');
-        $this->forge->addForeignKey('submenu_id', 'submenus', 'submenu_id','','','submenuidroleFK');
+        $this->forge->addForeignKey('role_id', 'roles', 'role_id','CASCADE','CASCADE','roleidmenuFK');
+        $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','CASCADE','CASCADE','menuidroleFK');
+        $this->forge->addForeignKey('submenu_id', 'submenus', 'submenu_id','CASCADE','CASCADE','submenuidroleFK');
 
         $this->forge->createTable('rolemenus');
     }

@@ -12,24 +12,24 @@ class Submenus extends Migration
         $this->forge->addField([
             'submenu_id' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'menu_id' => [
-                'type' => 'INT',
+                'type' => 'BIGINT',
+                'unsigned'       => true,
             ],
             'submenu_nama' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '60',
+                'constraint' => 60,
             ],
             'submenu_icon' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '60',
+                'constraint' => 60,
             ],
             'submenu_link' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '60',
+                'constraint' => 60,
             ],
             'submenu_active' => [
                 'type' => 'INT',
@@ -42,7 +42,7 @@ class Submenus extends Migration
             
         ]);
         $this->forge->addKey('submenu_id', true);
-        $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','','','menuidFK');
+        $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','cascade','cascade','menuidFK');
         $this->forge->createTable('submenus');
     }
 

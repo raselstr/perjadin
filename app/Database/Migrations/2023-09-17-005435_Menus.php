@@ -12,7 +12,6 @@ class Menus extends Migration
         $this->forge->addField([
             'menu_id' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],

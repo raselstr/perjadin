@@ -11,14 +11,13 @@ class Lokasiperjadin extends Migration
         $this->forge->addField([
             'lokasiperjadin_id' => [
                 'type'           => 'INT',
-                'constraint'     => 4,
                 'unsigned'       => true,
                 'auto_increment' => true,
 
             ],
             'jenisperjadin_id' => [
                 'type'          => 'INT',
-                'constraint'    => 4,
+                'unsigned'       => true,
             ],
             'lokasiperjadin_nama' => [
                 'type'          => 'VARCHAR',

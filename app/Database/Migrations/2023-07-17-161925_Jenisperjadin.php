@@ -11,7 +11,6 @@ class Jenisperjadin extends Migration
         $this->forge->addField([
             'jenisperjadin_id' => [
                 'type'           => 'INT',
-                'constraint'     => 4,
                 'unsigned'       => true,
                 'auto_increment' => true,
 

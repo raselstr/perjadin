@@ -5,30 +5,36 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\RawSql;
 use CodeIgniter\Database\Migration;
 
-class Eselons extends Migration
+class Pangkat extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'eselon_id' => [
+            'pangkat_id' => [
                 'type'           => 'INT',
-                'constraint'     => 10,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'eselon_nama' => [
+            'pangkat_nama' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '100'
             ],
-            
+            'pangkat_gol' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '100'
+            ],
+            'pangkat_pajak' => [
+                'type'          => 'FLOAT',
+            ],
+           
         ]);
-        $this->forge->addKey('eselon_id', true);
+        $this->forge->addKey('pangkat_id', true);
 
-        $this->forge->createTable('eselons');
+        $this->forge->createTable('pangkats');
     }
 
     public function down()
     {
-        $this->forge->dropTable('eselons');
+        $this->forge->dropTable('pangkats');
     }
 }

@@ -12,13 +12,12 @@ class Roles extends Migration
         $this->forge->addField([
             'role_id' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'role_nama' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '60',
+                'constraint' => 60,
             ],
             
         ]);

@@ -16,8 +16,9 @@ class SpjTaksi extends Migration
                 'auto_increment'     => true, 
             ],   
             'spjtaksi_pelaksanaid' => [
-                'type'              => 'INT',
-                'unsigned'          => true,
+                'type' => 'BIGINT',
+                'constraint' => 20,
+                'unsigned' => true,
             ],
             'spjtaksi_jenis'      => [
                 'type'              => 'VARCHAR',
