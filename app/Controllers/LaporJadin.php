@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Config\Services;
 use App\Models\SptModel;
 use App\Models\LaporjadinModel;
+use App\Models\PelaksanaModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class LaporJadin extends ResourcePresenter
@@ -210,12 +211,15 @@ class LaporJadin extends ResourcePresenter
     public function lapor($id)
     {
         $model = new LaporjadinModel();
+        $modelpelaksana = new PelaksanaModel();
         $query = $model->datasptid($id);
+        $qrpelaksana = $modelpelaksana->datapelaksanatotal($id);
 
         $data = [
             'title' => 'Laporan Perjalanan Dinas',
             'subtitle' => 'Home',
             'data' => $query,
+            'pelaksana' => $qrpelaksana,
         ];
         // dd($data);
         return view('laporperjadin/laporanjadin', $data);

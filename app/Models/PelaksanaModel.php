@@ -58,6 +58,25 @@ class PelaksanaModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+    function datapelaksanatotal($id=null)
+    {
+        // dd($subquery);
+        $builder = $this->db->table('pelaksanas');
+        $builder->select('*');
+        $builder->join('spts','spts.spt_id = pelaksanas.spt_id');
+        $builder->join('pegawais','pegawais.pegawai_id = pelaksanas.pegawai_id');
+        $builder->join('pejabats','pejabats.pejabat_id = spts.spt_pjb_tugas');
+        $builder->join('pangkats','pangkats.pangkat_id = pegawais.pangkat_id');
+        $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
+        $builder->where('pelaksanas.spt_id',$id);
+        $builder->orderBy('pangkats.pangkat_id', 'DESC');
+        $query = $builder->get();
+        $result = [
+            'data' => $query->getResult(),
+            'jumlah' => $query->getNumRows(),
+        ];
+        return $result;
+    }
     function datapelaksana($id=null)
     {   
         $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')
