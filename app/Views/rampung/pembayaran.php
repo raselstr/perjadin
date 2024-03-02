@@ -131,15 +131,21 @@
                           <?php $qrharian = $model->rampungharian($pelaksana_id);?>
                           <td rowspan="9"><?= $no++; ?></td>
                           <td style="width:23%" rowspan="9"><i><?= $value->pegawai_nama; ?><br>NIP. <?= $value->pegawai_nip; ?></i></td>
-                          <td colspan="2" style="width:20%">Uang Harian <?= $qrharian[0]->uangharian_jumlahpersen; ?></td>
+                          <td colspan="2" style="width:20%">
+                            Uang Harian <?= $qrharian[0]->uangharian_jlhhari; ?> hari ( <?= $qrharian[0]->uangharian_jumlahpersen; ?> )<br>
+                            Uang Harian Sesuai Undangan selama <?= $qrharian[0]->uangharian_hariundangan; ?> hari
+                          </td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
-                            <?php $totharian = 0;
+                            <?php $totharian1 = 0;
+                            $totharian2 = 0;
                               foreach ($qrharian as $key => $harians): ?>
-                              <i><?=$value->spt_lama?> hari x Rp. <?= $harian = number_format($harians->uangharian_perhari,0,',','.'); $totharian = $harians->uangharian_jumlah?></i><br>
+                              <i><?=$harians->uangharian_jlhhari?> hari x Rp. <?= $harian = number_format($harians->uangharian_perhari,0,',','.'); $totharian1 = $harians->uangharian_jumlah?></i><br>
+                              <i><?=$harians->uangharian_hariundangan?> hari x Rp. <?= $harian = number_format($harians->uangharian_harianundangan,0,',','.'); $totharian2 = $harians->uangharian_jlhharianundangan?></i>
                               <?php endforeach?>
                             </td>
                             <td class="align-middle text-right">
-                              <?= number_format($totharian,2,',','.'); ?>
+                              <?= number_format($totharian1,2,',','.'); ?><br>
+                              <?= number_format($totharian2,2,',','.'); ?>
                             </td>
                           <td class="align-top text-right" rowspan="9"><strong></strong></td>
                         </tr>

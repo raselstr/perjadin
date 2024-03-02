@@ -51,7 +51,6 @@ class Rolemenus extends Migration
         ]);
         $this->forge->addKey('rolemenu_id', true);
         $this->forge->addForeignKey('role_id', 'roles', 'role_id','CASCADE','CASCADE','roleidmenuFK');
-        $this->forge->addForeignKey('menu_id', 'menus', 'menu_id','CASCADE','CASCADE','menuidroleFK');
         $this->forge->addForeignKey('submenu_id', 'submenus', 'submenu_id','CASCADE','CASCADE','submenuidroleFK');
 
         $this->forge->createTable('rolemenus');
@@ -60,7 +59,6 @@ class Rolemenus extends Migration
     public function down()
     {
         $this->forge->dropForeignKey('rolemenus','roleidmenuFK');
-        $this->forge->dropForeignKey('rolemenus','menuidroleFK');
         $this->forge->dropForeignKey('rolemenus','submenuidroleFK');
 
         $this->forge->dropTable('rolemenus');

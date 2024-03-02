@@ -317,17 +317,19 @@ class Verifikasi extends ResourcePresenter
     {
         $uangharian = new UangHarianModel();
         $data = $this->request->getPost();
-        
+        // dd($data);
         $saved = $uangharian->save($data);
         if ($saved) {
                 $pesan = [
                     'error' => false,
-                    'messages' => 'Data berhasil disimpan ke database.'
+                    'messages' => 'Data berhasil disimpan ke database.',
+                    'data' => $data,
                 ];
             } else {
                 $pesan = [
                     'error' => true,
-                    'messages' => 'Gagal menyimpan data ke database.'
+                    'messages' => 'Gagal menyimpan data ke database.',
+                    'data' => $data,
                 ];
             }
 

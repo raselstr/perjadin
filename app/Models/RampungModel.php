@@ -249,6 +249,11 @@ class RampungModel extends Model
                     ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
                     ->where('a.spt_id',$idspt)
                     ->where('h.uangharian_verif','1');
+        $squdangan = $this->db->table('uangharians as h')
+                    ->select('a.spt_id, a.pelaksana_id, h.uangharian_id, h.uangharian_jlhharianundangan')
+                    ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
+                    ->where('a.spt_id',$idspt)
+                    ->where('h.uangharian_verif','1');
         $sqtrans = $this->db->table('uangharians as h')
                     ->select('a.spt_id, a.pelaksana_id, h.uangharian_id, h.uangharian_jumlahbiayatransport')
                     ->join('pelaksanas as a', 'a.pelaksana_id = h.uangharian_idpelaksana')
@@ -268,6 +273,7 @@ class RampungModel extends Model
         $sqhotel->unionAll($sqtaksi, 'Taksi');
         $sqhotel->unionAll($sqpesawat, 'Pesawat');
         $sqhotel->unionAll($sqharian, 'harian');
+        $sqhotel->unionAll($squdangan, 'undangan');
         $sqhotel->unionAll($sqtrans, 'transport');
         $sqhotel->unionAll($sqrep, 'representasi');
         $sqhotel->unionAll($sqsewa, 'sewa');

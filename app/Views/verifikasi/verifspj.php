@@ -406,7 +406,7 @@ $model = new RampungModel();
                             <?php $qrperbup = $model->rampungperbup($value->spt_id, $value->lokasiperjadin_id);?>
                               <form action="<?=site_url('verifikasi/verifuangharian');?>" method="post" id="formharian">
                                 <?=csrf_field();?>
-                                  <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?=$uh[0]->uangharian_id?>" >
+                                  <input type="text" class="form-control" id="uangharian_id" name="uangharian_id" value="<?=$uh[0]->uangharian_id?>" hidden>
                                   <input type="text" class="form-control" id="uangharian_idpelaksana" name="uangharian_idpelaksana" value = <?=$value->pelaksana_id;?> hidden>
                                   <input type="text" class="form-control" id="uangharian_sptid" name="uangharian_sptid" value = <?=$value->spt_id;?> hidden>
                                   <input type="text" class="form-control" id="uangharian_tingkatid" name="uangharian_tingkatid" value = <?=$value->pegawai_tingkat;?> hidden>
@@ -472,7 +472,7 @@ $model = new RampungModel();
                                             <input type="text" class="form-control align-middle text-right" id="uangharian_perhari" name="uangharian_perhari" value = <?=$uh[0]->uangharian_id == null ? $harian : $uh[0]->uangharian_perhari?> readonly>
                                         </div>
                                         <div class="col-sm-1">
-                                          <input type="text" class="form-control align-middle text-center" id="uangharian_jlhhari" name="uangharian_jlhhari" value="<?= $value->spt_lama ?>" readonly>
+                                          <input type="text" class="form-control align-middle text-center" id="uangharian_jlhhari" name="uangharian_jlhhari" value="<?=$uh[0]->uangharian_id == null ? $value->spt_lama : $uh[0]->uangharian_jlhhari?>" readonly>
                                         </div>
                                         <div class="col-sm-1">
                                           <input type="text" class="form-control align-middle text-center" id="uangharian_jumlahpersen" name="uangharian_jumlahpersen" value="<?=$uh[0]->uangharian_id == null ? "100%" : $uh[0]->uangharian_jumlahpersen?>">
@@ -539,7 +539,7 @@ $model = new RampungModel();
                                         <?php if ($uh[0]->uangharian_verif == null): ?>
                                           <button type="submit" class="btn bg-gradient-warning float-right tmblverifuh">Simpan dan Verifikasi</button>
                                           <?php else: ?>
-                                            <button type="submit" class="btn bg-gradient-primary float-right" disabled>Sudah di Verifikasi</button>
+                                            <button type="submit" class="btn bg-gradient-primary float-right" >Sudah di Verifikasi</button>
                                           <?php endif?>
                                       </div>
                                     </div>
@@ -827,6 +827,7 @@ $model = new RampungModel();
     </script>
   <!-- End Script Validasi Tiket taksi -->
 
+<!-- Uang Harian -->
   <script>
     $(document).ready(function(){
       $('#formharian').submit(function(e){
@@ -872,7 +873,7 @@ $model = new RampungModel();
 
   </script>
 
-
+<!-- hotel 30% -->
   <script>
     $(document).ready(function(){
       $('#formhotel30').submit(function(e){

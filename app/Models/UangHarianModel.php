@@ -6,20 +6,21 @@ use CodeIgniter\Model;
 
 class UangHarianModel extends Model
 {
-    protected $DBGroup          = 'default';
-    protected $table            = 'uangharians';
-    protected $primaryKey       = 'uangharian_id';
+    protected $DBGroup = 'default';
+    protected $table = 'uangharians';
+    protected $primaryKey = 'uangharian_id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [
+    protected $returnType = 'object';
+    protected $useSoftDeletes = false;
+    protected $protectFields = true;
+    protected $allowedFields = [
         'uangharian_idpelaksana',
         'uangharian_sptid',
         'uangharian_tingkatid',
         'uangharian_lokasiid',
         'uangharian_lama',
         'uangharian_perhari',
+        'uangharian_jlhhari',
         'uangharian_jumlahpersen',
         'uangharian_jumlah',
         'uangharian_harianundangan',
@@ -37,27 +38,27 @@ class UangHarianModel extends Model
 
     // Dates
     protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
+    protected $validationRules = [];
+    protected $validationMessages = [];
+    protected $skipValidation = false;
     protected $cleanValidationRules = true;
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $beforeInsert = [];
+    protected $afterInsert = [];
+    protected $beforeUpdate = [];
+    protected $afterUpdate = [];
+    protected $beforeFind = [];
+    protected $afterFind = [];
+    protected $beforeDelete = [];
+    protected $afterDelete = [];
 
     public function cariid($id)
     {
@@ -67,7 +68,7 @@ class UangHarianModel extends Model
         $builder->where('b.pelaksana_id', $id);
         $query = $builder->get();
         $result = $query->getResult();
-            
+
         return $result;
     }
 }
