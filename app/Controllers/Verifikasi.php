@@ -215,29 +215,29 @@ class Verifikasi extends ResourcePresenter
         //
     }
 
-    // public function verif()
-    // {
-    //     $model = new LaporjadinModel();
-    //     if ($this->request->isAJAX()) {
-    //         $data = $this->request->getPost();
+    public function verif()
+    {
+        $model = new LaporjadinModel();
+        if ($this->request->isAJAX()) {
+            $data = $this->request->getPost();
 
-    //         $saved = $model->save($data);
+            $saved = $model->save($data);
 
-    //         if ($saved) {
-    //             $pesan = [
-    //                 'error' => false,
-    //                 'messages' => 'Data berhasil disimpan ke database.'
-    //             ];
-    //         } else {
-    //             $pesan = [
-    //                 'error' => true,
-    //                 'messages' => 'Gagal menyimpan data ke database.'
-    //             ];
-    //         }
+            if ($saved) {
+                $pesan = [
+                    'error' => false,
+                    'messages' => 'Data berhasil disimpan ke database.'
+                ];
+            } else {
+                $pesan = [
+                    'error' => true,
+                    'messages' => 'Gagal menyimpan data ke database.'
+                ];
+            }
 
-    //         return $this->response->setJSON($pesan);
-    //     } 
-    // }
+            return $this->response->setJSON($pesan);
+        } 
+    }
 
 
     public function verifpesawat()

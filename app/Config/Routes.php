@@ -64,10 +64,10 @@ $routes->get('laporjadin/lapor/(:num)','LaporJadin::lapor/$1');
 $routes->get('laporjadin/form/(:num)','LaporJadin::form/$1');
 $routes->get('laporjadin/formupload/(:num)','LaporJadin::formupload/$1');
 $routes->post('laporjadin/upload','LaporJadin::upload');
-$routes->post('laporjadin/verif','LaporJadin::verif');
 $routes->presenter('laporjadin');
 
 
+$routes->post('verifikasi/verif','Verifikasi::verif');
 $routes->post('verifikasi/verifuangharian', 'Verifikasi::verifuangharian');
 $routes->post('verifikasi/veriftaksi', 'Verifikasi::veriftaksi');
 $routes->post('verifikasi/verifhotel', 'Verifikasi::verifhotel');

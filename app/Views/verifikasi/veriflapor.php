@@ -219,7 +219,7 @@
           <div class="modal-header">
             <h4 class="modal-title">Verifikasi</h4>
           </div>
-          <form action="<?= site_url('laporjadin/verif'); ?>" method="post" id="formverif">
+          <form action="<?= site_url('verifikasi/verif'); ?>" method="post" id="formverif">
             <?php csrf_field() ?>
               <div class="modal-body">
                 <div class="text-center">
@@ -264,7 +264,8 @@
         $('#formverif').submit(function(e){
           e.preventDefault();
           var dataverif = new FormData(this);
-          
+          console . log(dataverif);
+
           $.ajax({
             type: "post",
             url: $(this).attr('action'),
