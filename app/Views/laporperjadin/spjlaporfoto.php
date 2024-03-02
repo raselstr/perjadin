@@ -149,7 +149,11 @@
                     </div>
                   </div>
               </div>
-              <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
+              <button id="submitBtn" type="submit" class="btn bg-gradient-primary float-sm-right">
+                  <i id="saveIcon" class="fas fa-save"></i>
+                  <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                  Simpan Laporan
+              </button>
               <?php endif ?>
               <a href="<?= site_url('laporjadin/lapor/'.$data[0]->spt_id); ?>" target="_blank" type="button" class="btn bg-gradient-warning float-sm-right"><i class="fas fa-print"> </i>   Cetak </a>
               <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
@@ -225,6 +229,20 @@
 <?=$this->endSection()?>
 
 <?=$this->section('script')?>
+<!-- animasi spiner -->
+  <script>
+    $(document).ready(function() {
+        $('#submitBtn').click(function() {
+            $('#saveIcon').addClass('d-none');
+            $('#spinner').removeClass('d-none');
+
+            setTimeout(function() {
+                $('#saveIcon').removeClass('d-none');
+                $('#spinner').addClass('d-none');
+            }, 5000);
+        });
+    });
+  </script>
   <script>
     $(function () {
       // Summernote

@@ -713,12 +713,12 @@
             processData: false,
             contentType: false,
             beforeSend:function(){
-                  $('.simpanpesawat').attr('disabled', 'disabled');
-                  $('.simpanpesawat').html('<i class="fa fa-spin fa-spinner"></i>');
+                  $('.simpanupload').attr('disabled', 'disabled');
+                  $('.simpanupload').html('<i class="fa fa-spin fa-spinner"></i>');
               },
               complete: function(){
-                  $('.simpanpesawat').removeAttr('disabled');
-                  $('.simpanpesawat').html('Simpan');
+                  $('.simpanupload').removeAttr('disabled');
+                  $('.simpanupload').html('Simpan');
               },
             success: function (response) {
               console.log(response);

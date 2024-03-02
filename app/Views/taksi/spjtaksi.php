@@ -590,12 +590,12 @@
             processData: false,
             contentType: false,
             beforeSend:function(){
-                  $('.simpantaksi').attr('disabled', 'disabled');
-                  $('.simpantaksi').html('<i class="fa fa-spin fa-spinner"></i>');
+                  $('.simpanupload').attr('disabled', 'disabled');
+                  $('.simpanupload').html('<i class="fa fa-spin fa-spinner"></i>');
               },
               complete: function(){
-                  $('.simpantaksi').removeAttr('disabled');
-                  $('.simpantaksi').html('Simpan');
+                  $('.simpanupload').removeAttr('disabled');
+                  $('.simpanupload').html('Simpan');
               },
             success: function (response) {
               console.log(response);

@@ -695,12 +695,12 @@
             processData: false,
             contentType: false,
             beforeSend:function(){
-                  $('.simpanhotel').attr('disabled', 'disabled');
-                  $('.simpanhotel').html('<i class="fa fa-spin fa-spinner"></i>');
+                  $('.simpanupload').attr('disabled', 'disabled');
+                  $('.simpanupload').html('<i class="fa fa-spin fa-spinner"></i>');
               },
               complete: function(){
-                  $('.simpanhotel').removeAttr('disabled');
-                  $('.simpanhotel').html('Simpan');
+                  $('.simpanupload').removeAttr('disabled');
+                  $('.simpanupload').html('Simpan');
               },
             success: function (response) {
               console.log(response);
