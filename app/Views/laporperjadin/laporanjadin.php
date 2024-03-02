@@ -127,7 +127,7 @@ foreach ($pelaksana["data"] as $key => $value): ?>
                       <!-- /.card-header -->
                       <div class="card-body">
                         <div class="row mt-4">
-                          <div class="col-sm-4">
+                          <div class="col-sm-4 d-flex align-items-center justify-content-center">
                             <div class="position-relative">
                               <img src="<?=base_url('image/dokuemtasi/' . $data[0]->laporjadin_foto1)?>" alt="Photo 1" class="img-fluid">
                               <div class="ribbon-wrapper ribbon-xl">
@@ -137,9 +137,9 @@ foreach ($pelaksana["data"] as $key => $value): ?>
                               </div>
                             </div>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-sm-4 d-flex align-items-center justify-content-center">
                             <div class="position-relative">
-                              <img src="<?=base_url('image/dokuemtasi/' . $data[0]->laporjadin_foto2)?>" alt="Photo 2" class="img-fluid">
+                              <img src="<?=base_url('image/dokuemtasi/' . $data[0]->laporjadin_foto2)?>" alt="Photo 2" class="img-fluid ">
                               <div class="ribbon-wrapper ribbon-xl">
                                 <div class="ribbon bg-warning text-lg">
                                   Dokumentasi 2
@@ -147,7 +147,7 @@ foreach ($pelaksana["data"] as $key => $value): ?>
                               </div>
                             </div>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-sm-4 d-flex align-items-center justify-content-center">
                             <div class="position-relative" style="min-height: 180px;">
                               <img src="<?=base_url('image/dokuemtasi/' . $data[0]->laporjadin_foto3)?>" alt="Photo 3" class="img-fluid">
                               <div class="ribbon-wrapper ribbon-xl">
