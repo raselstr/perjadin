@@ -70,7 +70,7 @@ class AuthModel extends Model
                             c.role_id, 
                             c.role_nama
                             ');
-        $builder->join('submenus AS b', 'a.menu_id = b.menu_id', 'LEFT');
+        $builder->join('submenus AS b', 'a.menu_id = b.menu_id');
         $builder->join('rolemenus AS d', 'b.submenu_id = d.submenu_id', 'LEFT');
         $builder->join('roles AS c', 'c.role_id = d.role_id', 'LEFT');
         $builder->where('b.submenu_active',1);
