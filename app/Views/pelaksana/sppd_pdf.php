@@ -185,10 +185,10 @@ table.tabel3.author {
       <td></td>
       <td>Nomor&nbsp;&nbsp; </td>
       <td colspan="2">
-        <?php if(empty($spt[0]->sppd_nomor)) : ?>
-          : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/2024
+        <?php if(empty($spt['data'][0]->sppd_nomor)) : ?>
+          : 800.1.11.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/SPD/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<?= session('tahun'); ?>
           <?php else : ?>
-            : <?= $spt[0]->sppd_nomor; ?>
+            : <?= $spt['data'][0]->sppd_nomor; ?>
             <?php endif ?>
           </td>
         </tr>

@@ -243,7 +243,7 @@ class Pelaksana extends ResourcePresenter
             'jlhpengikut'   => $cek,
             'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt['data'][0]->spt_lama))
         ];
-        // dd($data);
+        dd($data);
         return view('pelaksana/sppd_pdf', $data);
         // $html = view('pelaksana/sppd_pdf', $data);
         
