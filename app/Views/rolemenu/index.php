@@ -86,7 +86,11 @@
                   <tr>
                       <td class="align-middle text-center"><?= $no++; ?></td>
                       <td class="align-middle text-center">
-                        <a href="<?= site_url('rolemenu/remove/'.$value->rolemenu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                        <?php if(session('role') == 'Admin') : ?>
+                          <a href="<?= site_url('rolemenu/remove/'.$value->rolemenu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                        <?php else : ?>
+                          <i>Admin</i>
+                        <?php endif ?>
                       </td>
                       <td><?= $value->role_nama; ?></td>
                       <td><?= $value->submenu_nama; ?></td>

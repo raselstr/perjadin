@@ -87,8 +87,12 @@
                       <?php $no=1; foreach ($pengguna as $key => $value) : ?>
                       <tr>
                           <td><?= $no++; ?></td>
-                          <td>
-                            <a href="<?= site_url('user/remove/'.$value->user_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                          <td class="align-middle text-center">
+                            <?php if(session('role') == 'Admin') : ?>
+                              <a href="<?= site_url('user/remove/'.$value->user_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                            <?php else : ?>
+                              <i>Admin</i>
+                              <?php endif ?>
                           </td>
                           <td class="align-middle text-center">
                             <input type="checkbox" name="menu_active" value="<?= $value->user_id; ?>" class="status-checkbox" <?= $value->user_active == 1 ? "checked" : null; ?> data-toggle="switchbutton" data-onlabel="Aktif" data-offlabel="Tidak  ." data-onstyle="success" data-offstyle="danger" data-size="sm">

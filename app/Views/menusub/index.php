@@ -82,9 +82,11 @@
                   <tr>
                       <td class="align-middle text-center"><?= $no++; ?></td>
                       <td class="align-middle text-center">
-                        <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-submenuid=<?= $value->submenu_id; ?>><i class="fas fa-pen"> </i></button>
                         <?php if(session('role') == "Admin") : ?>
+                          <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-submenuid=<?= $value->submenu_id; ?>><i class="fas fa-pen"> </i></button>
                           <a href="<?= site_url('menusub/remove/'.$value->submenu_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                          <?php else : ?>
+                            <i>Admin</i>
                         <?php endif ?>
                       </td>
                       <td class="align-middle text-center">

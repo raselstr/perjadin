@@ -78,7 +78,9 @@
                           <td class="align-middle text-center"><?= $no++; ?></td>
                           <td class="align-middle text-center">
                             <button type="button" class="btn bg-gradient-info btn-sm" id="tbledit" data-toggle="modal" data-target="#form" data-roleid=<?= $value->role_id; ?>><i class="fas fa-pen"> </i></button>
-                            <a href="<?= site_url('role/remove/'.$value->role_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                            <?php if(session('role') == 'Admin') : ?>
+                              <a href="<?= site_url('role/remove/'.$value->role_id); ?>" type="button" class="btn bg-gradient-danger btn-sm"><i class="fas fa-trash"> </i></a>
+                            <?php endif ?>  
                           </td>
                           <td><a href="<?= site_url('rolemenu/show/'.$value->role_id); ?>" type="button" class="btn btn-block bg-gradient-primary btn-sm"><?= $value->role_nama; ?></a></td>
                         </tr>
