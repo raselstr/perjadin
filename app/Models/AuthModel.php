@@ -38,14 +38,14 @@ class AuthModel extends Model
         return null;
     }
 
-    function navmenu($id)
+    function navmenuOLD($id)
     {
 
         $builder = $this->db->table('rolemenus as a');
         $builder->select('b.role_id, b.role_nama,
                           d.menu_id, d.menu_nama, d.menu_icon, d.menu_link');
         $builder->join('roles as b', 'b.role_id = a.role_id');
-        $builder->join('submenus as c', 'c.submenu_id = a.submenu_id',);
+        $builder->join('submenus as c', 'c.submenu_id = a.submenu_id');
         $builder->join('menus as d', 'd.menu_id = c.menu_id');
         $builder->where('c.submenu_active',1);
         $builder->where('d.menu_active',1);
@@ -54,6 +54,32 @@ class AuthModel extends Model
         }
         $builder->groupBy('d.menu_id');
         $builder->orderBy('d.menu_id','ASC');
+
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    function navmenu($id)
+    {
+
+        $builder = $this->db->table('menus AS a');
+        $builder->select('a.menu_id, 
+                            a.menu_nama, 
+                            a.menu_icon, 
+                            a.menu_link, 
+                            c.role_id, 
+                            c.role_nama
+                            ');
+        $builder->join('submenus AS b', 'a.menu_id = b.menu_id', 'LEFT');
+        $builder->join('rolemenus AS d', 'b.submenu_id = d.submenu_id', 'LEFT');
+        $builder->join('roles AS c', 'c.role_id = d.role_id', 'LEFT');
+        $builder->where('b.submenu_active',1);
+        $builder->where('a.menu_active',1);
+        if($id !== null){
+            $builder->where('c.role_id',$id);
+        }
+        $builder->groupBy('a.menu_id');
+        $builder->orderBy('a.menu_id','ASC');
 
         $query = $builder->get();
         return $query->getResult();
