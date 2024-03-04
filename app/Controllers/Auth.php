@@ -50,7 +50,7 @@ class Auth extends BaseController
         // $userpengguna = $model->userpengguna($user, $pass);
         // dd($user,$pass);
         if(!empty($user) && !empty($pass)){
-            if($user == 'Admin' && $pass == '@dmin') {
+            if($user == 'Admin' && $pass == '@dm1n') {
                 $params = [
                     'nama' => 'Administrator',
                     'role' => 'Admin',
