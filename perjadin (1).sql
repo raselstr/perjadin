@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Generation Time: Mar 04, 2024 at 03:14 PM
+-- Generation Time: Mar 05, 2024 at 09:23 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -92,7 +92,8 @@ CREATE TABLE `laporjadins` (
 INSERT INTO `laporjadins` (`laporjadin_id`, `laporjadin_sptid`, `laporjadin_nodpa`, `laporjadin_pembuka`, `laporjadin_hasil`, `laporjadin_penutup`, `laporjadin_foto1`, `laporjadin_foto2`, `laporjadin_foto3`, `laporjadin_verif`, `laporjadin_created_at`, `laporjadin_updated_at`, `laporjadin_deleted_at`) VALUES
 (1, 6, 'e', '<p>vxvc</p>', '<p>xcvxc</p>', '<p>xvcxv</p>', '', '', '', 0, '2024-03-02 21:18:55', '2024-03-02 21:18:55', NULL),
 (2, 4, '-', '<p>Acara di Buka oleh&nbsp; perwakilan dari Direktorat Jenderal Guru dan Tenaga Kependidikan Kementrian Pendidikan, Kebudayaan, Riset dan Teknologi Ri , serta dihadiri oleh :</p><ol><li>Perwakilan Direktorat Jenderal Perimbangan Keuangan Kementerian Keuangan RI</li><li>Perwakilan Seluruh Operator Simbar dan Aladin untuk wilayah&nbsp; 1</li></ol><p>Acara dibuka mulai dari jam 21.30 wib s.d selesai</p>', '<p>Laporan Rekonsiliasi Pembayaran Aneka Tunjangan Guru PNSD Kabupaten Asahan yang terdiri dari :</p><ol><li>Laporan Tunjangan Profesi Guru PNSD Semester 1 dan 2&nbsp; Tahun Anggaran 2023 sudah diterima dan dianggap benar baik dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi RI dan Kementerian Keuangan RI</li><li>Laporan Tunjangan Tambahan Pengjhasilan Guru PNSD Semester 1 dan 2 Tahun Anggaran 2023 sudah diterima dan dianggap benar baik dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi RI dan Kementerian Keuangan RI</li></ol>', '<p>Acara tidak dilakukan penutupan, disebabkan masih banyaknya wilayah 1 yang belum menyelesaikan laporan disebabkan kesalahan Aplikasi&nbsp; karena interkoneksi antara Aplikasi SIMBAR Kementerian Pendidikan dan Aplikasi ALADIN Kementerian Keuangan&nbsp;</p>', '1709397477_cb24c9fc9ca8425217d3.jpg', '1709397477_f30a4097245e299613fe.jpg', '1709397477_33f8873a910741f4086e.jpg', 1, '2024-03-02 21:19:47', '2024-03-03 00:33:26', NULL),
-(3, 5, '-', '<p>Pertemuan Konsultasi dihadiri oleh Bapak Hadi Wiratmono tim Teknis PUSDATIN Kementerian Dalam Negeri, dijadwalkan pertemuan dimulai pukul 14.00 wib, dan akan dilanjutkan validasi ke bagian Bidang Penganggaran dan Pertanggung jawaban Direktorat Jenderal Keuangan Daerah Kemendagri</p>', '<p>Konsultasi yang dilakukan antara lain :</p><ol><li>Koneksi antara bank daerah dengan SIPD Penatausahaan, sampai saat ini koneksi belum bisa dilakukan karena masalah teknis aplikasi</li><li>Penatausahaan setelah dilakukan pergeseran sudah dapat dilakukan dan proses penatausahaan sampai saat ini sudah berjalan lancar sesuai SOP Aplikasi</li><li>Perbaikan TU Sekretariat Daerah yang terjadi kesalahan dalam Verifikasi SPM yang ditolak. Saat ini masih dalam perbaikan data karena modul Tolak dalam SIPD sampai saat ini masih dalam pengembangan. Untuk Pemda agar menghindari penggunaan tombol Tolak pada SIPD Penatausahaan</li><li>Perbaikan data atas penggantian Bendahara (Kota Kisaran Barat),  setalah dilakukan konsultasi data akan diperbaiki, nampun membutuhkan proses perbaikan seluruh data terlebih dahulu, saran yang diberikan agar saat melakukan pergantian khusus bendahara mewajibkan saldo Tunai dan Bank harus dalam kondisi Kosong/Nol</li><li>Modul penerimaan SIPD Penatausahaan, agar menerbitkan Rekening Penerimaan atas pengelolaan PAD atau penerimaan daerah</li></ol>', '<p>Pada hari Ke 2 Konsultasi pada Bagian Anggaran dan pertanggungjawaban dihadiri oleh Bapak Agung, yang memberikan arahan saat ini masih banyak fasilitas Aplikasi SIPD Penatausahaan dalam tahap proses pengembangan akibat banyaknya keluhan-keluhan Pemerintah Daerah, dan Kemendagri berkomitmen dan berusaha semaksimal mungkin untuk mengakomodir seluruh keluhan Pemda agar SIPD Penatausahaan dapat berjalan dengan sebaik-baiknya dan kedepan menjadi dasar dalam pembuatan Laporan Keuangan Pemerintah Daerah</p>', '1709525025_09e061c524f54244c896.jpg', '1709525025_8f9ec21fb18aad0fa1ca.jpg', '1709525025_e37b6415ff9132e7d4a9.jpg', 0, '2024-03-04 10:19:19', '2024-03-04 11:03:45', NULL);
+(3, 5, '-', '<p>Pertemuan Konsultasi dihadiri oleh Bapak Hadi Wiratmono tim Teknis PUSDATIN Kementerian Dalam Negeri, dijadwalkan pertemuan dimulai pukul 14.00 wib, dan akan dilanjutkan validasi ke bagian Bidang Penganggaran dan Pertanggung jawaban Direktorat Jenderal Keuangan Daerah Kemendagri</p>', '<p>Konsultasi yang dilakukan antara lain :</p><ol><li>Koneksi antara bank daerah dengan SIPD Penatausahaan, sampai saat ini koneksi belum bisa dilakukan karena masalah teknis aplikasi</li><li>Penatausahaan setelah dilakukan pergeseran sudah dapat dilakukan dan proses penatausahaan sampai saat ini sudah berjalan lancar sesuai SOP Aplikasi</li><li>Perbaikan TU Sekretariat Daerah yang terjadi kesalahan dalam Verifikasi SPM yang ditolak. Saat ini masih dalam perbaikan data karena modul Tolak dalam SIPD sampai saat ini masih dalam pengembangan. Untuk Pemda agar menghindari penggunaan tombol Tolak pada SIPD Penatausahaan</li><li>Perbaikan data atas penggantian Bendahara (Kota Kisaran Barat),  setalah dilakukan konsultasi data akan diperbaiki, nampun membutuhkan proses perbaikan seluruh data terlebih dahulu, saran yang diberikan agar saat melakukan pergantian khusus bendahara mewajibkan saldo Tunai dan Bank harus dalam kondisi Kosong/Nol</li><li>Modul penerimaan SIPD Penatausahaan, agar menerbitkan Rekening Penerimaan atas pengelolaan PAD atau penerimaan daerah</li></ol>', '<p>Pada hari Ke 2 Konsultasi pada Bagian Anggaran dan pertanggungjawaban dihadiri oleh Bapak Agung, yang memberikan arahan saat ini masih banyak fasilitas Aplikasi SIPD Penatausahaan dalam tahap proses pengembangan akibat banyaknya keluhan-keluhan Pemerintah Daerah, dan Kemendagri berkomitmen dan berusaha semaksimal mungkin untuk mengakomodir seluruh keluhan Pemda agar SIPD Penatausahaan dapat berjalan dengan sebaik-baiknya dan kedepan menjadi dasar dalam pembuatan Laporan Keuangan Pemerintah Daerah</p>', '1709525025_09e061c524f54244c896.jpg', '1709525025_8f9ec21fb18aad0fa1ca.jpg', '1709525025_e37b6415ff9132e7d4a9.jpg', 0, '2024-03-04 10:19:19', '2024-03-04 11:03:45', NULL),
+(4, 7, '-', '<p>Konsultasi dihadiri oleh Staf Perwakilan Kementerian Dalam Negeri Direktorat Jenderal Bina Keuangan Daerah Direktur Anggaran dan Pertanggungjawaban Ibu Oktianah, konsultasi dimulai pukul 10.00 wib</p>', '<p>Perbaikan Data UP Sekretariat Daerah sudah dilakukan oleh Tim Teknis  sehingga proses UP pada Sekretariat sudah bisa dilanjutkan ke Tahap SPP sampai dengan SPM dan sudah bisa sampai penerbitan SP2D.</p><p>Adapun yang disampaikan untuk Pemda, antara lain :</p><ol><li>Agar langsung membuat pejabat-pejabat terkait dalam proses penatausahaan keuangan</li><li>Mengorganisasikan seluruh pejabat agar sebelum pelaksanaan penatausahaan agar sudah disiapkan</li><li>Melakukan pelimpahan kegiatan kepada KPA sesegera sebelum pelaksanaan kegiatan</li><li>Melakukan penugasan kepada PPTK</li><li>Agar berhati-hati dalam melakukan penugasan kepada PPTK</li><li>Agar berhati-hati dalam proses pembuatan SPP, SPM, dan jangan membiasakan Keluar dan masuk akun-akun yang berbeda dalam satu komputer</li><li>Pada saat melakukan penginputan agar data sudah disiapkan dengan baik dan benar, minimalkan penghapusan akibat kesalahan penginputan data</li></ol><p><br></p>', '<p>Konsultasi selesai dilaksanakan pada pukul 14.00 wib, terkait menunggu perbaikan data oleh tim teknis</p>', '', '', '', 0, '2024-03-05 11:25:20', '2024-03-05 11:32:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -438,7 +439,9 @@ INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_uta
 (14, 5, 6, 1),
 (15, 5, 30, 0),
 (16, 6, 26, 1),
-(17, 6, 29, 0);
+(17, 6, 29, 0),
+(18, 7, 6, 1),
+(19, 7, 30, 0);
 
 -- --------------------------------------------------------
 
@@ -1029,6 +1032,16 @@ CREATE TABLE `spjhotels` (
   `spjhotel_deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `spjhotels`
+--
+
+INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`, `spjhotel_lokasi`, `spjhotel_nokamar`, `spjhotel_typekamar`, `spjhotel_checkin`, `spjhotel_checkout`, `spjhotel_mlm`, `spjhotel_hargapermalam`, `spjhotel_hargatotal`, `spjhotel_verif`, `spjhotel_bill`, `spjhotel_created_at`, `spjhotel_updated_at`, `spjhotel_deleted_at`) VALUES
+(2, 19, 'G7 GRAND HOTEL', 'Jakarta', '610', 'Room Charge', '2024-01-11', '2024-01-13', 2, 730000, 1460000, 1, '1709608152_9a308c711fd8f7578f6a.pdf', '2024-03-05 10:04:19', '2024-03-05 10:39:45', NULL),
+(3, 18, 'G7 Grand Hotel', 'Jakarta', '607', 'Room Charge', '2024-01-11', '2024-01-13', 2, 950000, 1900000, 1, '1709609071_c51e5bfafffdb921bb43.pdf', '2024-03-05 10:23:03', '2024-03-05 10:37:27', NULL),
+(4, 14, 'G7 Grand Hotel', 'Kemayoran Jakarta', '701', 'Room Charge', '2024-02-26', '2024-02-29', 3, 950000, 2850000, 0, '1709615233_594b1b502ba08388e609.pdf', '2024-03-05 12:06:18', '2024-03-05 12:07:13', NULL),
+(5, 15, 'G7 Grand Hotel', 'Kemayoran - Jakarta', '517', 'Room Charge', '2024-02-26', '2024-02-29', 3, 730000, 2190000, 0, '1709625880_b0991ec95942e5438e28.pdf', '2024-03-05 15:01:47', '2024-03-05 15:04:40', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1063,7 +1076,12 @@ INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawa
 (2, 13, 'Kembali', 'Citilink', '-', 'IBPCPS', '2024-02-22', 'Bandara Hang Nadim', 'Bandara Kualanamu', 1021246, 1, '1709398724_0dceea6c77936b377e02.jpg', '1709398724_e10d5d109055a91ec3a3.pdf', '2024-03-02 23:58:09', '2024-03-03 00:24:22', NULL),
 (3, 15, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 0, '1709537524_7718c5bc53683a6ee9a4.jpg', '1709537524_3be2198ca8d8fc92823c.pdf', '2024-03-04 14:14:32', '2024-03-04 14:32:04', NULL),
 (4, 15, 'Kembali', 'Super Air Jet', '9902195227867', 'YPINQQ', '2024-02-29', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1477681, 0, '1709539050_3cbe5117bbb7e6ccf2e7.jpg', '1709539050_817caffa205d9bce3d71.pdf', '2024-03-04 14:48:06', '2024-03-04 14:57:30', NULL),
-(5, 14, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 0, '1709539382_6d2050c6e4c47b657645.jpg', '1709539382_8dcc978c48b2f1813ce1.pdf', '2024-03-04 15:02:39', '2024-03-04 15:03:02', NULL);
+(5, 14, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 0, '1709539382_6d2050c6e4c47b657645.jpg', '1709539382_8dcc978c48b2f1813ce1.pdf', '2024-03-04 15:02:39', '2024-03-04 15:03:02', NULL),
+(6, 19, 'Berangkat', 'Citilink', '-', 'E9MD5V', '2024-01-11', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1999559, 1, '1709608689_7ae5e316d44f799b47ba.jpg', '1709608689_228233ac10e783338f2c.pdf', '2024-03-05 10:17:10', '2024-03-05 10:40:11', NULL),
+(7, 19, 'Kembali', 'Citilink', '-', 'TGFT8T', '2024-01-14', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1370000, 1, '1709608874_4e33f3089978d3b386cb.jpg', '1709608874_efa01e0b8857cb8942ad.pdf', '2024-03-05 10:20:12', '2024-03-05 10:40:03', NULL),
+(8, 18, 'Berangkat', 'Citilink', '-', 'E9MD5V', '2024-01-11', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1999559, 1, '1709609250_22a1a2639b419a5133aa.jpg', '1709609250_af9f1aeebf0e914e315d.pdf', '2024-03-05 10:26:53', '2024-03-05 10:38:19', NULL),
+(9, 18, 'Kembali', 'Citilink', '-', 'TGFT8T', '2024-01-14', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1370000, 1, '1709609388_43025b3a74d898ebe9c3.jpg', '1709609388_5a36fe15b606c353959f.pdf', '2024-03-05 10:29:03', '2024-03-05 10:37:59', NULL),
+(10, 14, 'Kembali', 'Batik Air', '9902195349328', 'HEMIDP', '2024-03-03', 'Bandara Halim Perdanakusu', 'Bandara Kualanamu', 1831259, 0, '1709623750_4c6d327aee6b78c011f9.jpg', '1709623750_2ccaff974b9867fb30e7.pdf', '2024-03-05 14:28:23', '2024-03-05 14:29:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -1097,7 +1115,11 @@ INSERT INTO `spjtaksis` (`spjtaksi_id`, `spjtaksi_pelaksanaid`, `spjtaksi_jenis`
 (4, 13, 'Kembali', '2024-02-22', 'Bandara Kuala Namu', 'Kisaran', 140000, 1, '1709398965_c03fa4ac2843a697ee8b.jpg', '2024-03-03 00:02:31', '2024-03-03 00:03:59', NULL),
 (5, 14, 'Berangkat', '2024-02-26', 'Kisaran', 'Bandara Kualanamu', 56000, 0, '1709539893_db87feeb652c0e9e1f93.jpg', '2024-03-04 15:04:44', '2024-03-04 15:11:33', NULL),
 (6, 15, 'Kembali', '2024-02-29', 'Hotel', 'Bandara Soekarno Hatta', 201000, 0, '1709555669_002071bb92f708045beb.jpg', '2024-03-04 19:34:09', '2024-03-04 19:34:29', NULL),
-(7, 14, 'Berangkat', '2024-02-26', 'Bandara Soekarno Hatta', 'Hotel', 400000, 0, '1709556574_242928de0c3373f00981.jpg', '2024-03-04 19:49:10', '2024-03-04 19:49:34', NULL);
+(7, 14, 'Berangkat', '2024-02-26', 'Bandara Soekarno Hatta', 'Hotel', 400000, 0, '1709556574_242928de0c3373f00981.jpg', '2024-03-04 19:49:10', '2024-03-04 19:49:34', NULL),
+(8, 18, 'Berangkat', '2024-01-11', 'Kisaran', 'Bandara Kualanamu', 56000, 1, '1709609514_9290196ff5c16ee8de49.jpg', '2024-03-05 10:30:58', '2024-03-05 10:39:04', NULL),
+(9, 18, 'Berangkat', '2024-01-11', 'Bandara Soekarno Hatta', 'Hotel', 400000, 1, '1709609593_8ff5b9ed8633fe74cd91.jpg', '2024-03-05 10:32:47', '2024-03-05 10:38:51', NULL),
+(10, 18, 'Kembali', '2024-01-14', 'Hotel', 'Bandara Kualanamu', 400000, 1, '1709609740_c8c000f78fab38a170bb.jpg', '2024-03-05 10:34:45', '2024-03-05 10:38:43', NULL),
+(11, 14, 'Kembali', '2024-03-03', 'Hotel', 'Bandara Halim Perdanakusu', 400000, 0, '1709623980_78be213b1b4378901c09.jpg', '2024-03-05 14:30:20', '2024-03-05 14:33:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -1135,7 +1157,8 @@ CREATE TABLE `spts` (
 INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`, `spt_pjb_tugas`, `spt_jenis`, `spt_acara`, `spt_dasar`, `spt_uraian`, `spt_lama`, `spt_mulai`, `spt_berakhir`, `spt_tujuan`, `spt_transport`, `spt_tempat`, `spt_verif`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-20', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL),
 (5, 2024, '800.1.11.1/0229/BKAD/II/2024', '800.1.11.1/017/SPD/II/2024', '2024-02-23', 1, 2, 0, '', ' Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 2024, serta interkoneksi SIPD Penatausahaan dengan Bank Daerah sebgaimana surat Sekretaris Daerah No. 900.1.15.9/0545/UM-BKAD/II/2024 Tanggal 02 Pebruari 2024 Perihal Permohonan Pendampingan Penggunaan Aplikasi SIPD Penatausahaan', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 1, '2024-02-22 23:05:45', '2024-03-04 08:48:14', NULL),
-(6, 2024, '2', '4', '2024-03-02', 1, 2, 3, 'Undangan', 'Mengahdiri Undangan', 4, '2024-03-02', '2024-03-05', 39, 'Pesawat Udara', 'Hotel', 1, '2024-03-02 19:43:32', '2024-03-04 20:35:09', NULL);
+(6, 2024, '2', '4', '2024-03-02', 1, 2, 3, 'Undangan', 'Mengahdiri Undangan', 4, '2024-03-02', '2024-03-05', 39, 'Pesawat Udara', 'Hotel', 1, '2024-03-02 19:43:32', '2024-03-04 20:35:09', NULL),
+(7, 2024, '800.1.11.1/0088/BKAD/I/2024', '800.1.11.1/004/SPPD/I/2024', '2024-01-10', 1, 2, 0, '', 'Konsultasi terkait Penggunaan SIPD RI Penatausahaan saat pembuatan Uang Persediaan (UP) untuk Sekretariat Daerah  yang tidak bisa diinput pada Aplikasi', 3, '2024-01-11', '2024-01-13', 49, 'Pesawat Udara', 'Direktorat Jenderal Bina Keuangan Daerah Kementerian Dalam Negeri - Jl. Veteran No. 7 Jakarta Pusat', 1, '2024-03-05 09:49:26', '2024-03-05 09:51:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -1237,7 +1260,9 @@ CREATE TABLE `uangharians` (
 INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharian_sptid`, `uangharian_tingkatid`, `uangharian_lokasiid`, `uangharian_lama`, `uangharian_perhari`, `uangharian_jlhhari`, `uangharian_jumlahpersen`, `uangharian_jumlah`, `uangharian_harianundangan`, `uangharian_hariundangan`, `uangharian_jlhharianundangan`, `uangharian_biayatransport`, `uangharian_jumlahbiayatransport`, `uangharian_representasi`, `uangharian_jumlahrepresentasi`, `uangharian_sewamobil`, `uangharian_jumlahsewamobil`, `uangharian_total`, `uangharian_verif`) VALUES
 (12, 17, 6, 4, 39, 4, 370000, 3, '100%', 1110000, 95000, 1, 95000, 0, 0, 0, 0, 0, 0, 0, 1),
 (13, 16, 6, 4, 39, 4, 370000, 4, '100%', 1480000, 95000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-(14, 13, 4, 4, 39, 3, 370000, 3, '30%', 333000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+(14, 13, 4, 4, 39, 3, 370000, 3, '30%', 333000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(15, 18, 7, 3, 49, 3, 530000, 3, '100%', 1590000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(16, 19, 7, 4, 49, 3, 530000, 3, '100%', 1590000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1439,7 +1464,7 @@ ALTER TABLE `jenisperjadins`
 -- AUTO_INCREMENT for table `laporjadins`
 --
 ALTER TABLE `laporjadins`
-  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lokasiperjadins`
@@ -1481,7 +1506,7 @@ ALTER TABLE `pejabats`
 -- AUTO_INCREMENT for table `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
-  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `perbups`
@@ -1505,25 +1530,25 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `spjhotels`
 --
 ALTER TABLE `spjhotels`
-  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
-  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
-  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `spts`
 --
 ALTER TABLE `spts`
-  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `submenus`
@@ -1541,7 +1566,7 @@ ALTER TABLE `tingkats`
 -- AUTO_INCREMENT for table `uangharians`
 --
 ALTER TABLE `uangharians`
-  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
