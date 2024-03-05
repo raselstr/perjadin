@@ -184,12 +184,12 @@ $model = new RampungModel();
                                   <tr>
                                     <td><?=$no++;?>.</td>
                                     <td>Harga Per Malam</td>
-                                    <td><?=$value->spjhotel_hargapermalam;?></td>
+                                    <td>Rp. <?=number_format($value->spjhotel_hargapermalam,2,',','.');?></td>
                                   </tr>
                                   <tr>
                                     <td><?=$no++;?>.</td>
                                     <td>Harga Total</td>
-                                    <td><?=$value->spjhotel_hargatotal;?></td>
+                                    <td>Rp. <?=number_format($value->spjhotel_hargatotal,2,',','.');?></td>
                                   </tr>
                                   <tr>
                                     <td><?=$no++;?>.</td>
@@ -300,7 +300,7 @@ $model = new RampungModel();
                                     <tr>
                                       <td><?=$no++;?>.</td>
                                       <td>Harga Tiket Per Orang</td>
-                                      <td><?=$value->spjpesawat_harga;?></td>
+                                      <td>Rp.  <?=number_format($value->spjpesawat_harga,2,',','.');?></td>
                                     </tr>
                                     <tr>
                                       <td><?=$no++;?>.</td>
@@ -371,7 +371,7 @@ $model = new RampungModel();
                                   <tr>
                                     <td><?=$no++;?>.</td>
                                     <td>Harga Tiket Per Orang</td>
-                                    <td><?=$value->spjtaksi_harga;?></td>
+                                    <td>Rp. <?=number_format($value->spjtaksi_harga,2,',','.');?></td>
                                   </tr>
                                   <tr>
                                     <td><?=$no++;?>.</td>
