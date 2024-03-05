@@ -439,7 +439,7 @@
         minYear: 2023,
         maxYear: parseInt(moment().format('YYYY'),10),
         minDate: moment($('#spt_mulai').val(), 'DD MMMM YYYY'),  // Gunakan moment.js untuk mem-parse tanggal dengan format yang benar
-        maxDate: moment($('#spt_berakhir').val(), 'DD MMMM YYYY').add(2, 'days'),
+        maxDate: moment($('#spt_berakhir').val(), 'DD MMMM YYYY').add(5, 'days'),
       });
       // Menangani perubahan tanggal
         $('#spjpesawat_tgl').on('apply.daterangepicker', function(ev, picker) {
