@@ -82,10 +82,10 @@
                       <th rowspan="2" class="align-middle text-center">Status</th>
                       <th rowspan="2" class="align-middle text-center">No. SPT</th>
                       <th rowspan="2" class="align-middle text-center">No. SPD</th>
+                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="4" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Transportasi yang digunakan</th>
-                      <th rowspan="2" class="align-middle text-center">Tanggal SPT</th>
                     </tr>
                     <tr>
                       <th class="align-middle text-center">Uraian</th>
@@ -117,13 +117,13 @@
                           </td>
                           <td class="align-middle text-center"><?= $value->spt_nomor ?></td>
                           <td class="align-middle text-center"><?= $value->sppd_nomor ?></td>
+                          <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
                           <td class="align-middle"><?= $value->pejabat_kode ?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
                           <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_mulai)) ?></td>
                           <td class="align-middle text-center"><?= $value->spt_lama ?></td>
                           <td class="align-middle"><?= $value->lokasiperjadin_nama ?></td>
                           <td class="align-middle"><?= $value->spt_transport ?></td>
-                          <td class="align-middle text-center"><?= date('d F Y',strtotime($value->spt_tgl)) ?></td>
                         </tr>
                       <?php } ?>
                   </tbody>
