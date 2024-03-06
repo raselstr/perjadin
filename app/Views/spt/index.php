@@ -72,7 +72,7 @@
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
                       <th rowspan="2" class="align-middle text-center">Aksi</th>
-                      <th rowspan="2" class="align-middle text-center">Nomor SPT<br>Nomor SPD</th>
+                      <th rowspan="2" class="align-middle text-center">Pelaksana<br>Nomor SPT & Nomor SPD</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Tgl. Mulai, <br> Tgl. Selesai<br>Lama (Hari)</th>
