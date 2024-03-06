@@ -98,6 +98,7 @@
                     <?php 
                       $no = 1;
                       foreach ($spt as $key => $value) { ?>
+
                         <tr>
                           <td class="align-middle text-center"><?= $no++ ?></td>
                           <td class="align-middle"><?= $value->spt_pjb_tugas == 1 ? "Kaban" : "Sekretaris"?></td>
@@ -116,22 +117,23 @@
                               <i>Tidak ada</i>
                             <?php endif ?>
                           </td>
-                          <?php if ($value->spt_verif == '0') : ?>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target = "_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
-                            </td>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
-                              <a href="<?= site_url('pelaksana/spdback'); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-warning"><i class="fas fa-print"></i></a>
-                            </td>
-                            <?php else : ?>
+                            <?php if ($value->spt_verif == '0') : ?>
                               <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</a>
-                            </td>
-                            <td class="align-middle text-center">
-                              <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</i></a>
-                            </td>
-                            <?php endif ?>
+                                <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-icon bg-gradient-sm btn-primary"><i class="fas fa-print"></i></a>
+                              </td>
+                              <td class="align-middle text-center">
+                                <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-success"><i class="fas fa-print"></i></a>
+                                <a href="<?= site_url('pelaksana/spdback'); ?>" target = "_blank" id="myLinksppd" class="btn btn-icon bg-gradient-sm btn-warning"><i class="fas fa-print"></i></a>
+                              </td>
+                              <?php else : ?>
+                                <td class="align-middle text-center">
+                                <a href="<?= site_url('pelaksana/sptpdf/'.$value->spt_id); ?>" target="_blank" id="myLink" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</a>
+                              </td>
+                              <td class="align-middle text-center">
+                                <a href="<?= site_url('pelaksana/sppdpdf/'.$value->spt_id); ?>" target="_blank" class="btn btn-block btn-outline-secondary btn-sm">Disetujui</i></a>
+                              </td>
+                              <?php endif ?>
+                            
                         </tr>
                       <?php } ?>
                   </tbody>
@@ -175,7 +177,9 @@
             icon: "error",
             title: "Oops...",
             text: flashData,
-          });
+          }).then(function(){
+                  location.reload();
+          })
         } else {
           $("#myLink").attr("target", "_blank");
       }

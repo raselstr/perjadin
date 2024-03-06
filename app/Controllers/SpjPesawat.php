@@ -162,7 +162,7 @@ class SpjPesawat extends ResourcePresenter
             }
 
             $lamafoto = file_exists(FCPATH. 'image/pesawat/tiket/'. $fototiketlama) ? $fototiketlama : null;
-            $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama);
+            $lamabill = file_exists (FCPATH. 'image/pesawat/bill/'.$scanbilllama) ? $scanbilllama : null;
             
             
             $namafoto = $foto->getRandomName();
@@ -206,14 +206,16 @@ class SpjPesawat extends ResourcePresenter
                 }
                 
                 if($scanbilllama == null) {
-                    if($lamabill ){
+                    if($lamabill == null ){
                         $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
                     } 
                 } else {
-                    if($lamabill ){
+                    if($lamabill == null ){
+                        $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
+                    } else {
                         $scan->move(FCPATH . 'image/pesawat/bill', $namascan);
                         unlink(FCPATH . 'image/pesawat/bill/' . $scanbilllama);
-                    } 
+                    }
                 }
                 $pesan = [
                         'errors' => false,

@@ -171,17 +171,19 @@ class Pelaksana extends ResourcePresenter
         $cek = $pelaksana->caripengikut($id);
         $cekutama = $pelaksana->cariutama($id);
         // dd($cek, $cekutama);
-        // if($cek <= 0) {
-        //     session()->setFlashdata('info', 'Data Pelaksana Perjalanan Dinas Tidak ada, Harap diisi terlebih dahulu !!!');
-        //     return redirect()->back();
-        // } else
         if ($cekutama > 1 OR $cekutama == 0) {
-                session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
-                return redirect()->back();
-            }
+            session()->setFlashdata('info','Pelaksana Utama Perjalanan Dinas Lebih dari 1 orang atau sama sekali belum di tentukan, Harap diisi Pelaksana Utama hanya 1 orang !!!');
+            return redirect()->back();
+        }
+        // if($cek == 0) {
+        //     session()->setFlashdata('info', 'Data Perjalanan Hanya Kepala, sehingga SPT hanya yang diterbitkan Bupati/ Sekda !!!');
+        //     return redirect()->back();
+        // } 
             
         
         $dataspt = $pelaksana->datapelaksana($id);
+        $sptkepala = $pelaksana->datapelaksanatotal($id);
+       
         // dd($dataspt);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
@@ -189,6 +191,7 @@ class Pelaksana extends ResourcePresenter
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
             'pelaksana'     => $cek,
+            'dataspt'     => $sptkepala,
         ];
         // dd($data);
         return view('pelaksana/spt_pdf', $data);
@@ -233,15 +236,17 @@ class Pelaksana extends ResourcePresenter
                 return redirect()->back();
             }
         $dataspt = $pelaksana->datapelaksana($id);
+        $sptkaban = $pelaksana->datapelaksanatotal($id);
         $data = [
             'imageSrc'    => $this->imageToBase64(ROOTPATH . '/public/images/kop.png'),
             'title'     => 'Surat Perjalanan Dinas Nomor : ',
             'subtitle'  => 'Home',
             'spt'       => $dataspt,
+            'sptkaban'       => $sptkaban,
             'utama'     => $namautama,
             'pengikut'  => $namapengikut,
             'jlhpengikut'   => $cek,
-            'terbilang' => $pelaksana->angkaKeHuruf(intval($dataspt['data'][0]->spt_lama))
+            'terbilang' => $pelaksana->angkaKeHuruf(intval($sptkaban['data'][0]->spt_lama))
         ];
         // dd($data);
         return view('pelaksana/sppd_pdf', $data);

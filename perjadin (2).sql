@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Generation Time: Mar 05, 2024 at 09:23 AM
+-- Generation Time: Mar 06, 2024 at 09:59 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -293,7 +293,7 @@ CREATE TABLE `pangkats` (
 --
 
 INSERT INTO `pangkats` (`pangkat_id`, `pangkat_nama`, `pangkat_gol`, `pangkat_pajak`) VALUES
-(1, 'Juru Muda', 'Ia', 0),
+(1, 'Honor', '-', 0),
 (2, 'Juru Muda Tk. I', 'Ib', 0),
 (3, 'Juru', 'Ic', 0),
 (4, 'Juru Tk. I', 'Id', 0),
@@ -309,7 +309,8 @@ INSERT INTO `pangkats` (`pangkat_id`, `pangkat_nama`, `pangkat_gol`, `pangkat_pa
 (14, 'Pembina Tk. I', 'IVb', 0.15),
 (15, 'Pembina Utama Muda', 'IVc', 0.15),
 (16, 'Pembina Utama Madya', 'IVd', 0.15),
-(17, 'Pembina Utama', 'IVe', 0.15);
+(17, 'Pembina Utama', 'IVe', 0.15),
+(18, 'Honor', '-', 0);
 
 -- --------------------------------------------------------
 
@@ -373,25 +374,25 @@ INSERT INTO `pegawais` (`pegawai_id`, `pegawai_nip`, `pegawai_nama`, `pegawai_ja
 (37, '196812061989032005', 'HERYANTI, SH', 'ANALIS ASET NEGARA', '1968-12-06', 1, 12, 4, '_default.png'),
 (38, '198805202022031001', 'EDDY HARIS SIREGAR, SE', 'PENYUSUN KEBUTUHAN BARANG INVENTARIS', '1988-05-20', 1, 9, 4, '_default.png'),
 (39, '197903252008011002', 'OMAN SURAHMAN', 'PRANATA BARANG DAN JASA', '1979-03-25', 1, 5, 5, '_default.png'),
-(40, 'Honor001', 'M. YUSUF BUTAR BUTAR', 'STAF BIDANG PERBENDAHARAAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(41, 'Honor002', 'TRI EVA YANTI', 'STAF BIDANG ANGGARAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(42, 'Honor003', 'NANI SUSANTI', 'STAF SEKRETARIAT', '0000-00-00', 1, 5, 5, '_default.png'),
-(43, 'Honor004', 'MOH. ARIF EFENDI', 'STAF SEKRETARIAT', '0000-00-00', 1, 5, 5, '_default.png'),
-(44, 'Honor005', 'IRMA YANTI BUTAR-BUTAR', 'STAF SEKRETARIAT', '0000-00-00', 1, 5, 5, '_default.png'),
-(45, 'Honor006', 'THIVANI AMANDA TANJUNG', 'STAF SEKRETARIAT', '0000-00-00', 1, 5, 5, '_default.png'),
-(46, 'Honor007', 'DINDA KHOFIFAH', 'STAF BIDANG ASET', '0000-00-00', 1, 5, 5, '_default.png'),
-(47, 'Honor008', 'TRI AGUNG ANUGERAH', 'STAF BIDANG ASET', '0000-00-00', 1, 5, 5, '_default.png'),
-(48, 'Honor009', 'M HASAN ASY\'ARI', 'STAF BIDANG ASET', '0000-00-00', 1, 5, 5, '_default.png'),
-(49, 'Honor010', 'ANGGI FANDIE AKHMAD', 'STAF BIDANG ANGGARAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(50, 'Honor011', 'NURHAYATI', 'STAF BIDANG PERBENDAHARAAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(51, 'Honor012', 'LISA MAYA SARI', 'STAF BIDANG PERBENDAHARAAN', '0000-00-00', 1, 5, 5, '_default.png'),
+(40, '000000000000000001', 'M. YUSUF BUTAR BUTAR', 'STAF BIDANG PERBENDAHARAAN', '1987-03-23', 1, 1, 5, '_default.png'),
+(41, '000000000000000002', 'TRI EVA YANTI', 'STAF BIDANG ANGGARAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(42, '000000000000000003', 'NANI SUSANTI', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(43, '000000000000000004', 'MOH. ARIF EFENDI', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(44, '000000000000000005', 'IRMA YANTI BUTAR-BUTAR', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(45, '000000000000000006', 'THIVANI AMANDA TANJUNG', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(46, '000000000000000008', 'DINDA KHOFIFAH, A.Md', 'Pengelola Database BMD 2', '0001-11-30', 1, 1, 5, '_default.png'),
+(47, '000000000000000007', 'TRI AGUNG ANUGERAH', 'Pengelola Database BMD 1', '0001-11-30', 1, 1, 5, '_default.png'),
+(48, '000000000000000009', 'M HASAN ASY\'ARI', 'Supir', '0001-11-30', 1, 1, 5, '_default.png'),
+(49, '000000000000000010', 'ANGGI FANDIE AKHMAD', 'STAF BIDANG ANGGARAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(50, '000000000000000011', 'NURHAYATI', 'STAF BIDANG PERBENDAHARAAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(51, '000000000000000012', 'LISA MAYA SARI', 'STAF BIDANG PERBENDAHARAAN', '0001-11-30', 1, 1, 5, '_default.png'),
 (52, 'Honor013', 'MUHAMMAD SUEB', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
 (53, 'Honor014', 'JUPRI SYAHPUTRA', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
 (54, 'Honor015', 'HERU WANTO', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
 (55, 'Honor016', 'SYAIFUL BAHRI SITORUS', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
 (56, 'Honor017', 'SANTI KARTIKA SARI', 'KEBERSIHAN', '0000-00-00', 1, 5, 5, '_default.png'),
 (57, 'Honor018', 'SATINA', 'KEBERSIHAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(58, 'Honor019', 'IKHWAN', 'SUPIR', '0000-00-00', 1, 5, 5, '_default.png');
+(58, '000000000000000019', 'IKHWAN', 'SUPIR', '0001-11-30', 1, 1, 5, '_default.png');
 
 -- --------------------------------------------------------
 
@@ -441,7 +442,50 @@ INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_uta
 (16, 6, 26, 1),
 (17, 6, 29, 0),
 (18, 7, 6, 1),
-(19, 7, 30, 0);
+(19, 7, 30, 0),
+(20, 8, 12, 1),
+(21, 8, 38, 0),
+(22, 8, 47, 0),
+(23, 8, 46, 0),
+(24, 8, 48, 0),
+(25, 9, 5, 1),
+(26, 9, 14, 0),
+(27, 9, 38, 0),
+(28, 9, 37, 0),
+(29, 9, 48, 0),
+(30, 10, 4, 1),
+(31, 10, 24, 0),
+(32, 11, 1, 1),
+(33, 11, 58, 0),
+(34, 12, 5, 1),
+(35, 13, 1, 1),
+(36, 13, 58, 0),
+(37, 14, 4, 1),
+(38, 14, 16, 0),
+(39, 14, 17, 0),
+(40, 14, 24, 0),
+(41, 15, 29, 1),
+(42, 15, 30, 0),
+(43, 15, 31, 0),
+(44, 16, 26, 1),
+(45, 16, 51, 0),
+(46, 17, 1, 1),
+(47, 17, 58, 0),
+(48, 18, 1, 1),
+(49, 18, 58, 0),
+(50, 19, 26, 1),
+(51, 19, 25, 0),
+(52, 20, 58, 1),
+(53, 21, 8, 1),
+(54, 21, 26, 0),
+(55, 21, 27, 0),
+(56, 22, 15, 1),
+(57, 22, 31, 0),
+(58, 23, 48, 1),
+(59, 24, 38, 1),
+(60, 25, 1, 1),
+(61, 26, 6, 1),
+(62, 26, 31, 0);
 
 -- --------------------------------------------------------
 
@@ -1039,8 +1083,8 @@ CREATE TABLE `spjhotels` (
 INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`, `spjhotel_lokasi`, `spjhotel_nokamar`, `spjhotel_typekamar`, `spjhotel_checkin`, `spjhotel_checkout`, `spjhotel_mlm`, `spjhotel_hargapermalam`, `spjhotel_hargatotal`, `spjhotel_verif`, `spjhotel_bill`, `spjhotel_created_at`, `spjhotel_updated_at`, `spjhotel_deleted_at`) VALUES
 (2, 19, 'G7 GRAND HOTEL', 'Jakarta', '610', 'Room Charge', '2024-01-11', '2024-01-13', 2, 730000, 1460000, 1, '1709608152_9a308c711fd8f7578f6a.pdf', '2024-03-05 10:04:19', '2024-03-05 10:39:45', NULL),
 (3, 18, 'G7 Grand Hotel', 'Jakarta', '607', 'Room Charge', '2024-01-11', '2024-01-13', 2, 950000, 1900000, 1, '1709609071_c51e5bfafffdb921bb43.pdf', '2024-03-05 10:23:03', '2024-03-05 10:37:27', NULL),
-(4, 14, 'G7 Grand Hotel', 'Kemayoran Jakarta', '701', 'Room Charge', '2024-02-26', '2024-02-29', 3, 950000, 2850000, 0, '1709615233_594b1b502ba08388e609.pdf', '2024-03-05 12:06:18', '2024-03-05 12:07:13', NULL),
-(5, 15, 'G7 Grand Hotel', 'Kemayoran - Jakarta', '517', 'Room Charge', '2024-02-26', '2024-02-29', 3, 730000, 2190000, 0, '1709625880_b0991ec95942e5438e28.pdf', '2024-03-05 15:01:47', '2024-03-05 15:04:40', NULL);
+(4, 14, 'G7 Grand Hotel', 'Kemayoran Jakarta', '701', 'Room Charge', '2024-02-26', '2024-02-29', 3, 950000, 2850000, 1, '1709615233_594b1b502ba08388e609.pdf', '2024-03-05 12:06:18', '2024-03-06 10:24:06', NULL),
+(5, 15, 'G7 Grand Hotel', 'Kemayoran - Jakarta', '517', 'Room Charge', '2024-02-26', '2024-02-29', 3, 730000, 2190000, 1, '1709625880_b0991ec95942e5438e28.pdf', '2024-03-05 15:01:47', '2024-03-06 10:26:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -1074,14 +1118,14 @@ CREATE TABLE `spjpesawats` (
 INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawat_jenis`, `spjpesawat_maskapai`, `spjpesawat_notiket`, `spjpesawat_kdboking`, `spjpesawat_tgl`, `spjpesawat_dari`, `spjpesawat_ke`, `spjpesawat_harga`, `spjpesawat_verif`, `spjpesawat_fototiket`, `spjpesawat_bill`, `spjpesawat_created_at`, `spjpesawat_updated_at`, `spjpesawat_deleted_at`) VALUES
 (1, 13, 'Berangkat', 'Citilink', '-', 'MHM1TQ', '2024-02-20', 'Bandara Kualanamo - Medan', 'Bandahara Hang Nadim', 1317097, 1, '1709398565_45bbdeeec3bd563552d6.jpg', '1709398565_7d168c2cde631368427e.pdf', '2024-03-02 23:55:18', '2024-03-03 00:03:39', NULL),
 (2, 13, 'Kembali', 'Citilink', '-', 'IBPCPS', '2024-02-22', 'Bandara Hang Nadim', 'Bandara Kualanamu', 1021246, 1, '1709398724_0dceea6c77936b377e02.jpg', '1709398724_e10d5d109055a91ec3a3.pdf', '2024-03-02 23:58:09', '2024-03-03 00:24:22', NULL),
-(3, 15, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 0, '1709537524_7718c5bc53683a6ee9a4.jpg', '1709537524_3be2198ca8d8fc92823c.pdf', '2024-03-04 14:14:32', '2024-03-04 14:32:04', NULL),
-(4, 15, 'Kembali', 'Super Air Jet', '9902195227867', 'YPINQQ', '2024-02-29', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1477681, 0, '1709539050_3cbe5117bbb7e6ccf2e7.jpg', '1709539050_817caffa205d9bce3d71.pdf', '2024-03-04 14:48:06', '2024-03-04 14:57:30', NULL),
-(5, 14, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 0, '1709539382_6d2050c6e4c47b657645.jpg', '1709539382_8dcc978c48b2f1813ce1.pdf', '2024-03-04 15:02:39', '2024-03-04 15:03:02', NULL),
+(3, 15, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 1, '1709537524_7718c5bc53683a6ee9a4.jpg', '1709537524_3be2198ca8d8fc92823c.pdf', '2024-03-04 14:14:32', '2024-03-06 10:27:17', NULL),
+(4, 15, 'Kembali', 'Super Air Jet', '9902195227867', 'YPINQQ', '2024-02-29', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1477681, 1, '1709539050_3cbe5117bbb7e6ccf2e7.jpg', '1709539050_817caffa205d9bce3d71.pdf', '2024-03-04 14:48:06', '2024-03-06 10:27:05', NULL),
+(5, 14, 'Berangkat', 'Citilink', '-', 'ZH868D', '2024-02-26', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1393502, 1, '1709539382_6d2050c6e4c47b657645.jpg', '1709539382_8dcc978c48b2f1813ce1.pdf', '2024-03-04 15:02:39', '2024-03-06 10:25:00', NULL),
 (6, 19, 'Berangkat', 'Citilink', '-', 'E9MD5V', '2024-01-11', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1999559, 1, '1709608689_7ae5e316d44f799b47ba.jpg', '1709608689_228233ac10e783338f2c.pdf', '2024-03-05 10:17:10', '2024-03-05 10:40:11', NULL),
 (7, 19, 'Kembali', 'Citilink', '-', 'TGFT8T', '2024-01-14', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1370000, 1, '1709608874_4e33f3089978d3b386cb.jpg', '1709608874_efa01e0b8857cb8942ad.pdf', '2024-03-05 10:20:12', '2024-03-05 10:40:03', NULL),
 (8, 18, 'Berangkat', 'Citilink', '-', 'E9MD5V', '2024-01-11', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1999559, 1, '1709609250_22a1a2639b419a5133aa.jpg', '1709609250_af9f1aeebf0e914e315d.pdf', '2024-03-05 10:26:53', '2024-03-05 10:38:19', NULL),
 (9, 18, 'Kembali', 'Citilink', '-', 'TGFT8T', '2024-01-14', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1370000, 1, '1709609388_43025b3a74d898ebe9c3.jpg', '1709609388_5a36fe15b606c353959f.pdf', '2024-03-05 10:29:03', '2024-03-05 10:37:59', NULL),
-(10, 14, 'Kembali', 'Batik Air', '9902195349328', 'HEMIDP', '2024-03-03', 'Bandara Halim Perdanakusu', 'Bandara Kualanamu', 1831259, 0, '1709623750_4c6d327aee6b78c011f9.jpg', '1709623750_2ccaff974b9867fb30e7.pdf', '2024-03-05 14:28:23', '2024-03-05 14:29:10', NULL);
+(10, 14, 'Kembali', 'Batik Air', '9902195349328', 'HEMIDP', '2024-03-03', 'Bandara Halim Perdanakusu', 'Bandara Kualanamu', 1831259, 1, '1709623750_4c6d327aee6b78c011f9.jpg', '1709623750_2ccaff974b9867fb30e7.pdf', '2024-03-05 14:28:23', '2024-03-06 10:24:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -1113,13 +1157,14 @@ INSERT INTO `spjtaksis` (`spjtaksi_id`, `spjtaksi_pelaksanaid`, `spjtaksi_jenis`
 (2, 13, 'Berangkat', '2024-02-20', 'Bandara Hang Nadim', 'Hotel Acara', 200000, 1, '1709398872_a15c8068de6ed6f78784.jpg', '2024-03-03 00:00:57', '2024-03-03 00:04:25', NULL),
 (3, 13, 'Kembali', '2024-02-22', 'Hotel Acara', 'Bandara Hang Nadim', 200000, 1, '1709398927_ce6379cb055fc160b91e.jpg', '2024-03-03 00:01:55', '2024-03-03 00:04:10', NULL),
 (4, 13, 'Kembali', '2024-02-22', 'Bandara Kuala Namu', 'Kisaran', 140000, 1, '1709398965_c03fa4ac2843a697ee8b.jpg', '2024-03-03 00:02:31', '2024-03-03 00:03:59', NULL),
-(5, 14, 'Berangkat', '2024-02-26', 'Kisaran', 'Bandara Kualanamu', 56000, 0, '1709539893_db87feeb652c0e9e1f93.jpg', '2024-03-04 15:04:44', '2024-03-04 15:11:33', NULL),
-(6, 15, 'Kembali', '2024-02-29', 'Hotel', 'Bandara Soekarno Hatta', 201000, 0, '1709555669_002071bb92f708045beb.jpg', '2024-03-04 19:34:09', '2024-03-04 19:34:29', NULL),
-(7, 14, 'Berangkat', '2024-02-26', 'Bandara Soekarno Hatta', 'Hotel', 400000, 0, '1709556574_242928de0c3373f00981.jpg', '2024-03-04 19:49:10', '2024-03-04 19:49:34', NULL),
+(5, 14, 'Berangkat', '2024-02-26', 'Kisaran', 'Bandara Kualanamu', 56000, 1, '1709539893_db87feeb652c0e9e1f93.jpg', '2024-03-04 15:04:44', '2024-03-06 10:25:48', NULL),
+(6, 15, 'Kembali', '2024-02-29', 'Hotel', 'Bandara Soekarno Hatta', 201000, 1, '1709555669_002071bb92f708045beb.jpg', '2024-03-04 19:34:09', '2024-03-06 10:27:30', NULL),
+(7, 14, 'Berangkat', '2024-02-26', 'Bandara Soekarno Hatta', 'Hotel', 400000, 1, '1709556574_242928de0c3373f00981.jpg', '2024-03-04 19:49:10', '2024-03-06 10:25:39', NULL),
 (8, 18, 'Berangkat', '2024-01-11', 'Kisaran', 'Bandara Kualanamu', 56000, 1, '1709609514_9290196ff5c16ee8de49.jpg', '2024-03-05 10:30:58', '2024-03-05 10:39:04', NULL),
 (9, 18, 'Berangkat', '2024-01-11', 'Bandara Soekarno Hatta', 'Hotel', 400000, 1, '1709609593_8ff5b9ed8633fe74cd91.jpg', '2024-03-05 10:32:47', '2024-03-05 10:38:51', NULL),
 (10, 18, 'Kembali', '2024-01-14', 'Hotel', 'Bandara Kualanamu', 400000, 1, '1709609740_c8c000f78fab38a170bb.jpg', '2024-03-05 10:34:45', '2024-03-05 10:38:43', NULL),
-(11, 14, 'Kembali', '2024-03-03', 'Hotel', 'Bandara Halim Perdanakusu', 400000, 0, '1709623980_78be213b1b4378901c09.jpg', '2024-03-05 14:30:20', '2024-03-05 14:33:00', NULL);
+(11, 14, 'Kembali', '2024-03-03', 'Hotel', 'Bandara Halim Perdanakusu', 400000, 1, '1709623980_78be213b1b4378901c09.jpg', '2024-03-05 14:30:20', '2024-03-06 10:25:29', NULL),
+(12, 14, 'Kembali', '2024-03-03', 'Bandara Kualanamu', 'Kisaran', 56000, 1, '1709689852_6917f24c355bb5e816a6.jpg', '2024-03-06 08:48:57', '2024-03-06 10:25:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -1157,8 +1202,27 @@ CREATE TABLE `spts` (
 INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`, `spt_pjb_tugas`, `spt_jenis`, `spt_acara`, `spt_dasar`, `spt_uraian`, `spt_lama`, `spt_mulai`, `spt_berakhir`, `spt_tujuan`, `spt_transport`, `spt_tempat`, `spt_verif`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-20', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL),
 (5, 2024, '800.1.11.1/0229/BKAD/II/2024', '800.1.11.1/017/SPD/II/2024', '2024-02-23', 1, 2, 0, '', ' Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 2024, serta interkoneksi SIPD Penatausahaan dengan Bank Daerah sebgaimana surat Sekretaris Daerah No. 900.1.15.9/0545/UM-BKAD/II/2024 Tanggal 02 Pebruari 2024 Perihal Permohonan Pendampingan Penggunaan Aplikasi SIPD Penatausahaan', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 1, '2024-02-22 23:05:45', '2024-03-04 08:48:14', NULL),
-(6, 2024, '2', '4', '2024-03-02', 1, 2, 3, 'Undangan', 'Mengahdiri Undangan', 4, '2024-03-02', '2024-03-05', 39, 'Pesawat Udara', 'Hotel', 1, '2024-03-02 19:43:32', '2024-03-04 20:35:09', NULL),
-(7, 2024, '800.1.11.1/0088/BKAD/I/2024', '800.1.11.1/004/SPPD/I/2024', '2024-01-10', 1, 2, 0, '', 'Konsultasi terkait Penggunaan SIPD RI Penatausahaan saat pembuatan Uang Persediaan (UP) untuk Sekretariat Daerah  yang tidak bisa diinput pada Aplikasi', 3, '2024-01-11', '2024-01-13', 49, 'Pesawat Udara', 'Direktorat Jenderal Bina Keuangan Daerah Kementerian Dalam Negeri - Jl. Veteran No. 7 Jakarta Pusat', 1, '2024-03-05 09:49:26', '2024-03-05 09:51:22', NULL);
+(6, 2024, '800.1.11.1/0260/BKAD/II/2024', '800.1.11.1/026/BKAD/II/2024', '2024-03-01', 1, 2, 3, 'Surat Kepala Biro Perencanaan dan Anggaran Kementerian Kesehatan RI Nomor : PR.01.06/A.I/592/2024 Tanggal 6 Februari 2024 Hal Undangan Sosialisasi Regional Barat', 'Menghadiri Sosialisasi Terpadu Regional Barat', 4, '2024-03-04', '2024-03-07', 39, 'Pesawat Udara', 'Swiss-BelHotel Harbour Bay Jl. Duyung, Sei Jodoh, Batu Ampar, Batam', 1, '2024-03-02 19:43:32', '2024-03-06 11:22:34', NULL),
+(7, 2024, '800.1.11.1/0088/BKAD/I/2024', '800.1.11.1/004/SPPD/I/2024', '2024-01-10', 1, 2, 0, '', 'Konsultasi terkait Penggunaan SIPD RI Penatausahaan saat pembuatan Uang Persediaan (UP) untuk Sekretariat Daerah  yang tidak bisa diinput pada Aplikasi', 3, '2024-01-11', '2024-01-13', 49, 'Pesawat Udara', 'Direktorat Jenderal Bina Keuangan Daerah Kementerian Dalam Negeri - Jl. Veteran No. 7 Jakarta Pusat', 1, '2024-03-05 09:49:26', '2024-03-05 09:51:22', NULL),
+(8, 2024, '800.1.11.1/0116/BKAD/I/2024', '800.1.11.1/008/SPD/I/2024', '2024-01-22', 1, 1, 0, '', 'Koordinasi dan Konsultasi tentang Aplikasi SIMDA BMD guna Penyusunan Laporan Keuangan TA. 2023 ', 2, '2024-01-22', '2024-01-23', 27, 'Angkutan Umum', 'Kantor BPKP Perwakilan Provinsi Sumatera Utara', 1, '2024-03-06 11:26:04', '2024-03-06 12:05:08', NULL),
+(9, 2024, '800.1.11.1/0125/BKAD/I/2024', '800.1.11.1/007/SPPD/I/2024', '2024-01-22', 1, 1, 0, '', 'Koordinasi dan Konsultasi terkait penghapusan Barang Milik Daerah secara Lelang berupa Kenderaan Dinas', 2, '2024-01-24', '2024-01-25', 27, 'Mobil Dinas', 'BPKP Provinsi Sumatera Utara', 1, '2024-03-06 12:07:11', '2024-03-06 12:14:03', NULL),
+(10, 2024, '800.1.11.1/0156/BKAD/I/2024', '800.1.11.1/009/SPPD/I/2024', '2024-01-29', 1, 2, 0, '', 'Koordinasi dan Konsultasi tentang Tambahan Penghasilan Pegawai Negeri Sipil dan Sistem Kerja pada Pemerintah Kabupaten Asahan ', 5, '2024-01-30', '2024-02-03', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri Republik Indonesia dan Pemerintah Kabupaten Bantul', 1, '2024-03-06 13:27:29', '2024-03-06 13:30:23', NULL),
+(11, 2024, '800.1.11.1/0177/BKAD/II/2024', '800.1.11.1/010/SPPD/II/2024', '2024-02-02', 1, 1, 0, '', 'Menghadiri Undangan Rapat Umum Pemegang Saham (RUPS) Tahunan Tahun Buku 2023 dan Rapat Umum Pemegang Saham Luar Biasa (RUPS-LB) Bank Sumut', 2, '2024-02-05', '2024-02-06', 27, 'Mobil Dinas', 'Ballroom PT. Bank Sumut Lt.10  Jl. Imam Bonjol No. 18 Medan', 1, '2024-03-06 13:32:48', '2024-03-06 13:36:12', NULL),
+(12, 2024, '800.1.11.1/0181/BKAD/II/2024', '800.1.11.1/011/SPPD/II/2024', '2024-02-05', 1, 2, 0, '', 'Koordinasi dan Konsultasi perihal Penatausahaan Barang Milik Daerah menggunakan Aplikasi Pengelolaan Barang Milik Daerah guna Penyusunan Laporan Keuangan TA. 2023', 3, '2024-02-06', '2024-02-08', 50, 'Pesawat Udara', 'Badan Keuangan dan Aset Daerah Kabupaten Cirebon, Jln. Sunan kalijaga Kab. Cirebon', 1, '2024-03-06 13:39:00', '2024-03-06 13:40:40', NULL),
+(13, 2024, '800.1.11.1/0074/BKAD/I/2024', '800.1.11.1/0001/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menghadiri Rapat Persiapan Pembahasan Rancangan Kegiatan dan Penganggaran Dana Bagi Hasil Sawit TA.2024', 2, '2024-01-09', '2024-01-10', 27, 'Mobil Dinas', 'Kantor Badan Perencanaan Pembangunan Penelitian dan Pengembangan Provinsi Sumatera Utara Jl. P. Diponegoro No. 30.', 1, '2024-03-06 13:43:26', '2024-03-06 13:44:38', NULL),
+(14, 2024, '800.1.11.1/0075/BKAD/I/2024', '800.1.11.1/002/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menghadiri Rapat Persiapan Pembahasan Rancangan Kegiatan dan Penganggaran Dana Bagi Hasil Sawit TA.2024', 2, '2024-01-09', '2024-01-10', 27, 'Mobil Dinas', 'Kantor Badan Perencanaan Pembangunan Penelitian dan Pengembangan Provinsi Sumatera Utara Jl. P. Diponegoro No. 30.', 1, '2024-03-06 13:46:57', '2024-03-06 13:49:03', NULL),
+(15, 2024, '800.1.11.1/0078/BKAD/I/2024', '800.1.11.1/003/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menyampaikan Berkas Lembar Konfirmasi Dana Transfer (LKT) Triwulan IV (Empat) dan Lembar Rekapitulasi Dana Transfer ke Daerah dan Dana Desa Kabupaten Asahan', 1, '2024-01-10', '2024-01-10', 31, 'Angkutan Umum', 'Kantor KPPN Tanjung Balai', 1, '2024-03-06 13:51:10', '2024-03-06 13:54:33', NULL),
+(16, 2024, '800.1.11.1/0207/BKAD/II/2024', '800.1.11.1/013/SPD/II/2024', '2024-02-15', 1, 1, 0, '', 'Koordinasi dan Konsultasi terkait PP No. 5 Tahun 2024 yaitu tentang Kenaikan Gaji Pokok dsb', 2, '2024-02-15', '2024-02-16', 27, 'Angkutan Umum', 'PT. Taspen KCU Medan', 1, '2024-03-06 13:56:44', '2024-03-06 14:00:17', NULL),
+(17, 2024, '-', '800.1.11.1/015/SPPD/II/2024', '2024-02-20', 1, 1, 0, '', 'Menghadiri Acara Stakeholders Day', 1, '2024-02-21', '2024-02-21', 31, 'Mobil Dinas', 'Pendopo Rumah Dinas Walikota Tanjung Balai Jl. Jend. Sudirman No. 5', 1, '2024-03-06 14:23:41', '2024-03-06 14:42:35', NULL),
+(18, 2024, '--', '800.1.11.1/016/SPD/II/2024', '2024-02-23', 1, 1, 0, '', 'Menghadiri Undangan Rapat Umum Pemegang Saham (RUPS) Tahunan Tahun Buku 2023', 2, '2024-02-25', '2024-02-26', 27, 'Mobil Dinas', 'Ballroom PT. Bank Sumut Lt. 10 Jl. Imam Bonjol No. 18', 1, '2024-03-06 14:46:16', '2024-03-06 14:50:53', NULL),
+(19, 2024, '800.1.11.1/0235/BKAD/II/2024', '800.1.11.1/018/SPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Mengantar Surat Permohonan Konfirmasi Setoran Penerimaan Negara', 1, '2024-02-26', '2024-02-26', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 1, '2024-03-06 14:53:33', '2024-03-06 14:55:17', NULL),
+(20, 2024, '800.1.11.1/0236/BKAD/II/2024', '-', '2024-02-26', 2, 1, 0, '', 'Mendampingi Kepala Badan BKAD Kab. Asahan menghadiri undangan Penandatanganan BAR (Berita Acara Rekonsiliasi) atas penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Mobil Dinas', 'KPPN Tanjung Balai', 1, '2024-03-06 14:59:28', '2024-03-06 15:01:01', NULL),
+(21, 2024, '800.1.11.1/0237/BKAD/II/2024', '800.1.11.1/019/SPPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Menghadiri Undangan Penandatanganan Berita Acara Rekonsiliasi (BAR) atas Penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 1, '2024-03-06 15:03:30', '2024-03-06 15:05:20', NULL),
+(22, 2024, '800.1.11.1/0239/BKAD/II/2024', '800.1.11.1/020/SPPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Mendampingi Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan menghadiri Undangan Penandatanganan Berita Acara Rekonsiliasi (BAR) atas penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 1, '2024-03-06 15:09:08', '2024-03-06 15:10:27', NULL),
+(23, 2024, '800.1.11.1/0242/BKAD/II/2024', '800.1.11.1/021/SPPD/II/2024', '2024-02-27', 1, 1, 0, '', 'Mendampingi Kabid Aset Mengikuti Pelatihan dan Ujian Sertifikasi Kompetensi Pengadaan Barang/ Jasa Level 1', 4, '2024-02-28', '2024-03-02', 27, 'Mobil Dinas', 'Hotel Le Polonia Medan, Jl. Jend. Sudirman No. 14-18', 1, '2024-03-06 15:13:24', '2024-03-06 15:15:27', NULL),
+(24, 2024, '---', '800.1.11.1/012/SPD/II/2024', '2024-02-12', 1, 1, 1, '', 'Mengikuti Bimbingan Teknis Pengelola PBJ Batch I Tahun Anggaran 2024', 4, '2024-02-14', '2024-02-17', 27, 'Angkutan Umum', 'Hotel Le Polonia & Convention Medan', 1, '2024-03-06 15:18:08', '2024-03-06 15:19:04', NULL),
+(25, 2024, NULL, NULL, NULL, 1, 2, 0, '', 'Menghadiri Undangan Sosialisasi Terpadu DAK Fisik, DAK Non Fisik, DAU dan Dana Dekon Bidang Kesehatan Tahun 2024', 4, '2024-03-04', '2024-03-07', 39, 'Pesawat Udara', 'Swiss-Bel Hotel Harbour Bay Jl. Duyung, Sei Jodoh Batu Ampar, Batam', 0, '2024-03-06 15:21:52', '2024-03-06 15:21:52', NULL),
+(26, 2024, '800.1.11.1/0216/BKAD/II/2024', '800.1.11.1/024/SPPD/II/2024', '2024-02-20', 1, 1, 0, '', 'Mendampingi Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan dalam rangka menghadiri acara Stakeholder Day pada Kuasa Pengguna Anggaran Satuan Kerja Lingkup KPPN Tanjungbalai', 1, '2024-02-21', '2024-02-21', 31, 'Mobil Dinas', 'Pendopo Rumah Dinas Walikota Tanjung Balai', 1, '2024-03-06 15:28:10', '2024-03-06 15:29:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -1262,7 +1326,9 @@ INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharia
 (13, 16, 6, 4, 39, 4, 370000, 4, '100%', 1480000, 95000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
 (14, 13, 4, 4, 39, 3, 370000, 3, '30%', 333000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
 (15, 18, 7, 3, 49, 3, 530000, 3, '100%', 1590000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-(16, 19, 7, 4, 49, 3, 530000, 3, '100%', 1590000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+(16, 19, 7, 4, 49, 3, 530000, 3, '100%', 1590000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(17, 14, 5, 3, 49, 4, 530000, 4, '100%', 2120000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(18, 15, 5, 4, 49, 4, 530000, 4, '100%', 2120000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1488,7 +1554,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pangkats`
 --
 ALTER TABLE `pangkats`
-  MODIFY `pangkat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `pangkat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pegawais`
@@ -1506,7 +1572,7 @@ ALTER TABLE `pejabats`
 -- AUTO_INCREMENT for table `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
-  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `perbups`
@@ -1542,13 +1608,13 @@ ALTER TABLE `spjpesawats`
 -- AUTO_INCREMENT for table `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
-  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `spts`
 --
 ALTER TABLE `spts`
-  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `submenus`
@@ -1566,7 +1632,7 @@ ALTER TABLE `tingkats`
 -- AUTO_INCREMENT for table `uangharians`
 --
 ALTER TABLE `uangharians`
-  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`

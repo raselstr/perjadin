@@ -94,6 +94,8 @@ class PelaksanaModel extends Model
         $builder->join('lokasiperjadins','lokasiperjadins.lokasiperjadin_id = spts.spt_tujuan');
 
         $builder->where('pelaksanas.spt_id',$id);
+        
+        
         $builder->where('pegawais.pegawai_nip !=',$nip->pejabat_nip);
 
         $builder->orderBy('pelaksanas.pelaksana_utama', 'DESC');
@@ -167,45 +169,6 @@ class PelaksanaModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
-
-    // public function angkaKeHuruf($angka)
-    // {
-    //     $units = ['', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan','Sepuluh'];
-    //     $teens = ['', 'Sebelas', 'Dua Belas', 'Tiga Belas', 'Empat Belas', 'Lima Belas', 'Enam Belas', 'Tujuh Belas', 'Delapan Belas', 'Sembilan Belas'];
-    //     $tens = ['', 'Sepuluh', 'Dua Puluh', 'Tiga Puluh', 'Empat Puluh', 'Lima Puluh', 'Enam Puluh', 'Tujuh Puluh', 'Delapan Puluh', 'Sembilan Puluh'];
-
-    //     $result = '';
-
-    //     if ($angka == 0) {
-    //         $result = 'Nol';
-    //     } elseif ($angka <= 10) {
-    //         $result = $units[$angka];
-    //     } elseif ($angka < 20) {
-    //         $result = $teens[$angka - 10];
-    //     } elseif ($angka < 100) {
-    //         $puluh = ($angka % 100 - $angka % 10) / 10;
-    //         $satuan = $angka % 10;
-    //         $result = $tens[$puluh];
-    //         if ($satuan > 0) {
-    //             $result .= ' ' . $units[$satuan];
-    //         }
-    //     } elseif ($angka < 1000) {
-    //         $ratus = ($angka % 1000 - $angka % 100) / 100;
-    //         $puluh = ($angka % 100 - $angka % 10) / 10;
-    //         $satuan = $angka % 10;
-    //         $result = $units[$ratus] . ' Ratus ';
-    //         if ($puluh == 1 && $satuan > 0) {
-    //             $result .= $teens[$satuan];
-    //         } else {
-    //             $result .= $tens[$puluh];
-    //             if ($satuan > 0) {
-    //                 $result .= ' ' . $units[$satuan];
-    //             }
-    //         }
-    //     }
-
-    //     return $result;
-    // }
 
     public function angkaKeHuruf($angka)
     {

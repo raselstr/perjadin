@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= $title ; $spt['data'][0]->spt_nomor;?></title>
+  <title><?= $title ; $dataspt['data'][0]->spt_nomor;?></title>
   <style>
     @page {
       /* size: 22; */
@@ -165,7 +165,7 @@
           </td>
         </tr>
         <?php 
-        $dasar = $spt['data'][0]->spt_dasar;
+        $dasar = $dataspt['data'][0]->spt_dasar;
         if ($dasar) : ?>
         <tr>
           <td colspan="2" id="isisurat">Dasar</td>
@@ -184,7 +184,7 @@
           <td id="isisuratpej"></td> 
           <td colspan="2" id="isisuratpej">Nama</td>
           <td width="3%">:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt['data'][0]->pejabat_nama; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_nama; ?></td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -192,7 +192,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">NIP</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt['data'][0]->pejabat_nip; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_nip; ?></td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -200,7 +200,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt['data'][0]->pejabat_pangkat; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_pangkat; ?></td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -208,7 +208,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Jabatan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $spt['data'][0]->pejabat_namajabatan; ?></td>
+          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
         </tr>
         <tr><td></td></tr>
         <tr>
@@ -261,7 +261,7 @@
         </tr>
         <tr>
           <td id="isiberita" width="5%">1.</td>
-          <td colspan="10" id="isiberita"><?= $spt['data'][0]->spt_uraian; ?> ke <?= $spt['data'][0]->spt_tempat; ?>, <?= $spt['data'][0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($spt['data'][0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($spt['data'][0]->spt_berakhir)); ?>.</td>
+          <td colspan="10" id="isiberita"><?= $dataspt['data'][0]->spt_uraian; ?> ke <?= $dataspt['data'][0]->spt_tempat; ?>, <?= $dataspt['data'][0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($dataspt['data'][0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($dataspt['data'][0]->spt_berakhir)); ?>.</td>
         </tr>
         <tr>
           <td id="isiberita">2.</td>
@@ -296,7 +296,7 @@
           </td>
         </tr>
         <tr><td><br></td></tr>
-        <?php if($spt['data'][0]->pejabat_kode <> "Kaban") { ?>
+        <?php if($dataspt['data'][0]->pejabat_kode <> "Kaban") { ?>
           <tr>
             <td id="ttdan">An.</td>
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
@@ -319,15 +319,15 @@
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd"><b><?= $spt['data'][0]->pejabat_nama; ?></b></td>
+          <td colspan="3" id="ttd"><b><?= $dataspt['data'][0]->pejabat_nama; ?></b></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" ><?= $spt['data'][0]->pejabat_pangkat; ?></td>
+          <td colspan="3" id="ttd" ><?= $dataspt['data'][0]->pejabat_pangkat; ?></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" >NIP.<?= $spt['data'][0]->pejabat_nip; ?></td>
+          <td colspan="3" id="ttd" >NIP.<?= $dataspt['data'][0]->pejabat_nip; ?></td>
         </tr>
       </table>
     </div>
