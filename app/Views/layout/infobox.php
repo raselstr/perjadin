@@ -57,12 +57,12 @@
       <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
       <?php 
         $db = \Config\Database::connect();
-        $user = $db->query('SELECT * FROM users WHERE user_active = true');
+        $user = $db->query('SELECT * FROM spts WHERE spt_verif = 1');
         $sum = $user->getNumRows();
       ?>
 
       <div class="info-box-content">
-        <span class="info-box-text">Verifikasi</span>
+        <span class="info-box-text">Verifikasi SPT</span>
         <span class="info-box-number"><?= $sum; ?></span>
       </div>
       <!-- /.info-box-content -->
