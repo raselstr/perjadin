@@ -103,13 +103,13 @@
                           <td class="align-middle text-center">
                             <?php if ($value->spt_verif == '1') : ?>
                               <?php if (session('role_id') == '4') : ?>
-                                <button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>" disabled>Disetujui</button>
+                                <button type="button" class="btn btn-block btn-outline-success btn-sm" disabled>Disetujui</button>
                               <?php else : ?>
                                 <button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Disetujui</button>
                               <?php endif ?>
                             <?php else : ?>
                                 <?php if (session('role_id') == '4') : ?>
-                                  <button type="button" class="btn btn-block btn-outline-danger btn-sm" id="tblverif" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>" disabled>Belum Disetujui</button>
+                                  <button type="button" class="btn btn-block btn-outline-danger btn-sm" id="tblverif" disabled>Belum Disetujui</button>
                                 <?php else : ?>
                                   <button type="button" class="btn btn-block btn-outline-danger btn-sm" id="tblverif" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?= $value->spt_id ?>" data-tglmulai="<?= $value->spt_mulai ?>">Belum Disetujui</button>
                                 <?php endif ?>
@@ -158,8 +158,8 @@
         <div class="modal-body">
           <div class="form-group">
             <!-- <label for="exampleInputBorder">id</code></label> -->
-            <input type="text" id="spt_id" name="spt_id" hidden>
-            <input type="text" name="spt_verif" value="1" hidden>
+            <input type="text" id="spt_id" name="spt_id" >
+            <input type="text" name="spt_verif" value="1" >
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
