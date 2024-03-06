@@ -143,7 +143,8 @@ class SptModel extends Model
             $builder->where('pegawais.pegawai_nip', $id);
         }
         $builder->groupBy('spts.spt_id');
-        $builder->orderBy('spts.created_at', 'DESC');
+        $builder->orderBy('spts.spt_nomor', 'DESC');
+        $builder->orderBy('spts.sppd_nomor', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }
