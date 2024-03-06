@@ -100,7 +100,7 @@
                             </td>
                             <?php else : ?>
                             <td class="align-middle text-center">Disetujui</td>
-                            <td class="align-middle text-center"><?= date('d M Y',strtotime($value->spt_nomor)) ?><br><?= date('d M Y',strtotime($value->sppd_nomor)) ?></td>
+                            <td class="align-middle text-center"><?= $value->spt_nomor?><br><?= $value->sppd_nomor ?></td>
                           <?php endif ?>
                           <td class="align-middle"><?= $value->pejabat_kode?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
