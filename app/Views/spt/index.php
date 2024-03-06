@@ -72,7 +72,7 @@
                     <tr>
                       <th rowspan="2" class="align-middle text-center">No</th>
                       <th rowspan="2" class="align-middle text-center">Aksi</th>
-                      <th rowspan="2" class="align-middle text-center">Pelaksana</th>
+                      <th rowspan="2" class="align-middle text-center">Nomor SPT<br>Nomor SPD</th>
                       <th rowspan="2" class="align-middle text-center">Pejabat Pemberi Tugas</th>
                       <th colspan="3" class="align-middle text-center">Data Perjalanan Dinas</th>
                       <th rowspan="2" class="align-middle text-center">Tgl. Mulai, <br> Tgl. Selesai<br>Lama (Hari)</th>
@@ -100,7 +100,7 @@
                             </td>
                             <?php else : ?>
                             <td class="align-middle text-center">Disetujui</td>
-                            <td class="align-middle text-center">Disetujui</td>
+                            <td class="align-middle text-center"><?= date('d M Y',strtotime($value->spt_nomor)) ?><br><?= date('d M Y',strtotime($value->sppd_nomor)) ?></td>
                           <?php endif ?>
                           <td class="align-middle"><?= $value->pejabat_kode?></td>
                           <td class="align-middle"><?= $value->spt_uraian ?></td>
