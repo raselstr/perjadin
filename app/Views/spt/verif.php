@@ -158,8 +158,8 @@
         <div class="modal-body">
           <div class="form-group">
             <!-- <label for="exampleInputBorder">id</code></label> -->
-            <input type="text" id="spt_id" name="spt_id" >
-            <input type="text" name="spt_verif" value="1" >
+            <input type="text" id="spt_id" name="spt_id" hidden>
+            <input type="text" name="spt_verif" value="1" hidden>
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
