@@ -310,7 +310,7 @@ class Pelaksana extends ResourcePresenter
             // 'terbilang' => $itemModel->angkaKeHuruf(intval($kabanpelaksana[0]->spt_lama))
         ];
         // dd($data);
-        return view('pelaksana/sptbupati_pdf', $data);
+        return view('pelaksana/sptsekda_pdf', $data);
         // $html = view('pelaksana/sptsekda_pdf', $data);
         
        
