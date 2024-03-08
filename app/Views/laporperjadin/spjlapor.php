@@ -110,7 +110,9 @@
             <?= csrf_field() ?>
             <!-- <div class="form-group row"> -->
               <a href="<?= site_url('laporjadin'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i>   Kembali</a>
-              <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
+              <?php if(session('role_id') == '4') : ?>
+                <button type="submit" class="btn bg-gradient-primary float-sm-right"  class="btn btn-primary" ><i class="fas fa-save"> </i>   Simpan Laporan</button>
+              <?php endif ?>
               <!-- </div> -->
             </div>
             <div class="card-footer">
