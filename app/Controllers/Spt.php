@@ -77,6 +77,7 @@ class Spt extends ResourcePresenter
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
         $acara          = new SptModel();
+        $model          = new PegawaisModel();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
@@ -84,6 +85,7 @@ class Spt extends ResourcePresenter
             'jenis'     => $jenisperjadin->findAll(),
             'pejabat'   => $pejabat->pejabataktif(),
             'acara'     => $acara->getOptions(),
+            'pptks'      => $model->pptk(),
 
         ];
         // dd($data);
@@ -130,6 +132,8 @@ class Spt extends ResourcePresenter
         $lokasiperjadin = new LokasiperjadinModel();
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
+        $model = new PegawaisModel();
+
 
         // $dataspt = $spt->find($id);
         $dataspt = $spt->sptall($id);
@@ -142,6 +146,7 @@ class Spt extends ResourcePresenter
                 'jenis'     => $jenisperjadin->findAll(),
                 'pejabat'   => $pejabat->pejabataktif(),
                 'acara'     => $spt->getOptions(),
+                'pptks'     => $model->pptk(),
             ];
         //    dd($data);
         return view('spt/editspt', $data);

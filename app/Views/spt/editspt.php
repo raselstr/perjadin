@@ -61,6 +61,20 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label for="spt_pptk" class="col-sm-4 col-form-label">Pejabat Pelaksana Teknis Kegiatan (PPTK)</label>
+                          <div class="col">
+                            <select name="spt_pptk" id="spt_pptk" class="form-control <?= isset($errors['spt_pptk']) ? 'is-invalid' : null ; ?>">
+                              <option value="">Pilih PPTK Kegiatan ...!</option>
+                              <?php foreach ($pptks as $key => $pptk) { ?>
+                                <option value="<?= $pptk->pegawai_id ?>" <?= $pptk->pegawai_id == $spt[0]->spt_pptk ? 'selected':null?>><?= $pptk->pegawai_nama; ?></option>
+                              <?php } ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                <?= isset($errors['spt_pptk']) ? $errors['spt_pptk'] : null ; ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label for="spt_jenis" class="col-sm-4 col-form-label">Jenis Perjalanan Dinas</label>
                           <div class="col">
                             <select name="spt_jenis" id="spt_jenis" class="form-control <?= isset($errors['spt_jenis']) ? 'is-invalid' : null ; ?>" >

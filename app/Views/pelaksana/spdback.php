@@ -42,7 +42,11 @@
               </tr>
               <tr>
                 <td></td>
-                <td colspan="3">Kepala</td>
+                <td colspan="3">Pejabat Pelaksana Teknis Kegiatan (PPTK)</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td colspan="3"><?= $pptks[0]->pegawai_jabatan; ?></td>
               </tr>
               <tr>
                 <td></td>
@@ -54,11 +58,11 @@
               </tr>
               <tr>
                 <td></td>
-                <td colspan="3">(.........................................................................)</td>
+                <td colspan="3">(<?= $pptks[0]->pegawai_nama; ?>)</td>
               </tr>
               <tr>
                 <td></td>
-                <td colspan="3">NIP.</td>
+                <td colspan="3">NIP. <?= $pptks[0]->pegawai_nip; ?></td>
               </tr>
             </table>
           </td>

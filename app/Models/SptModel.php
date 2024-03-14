@@ -29,6 +29,7 @@ class SptModel extends Model
         'spt_tujuan',
         'spt_transport',
         'spt_tempat',
+        'spt_pptk',
         'spt_verif',
     ];
 
@@ -51,6 +52,7 @@ class SptModel extends Model
         'spt_tujuan'    => 'required',
         'spt_transport' => 'required',
         'spt_tempat'    => 'required',
+        'spt_pptk'      => 'required',
     ];
     protected $validationMessages   = [
         'spt_pjb_tugas' => [
@@ -78,7 +80,10 @@ class SptModel extends Model
             'required'  => "Transportasi yang digunakan Perjalanan Dinas wajib diisi !",
         ],
         'spt_tempat' => [
-            'required'  => "Transportasi yang digunakan Perjalanan Dinas wajib diisi !",
+            'required'  => "Tempat Tujuan Perjalanan Dinas wajib diisi !",
+        ],
+        'spt_pptk' => [
+            'required'  => "PPTK Kegiatan Perjalanan Dinas wajib diisi !",
         ],
     ];
     protected $skipValidation       = false;
@@ -183,4 +188,6 @@ class SptModel extends Model
         return $result;
         
     }
+
+    
 }

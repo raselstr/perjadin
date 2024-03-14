@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PegawaisModel;
 use TCPDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -326,14 +327,18 @@ class Pelaksana extends ResourcePresenter
        
     }
     
-    public function spdback()
+    public function spdback($id)
     {
+
+        $model = new PegawaisModel();
+        $pptks = $model->pptk($id);
         $data = [
             'title'     => 'Bukti Diterima ditempat Tujuan',
             'subtitle'  => 'Home',
-
+            'pptks'     => $pptks,
         ];
         // dd($data);
+
         return view('pelaksana/spdback', $data);
     }
     

@@ -43,7 +43,7 @@ $routes->get('pelaksana/sptbupati/(:num)','Pelaksana::sptbupati/$1');
 $routes->get('pelaksana/sptsekda/(:num)','Pelaksana::sptsekda/$1');
 $routes->get('pelaksana/sptpdf/(:num)','Pelaksana::sptpdf/$1');
 $routes->get('pelaksana/sppdpdf/(:num)','Pelaksana::sppdpdf/$1');
-$routes->get('pelaksana/spdback','Pelaksana::spdback');
+$routes->get('pelaksana/spdback/(:num)','Pelaksana::spdback/$1');
 // $routes->get('pelaksana/cekpelaksana/(:num)','Pelaksana::cekpelaksana/$1');
 $routes->presenter('pelaksana');
 
