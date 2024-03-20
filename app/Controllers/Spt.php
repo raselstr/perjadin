@@ -2,14 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\SptModel;
+use App\Models\PejabatModel;
+use App\Models\PegawaisModel;
+use App\Models\PelaksanaModel;
 use App\Models\JenisperjadinModel;
 use App\Models\LokasiperjadinModel;
-use App\Models\PegawaisModel;
-use App\Models\PejabatModel;
-use App\Models\PelaksanaModel;
-use App\Models\SptModel;
-use CodeIgniter\RESTful\ResourcePresenter;
 use CodeIgniter\HTTP\IncomingRequest;
+use CodeIgniter\RESTful\ResourcePresenter;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 
 /**
  * @property IncomingRequest $request
@@ -181,8 +182,14 @@ class Spt extends ResourcePresenter
         $spt = new SptModel();
         
         // $dataspt = $spt->find($id);
-        $spt->delete($id);
-        return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Hapus');
+        try {
+            $spt->delete($id);
+            return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Hapus');
+            
+        } catch (DatabaseException $e) {
+            return redirect()->to(site_url('spt'))->with('info','Data ASN Pelaksana Hapus terlebih dahulu !!! ');
+        }
+            
     }
 
     /**

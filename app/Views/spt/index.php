@@ -165,10 +165,11 @@
           showConfirmButton: false,
           timer: 5000,
         });
-        Toast.fire({
-          icon: "success",
-          title: flashData,
-        });
+        toastr.success(flashData)
+        // Toast.fire({
+          // icon: "success",
+          // title: flashData,
+        // });
         // swalDefaultSuccess(flashData, "You clicked the button!", "success");
     }
 
