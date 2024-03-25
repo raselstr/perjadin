@@ -56,7 +56,7 @@
                 <h5 class="card-title"><?= $title; ?></h5>
               </div>
               <div class="col-sm-4">
-                <button type="button" class="btn bg-gradient-primary float-sm-right btn-sm" class="btn btn-primary"  data-toggle="modal" data-target="#form"><i class="fas fa-hand-point-right"> </i> Tambah Menu</button>
+                <button type="button" class="btn bg-gradient-primary float-sm-right btn-sm" class="btn btn-primary"  data-toggle="modal" data-target="#form"><i class="fas fa-hand-point-right"> </i> Tambah Pejabat Penandatangan</button>
                 </a>
               </div>
             </div>

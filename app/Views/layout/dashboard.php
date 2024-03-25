@@ -10,6 +10,40 @@
     <div class="content">
       <div class="container-fluid">
           <?= $this->include('layout/infobox'); ?>
+          <div class="row">
+          <div class="col">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Foto Kegiatan Perjalanan Dinas</h3>
+              </div>
+              <div class="card-body">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <?php foreach ($gambar as $key => $value) : ?>
+                      <div class="carousel-item active">
+                        <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto1); ?>" class="rounded mx-auto d-block" alt="...">
+                      </div>
+                      <div class="carousel-item ">
+                        <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto2); ?>" class="rounded mx-auto d-block" alt="...">
+                      </div>
+                      <div class="carousel-item ">
+                        <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto3); ?>" class="rounded mx-auto d-block" alt="...">
+                      </div>
+                    <?php endforeach ?>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
         <div class="row">
           <!-- /.col-md-6 -->
           <div class="col">

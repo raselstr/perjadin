@@ -64,7 +64,7 @@
                 <h5 class="card-title"><?= $title; ?></h5>
               </div>
               <div class="col-sm-4">
-                <button type="button" class="btn bg-gradient-primary float-sm-right btn-sm" class="btn btn-primary"  data-toggle="modal" data-target="#modalform"><i class="fas fa-hand-point-right"> </i> Tambah User</button>
+                <button type="button" class="btn bg-gradient-primary float-sm-right btn-sm" class="btn btn-primary"  data-toggle="modal" data-target="#modalform"><i class="fas fa-hand-point-right"> </i> Tambah User Pengguna Administrasi</button>
                 </a>
               </div>
             </div>

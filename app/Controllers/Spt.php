@@ -2,14 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\SptModel;
+use App\Models\PejabatModel;
+use App\Models\PegawaisModel;
+use App\Models\PelaksanaModel;
 use App\Models\JenisperjadinModel;
 use App\Models\LokasiperjadinModel;
-use App\Models\PegawaisModel;
-use App\Models\PejabatModel;
-use App\Models\PelaksanaModel;
-use App\Models\SptModel;
-use CodeIgniter\RESTful\ResourcePresenter;
 use CodeIgniter\HTTP\IncomingRequest;
+use CodeIgniter\RESTful\ResourcePresenter;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 
 /**
  * @property IncomingRequest $request
@@ -77,6 +78,7 @@ class Spt extends ResourcePresenter
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
         $acara          = new SptModel();
+        $model          = new PegawaisModel();
         $data = [
             'title'     => 'Surat Perintah Tugas',
             'subtitle'  => 'Home',
@@ -84,6 +86,7 @@ class Spt extends ResourcePresenter
             'jenis'     => $jenisperjadin->findAll(),
             'pejabat'   => $pejabat->pejabataktif(),
             'acara'     => $acara->getOptions(),
+            'pptks'      => $model->pptk(),
 
         ];
         // dd($data);
@@ -130,6 +133,8 @@ class Spt extends ResourcePresenter
         $lokasiperjadin = new LokasiperjadinModel();
         $jenisperjadin  = new JenisperjadinModel();
         $pejabat        = new PejabatModel();
+        $model = new PegawaisModel();
+
 
         // $dataspt = $spt->find($id);
         $dataspt = $spt->sptall($id);
@@ -142,6 +147,7 @@ class Spt extends ResourcePresenter
                 'jenis'     => $jenisperjadin->findAll(),
                 'pejabat'   => $pejabat->pejabataktif(),
                 'acara'     => $spt->getOptions(),
+                'pptks'     => $model->pptk(),
             ];
         //    dd($data);
         return view('spt/editspt', $data);
@@ -176,8 +182,14 @@ class Spt extends ResourcePresenter
         $spt = new SptModel();
         
         // $dataspt = $spt->find($id);
-        $spt->delete($id);
-        return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Hapus');
+        try {
+            $spt->delete($id);
+            return redirect()->to(site_url('spt'))->with('info','Data Berhasil di Hapus');
+            
+        } catch (DatabaseException $e) {
+            return redirect()->to(site_url('spt'))->with('info','Data ASN Pelaksana Hapus terlebih dahulu !!! ');
+        }
+            
     }
 
     /**

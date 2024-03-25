@@ -114,4 +114,20 @@ class PegawaisModel extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+
+    function pptk($id = null)
+    {
+        $builder = $this->db->table('pegawais as a');
+        $builder->select('*');
+        $builder->join('eselons as b','b.eselon_id = a.eselon_id');
+        $builder->join('pangkats as c','c.pangkat_id = a.pangkat_id');
+        $builder->where('b.eselon_id',3);
+        $builder->orLike('a.pegawai_jabatan',esc('KASUBBAG UMUM'));
+
+        if($id !== null) {
+            $builder->where('a.pegawai_id',$id);
+        }
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

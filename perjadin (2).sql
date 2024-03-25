@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Generation Time: Mar 06, 2024 at 09:59 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Waktu pembuatan: 14 Mar 2024 pada 10.41
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eselons`
+-- Struktur dari tabel `eselons`
 --
 
 CREATE TABLE `eselons` (
@@ -33,7 +33,7 @@ CREATE TABLE `eselons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `eselons`
+-- Dumping data untuk tabel `eselons`
 --
 
 INSERT INTO `eselons` (`eselon_id`, `eselon_nama`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `eselons` (`eselon_id`, `eselon_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenisperjadins`
+-- Struktur dari tabel `jenisperjadins`
 --
 
 CREATE TABLE `jenisperjadins` (
@@ -55,7 +55,7 @@ CREATE TABLE `jenisperjadins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `jenisperjadins`
+-- Dumping data untuk tabel `jenisperjadins`
 --
 
 INSERT INTO `jenisperjadins` (`jenisperjadin_id`, `jenisperjadin_nama`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `jenisperjadins` (`jenisperjadin_id`, `jenisperjadin_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laporjadins`
+-- Struktur dari tabel `laporjadins`
 --
 
 CREATE TABLE `laporjadins` (
@@ -86,7 +86,7 @@ CREATE TABLE `laporjadins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `laporjadins`
+-- Dumping data untuk tabel `laporjadins`
 --
 
 INSERT INTO `laporjadins` (`laporjadin_id`, `laporjadin_sptid`, `laporjadin_nodpa`, `laporjadin_pembuka`, `laporjadin_hasil`, `laporjadin_penutup`, `laporjadin_foto1`, `laporjadin_foto2`, `laporjadin_foto3`, `laporjadin_verif`, `laporjadin_created_at`, `laporjadin_updated_at`, `laporjadin_deleted_at`) VALUES
@@ -98,7 +98,7 @@ INSERT INTO `laporjadins` (`laporjadin_id`, `laporjadin_sptid`, `laporjadin_nodp
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lokasiperjadins`
+-- Struktur dari tabel `lokasiperjadins`
 --
 
 CREATE TABLE `lokasiperjadins` (
@@ -108,7 +108,7 @@ CREATE TABLE `lokasiperjadins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `lokasiperjadins`
+-- Dumping data untuk tabel `lokasiperjadins`
 --
 
 INSERT INTO `lokasiperjadins` (`lokasiperjadin_id`, `jenisperjadin_id`, `lokasiperjadin_nama`) VALUES
@@ -209,7 +209,7 @@ INSERT INTO `lokasiperjadins` (`lokasiperjadin_id`, `jenisperjadin_id`, `lokasip
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Struktur dari tabel `menus`
 --
 
 CREATE TABLE `menus` (
@@ -222,7 +222,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menus`
+-- Dumping data untuk tabel `menus`
 --
 
 INSERT INTO `menus` (`menu_id`, `menu_nama`, `menu_icon`, `menu_link`, `menu_active`, `role_id`) VALUES
@@ -236,7 +236,7 @@ INSERT INTO `menus` (`menu_id`, `menu_nama`, `menu_icon`, `menu_link`, `menu_act
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -250,7 +250,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
@@ -278,7 +278,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pangkats`
+-- Struktur dari tabel `pangkats`
 --
 
 CREATE TABLE `pangkats` (
@@ -289,7 +289,7 @@ CREATE TABLE `pangkats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pangkats`
+-- Dumping data untuk tabel `pangkats`
 --
 
 INSERT INTO `pangkats` (`pangkat_id`, `pangkat_nama`, `pangkat_gol`, `pangkat_pajak`) VALUES
@@ -315,7 +315,7 @@ INSERT INTO `pangkats` (`pangkat_id`, `pangkat_nama`, `pangkat_gol`, `pangkat_pa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawais`
+-- Struktur dari tabel `pegawais`
 --
 
 CREATE TABLE `pegawais` (
@@ -331,7 +331,7 @@ CREATE TABLE `pegawais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pegawais`
+-- Dumping data untuk tabel `pegawais`
 --
 
 INSERT INTO `pegawais` (`pegawai_id`, `pegawai_nip`, `pegawai_nama`, `pegawai_jabatan`, `pegawai_tgllahir`, `eselon_id`, `pangkat_id`, `pegawai_tingkat`, `pegawai_foto`) VALUES
@@ -397,7 +397,7 @@ INSERT INTO `pegawais` (`pegawai_id`, `pegawai_nip`, `pegawai_nama`, `pegawai_ja
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pejabats`
+-- Struktur dari tabel `pejabats`
 --
 
 CREATE TABLE `pejabats` (
@@ -411,7 +411,7 @@ CREATE TABLE `pejabats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pejabats`
+-- Dumping data untuk tabel `pejabats`
 --
 
 INSERT INTO `pejabats` (`pejabat_id`, `pejabat_kode`, `pejabat_nama`, `pejabat_namajabatan`, `pejabat_nip`, `pejabat_pangkat`, `pejabat_aktif`) VALUES
@@ -421,7 +421,7 @@ INSERT INTO `pejabats` (`pejabat_id`, `pejabat_kode`, `pejabat_nama`, `pejabat_n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelaksanas`
+-- Struktur dari tabel `pelaksanas`
 --
 
 CREATE TABLE `pelaksanas` (
@@ -432,7 +432,7 @@ CREATE TABLE `pelaksanas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pelaksanas`
+-- Dumping data untuk tabel `pelaksanas`
 --
 
 INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_utama`) VALUES
@@ -485,12 +485,13 @@ INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_uta
 (59, 24, 38, 1),
 (60, 25, 1, 1),
 (61, 26, 6, 1),
-(62, 26, 31, 0);
+(62, 26, 31, 0),
+(64, 28, 30, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perbups`
+-- Struktur dari tabel `perbups`
 --
 
 CREATE TABLE `perbups` (
@@ -510,7 +511,7 @@ CREATE TABLE `perbups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `perbups`
+-- Dumping data untuk tabel `perbups`
 --
 
 INSERT INTO `perbups` (`perbup_id`, `perbup_tingkatid`, `perbup_lokasiid`, `perbup_kota`, `perbup_hotel`, `perbup_uh`, `perbup_uhdiklat`, `perbup_uhrapat_fullboad`, `perbup_uhrapat_fullday`, `perbup_uhrapat_residencedlmkota`, `perbup_taksi_transportdarat`, `perbup_representasi`, `perbup_sewakendaraan`) VALUES
@@ -983,7 +984,7 @@ INSERT INTO `perbups` (`perbup_id`, `perbup_tingkatid`, `perbup_lokasiid`, `perb
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rolemenus`
+-- Struktur dari tabel `rolemenus`
 --
 
 CREATE TABLE `rolemenus` (
@@ -997,7 +998,7 @@ CREATE TABLE `rolemenus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `rolemenus`
+-- Dumping data untuk tabel `rolemenus`
 --
 
 INSERT INTO `rolemenus` (`rolemenu_id`, `role_id`, `submenu_id`, `lihat`, `tambah`, `ubah`, `hapus`) VALUES
@@ -1032,7 +1033,7 @@ INSERT INTO `rolemenus` (`rolemenu_id`, `role_id`, `submenu_id`, `lihat`, `tamba
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Struktur dari tabel `roles`
 --
 
 CREATE TABLE `roles` (
@@ -1041,7 +1042,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `roles`
+-- Dumping data untuk tabel `roles`
 --
 
 INSERT INTO `roles` (`role_id`, `role_nama`) VALUES
@@ -1054,7 +1055,7 @@ INSERT INTO `roles` (`role_id`, `role_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spjhotels`
+-- Struktur dari tabel `spjhotels`
 --
 
 CREATE TABLE `spjhotels` (
@@ -1077,7 +1078,7 @@ CREATE TABLE `spjhotels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `spjhotels`
+-- Dumping data untuk tabel `spjhotels`
 --
 
 INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`, `spjhotel_lokasi`, `spjhotel_nokamar`, `spjhotel_typekamar`, `spjhotel_checkin`, `spjhotel_checkout`, `spjhotel_mlm`, `spjhotel_hargapermalam`, `spjhotel_hargatotal`, `spjhotel_verif`, `spjhotel_bill`, `spjhotel_created_at`, `spjhotel_updated_at`, `spjhotel_deleted_at`) VALUES
@@ -1089,7 +1090,7 @@ INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spjpesawats`
+-- Struktur dari tabel `spjpesawats`
 --
 
 CREATE TABLE `spjpesawats` (
@@ -1112,7 +1113,7 @@ CREATE TABLE `spjpesawats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `spjpesawats`
+-- Dumping data untuk tabel `spjpesawats`
 --
 
 INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawat_jenis`, `spjpesawat_maskapai`, `spjpesawat_notiket`, `spjpesawat_kdboking`, `spjpesawat_tgl`, `spjpesawat_dari`, `spjpesawat_ke`, `spjpesawat_harga`, `spjpesawat_verif`, `spjpesawat_fototiket`, `spjpesawat_bill`, `spjpesawat_created_at`, `spjpesawat_updated_at`, `spjpesawat_deleted_at`) VALUES
@@ -1130,7 +1131,7 @@ INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spjtaksis`
+-- Struktur dari tabel `spjtaksis`
 --
 
 CREATE TABLE `spjtaksis` (
@@ -1149,7 +1150,7 @@ CREATE TABLE `spjtaksis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `spjtaksis`
+-- Dumping data untuk tabel `spjtaksis`
 --
 
 INSERT INTO `spjtaksis` (`spjtaksi_id`, `spjtaksi_pelaksanaid`, `spjtaksi_jenis`, `spjtaksi_tgl`, `spjtaksi_dari`, `spjtaksi_ke`, `spjtaksi_harga`, `spjtaksi_verif`, `spjtaksi_fototiket`, `spjtaksi_created_at`, `spjtaksi_updated_at`, `spjtaksi_deleted_at`) VALUES
@@ -1169,7 +1170,7 @@ INSERT INTO `spjtaksis` (`spjtaksi_id`, `spjtaksi_pelaksanaid`, `spjtaksi_jenis`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spts`
+-- Struktur dari tabel `spts`
 --
 
 CREATE TABLE `spts` (
@@ -1189,6 +1190,7 @@ CREATE TABLE `spts` (
   `spt_tujuan` int(11) NOT NULL,
   `spt_transport` varchar(50) NOT NULL,
   `spt_tempat` varchar(150) NOT NULL,
+  `spt_pptk` int(11) NOT NULL,
   `spt_verif` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -1196,38 +1198,39 @@ CREATE TABLE `spts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `spts`
+-- Dumping data untuk tabel `spts`
 --
 
-INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`, `spt_pjb_tugas`, `spt_jenis`, `spt_acara`, `spt_dasar`, `spt_uraian`, `spt_lama`, `spt_mulai`, `spt_berakhir`, `spt_tujuan`, `spt_transport`, `spt_tempat`, `spt_verif`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-20', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL),
-(5, 2024, '800.1.11.1/0229/BKAD/II/2024', '800.1.11.1/017/SPD/II/2024', '2024-02-23', 1, 2, 0, '', ' Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 2024, serta interkoneksi SIPD Penatausahaan dengan Bank Daerah sebgaimana surat Sekretaris Daerah No. 900.1.15.9/0545/UM-BKAD/II/2024 Tanggal 02 Pebruari 2024 Perihal Permohonan Pendampingan Penggunaan Aplikasi SIPD Penatausahaan', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 1, '2024-02-22 23:05:45', '2024-03-04 08:48:14', NULL),
-(6, 2024, '800.1.11.1/0260/BKAD/II/2024', '800.1.11.1/026/BKAD/II/2024', '2024-03-01', 1, 2, 3, 'Surat Kepala Biro Perencanaan dan Anggaran Kementerian Kesehatan RI Nomor : PR.01.06/A.I/592/2024 Tanggal 6 Februari 2024 Hal Undangan Sosialisasi Regional Barat', 'Menghadiri Sosialisasi Terpadu Regional Barat', 4, '2024-03-04', '2024-03-07', 39, 'Pesawat Udara', 'Swiss-BelHotel Harbour Bay Jl. Duyung, Sei Jodoh, Batu Ampar, Batam', 1, '2024-03-02 19:43:32', '2024-03-06 11:22:34', NULL),
-(7, 2024, '800.1.11.1/0088/BKAD/I/2024', '800.1.11.1/004/SPPD/I/2024', '2024-01-10', 1, 2, 0, '', 'Konsultasi terkait Penggunaan SIPD RI Penatausahaan saat pembuatan Uang Persediaan (UP) untuk Sekretariat Daerah  yang tidak bisa diinput pada Aplikasi', 3, '2024-01-11', '2024-01-13', 49, 'Pesawat Udara', 'Direktorat Jenderal Bina Keuangan Daerah Kementerian Dalam Negeri - Jl. Veteran No. 7 Jakarta Pusat', 1, '2024-03-05 09:49:26', '2024-03-05 09:51:22', NULL),
-(8, 2024, '800.1.11.1/0116/BKAD/I/2024', '800.1.11.1/008/SPD/I/2024', '2024-01-22', 1, 1, 0, '', 'Koordinasi dan Konsultasi tentang Aplikasi SIMDA BMD guna Penyusunan Laporan Keuangan TA. 2023 ', 2, '2024-01-22', '2024-01-23', 27, 'Angkutan Umum', 'Kantor BPKP Perwakilan Provinsi Sumatera Utara', 1, '2024-03-06 11:26:04', '2024-03-06 12:05:08', NULL),
-(9, 2024, '800.1.11.1/0125/BKAD/I/2024', '800.1.11.1/007/SPPD/I/2024', '2024-01-22', 1, 1, 0, '', 'Koordinasi dan Konsultasi terkait penghapusan Barang Milik Daerah secara Lelang berupa Kenderaan Dinas', 2, '2024-01-24', '2024-01-25', 27, 'Mobil Dinas', 'BPKP Provinsi Sumatera Utara', 1, '2024-03-06 12:07:11', '2024-03-06 12:14:03', NULL),
-(10, 2024, '800.1.11.1/0156/BKAD/I/2024', '800.1.11.1/009/SPPD/I/2024', '2024-01-29', 1, 2, 0, '', 'Koordinasi dan Konsultasi tentang Tambahan Penghasilan Pegawai Negeri Sipil dan Sistem Kerja pada Pemerintah Kabupaten Asahan ', 5, '2024-01-30', '2024-02-03', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri Republik Indonesia dan Pemerintah Kabupaten Bantul', 1, '2024-03-06 13:27:29', '2024-03-06 13:30:23', NULL),
-(11, 2024, '800.1.11.1/0177/BKAD/II/2024', '800.1.11.1/010/SPPD/II/2024', '2024-02-02', 1, 1, 0, '', 'Menghadiri Undangan Rapat Umum Pemegang Saham (RUPS) Tahunan Tahun Buku 2023 dan Rapat Umum Pemegang Saham Luar Biasa (RUPS-LB) Bank Sumut', 2, '2024-02-05', '2024-02-06', 27, 'Mobil Dinas', 'Ballroom PT. Bank Sumut Lt.10  Jl. Imam Bonjol No. 18 Medan', 1, '2024-03-06 13:32:48', '2024-03-06 13:36:12', NULL),
-(12, 2024, '800.1.11.1/0181/BKAD/II/2024', '800.1.11.1/011/SPPD/II/2024', '2024-02-05', 1, 2, 0, '', 'Koordinasi dan Konsultasi perihal Penatausahaan Barang Milik Daerah menggunakan Aplikasi Pengelolaan Barang Milik Daerah guna Penyusunan Laporan Keuangan TA. 2023', 3, '2024-02-06', '2024-02-08', 50, 'Pesawat Udara', 'Badan Keuangan dan Aset Daerah Kabupaten Cirebon, Jln. Sunan kalijaga Kab. Cirebon', 1, '2024-03-06 13:39:00', '2024-03-06 13:40:40', NULL),
-(13, 2024, '800.1.11.1/0074/BKAD/I/2024', '800.1.11.1/0001/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menghadiri Rapat Persiapan Pembahasan Rancangan Kegiatan dan Penganggaran Dana Bagi Hasil Sawit TA.2024', 2, '2024-01-09', '2024-01-10', 27, 'Mobil Dinas', 'Kantor Badan Perencanaan Pembangunan Penelitian dan Pengembangan Provinsi Sumatera Utara Jl. P. Diponegoro No. 30.', 1, '2024-03-06 13:43:26', '2024-03-06 13:44:38', NULL),
-(14, 2024, '800.1.11.1/0075/BKAD/I/2024', '800.1.11.1/002/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menghadiri Rapat Persiapan Pembahasan Rancangan Kegiatan dan Penganggaran Dana Bagi Hasil Sawit TA.2024', 2, '2024-01-09', '2024-01-10', 27, 'Mobil Dinas', 'Kantor Badan Perencanaan Pembangunan Penelitian dan Pengembangan Provinsi Sumatera Utara Jl. P. Diponegoro No. 30.', 1, '2024-03-06 13:46:57', '2024-03-06 13:49:03', NULL),
-(15, 2024, '800.1.11.1/0078/BKAD/I/2024', '800.1.11.1/003/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menyampaikan Berkas Lembar Konfirmasi Dana Transfer (LKT) Triwulan IV (Empat) dan Lembar Rekapitulasi Dana Transfer ke Daerah dan Dana Desa Kabupaten Asahan', 1, '2024-01-10', '2024-01-10', 31, 'Angkutan Umum', 'Kantor KPPN Tanjung Balai', 1, '2024-03-06 13:51:10', '2024-03-06 13:54:33', NULL),
-(16, 2024, '800.1.11.1/0207/BKAD/II/2024', '800.1.11.1/013/SPD/II/2024', '2024-02-15', 1, 1, 0, '', 'Koordinasi dan Konsultasi terkait PP No. 5 Tahun 2024 yaitu tentang Kenaikan Gaji Pokok dsb', 2, '2024-02-15', '2024-02-16', 27, 'Angkutan Umum', 'PT. Taspen KCU Medan', 1, '2024-03-06 13:56:44', '2024-03-06 14:00:17', NULL),
-(17, 2024, '-', '800.1.11.1/015/SPPD/II/2024', '2024-02-20', 1, 1, 0, '', 'Menghadiri Acara Stakeholders Day', 1, '2024-02-21', '2024-02-21', 31, 'Mobil Dinas', 'Pendopo Rumah Dinas Walikota Tanjung Balai Jl. Jend. Sudirman No. 5', 1, '2024-03-06 14:23:41', '2024-03-06 14:42:35', NULL),
-(18, 2024, '--', '800.1.11.1/016/SPD/II/2024', '2024-02-23', 1, 1, 0, '', 'Menghadiri Undangan Rapat Umum Pemegang Saham (RUPS) Tahunan Tahun Buku 2023', 2, '2024-02-25', '2024-02-26', 27, 'Mobil Dinas', 'Ballroom PT. Bank Sumut Lt. 10 Jl. Imam Bonjol No. 18', 1, '2024-03-06 14:46:16', '2024-03-06 14:50:53', NULL),
-(19, 2024, '800.1.11.1/0235/BKAD/II/2024', '800.1.11.1/018/SPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Mengantar Surat Permohonan Konfirmasi Setoran Penerimaan Negara', 1, '2024-02-26', '2024-02-26', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 1, '2024-03-06 14:53:33', '2024-03-06 14:55:17', NULL),
-(20, 2024, '800.1.11.1/0236/BKAD/II/2024', '-', '2024-02-26', 2, 1, 0, '', 'Mendampingi Kepala Badan BKAD Kab. Asahan menghadiri undangan Penandatanganan BAR (Berita Acara Rekonsiliasi) atas penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Mobil Dinas', 'KPPN Tanjung Balai', 1, '2024-03-06 14:59:28', '2024-03-06 15:01:01', NULL),
-(21, 2024, '800.1.11.1/0237/BKAD/II/2024', '800.1.11.1/019/SPPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Menghadiri Undangan Penandatanganan Berita Acara Rekonsiliasi (BAR) atas Penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 1, '2024-03-06 15:03:30', '2024-03-06 15:05:20', NULL),
-(22, 2024, '800.1.11.1/0239/BKAD/II/2024', '800.1.11.1/020/SPPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Mendampingi Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan menghadiri Undangan Penandatanganan Berita Acara Rekonsiliasi (BAR) atas penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 1, '2024-03-06 15:09:08', '2024-03-06 15:10:27', NULL),
-(23, 2024, '800.1.11.1/0242/BKAD/II/2024', '800.1.11.1/021/SPPD/II/2024', '2024-02-27', 1, 1, 0, '', 'Mendampingi Kabid Aset Mengikuti Pelatihan dan Ujian Sertifikasi Kompetensi Pengadaan Barang/ Jasa Level 1', 4, '2024-02-28', '2024-03-02', 27, 'Mobil Dinas', 'Hotel Le Polonia Medan, Jl. Jend. Sudirman No. 14-18', 1, '2024-03-06 15:13:24', '2024-03-06 15:15:27', NULL),
-(24, 2024, '---', '800.1.11.1/012/SPD/II/2024', '2024-02-12', 1, 1, 1, '', 'Mengikuti Bimbingan Teknis Pengelola PBJ Batch I Tahun Anggaran 2024', 4, '2024-02-14', '2024-02-17', 27, 'Angkutan Umum', 'Hotel Le Polonia & Convention Medan', 1, '2024-03-06 15:18:08', '2024-03-06 15:19:04', NULL),
-(25, 2024, NULL, NULL, NULL, 1, 2, 0, '', 'Menghadiri Undangan Sosialisasi Terpadu DAK Fisik, DAK Non Fisik, DAU dan Dana Dekon Bidang Kesehatan Tahun 2024', 4, '2024-03-04', '2024-03-07', 39, 'Pesawat Udara', 'Swiss-Bel Hotel Harbour Bay Jl. Duyung, Sei Jodoh Batu Ampar, Batam', 0, '2024-03-06 15:21:52', '2024-03-06 15:21:52', NULL),
-(26, 2024, '800.1.11.1/0216/BKAD/II/2024', '800.1.11.1/024/SPPD/II/2024', '2024-02-20', 1, 1, 0, '', 'Mendampingi Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan dalam rangka menghadiri acara Stakeholder Day pada Kuasa Pengguna Anggaran Satuan Kerja Lingkup KPPN Tanjungbalai', 1, '2024-02-21', '2024-02-21', 31, 'Mobil Dinas', 'Pendopo Rumah Dinas Walikota Tanjung Balai', 1, '2024-03-06 15:28:10', '2024-03-06 15:29:40', NULL);
+INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`, `spt_pjb_tugas`, `spt_jenis`, `spt_acara`, `spt_dasar`, `spt_uraian`, `spt_lama`, `spt_mulai`, `spt_berakhir`, `spt_tujuan`, `spt_transport`, `spt_tempat`, `spt_pptk`, `spt_verif`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 2024, '800.1.11.1/0210/BKAD/II/2024', '800.1.11.1/014/SPPD/II/2024', '2024-02-19', 1, 2, 0, 'Undangan dari Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi Direktorat Jenderal Guru dan Tenaga Kependidikan Nomor : 0542/BI/KU.01.02/2024 Tanggal 01 Februari 2024 Perihal Undangan Peserta', 'Menghadiri Undangan Rekonsiliasi Laporan Realisasi Pembayaran Tunjangan Profesi Guru, Tunjangan Khusus Guru dan Tambahan Penghasilan Guru ASND melalui DAK Non Fisik Tahun Anggaran 2023 Tahap I', 3, '2024-02-20', '2024-02-22', 39, 'Pesawat Udara', 'Golden View Hotel, Jl. Bengkong Laut, Tj. Buntung, Kec. Bengkong, Kota Batam, Kepulauan Riau', 6, 1, '2024-02-19 08:47:14', '2024-02-19 17:06:06', NULL),
+(5, 2024, '800.1.11.1/0229/BKAD/II/2024', '800.1.11.1/017/SPD/II/2024', '2024-02-23', 1, 2, 0, '', ' Konsultasi penggunaan SIPD Penatausahaan setelah penetapan pergeseran APBD menyusul atas penyampaian surat Sekretaris Daerah No. 900.1/0692/UM-BKAD/II/2024 tanggal 12 Pebruari 2024 Perihal Permohonan Penjelasan terkait Penatausahaan Pergeseran APBD TA. 2024, serta interkoneksi SIPD Penatausahaan dengan Bank Daerah sebgaimana surat Sekretaris Daerah No. 900.1.15.9/0545/UM-BKAD/II/2024 Tanggal 02 Pebruari 2024 Perihal Permohonan Pendampingan Penggunaan Aplikasi SIPD Penatausahaan', 4, '2024-02-26', '2024-02-29', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat. ', 6, 1, '2024-02-22 23:05:45', '2024-03-04 08:48:14', NULL),
+(6, 2024, '800.1.11.1/0260/BKAD/II/2024', '800.1.11.1/026/BKAD/II/2024', '2024-03-01', 1, 2, 3, 'Surat Kepala Biro Perencanaan dan Anggaran Kementerian Kesehatan RI Nomor : PR.01.06/A.I/592/2024 Tanggal 6 Februari 2024 Hal Undangan Sosialisasi Regional Barat', 'Menghadiri Sosialisasi Terpadu Regional Barat', 4, '2024-03-04', '2024-03-07', 39, 'Pesawat Udara', 'Swiss-BelHotel Harbour Bay Jl. Duyung, Sei Jodoh, Batu Ampar, Batam', 6, 1, '2024-03-02 19:43:32', '2024-03-06 11:22:34', NULL),
+(7, 2024, '800.1.11.1/0088/BKAD/I/2024', '800.1.11.1/004/SPPD/I/2024', '2024-01-10', 1, 2, 0, '', 'Konsultasi terkait Penggunaan SIPD RI Penatausahaan saat pembuatan Uang Persediaan (UP) untuk Sekretariat Daerah  yang tidak bisa diinput pada Aplikasi', 3, '2024-01-11', '2024-01-13', 49, 'Pesawat Udara', 'Direktorat Jenderal Bina Keuangan Daerah Kementerian Dalam Negeri - Jl. Veteran No. 7 Jakarta Pusat', 6, 1, '2024-03-05 09:49:26', '2024-03-05 09:51:22', NULL),
+(8, 2024, '800.1.11.1/0116/BKAD/I/2024', '800.1.11.1/008/SPD/I/2024', '2024-01-22', 1, 1, 0, '', 'Koordinasi dan Konsultasi tentang Aplikasi SIMDA BMD guna Penyusunan Laporan Keuangan TA. 2023 ', 2, '2024-01-22', '2024-01-23', 27, 'Angkutan Umum', 'Kantor BPKP Perwakilan Provinsi Sumatera Utara', 5, 1, '2024-03-06 11:26:04', '2024-03-06 12:05:08', NULL),
+(9, 2024, '800.1.11.1/0125/BKAD/I/2024', '800.1.11.1/007/SPPD/I/2024', '2024-01-22', 1, 1, 0, '', 'Koordinasi dan Konsultasi terkait penghapusan Barang Milik Daerah secara Lelang berupa Kenderaan Dinas', 2, '2024-01-24', '2024-01-25', 27, 'Mobil Dinas', 'BPKP Provinsi Sumatera Utara', 5, 1, '2024-03-06 12:07:11', '2024-03-06 12:14:03', NULL),
+(10, 2024, '800.1.11.1/0156/BKAD/I/2024', '800.1.11.1/009/SPPD/I/2024', '2024-01-29', 1, 2, 0, '', 'Koordinasi dan Konsultasi tentang Tambahan Penghasilan Pegawai Negeri Sipil dan Sistem Kerja pada Pemerintah Kabupaten Asahan ', 5, '2024-01-30', '2024-02-03', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri Republik Indonesia dan Pemerintah Kabupaten Bantul', 6, 1, '2024-03-06 13:27:29', '2024-03-06 13:30:23', NULL),
+(11, 2024, '800.1.11.1/0177/BKAD/II/2024', '800.1.11.1/010/SPPD/II/2024', '2024-02-02', 1, 1, 0, '', 'Menghadiri Undangan Rapat Umum Pemegang Saham (RUPS) Tahunan Tahun Buku 2023 dan Rapat Umum Pemegang Saham Luar Biasa (RUPS-LB) Bank Sumut', 2, '2024-02-05', '2024-02-06', 27, 'Mobil Dinas', 'Ballroom PT. Bank Sumut Lt.10  Jl. Imam Bonjol No. 18 Medan', 13, 1, '2024-03-06 13:32:48', '2024-03-06 13:36:12', NULL),
+(12, 2024, '800.1.11.1/0181/BKAD/II/2024', '800.1.11.1/011/SPPD/II/2024', '2024-02-05', 1, 2, 0, '', 'Koordinasi dan Konsultasi perihal Penatausahaan Barang Milik Daerah menggunakan Aplikasi Pengelolaan Barang Milik Daerah guna Penyusunan Laporan Keuangan TA. 2023', 3, '2024-02-06', '2024-02-08', 50, 'Pesawat Udara', 'Badan Keuangan dan Aset Daerah Kabupaten Cirebon, Jln. Sunan kalijaga Kab. Cirebon', 6, 1, '2024-03-06 13:39:00', '2024-03-06 13:40:40', NULL),
+(13, 2024, '800.1.11.1/0074/BKAD/I/2024', '800.1.11.1/0001/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menghadiri Rapat Persiapan Pembahasan Rancangan Kegiatan dan Penganggaran Dana Bagi Hasil Sawit TA.2024', 2, '2024-01-09', '2024-01-10', 27, 'Mobil Dinas', 'Kantor Badan Perencanaan Pembangunan Penelitian dan Pengembangan Provinsi Sumatera Utara Jl. P. Diponegoro No. 30.', 13, 1, '2024-03-06 13:43:26', '2024-03-06 13:44:38', NULL),
+(14, 2024, '800.1.11.1/0075/BKAD/I/2024', '800.1.11.1/002/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menghadiri Rapat Persiapan Pembahasan Rancangan Kegiatan dan Penganggaran Dana Bagi Hasil Sawit TA.2024', 2, '2024-01-09', '2024-01-10', 27, 'Mobil Dinas', 'Kantor Badan Perencanaan Pembangunan Penelitian dan Pengembangan Provinsi Sumatera Utara Jl. P. Diponegoro No. 30.', 13, 1, '2024-03-06 13:46:57', '2024-03-06 13:49:03', NULL),
+(15, 2024, '800.1.11.1/0078/BKAD/I/2024', '800.1.11.1/003/SPPD/I/2024', '2024-01-09', 1, 1, 0, '', 'Menyampaikan Berkas Lembar Konfirmasi Dana Transfer (LKT) Triwulan IV (Empat) dan Lembar Rekapitulasi Dana Transfer ke Daerah dan Dana Desa Kabupaten Asahan', 1, '2024-01-10', '2024-01-10', 31, 'Angkutan Umum', 'Kantor KPPN Tanjung Balai', 6, 1, '2024-03-06 13:51:10', '2024-03-06 13:54:33', NULL),
+(16, 2024, '800.1.11.1/0207/BKAD/II/2024', '800.1.11.1/013/SPD/II/2024', '2024-02-15', 1, 1, 0, '', 'Koordinasi dan Konsultasi terkait PP No. 5 Tahun 2024 yaitu tentang Kenaikan Gaji Pokok dsb', 2, '2024-02-15', '2024-02-16', 27, 'Angkutan Umum', 'PT. Taspen KCU Medan', 6, 1, '2024-03-06 13:56:44', '2024-03-06 14:00:17', NULL),
+(17, 2024, '-', '800.1.11.1/015/SPPD/II/2024', '2024-02-20', 1, 1, 0, '', 'Menghadiri Acara Stakeholders Day', 1, '2024-02-21', '2024-02-21', 31, 'Mobil Dinas', 'Pendopo Rumah Dinas Walikota Tanjung Balai Jl. Jend. Sudirman No. 5', 13, 1, '2024-03-06 14:23:41', '2024-03-06 14:42:35', NULL),
+(18, 2024, '--', '800.1.11.1/016/SPD/II/2024', '2024-02-23', 1, 1, 0, '', 'Menghadiri Undangan Rapat Umum Pemegang Saham (RUPS) Tahunan Tahun Buku 2023', 2, '2024-02-25', '2024-02-26', 27, 'Mobil Dinas', 'Ballroom PT. Bank Sumut Lt. 10 Jl. Imam Bonjol No. 18', 13, 1, '2024-03-06 14:46:16', '2024-03-06 14:50:53', NULL),
+(19, 2024, '800.1.11.1/0235/BKAD/II/2024', '800.1.11.1/018/SPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Mengantar Surat Permohonan Konfirmasi Setoran Penerimaan Negara', 1, '2024-02-26', '2024-02-26', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 6, 1, '2024-03-06 14:53:33', '2024-03-06 14:55:17', NULL),
+(20, 2024, '800.1.11.1/0236/BKAD/II/2024', '-', '2024-02-26', 2, 1, 0, '', 'Mendampingi Kepala Badan BKAD Kab. Asahan menghadiri undangan Penandatanganan BAR (Berita Acara Rekonsiliasi) atas penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Mobil Dinas', 'KPPN Tanjung Balai', 6, 1, '2024-03-06 14:59:28', '2024-03-06 15:01:01', NULL),
+(21, 2024, '800.1.11.1/0237/BKAD/II/2024', '800.1.11.1/019/SPPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Menghadiri Undangan Penandatanganan Berita Acara Rekonsiliasi (BAR) atas Penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 6, 1, '2024-03-06 15:03:30', '2024-03-06 15:05:20', NULL),
+(22, 2024, '800.1.11.1/0239/BKAD/II/2024', '800.1.11.1/020/SPPD/II/2024', '2024-02-26', 2, 1, 0, '', 'Mendampingi Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan menghadiri Undangan Penandatanganan Berita Acara Rekonsiliasi (BAR) atas penyetoran Pajak Pusat Periode Semester II Tahun 2023', 1, '2024-02-27', '2024-02-27', 31, 'Angkutan Umum', 'KPPN Tanjung Balai', 13, 1, '2024-03-06 15:09:08', '2024-03-06 15:10:27', NULL),
+(23, 2024, '800.1.11.1/0242/BKAD/II/2024', '800.1.11.1/021/SPPD/II/2024', '2024-02-27', 1, 1, 0, '', 'Mendampingi Kabid Aset Mengikuti Pelatihan dan Ujian Sertifikasi Kompetensi Pengadaan Barang/ Jasa Level 1', 4, '2024-02-28', '2024-03-02', 27, 'Mobil Dinas', 'Hotel Le Polonia Medan, Jl. Jend. Sudirman No. 14-18', 5, 1, '2024-03-06 15:13:24', '2024-03-06 15:15:27', NULL),
+(24, 2024, '---', '800.1.11.1/012/SPD/II/2024', '2024-02-12', 1, 1, 1, '', 'Mengikuti Bimbingan Teknis Pengelola PBJ Batch I Tahun Anggaran 2024', 4, '2024-02-14', '2024-02-17', 27, 'Angkutan Umum', 'Hotel Le Polonia & Convention Medan', 5, 1, '2024-03-06 15:18:08', '2024-03-06 15:19:04', NULL),
+(25, 2024, NULL, NULL, NULL, 1, 2, 0, '', 'Menghadiri Undangan Sosialisasi Terpadu DAK Fisik, DAK Non Fisik, DAU dan Dana Dekon Bidang Kesehatan Tahun 2024', 4, '2024-03-04', '2024-03-07', 39, 'Pesawat Udara', 'Swiss-Bel Hotel Harbour Bay Jl. Duyung, Sei Jodoh Batu Ampar, Batam', 6, 0, '2024-03-06 15:21:52', '2024-03-06 15:21:52', NULL),
+(26, 2024, '800.1.11.1/0216/BKAD/II/2024', '800.1.11.1/024/SPPD/II/2024', '2024-02-20', 1, 1, 0, '', 'Mendampingi Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan dalam rangka menghadiri acara Stakeholder Day pada Kuasa Pengguna Anggaran Satuan Kerja Lingkup KPPN Tanjungbalai', 1, '2024-02-21', '2024-02-21', 31, 'Mobil Dinas', 'Pendopo Rumah Dinas Walikota Tanjung Balai', 13, 1, '2024-03-06 15:28:10', '2024-03-06 15:29:40', NULL),
+(28, 2024, NULL, NULL, NULL, 1, 2, 0, '', ' DFGSJGHSJDGFJSDGFGSDGFSGFK', 3, '2024-03-14', '2024-03-16', 49, 'Pesawat Udara', 'Kemendagri ', 6, 0, '2024-03-14 15:30:35', '2024-03-14 15:57:40', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `submenus`
+-- Struktur dari tabel `submenus`
 --
 
 CREATE TABLE `submenus` (
@@ -1241,7 +1244,7 @@ CREATE TABLE `submenus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `submenus`
+-- Dumping data untuk tabel `submenus`
 --
 
 INSERT INTO `submenus` (`submenu_id`, `menu_id`, `submenu_nama`, `submenu_icon`, `submenu_link`, `submenu_active`, `role_id`) VALUES
@@ -1267,7 +1270,7 @@ INSERT INTO `submenus` (`submenu_id`, `menu_id`, `submenu_nama`, `submenu_icon`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tingkats`
+-- Struktur dari tabel `tingkats`
 --
 
 CREATE TABLE `tingkats` (
@@ -1277,7 +1280,7 @@ CREATE TABLE `tingkats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tingkats`
+-- Dumping data untuk tabel `tingkats`
 --
 
 INSERT INTO `tingkats` (`tingkat_id`, `tingkat_nama`, `tingkat_uraian`) VALUES
@@ -1290,7 +1293,7 @@ INSERT INTO `tingkats` (`tingkat_id`, `tingkat_nama`, `tingkat_uraian`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `uangharians`
+-- Struktur dari tabel `uangharians`
 --
 
 CREATE TABLE `uangharians` (
@@ -1318,7 +1321,7 @@ CREATE TABLE `uangharians` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `uangharians`
+-- Dumping data untuk tabel `uangharians`
 --
 
 INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharian_sptid`, `uangharian_tingkatid`, `uangharian_lokasiid`, `uangharian_lama`, `uangharian_perhari`, `uangharian_jlhhari`, `uangharian_jumlahpersen`, `uangharian_jumlah`, `uangharian_harianundangan`, `uangharian_hariundangan`, `uangharian_jlhharianundangan`, `uangharian_biayatransport`, `uangharian_jumlahbiayatransport`, `uangharian_representasi`, `uangharian_jumlahrepresentasi`, `uangharian_sewamobil`, `uangharian_jumlahsewamobil`, `uangharian_total`, `uangharian_verif`) VALUES
@@ -1333,7 +1336,7 @@ INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharia
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -1349,7 +1352,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_nama`, `user_nmlengkap`, `user_password`, `user_active`, `user_roleid`, `user_created_at`, `user_updated_at`, `user_deleted_at`) VALUES
@@ -1364,51 +1367,51 @@ INSERT INTO `users` (`user_id`, `user_nama`, `user_nmlengkap`, `user_password`, 
 --
 
 --
--- Indexes for table `eselons`
+-- Indeks untuk tabel `eselons`
 --
 ALTER TABLE `eselons`
   ADD PRIMARY KEY (`eselon_id`);
 
 --
--- Indexes for table `jenisperjadins`
+-- Indeks untuk tabel `jenisperjadins`
 --
 ALTER TABLE `jenisperjadins`
   ADD PRIMARY KEY (`jenisperjadin_id`);
 
 --
--- Indexes for table `laporjadins`
+-- Indeks untuk tabel `laporjadins`
 --
 ALTER TABLE `laporjadins`
   ADD PRIMARY KEY (`laporjadin_id`),
   ADD KEY `FKlaporjadinsptid` (`laporjadin_sptid`);
 
 --
--- Indexes for table `lokasiperjadins`
+-- Indeks untuk tabel `lokasiperjadins`
 --
 ALTER TABLE `lokasiperjadins`
   ADD PRIMARY KEY (`lokasiperjadin_id`),
   ADD KEY `fkjenisperjadinlokasi` (`jenisperjadin_id`);
 
 --
--- Indexes for table `menus`
+-- Indeks untuk tabel `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`menu_id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pangkats`
+-- Indeks untuk tabel `pangkats`
 --
 ALTER TABLE `pangkats`
   ADD PRIMARY KEY (`pangkat_id`);
 
 --
--- Indexes for table `pegawais`
+-- Indeks untuk tabel `pegawais`
 --
 ALTER TABLE `pegawais`
   ADD PRIMARY KEY (`pegawai_id`),
@@ -1417,13 +1420,13 @@ ALTER TABLE `pegawais`
   ADD KEY `pegawaitingkatidFK` (`pegawai_tingkat`);
 
 --
--- Indexes for table `pejabats`
+-- Indeks untuk tabel `pejabats`
 --
 ALTER TABLE `pejabats`
   ADD PRIMARY KEY (`pejabat_id`);
 
 --
--- Indexes for table `pelaksanas`
+-- Indeks untuk tabel `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
   ADD PRIMARY KEY (`pelaksana_id`),
@@ -1431,7 +1434,7 @@ ALTER TABLE `pelaksanas`
   ADD KEY `myfkpelaksanapegawai` (`pegawai_id`);
 
 --
--- Indexes for table `perbups`
+-- Indeks untuk tabel `perbups`
 --
 ALTER TABLE `perbups`
   ADD PRIMARY KEY (`perbup_id`),
@@ -1439,7 +1442,7 @@ ALTER TABLE `perbups`
   ADD KEY `perbuplokasiidFK` (`perbup_lokasiid`);
 
 --
--- Indexes for table `rolemenus`
+-- Indeks untuk tabel `rolemenus`
 --
 ALTER TABLE `rolemenus`
   ADD PRIMARY KEY (`rolemenu_id`),
@@ -1447,54 +1450,54 @@ ALTER TABLE `rolemenus`
   ADD KEY `submenuidroleFK` (`submenu_id`);
 
 --
--- Indexes for table `roles`
+-- Indeks untuk tabel `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- Indexes for table `spjhotels`
+-- Indeks untuk tabel `spjhotels`
 --
 ALTER TABLE `spjhotels`
   ADD PRIMARY KEY (`spjhotel_id`),
   ADD KEY `FKspjhotelpelaksanaid` (`spjhotel_pelaksanaid`);
 
 --
--- Indexes for table `spjpesawats`
+-- Indeks untuk tabel `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
   ADD PRIMARY KEY (`spjpesawat_id`),
   ADD KEY `FKspjpesawatpelaksanaid` (`spjpesawat_pelaksanaid`);
 
 --
--- Indexes for table `spjtaksis`
+-- Indeks untuk tabel `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
   ADD PRIMARY KEY (`spjtaksi_id`),
   ADD KEY `FKspjtaksipelaksanaid` (`spjtaksi_pelaksanaid`);
 
 --
--- Indexes for table `spts`
+-- Indeks untuk tabel `spts`
 --
 ALTER TABLE `spts`
   ADD PRIMARY KEY (`spt_id`),
   ADD KEY `FKpejabatpemberitugas` (`spt_pjb_tugas`);
 
 --
--- Indexes for table `submenus`
+-- Indeks untuk tabel `submenus`
 --
 ALTER TABLE `submenus`
   ADD PRIMARY KEY (`submenu_id`),
   ADD KEY `menuidFK` (`menu_id`);
 
 --
--- Indexes for table `tingkats`
+-- Indeks untuk tabel `tingkats`
 --
 ALTER TABLE `tingkats`
   ADD PRIMARY KEY (`tingkat_id`);
 
 --
--- Indexes for table `uangharians`
+-- Indeks untuk tabel `uangharians`
 --
 ALTER TABLE `uangharians`
   ADD PRIMARY KEY (`uangharian_id`),
@@ -1504,160 +1507,160 @@ ALTER TABLE `uangharians`
   ADD KEY `uangharianpsptidFK` (`uangharian_sptid`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `roleidFK` (`user_roleid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `eselons`
+-- AUTO_INCREMENT untuk tabel `eselons`
 --
 ALTER TABLE `eselons`
-  MODIFY `eselon_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `eselon_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
--- AUTO_INCREMENT for table `jenisperjadins`
+-- AUTO_INCREMENT untuk tabel `jenisperjadins`
 --
 ALTER TABLE `jenisperjadins`
   MODIFY `jenisperjadin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `laporjadins`
+-- AUTO_INCREMENT untuk tabel `laporjadins`
 --
 ALTER TABLE `laporjadins`
   MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `lokasiperjadins`
+-- AUTO_INCREMENT untuk tabel `lokasiperjadins`
 --
 ALTER TABLE `lokasiperjadins`
   MODIFY `lokasiperjadin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT for table `menus`
+-- AUTO_INCREMENT untuk tabel `menus`
 --
 ALTER TABLE `menus`
   MODIFY `menu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `pangkats`
+-- AUTO_INCREMENT untuk tabel `pangkats`
 --
 ALTER TABLE `pangkats`
   MODIFY `pangkat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `pegawais`
+-- AUTO_INCREMENT untuk tabel `pegawais`
 --
 ALTER TABLE `pegawais`
   MODIFY `pegawai_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT for table `pejabats`
+-- AUTO_INCREMENT untuk tabel `pejabats`
 --
 ALTER TABLE `pejabats`
   MODIFY `pejabat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `pelaksanas`
+-- AUTO_INCREMENT untuk tabel `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
-  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
--- AUTO_INCREMENT for table `perbups`
+-- AUTO_INCREMENT untuk tabel `perbups`
 --
 ALTER TABLE `perbups`
   MODIFY `perbup_id` int(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=466;
 
 --
--- AUTO_INCREMENT for table `rolemenus`
+-- AUTO_INCREMENT untuk tabel `rolemenus`
 --
 ALTER TABLE `rolemenus`
   MODIFY `rolemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT untuk tabel `roles`
 --
 ALTER TABLE `roles`
   MODIFY `role_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `spjhotels`
+-- AUTO_INCREMENT untuk tabel `spjhotels`
 --
 ALTER TABLE `spjhotels`
   MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `spjpesawats`
+-- AUTO_INCREMENT untuk tabel `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
   MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `spjtaksis`
+-- AUTO_INCREMENT untuk tabel `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
   MODIFY `spjtaksi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `spts`
+-- AUTO_INCREMENT untuk tabel `spts`
 --
 ALTER TABLE `spts`
-  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `submenus`
+-- AUTO_INCREMENT untuk tabel `submenus`
 --
 ALTER TABLE `submenus`
   MODIFY `submenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tingkats`
+-- AUTO_INCREMENT untuk tabel `tingkats`
 --
 ALTER TABLE `tingkats`
   MODIFY `tingkat_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `uangharians`
+-- AUTO_INCREMENT untuk tabel `uangharians`
 --
 ALTER TABLE `uangharians`
   MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `laporjadins`
+-- Ketidakleluasaan untuk tabel `laporjadins`
 --
 ALTER TABLE `laporjadins`
   ADD CONSTRAINT `FKlaporjadinsptid` FOREIGN KEY (`laporjadin_sptid`) REFERENCES `spts` (`spt_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `lokasiperjadins`
+-- Ketidakleluasaan untuk tabel `lokasiperjadins`
 --
 ALTER TABLE `lokasiperjadins`
   ADD CONSTRAINT `fkjenisperjadinlokasi` FOREIGN KEY (`jenisperjadin_id`) REFERENCES `jenisperjadins` (`jenisperjadin_id`);
 
 --
--- Constraints for table `pegawais`
+-- Ketidakleluasaan untuk tabel `pegawais`
 --
 ALTER TABLE `pegawais`
   ADD CONSTRAINT `pegawaieselonidFK` FOREIGN KEY (`eselon_id`) REFERENCES `eselons` (`eselon_id`),
@@ -1665,58 +1668,58 @@ ALTER TABLE `pegawais`
   ADD CONSTRAINT `pegawaitingkatidFK` FOREIGN KEY (`pegawai_tingkat`) REFERENCES `tingkats` (`tingkat_id`);
 
 --
--- Constraints for table `pelaksanas`
+-- Ketidakleluasaan untuk tabel `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
   ADD CONSTRAINT `myfkpelaksanapegawai` FOREIGN KEY (`pegawai_id`) REFERENCES `pegawais` (`pegawai_id`),
   ADD CONSTRAINT `myfkpelaksanaspt` FOREIGN KEY (`spt_id`) REFERENCES `spts` (`spt_id`);
 
 --
--- Constraints for table `perbups`
+-- Ketidakleluasaan untuk tabel `perbups`
 --
 ALTER TABLE `perbups`
   ADD CONSTRAINT `perbuplokasiidFK` FOREIGN KEY (`perbup_lokasiid`) REFERENCES `lokasiperjadins` (`lokasiperjadin_id`),
   ADD CONSTRAINT `perbuptingkatidFK` FOREIGN KEY (`perbup_tingkatid`) REFERENCES `tingkats` (`tingkat_id`);
 
 --
--- Constraints for table `rolemenus`
+-- Ketidakleluasaan untuk tabel `rolemenus`
 --
 ALTER TABLE `rolemenus`
   ADD CONSTRAINT `roleidmenuFK` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `submenuidroleFK` FOREIGN KEY (`submenu_id`) REFERENCES `submenus` (`submenu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `spjhotels`
+-- Ketidakleluasaan untuk tabel `spjhotels`
 --
 ALTER TABLE `spjhotels`
   ADD CONSTRAINT `FKspjhotelpelaksanaid` FOREIGN KEY (`spjhotel_pelaksanaid`) REFERENCES `pelaksanas` (`pelaksana_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `spjpesawats`
+-- Ketidakleluasaan untuk tabel `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
   ADD CONSTRAINT `FKspjpesawatpelaksanaid` FOREIGN KEY (`spjpesawat_pelaksanaid`) REFERENCES `pelaksanas` (`pelaksana_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `spjtaksis`
+-- Ketidakleluasaan untuk tabel `spjtaksis`
 --
 ALTER TABLE `spjtaksis`
   ADD CONSTRAINT `FKspjtaksipelaksanaid` FOREIGN KEY (`spjtaksi_pelaksanaid`) REFERENCES `pelaksanas` (`pelaksana_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `spts`
+-- Ketidakleluasaan untuk tabel `spts`
 --
 ALTER TABLE `spts`
   ADD CONSTRAINT `FKpejabatpemberitugas` FOREIGN KEY (`spt_pjb_tugas`) REFERENCES `pejabats` (`pejabat_id`);
 
 --
--- Constraints for table `submenus`
+-- Ketidakleluasaan untuk tabel `submenus`
 --
 ALTER TABLE `submenus`
   ADD CONSTRAINT `menuidFK` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`menu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `uangharians`
+-- Ketidakleluasaan untuk tabel `uangharians`
 --
 ALTER TABLE `uangharians`
   ADD CONSTRAINT `uangharianlokasiidFK` FOREIGN KEY (`uangharian_lokasiid`) REFERENCES `lokasiperjadins` (`lokasiperjadin_id`),
@@ -1725,7 +1728,7 @@ ALTER TABLE `uangharians`
   ADD CONSTRAINT `uanghariantingkatidFK` FOREIGN KEY (`uangharian_tingkatid`) REFERENCES `tingkats` (`tingkat_id`);
 
 --
--- Constraints for table `users`
+-- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `roleidFK` FOREIGN KEY (`user_roleid`) REFERENCES `roles` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE;
