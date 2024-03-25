@@ -99,15 +99,5 @@ class LaporjadinModel extends Model
     }
     
     
-    function datafoto()
-    {
-        $builder = $this->db->table('laporjadins as a');
-        $builder->select('a.laporjadin_foto1, a.laporjadin_foto2, a.laporjadin_foto3, b.spt_uraian, b.spt_tempat');
-        $builder->join('spts as b', 'b.spt_id = a.laporjadin_sptid');
-        $builder->where('b.spt_verif', 1);
-        $builder->where('a.laporjadin_foto1 !=', esc(""));
-        $builder->orderBy('b.spt_tgl', 'DESC');
-        $query = $builder->get();
-        return $query->getResult();
-    }
+    
 }

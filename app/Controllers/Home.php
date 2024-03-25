@@ -4,15 +4,13 @@ namespace App\Controllers;
 
 use App\Models\SptModel;
 use App\Models\AuthModel;
-use App\Models\LaporjadinModel;
+use App\Models\SptModel;
 
 class Home extends BaseController
 {
     public function index(): string
     {
         $sptModel = new SptModel();
-        $modellapor = new LaporjadinModel();
-
         $bulan = $sptModel->grafik();
         if($bulan) {
             $bulanMap = [
@@ -43,6 +41,7 @@ class Home extends BaseController
             'grafik'    => $bulan,
             'gambar'    => $modellapor->datafoto(),
         ];
+        // dd($data);
         return view('layout/dashboard', $data);
     }
 
