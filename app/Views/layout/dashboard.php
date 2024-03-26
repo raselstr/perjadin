@@ -19,8 +19,15 @@
               <div class="card-body">
                 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="<?= base_url('images/logo.jpeg'); ?>" class="rounded mx-auto d-block" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Dokumentasi</h5>
+                        <p>Dokumentasi Perjalan Dinas yang dilaksanakan</p>
+                      </div>
+                    </div>
                     <?php foreach ($gambar as $key => $value) : ?>
-                      <div class="carousel-item active">
+                      <div class="carousel-item">
                         <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto1); ?>" class="rounded mx-auto d-block" alt="...">
                       </div>
                       <div class="carousel-item ">
