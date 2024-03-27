@@ -10,6 +10,47 @@
     <div class="content">
       <div class="container-fluid">
           <?= $this->include('layout/infobox'); ?>
+          <div class="row">
+          <div class="col">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Foto Kegiatan Perjalanan Dinas</h3>
+              </div>
+              <div class="card-body">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="<?= base_url('images/logo.jpeg'); ?>" class="rounded mx-auto d-block" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Dokumentasi</h5>
+                        <p>Dokumentasi Perjalan Dinas yang dilaksanakan</p>
+                      </div>
+                    </div>
+                    <?php foreach ($gambar as $key => $value) : ?>
+                      <div class="carousel-item">
+                        <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto1); ?>" class="rounded mx-auto d-block" alt="...">
+                      </div>
+                      <div class="carousel-item ">
+                        <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto2); ?>" class="rounded mx-auto d-block" alt="...">
+                      </div>
+                      <div class="carousel-item ">
+                        <img src="<?= base_url('image/dokuemtasi/'.$value->laporjadin_foto3); ?>" class="rounded mx-auto d-block" alt="...">
+                      </div>
+                    <?php endforeach ?>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
         <div class="row">
           <!-- /.col-md-6 -->
           <div class="col">
@@ -17,15 +58,6 @@
             <div class="card card-success">
               <div class="card-header">
                 <h3 class="card-title">Data Perjalanan Dinas yang dilakukan setiap bulan Tahun 2024</h3>
-<!-- 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div> -->
               </div>
               <div class="card-body">
                 <div class="chart">

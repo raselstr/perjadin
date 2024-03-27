@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= $title; ?></title>
   <base href="<?= base_url('templates'); ?>/">
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -14,7 +13,8 @@
 
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <?= $this->renderSection('stylesheet'); ?>
   
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
@@ -23,9 +23,9 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Preloader -->
-  <!-- <div class="preloader flex-column justify-content-center align-items-center">
+  <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="<?= base_url('images/logo.jpeg'); ?>" alt="AdminLTELogo" height="120" width="160">
-  </div> -->
+  </div>
   <!-- Navbar -->
   <?= $this->include('layout/navbar'); ?>
   <!-- /.navbar -->
@@ -63,6 +63,7 @@
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <?= $this->renderSection('scriptplugin'); ?>
 
 <!-- Bootstrap Switch -->
