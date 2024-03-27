@@ -166,7 +166,7 @@
             <input type="text" class="form-control form-control-border" id="spt_mulai" readonly>
           </div>
           <div class="form-group">
-            <label>Tanggal Mulai Perjalanan Dinas</code></label>
+            <label>Tanggal Surat Perintah Tugas (SPT)</code></label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">

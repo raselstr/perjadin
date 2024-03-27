@@ -331,14 +331,13 @@ class Pelaksana extends ResourcePresenter
     {
 
         $model = new PegawaisModel();
-        $pptks = $model->pptk($id);
+        $pptks = $model->pptkdata($id);
         $data = [
             'title'     => 'Bukti Diterima ditempat Tujuan',
             'subtitle'  => 'Home',
             'pptks'     => $pptks,
         ];
         // dd($data);
-
         return view('pelaksana/spdback', $data);
     }
     
