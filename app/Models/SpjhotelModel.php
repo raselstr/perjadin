@@ -103,7 +103,7 @@ class SpjHotelModel extends Model
         $builder->where('spts.spt_verif', 1);
         $builder->where('spts.spt_tahun', $thn);
         $builder->where('spts.spt_jenis !=', 3);
-
+        $builder->orderBy('spts.spt_tgl', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }
@@ -117,7 +117,7 @@ class SpjHotelModel extends Model
         $builder -> join('pegawais As d', 'd.pegawai_id = b.pegawai_id');
         $builder -> where('c.spt_verif', 1);
         $builder -> where('b.pelaksana_id', $id);
-        $builder -> orderBy('a.spjhotel_created_at', 'DESC');
+        $builder -> orderBy('c.spt_tgl', 'DESC');
         
         $query = $builder -> get();
         $result = [

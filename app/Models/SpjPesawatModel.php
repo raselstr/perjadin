@@ -106,6 +106,8 @@ class SpjPesawatModel extends Model
         $builder -> where('spts.spt_verif', 1);
         $builder -> where('spts.spt_tahun', $thn);
         $builder -> where('spts.spt_jenis', 2);
+        $builder->orderBy('spts.spt_tgl', 'DESC');
+
         $query = $builder->get();
         return $query->getResult();
     }

@@ -44,7 +44,7 @@ class BpkModel extends Model
             $builder->join('lokasiperjadins AS g', 'a.spt_tujuan = g.lokasiperjadin_id');
             $builder->where('a.spt_verif', 1);
             $builder->where('a.spt_tahun', $thn);
-            $builder->orderBy('a.created_at', 'ASC');
+            $builder->orderBy('a.spt_tgl', 'ASC');
             $query = $builder->get();
             return $query->getResult();
         }

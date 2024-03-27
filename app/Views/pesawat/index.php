@@ -73,7 +73,7 @@
                             <a href="<?= site_url('spjpesawat/formspj/'.$value->pelaksana_id); ?>" type="button" name="spj" id="spj" class="btn btn-primary" ><i class="fas fa-hand-point-right"></i></a>
                           </div>
                         </td>
-                        <td class="align-middle"><?= $value->pelaksana_id ?><br><?= $value->spt_nomor ?></td>
+                        <td class="align-middle"><?= $value->spt_nomor ?></td>
                         <td class="align-middle"><?= $value->pegawai_nama ?><br><?= $value->pegawai_nip ?></td>
                         <td class="align-middle"><?= $value->spt_uraian ?></td>
                       </tr>
