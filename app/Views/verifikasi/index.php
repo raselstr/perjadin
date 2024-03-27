@@ -70,7 +70,6 @@
                     <th class="align-middle text-center">Pesawat PP</th>
                     <th class="align-middle text-center">Taksi PP</th>
                     <th class="align-middle text-center">Pelaksanaan</th>
-                    <th class="align-middle text-center">Uang Harian</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,7 +120,6 @@
                             <button type="button" class="btn btn-block btn-outline-success btn-xs">Validasi : <?=$qrlaporval;?></button>
 
                         </td>
-                        <td></td>
                       </tr>
                     <?php } ?>
                 </tbody>
