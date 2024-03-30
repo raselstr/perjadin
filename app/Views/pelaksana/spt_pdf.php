@@ -261,7 +261,7 @@
         </tr>
         <tr>
           <td id="isiberita" width="5%">1.</td>
-          <td colspan="10" id="isiberita"><?= $dataspt['data'][0]->spt_uraian; ?> ke <?= $dataspt['data'][0]->spt_tempat; ?>, <?= $dataspt['data'][0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($dataspt['data'][0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($dataspt['data'][0]->spt_berakhir)); ?>.</td>
+          <td colspan="10" id="isiberita"><?= $dataspt['data'][0]->spt_uraian; ?> ke <?= $dataspt['data'][0]->spt_tempat; ?>, di <?= $dataspt['data'][0]->lokasiperjadin_nama; ?> pada tanggal <?= date('d F Y',strtotime($dataspt['data'][0]->spt_mulai)); ?> s.d <?= date('d F Y',strtotime($dataspt['data'][0]->spt_berakhir)); ?>.</td>
         </tr>
         <tr>
           <td id="isiberita">2.</td>
