@@ -98,7 +98,7 @@
               </div>
             </div>
             <!-- <div class="form-group row"> -->
-              <a href="<?= site_url('spjtaksi'); ?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i> Kembali</a>
+              <a href="<?=site_url('spjtaksi');?>" type="button" class="btn bg-gradient-warning float-sm-left" ><i class="fas fa-hand-point-left"> </i> Kembali</a>
               <button type="button" class="btn bg-gradient-primary float-sm-right"  data-idpelaksana="<?=$data[0]->pelaksana_id;?>" class="btn btn-primary"  data-toggle="modal" data-target="#taksispj"><i class="fas fa-hand-point-right"> </i> Tambah SPJ Taksi</button>
             <!-- </div> -->
             </div>
@@ -120,17 +120,17 @@
               </thead>
               <tbody>
                 <?php
-                    $no = 1;
-                    foreach ($data as $key => $value): ?>
+$no = 1;
+foreach ($data as $key => $value): ?>
                   <tr>
                     <td class="align-middle text-center"><?=$no++;?></td>
                     <td class="align-middle text-center">
                       <?php if ($value->spjtaksi_verif == 0): ?>
-                        <?php if($value->spjtaksi_id <> null) : ?>
+                        <?php if ($value->spjtaksi_id != null): ?>
                           <button type="button" class="btn bg-gradient-info btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-fototiketlama = "<?=$value->spjtaksi_fototiket;?>"  data-toggle="modal" data-target="#taksibill"><i class="fas fa-upload"> </i> <br>Upload Bukti</button>
                           <button type="button" class="btn bg-gradient-warning btn-xs" data-idtaksi="<?=$value->spjtaksi_id;?>" data-idpelaksana ="<?=$data[0]->pelaksana_id;?>" id="tomboledit" data-toggle="modal" data-target="#taksispj"><i class="fas fa-pen"> </i> <br>Edit</button>
                           <a href="<?=site_url('spjtaksi/remove/' . $value->spjtaksi_id)?>" type="button" class="btn bg-gradient-danger btn-xs tombol-hapus" data-idtaksi=""><i class="fas fa-trash"> </i> <br>Hapus</a>
-                        <?php endif ?>
+                        <?php endif?>
                       <?php else: ?>
                         <button type="button" class="btn bg-gradient-success btn-xs" ><i class="fas fa-check"> </i> <br>Disetujui</button>
                       <?php endif?>
@@ -138,7 +138,7 @@
                     <td class="align-middle text-center">
                       <?php if ($value->spjtaksi_fototiket != null): ?>
                         <button type="button" class="btn bg-gradient-success btn-xs" data-toggle="modal" data-target="#modalfoto" data-fototiket="<?=$value->spjtaksi_fototiket?>"><i class="fas fa-image"></i><br>Tiket </button>
-                      <?php else : ?>
+                      <?php else: ?>
                         <i>Foto Tiket belum di upload</i>
                       <?php endif?>
                     </td>
@@ -146,7 +146,7 @@
                     <td class="align-middle text-center"><?=$value->spjtaksi_tgl == null ? "" : date('d F Y', strtotime($value->spjtaksi_tgl));?></td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_dari;?> </td>
                     <td class="align-middle text-center"><?=$value->spjtaksi_ke;?> </td>
-                    <td class="align-middle text-center"><?=number_format($value->spjtaksi_harga,2,',','.');?></td>
+                    <td class="align-middle text-center"><?=number_format($value->spjtaksi_harga, 2, ',', '.');?></td>
 
                   </tr>
                 <?php endforeach?>
@@ -163,7 +163,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">SPJ Taksi</h4>
+          <h4 class="modal-title">SPJ Taksi/ Bill Tol</h4>
         </div>
         <form action="<?=site_url('spjtaksi/create');?>" method="post" id="formtaksi">
           <?=csrf_field();?>
@@ -221,7 +221,7 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">Harga/Tiket/Orang</label>
+                  <label class="col-sm-4 col-form-label">Biaya / Bill Tol</label>
                   <div class="col">
                     <input type="number" class="form-control" id="spjtaksi_harga" name="spjtaksi_harga">
                     <div class="invalid-feedback errorspjtaksi_harga"></div>
@@ -314,8 +314,8 @@
           <div class="modal-header">
             <h4 class="modal-title">Verifikasi</h4>
           </div>
-          <form action="<?= site_url('spjtaksi/verif'); ?>" method="post" id="formverif">
-            <?php csrf_field() ?>
+          <form action="<?=site_url('spjtaksi/verif');?>" method="post" id="formverif">
+            <?php csrf_field()?>
               <div class="modal-body">
                 <div class="text-center">
                   <div class="form-group">
@@ -383,7 +383,7 @@
           $('#spjtaksi_tgl').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('DD MMMM YYYY'));
           });
-        
+
       });
     </script>
 
@@ -578,7 +578,7 @@
             console.log('Nama file:', fileName);
             $('#nama-foto').text(fileName);
         });
-        
+
         $('#formupload').submit(function(e){
           e.preventDefault();
           var dataupload = new FormData(this);
@@ -660,7 +660,7 @@
         $('#formverif').submit(function(e){
           e.preventDefault();
           var dataverif = new FormData(this);
-          
+
           $.ajax({
             type: "post",
             url: $(this).attr('action'),
@@ -675,7 +675,7 @@
                   $('.savenverif').removeAttr('disabled');
                   $('.saveverif').html('Simpan');
               },
-              
+
             success: function (response) {
               console.log(response);
                   Swal.fire({
@@ -696,7 +696,7 @@
           });
         });
       });
-        
+
 
     </script>
   <!-- End Script Validasi Tiket Taksi -->
