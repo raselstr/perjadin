@@ -15,11 +15,13 @@ class Bpk extends ResourcePresenter
     public function index()
     {
         $tahun = session('tahun');
+        $tgl1 = $this->request->getPost('tgl1');
+        $tgl2 = $this->request->getPost('tgl2');
         $model = new BpkModel();
         $data = [
             'title' => 'Rekapitulasi',
             'subtitle' => 'Home',
-            'data'  => $model->rekapbpkall($tahun),
+            'data'  => $model->rekapbpkall($tahun, $tgl1, $tgl2),
             // 'uhs'    => $model->harian($pelaksana),
         ];
         // dd($data);

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class BpkModel extends Model
 {
-        function rekapbpkall($thn)
+        function rekapbpkall($thn, $tgl1 = null, $tgl2 = null)
         {
             // dd($subquery);
             $builder = $this->db->table('spts As a');
@@ -44,6 +44,11 @@ class BpkModel extends Model
             $builder->join('lokasiperjadins AS g', 'a.spt_tujuan = g.lokasiperjadin_id');
             $builder->where('a.spt_verif', 1);
             $builder->where('a.spt_tahun', $thn);
+            if ($tgl1 !== null && $tgl2 !== null) {
+                $builder->where('a.spt_tgl >=', $tgl1);
+                $builder->where('a.spt_tgl <=', $tgl2);
+            }
+
             $builder->orderBy('a.spt_tgl', 'ASC');
             $query = $builder->get();
             return $query->getResult();
