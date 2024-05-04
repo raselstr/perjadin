@@ -53,9 +53,7 @@ use App\Models\RampungModel;
       <?=$this->include('layout/contenheader');?>
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <?=$this->include('layout/infobox');?>
-      </div>
+      
       <div class="col">
         <div class="card card-primary">
           <div class="card-header">
@@ -64,7 +62,7 @@ use App\Models\RampungModel;
           <div class="card-body">
             <div class="row">
               <div class="text-center d-flex align-items-center justify-content-center">
-                <form action="POST" >
+                <form action="<?= site_url('bpk/cari'); ?>" method="post">
                   <div class="row">
                     <div class="col-auto">
                       <label for="" class="col-form-label">Tanggal Mulai</label>
@@ -88,7 +86,7 @@ use App\Models\RampungModel;
           </div>
           <div class="card"></div>
             <!-- <div class="card-body row justify-content-center"> -->
-          <div class="card-body table-responsive p-0 " style="height: 900px;">
+          <div class="card-body table-responsive p-0 " style="height: 600px;">
             <div class="col-12">
               <table id="myTable1" class="table table-bordered table-head-fixed table-sm">
                 <thead>
