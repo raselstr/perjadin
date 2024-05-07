@@ -53,17 +53,40 @@ use App\Models\RampungModel;
       <?=$this->include('layout/contenheader');?>
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <?=$this->include('layout/infobox');?>
-      </div>
+      
       <div class="col">
         <div class="card card-primary">
           <div class="card-header">
             <h5 class="card-title"><?=$title;?></h5>
           </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="text-center d-flex align-items-center justify-content-center">
+                <form action="<?= site_url('bpk/cari'); ?>" method="post">
+                  <div class="row">
+                    <div class="col-auto">
+                      <label for="" class="col-form-label">Tanggal Mulai</label>
+                    </div>
+                    <div class="col-auto">
+                      <input type="date" class="form-control" name="tgl1">
+                    </div>
+                    <div class="col-auto">
+                      <label for="" class="col-form-label">s.d</label>
+                    </div>
+                    <div class="col-auto">
+                      <input type="date" class="form-control" name="tgl2">
+                    </div>
+                    <div class="col">
+                      <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
           <div class="card"></div>
             <!-- <div class="card-body row justify-content-center"> -->
-          <div class="card-body table-responsive p-0 " style="height: 900px;">
+          <div class="card-body table-responsive p-0 " style="height: 600px;">
             <div class="col-12">
               <table id="myTable1" class="table table-bordered table-head-fixed table-sm">
                 <thead>

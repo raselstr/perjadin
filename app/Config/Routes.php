@@ -20,6 +20,7 @@ $routes->presenter('rolemenu');
 $routes->post('pejabatpenandatangan/updatetoggle','Pejabatpenandatangan::updatetoggle');
 $routes->presenter('pejabatpenandatangan');
 
+$routes->post('bpk/cari','Bpk::cari');
 $routes->presenter('bpk');
 
 $routes->presenter('verifspt');
