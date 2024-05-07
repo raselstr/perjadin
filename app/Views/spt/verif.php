@@ -163,7 +163,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputBorder">Tanggal Mulai Perintah Tugas</code></label>
-            <input type="text" class="form-control form-control-border" id="spt_mulai" name = "spt_mulai" readonly>
+            <input type="text" class="form-control form-control-border" id="spt_mulai" name ="spt_mulai1" readonly>
           </div>
           <div class="form-group">
             <label>Tanggal Surat Perintah Tugas (SPT)</code></label>

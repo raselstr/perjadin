@@ -108,7 +108,7 @@ class Verifspt extends ResourcePresenter
             ],
 
         ]);
-        $tglmulai = strtotime($this->request->getVar('spt_mulai'));
+        $tglmulai = strtotime($this->request->getVar('spt_mulai1'));
         $tglspt = strtotime($this->request->getVar('spt_tgl'));
         
 
