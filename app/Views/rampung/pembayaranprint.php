@@ -106,8 +106,8 @@ $sptid = $value->spt_id;
 ?>
                         <tr>
                           <?php $qrharian = $model->rampungharian($pelaksana_id);?>
-                          <td rowspan="9"><?=$no++;?></td>
-                          <td style="width:23%" rowspan="9"><i><?=$value->pegawai_nama;?><br>NIP. <?=$value->pegawai_nip;?></i></td>
+                          <td rowspan="8"><?=$no++;?></td>
+                          <td style="width:23%" rowspan="8"><i><?=$value->pegawai_nama;?><br>NIP. <?=$value->pegawai_nip;?></i></td>
                           <td colspan="2" style="width:20%">Uang Harian <?= $qrharian[0]->uangharian_jumlahpersen; ?></td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
                             <?php $totharian = 0;
@@ -119,7 +119,7 @@ $sptid = $value->spt_id;
                             <td class="align-middle text-right">
                               <?=number_format($totharian, 2, ',', '.');?>
                             </td>
-                          <td class="align-top text-right" rowspan="9"><strong></strong></td>
+                          <td class="align-top text-right" rowspan="8"><strong></strong></td>
                         </tr>
                         <?php $qrpesawat = $model->rampungpesawat($pelaksana_id);?>
                         <tr>
@@ -150,7 +150,7 @@ foreach ($qrpesawat as $key => $value) {
                         <?php $qrtaksi = $model->rampungtaksi($pelaksana_id);?>
                         <tr>
                           <td></td>
-                          <td>Taksi</td>
+                          <td>Transportasi Darat/ Taksi</td>
                           <td>
                             <?php foreach ($qrtaksi as $key => $value): ?>
                               <i><?=$value->spjtaksi_jenis?></i><br>
@@ -170,7 +170,7 @@ foreach ($qrtaksi as $key => $value) {
                             <?=number_format($total3, 2, ',', '.');?>
                           </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                           <td></td>
                           <td >Pengganti Biaya Transport</td>
                           <td colspan="2" class="align-middle text-right">
@@ -181,7 +181,7 @@ foreach ($qrtaksi as $key => $value) {
                               <?=number_format($harian->uangharian_jumlahbiayatransport, 2, ',', '.');?>
                             </td>
                             <?php endforeach?>
-                        </tr>
+                        </tr> -->
                         <?php $qrhotel = $model->rampunghotel($pelaksana_id);?>
                         <tr>
                           <td colspan="4">Biaya Penginapan</td>

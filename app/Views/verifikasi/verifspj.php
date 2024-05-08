@@ -135,7 +135,7 @@ $model = new RampungModel();
                         <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Pesawat</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Taksi</a>
+                        <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Transport/ Taksi</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-harian-tab" data-toggle="pill" href="#custom-tabs-one-harian" role="tab" aria-controls="custom-tabs-one-harian" aria-selected="false">Uang Harian</a>
@@ -485,7 +485,7 @@ $model = new RampungModel();
                                       </div>
                                     
 
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                       <label class="col-sm-3 col-form-label" >Pengganti Biaya Transport</label>
                                       <div class="col-sm-4">
                                         <?php if ($value->spt_jenis == 1) {
@@ -503,7 +503,7 @@ $model = new RampungModel();
                                       <div class="col-sm-2">
                                         <input type="text" class="form-control align-middle text-right" id="uangharian_jumlahbiayatransport" name="uangharian_jumlahbiayatransport" value = <?=intval($value->spt_lama) * intval($transfort)?> readonly >
                                       </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group row">
                                       <label class="col-sm-3 col-form-label" >Uang Representasi</label>
                                       <div class="col-sm-4">
