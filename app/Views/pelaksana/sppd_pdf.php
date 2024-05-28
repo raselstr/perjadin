@@ -241,7 +241,7 @@ table.tabel3.author {
     <tr>
       <td class="isi no">4.</td>
       <td colspan="2" class="isi">Maksud Perjalanan Dinas</td>
-      <td colspan="6" class="isi"><?= $sptkaban['data'][0]->spt_uraian; ?> ke <?= $sptkaban['data'][0]->spt_tempat; ?></td>
+      <td colspan="6" class="isi"><?= $sptkaban['data'][0]->spt_uraian; ?> ke <?= $sptkaban['data'][0]->spt_tempat; ?>, <?= $sptkaban['data'][0]->lokasiperjadin_nama ?></td>
     </tr>
     <tr>
       <td  class="isi no">5.</td>
@@ -351,22 +351,40 @@ table.tabel3.author {
       </td>
     </tr>
     <tr><td><br></td></tr>
-    <?php if($sptkaban['data'][0]->pejabat_kode <> "Kaban") { ?>
+    <?php if($sptkaban['data'][0]->pejabat_kode == "PLH") { ?>
       <tr>
-        <td class="ttd ttdan">An. </td>
+        <td class="ttd ttdan"><?= $sptkaban['data'][0]->pejabat_kode; ?>. &nbsp;</td>
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
       </tr>
       <tr>
       <td id="ttdan" ></td>
-        <td colspan="3" id="ttd" ><?= $sptkaban['data'][0]->pejabat_namajabatan; ?></td>
+        <td colspan="3" id="ttd" ></td>
       </tr>
-    <?php } else { ?>
+    <?php } elseif($sptkaban['data'][0]->pejabat_kode == "PLT") { ?>
       <tr>
-        <td id="ttdan"></td>
+        <td class="ttd ttdan"><?= $sptkaban['data'][0]->pejabat_kode; ?>. &nbsp;</td>
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
       </tr>
       <tr>
       <td id="ttdan" ></td>
+        <td colspan="3" id="ttd" ></td>
+      </tr>
+      <?php } elseif($sptkaban['data'][0]->pejabat_kode == "Kaban") { ?>
+      <tr>
+        <td class="ttd ttdan"></td>
+        <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+      </tr>
+      <tr>
+      <td id="ttdan" ></td>
+        <td colspan="3" id="ttd" ></td>
+      </tr>
+      <?php } else { ?>
+      <tr>
+        <td id="ttdan">An.</td>
+        <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+      </tr>
+      <tr>
+      <td id="ttdan" ><?= $sptkaban['data'][0]->pejabat_namajabatan; ?></td>
         <td colspan="3" id="ttd" ></td>
       </tr>
     <?php } ?>

@@ -113,6 +113,11 @@
       vertical-align: top;
       /* padding-bottom: 0px; */
     }
+    #isisuratpejt {
+      text-align: center;
+      vertical-align: top;
+      /* padding-bottom: 0px; */
+    }
     #isisuratno {
       text-align: right;
       vertical-align: top;
@@ -207,7 +212,7 @@
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Jabatan</td>
-          <td >:</td>
+          <td id="isisuratpejt">:</td>
           <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
         </tr>
         <tr><td></td></tr>
@@ -296,22 +301,40 @@
           </td>
         </tr>
         <tr><td><br></td></tr>
-        <?php if($dataspt['data'][0]->pejabat_kode <> "Kaban") { ?>
+        <?php if($dataspt['data'][0]->pejabat_kode == "PLH") { ?>
           <tr>
-            <td id="ttdan">An.</td>
+            <td id="ttdan"><?= $dataspt['data'][0]->pejabat_kode; ?>. &nbsp;</td>
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
-            <td colspan="3" id="ttd" ><?= $spt['data'][0]->pejabat_namajabatan; ?></td>
+            <td colspan="3" id="ttd" ></td>
           </tr>
-        <?php } else { ?>
+          <?php } elseif($dataspt['data'][0]->pejabat_kode == "PLT") { ?>
+          <tr>
+            <td id="ttdan"><?= $dataspt['data'][0]->pejabat_kode; ?>. &nbsp;</td>
+            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+          </tr>
+          <tr>
+          <td id="ttdan" ></td>
+            <td colspan="3" id="ttd" ></td>
+          </tr>
+          <?php } elseif($dataspt['data'][0]->pejabat_kode == "Kaban") { ?>
           <tr>
             <td id="ttdan"></td>
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
+            <td colspan="3" id="ttd" ></td>
+          </tr>
+        <?php } else { ?>
+          <tr>
+            <td id="ttdan">An.</td>
+            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+          </tr>
+          <tr>
+          <td id="ttdan" ><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
             <td colspan="3" id="ttd" ></td>
           </tr>
         <?php } ?>
