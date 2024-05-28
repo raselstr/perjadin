@@ -129,6 +129,7 @@ th,td {
 }
 table.ttd td{
   padding: 0px;
+  /* border: 1pt solid black;  */
 }
 .pengikut {
   font-size:x-small;
@@ -138,11 +139,13 @@ table.ttd td{
       vertical-align: top;
       padding-right: 5px;
     }
+.kananttd {
+  text-align: right;
+}
 table.tabel3{
   /* position: relative; */
   width: 100%;
   border-collapse: collapse;
-  /* border: 1pt solid black;  */
   
 }
 table.tabel3.author {
@@ -375,17 +378,17 @@ table.tabel3.author {
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
       </tr>
       <tr>
-      <td id="ttdan" ></td>
+      <td class="ttdan" ></td>
         <td colspan="3" id="ttd" ></td>
       </tr>
       <?php } else { ?>
       <tr>
-        <td id="ttdan">An.</td>
+        <td class="ttdan">An.  &nbsp;</td>
         <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
       </tr>
       <tr>
-      <td id="ttdan" ><?= $sptkaban['data'][0]->pejabat_namajabatan; ?></td>
-        <td colspan="3" id="ttd" ></td>
+      <td class="ttdan" ></td>
+        <td colspan="3" id="ttd" ><?= $sptkaban['data'][0]->pejabat_namajabatan; ?></td>
       </tr>
     <?php } ?>
     <tr><td><br></td></tr>

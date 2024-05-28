@@ -67,7 +67,7 @@
       /* transition: 0.3s; */
       /* width: 100%; */
       /* height: 1096px; */
-      /* border-radius: 5px; */
+      border-radius: 5px;
       padding: 37px;
       /* float: inline-end; */
     }
@@ -86,9 +86,9 @@
       font-size: small;
       padding: 0px 10px;
     }
-    td {
-      /* border: 1px solid black; */
-    }
+    /* td {
+      border: 1px solid black;
+    } */
     #judulsurat {
       text-align: center;
       font-weight: bold;
@@ -334,8 +334,8 @@
             <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
           </tr>
           <tr>
-          <td id="ttdan" ><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
-            <td colspan="3" id="ttd" ></td>
+          <td id="ttdan"></td>
+          <td colspan="3" id="ttd" ><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
           </tr>
         <?php } ?>
         <tr><td><br></td></tr>
