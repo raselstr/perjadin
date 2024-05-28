@@ -75,6 +75,8 @@ class PejabatModel extends Model
         $options = [
             '1' => 'Kaban',
             '2' => 'Sekretaris',
+            '3' => 'PLT',
+            '4' => 'PLH',
         ];
         return $options;
     }
