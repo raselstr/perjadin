@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Generation Time: May 08, 2024 at 06:46 AM
+-- Generation Time: May 28, 2024 at 09:58 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -97,7 +97,8 @@ INSERT INTO `laporjadins` (`laporjadin_id`, `laporjadin_sptid`, `laporjadin_nodp
 (5, 29, '-', 'Pejabat yang menerima ibu Dra. Hj. Nur Ina Rahayu Nasutio, MSP Jabatan Analis Keuangan Pusat dan Daerah dan Bapak&nbsp; Dedi Staf Bagian Anggaran pada BKAD Provinsi Sumatera Utara', '<p>Berita Acara diterima oleh Bapak Dedi, point penting yang disampaikan antra lain :</p><ol><li>Pemerintah Kabupaten Asahan telah beberapa kali dilakukan pemotongan dana DBH Pajak Rokok oleh Pemerintah Pusat terkait kurangnya anggaran Jamkesda dengan Penerimaan Pusat DBH Pajak Rokok.</li><li>Disarankan agar sedapat mungkin anggaran Jamkesda Tahun 2024 atau kedepan bisa disesuaikan dengan penerimaan DBH Pusat sehingga meminimalisir pemotongan, dan untuk pemotongan tersebut bisa dialihkan untuk menerima peserta baru</li><li>Kedepan jika terjadi pemotongan kembali dari pusat, BKAD Provinsi Sumatera Utara akan melakukan bimbingan terhadap pemda-pemda yang mengalami pemotongan dari pusat untuk dilakukan pembinaan atas penerimaan DBH tersebut.</li></ol><p>Pesan dari Ibu Ina, antara lain :</p><ol><li>Saat ini sedang pembahasan Dana Bantuan Keuangan Provinsi Sumatera Utara,</li><li>Sekedar informasi bahwa Pemerintah Kabupaten Asahan mengalami penurunan dana dari Tahun Anggaran 2023</li><li>Agar seluruh kegiatan BKP yang direncanakan dapat di realisasikan sehingga tujuan penggunaan dana tersebut dapat dirasakan langsung oleh masyarakat&nbsp;</li></ol>', '<p>Pertemuan selesai, dan Berita Acara Rekon sudah diterima oleh pejabat pada BKAD Provinsi</p>', '1711781435_5e277472ba5c7d9d114d.jpg', '1711781435_e22c1f8f8ad8c6ab5b78.jpg', '', 0, '2024-03-28 19:38:22', '2024-04-01 09:33:30', NULL),
 (6, 30, '-', '<p>Koordinasi dan Konsultasi di terima oleh perwakilan Bank SUMUT Cabang Utama Medan oleh ibuk Marlina Hasibuan</p>', '<div>Hasil Koordinasi dan Konsultasi</div><ol><li>Terkait Penggunaan KKPD untuk Pemerintah Kabupaten Asahan masih perlu dilakukan survey dan verifikasi atas rekanan yang akan menggunakan mesih EDC.</li><li>DIharapkan rekanan yang akan menggunakan mesin EDC jumlah transaksinya tidak terbatas pada penjualan untuk Pemerintah Daerah melainkan harus juga memiliki transaksi umum</li><li>Perlu adanya pendataan seluruh rekanan yang dianggap sudah memenuhi kriteria yang akan diberikan mesin EDC serta juga QRIS</li></ol>', '<p>Koordinasi dan konsultasi akan dilanjutkan pada hari Senin tanggal 29 April 2024 terkait pendataan rekanan prioritas yang akan diusulkan mendapat mesin EDC dari Bank SUMUT atau Bank BNI</p>', '1714642280_cba655c558042845b679.jpg', '1714642280_82cb42091f72ab83a1ae.jpg', '', 1, '2024-04-25 14:42:59', '2024-05-02 17:05:54', NULL),
 (7, 31, '-', '<p>Koordinasi dan Konsultasi dihadiri oleh perwakilan Bank SUMUT Cabang Utama Medan oleh Bapak RONALD REGENT GINTING</p>', '<p>Pembahasan :</p><ol><li>Terkait penggunaan KKPD, rekanan wajib menggunakan Mesin EDC dan/ atau QRIS sebagai media pembayaran dengan menggunakan KKPD</li><li>Setiap Bendahara/ Kepala OPD wajib melakukan pendaftaran pada aplikasi Mobile BNI sebagai Bank Mitra dari Bank SUMUT sebagai Bank Penerbit KKPD</li><li>Saat akan mengaktifkan QRIS atau mesin EDC, rekanan/ marchand akan dikenai biaya sebesar 0,7 s.d 1 % per transaksi yang dilakukan</li><li>Merchand biasanya akan menerima dana atas penggunaan KKPD selama H + 1 setelah transaksi dilakukan</li><li>BKAD harus melakukan Verifikasi belanja dan meneliti tagihan bank secara benar dan dianggap sah</li><li>Tagihan atas penggunaan KKPD akan ditagihkan oleh Bank saat akhir bulan</li><li>Pemda memiliki kewenangan untuk menentukan tujuan transfer atas pembayaran Tagihan KKPD, bisa langsung ke Bank atau ke rekening Bendahara, dan Bendahara yang membayarkan tagihan KKPD langsung ke Bank</li></ol>', '<p>Koordinasi dilakukan dengan baik, dan sambutan Bank atas penerimaan Tamu dari Pemda Asahan juga baik</p>', '1714642999_d2c3f17cde9bfc6e8b00.jpg', '1714642999_d7b9311e511cbb2cdf27.jpg', '1714642999_812d419f4047ef710dff.jpg', 0, '2024-05-02 16:42:07', '2024-05-02 16:43:19', NULL),
-(8, 33, '-', '<p>Acara dibuka oleh Kepala KPPN Tanjungbalai dan sebagai Pemateri :</p><ol><li>Novita Putri (Kasi Manajemen Satker Kepatuhan Internal) KPPN Tanjungbalai</li><li>Siti Kartika (Fungsional asisten penyuluh pajak terampil) KPP Pratama Kisaran<br></li></ol>', '<p>Hal-hal yang disampaikan antara lain :</p><p>Pemateri : Novita Putri</p><ol><li>Penjelasan tentang proses penggunaan KKP untuk Satker dibawah KPPN Tanjungbalai</li><li>Pajak atas belanja yang dilakukan menjadi kewajiban rekanan</li><li>Penggunaan KKP sangat membantu dalam proses belanja kegiatan rutin, sehingga menghemat waktu</li><li>Mendorong seluruh satker di wilayah kerja KPPN Tanjungbalai segera mengaktifkan KPP dan segera menggunakan KKP tersebut untuk memperlancar kegiatan rutin kantor</li></ol><p>Pemateri : Siti Kartika</p><ol><li>Menjelaskan prosedur perpajakan atas transaksi yang dilakukan oleh Bendaharan dalam menggunakan dana APBN maupun APBD</li><li>Menjelaskan tarif per pasal atas pengenaan pajak negara</li><li>Mendorong penggunaan DJP Online dalam pembuatan pajak dan sinkronisasi Faktur Pajak oleh rekanan</li><li>Menyarankan untuk melakukan pembelian barang yang sudah memiliki PKP sehingga proses perpajakan dapat dideteksi dan menaikkan pendapatan pajak khusus diwilayah kerja KPP Pratama Kisaran</li><li>Mendorong seluruh bendahara diwilayah kerja KPP Kisaran untuk segera menggunakan Sertifikat Elektronik dan proses pembuatan dan pelaporan pajak ke negara</li></ol>', '<p>Kegiatan diskusi dilakukan dengan mengutarakan keluhan atau sharing knowledge terhadap beberapa masalah perpajakan yang terjadi di lapangan dan setelah selesai acara dilakukan penutupan.</p>', '1715069539_c368293c9557338054bd.jpg', '1715069539_fc3540f46c8d48ebdbb4.jpg', '1715069539_bc1187da833022dff79d.jpg', 0, '2024-05-07 15:09:59', '2024-05-08 10:09:51', NULL);
+(8, 33, '-', '<p>Acara dibuka oleh Kepala KPPN Tanjungbalai dan sebagai Pemateri :</p><ol><li>Novita Putri (Kasi Manajemen Satker Kepatuhan Internal) KPPN Tanjungbalai</li><li>Siti Kartika (Fungsional asisten penyuluh pajak terampil) KPP Pratama Kisaran<br></li></ol>', '<p>Hal-hal yang disampaikan antara lain :</p><p>Pemateri : Novita Putri</p><ol><li>Penjelasan tentang proses penggunaan KKP untuk Satker dibawah KPPN Tanjungbalai</li><li>Pajak atas belanja yang dilakukan menjadi kewajiban rekanan</li><li>Penggunaan KKP sangat membantu dalam proses belanja kegiatan rutin, sehingga menghemat waktu</li><li>Mendorong seluruh satker di wilayah kerja KPPN Tanjungbalai segera mengaktifkan KPP dan segera menggunakan KKP tersebut untuk memperlancar kegiatan rutin kantor</li></ol><p>Pemateri : Siti Kartika</p><ol><li>Menjelaskan prosedur perpajakan atas transaksi yang dilakukan oleh Bendaharan dalam menggunakan dana APBN maupun APBD</li><li>Menjelaskan tarif per pasal atas pengenaan pajak negara</li><li>Mendorong penggunaan DJP Online dalam pembuatan pajak dan sinkronisasi Faktur Pajak oleh rekanan</li><li>Menyarankan untuk melakukan pembelian barang yang sudah memiliki PKP sehingga proses perpajakan dapat dideteksi dan menaikkan pendapatan pajak khusus diwilayah kerja KPP Pratama Kisaran</li><li>Mendorong seluruh bendahara diwilayah kerja KPP Kisaran untuk segera menggunakan Sertifikat Elektronik dan proses pembuatan dan pelaporan pajak ke negara</li></ol>', '<p>Kegiatan diskusi dilakukan dengan mengutarakan keluhan atau sharing knowledge terhadap beberapa masalah perpajakan yang terjadi di lapangan dan setelah selesai acara dilakukan penutupan.</p>', '1715069539_c368293c9557338054bd.jpg', '1715069539_fc3540f46c8d48ebdbb4.jpg', '1715069539_bc1187da833022dff79d.jpg', 1, '2024-05-07 15:09:59', '2024-05-15 11:15:15', NULL),
+(9, 32, '-', '<p>-</p>', '<p>-</p>', '<p>-</p>', '', '', '', 0, '2024-05-15 23:21:58', '2024-05-15 23:21:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -420,7 +421,8 @@ CREATE TABLE `pejabats` (
 
 INSERT INTO `pejabats` (`pejabat_id`, `pejabat_kode`, `pejabat_nama`, `pejabat_namajabatan`, `pejabat_nip`, `pejabat_pangkat`, `pejabat_aktif`) VALUES
 (1, 'Kaban', 'Drs. SOFIAN, M.Pd', 'KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN', '196409041987031016', 'PEMBINA UTAMA MUDA', 1),
-(2, 'Sekretaris', 'SRI LUSI MASDIANY,S.IP', 'SEKRETARIS', '197305071992032001', 'PEMBINA TK. I', 1);
+(2, 'Sekretaris', 'SRI LUSI MASDIANY,S.IP', 'SEKRETARIS', '197305071992032001', 'PEMBINA TK. I', 1),
+(3, 'Kaban', 'SRI LUSI MASDIANY, S.IP', 'PLH. KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN', '197305071992032001', 'PEMBINA TK. I', 1);
 
 -- --------------------------------------------------------
 
@@ -504,7 +506,13 @@ INSERT INTO `pelaksanas` (`pelaksana_id`, `spt_id`, `pegawai_id`, `pelaksana_uta
 (79, 33, 15, 1),
 (80, 33, 30, 0),
 (81, 34, 8, 1),
-(82, 34, 26, 0);
+(82, 34, 26, 0),
+(83, 35, 8, 0),
+(85, 35, 2, 1),
+(86, 35, 27, 0),
+(87, 36, 7, 1),
+(88, 36, 10, 0),
+(89, 36, 40, 0);
 
 -- --------------------------------------------------------
 
@@ -1106,7 +1114,9 @@ INSERT INTO `spjhotels` (`spjhotel_id`, `spjhotel_pelaksanaid`, `spjhotel_nama`,
 (5, 15, 'G7 Grand Hotel', 'Kemayoran - Jakarta', '517', 'Room Charge', '2024-02-26', '2024-02-29', 3, 730000, 2190000, 0, '1709625880_b0991ec95942e5438e28.pdf', '2024-03-05 15:01:47', '2024-03-19 00:00:49', NULL),
 (6, 70, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-04-24', '2024-04-25', 1, 1100000, 330000, 1, '', '2024-05-02 17:00:22', '2024-05-02 17:00:22', NULL),
 (7, 71, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-04-24', '2024-04-25', 1, 699000, 209700, 1, '', '2024-05-02 17:05:00', '2024-05-02 17:05:00', NULL),
-(8, 72, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-04-24', '2024-04-25', 1, 699000, 209700, 1, '', '2024-05-02 17:05:24', '2024-05-02 17:05:24', NULL);
+(8, 72, 'Tarif Hotel 30%', 'Tidak Ada', 'Tidak Ada', 'Tidak Ada', '2024-04-24', '2024-04-25', 1, 699000, 209700, 1, '', '2024-05-02 17:05:24', '2024-05-02 17:05:24', NULL),
+(9, 78, 'G7 Grand Hotel', 'Jakarta', '707', 'Room Change', '2024-05-13', '2024-05-16', 3, 730000, 2190000, 0, '1715790316_e5e4b77cf8f60fa2007b.pdf', '2024-05-15 23:07:48', '2024-05-15 23:25:16', NULL),
+(10, 77, 'G7 Grand Hotel', 'Jakarta', '609', 'Room Charge', '2024-05-13', '2024-05-16', 3, 950000, 2850000, 0, '1715790288_6ba523e9e242ca5c42ee.pdf', '2024-05-15 23:19:37', '2024-05-15 23:24:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -1147,7 +1157,9 @@ INSERT INTO `spjpesawats` (`spjpesawat_id`, `spjpesawat_pelaksanaid`, `spjpesawa
 (7, 19, 'Kembali', 'Citilink', '-', 'TGFT8T', '2024-01-14', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1370000, 1, '1709608874_4e33f3089978d3b386cb.jpg', '1709608874_efa01e0b8857cb8942ad.pdf', '2024-03-05 10:20:12', '2024-03-05 10:40:03', NULL),
 (8, 18, 'Berangkat', 'Citilink', '-', 'E9MD5V', '2024-01-11', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1999559, 1, '1709609250_22a1a2639b419a5133aa.jpg', '1709609250_af9f1aeebf0e914e315d.pdf', '2024-03-05 10:26:53', '2024-03-05 10:38:19', NULL),
 (9, 18, 'Kembali', 'Citilink', '-', 'TGFT8T', '2024-01-14', 'Bandara Soekarno Hatta', 'Bandara Kualanamu', 1370000, 1, '1709609388_43025b3a74d898ebe9c3.jpg', '1709609388_5a36fe15b606c353959f.pdf', '2024-03-05 10:29:03', '2024-03-05 10:37:59', NULL),
-(10, 14, 'Kembali', 'Batik Air', '9902195349328', 'HEMIDP', '2024-03-03', 'Bandara Halim Perdanakusu', 'Bandara Kualanamu', 1831259, 1, '1709623750_4c6d327aee6b78c011f9.jpg', '1709623750_2ccaff974b9867fb30e7.pdf', '2024-03-05 14:28:23', '2024-03-06 10:24:30', NULL);
+(10, 14, 'Kembali', 'Batik Air', '9902195349328', 'HEMIDP', '2024-03-03', 'Bandara Halim Perdanakusu', 'Bandara Kualanamu', 1831259, 1, '1709623750_4c6d327aee6b78c011f9.jpg', '1709623750_2ccaff974b9867fb30e7.pdf', '2024-03-05 14:28:23', '2024-03-06 10:24:30', NULL),
+(11, 78, 'Berangkat', 'Citilink', '-', 'GDN9KM', '2024-05-13', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1600000, 0, '1715789827_665d8ebaf213d714e0f6.jpg', '1715789827_d9e9b2a13e67d855f068.pdf', '2024-05-15 23:16:17', '2024-05-15 23:17:07', NULL),
+(12, 77, 'Berangkat', 'Citilink', '-', 'GDN9KM', '2024-05-13', 'Bandara Kualanamu', 'Bandara Soekarno Hatta', 1600000, 0, '1715790091_68e8084e40c3e7f42ec3.jpg', '1715790091_14485d44bb361ed937a4.pdf', '2024-05-15 23:21:09', '2024-05-15 23:21:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -1256,9 +1268,11 @@ INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`,
 (29, 2024, '800.1.11.1/0356/SPT/III/2024', '800.1.11.1/038/SPPD/III/2024', '2024-03-26', 1, 1, 0, '', ' Menyampaikan Berkas Berita Acara Kesepakatan Kontribusi Daerah untuk Mendukung Program Jaminan Kesehatan antara BPJS Kantor Cabang Kisaran dengan Pemerintah Kabupaten Asahan Nomor : 956/BA/1-05/0324 Tanggal 18 Maret 2024', 2, '2024-03-27', '2024-03-28', 33, 'Angkutan Umum', 'Badan Keuangan dan Aset Daerah Provinsi Sumatera Utara', 6, 1, '2024-03-27 13:47:46', '2024-03-27 13:53:15', NULL),
 (30, 2024, '800.1.11.1/0423/BKAD/IV/2024', '800.1.11.1/044/SPD/IV/2024', '2024-04-23', 1, 2, 0, '', ' Koordinasi dan Konsultasi terkait pengimplementasian KKPD oleh PT. Bank Sumut pada Pemerintah Kabupaten khususnya Kabupaten Asahan', 2, '2024-04-24', '2024-04-25', 33, 'Mobil Dinas', 'PT. Bank Sumut Cabang Utama Medan Jl. Imam Bonjol 18, Medan', 6, 1, '2024-04-23 16:24:19', '2024-04-24 15:15:48', NULL),
 (31, 2024, '800.1.11.1/0435/BKAD/IV/2024', '800.1.11.1/047/SPD/IV/2024', '2024-04-26', 1, 2, 0, '', 'Konsultasi dan Koordinasi terkait implementasi KPPD lanjutan dengan PT. Bank Sumut Cabang Utama untuk wilayah Pemerintah Kabupaten Asahan', 2, '2024-04-29', '2024-04-30', 33, 'Mobil Dinas', 'PT. Bank SUMUT Cabang Utama Jl. Imam Bonjol 18, Medan', 6, 1, '2024-04-26 11:52:19', '2024-04-29 09:32:47', NULL),
-(32, 2024, NULL, NULL, NULL, 1, 2, 0, '', ' Koordinasi dan Konsultasi terkait tatacara dan mekanisme penginputan SPJ belanja yang dilakukan dengan menggunakan KKPD pada SIPD Penatausahaan', 4, '2024-05-13', '2024-05-16', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat', 6, 0, '2024-05-02 18:49:36', '2024-05-02 18:51:12', NULL),
+(32, 2024, '800.1.11.1/0463/BKAD/V/2024', '800.1.11.1/060/SPD/V/2024', '2024-05-03', 1, 2, 0, '', ' Koordinasi dan Konsultasi terkait tatacara dan mekanisme penginputan SPJ belanja yang dilakukan dengan menggunakan KKPD pada SIPD Penatausahaan', 4, '2024-05-13', '2024-05-16', 49, 'Pesawat Udara', 'Kementerian Dalam Negeri - Direktorat Jenderal Bina Keuangan Daerah Jl. Veteran No. 7, Jakarta Pusat', 6, 1, '2024-05-02 18:49:36', '2024-05-13 10:45:02', NULL),
 (33, 2024, '800.1.11.1/0466/BKAD/V/2024', '800.1.11.1/059/SPD/V/2024', '2024-05-06', 2, 1, 0, 'Surat Kepala KPPN Tanjungbalai Nomor : UND-33/KPN.0206/2024 Tanggal 30 April 2024 Tentang Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 'Menghadiri Undangan Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 1, '2024-05-07', '2024-05-07', 31, 'Angkutan Umum', 'KPPN Tanjung Balai, Jln. Jenderal Sudirman Km. 1 No. 246 Tanjungbalai', 6, 1, '2024-05-06 15:35:20', '2024-05-07 12:42:41', NULL),
-(34, 2024, '800.1.11.1/0465/BKAD/V/2024', '800.1.11.1/058/SPD/V/2024', '2024-05-06', 2, 1, 0, 'Surat Kepala KPPN Tanjungbalai Nomor : UND-33/KPN.0206/2024 Tanggal 30 April 2024 Tentang Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 'Menghadiri Undangan Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 1, '2024-05-07', '2024-05-07', 31, 'Angkutan Umum', 'KPPN Tanjung Balai, Jln. Jenderal Sudirman Km. 1 No. 246 Tanjung Balai', 6, 1, '2024-05-07 15:53:45', '2024-05-07 16:23:52', NULL);
+(34, 2024, '800.1.11.1/0465/BKAD/V/2024', '800.1.11.1/058/SPD/V/2024', '2024-05-06', 2, 1, 0, 'Surat Kepala KPPN Tanjungbalai Nomor : UND-33/KPN.0206/2024 Tanggal 30 April 2024 Tentang Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 'Menghadiri Undangan Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 1, '2024-05-07', '2024-05-07', 31, 'Angkutan Umum', 'KPPN Tanjung Balai, Jln. Jenderal Sudirman Km. 1 No. 246 Tanjung Balai', 6, 1, '2024-05-07 15:53:45', '2024-05-07 16:23:52', NULL),
+(35, 2024, NULL, NULL, NULL, 1, 1, 0, '', '  Menghadiri undangan pelaksanaan kegiatan rapat koordinasi penerimaan iuran Pemda tahun 2024, sosialisasi implementasi PMK nomor 143 tahun 2023 dan PMK nomor 110 tahun 2023', 3, '2024-05-15', '2024-05-17', 27, 'Mobil Dinas', 'Hotel Santika, Dyandra Jl. Kapten Maulana Lubis nomor 7 Petisah tengah kecamatan Medan Petisah', 6, 0, '2024-05-13 14:01:07', '2024-05-14 13:19:34', NULL),
+(36, 2024, NULL, NULL, NULL, 3, 1, 0, '', '  Pengambilan Buku Pemilik Kendaraan Bermotor (BPKB) Kenderaan Dinas atas nama BKAD Kabupaten Asahan ', 1, '2024-05-29', '2024-05-29', 27, 'Angkutan Umum', 'PT. INDAKO TRADING COY, Jl. Pemuda No. 18 Kecamatan Medan Maimun', 13, 0, '2024-05-28 11:43:51', '2024-05-28 11:48:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -1368,8 +1382,10 @@ INSERT INTO `uangharians` (`uangharian_id`, `uangharian_idpelaksana`, `uangharia
 (19, 70, 30, 3, 33, 2, 370000, 2, '100%', 740000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
 (20, 71, 30, 4, 33, 2, 370000, 2, '100%', 740000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
 (21, 72, 30, 5, 33, 2, 370000, 2, '100%', 740000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-(22, 79, 33, 4, 31, 1, 0, 1, '100%', 0, 0, 0, 0, 150000, 150000, 0, 0, 0, 0, 0, 1),
-(23, 80, 33, 4, 31, 1, 0, 1, '100%', 0, 0, 0, 0, 150000, 150000, 0, 0, 0, 0, 0, 1);
+(24, 79, 33, 4, 31, 1, 370000, 1, '100%', 370000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(25, 80, 33, 4, 31, 1, 370000, 1, '100%', 370000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(26, 81, 34, 4, 31, 1, 370000, 1, '100%', 370000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(27, 82, 34, 4, 31, 1, 370000, 1, '100%', 370000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1571,7 +1587,7 @@ ALTER TABLE `jenisperjadins`
 -- AUTO_INCREMENT for table `laporjadins`
 --
 ALTER TABLE `laporjadins`
-  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `laporjadin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `lokasiperjadins`
@@ -1607,13 +1623,13 @@ ALTER TABLE `pegawais`
 -- AUTO_INCREMENT for table `pejabats`
 --
 ALTER TABLE `pejabats`
-  MODIFY `pejabat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pejabat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pelaksanas`
 --
 ALTER TABLE `pelaksanas`
-  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `pelaksana_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `perbups`
@@ -1637,13 +1653,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `spjhotels`
 --
 ALTER TABLE `spjhotels`
-  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `spjhotel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `spjpesawats`
 --
 ALTER TABLE `spjpesawats`
-  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `spjpesawat_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `spjtaksis`
@@ -1655,7 +1671,7 @@ ALTER TABLE `spjtaksis`
 -- AUTO_INCREMENT for table `spts`
 --
 ALTER TABLE `spts`
-  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `spt_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `submenus`
@@ -1673,7 +1689,7 @@ ALTER TABLE `tingkats`
 -- AUTO_INCREMENT for table `uangharians`
 --
 ALTER TABLE `uangharians`
-  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `uangharian_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
