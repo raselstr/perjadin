@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4040
--- Generation Time: May 28, 2024 at 09:58 AM
+-- Generation Time: May 28, 2024 at 10:24 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -379,25 +379,25 @@ INSERT INTO `pegawais` (`pegawai_id`, `pegawai_nip`, `pegawai_nama`, `pegawai_ja
 (37, '196812061989032005', 'HERYANTI, SH', 'ANALIS ASET NEGARA', '1968-12-06', 1, 12, 4, '_default.png'),
 (38, '198805202022031001', 'EDDY HARIS SIREGAR, SE', 'PENYUSUN KEBUTUHAN BARANG INVENTARIS', '1988-05-20', 1, 9, 4, '_default.png'),
 (39, '197903252008011002', 'OMAN SURAHMAN', 'PRANATA BARANG DAN JASA', '1979-03-25', 1, 5, 5, '_default.png'),
-(40, '000000000000000001', 'M. YUSUF BUTAR BUTAR', 'STAF BIDANG PERBENDAHARAAN', '1987-03-23', 1, 1, 5, '_default.png'),
-(41, '000000000000000002', 'TRI EVA YANTI', 'STAF BIDANG ANGGARAN', '0001-11-30', 1, 1, 5, '_default.png'),
-(42, '000000000000000003', 'NANI SUSANTI', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
-(43, '000000000000000004', 'MOH. ARIF EFENDI', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
-(44, '000000000000000005', 'IRMA YANTI BUTAR-BUTAR', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
-(45, '000000000000000006', 'THIVANI AMANDA TANJUNG', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
-(46, '000000000000000008', 'DINDA KHOFIFAH, A.Md', 'Pengelola Database BMD 2', '0001-11-30', 1, 1, 5, '_default.png'),
-(47, '000000000000000007', 'TRI AGUNG ANUGERAH', 'Pengelola Database BMD 1', '0001-11-30', 1, 1, 5, '_default.png'),
-(48, '000000000000000009', 'M HASAN ASY\'ARI', 'Supir', '0001-11-30', 1, 1, 5, '_default.png'),
-(49, '000000000000000010', 'ANGGI FANDIE AKHMAD', 'STAF BIDANG ANGGARAN', '0001-11-30', 1, 1, 5, '_default.png'),
-(50, '000000000000000011', 'NURHAYATI', 'STAF BIDANG PERBENDAHARAAN', '0001-11-30', 1, 1, 5, '_default.png'),
-(51, '000000000000000012', 'LISA MAYA SARI', 'STAF BIDANG PERBENDAHARAAN', '0001-11-30', 1, 1, 5, '_default.png'),
-(52, 'Honor013', 'MUHAMMAD SUEB', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
-(53, 'Honor014', 'JUPRI SYAHPUTRA', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
-(54, 'Honor015', 'HERU WANTO', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
-(55, 'Honor016', 'SYAIFUL BAHRI SITORUS', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
-(56, 'Honor017', 'SANTI KARTIKA SARI', 'KEBERSIHAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(57, 'Honor018', 'SATINA', 'KEBERSIHAN', '0000-00-00', 1, 5, 5, '_default.png'),
-(58, '000000000000000019', 'IKHWAN', 'SUPIR', '0001-11-30', 1, 1, 5, '_default.png');
+(40, '-', 'M. YUSUF BUTAR BUTAR', 'STAF BIDANG PERBENDAHARAAN', '1987-03-23', 1, 1, 5, '_default.png'),
+(41, '-', 'TRI EVA YANTI', 'STAF BIDANG ANGGARAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(42, '-', 'NANI SUSANTI', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(43, '-', 'MOH. ARIF EFENDI', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(44, '-', 'IRMA YANTI BUTAR-BUTAR', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(45, '-', 'THIVANI AMANDA TANJUNG', 'STAF SEKRETARIAT', '0001-11-30', 1, 1, 5, '_default.png'),
+(46, '-', 'DINDA KHOFIFAH, A.Md', 'Pengelola Database BMD 2', '0001-11-30', 1, 1, 5, '_default.png'),
+(47, '-', 'TRI AGUNG ANUGERAH', 'Pengelola Database BMD 1', '0001-11-30', 1, 1, 5, '_default.png'),
+(48, '-', 'M HASAN ASY\'ARI', 'Supir', '0001-11-30', 1, 1, 5, '_default.png'),
+(49, '-', 'ANGGI FANDIE AKHMAD', 'STAF BIDANG ANGGARAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(50, '-', 'NURHAYATI', 'STAF BIDANG PERBENDAHARAAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(51, '-', 'LISA MAYA SARI', 'STAF BIDANG PERBENDAHARAAN', '0001-11-30', 1, 1, 5, '_default.png'),
+(52, '-', 'MUHAMMAD SUEB', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
+(53, '-', 'JUPRI SYAHPUTRA', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
+(54, '-', 'HERU WANTO', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
+(55, '-', 'SYAIFUL BAHRI SITORUS', 'PENJAGA MALAM', '0000-00-00', 1, 5, 5, '_default.png'),
+(56, '-', 'SANTI KARTIKA SARI', 'KEBERSIHAN', '0000-00-00', 1, 5, 5, '_default.png'),
+(57, '-', 'SATINA', 'KEBERSIHAN', '0000-00-00', 1, 5, 5, '_default.png'),
+(58, '-', 'IKHWAN', 'SUPIR', '0001-11-30', 1, 1, 5, '_default.png');
 
 -- --------------------------------------------------------
 
@@ -422,7 +422,7 @@ CREATE TABLE `pejabats` (
 INSERT INTO `pejabats` (`pejabat_id`, `pejabat_kode`, `pejabat_nama`, `pejabat_namajabatan`, `pejabat_nip`, `pejabat_pangkat`, `pejabat_aktif`) VALUES
 (1, 'Kaban', 'Drs. SOFIAN, M.Pd', 'KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN', '196409041987031016', 'PEMBINA UTAMA MUDA', 1),
 (2, 'Sekretaris', 'SRI LUSI MASDIANY,S.IP', 'SEKRETARIS', '197305071992032001', 'PEMBINA TK. I', 1),
-(3, 'Kaban', 'SRI LUSI MASDIANY, S.IP', 'PLH. KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN', '197305071992032001', 'PEMBINA TK. I', 1);
+(3, 'PLH', 'SRI LUSI MASDIANY, S.IP', 'PLH. KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN', '197305071992032001', 'PEMBINA TK. I', 1);
 
 -- --------------------------------------------------------
 
@@ -1272,7 +1272,7 @@ INSERT INTO `spts` (`spt_id`, `spt_tahun`, `spt_nomor`, `sppd_nomor`, `spt_tgl`,
 (33, 2024, '800.1.11.1/0466/BKAD/V/2024', '800.1.11.1/059/SPD/V/2024', '2024-05-06', 2, 1, 0, 'Surat Kepala KPPN Tanjungbalai Nomor : UND-33/KPN.0206/2024 Tanggal 30 April 2024 Tentang Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 'Menghadiri Undangan Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 1, '2024-05-07', '2024-05-07', 31, 'Angkutan Umum', 'KPPN Tanjung Balai, Jln. Jenderal Sudirman Km. 1 No. 246 Tanjungbalai', 6, 1, '2024-05-06 15:35:20', '2024-05-07 12:42:41', NULL),
 (34, 2024, '800.1.11.1/0465/BKAD/V/2024', '800.1.11.1/058/SPD/V/2024', '2024-05-06', 2, 1, 0, 'Surat Kepala KPPN Tanjungbalai Nomor : UND-33/KPN.0206/2024 Tanggal 30 April 2024 Tentang Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 'Menghadiri Undangan Sosialisasi Perpajakan bagi Instansi Pemerintah dan Sosialisasi Kartu Kredit Pemerintah (KKP) serta Sosialisasi Antikorupsi', 1, '2024-05-07', '2024-05-07', 31, 'Angkutan Umum', 'KPPN Tanjung Balai, Jln. Jenderal Sudirman Km. 1 No. 246 Tanjung Balai', 6, 1, '2024-05-07 15:53:45', '2024-05-07 16:23:52', NULL),
 (35, 2024, NULL, NULL, NULL, 1, 1, 0, '', '  Menghadiri undangan pelaksanaan kegiatan rapat koordinasi penerimaan iuran Pemda tahun 2024, sosialisasi implementasi PMK nomor 143 tahun 2023 dan PMK nomor 110 tahun 2023', 3, '2024-05-15', '2024-05-17', 27, 'Mobil Dinas', 'Hotel Santika, Dyandra Jl. Kapten Maulana Lubis nomor 7 Petisah tengah kecamatan Medan Petisah', 6, 0, '2024-05-13 14:01:07', '2024-05-14 13:19:34', NULL),
-(36, 2024, NULL, NULL, NULL, 3, 1, 0, '', '  Pengambilan Buku Pemilik Kendaraan Bermotor (BPKB) Kenderaan Dinas atas nama BKAD Kabupaten Asahan ', 1, '2024-05-29', '2024-05-29', 27, 'Angkutan Umum', 'PT. INDAKO TRADING COY, Jl. Pemuda No. 18 Kecamatan Medan Maimun', 13, 0, '2024-05-28 11:43:51', '2024-05-28 11:48:53', NULL);
+(36, 2024, NULL, NULL, NULL, 3, 1, 0, '', 'Pengambilan Buku Pemilik Kendaraan Bermotor (BPKB) Kenderaan Dinas atas nama BKAD Kabupaten Asahan ', 2, '2024-05-28', '2024-05-29', 27, 'Angkutan Umum', 'PT. INDAKO TRADING COY, Jl. Pemuda No. 18 Kecamatan Medan Maimun', 13, 0, '2024-05-28 11:43:51', '2024-05-28 15:19:03', NULL);
 
 -- --------------------------------------------------------
 
