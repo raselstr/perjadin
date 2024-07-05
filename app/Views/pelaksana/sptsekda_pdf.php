@@ -300,14 +300,14 @@
           </tr>
           <tr>
           <td id="ttdan" ></td>
-            <td colspan="3" id="ttd" >SEKRETARIS DAERAH</td>
+            <td colspan="3" id="ttd" >PLH. SEKRETARIS DAERAH</td>
           </tr>
         
         <tr><td><br></td></tr>
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd">Drs. JOHN HARDI NASUTION, M.Si</td>
+          <td colspan="3" id="ttd">Drs. ZAINAL ARIPIN SINAGA, M.H.</td>
         </tr>
         <tr>
           <td id="ttd"></td>
@@ -315,7 +315,7 @@
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" >NIP. 19670502 199002 1 002</td>
+          <td colspan="3" id="ttd" >NIP. 19670307 199303 1 010</td>
         </tr>
       </table>
     </div>
