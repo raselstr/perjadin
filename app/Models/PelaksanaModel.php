@@ -82,6 +82,7 @@ class PelaksanaModel extends Model
         $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')
                             ->join('spts','spts.spt_pjb_tugas = pejabats.pejabat_id')
                             ->where('pejabats.pejabat_kode',esc('Kaban'))
+                            ->where('pejabats.pejabat_aktif',1)
                             ->groupby('pejabats.pejabat_nip')
                             ->get();
         $nip = $subquery->getRow();
@@ -222,6 +223,7 @@ class PelaksanaModel extends Model
        $subquery = $this->db->table('pejabats')->select('pejabats.pejabat_nip')
                             ->join('spts','spts.spt_pjb_tugas = pejabats.pejabat_id')
                             ->where('pejabats.pejabat_kode',esc('Kaban'))
+                            ->where('pejabats.pejabat_aktif',1)
                             ->groupby('pejabats.pejabat_nip')
                             ->get();
         $nip = $subquery->getRow();
