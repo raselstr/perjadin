@@ -244,7 +244,7 @@ table.tabel3.author {
     <tr>
       <td class="isi no">4.</td>
       <td colspan="2" class="isi">Maksud Perjalanan Dinas</td>
-      <td colspan="6" class="isi"><?= $sptkaban['data'][0]->spt_uraian; ?> ke <?= $sptkaban['data'][0]->spt_tempat; ?>, <?= $sptkaban['data'][0]->lokasiperjadin_nama ?></td>
+      <td colspan="6" class="isi"><?= $sptkaban['data'][0]->spt_uraian; ?> ke <?= $sptkaban['data'][0]->spt_tempat; ?> di <?= $sptkaban['data'][0]->lokasiperjadin_nama ?></td>
     </tr>
     <tr>
       <td  class="isi no">5.</td>
