@@ -184,7 +184,7 @@
           <td id="isisuratpej"></td> 
           <td colspan="2" id="isisuratpej">Nama</td>
           <td width="3%">:</td>
-          <td colspan="5" id="isisuratpej">Drs. JOHN HARDI NASUTION, M.Si</td>
+          <td colspan="5" id="isisuratpej">Drs. ZAINAL ARIPIN SINAGA, M.H.</td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -192,7 +192,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">NIP</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej">19670502 199002 1 002</td>
+          <td colspan="5" id="isisuratpej">19670307 199303 1 010</td>
         </tr>
         <tr>
           <td id="isisuratno"></td>
@@ -208,7 +208,7 @@
           <td id="isisuratpej"></td>
           <td colspan="2" id="isisuratpej">Jabatan</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej">SEKRETARIS DAERAH</td>
+          <td colspan="5" id="isisuratpej">PLH. SEKRETARIS DAERAH</td>
         </tr>
         <tr><td></td></tr>
         <tr>
