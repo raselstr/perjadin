@@ -99,16 +99,19 @@ $angkaterbilang = new PelaksanaModel();
                       </thead>
                       <tbody>
                         <?php $no = 1;
-foreach ($all as $key => $value): ?>
-                                                      <?php
-$pelaksana_id = $value->pelaksana_id;
-$sptid = $value->spt_id;
-?>
+                          foreach ($all as $key => $value): ?>
+                                                                                <?php
+                          $pelaksana_id = $value->pelaksana_id;
+                          $sptid = $value->spt_id;
+                          ?>
                         <tr>
                           <?php $qrharian = $model->rampungharian($pelaksana_id);?>
                           <td rowspan="8"><?=$no++;?></td>
                           <td style="width:23%" rowspan="8"><i><?=$value->pegawai_nama;?><br>NIP. <?=$value->pegawai_nip;?></i></td>
-                          <td colspan="2" style="width:20%">Uang Harian <?= $qrharian[0]->uangharian_jumlahpersen; ?></td>
+                          <td colspan="2" style="width:20%">
+                            Uang Harian <?= $qrharian[0]->uangharian_jlhhari; ?> hari ( <?= $qrharian[0]->uangharian_jumlahpersen; ?> )<br>
+                            Uang Harian Sesuai Undangan selama <?= $qrharian[0]->uangharian_hariundangan; ?> hari
+                          </td>
                           <td style="width:20%" class="align-middle text-right" colspan="2">
                             <?php $totharian = 0;
                                 foreach ($qrharian as $key => $harians): ?>
@@ -140,10 +143,10 @@ $sptid = $value->spt_id;
                           </td>
                           <td class="align-top text-right" style="width:15%">
                             <?php $total2 = 0;
-foreach ($qrpesawat as $key => $value) {
-    $subtotal = intval($value->spjpesawat_harga);
-    $total2 += $subtotal;
-}?>
+                              foreach ($qrpesawat as $key => $value) {
+                                  $subtotal = intval($value->spjpesawat_harga);
+                                  $total2 += $subtotal;
+                              }?>
                             <?=number_format($total2, 2, ',', '.');?>
                           </td>
                         </tr>
