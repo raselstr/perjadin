@@ -1,7 +1,7 @@
 services:
   app:
     build:
-      context: .
+      context: ..
       dockerfile: docker/php/Dockerfile
     ports:
       - "9090:80"
