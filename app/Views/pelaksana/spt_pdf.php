@@ -178,43 +178,7 @@
           <td colspan="8" id="isisurat"><?= $spt['data'][0]->spt_dasar ?></td>
         </tr>
         <?php endif ?>
-        <tr>
-          <td colspan="11" id="isisurat">Yang bertandatangan di bawah ini :</td>
-          
-          
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej" width="4%"></td> 
-          <td id="isisuratpej"></td> 
-          <td colspan="2" id="isisuratpej">Nama</td>
-          <td width="3%">:</td>
-          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_nama; ?></td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">NIP</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_nip; ?></td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_pangkat; ?></td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Jabatan</td>
-          <td id="isisuratpejt">:</td>
-          <td colspan="5" id="isisuratpej"><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
-        </tr>
+        
         <tr><td></td></tr>
         <tr>
           <td colspan="11" id="isisurat"><strong><center>MEMERINTAHKAN</center></strong></td>
@@ -232,15 +196,15 @@
           <td id="isisuratno"></td>
           <td id="isisuratno"></td>
           <td id="isisuratpej" width="5%"><?= $no++; ?>.</td>
-          <td colspan="2" id="isisuratpej" >Nama</td>
+          <td id="isisuratpej" width="30%">Nama</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej" ><?= $value->pegawai_nama; ?></td>
+          <td colspan="6" id="isisuratpej" ><?= $value->pegawai_nama; ?></td>
         </tr>
         <tr class="page-break">
           <td id="isisuratno"></td>
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">NIP</td>
+          <td id="isisuratpej">NIP</td>
           <td >:</td>
           <td colspan="5" id="isisuratpej"><?= $value->pegawai_nip; ?></td>
         </tr>
@@ -248,7 +212,7 @@
           <td id="isisuratno"></td>
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
+          <td id="isisuratpej">Pangkat/ Golongan</td>
           <td >:</td>
           <td colspan="5" id="isisuratpej"><?= $value->pangkat_nama; ?>(<?= $value->pangkat_gol; ?>)</td>
         </tr>
@@ -256,7 +220,7 @@
           <td id="isisuratno"></td>
           <td id="isisuratpej"></td>
           <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Jabatan</td>
+          <td id="isisuratpej">Jabatan</td>
           <td >:</td>
           <td colspan="5" id="isisuratpej"><?= $value->pegawai_jabatan; ?></td>
         </tr>
@@ -304,7 +268,7 @@
         <?php if($dataspt['data'][0]->pejabat_kode == "PLH") { ?>
           <tr>
             <td id="ttdan"><?= $dataspt['data'][0]->pejabat_kode; ?>. &nbsp;</td>
-            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+            <td colspan="3" id="ttd">Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
@@ -313,7 +277,7 @@
           <?php } elseif($dataspt['data'][0]->pejabat_kode == "PLT") { ?>
           <tr>
             <td id="ttdan"><?= $dataspt['data'][0]->pejabat_kode; ?>. &nbsp;</td>
-            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+            <td colspan="3" id="ttd"><b>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</b></td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
@@ -322,7 +286,7 @@
           <?php } elseif($dataspt['data'][0]->pejabat_kode == "Kaban") { ?>
           <tr>
             <td id="ttdan"></td>
-            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+            <td colspan="3" id="ttd"><b>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</b></td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
@@ -330,12 +294,12 @@
           </tr>
         <?php } else { ?>
           <tr>
-            <td id="ttdan">An.</td>
-            <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+            <td id="ttdan"><b>An.</b></td>
+            <td colspan="3" id="ttd"><b>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan<b></td>
           </tr>
           <tr>
           <td id="ttdan"></td>
-          <td colspan="3" id="ttd" ><?= $dataspt['data'][0]->pejabat_namajabatan; ?></td>
+          <td colspan="3" id="ttd" ><b><?= $dataspt['data'][0]->pejabat_namajabatan; ?></b></td>
           </tr>
         <?php } ?>
         <tr><td><br></td></tr>
@@ -346,11 +310,11 @@
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" ><?= $dataspt['data'][0]->pejabat_pangkat; ?></td>
+          <td colspan="3" id="ttd" ><b><?= $dataspt['data'][0]->pejabat_pangkat; ?></b></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" >NIP.<?= $dataspt['data'][0]->pejabat_nip; ?></td>
+          <td colspan="3" id="ttd" ><b>Nip.<?= $dataspt['data'][0]->pejabat_nip; ?></b></td>
         </tr>
       </table>
     </div>

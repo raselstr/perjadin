@@ -173,43 +173,7 @@
           <td colspan="8" id="isisurat"><?= $kaban[0]->spt_dasar ?></td>
         </tr>
         <?php endif ?>
-        <tr>
-          <td colspan="11" id="isisurat">Yang bertandatangan di bawah ini :</td>
-          
-          
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej" width="4%"></td> 
-          <td id="isisuratpej"></td> 
-          <td colspan="2" id="isisuratpej">Nama</td>
-          <td width="3%">:</td>
-          <td colspan="5" id="isisuratpej">Drs. ZAINAL ARIPIN SINAGA, M.H.</td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">NIP</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej">19670307 199303 1 010</td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Pangkat/ Golongan</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej">PEMBINA UTAMA MUDA</td>
-        </tr>
-        <tr>
-          <td id="isisuratno"></td>
-          <td id="isisuratpej"></td>
-          <td id="isisuratpej"></td>
-          <td colspan="2" id="isisuratpej">Jabatan</td>
-          <td >:</td>
-          <td colspan="5" id="isisuratpej">PLH. SEKRETARIS DAERAH</td>
-        </tr>
+        
         <tr><td></td></tr>
         <tr>
           <td colspan="11" id="isisurat"><strong><center>MEMERINTAHKAN</center></strong></td>
@@ -226,7 +190,7 @@
           <td id="isisuratpej" width="5%"></td>
           <td colspan="2" id="isisuratpej" >Nama</td>
           <td >:</td>
-          <td colspan="5" id="isisuratpej" ><?= $kaban[0]->pegawai_nama; ?></td>
+          <td colspan="5" id="isisuratpej" ><?= ucwords(strtolower($kaban[0]->pegawai_nama)); ?></td>
         </tr>
         <tr class="page-break">
           <td id="isisuratno"></td>
@@ -295,27 +259,27 @@
         <tr><td><br></td></tr>
         
           <tr>
-            <td id="ttdan">An.</td>
-            <td colspan="3" id="ttd">BUPATI ASAHAN</td>
+            <td id="ttdan"></td>
+            <td colspan="3" id="ttd"></td>
           </tr>
           <tr>
           <td id="ttdan" ></td>
-            <td colspan="3" id="ttd" >PLH. SEKRETARIS DAERAH</td>
+            <td colspan="3" id="ttd" ><strong>Sekretaris Daerah</strong></td>
           </tr>
         
         <tr><td><br></td></tr>
         <tr><td><br></td></tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd">Drs. ZAINAL ARIPIN SINAGA, M.H.</td>
+          <td colspan="3" id="ttd"><strong>Zainal Aripin Sinaga</strong></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" >PEMBINA UTAMA MUDA</td>
+          <td colspan="3" id="ttd" ></td>
         </tr>
         <tr>
           <td id="ttd"></td>
-          <td colspan="3" id="ttd" >NIP. 19670307 199303 1 010</td>
+          <td colspan="3" id="ttd" ></td>
         </tr>
       </table>
     </div>

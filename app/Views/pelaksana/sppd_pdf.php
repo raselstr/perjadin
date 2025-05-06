@@ -336,6 +336,12 @@ table.tabel3.author {
 <!-- <div class="card page-break" > -->
   <table class="ttd page-break" >
     <tr class="page-break">
+      <td id="ttd" width="50%">&nbsp;</td>
+      <td id="ttd">&nbsp;</td>
+      <td id="ttd" width="2%">&nbsp;</td>
+      <td id="ttd" width = "30%">&nbsp;</td>
+    </tr>
+    <tr class="page-break">
       <td id="ttd" width="50%">
         &nbsp;
       </td>
@@ -356,8 +362,8 @@ table.tabel3.author {
     <tr><td><br></td></tr>
     <?php if($sptkaban['data'][0]->pejabat_kode == "PLH") { ?>
       <tr>
-        <td class="ttd ttdan"><?= $sptkaban['data'][0]->pejabat_kode; ?>. &nbsp;</td>
-        <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+        <td class="ttd ttdan"><?= ucwords(strtolower($sptkaban['data'][0]->pejabat_kode)); ?>. &nbsp;</td>
+        <td colspan="3" id="ttd"><strong>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</strong></td>
       </tr>
       <tr>
       <td id="ttdan" ></td>
@@ -365,8 +371,8 @@ table.tabel3.author {
       </tr>
     <?php } elseif($sptkaban['data'][0]->pejabat_kode == "PLT") { ?>
       <tr>
-        <td class="ttd ttdan"><?= $sptkaban['data'][0]->pejabat_kode; ?>. &nbsp;</td>
-        <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+        <td class="ttd ttdan"><?= ucwords(strtolower($sptkaban['data'][0]->pejabat_kode)); ?>. &nbsp;</td>
+        <td colspan="3" id="ttd"><strong>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</strong></td>
       </tr>
       <tr>
       <td id="ttdan" ></td>
@@ -375,7 +381,7 @@ table.tabel3.author {
       <?php } elseif($sptkaban['data'][0]->pejabat_kode == "Kaban") { ?>
       <tr>
         <td class="ttd ttdan"></td>
-        <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+        <td colspan="3" id="ttd"><strong>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</strong></td>
       </tr>
       <tr>
       <td class="ttdan" ></td>
@@ -383,12 +389,12 @@ table.tabel3.author {
       </tr>
       <?php } else { ?>
       <tr>
-        <td class="ttdan">An.  &nbsp;</td>
-        <td colspan="3" id="ttd">KEPALA BADAN KEUANGAN DAN ASET DAERAH KABUPATEN ASAHAN</td>
+        <td class="ttdan"><b>An.  &nbsp;</b></td>
+        <td colspan="3" id="ttd"><strong>Kepala Badan Keuangan dan Aset Daerah Kabupaten Asahan</strong></td>
       </tr>
       <tr>
       <td class="ttdan" ></td>
-        <td colspan="3" id="ttd" ><?= $sptkaban['data'][0]->pejabat_namajabatan; ?></td>
+        <td colspan="3" id="ttd" ><b><?= $sptkaban['data'][0]->pejabat_namajabatan; ?></b></td>
       </tr>
     <?php } ?>
     <tr><td><br></td></tr>
@@ -400,11 +406,11 @@ table.tabel3.author {
     </tr>
     <tr>
       <td id="ttd"></td>
-      <td colspan="3" id="ttd" ><?= $sptkaban['data'][0]->pejabat_pangkat; ?></td>
+      <td colspan="3" id="ttd" ><b><?= $sptkaban['data'][0]->pejabat_pangkat; ?></b></td>
     </tr>
     <tr>
       <td id="ttd"></td>
-      <td colspan="3" id="ttd" >NIP.<?= $sptkaban['data'][0]->pejabat_nip; ?></td>
+      <td colspan="3" id="ttd" ><b>Nip.<?= $sptkaban['data'][0]->pejabat_nip; ?></b></td>
     </tr>
   </table>
 </div>
